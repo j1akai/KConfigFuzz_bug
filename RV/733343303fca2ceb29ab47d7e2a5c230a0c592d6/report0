@@ -1,0 +1,40 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 2370 at drivers/gpu/drm/vkms/vkms_crtc.c:97 vkms_get_vblank_timestamp+0x156/0x1a0
+Modules linked in:
+CPU: 1 UID: 0 PID: 2370 Comm: syz.0.7974 Not tainted 6.16.0-dirty #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+epc : vkms_get_vblank_timestamp+0x156/0x1a0
+ ra : vkms_get_vblank_timestamp+0x156/0x1a0
+epc : ffffffff8258498e ra : ffffffff8258498e sp : ff2000000b606f80
+ gp : ffffffff89cc9100 tp : ff60000095d29a40 t0 : 00000000000000c8
+ t1 : ffebffff1dd29522 t2 : 0000000000000000 s0 : ff2000000b606fb0
+ s1 : 0000043fe6727717 a0 : 0000000000000006 a1 : 0000043fe6727717
+ a2 : 0000043fe6727717 a3 : 0000000000080000 a4 : ff200000076effc0
+ a5 : 0000000000076fc0 a6 : 0000000000000003 a7 : ff600000ee94a917
+ s2 : ff6000008aab4040 s3 : ff2000000b607140 s4 : 0000043fe6727717
+ s5 : ff2000000b607020 s6 : ff6000008aab4040 s7 : 0000000000000000
+ s8 : ffebffff1147a724 s9 : 0000000000001000 s10: 1fec00001147a721
+ s11: 0000000000000001 t3 : ffffffff91085400 t4 : ffebffff1dd29521
+ t5 : ffebffff1dd29523 t6 : ff600000ee94a918
+status: 0000000000000120 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff8258498e>] vkms_get_vblank_timestamp+0x156/0x1a0
+[<ffffffff82050dee>] drm_crtc_get_last_vbltimestamp+0xfe/0x1a4
+[<ffffffff82050fec>] drm_crtc_next_vblank_start+0x158/0x29c
+[<ffffffff820a435a>] drm_atomic_helper_wait_for_fences+0x596/0x774
+[<ffffffff820a6bb0>] drm_atomic_helper_commit+0x1b4/0x360
+[<ffffffff81fad866>] drm_atomic_commit+0x1d2/0x290
+[<ffffffff82063ef6>] drm_client_modeset_commit_atomic+0x60e/0x754
+[<ffffffff820646fe>] drm_client_modeset_commit_locked+0x132/0x4d8
+[<ffffffff820c9b3e>] drm_fb_helper_pan_display+0x2aa/0x830
+[<ffffffff81ba9a90>] fb_pan_display+0x160/0x6b0
+[<ffffffff81bd0d7a>] bit_update_start+0x3e/0x1b4
+[<ffffffff81bcc7a0>] fbcon_switch+0xffc/0x16f4
+[<ffffffff81e77024>] redraw_screen+0x37c/0x6bc
+[<ffffffff81bc89f2>] fbcon_modechanged+0x3da/0x624
+[<ffffffff81bc974e>] fbcon_update_vcs+0x56/0x6c
+[<ffffffff81bb7d98>] do_fb_ioctl+0x6c4/0x71c
+[<ffffffff81bb7ec0>] fb_ioctl+0xd0/0x144
+[<ffffffff80c76dba>] __riscv_sys_ioctl+0x17e/0x1e4
+[<ffffffff8007736e>] syscall_handler+0x96/0x128
+[<ffffffff861e449e>] do_trap_ecall_u+0x396/0x5d0
+[<ffffffff8620db7a>] handle_exception+0x146/0x152

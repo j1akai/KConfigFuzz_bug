@@ -1,0 +1,27 @@
+------------[ cut here ]------------
+WARNING: CPU: 2 PID: 0 at kernel/rcu/tree_stall.h:1015 rcu_check_gp_start_stall.part.0+0x1d6/0x16ac
+Modules linked in:
+CPU: 2 UID: 0 PID: 0 Comm: swapper/2 Not tainted 6.16.0-dirty #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+epc : rcu_check_gp_start_stall.part.0+0x1d6/0x16ac
+ ra : rcu_check_gp_start_stall.part.0+0x1ba/0x16ac
+epc : ffffffff80391d2a ra : ffffffff80391d0e sp : ff20000000027c80
+ gp : ffffffff89cc9100 tp : ff600000816e0000 t0 : 00000000000000c8
+ t1 : fffffffef13bb354 t2 : ff600001fdd4f528 s0 : ff20000000027cd0
+ s1 : ffffffff883ee340 a0 : 0000000000000001 a1 : 0000000000000004
+ a2 : 0000000000000001 a3 : ffffffff89dd9aa0 a4 : ffffffff883ee340
+ a5 : 0000000000000000 a6 : fffffffef13bb355 a7 : 0000000000000003
+ s2 : 0000000000000122 s3 : ffffffff89dd6a80 s4 : ffffffff91085400
+ s5 : 1fe4000000004fa8 s6 : ffffffff883ee340 s7 : ffffffff89cd3b00
+ s8 : ffffffff883ee340 s9 : ff600000de097450 s10: ff600001fdd61f52
+ s11: 1fec00003fbac3ea t3 : ffffffff87c254f0 t4 : fffffffef13bb354
+ t5 : fffffffef13bb355 t6 : 0000000000000000
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff80391d2a>] rcu_check_gp_start_stall.part.0+0x1d6/0x16ac
+[<ffffffff803a1074>] rcu_core+0x738/0x1d20
+[<ffffffff803a2a28>] rcu_core_si+0xc/0x14
+[<ffffffff8015ff4a>] handle_softirqs+0x43e/0x1138
+[<ffffffff80161072>] __irq_exit_rcu+0x2d2/0x6c0
+[<ffffffff8016239c>] irq_exit_rcu+0xc/0x114
+[<ffffffff861e3aac>] handle_riscv_irq+0x40/0x4c
+[<ffffffff8620dce2>] call_on_irq_stack+0x32/0x40

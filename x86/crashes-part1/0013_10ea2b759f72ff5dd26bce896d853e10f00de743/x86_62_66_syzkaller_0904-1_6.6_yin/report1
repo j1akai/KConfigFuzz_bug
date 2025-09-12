@@ -1,0 +1,26 @@
+unregister_netdevice: waiting for syz_tun to become free. Usage count = 2
+ref_tracker: syz_tun@ffff888071c00510 has 1/1 users at
+     __netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4056 [inline]
+     netdev_hold home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4085 [inline]
+     netdev_hold home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4080 [inline]
+     fib_check_nh_nongw home/jiakai/62_66_amd_0904/linux66/linux/net/ipv4/fib_semantics.c:1239 [inline]
+     fib_check_nh+0x147/0x280 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv4/fib_semantics.c:1259
+     fib_create_info+0xf45/0x1b30 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv4/fib_semantics.c:1558
+     fib_table_insert+0x100/0xa60 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv4/fib_trie.c:1236
+     fib_magic+0x199/0x1d0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv4/fib_frontend.c:1104
+     fib_add_ifaddr+0x2ab/0x2c0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv4/fib_frontend.c:1148
+     fib_netdev_event+0x142/0x2c0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv4/fib_frontend.c:1486
+     notifier_call_chain+0x89/0x190 home/jiakai/62_66_amd_0904/linux66/linux/kernel/notifier.c:93
+     call_netdevice_notifiers_info+0x7c/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:1995
+     call_netdevice_notifiers_extack home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2033 [inline]
+     call_netdevice_notifiers home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2047 [inline]
+     __dev_notify_flags+0xb2/0x1b0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:8665
+     dev_change_flags+0x71/0x90 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:8703
+     do_setlink+0x440/0x1d70 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:2880
+     __rtnl_newlink+0x796/0xe00 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:3671
+     rtnl_newlink+0x4d/0x80 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:3718
+     rtnetlink_rcv_msg+0x22b/0x5b0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:6442
+     netlink_rcv_skb+0x91/0x1e0 home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/af_netlink.c:2545
+     netlink_unicast_kernel home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/af_netlink.c:1342 [inline]
+     netlink_unicast+0x3ab/0x500 home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/af_netlink.c:1368
+

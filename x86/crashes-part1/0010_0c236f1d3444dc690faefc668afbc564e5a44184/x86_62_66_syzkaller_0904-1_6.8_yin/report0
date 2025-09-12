@@ -1,0 +1,150 @@
+usb 10-1: Direct firmware load for ueagle-atm/eagleII.fw failed with error -2
+usb 10-1: Falling back to sysfs fallback for: ueagle-atm/eagleII.fw
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 5122 at fs/kernfs/dir.c:526 kernfs_get+0x3c/0x50 home/jiakai/62_66_amd_0904/linux68/linux/fs/kernfs/dir.c:526
+Modules linked in:
+CPU: 0 PID: 5122 Comm: kworker/0:3 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events request_firmware_work_func
+RIP: 0010:kernfs_get+0x3c/0x50 home/jiakai/62_66_amd_0904/linux68/linux/fs/kernfs/dir.c:526
+Code: 1c e8 c8 cf c0 ff 8b 2b 31 ff 89 ee e8 bd c8 c0 ff 85 ed 74 0f e8 b4 cf c0 ff f0 ff 03 5b 5d e9 aa cf c0 ff e8 a5 cf c0 ff 90 <0f> 0b 90 eb e6 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 90 90
+RSP: 0018:ffffc90000ef7be0 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff888011811b00 RCX: ffffffff81827713
+RDX: ffff88800afa8000 RSI: ffffffff8182772b RDI: 0000000000000005
+RBP: 0000000000000000 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+R13: 0000000000000000 R14: ffff888009cadf38 R15: ffff88801adb7968
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007ff067bff000 CR3: 000000002ada4000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ sysfs_get home/jiakai/62_66_amd_0904/linux68/linux/include/linux/sysfs.h:653 [inline]
+ create_dir home/jiakai/62_66_amd_0904/linux68/linux/lib/kobject.c:89 [inline]
+ kobject_add_internal+0x157/0x370 home/jiakai/62_66_amd_0904/linux68/linux/lib/kobject.c:240
+ kobject_add_varg home/jiakai/62_66_amd_0904/linux68/linux/lib/kobject.c:374 [inline]
+ kobject_add+0xb9/0x140 home/jiakai/62_66_amd_0904/linux68/linux/lib/kobject.c:426
+ class_dir_create_and_add home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/core.c:3182 [inline]
+ get_device_parent+0x195/0x260 home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/core.c:3233
+ device_add+0x11a/0xc50 home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/core.c:3563
+ fw_load_sysfs_fallback home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/fallback.c:86 [inline]
+ fw_load_from_user_helper home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/fallback.c:162 [inline]
+ firmware_fallback_sysfs+0x1a0/0x680 home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/fallback.c:238
+ _request_firmware+0x738/0x8e0 home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/main.c:910
+ request_firmware_work_func+0x3f/0x90 home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/main.c:1161
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2633
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2706 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2787
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+---[ end trace 0000000000000000 ]---
+BUG: kernel NULL pointer dereference, address: 0000000000000060
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 0 P4D 0 
+Oops: 0002 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 5122 Comm: kworker/0:3 Tainted: G        W          6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events request_firmware_work_func
+RIP: 0010:arch_atomic64_try_cmpxchg home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/include/asm/atomic64_64.h:109 [inline]
+RIP: 0010:raw_atomic64_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux68/linux/include/linux/atomic/atomic-arch-fallback.h:4276 [inline]
+RIP: 0010:raw_atomic_long_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux68/linux/include/linux/atomic/atomic-long.h:1476 [inline]
+RIP: 0010:atomic_long_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux68/linux/include/linux/atomic/atomic-instrumented.h:4424 [inline]
+RIP: 0010:rwsem_write_trylock home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/rwsem.c:260 [inline]
+RIP: 0010:__down_write_common home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/rwsem.c:1305 [inline]
+RIP: 0010:__down_write home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/rwsem.c:1315 [inline]
+RIP: 0010:down_write+0x1b/0x60 home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/rwsem.c:1580
+Code: 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 55 48 89 fd 2e 2e 2e 31 c0 65 ff 05 04 c7 11 7b 31 c0 ba 01 00 00 00 <f0> 48 0f b1 55 00 75 27 65 48 8b 04 25 00 dc 02 00 48 89 45 08 65
+RSP: 0018:ffffc90000ef7b60 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: ffff888011811b00 RCX: ffffffff81827713
+RDX: 0000000000000001 RSI: ffffffff8182a392 RDI: 0000000000000060
+RBP: 0000000000000060 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000001 R11: 0077662e4949656c R12: ffff888011811b00
+R13: ffff888011811b00 R14: 0000000000000000 R15: 0000000000000060
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000060 CR3: 000000004bd86000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ kernfs_add_one+0x46/0x220 home/jiakai/62_66_amd_0904/linux68/linux/fs/kernfs/dir.c:769
+ kernfs_create_dir_ns+0x7a/0xe0 home/jiakai/62_66_amd_0904/linux68/linux/fs/kernfs/dir.c:1062
+ sysfs_create_dir_ns+0x8c/0x130 home/jiakai/62_66_amd_0904/linux68/linux/fs/sysfs/dir.c:59
+ create_dir home/jiakai/62_66_amd_0904/linux68/linux/lib/kobject.c:73 [inline]
+ kobject_add_internal+0x104/0x370 home/jiakai/62_66_amd_0904/linux68/linux/lib/kobject.c:240
+ kobject_add_varg home/jiakai/62_66_amd_0904/linux68/linux/lib/kobject.c:374 [inline]
+ kobject_add+0xb9/0x140 home/jiakai/62_66_amd_0904/linux68/linux/lib/kobject.c:426
+ device_add+0x1a0/0xc50 home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/core.c:3577
+ fw_load_sysfs_fallback home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/fallback.c:86 [inline]
+ fw_load_from_user_helper home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/fallback.c:162 [inline]
+ firmware_fallback_sysfs+0x1a0/0x680 home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/fallback.c:238
+ _request_firmware+0x738/0x8e0 home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/main.c:910
+ request_firmware_work_func+0x3f/0x90 home/jiakai/62_66_amd_0904/linux68/linux/drivers/base/firmware_loader/main.c:1161
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2633
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2706 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2787
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+Modules linked in:
+CR2: 0000000000000060
+---[ end trace 0000000000000000 ]---
+RIP: 0010:arch_atomic64_try_cmpxchg home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/include/asm/atomic64_64.h:109 [inline]
+RIP: 0010:raw_atomic64_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux68/linux/include/linux/atomic/atomic-arch-fallback.h:4276 [inline]
+RIP: 0010:raw_atomic_long_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux68/linux/include/linux/atomic/atomic-long.h:1476 [inline]
+RIP: 0010:atomic_long_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux68/linux/include/linux/atomic/atomic-instrumented.h:4424 [inline]
+RIP: 0010:rwsem_write_trylock home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/rwsem.c:260 [inline]
+RIP: 0010:__down_write_common home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/rwsem.c:1305 [inline]
+RIP: 0010:__down_write home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/rwsem.c:1315 [inline]
+RIP: 0010:down_write+0x1b/0x60 home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/rwsem.c:1580
+Code: 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 55 48 89 fd 2e 2e 2e 31 c0 65 ff 05 04 c7 11 7b 31 c0 ba 01 00 00 00 <f0> 48 0f b1 55 00 75 27 65 48 8b 04 25 00 dc 02 00 48 89 45 08 65
+RSP: 0018:ffffc90000ef7b60 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: ffff888011811b00 RCX: ffffffff81827713
+RDX: 0000000000000001 RSI: ffffffff8182a392 RDI: 0000000000000060
+RBP: 0000000000000060 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000001 R11: 0077662e4949656c R12: ffff888011811b00
+R13: ffff888011811b00 R14: 0000000000000000 R15: 0000000000000060
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000060 CR3: 000000004bd86000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+----------------
+Code disassembly (best guess):
+   0:	90                   	nop
+   1:	90                   	nop
+   2:	90                   	nop
+   3:	90                   	nop
+   4:	90                   	nop
+   5:	90                   	nop
+   6:	90                   	nop
+   7:	90                   	nop
+   8:	90                   	nop
+   9:	90                   	nop
+   a:	90                   	nop
+   b:	90                   	nop
+   c:	90                   	nop
+   d:	90                   	nop
+   e:	90                   	nop
+   f:	f3 0f 1e fa          	endbr64
+  13:	55                   	push   %rbp
+  14:	48 89 fd             	mov    %rdi,%rbp
+  17:	2e 2e 2e 31 c0       	cs cs cs xor %eax,%eax
+  1c:	65 ff 05 04 c7 11 7b 	incl   %gs:0x7b11c704(%rip)        # 0x7b11c727
+  23:	31 c0                	xor    %eax,%eax
+  25:	ba 01 00 00 00       	mov    $0x1,%edx
+* 2a:	f0 48 0f b1 55 00    	lock cmpxchg %rdx,0x0(%rbp) <-- trapping instruction
+  30:	75 27                	jne    0x59
+  32:	65 48 8b 04 25 00 dc 	mov    %gs:0x2dc00,%rax
+  39:	02 00
+  3b:	48 89 45 08          	mov    %rax,0x8(%rbp)
+  3f:	65                   	gs

@@ -1,0 +1,52 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 9658 at include/linux/backing-dev.h:255 folio_account_dirtied+0x2cc/0x3a0 mm/page-writeback.c:2618
+Modules linked in:
+CPU: 1 PID: 9658 Comm: syz.0.17 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:inode_to_wb include/linux/backing-dev.h:252 [inline]
+RIP: 0010:folio_account_dirtied+0x2cc/0x3a0 mm/page-writeback.c:2618
+Code: c4 08 5b 41 5c 41 5e 41 5f c3 e8 4f d7 e6 ff 4c 89 ff 4c 89 f6 48 83 c4 08 5b 41 5c 41 5e 41 5f e9 b9 dd 19 00 e8 34 d7 e6 ff <0f> 0b e9 91 fe ff ff e8 28 d7 e6 ff e9 ae 00 00 00 4c 89 fe 48 81
+RSP: 0018:ffffc90003417ae0 EFLAGS: 00010093
+RAX: ffffffff815e6f8c RBX: 0000000000000000 RCX: ffff88811d7f23c0
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 0000000000000000 R08: ffffffff815e6e17 R09: 0000000000000001
+R10: ffffffff81635e48 R11: 0000000000000000 R12: 0000000000000001
+R13: ffff88811d80a000 R14: ffff88800e540650 R15: ffffea000079ddc0
+FS:  0000000000000000(0000) GS:ffff88813dc00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f00896e0470 CR3: 00000000066c8000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 00000000
+Call Trace:
+ <TASK>
+ __folio_mark_dirty+0xa5/0x170 mm/page-writeback.c:2669
+ mark_buffer_dirty+0x10b/0x200 fs/buffer.c:1200
+ gfs2_unpin+0xac/0x350 fs/gfs2/lops.c:111
+ buf_lo_after_commit+0x7b/0xb0 fs/gfs2/lops.c:738
+ lops_after_commit fs/gfs2/lops.h:51 [inline]
+ gfs2_log_flush+0x7b8/0x1150 fs/gfs2/log.c:1122
+ gfs2_kill_sb+0x35/0x200 fs/gfs2/ops_fstype.c:1786
+ deactivate_locked_super+0x5a/0x90 fs/super.c:472
+ cleanup_mnt+0x1ba/0x220 fs/namespace.c:1267
+ task_work_run+0xc9/0x110 kernel/task_work.c:180
+ exit_task_work include/linux/task_work.h:38 [inline]
+ do_exit+0x4b6/0xee0 kernel/exit.c:871
+ do_group_exit+0xa7/0xe0 kernel/exit.c:1020
+ get_signal+0x9e6/0xa80 kernel/signal.c:2893
+ arch_do_signal_or_restart+0x2a/0x3c0 arch/x86/kernel/signal.c:310
+ exit_to_user_mode_loop kernel/entry/common.c:105 [inline]
+ exit_to_user_mode_prepare include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x85/0x260 kernel/entry/common.c:212
+ do_syscall_64+0x8e/0x150 arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7fa4707ee468
+Code: Unable to access opcode bytes at 0x7fa4707ee43e.
+RSP: 002b:00007ffdd60e3300 EFLAGS: 00000293 ORIG_RAX: 00000000000000e6
+RAX: fffffffffffffdfc RBX: 00007fa4709f5f01 RCX: 00007fa4707ee468
+RDX: 00007ffdd60e3390 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 00007fa4708480f0 R08: 0000000000000000 R09: 0000000000000058
+R10: 0000000000000000 R11: 0000000000000293 R12: 00007ffdd60e3390
+R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+ </TASK>

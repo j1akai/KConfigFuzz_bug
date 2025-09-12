@@ -1,0 +1,67 @@
+R10: 0000000000000000 R11: 0000000000000206 R12: 0000000000000000
+R13: 00007f54785f6038 R14: 00007f54785f5fa0 R15: 00007f547930c000
+ </TASK>
+------------[ cut here ]------------
+kernel BUG at fs/gfs2/quota.c:1485!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 156538 Comm: syz.3.21976 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:gfs2_quota_cleanup+0x2d5/0x2e0 home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/quota.c:1485
+Code: 8d 74 24 18 e8 dc c6 0e ff 49 8d b5 c8 09 00 00 44 89 e2 48 c7 c7 d0 df 24 86 e8 f6 f5 10 ff e9 09 ff ff ff e8 9c 79 1d ff 90 <0f> 0b e8 84 d9 be 02 0f 1f 40 00 90 90 90 90 90 90 90 90 90 90 90
+RSP: 0018:ffffc90002bcfb38 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+RDX: ffff8880420a0000 RSI: ffffffff82252344 RDI: 0000000000000007
+RBP: ffffc90002bcfb40 R08: 0000000000000007 R09: 0000000000000000
+R10: 0000000000000001 R11: 205d383335363531 R12: ffff888048493000
+R13: ffff888048493000 R14: ffff888048493580 R15: ffff888053416800
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fa2fdfc0320 CR3: 00000000710da000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ gfs2_put_super+0x312/0x320 home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/super.c:606
+ generic_shutdown_super+0x9e/0x160 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:693
+ kill_block_super+0x1e/0x50 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:1646
+ gfs2_kill_sb+0x1c6/0x1f0 home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/ops_fstype.c:1811
+ deactivate_locked_super+0x4c/0x180 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:481
+ deactivate_super+0x72/0x80 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:514
+ cleanup_mnt+0x172/0x200 home/jiakai/62_66_amd_0904/linux66/linux/fs/namespace.c:1254
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/task_work.c:180
+ exit_task_work home/jiakai/62_66_amd_0904/linux66/linux/include/linux/task_work.h:38 [inline]
+ do_exit+0x4da/0x1180 home/jiakai/62_66_amd_0904/linux66/linux/kernel/exit.c:874
+ do_group_exit+0x4f/0xd0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/exit.c:1024
+ get_signal+0x108d/0x1090 home/jiakai/62_66_amd_0904/linux66/linux/kernel/signal.c:2892
+ arch_do_signal_or_restart+0x30/0x480 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/signal.c:309
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:168 [inline]
+ exit_to_user_mode_prepare+0xd9/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:204
+ irqentry_exit_to_user_mode+0xa/0x20 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:309
+ exc_page_fault+0x4c1/0xd10 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/mm/fault.c:1564
+ asm_exc_page_fault+0x26/0x30 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/include/asm/idtentry.h:570
+RIP: 0033:0x7f547824f3fb
+Code: Unable to access opcode bytes at 0x7f547824f3d1.
+RSP: 002b:00007f547930d120 EFLAGS: 00010202
+RAX: 0000000000000000 RBX: 00007f54785f5fa0 RCX: 00007f54783ae16d
+RDX: 00007f547930d140 RSI: 00007f547930d270 RDI: 000000000000000b
+RBP: 000000000000000b R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000206 R12: 0000000000000000
+R13: 00007f54785f6038 R14: 00007f54785f5fa0 R15: 00007f547930c000
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:gfs2_quota_cleanup+0x2d5/0x2e0 home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/quota.c:1485
+Code: 8d 74 24 18 e8 dc c6 0e ff 49 8d b5 c8 09 00 00 44 89 e2 48 c7 c7 d0 df 24 86 e8 f6 f5 10 ff e9 09 ff ff ff e8 9c 79 1d ff 90 <0f> 0b e8 84 d9 be 02 0f 1f 40 00 90 90 90 90 90 90 90 90 90 90 90
+RSP: 0018:ffffc90002bcfb38 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+RDX: ffff8880420a0000 RSI: ffffffff82252344 RDI: 0000000000000007
+RBP: ffffc90002bcfb40 R08: 0000000000000007 R09: 0000000000000000
+R10: 0000000000000001 R11: 205d383335363531 R12: ffff888048493000
+R13: ffff888048493000 R14: ffff888048493580 R15: ffff888053416800
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fa2fdfbb938 CR3: 0000000024abe000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554

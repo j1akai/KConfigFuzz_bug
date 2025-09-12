@@ -1,0 +1,21 @@
+Bug 类型
+​​内核警告（WARNING）​​，由 ​​用户空间传入非法参数​​ 触发，具体是 ​​SCSI 通用设备（sg）驱动参数验证不充分​​。
+
+触发条件与根本原因分析
+这个警告的触发涉及两个层面：
+
+1. 直接触发条件（用户空间）：
+用户空间程序 syz-executor（Syzkaller 模糊测试工具）向 ​​/dev/sg*（通用 SCSI 设备）​​ 发出了一个​​格式错误的写入请求​​。具体错误是：
+
+•
+程序使用了已弃用的 SCSI ioctl 接口。
+•
+程序​​没有正确设置 count 和/或 reply_len 参数​​。
+这导致内核试图从一个无效的或超出范围的用户空间地址/长度拷贝数据。内核检测到这一错误并打印出：
+sg_write: data in/out 140/834 bytes for SCSI command 0xa0-- guessing data in; program syz-executor not setting count and/or reply_len properly
+
+2. 内核检测点（内核空间）：
+在处理这个非法请求时，内核调用链如下：
+sys_write -> sg_write -> sg_common_write -> blk_rq_map_user_io -> blk_rq_map_user_iov -> copy_page_from_iter -> **_copy_from_iter**
+
+在 _copy_from_iter 函数中（lib/iov_iter.c:629），内核的迭代器（iov_iter）相关代码检测到了预期状态和实际状态的不一致（很可能是由于用户程序提供的非法长度参数导致），从而触发了 WARN_ON() 宏，打印出这个警告。

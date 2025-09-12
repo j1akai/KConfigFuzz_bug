@@ -1,0 +1,326 @@
+INFO: task kworker/0:0H:9 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/0:0H    state:D stack:12792 pid:9     tgid:9     ppid:2      flags:0x00004000
+Workqueue: kblockd blk_mq_run_work_fn
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_timeout+0xd8/0x180 kernel/time/timer.c:2183
+ wait_for_reconnect drivers/block/nbd.c:979 [inline]
+ nbd_handle_cmd drivers/block/nbd.c:1019 [inline]
+ nbd_queue_rq+0x397/0x8f0 drivers/block/nbd.c:1094
+ blk_mq_dispatch_rq_list+0x554/0xe80 block/blk-mq.c:2070
+ __blk_mq_do_dispatch_sched block/blk-mq-sched.c:170 [inline]
+ blk_mq_do_dispatch_sched block/blk-mq-sched.c:184 [inline]
+ __blk_mq_sched_dispatch_requests+0x45a/0x940 block/blk-mq-sched.c:309
+ blk_mq_sched_dispatch_requests+0x52/0xc0 block/blk-mq-sched.c:331
+ blk_mq_run_work_fn+0xf8/0x250 block/blk-mq.c:2455
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+INFO: task kworker/1:0H:24 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/1:0H    state:D stack:12832 pid:24    tgid:24    ppid:2      flags:0x00004000
+Workqueue: kblockd blk_mq_requeue_work
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_timeout+0xd8/0x180 kernel/time/timer.c:2183
+ wait_for_reconnect drivers/block/nbd.c:979 [inline]
+ nbd_handle_cmd drivers/block/nbd.c:1019 [inline]
+ nbd_queue_rq+0x397/0x8f0 drivers/block/nbd.c:1094
+ blk_mq_dispatch_rq_list+0x554/0xe80 block/blk-mq.c:2070
+ __blk_mq_do_dispatch_sched block/blk-mq-sched.c:170 [inline]
+ blk_mq_do_dispatch_sched block/blk-mq-sched.c:184 [inline]
+ __blk_mq_sched_dispatch_requests+0x45a/0x940 block/blk-mq-sched.c:309
+ blk_mq_sched_dispatch_requests+0x52/0xc0 block/blk-mq-sched.c:331
+ blk_mq_run_hw_queue+0x378/0x720 block/blk-mq.c:2285
+ blk_mq_run_hw_queues+0x120/0x190 block/blk-mq.c:2334
+ blk_mq_requeue_work+0x27e/0x2b0 block/blk-mq.c:1503
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+INFO: task kworker/1:2H:78430 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/1:2H    state:D stack:13464 pid:78430 tgid:78430 ppid:2      flags:0x00004000
+Workqueue: kblockd blk_mq_run_work_fn
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_timeout+0xd8/0x180 kernel/time/timer.c:2183
+ wait_for_reconnect drivers/block/nbd.c:979 [inline]
+ nbd_handle_cmd drivers/block/nbd.c:1019 [inline]
+ nbd_queue_rq+0x397/0x8f0 drivers/block/nbd.c:1094
+ blk_mq_dispatch_rq_list+0x554/0xe80 block/blk-mq.c:2070
+ __blk_mq_do_dispatch_sched block/blk-mq-sched.c:170 [inline]
+ blk_mq_do_dispatch_sched block/blk-mq-sched.c:184 [inline]
+ __blk_mq_sched_dispatch_requests+0x45a/0x940 block/blk-mq-sched.c:309
+ blk_mq_sched_dispatch_requests+0x52/0xc0 block/blk-mq-sched.c:331
+ blk_mq_run_work_fn+0xf8/0x250 block/blk-mq.c:2455
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+INFO: task kworker/1:3H:78461 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/1:3H    state:D stack:13208 pid:78461 tgid:78461 ppid:2      flags:0x00004000
+Workqueue: kblockd blk_mq_requeue_work
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_timeout+0xd8/0x180 kernel/time/timer.c:2183
+ wait_for_reconnect drivers/block/nbd.c:979 [inline]
+ nbd_handle_cmd drivers/block/nbd.c:1019 [inline]
+ nbd_queue_rq+0x397/0x8f0 drivers/block/nbd.c:1094
+ blk_mq_dispatch_rq_list+0x554/0xe80 block/blk-mq.c:2070
+ __blk_mq_do_dispatch_sched block/blk-mq-sched.c:170 [inline]
+ blk_mq_do_dispatch_sched block/blk-mq-sched.c:184 [inline]
+ __blk_mq_sched_dispatch_requests+0x45a/0x940 block/blk-mq-sched.c:309
+ blk_mq_sched_dispatch_requests+0x52/0xc0 block/blk-mq-sched.c:331
+ blk_mq_run_hw_queue+0x378/0x720 block/blk-mq.c:2285
+ blk_mq_run_hw_queues+0x120/0x190 block/blk-mq.c:2334
+ blk_mq_requeue_work+0x27e/0x2b0 block/blk-mq.c:1503
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+
+Showing all locks held in the system:
+4 locks held by kworker/0:0H/9:
+ #0: ffff88800be46138 ((wq_completion)kblockd){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be46138 ((wq_completion)kblockd){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90000367e38 ((work_completion)(&(&hctx->run_work)->work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90000367e38 ((work_completion)(&(&hctx->run_work)->work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff8880403cf510 (set->srcu){.+.+}-{0:0}, at: srcu_lock_acquire include/linux/srcu.h:116 [inline]
+ #2: ffff8880403cf510 (set->srcu){.+.+}-{0:0}, at: srcu_read_lock include/linux/srcu.h:215 [inline]
+ #2: ffff8880403cf510 (set->srcu){.+.+}-{0:0}, at: blk_mq_run_work_fn+0xd0/0x250 block/blk-mq.c:2455
+ #3: ffff88800d558180 (&cmd->lock){+.+.}-{3:3}, at: nbd_queue_rq+0x3d/0x8f0 drivers/block/nbd.c:1086
+4 locks held by kworker/0:1/10:
+ #0: ffff88800be54538 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be54538 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc9000036fe38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc9000036fe38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff88804395b190 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #2: ffff88804395b190 (&dev->mutex){....}-{3:3}, at: hub_event+0x88/0x5e0 drivers/usb/core/hub.c:5811
+ #3: ffff888038db6990 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #3: ffff888038db6990 (&dev->mutex){....}-{3:3}, at: __device_attach+0x3b/0x240 drivers/base/dd.c:1005
+4 locks held by kworker/1:0H/24:
+ #0: ffff88800be46138 ((wq_completion)kblockd){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be46138 ((wq_completion)kblockd){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc900003e7e38 ((work_completion)(&(&q->requeue_work)->work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc900003e7e38 ((work_completion)(&(&q->requeue_work)->work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff8880403cf790
+ (set->srcu){.+.+}-{0:0}, at: srcu_lock_acquire include/linux/srcu.h:116 [inline]
+ (set->srcu){.+.+}-{0:0}, at: srcu_read_lock include/linux/srcu.h:215 [inline]
+ (set->srcu){.+.+}-{0:0}, at: blk_mq_run_hw_queue+0x350/0x720 block/blk-mq.c:2285
+ #3: ffff88800d588180 (&cmd->lock){+.+.}-{3:3}, at: nbd_queue_rq+0x3d/0x8f0 drivers/block/nbd.c:1086
+1 lock held by khungtaskd/33:
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: rcu_lock_acquire include/linux/rcupdate.h:298 [inline]
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: rcu_read_lock include/linux/rcupdate.h:750 [inline]
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: debug_show_all_locks+0x30/0x1a0 kernel/locking/lockdep.c:6614
+1 lock held by systemd-udevd/4492:
+ #0: ffff88800d39acc8 (&disk->open_mutex){+.+.}-{3:3}, at: bdev_open_by_dev+0x151/0x500 block/bdev.c:859
+1 lock held by systemd-udevd/4532:
+ #0: ffff88800d39fcc8 (&disk->open_mutex){+.+.}-{3:3}, at: bdev_open_by_dev+0x151/0x500 block/bdev.c:859
+1 lock held by systemd-udevd/4567:
+ #0: ffff88800d39d4c8 (&disk->open_mutex){+.+.}-{3:3}, at: bdev_open_by_dev+0x151/0x500 block/bdev.c:859
+1 lock held by systemd-udevd/4582:
+ #0: ffff88800d3a24c8 (&disk->open_mutex){+.+.}-{3:3}, at: bdev_open_by_dev+0x151/0x500 block/bdev.c:859
+1 lock held by systemd-udevd/4609:
+1 lock held by systemd-udevd/4738:
+ #0: ffff88800d3984c8 (&disk->open_mutex){+.+.}-{3:3}, at: bdev_open_by_dev+0x151/0x500 block/bdev.c:859
+1 lock held by in:imklog/7520:
+2 locks held by kworker/u4:2/7796:
+2 locks held by sshd/7911:
+1 lock held by syz-executor/7935:
+2 locks held by syz-executor/7936:
+2 locks held by syz-executor/7937:
+2 locks held by syz-executor/7938:
+2 locks held by syz-executor/7939:
+2 locks held by syz-executor/7940:
+2 locks held by syz-executor/7942:
+1 lock held by syz-executor/7984:
+6 locks held by kworker/1:6/10520:
+ #0: ffff88800be54538 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be54538 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90006037e38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90006037e38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff88804373f990 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #2: ffff88804373f990 (&dev->mutex){....}-{3:3}, at: hub_event+0x88/0x5e0 drivers/usb/core/hub.c:5811
+ #3: ffff888043751510 (&port_dev->status_lock){+.+.}-{3:3}, at: usb_lock_port drivers/usb/core/hub.c:3169 [inline]
+ #3: ffff888043751510 (&port_dev->status_lock){+.+.}-{3:3}, at: hub_port_connect+0x37e/0xef0 drivers/usb/core/hub.c:5380
+ #4: ffff88800de0b128 (hcd->address0_mutex){+.+.}-{3:3}, at: hub_port_connect+0x391/0xef0 drivers/usb/core/hub.c:5381
+ #5: ffff88807ec306d8 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested+0x1f/0x70 kernel/sched/core.c:559
+2 locks held by kworker/1:7/10541:
+ #0: ffff88800a06b338 ((wq_completion)rcu_gp){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800a06b338 ((wq_completion)rcu_gp){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90005f0fe38 ((work_completion)(&rew->rew_work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90005f0fe38 ((work_completion)(&rew->rew_work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+3 locks held by kworker/0:6/10546:
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc900060a7e38 ((work_completion)(&fw_work->work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc900060a7e38 ((work_completion)(&fw_work->work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff888043953190 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #2: ffff888043953190 (&dev->mutex){....}-{3:3}, at: ath9k_hif_usb_firmware_fail drivers/net/wireless/ath/ath9k/hif_usb.c:1163 [inline]
+ #2: ffff888043953190 (&dev->mutex){....}-{3:3}, at: ath9k_hif_usb_firmware_cb+0x147/0x210 drivers/net/wireless/ath/ath9k/hif_usb.c:1296
+3 locks held by kworker/1:9/10556:
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc900060dfe38 ((work_completion)(&fw_work->work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc900060dfe38 ((work_completion)(&fw_work->work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff888043757990 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #2: ffff888043757990 (&dev->mutex){....}-{3:3}, at: ath9k_hif_usb_firmware_fail drivers/net/wireless/ath/ath9k/hif_usb.c:1163 [inline]
+ #2: ffff888043757990 (&dev->mutex){....}-{3:3}, at: ath9k_hif_usb_firmware_cb+0x147/0x210 drivers/net/wireless/ath/ath9k/hif_usb.c:1296
+3 locks held by kworker/1:10/10645:
+ #0: ffff88800be54538 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be54538 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc900061b7e38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc900061b7e38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff888043757990 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #2: ffff888043757990 (&dev->mutex){....}-{3:3}, at: hub_event+0x88/0x5e0 drivers/usb/core/hub.c:5811
+5 locks held by kworker/0:9/59592:
+ #0: ffff88800be54538 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be54538 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90005987e38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90005987e38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff888043953190 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #2: ffff888043953190 (&dev->mutex){....}-{3:3}, at: hub_event+0x88/0x5e0 drivers/usb/core/hub.c:5811
+ #3: ffff888038db4990 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #3: ffff888038db4990 (&dev->mutex){....}-{3:3}, at: __device_attach+0x3b/0x240 drivers/base/dd.c:1005
+ #4: ffff88800aec8278 (&(&priv->bus_notifier)->rwsem){++++}-{3:3}, at: blocking_notifier_call_chain+0x34/0x120 kernel/notifier.c:387
+2 locks held by syz.3.8614/60178:
+1 lock held by syz.4.8639/60235:
+ #0: ffffffff86806af8 (rcu_state.exp_mutex){+.+.}-{3:3}, at: exp_funnel_lock kernel/rcu/tree_exp.h:324 [inline]
+ #0: ffffffff86806af8 (rcu_state.exp_mutex){+.+.}-{3:3}, at: synchronize_rcu_expedited+0x217/0x510 kernel/rcu/tree_exp.h:995
+2 locks held by syz.0.8810/60949:
+ #0: ffff88807ec306d8 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested+0x1f/0x70 kernel/sched/core.c:559
+ #1: ffff88807ec1c988 (&per_cpu_ptr(group->pcpu, cpu)->seq){-.-.}-{0:0}, at: psi_task_switch+0x226/0x280 kernel/sched/psi.c:988
+1 lock held by syz.1.8993/61888:
+ #0: ffffffff86806af8 (rcu_state.exp_mutex){+.+.}-{3:3}, at: exp_funnel_lock kernel/rcu/tree_exp.h:324 [inline]
+ #0: ffffffff86806af8 (rcu_state.exp_mutex){+.+.}-{3:3}, at: synchronize_rcu_expedited+0x217/0x510 kernel/rcu/tree_exp.h:995
+4 locks held by kworker/1:2H/78430:
+ #0: ffff88800be46138 ((wq_completion)kblockd){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be46138 ((wq_completion)kblockd){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc900063a7e38 ((work_completion)(&(&hctx->run_work)->work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc900063a7e38 ((work_completion)(&(&hctx->run_work)->work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff8880403cf2d0 (set->srcu){.+.+}-{0:0}, at: srcu_lock_acquire include/linux/srcu.h:116 [inline]
+ #2: ffff8880403cf2d0 (set->srcu){.+.+}-{0:0}, at: srcu_read_lock include/linux/srcu.h:215 [inline]
+ #2: ffff8880403cf2d0 (set->srcu){.+.+}-{0:0}, at: blk_mq_run_work_fn+0xd0/0x250 block/blk-mq.c:2455
+ #3: ffff88800d5e8180 (&cmd->lock){+.+.}-{3:3}, at: nbd_queue_rq+0x3d/0x8f0 drivers/block/nbd.c:1086
+4 locks held by kworker/1:3H/78461:
+ #0: ffff88800be46138 ((wq_completion)kblockd){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be46138 ((wq_completion)kblockd){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc9000687fe38 ((work_completion)(&(&q->requeue_work)->work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc9000687fe38 ((work_completion)(&(&q->requeue_work)->work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff8880403cfd10 (set->srcu){.+.+}-{0:0}, at: srcu_lock_acquire include/linux/srcu.h:116 [inline]
+ #2: ffff8880403cfd10 (set->srcu){.+.+}-{0:0}, at: srcu_read_lock include/linux/srcu.h:215 [inline]
+ #2: ffff8880403cfd10 (set->srcu){.+.+}-{0:0}, at: blk_mq_run_hw_queue+0x350/0x720 block/blk-mq.c:2285
+ #3: ffff88800d430180 (&cmd->lock){+.+.}-{3:3}, at: nbd_queue_rq+0x3d/0x8f0 drivers/block/nbd.c:1086
+1 lock held by syz.3.11693/91192:
+2 locks held by syz.6.11701/91286:
+ #0: ffff8880001138a0 (&tty->ldisc_sem){++++}-{0:0}, at: __tty_ldisc_lock drivers/tty/tty_ldisc.c:289 [inline]
+ #0: ffff8880001138a0 (&tty->ldisc_sem){++++}-{0:0}, at: tty_ldisc_lock_pair_timeout drivers/tty/tty_ldisc.c:352 [inline]
+ #0: ffff8880001138a0 (&tty->ldisc_sem){++++}-{0:0}, at: tty_ldisc_lock_pair drivers/tty/tty_ldisc.c:366 [inline]
+ #0: ffff8880001138a0 (&tty->ldisc_sem){++++}-{0:0}, at: tty_ldisc_release+0xd8/0x440 drivers/tty/tty_ldisc.c:774
+ #1: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: unregister_netdev+0x24/0xf0 net/core/dev.c:11134
+
+=============================================
+
+NMI backtrace for cpu 0
+CPU: 0 PID: 33 Comm: khungtaskd Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0xea/0x170 lib/dump_stack.c:106
+ nmi_cpu_backtrace+0x254/0x2a0 lib/nmi_backtrace.c:113
+ nmi_trigger_cpumask_backtrace+0x113/0x220 lib/nmi_backtrace.c:62
+ trigger_all_cpu_backtrace include/linux/nmi.h:160 [inline]
+ check_hung_uninterruptible_tasks kernel/hung_task.c:222 [inline]
+ watchdog+0xa1c/0xa60 kernel/hung_task.c:379
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 PID: 10520 Comm: kworker/1:6 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: usb_hub_wq hub_event
+RIP: 0010:__sanitizer_cov_trace_pc+0x54/0x60 kernel/kcov.c:223
+Code: 00 74 2c 8b 91 c8 15 00 00 83 fa 02 75 21 48 8b 91 d0 15 00 00 48 8b 32 48 8d 7e 01 8b 89 cc 15 00 00 48 39 cf 73 08 48 89 3a <48> 89 44 f2 08 c3 66 0f 1f 44 00 00 4c 8b 04 24 65 48 8b 14 25 80
+RSP: 0000:ffffc900060374d8 EFLAGS: 00000287
+RAX: ffffffff84fea7c8 RBX: 0000000000000025 RCX: 0000000000100000
+RDX: ffffc900231a5000 RSI: 000000000000429b RDI: 000000000000429c
+RBP: ffffffff8628bbf3 R08: 0000000000000001 R09: ffffffff84fea7a9
+R10: 0000000000000002 R11: ffff8880591bc780 R12: 0000000000000000
+R13: ffffffff8628bbf3 R14: ffff0a0000000500 R15: ffffc90006037568
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f5638fac0e0 CR3: 00000000460b9000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <NMI>
+ </NMI>
+ <TASK>
+ format_decode+0x118/0x720 lib/vsprintf.c:2558
+ vsnprintf+0xbd/0xb30 lib/vsprintf.c:2776
+ sprintf+0x71/0x90 lib/vsprintf.c:3028
+ print_time kernel/printk/printk.c:1324 [inline]
+ info_print_prefix+0xb5/0x150 kernel/printk/printk.c:1350
+ record_print_text+0x72/0x290 kernel/printk/printk.c:1399
+ printk_get_next_message+0x1bb/0x4a0 kernel/printk/printk.c:2828
+ console_emit_next_record kernel/printk/printk.c:2868 [inline]
+ console_flush_all+0x245/0x6d0 kernel/printk/printk.c:2967
+ console_unlock+0x55/0x220 kernel/printk/printk.c:3036
+ vprintk_emit+0x46f/0x570 kernel/printk/printk.c:2303
+ dev_vprintk_emit+0x202/0x250 drivers/base/core.c:4864
+ dev_printk_emit+0x6a/0x90 drivers/base/core.c:4875
+ _dev_err+0x76/0xa0 drivers/base/core.c:4930
+ usb_get_configuration+0x31b/0x3c0 drivers/usb/core/config.c:901
+ usb_enumerate_device drivers/usb/core/hub.c:2446 [inline]
+ usb_new_device+0x9c/0x980 drivers/usb/core/hub.c:2584
+ hub_port_connect+0x7b0/0xef0 drivers/usb/core/hub.c:5483
+ hub_port_connect_change+0x33c/0x4f0 drivers/usb/core/hub.c:5623
+ port_event+0x8ea/0xa00 drivers/usb/core/hub.c:5783
+ hub_event+0x2d2/0x5e0 drivers/usb/core/hub.c:5865
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>

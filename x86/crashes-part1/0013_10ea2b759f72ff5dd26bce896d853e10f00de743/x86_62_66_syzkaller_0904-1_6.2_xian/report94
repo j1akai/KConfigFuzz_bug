@@ -1,0 +1,77 @@
+unregister_netdevice: waiting for vlan0 to become free. Usage count = 2
+leaked reference.
+ __netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/netdevice.h:4018 [inline]
+ netdev_hold home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/netdevice.h:4047 [inline]
+ netdev_hold home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/netdevice.h:4042 [inline]
+ ib_device_set_netdev home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/infiniband/core/device.c:2165 [inline]
+ ib_device_set_netdev+0x18c/0x350 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/infiniband/core/device.c:2134
+ siw_device_create home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/infiniband/sw/siw/siw_main.c:353 [inline]
+ siw_newlink home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/infiniband/sw/siw/siw_main.c:513 [inline]
+ siw_newlink+0x2a1/0x520 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/infiniband/sw/siw/siw_main.c:499
+ nldev_newlink+0x245/0x3c0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/infiniband/core/nldev.c:1731
+ rdma_nl_rcv_msg+0x1a9/0x2e0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/infiniband/core/netlink.c:195
+ rdma_nl_rcv_skb.constprop.0.isra.0+0x16f/0x200 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/infiniband/core/netlink.c:239
+ netlink_unicast_kernel home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:734
+ ____sys_sendmsg+0x3c0/0x490 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2479
+ ___sys_sendmsg+0xb4/0x120 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2533
+ __sys_sendmsg+0x8e/0x110 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2562
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+unregister_netdevice: waiting for veth0_vlan to become free. Usage count = 2
+leaked reference.
+ __netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/netdevice.h:4018 [inline]
+ netdev_hold home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/netdevice.h:4047 [inline]
+ vlan_dev_init+0x358/0x580 home/jiakai/62_66_amd_0904/linux62/linux-all/net/8021q/vlan_dev.c:618
+ register_netdevice+0x18c/0xa50 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/dev.c:9967
+ register_vlan_dev+0x1f1/0x420 home/jiakai/62_66_amd_0904/linux62/linux-all/net/8021q/vlan.c:179
+ vlan_newlink+0x1c2/0x270 home/jiakai/62_66_amd_0904/linux62/linux-all/net/8021q/vlan_netlink.c:191
+ rtnl_newlink_create home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/rtnetlink.c:3407 [inline]
+ __rtnl_newlink+0xa04/0xd70 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/rtnetlink.c:3624
+ rtnl_newlink+0x4d/0x80 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/rtnetlink.c:3637
+ rtnetlink_rcv_msg+0x22b/0x5b0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/rtnetlink.c:6141
+ netlink_rcv_skb+0x91/0x1e0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:2574
+ netlink_unicast_kernel home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:734
+ __sys_sendto+0x16c/0x220 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2120
+ __do_sys_sendto home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2132 [inline]
+ __se_sys_sendto home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2128 [inline]
+ __x64_sys_sendto+0x28/0x30 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2128
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+unregister_netdevice: waiting for veth0_vlan to become free. Usage count = 2
+leaked reference.
+ vlan_dev_init+0x358/0x580
+ register_netdevice+0x18c/0xa50
+ register_vlan_dev+0x1f1/0x420
+ vlan_newlink+0x1c2/0x270
+ __rtnl_newlink+0xa04/0xd70
+ rtnl_newlink+0x4d/0x80
+ rtnetlink_rcv_msg+0x22b/0x5b0
+ netlink_rcv_skb+0x91/0x1e0
+ netlink_unicast+0x3a7/0x500
+ netlink_sendmsg+0x39c/0x720
+ sock_sendmsg+0xd6/0xe0
+ __sys_sendto+0x16c/0x220
+ __x64_sys_sendto+0x28/0x30
+ do_syscall_64+0x3d/0xc0
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

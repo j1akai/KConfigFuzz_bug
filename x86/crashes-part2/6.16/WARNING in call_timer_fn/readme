@@ -1,0 +1,32 @@
+Bug 类型
+​​工作队列使用错误（Workqueue Usage Error）​​，具体表现为 ​​向已销毁的工作队列提交工作项​​。
+
+触发条件与根本原因分析
+这个警告的触发过程非常清晰，涉及两个并发操作：
+
+1. 工作队列的销毁（CPU1）：
+从调用栈可以看到，一个用户进程（很可能是 Syzkaller）正在关闭 HCI 设备（蓝牙控制器）：
+
+•
+sys_openat -> hci_dev_close_sync -> drain_workqueue -> __flush_workqueue
+•
+这个路径最终会​​销毁（drain）与蓝牙设备 hci1 相关的工作队列​​。
+2. 工作项的提交（CPU0）：
+与此同时，一个​​定时器软中断（SoftIRQ）​​ 正在到期处理：
+
+•
+sysvec_apic_timer_interrupt -> __run_timer_base -> call_timer_fn -> ​​__queue_work​​
+•
+定时器的回调函数试图将一个超时处理工作项（hci_cmd_timeout）​​重新排队（re-queue）​​ 到 hci1 的工作队列中。
+3. 冲突与警告：
+​​问题在于​​：操作 (1) 和操作 (2) ​​发生了竞态条件（Race Condition）​​。
+
+•
+当操作 (2) 执行时，操作 (1) 已经将 hci1 的工作队列销毁或置为不可用状态。
+•
+__queue_work 函数检测到试图向一个无法排队的工作队列（!list_empty(&wq->list) 可能为 false）提交工作项，因此触发了 WARN_ON，打印出：
+workqueue: cannot queue hci_cmd_timeout on wq hci1
+根本原因
+这是一个典型的 ​​生命周期管理（Lifecycle Management）​​ 问题。
+
+蓝牙驱动（或相关的定时器机制）​​没有确保在设备关闭、工作队列被销毁后，所有相关的定时器也被正确地取消和清理​​。导致设备已经进入关闭流程，但之前发出的命令的超时定时器仍然可能到期，并试图向一个已不存在的工作队列提交工作项。

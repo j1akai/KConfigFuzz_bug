@@ -1,0 +1,477 @@
+last executing test programs:
+
+0s ago: executing program 3 (id=4):
+r0 = socket$inet6_sctp(0xa, 0x1, 0x84)
+setsockopt$inet6_int(r0, 0x29, 0x1a, 0x0, 0x0)
+r1 = socket$nl_generic(0x10, 0x3, 0x10)
+r2 = syz_genetlink_get_family_id$tipc(&(0x7f0000000300), 0xffffffffffffffff)
+r3 = syz_open_dev$sg(&(0x7f0000000000), 0x1, 0x41)
+r4 = syz_create_resource$binfmt(&(0x7f0000001400)='./file0\x00')
+r5 = openat$binfmt(0xffffffffffffff9c, r4, 0x42, 0x1ff)
+dup3(r3, r5, 0x80000)
+syz_mount_image$msdos(&(0x7f0000000080), &(0x7f0000000180)='./file0\x00', 0x2000000, &(0x7f00000001c0), 0x1, 0x137, &(0x7f0000000200)="$eJzs27FK61AABuDTe3tve6+LszgEXJyK+gSKVBADgtJBJ4Xq0opgl+jUR9EHFNRJpyOa0mpoB4c2aL9vyZ/8BM4JJOEEcrJ80Wlf9s5f7h5DvVIJvzZDEgr6xQMAwLf2HGN4iDHGWj/8uw0xxrJHBABMm/c/AMyfw6Pjva00bR4kST2E+37Wylr5Nu93dtPmWvJucXTWU5a1fg/79bxPPvd/wv9BvzG2/xtWV/L+rdveTwv9QmgP9mrTvQQAAADw4zWSobHr+0ZjUp+nD98HCuv3aliqzmwaAMAX9K5vOqfd7tmVIAjCMJT9ZAKmbXTTlz0SAAAAAAAAAAAAAABgkln8TlT2HAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACYP68BAAD//2ztOdw=")
+write$binfmt_elf64(r5, &(0x7f0000000080)=ANY=[], 0x10e8)
+sendmsg$TIPC_CMD_ENABLE_BEARER(r1, &(0x7f00000000c0)={0x0, 0x0, &(0x7f0000000080)={&(0x7f0000000100)={0x34, r2, 0x209, 0x70bd2a, 0x25dfdbff, {{}, {}, {0x18, 0x17, {0x1a, 0xffffffff, @l2={'eth', 0x3a, 'nicvf0\x00'}}}}}, 0x34}, 0x1, 0x0, 0x0, 0x20044000}, 0x4000000)
+r6 = pkey_alloc(0x0, 0x0)
+pkey_mprotect(&(0x7f0000000000/0x1000)=nil, 0x1000, 0x3, r6)
+syz_pkey_set(r6, 0x2)
+bpf$TOKEN_CREATE(0x24, &(0x7f0000000140)={0x0, r1}, 0x8)
+r7 = socket$l2tp(0x2, 0x2, 0x73)
+ioctl$INCFS_IOC_CREATE_FILE(r7, 0xc058671e, &(0x7f0000000280)={{'\x00', 0x3}, {0x8}, 0x15d, 0x0, 0x0, &(0x7f0000000040)='./file0\x00', &(0x7f00000001c0)='./file0\x00', &(0x7f0000000200)="697bb05a17d1ffb6c919ae18a7de29a0d2d2c8b87c9ca890e037005496a24898c11b336174cb1e9a23633b2028ad75074465d682c8c6a69d0eb9db53a78880ab98ee91bd4d4e1c98ddf8d522c76e9ce7c3b7f8fa7e4456dc8113e26dad4935538beab80ab3c4e4638a2c36478b88713455ef4d5c6979d2fe25ab3d64cd3d", 0x7e, 0x0, &(0x7f0000000340)={0x2, 0x10f4, {0x1, 0xc, 0x1000, "f75d81b70286c9c58a103d14a35cec837a4d97af519e3aaf4f5c92fa0e64681bc9b216fd83f38841ab940fc87977af9413791cd97d42765cf55dcc726f684adc3296a4a61d9984a5942d444d37901f884b10ce425c2bdebb8feb05a77e770ce73b406c9dd796975bc0e628fcb2a3e06e8862aaa11a2aec58dc0178e82d60fbf4a1d62d5ce7af1118ab6447663e22beb9ec8db71178e8f6c7e36e8200ce03c4637f32bae3bdc8d4f8a31da2d8c01c2f8d64b7e46cf6f4dcb397f4bab5028850af77a92d565c11ca2164611bca21493ee206a0adff74fe8b72e3291d460994e22c686d7e057b0db8a2d3a9d3c857749f7bad2f74d6f4a64d38374a35d0b516d9fce22c06b06389d0bdf6306a5e9a4ecf6d216a0bade3875ce40961ddd7d4b1a092412697dcf4c0f448943737bde11133914143a87f268b8b04e2a61481ffae2bb404169a00968392c9adc4b0ea321ad18c4d4a6544132b675b0cc639165606c5a93936a235e5a096d316e42517b190c2ce3e1e83ebaa79748619729a02970434db6cb22fe40fb30d8cc953761a1bb822ca612bc7f06ce4b55c196f93023e00279bb919c28be05387cd2980fafd557c0bd7297cacb0086999b80c7656b56c4d0b83a8b0a5e26e3f27a650fa28f0219abf5cb2f35b2b29b8bc4744b5ca977a7b600fe1bd6ac7ad8ca56a9b83fcef0ec1117fd5f84db506cfa45bea6b6aeefbb9e86a994752d71215cefbae3f8f9aa637df9fa27f3abf8cb630583da1c958ef579c1e8ab9480482054fca81f02495cfcf2fe5e91da8aabe626d3d7ee7c22176ecc4f876a4ced5b66d17147516fb03cf5b17a487023b453dfb51d02a021a87fb598bc8eace0267cbdcf1f16c4adbdd73428a40f6d0e5f4d41f50e630a9df337c1aac8b80551c06df33ba201b283a137947984755898cac26850f03ea96c5e6826695556005d1e58af08949895ebcca925e8973ac875c1eb6be0e16b82e2779746163471895198346a0c5599e347308584cbb93e55252bf0c5a9803a7c9e356501c8e6133df4f42da3bd068ac8b1b09b938344c9d98cfe2afa45389d91d84caf3d32591b18fdb0b7ddbc847788d432b0b2a464c227eb349cceec866ef69f49123f6e75648d0d596d156d895ba596ceaa12d3aa3bf38b8bc020d7832f49e362e2ab2fc9752672323b8770440e751b01a9615677228ea7bc27b03a64e5eabe6b11aa857fad18db39ece0db947019461b4d6cac7ad33f57be5ee27c1fa524a21b08e13d5cb668dacdab4c968e41d6866c045b0acedcf29d542916a379cc630a93ac2a4fc9d5eef892330b94fbdc79a80f80054f3e29fc54ae410f14c9610c37412d05807c3a94ebd41be4d9225fbde46d9093630a2659b81c4fdbb26decc39360a0d8d282846153661731ae762561ee4ff0f73e6ef8cfbd0bb269097ead83f8e5a0ae1d4ee655f24af3636727d09d41ad946feab4e0d5d40e4741793d4becf42af7916aeeffdc7612188f39519601859152ce353994aa4fbff4f8e9e1c4a85f0e766013d1b6129ff6649a87813b6f08e45ef3b31d190a01d29f35cd2efab5240abd37e8001b97ac28dd849fe548ded458de8f948fa790b4d3f55ff66f6e9cbed500c72e951667cf9feeb3ef242eb77dff07fbef9bfe90f376b3d2207e7cce089dcac0aa922929dfe8bb0a97eacb3c2347995da4983a09a34c71e818a79c0e2227b528c1dddb1a12d16c101e3b8e0eca0e7555b98fd938f4391610f33c3ceda12c2f4b6c2b0f882a160f7b7dc4206074daf51a6d47db1d2c25de6831dd1f81c056665a4c847f55ee05bacb0da2049940a21b893548075c27ddb6e454d2bac304d8e3baa46c3e426e187843a71320931d79bfc34aa94414f876e7c20f63ce3446fa932ba44877999e7d63a20f74aa8668eaa209b4ddab4300cae0b9d3252313abb811915cce2616cab9b05bba44b7dee7e4bd619cba2806dc38e7ca0afeebe827f6984cf5091cb4fa21f962d95215055b68e7e4716a8891f39fc0b6371e6e122a50aa37c564b260d32f0e24163ee387dfa1ff1147cd10d0e607a8f56f7dd579a734e21edd41a10533803d5d7c88b0e2197f846193950d32d861c3d83fc3502019c2ffb2a26ff8b4069f75bcaf4512b349b5772a0a491d9cdc433cb2e54a373b0410f544d43326c3bf5f2173540e56b781406ba5886680d3f43f14df846ebe3bea7da79c057fecf33043c29016b4909f20a57c56b4dac5e65eade42ab193d6c3f3ce428245cf0aa78b0fa8863824d5bc7437e1d19aad1824a550d67d10acf8a36c0988bf489b339d9e043e57d1a3b264c140280c464d940a15020b29890621bc09ef7618509c86ae18e4c8211ba10071797ab4cd8699a35c64ff1ae354adfa6403c1c90bb6377d2888682a5847627d76f689545d44ee6ec4437254cb5310e417828cd9e7116364bd09b38c48eab84ca9d275c4869e74e255e938e033cceb157fc72a36b306aa0cdcd2b725a30c5e8ace2f21ceef4e9100ec3aba71a62b1c031b51148611cc2372fd85975dc49db0865a72ad6ea9dd0e3cca1031473a1af01c78df46692d73538093a5504f330b127d784a5fd3611beeb8d12c5664b5cc53a231bb5fe0e871b452e00c6e2961fed2044b9ef8d8afda20ec26cd6977da6347b69602ea823e5609f2f63a502be42f254649457792ce075ff75b7b44f8833a8c76c74db4fadc68748002228d45b23cb9994f25b9a2b0c1a4b18f14f0a6c794e9d5476c1ca66915fe2341c9d8a11a580f24534eb5cb7dd9517a8de379120d7d7a76293f081ab12b7b05298df3ce1f001aefdbfc4ffe7691496a30f5f17d9747d69064a07ac2c98fab29dc77d29bc985d1f070d8af0eb81d8f3c006c937d5cb16a60a52ec95994540101d40b38ee87d51ea3e2bd5025ddeedd0458f53e9ccd42633a2d9f64bc3beb8e13705a4d9ec3c2dbe225f863b7fcc28086590569388f066b42874b3a1285c10492bf70a20303fadf06fbf72289eb219f513f2349210ebc260d085c843dbce300e4ab85fedccbe8ca0f47e67e900a94e6dde7254f2fa052dd6120b6fd13983de44327af3dd50f47cb2b976cba0bafb72e6aeeb016b80746037d9d0d784bf88fcc4c3c8ebd86defc6aa6597f5dee31062e22c8a2a055c1c740a2906cd76514191cff088221c0f3b12fdf4769670450fecf752a3b992d571531c6f9cb72685f0327e78325be129938485819ef6538495333079ecb92c5e0677035f442a1aab4ef8aa7c46896ebc4bf3ee1672e8326ae72b2c545466ff431a8c926267f97373731438a0e0c717777759f1d1ca363eb5ab0ddd40ca94a715bbee84ba9402f16bea6cf5d59002b1c34dd813961b90a296116d1f0cd79e2482e100dfa68007d44461e948ce6c6810dcecf32808fa5cb3e1acb1fdb04dcdd38f7cbf542ee8e4f9c036e157a834774823ac2c055ab809a5e2f76e6c57f8e03f3a152ea0cd6f75d928d640a0e675cd978b6e94a5f0c85e62826197bf319a5f697fa26a300b934018c444af9145d28ce8474e70d89f817ffa57c6400786a5d7aa4fb8027f72cfc64336cd58ed197b7814b5a10ae70eca37e3329f3b4a70c83cc75a7831d9fc42695ce4e377674c1777cad1def8bd384ba0e2f84165a089b3d8a94593f3558106f4934421987ec5349147f044c98a522666e1dd870ab847fff8a08bf5e1603cd87662d7af5daaa5bdf4503f72daf5924485ee7344dd2cfb9fc7d77ddaf4e26583b129e7d6228a60c06687a2d4cb3e0a7b8264b331322ed7215534e5031f9602ff461f72998ee9035426ba10bc3ae2b3b42464c6e93f47e8ffc7ff38896055790e593102f3419a636118107fe8069d5f4097138c41cc53931a07de834dce652ab90c3930b270e17890882c270b425eae727c41c212b28e049ac586ee742482e40e52b97d360a73817a82289fcc6abcf63d6f813ea8b306d81ae7f88916d8e4b7e54ff66b2e63ff135ca1aab721229671f1204d6d47c6a4f1771cd3e746e921c306c1f12389105629abd0e7e45891e7cc17763aa23119ea217ec666b943603826094cebd20f0682eaa2e122340f7a62ff322bfbf70ae0d7975fea5356b7763a3abc5f303c6bee5a73840d832370c80b554eb61b11130377dfc6bfa9a12e672ea604eff6d8c869d30f9f38cdac3ef4f160383dfbcb7f77ceb397fc3b76fe41f477b6a68f4e32df15d7eab08b4d109cf7700ab0ef436f134e7201869bf280c7ac1d6714db7575899ac0fb2be3ca7676d760866dede6e1af202f466417a9e7607047936c3d77a46a5ac37ce2e8321a7a7e3bedb434b1eca2626b61b9bd3dcd6c372b6b1797577f499a7ba6b272661ebcc9ac1647d15803ee949a72c5204d22512d2ab10ae5911cd80b767d606321571e88a2430019b7649096fb005620a0e6d703b6935bad07fa1e336599937c07c42a6f025dec7f8b0d59764b276a3b9a65e976a5688e10df6f722cee0e29bb324f74ae85da9f5771a20c780d4b2e531717c64a114ae1fb3caa91c8ab700eb0ee6ab8b9550ce5cc7ee280b1d20840c3c38d9e30c9d79a15ab282a1d8ca8e83cae51f4d439fca419d32c5fdbb49fc22d6642f3027b223497c665fa730ed889296fbebfd228a0ccc80ca7a461bb162f11e6ea0d78d6a7a6df8774cab375550074d4e3c913256bf83227b6eb52598b7b1b71936ff48c951fb728f28606c4847239a6446bcc77c27fa3d823d3dcb5828435c03584e683b8507884c9e46625229fec2c8f80009fa6f2ccf843abdca63b044ed846da0397f4fc7d4fc2d712107e28f5ec0aa2cd4026149a56bb01f74e4c921d93e0a8e255525458aeee0d6cd2ecd2225cbcfc5a68c6b5fc57a51363a30ae110011b7138b547ccc2e182f83524dd3312aba8ff92628884842c5694b34772d6c7f34ea2dfc3a2f8b7dc85656b54b42a74d33df09d63f5d2921f8b00c17c76fb3ff3258b2e91992de085c286d260c223e69e2e4d4950313d46aac9dcd93ace812a57d6ec65d61797a490767ab401f4e4db4fdbdb6eb014a2715efe427e4b7291777315d841cacbfb476506cbc23c0a16c92b0e8ae0ff3d8562263b41f9074b1f64b96df189338c9df51962be93d8e1654eac360ce56df0a6365934e914ad8a3948d48cffc8930be46970629e6e598824376852c415f14b29ad6af2254373ca3c66c35841ce3958bd6c199f567c9d00bef83b4fa954f89d23ac5c9c83a7df980c1f44aee9260b72ab461830b08ae1046d036820a4147cb56184267118f4367bfdd3f983abb625bd358b7f4b89fa4ddaeede8b1ebea53cb02183c536fbb092bfefc5d9bdb49505f206b20292b8eed0a5312e8e68d4110930f09f83913b941d8e153afd64795f93312c7af03c92884a487e6f9510904272bce4158710284dbd41b8a769ed0ca4454b2a4e9a881bce2733ae40c867ea123e6ee4cf73c4e18062ff387c0c1f10060233d54bc721af4fd191748f22784019290054aa9cbec479aa08f24c39baaee38c14d02daa24e75f6aaefe0d2c9ea025338c3e0b205bb4f8f9d4a496cbd84751ab100252a0f1f8e9c7e503e2aa2e24b990b8fb968fed7c0cff21367e2dbf362d0d4815a8764103a8c97f8539aec4ae89ccfe3fa38ac40d57c5e652464942233c087833b047fe8328735e71e9dd9c51ecdc3a588b478042d746dff782be340013f89009cf72d2a3ce9c64e14c81d5171d5bbbee5e5715f65cf9b2b63349ffa18959d5f2d2217cc7607150a0c1e3fdf7dbe717b659d084efd9fa201071be37f054e46a73c09bec7b7c", 0xe7, "b58be5598b6f9a18dd4ada9a4a97442272a26554967bab6c4f6a92fa96424285e5d6ab5969613740797f14a4fae91d53bbcc660fde1631c1a4e4211772c56e8ee3422714285ff82f852e2ceda332d1fc25722305df6af02ed3a311ec1ef102109ed0a455b9468f3072298ee1ea0034e74abc509bb758452ead15f94e8054ed6570e3b53aa4a41eb37e6fdc6055b03303c859c5ae8d4295b068b006283266e0e91dba980e58148832269da36c42f7f2afc534421f6a8a459aa6722a9dfddfd805d833d26889f8b01c3d656cf57a8367a98325fa6bfc23900602078e08a0d76067b61f54ee131d3e"}, 0x59, "19433a70fddb6f239a448fb41c991ca335a45a7e3db4e9ff9c8f7cdd2c0406ee39f6979d0e3cf1ad8f499aee9161a0cadfdc92881b3d7651010b39669fab9c0bd2fbcd8eb4d057c0e33b25b8fc9363ba6abca62c44329cc350"}, 0x1159})
+bpf$BPF_BTF_LOAD(0x12, &(0x7f0000000180)={&(0x7f0000000000)=ANY=[@ANYBLOB="16eb0100180000005181d0e000007860987100000000300000"], &(0x7f0000000080)=""/92, 0x1c, 0x5c, 0x1, 0x1000}, 0x5d)
+
+kernel console output (not intermixed with test programs):
+
+Warning: Permanently added '[localhost]:18191' (ED25519) to the list of known hosts.
+syzkaller login: [  104.854388][ T9269] cgroup: Unknown subsys name 'net'
+[  104.990589][ T9269] cgroup: Unknown subsys name 'rlimit'
+Setting up swapspace version 1, size = 122.1 MiB (127995904 bytes)
+no label, UUID=e563e22e-ddd1-47cd-a007-53379e0281ff
+[  120.825167][ T9269] Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k 
+[  126.874970][ T9300] Bluetooth: hci0: unexpected cc 0x0c03 length: 249 > 1
+[  126.877947][ T9300] Bluetooth: hci0: unexpected cc 0x1003 length: 249 > 9
+[  126.880776][ T9300] Bluetooth: hci1: unexpected cc 0x0c03 length: 249 > 1
+[  126.883423][ T9300] Bluetooth: hci0: unexpected cc 0x1001 length: 249 > 9
+[  126.887292][ T9300] Bluetooth: hci0: unexpected cc 0x0c23 length: 249 > 4
+[  126.890419][ T9300] Bluetooth: hci0: unexpected cc 0x0c25 length: 249 > 3
+[  126.893240][ T9300] Bluetooth: hci0: unexpected cc 0x0c38 length: 249 > 2
+[  126.896224][ T9300] Bluetooth: hci1: unexpected cc 0x1003 length: 249 > 9
+[  126.908190][ T9300] Bluetooth: hci1: unexpected cc 0x1001 length: 249 > 9
+[  126.911816][ T9300] Bluetooth: hci1: unexpected cc 0x0c23 length: 249 > 4
+[  126.915332][ T9300] Bluetooth: hci1: unexpected cc 0x0c25 length: 249 > 3
+[  126.918237][ T9300] Bluetooth: hci1: unexpected cc 0x0c38 length: 249 > 2
+[  126.971746][   T50] Bluetooth: hci2: unexpected cc 0x0c03 length: 249 > 1
+[  126.971952][ T9304] Bluetooth: hci3: unexpected cc 0x0c03 length: 249 > 1
+[  126.977176][ T9304] Bluetooth: hci2: unexpected cc 0x1003 length: 249 > 9
+[  126.979963][ T9304] Bluetooth: hci3: unexpected cc 0x1003 length: 249 > 9
+[  126.982652][ T9304] Bluetooth: hci2: unexpected cc 0x1001 length: 249 > 9
+[  126.982710][   T50] Bluetooth: hci3: unexpected cc 0x1001 length: 249 > 9
+[  126.988850][   T50] Bluetooth: hci3: unexpected cc 0x0c23 length: 249 > 4
+[  126.991531][   T50] Bluetooth: hci2: unexpected cc 0x0c23 length: 249 > 4
+[  126.995023][   T50] Bluetooth: hci3: unexpected cc 0x0c25 length: 249 > 3
+[  126.997695][   T50] Bluetooth: hci2: unexpected cc 0x0c25 length: 249 > 3
+[  127.000351][   T50] Bluetooth: hci3: unexpected cc 0x0c38 length: 249 > 2
+[  127.000453][ T9304] Bluetooth: hci2: unexpected cc 0x0c38 length: 249 > 2
+[  128.290120][ T9292] chnl_net:caif_netlink_parms(): no params data found
+[  128.341896][ T9303] chnl_net:caif_netlink_parms(): no params data found
+[  128.504634][ T9293] chnl_net:caif_netlink_parms(): no params data found
+[  128.806638][ T9302] chnl_net:caif_netlink_parms(): no params data found
+[  128.861222][ T9292] bridge0: port 1(bridge_slave_0) entered blocking state
+[  128.864433][ T9292] bridge0: port 1(bridge_slave_0) entered disabled state
+[  128.867204][ T9292] bridge_slave_0: entered allmulticast mode
+[  128.872006][ T9292] bridge_slave_0: entered promiscuous mode
+[  128.878160][ T9292] bridge0: port 2(bridge_slave_1) entered blocking state
+[  128.880693][ T9292] bridge0: port 2(bridge_slave_1) entered disabled state
+[  128.883467][ T9292] bridge_slave_1: entered allmulticast mode
+[  128.888850][ T9292] bridge_slave_1: entered promiscuous mode
+[  129.003906][ T5059] Bluetooth: hci0: command 0x0409 tx timeout
+[  129.003917][ T9300] Bluetooth: hci1: command 0x0409 tx timeout
+[  129.083905][ T5059] Bluetooth: hci2: command 0x0409 tx timeout
+[  129.083917][ T9300] Bluetooth: hci3: command 0x0409 tx timeout
+[  129.174732][ T9303] bridge0: port 1(bridge_slave_0) entered blocking state
+[  129.177517][ T9303] bridge0: port 1(bridge_slave_0) entered disabled state
+[  129.180352][ T9303] bridge_slave_0: entered allmulticast mode
+[  129.185673][ T9303] bridge_slave_0: entered promiscuous mode
+[  129.193742][ T9292] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  129.213153][ T9293] bridge0: port 1(bridge_slave_0) entered blocking state
+[  129.216389][ T9293] bridge0: port 1(bridge_slave_0) entered disabled state
+[  129.219195][ T9293] bridge_slave_0: entered allmulticast mode
+[  129.224202][ T9293] bridge_slave_0: entered promiscuous mode
+[  129.229063][ T9303] bridge0: port 2(bridge_slave_1) entered blocking state
+[  129.231718][ T9303] bridge0: port 2(bridge_slave_1) entered disabled state
+[  129.235005][ T9303] bridge_slave_1: entered allmulticast mode
+[  129.239733][ T9303] bridge_slave_1: entered promiscuous mode
+[  129.278250][ T9292] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  129.310177][ T9293] bridge0: port 2(bridge_slave_1) entered blocking state
+[  129.312814][ T9293] bridge0: port 2(bridge_slave_1) entered disabled state
+[  129.316377][ T9293] bridge_slave_1: entered allmulticast mode
+[  129.321145][ T9293] bridge_slave_1: entered promiscuous mode
+[  129.432956][ T9303] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  129.569726][ T9293] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  129.577657][ T9293] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  129.616812][ T9303] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  129.622931][ T9292] team0: Port device team_slave_0 added
+[  129.626448][ T9302] bridge0: port 1(bridge_slave_0) entered blocking state
+[  129.629174][ T9302] bridge0: port 1(bridge_slave_0) entered disabled state
+[  129.631872][ T9302] bridge_slave_0: entered allmulticast mode
+[  129.637408][ T9302] bridge_slave_0: entered promiscuous mode
+[  129.740604][ T9292] team0: Port device team_slave_1 added
+[  129.812962][ T9302] bridge0: port 2(bridge_slave_1) entered blocking state
+[  129.814953][ T9302] bridge0: port 2(bridge_slave_1) entered disabled state
+[  129.817549][ T9302] bridge_slave_1: entered allmulticast mode
+[  129.821058][ T9302] bridge_slave_1: entered promiscuous mode
+[  129.826173][ T9293] team0: Port device team_slave_0 added
+[  129.831399][ T9303] team0: Port device team_slave_0 added
+[  129.836607][ T9293] team0: Port device team_slave_1 added
+[  129.839784][ T9292] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  129.842238][ T9292] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  129.850740][ T9292] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  129.881673][ T9303] team0: Port device team_slave_1 added
+[  129.944584][ T9292] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  129.946975][ T9292] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  129.955886][ T9292] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  130.002733][ T9302] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  130.007514][ T9302] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  130.030103][ T9293] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  130.032337][ T9293] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  130.038274][ T9293] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  130.052468][ T9303] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  130.055332][ T9303] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  130.063768][ T9303] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  130.070722][ T9303] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  130.073195][ T9303] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  130.081820][ T9303] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  130.108648][ T9293] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  130.110179][ T9293] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  130.116139][ T9293] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  130.139122][ T9302] team0: Port device team_slave_0 added
+[  130.143431][ T9302] team0: Port device team_slave_1 added
+[  130.328661][ T9303] hsr_slave_0: entered promiscuous mode
+[  130.330801][ T9303] hsr_slave_1: entered promiscuous mode
+[  130.334879][ T9302] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  130.337247][ T9302] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  130.346384][ T9302] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  130.352630][ T9302] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  130.355442][ T9302] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  130.363877][ T9302] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  130.379527][ T9292] hsr_slave_0: entered promiscuous mode
+[  130.383142][ T9292] hsr_slave_1: entered promiscuous mode
+[  130.386285][ T9292] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  130.388778][ T9292] Cannot create hsr debugfs directory
+[  130.463782][ T9293] hsr_slave_0: entered promiscuous mode
+[  130.467310][ T9293] hsr_slave_1: entered promiscuous mode
+[  130.470424][ T9293] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  130.473036][ T9293] Cannot create hsr debugfs directory
+[  130.765679][ T9302] hsr_slave_0: entered promiscuous mode
+[  130.767781][ T9302] hsr_slave_1: entered promiscuous mode
+[  130.769676][ T9302] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  130.771249][ T9302] Cannot create hsr debugfs directory
+[  131.083941][ T5059] Bluetooth: hci1: command 0x041b tx timeout
+[  131.083957][ T9300] Bluetooth: hci0: command 0x041b tx timeout
+[  131.163902][ T5059] Bluetooth: hci2: command 0x041b tx timeout
+[  131.173989][ T5059] Bluetooth: hci3: command 0x041b tx timeout
+[  131.419010][ T9292] netdevsim netdevsim3 netdevsim0: renamed from eth0
+[  131.427690][ T9292] netdevsim netdevsim3 netdevsim1: renamed from eth1
+[  131.434847][ T9292] netdevsim netdevsim3 netdevsim2: renamed from eth2
+[  131.447870][ T9292] netdevsim netdevsim3 netdevsim3: renamed from eth3
+[  131.548545][ T9303] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[  131.563105][ T9303] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[  131.586828][ T9303] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[  131.596513][ T9303] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[  131.810999][ T9293] netdevsim netdevsim1 netdevsim0: renamed from eth0
+[  131.827528][ T9293] netdevsim netdevsim1 netdevsim1: renamed from eth1
+[  131.833086][ T9293] netdevsim netdevsim1 netdevsim2: renamed from eth2
+[  131.849684][ T9293] netdevsim netdevsim1 netdevsim3: renamed from eth3
+[  131.898846][ T9292] 8021q: adding VLAN 0 to HW filter on device bond0
+[  131.926640][ T9302] netdevsim netdevsim2 netdevsim0: renamed from eth0
+[  131.946236][ T9302] netdevsim netdevsim2 netdevsim1: renamed from eth1
+[  131.953128][ T9302] netdevsim netdevsim2 netdevsim2: renamed from eth2
+[  131.959764][ T9302] netdevsim netdevsim2 netdevsim3: renamed from eth3
+[  132.004525][ T9292] 8021q: adding VLAN 0 to HW filter on device team0
+[  132.058732][ T5676] bridge0: port 1(bridge_slave_0) entered blocking state
+[  132.062444][ T5676] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  132.076930][ T5676] bridge0: port 2(bridge_slave_1) entered blocking state
+[  132.080432][ T5676] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  132.262331][ T9303] 8021q: adding VLAN 0 to HW filter on device bond0
+[  132.402402][ T9303] 8021q: adding VLAN 0 to HW filter on device team0
+[  132.437810][    T8] bridge0: port 1(bridge_slave_0) entered blocking state
+[  132.440551][    T8] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  132.469039][   T22] bridge0: port 2(bridge_slave_1) entered blocking state
+[  132.470894][   T22] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  132.523089][ T9293] 8021q: adding VLAN 0 to HW filter on device bond0
+[  132.608041][ T9293] 8021q: adding VLAN 0 to HW filter on device team0
+[  132.623332][ T9302] 8021q: adding VLAN 0 to HW filter on device bond0
+[  132.658272][    T8] bridge0: port 1(bridge_slave_0) entered blocking state
+[  132.660181][    T8] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  132.669333][ T9292] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  132.705447][ T5676] bridge0: port 2(bridge_slave_1) entered blocking state
+[  132.707175][ T5676] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  132.721601][ T9302] 8021q: adding VLAN 0 to HW filter on device team0
+[  132.743616][ T9303] hsr0: Slave B (hsr_slave_1) is not up; please bring it up to get a fully working HSR network
+[  132.763841][    T8] bridge0: port 1(bridge_slave_0) entered blocking state
+[  132.765557][    T8] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  132.784979][ T5676] bridge0: port 2(bridge_slave_1) entered blocking state
+[  132.786704][ T5676] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  132.958192][ T9292] veth0_vlan: entered promiscuous mode
+[  132.989086][ T9292] veth1_vlan: entered promiscuous mode
+[  133.049821][ T9303] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  133.086976][ T9292] veth0_macvtap: entered promiscuous mode
+[  133.093571][ T9292] veth1_macvtap: entered promiscuous mode
+[  133.124888][ T9293] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  133.163939][ T5059] Bluetooth: hci1: command 0x040f tx timeout
+[  133.164743][ T9300] Bluetooth: hci0: command 0x040f tx timeout
+[  133.167505][ T9292] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  133.189981][ T9292] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  133.206073][ T9292] netdevsim netdevsim3 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  133.208038][ T9292] netdevsim netdevsim3 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  133.209901][ T9292] netdevsim netdevsim3 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  133.211878][ T9292] netdevsim netdevsim3 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  133.244680][ T9300] Bluetooth: hci3: command 0x040f tx timeout
+[  133.244689][ T5059] Bluetooth: hci2: command 0x040f tx timeout
+[  133.268991][ T9303] veth0_vlan: entered promiscuous mode
+[  133.287816][ T9302] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  133.331622][ T9303] veth1_vlan: entered promiscuous mode
+[  133.358646][ T9293] veth0_vlan: entered promiscuous mode
+[  133.507974][ T9293] veth1_vlan: entered promiscuous mode
+[  133.532916][   T30] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  133.537100][   T30] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  133.604551][ T9302] veth0_vlan: entered promiscuous mode
+[  133.655239][   T30] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  133.657030][   T30] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  133.658308][ T9302] veth1_vlan: entered promiscuous mode
+[  133.664876][ T9303] veth0_macvtap: entered promiscuous mode
+[  133.694109][ T9303] veth1_macvtap: entered promiscuous mode
+[  133.730974][ T9293] veth0_macvtap: entered promiscuous mode
+[  133.768475][ T9293] veth1_macvtap: entered promiscuous mode
+[  133.773704][ T9303] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  133.777663][ T9303] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  133.781624][ T9303] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  133.837735][T10648] syz.3.4[10648]: memfd_create() called without MFD_EXEC or MFD_NOEXEC_SEAL set
+[  133.892072][T10648] loop3: detected capacity change from 0 to 128
+[  133.906712][T10648] FAT-fs (loop3): invalid media value (0x00)
+[  133.908620][T10648] FAT-fs (loop3): Can't find a valid FAT filesystem
+[  133.928099][ T9303] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  133.937338][ T9303] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  133.950621][ T9303] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  133.961007][ T9303] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  133.966853][ T9303] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  133.970225][ T9303] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  133.972537][ T9303] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  133.982117][T10648] sg_write: data in/out 79/4286 bytes for SCSI command 0x0-- guessing data in;
+[  133.982117][T10648]    program syz.3.4 not setting count and/or reply_len properly
+[  133.987085][T10648] ------------[ cut here ]------------
+[  133.988254][T10648] WARNING: CPU: 1 PID: 10648 at lib/iov_iter.c:385 _copy_from_iter+0xe7/0x720
+[  133.990139][T10648] Modules linked in:
+[  133.990537][T10543] systemd-udevd: attempt to access beyond end of device
+[  133.990537][T10543] loop3: rw=524288, sector=0, nr_sectors = 8 limit=0
+[  133.991768][T10648] CPU: 1 PID: 10648 Comm: syz.3.4 Not tainted 6.6.0 #2
+[  133.998679][T10648] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  134.001639][T10648] RIP: 0010:_copy_from_iter+0xe7/0x720
+[  134.002850][T10648] Code: 48 2b 04 25 28 00 00 00 0f 85 32 06 00 00 48 83 c4 60 4c 89 e0 5b 5d 41 5c 41 5d 41 5e 41 5f c3 cc cc cc cc e8 3a f4 ea fe 90 <0f> 0b 90 45 31 e4 eb c3 e8 2c f4 ea fe 31 ff 44 89 ee e8 a2 ec ea
+[  134.006932][T10648] RSP: 0018:ffffc9000177fa00 EFLAGS: 00010216
+[  134.008234][T10648] RAX: 000000000000166d RBX: ffffc9000177fb20 RCX: ffffc9000f941000
+[  134.009918][T10648] RDX: 0000000000080000 RSI: ffffffff8257a8a6 RDI: 0000000000000001
+[  134.011563][T10648] RBP: 0000000000000000 R08: 0000000000000001 R09: 0000000000000000
+[  134.013263][T10648] R10: 0000000000000000 R11: ffffffff850000eb R12: 0000000000001000
+[  134.015003][T10648] R13: ffffea00014d3400 R14: ffff8880534d0000 R15: ffffc9000177fb20
+[  134.016667][T10648] FS:  00007fa4489d8640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+[  134.018529][T10648] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  134.019924][T10648] CR2: 00007fa43da06000 CR3: 0000000025b6a000 CR4: 0000000000750ee0
+[  134.021564][T10648] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  134.023229][T10648] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  134.024931][T10648] PKRU: 80000000
+[  134.025705][T10648] Call Trace:
+[  134.026422][T10648]  <TASK>
+[  134.027066][T10648]  ? show_regs+0x96/0xa0
+[  134.027999][T10648]  ? __warn+0x9e/0x1b0
+[  134.028875][T10648]  ? _copy_from_iter+0xe7/0x720
+[  134.029957][T10648]  ? report_bug+0x214/0x2e0
+[  134.030962][T10648]  ? _copy_from_iter+0xe7/0x720
+[  134.032058][T10648]  ? handle_bug+0x9c/0x110
+[  134.033035][T10648]  ? exc_invalid_op+0x36/0xa0
+[  134.034095][T10648]  ? asm_exc_invalid_op+0x1a/0x20
+[  134.035191][T10648]  ? entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+[  134.036486][T10648]  ? _copy_from_iter+0xe6/0x720
+[  134.037558][T10648]  ? _copy_from_iter+0xe7/0x720
+[  134.038621][T10648]  ? bio_add_hw_page+0xb6/0x1e0
+[  134.039673][T10648]  copy_page_from_iter+0x94/0x110
+[  134.040798][T10648]  blk_rq_map_user_iov+0x61b/0xaf0
+[  134.041934][T10648]  blk_rq_map_user_io+0x124/0x140
+[  134.043034][T10648]  sg_common_write.constprop.0+0x693/0xb40
+[  134.044367][T10648]  sg_write.part.0+0x35f/0x680
+[  134.045416][T10648]  ? preempt_schedule_thunk+0x1a/0x30
+[  134.046578][T10648]  ? aa_file_perm+0x246/0x840
+[  134.047617][T10648]  ? try_to_wake_up+0x362/0x620
+[  134.048669][T10648]  ? end_current_label_crit_section+0x44/0x120
+[  134.049995][T10648]  ? apparmor_file_permission+0xb0/0x150
+[  134.051205][T10648]  ? __pfx_sg_write+0x10/0x10
+[  134.052251][T10648]  sg_write+0x42/0xa0
+[  134.053136][T10648]  vfs_write+0x171/0x570
+[  134.054244][T10648]  ? do_futex+0xe0/0x2f0
+[  134.055176][T10648]  ? xfd_validate_state+0x32/0xd0
+[  134.056280][T10648]  ? __fget_light+0x15a/0x230
+[  134.057306][T10648]  ksys_write+0xa1/0x170
+[  134.058263][T10648]  do_syscall_64+0x3d/0xc0
+[  134.059223][T10648]  entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+[  134.060490][T10648] RIP: 0033:0x7fa447bae16d
+[  134.061458][T10648] Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  134.065572][T10648] RSP: 002b:00007fa4489d7f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[  134.067431][T10648] RAX: ffffffffffffffda RBX: 00007fa447df5fa0 RCX: 00007fa447bae16d
+[  134.068795][ T9293] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  134.069091][T10648] RDX: 00000000000010e8 RSI: 0000200000000080 RDI: 0000000000000006
+[  134.073007][T10648] RBP: 00007fa447c480f0 R08: 0000000000000000 R09: 0000000000000000
+[  134.074749][T10648] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[  134.076465][T10648] R13: 00007fa447df6038 R14: 00007fa447df5fa0 R15: 00007fa4489b8000
+[  134.078142][T10648]  </TASK>
+[  134.078210][ T9293] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.078786][T10648] ---[ end trace 0000000000000000 ]---
+[  134.094097][ T9293] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  134.099128][ T9293] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.106861][ T9293] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  134.127513][T10652] tipc: Enabling of bearer <eth:nicvf0> rejected, failed to enable media
+[  134.132191][ T9302] veth0_macvtap: entered promiscuous mode
+[  134.148396][ T9302] veth1_macvtap: entered promiscuous mode
+[  134.162437][ T9293] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  134.165267][ T9293] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.167267][ T9293] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  134.169460][ T9293] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.173288][ T9293] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  134.221941][ T9293] netdevsim netdevsim1 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  134.224477][ T9293] netdevsim netdevsim1 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  134.226320][ T9293] netdevsim netdevsim1 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  134.228132][ T9293] netdevsim netdevsim1 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  134.283635][ T9302] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  134.293769][ T9302] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.299333][ T9302] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  134.303707][ T9302] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.307627][ T9302] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  134.309792][ T9302] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.313731][ T9302] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  134.366552][ T9302] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  134.370149][ T9302] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.373409][ T9302] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  134.377318][ T9302] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.380585][ T9302] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  134.384873][ T9302] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  134.391580][ T9302] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  134.410349][   T30] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  134.412969][   T30] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  134.443538][ T9302] netdevsim netdevsim2 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  134.446852][ T9302] netdevsim netdevsim2 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  134.449720][ T9302] netdevsim netdevsim2 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  134.452632][ T9302] netdevsim netdevsim2 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  134.579096][   T60] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  134.581057][   T60] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  134.715363][   T60] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  134.717337][   T60] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  134.834359][   T67] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  134.836395][   T67] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  134.901907][   T67] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  134.903674][   T67] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  134.953167][   T67] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  134.957742][   T67] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  135.244172][ T9300] Bluetooth: hci1: command 0x0419 tx timeout
+[  135.254558][ T9300] Bluetooth: hci0: command 0x0419 tx timeout
+[  135.324060][ T9300] Bluetooth: hci2: command 0x0419 tx timeout
+[  135.324078][ T5059] Bluetooth: hci3: command 0x0419 tx timeout
+
+VM DIAGNOSIS:
+13:30:53  Registers:
+info registers vcpu 0
+RAX=0000000080000000 RBX=ffffc90000ad7d80 RCX=0000000000000000 RDX=ffff8880114d8000
+RSI=ffffffff816fdb58 RDI=0000000000000004 RBP=ffffc90000ad7c78 RSP=ffffc90000ad7c50
+R8 =0000000000000004 R9 =0000000000000002 R10=0000000000000002 R11=0000000000000000
+R12=0000000000000000 R13=0000000000000002 R14=0000000000000000 R15=0000000000000000
+RIP=ffffffff81429ceb RFL=00000246 [---Z-P-] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00007fa02ff968c0 ffffffff 00c00000
+GS =0000 ffff88803ec00000 ffffffff 00c00000
+LDT=0000 0000000000000000 ffffffff 00c00000
+TR =0040 fffffe0000003000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe0000001000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=00007fe4fa0f0380 CR3=000000001272a000 CR4=00750ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=000000000000feff Opmask01=00000000ff000000 Opmask02=0000000000000000 Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00006c696146002f
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000000064002f
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffffff ffffffffff0f0e0d
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 6572206f74206465 6c69614600737973
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff00 ff000000000000ff
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff00 ff000000000000ff
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 08080d0f02164b50 1d0c144b55555654
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 5c0101010d4b5709 0d17130c4b090d17
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00316d006c617574 7269762f73656369
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 33706f6f6c2f6b63 6f6c622f6c617574 7269762f73656369 7665642f7379732f
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 00737265646c6f68 2f33706f6f6c2f6b 636f6c622f6c6175 747269762f736563
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 000055f76d07da70 0000000100ff0201 00000000ffffffff 000055f76d052d70
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 000055f76d052d50 ffffffff00000001 000055f76d050ba0 000055f76d0abef0
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000300000000
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 000055f76d081750 000055f76d0bab30 0000000100000004 000055f76d052d30
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000900000005 000055f76d083130 000055f76d083110 0000000600000008
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 1
+RAX=0000000000000020 RBX=0000000000000000 RCX=0000000000000000 RDX=00000000000003f8
+RSI=ffffffff828bd2b5 RDI=ffffffff88f8d6a0 RBP=ffffffff88f8d6a0 RSP=ffffc9000177f5e8
+R8 =0000000000000001 R9 =000000000000000a R10=0000000000000020 R11=205d383436303154
+R12=0000000000000020 R13=ffffffff88bd442d R14=0000000000000010 R15=ffffffff828bd2a0
+RIP=ffffffff828bd2c8 RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00007fa4489d8640 ffffffff 00c00000
+GS =0000 ffff88807ec00000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe000003e000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe000003c000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=00007fa43da06000 CR3=0000000025b6a000 CR4=00750ee0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=00000000ffffffff Opmask01=0000000000000000 Opmask02=000000000000001f Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007fa4489d7db0 0000003000000028
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007fa4489d7e00
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007fa4489d7e00 00007fa4489d7e00
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007fa4489d7e3f
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00524f5252450040
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffec5573690
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffec55737e0 00007ffec55737a0
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000736f64736d
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000524f525245
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00524f5252450040
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00e800a800000000
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000

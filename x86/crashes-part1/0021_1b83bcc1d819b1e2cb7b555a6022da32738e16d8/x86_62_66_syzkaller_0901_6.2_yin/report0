@@ -1,0 +1,175 @@
+==================================================================
+BUG: KASAN: use-after-free in string_nocheck lib/vsprintf.c:644 [inline]
+BUG: KASAN: use-after-free in string+0x235/0x2d0 lib/vsprintf.c:726
+Read of size 1 at addr ffff888000d49700 by task systemd-journal/5097
+
+CPU: 1 PID: 5097 Comm: systemd-journal Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 lib/dump_stack.c:106
+ print_address_description+0x74/0x340 mm/kasan/report.c:306
+ print_report+0x107/0x220 mm/kasan/report.c:417
+ kasan_report+0x139/0x170 mm/kasan/report.c:517
+ string_nocheck lib/vsprintf.c:644 [inline]
+ string+0x235/0x2d0 lib/vsprintf.c:726
+ vsnprintf+0x11c0/0x1cb0 lib/vsprintf.c:2796
+ add_uevent_var+0x1bf/0x440 lib/kobject_uevent.c:665
+ dev_uevent+0x3f0/0x910 drivers/base/core.c:2422
+ uevent_show+0x1a0/0x310 drivers/base/core.c:2493
+ dev_attr_show+0x50/0xc0 drivers/base/core.c:2196
+ sysfs_kf_seq_show+0x324/0x4a0 fs/sysfs/file.c:59
+ seq_read_iter+0x43a/0xd30 fs/seq_file.c:230
+ call_read_iter include/linux/fs.h:2183 [inline]
+ new_sync_read fs/read_write.c:389 [inline]
+ vfs_read+0x7cf/0xbc0 fs/read_write.c:470
+ ksys_read+0x19b/0x2c0 fs/read_write.c:613
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7faee3b174ac
+Code: ec 28 48 89 54 24 18 48 89 74 24 10 89 7c 24 08 e8 d9 55 f9 ff 48 8b 54 24 18 48 8b 74 24 10 41 89 c0 8b 7c 24 08 31 c0 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 48 89 44 24 08 e8 0f 56 f9 ff 48
+RSP: 002b:00007fff557fc090 EFLAGS: 00000246 ORIG_RAX: 0000000000000000
+RAX: ffffffffffffffda RBX: 0000563789cd12d0 RCX: 00007faee3b174ac
+RDX: 0000000000001000 RSI: 0000563789ceae90 RDI: 0000000000000015
+RBP: 00007faee3bf7480 R08: 0000000000000000 R09: 00007faee3bfabe0
+R10: 0000000000010000 R11: 0000000000000246 R12: 0000000000001001
+R13: 0000563789ceae90 R14: 0000000000000d68 R15: 00007faee3bf6880
+ </TASK>
+
+Allocated by task 124636:
+ kasan_save_stack mm/kasan/common.c:45 [inline]
+ kasan_set_track+0x4c/0x70 mm/kasan/common.c:52
+ ____kasan_kmalloc mm/kasan/common.c:374 [inline]
+ __kasan_kmalloc+0x97/0xb0 mm/kasan/common.c:383
+ kmalloc include/linux/slab.h:580 [inline]
+ raw_ioctl_init+0x1ba/0x890 drivers/usb/gadget/legacy/raw_gadget.c:460
+ raw_ioctl+0x291/0x900 drivers/usb/gadget/legacy/raw_gadget.c:1250
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:870 [inline]
+ __se_sys_ioctl+0xfb/0x170 fs/ioctl.c:856
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+
+Freed by task 124634:
+ kasan_save_stack mm/kasan/common.c:45 [inline]
+ kasan_set_track+0x4c/0x70 mm/kasan/common.c:52
+ kasan_save_free_info+0x27/0x40 mm/kasan/generic.c:523
+ ____kasan_slab_free+0xd6/0x120 mm/kasan/common.c:236
+ kasan_slab_free include/linux/kasan.h:177 [inline]
+ slab_free_hook mm/slub.c:1781 [inline]
+ slab_free_freelist_hook+0x12e/0x1a0 mm/slub.c:1807
+ slab_free mm/slub.c:3787 [inline]
+ __kmem_cache_free+0x71/0x110 mm/slub.c:3800
+ dev_free drivers/usb/gadget/legacy/raw_gadget.c:210 [inline]
+ kref_put+0xb5/0x7d0 include/linux/kref.h:65
+ raw_release+0x130/0x1e0 drivers/usb/gadget/legacy/raw_gadget.c:424
+ __fput+0x3ba/0x880 fs/file_table.c:320
+ task_work_run+0x243/0x300 kernel/task_work.c:179
+ resume_user_mode_work include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop+0x134/0x160 kernel/entry/common.c:171
+ exit_to_user_mode_prepare+0xad/0x110 kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x2e/0x60 kernel/entry/common.c:296
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+
+Last potentially related work creation:
+ kasan_save_stack+0x3b/0x60 mm/kasan/common.c:45
+ __kasan_record_aux_stack+0xb0/0xc0 mm/kasan/generic.c:493
+ kvfree_call_rcu+0x118/0x8c0 kernel/rcu/tree.c:3376
+ dropmon_net_event+0x157/0x260 net/core/drop_monitor.c:1580
+ notifier_call_chain kernel/notifier.c:87 [inline]
+ raw_notifier_call_chain+0xe7/0x170 kernel/notifier.c:455
+ call_netdevice_notifiers_info net/core/dev.c:1936 [inline]
+ call_netdevice_notifiers_extack net/core/dev.c:1974 [inline]
+ call_netdevice_notifiers net/core/dev.c:1988 [inline]
+ unregister_netdevice_many_notify+0x104e/0x1c50 net/core/dev.c:10831
+ unregister_netdevice_many net/core/dev.c:10887 [inline]
+ default_device_exit_batch+0x5e5/0x660 net/core/dev.c:11340
+ ops_exit_list net/core/net_namespace.c:174 [inline]
+ cleanup_net+0x80c/0xc60 net/core/net_namespace.c:613
+ process_one_work+0x877/0xdb0 kernel/workqueue.c:2289
+ worker_thread+0xb14/0x1330 kernel/workqueue.c:2436
+ kthread+0x26c/0x300 kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 arch/x86/entry/entry_64.S:308
+
+The buggy address belongs to the object at ffff888000d49700
+ which belongs to the cache kmalloc-32 of size 32
+The buggy address is located 0 bytes inside of
+ 32-byte region [ffff888000d49700, ffff888000d49720)
+
+The buggy address belongs to the physical page:
+page:ffffea0000035240 refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0xd49
+flags: 0x7ff00000000200(slab|node=0|zone=0|lastcpupid=0x7ff)
+raw: 007ff00000000200 ffff888018441500 dead000000000100 dead000000000122
+raw: 0000000000000000 0000000000400040 00000001ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+page_owner tracks the page as allocated
+page last allocated via order 0, migratetype Unmovable, gfp_mask 0x112c40(GFP_NOFS|__GFP_NOWARN|__GFP_NORETRY|__GFP_HARDWALL), pid 22880, tgid 22880 (syz-executor), ts 754275412184, free_ts 754240815849
+ set_page_owner include/linux/page_owner.h:31 [inline]
+ post_alloc_hook+0x1a2/0x1c0 mm/page_alloc.c:2524
+ prep_new_page mm/page_alloc.c:2531 [inline]
+ get_page_from_freelist+0x72b/0x7a0 mm/page_alloc.c:4283
+ __alloc_pages+0x259/0x560 mm/page_alloc.c:5549
+ alloc_slab_page+0xbd/0x190 mm/slub.c:1851
+ allocate_slab+0x5e/0x3c0 mm/slub.c:1998
+ new_slab mm/slub.c:2051 [inline]
+ ___slab_alloc+0x7a4/0xe30 mm/slub.c:3193
+ __slab_alloc mm/slub.c:3292 [inline]
+ __slab_alloc_node mm/slub.c:3345 [inline]
+ slab_alloc_node mm/slub.c:3442 [inline]
+ __kmem_cache_alloc_node+0x25b/0x340 mm/slub.c:3491
+ __do_kmalloc_node mm/slab_common.c:967 [inline]
+ __kmalloc+0x9e/0x190 mm/slab_common.c:981
+ kmalloc include/linux/slab.h:584 [inline]
+ kzalloc include/linux/slab.h:720 [inline]
+ tomoyo_encode2+0x254/0x540 security/tomoyo/realpath.c:45
+ tomoyo_realpath_from_path+0x5ae/0x5f0 security/tomoyo/realpath.c:283
+ tomoyo_get_realpath security/tomoyo/file.c:151 [inline]
+ tomoyo_path_perm+0x280/0x680 security/tomoyo/file.c:822
+ tomoyo_path_unlink+0xcc/0x100 security/tomoyo/tomoyo.c:161
+ security_path_unlink+0xc3/0x140 security/security.c:1203
+ do_unlinkat+0x3fe/0x990 fs/namei.c:4316
+ __do_sys_unlink fs/namei.c:4368 [inline]
+ __se_sys_unlink fs/namei.c:4366 [inline]
+ __x64_sys_unlink+0x45/0x50 fs/namei.c:4366
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 arch/x86/entry/common.c:80
+page last free stack trace:
+ reset_page_owner include/linux/page_owner.h:24 [inline]
+ free_pages_prepare mm/page_alloc.c:1446 [inline]
+ free_pcp_prepare+0x757/0x790 mm/page_alloc.c:1496
+ free_unref_page_prepare mm/page_alloc.c:3369 [inline]
+ free_unref_page_list+0xb2/0x830 mm/page_alloc.c:3510
+ release_pages+0x14a7/0x1570 mm/swap.c:1076
+ tlb_batch_pages_flush mm/mmu_gather.c:97 [inline]
+ tlb_flush_mmu_free mm/mmu_gather.c:292 [inline]
+ tlb_flush_mmu+0x860/0xa80 mm/mmu_gather.c:299
+ zap_pte_range+0x1bf6/0x1cc0 mm/memory.c:1476
+ zap_pmd_range mm/memory.c:1525 [inline]
+ zap_pud_range+0x6e7/0xbe0 mm/memory.c:1554
+ zap_p4d_range mm/memory.c:1575 [inline]
+ unmap_page_range+0x258/0x3b0 mm/memory.c:1596
+ unmap_vmas+0x3c9/0x560 mm/memory.c:1681
+ exit_mmap+0x243/0x670 mm/mmap.c:3089
+ __mmput+0x114/0x3b0 kernel/fork.c:1207
+ exit_mm+0x20f/0x2f0 kernel/exit.c:563
+ do_exit+0x5bf/0x2140 kernel/exit.c:854
+ do_group_exit+0x1fd/0x2b0 kernel/exit.c:1012
+ __do_sys_exit_group kernel/exit.c:1023 [inline]
+ __se_sys_exit_group kernel/exit.c:1021 [inline]
+ __x64_sys_exit_group+0x3b/0x40 kernel/exit.c:1021
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+
+Memory state around the buggy address:
+ ffff888000d49600: 00 00 00 00 fc fc fc fc 00 00 00 00 fc fc fc fc
+ ffff888000d49680: 00 00 00 00 fc fc fc fc 00 00 00 00 fc fc fc fc
+>ffff888000d49700: fa fb fb fb fc fc fc fc 00 00 00 00 fc fc fc fc
+                   ^
+ ffff888000d49780: 00 00 00 00 fc fc fc fc 00 00 00 00 fc fc fc fc
+ ffff888000d49800: 00 00 05 fc fc fc fc fc 00 00 00 00 fc fc fc fc
+==================================================================

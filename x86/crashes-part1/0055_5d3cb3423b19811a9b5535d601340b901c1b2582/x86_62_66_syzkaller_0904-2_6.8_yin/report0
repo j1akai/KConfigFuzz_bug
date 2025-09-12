@@ -1,0 +1,100 @@
+loop0: detected capacity change from 0 to 32768
+BUG: unable to handle page fault for address: 000000010000003f
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 37523067 P4D 37523067 PUD 0 
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 42003 Comm: syz.0.5795 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:freelist_ptr_decode home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:500 [inline]
+RIP: 0010:get_freepointer home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:513 [inline]
+RIP: 0010:get_freepointer_safe home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:540 [inline]
+RIP: 0010:__slab_alloc_node home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3680 [inline]
+RIP: 0010:slab_alloc_node home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3850 [inline]
+RIP: 0010:__do_kmalloc_node home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3980 [inline]
+RIP: 0010:__kmalloc+0x124/0x440 home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3994
+Code: 9c 7e 48 8b 50 08 48 83 78 10 00 48 8b 38 0f 84 b8 02 00 00 48 85 ff 0f 84 af 02 00 00 41 8b 44 24 28 49 8b 34 24 48 8d 4a 08 <48> 8b 1c 07 48 89 f8 65 48 0f c7 0e 75 be 41 8b 44 24 28 0f 0d 0c
+RSP: 0018:ffffc90005283cd0 EFLAGS: 00010206
+RAX: 0000000000000040 RBX: 0000000000000dc0 RCX: 0000000000052db8
+RDX: 0000000000052db0 RSI: 00000000000320b0 RDI: 00000000ffffffff
+RBP: ffffc90005283d20 R08: 0000000000000004 R09: 000000000000003a
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff888009441700
+R13: 0000000000000080 R14: 0000000000000dc0 R15: 0000000000000080
+FS:  00007ff89806a640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000010000003f CR3: 0000000051466000 CR4: 0000000000752ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ kmalloc_array home/jiakai/62_66_amd_0904/linux68/linux/include/linux/slab.h:627 [inline]
+ kcalloc home/jiakai/62_66_amd_0904/linux68/linux/include/linux/slab.h:658 [inline]
+ __list_lru_init+0x50/0x220 home/jiakai/62_66_amd_0904/linux68/linux/mm/list_lru.c:572
+ alloc_super+0x353/0x420 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:387
+ sget_fc+0x7e/0x480 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:748
+ sget_dev home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:1349 [inline]
+ get_tree_bdev+0x94/0x270 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:1600
+ vfs_get_tree+0x2f/0x130 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:1779
+ do_new_mount home/jiakai/62_66_amd_0904/linux68/linux/fs/namespace.c:3352 [inline]
+ path_mount+0xc62/0x1100 home/jiakai/62_66_amd_0904/linux68/linux/fs/namespace.c:3679
+ do_mount home/jiakai/62_66_amd_0904/linux68/linux/fs/namespace.c:3692 [inline]
+ __do_sys_mount home/jiakai/62_66_amd_0904/linux68/linux/fs/namespace.c:3898 [inline]
+ __se_sys_mount home/jiakai/62_66_amd_0904/linux68/linux/fs/namespace.c:3875 [inline]
+ __x64_sys_mount+0x196/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/fs/namespace.c:3875
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0xb0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7ff8971affde
+Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007ff898069da8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+RAX: ffffffffffffffda RBX: 0000000000009825 RCX: 00007ff8971affde
+RDX: 0000200000000000 RSI: 0000200000000080 RDI: 00007ff898069e00
+RBP: 00007ff898069e40 R08: 00007ff898069e40 R09: 0000000000000000
+R10: 0000000000014400 R11: 0000000000000246 R12: 0000200000000000
+R13: 0000200000000080 R14: 00007ff898069e00 R15: 0000200000000840
+ </TASK>
+Modules linked in:
+CR2: 000000010000003f
+---[ end trace 0000000000000000 ]---
+RIP: 0010:freelist_ptr_decode home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:500 [inline]
+RIP: 0010:get_freepointer home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:513 [inline]
+RIP: 0010:get_freepointer_safe home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:540 [inline]
+RIP: 0010:__slab_alloc_node home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3680 [inline]
+RIP: 0010:slab_alloc_node home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3850 [inline]
+RIP: 0010:__do_kmalloc_node home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3980 [inline]
+RIP: 0010:__kmalloc+0x124/0x440 home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3994
+Code: 9c 7e 48 8b 50 08 48 83 78 10 00 48 8b 38 0f 84 b8 02 00 00 48 85 ff 0f 84 af 02 00 00 41 8b 44 24 28 49 8b 34 24 48 8d 4a 08 <48> 8b 1c 07 48 89 f8 65 48 0f c7 0e 75 be 41 8b 44 24 28 0f 0d 0c
+RSP: 0018:ffffc90005283cd0 EFLAGS: 00010206
+RAX: 0000000000000040 RBX: 0000000000000dc0 RCX: 0000000000052db8
+RDX: 0000000000052db0 RSI: 00000000000320b0 RDI: 00000000ffffffff
+RBP: ffffc90005283d20 R08: 0000000000000004 R09: 000000000000003a
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff888009441700
+R13: 0000000000000080 R14: 0000000000000dc0 R15: 0000000000000080
+FS:  00007ff89806a640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000010000003f CR3: 0000000051466000 CR4: 0000000000752ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	9c                   	pushf
+   1:	7e 48                	jle    0x4b
+   3:	8b 50 08             	mov    0x8(%rax),%edx
+   6:	48 83 78 10 00       	cmpq   $0x0,0x10(%rax)
+   b:	48 8b 38             	mov    (%rax),%rdi
+   e:	0f 84 b8 02 00 00    	je     0x2cc
+  14:	48 85 ff             	test   %rdi,%rdi
+  17:	0f 84 af 02 00 00    	je     0x2cc
+  1d:	41 8b 44 24 28       	mov    0x28(%r12),%eax
+  22:	49 8b 34 24          	mov    (%r12),%rsi
+  26:	48 8d 4a 08          	lea    0x8(%rdx),%rcx
+* 2a:	48 8b 1c 07          	mov    (%rdi,%rax,1),%rbx <-- trapping instruction
+  2e:	48 89 f8             	mov    %rdi,%rax
+  31:	65 48 0f c7 0e       	cmpxchg16b %gs:(%rsi)
+  36:	75 be                	jne    0xfffffff6
+  38:	41 8b 44 24 28       	mov    0x28(%r12),%eax
+  3d:	0f                   	.byte 0xf
+  3e:	0d                   	.byte 0xd
+  3f:	0c                   	.byte 0xc

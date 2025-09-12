@@ -1,0 +1,109 @@
+loop3: detected capacity change from 0 to 32768
+JBD2: Ignoring recovery information on journal
+ocfs2: Mounting device (7,3) on (node local, slot 0) with ordered data mode.
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 49180067 P4D 49180067 PUD 0 
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 18153 Comm: syz.3.487 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:strlen+0x4/0x30 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/string.c:418
+Code: f7 75 ec 31 c0 c3 cc cc cc cc 48 89 f8 c3 cc cc cc cc 0f 1f 40 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa <80> 3f 00 74 14 48 89 f8 48 83 c0 01 80 38 00 75 f7 48 29 f8 c3 cc
+RSP: 0018:ffffc90001cbbc90 EFLAGS: 00010216
+RAX: 0000000000001164 RBX: 0000000000000000 RCX: ffffc90004701000
+RDX: 0000000000080000 RSI: ffffffff81fb580c RDI: 0000000000000000
+RBP: ffff88804d3d0508 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000001 R11: 00000000000000c9 R12: ffff88804d3146c0
+R13: ffffc90001cbbd88 R14: ffff88805f46d000 R15: ffff88804d33b5b0
+FS:  00007f1f9c716640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 000000002077e000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ __fortify_strlen home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/fortify-string.h:234 [inline]
+ ocfs2_calc_xattr_init+0x79/0x530 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/ocfs2/xattr.c:627
+ ocfs2_mknod+0x5da/0x1a00 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/ocfs2/namei.c:327
+ ocfs2_mkdir+0x65/0x200 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/ocfs2/namei.c:654
+ vfs_mkdir+0x1a0/0x2c0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namei.c:4036
+ do_mkdirat+0x1b3/0x1f0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namei.c:4061
+ __do_sys_mkdirat home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namei.c:4076 [inline]
+ __se_sys_mkdirat home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namei.c:4074 [inline]
+ __x64_sys_mkdirat+0x71/0xa0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namei.c:4074
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f1f9b7ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f1f9c715f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000102
+RAX: ffffffffffffffda RBX: 00007f1f9b9f5fa0 RCX: 00007f1f9b7ae16d
+RDX: 00000000000001c0 RSI: 0000200000000080 RDI: ffffffffffffff9c
+RBP: 00007f1f9b8480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f1f9b9f6038 R14: 00007f1f9b9f5fa0 R15: 00007f1f9c6f6000
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+---[ end trace 0000000000000000 ]---
+RIP: 0010:strlen+0x4/0x30 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/string.c:418
+Code: f7 75 ec 31 c0 c3 cc cc cc cc 48 89 f8 c3 cc cc cc cc 0f 1f 40 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa <80> 3f 00 74 14 48 89 f8 48 83 c0 01 80 38 00 75 f7 48 29 f8 c3 cc
+RSP: 0018:ffffc90001cbbc90 EFLAGS: 00010216
+RAX: 0000000000001164 RBX: 0000000000000000 RCX: ffffc90004701000
+RDX: 0000000000080000 RSI: ffffffff81fb580c RDI: 0000000000000000
+RBP: ffff88804d3d0508 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000001 R11: 00000000000000c9 R12: ffff88804d3146c0
+R13: ffffc90001cbbd88 R14: ffff88805f46d000 R15: ffff88804d33b5b0
+FS:  00007f1f9c716640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 000000002077e000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	f7 75 ec             	divl   -0x14(%rbp)
+   3:	31 c0                	xor    %eax,%eax
+   5:	c3                   	ret
+   6:	cc                   	int3
+   7:	cc                   	int3
+   8:	cc                   	int3
+   9:	cc                   	int3
+   a:	48 89 f8             	mov    %rdi,%rax
+   d:	c3                   	ret
+   e:	cc                   	int3
+   f:	cc                   	int3
+  10:	cc                   	int3
+  11:	cc                   	int3
+  12:	0f 1f 40 00          	nopl   0x0(%rax)
+  16:	90                   	nop
+  17:	90                   	nop
+  18:	90                   	nop
+  19:	90                   	nop
+  1a:	90                   	nop
+  1b:	90                   	nop
+  1c:	90                   	nop
+  1d:	90                   	nop
+  1e:	90                   	nop
+  1f:	90                   	nop
+  20:	90                   	nop
+  21:	90                   	nop
+  22:	90                   	nop
+  23:	90                   	nop
+  24:	90                   	nop
+  25:	90                   	nop
+  26:	f3 0f 1e fa          	endbr64
+* 2a:	80 3f 00             	cmpb   $0x0,(%rdi) <-- trapping instruction
+  2d:	74 14                	je     0x43
+  2f:	48 89 f8             	mov    %rdi,%rax
+  32:	48 83 c0 01          	add    $0x1,%rax
+  36:	80 38 00             	cmpb   $0x0,(%rax)
+  39:	75 f7                	jne    0x32
+  3b:	48 29 f8             	sub    %rdi,%rax
+  3e:	c3                   	ret
+  3f:	cc                   	int3
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

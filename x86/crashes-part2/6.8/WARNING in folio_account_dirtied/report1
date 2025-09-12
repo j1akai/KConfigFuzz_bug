@@ -1,0 +1,48 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 59687 at include/linux/backing-dev.h:255 folio_account_dirtied+0x2cc/0x3a0 mm/page-writeback.c:2618
+Modules linked in:
+CPU: 1 PID: 59687 Comm: syz-executor Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:inode_to_wb include/linux/backing-dev.h:252 [inline]
+RIP: 0010:folio_account_dirtied+0x2cc/0x3a0 mm/page-writeback.c:2618
+Code: c4 08 5b 41 5c 41 5e 41 5f c3 e8 4f d7 e6 ff 4c 89 ff 4c 89 f6 48 83 c4 08 5b 41 5c 41 5e 41 5f e9 b9 dd 19 00 e8 34 d7 e6 ff <0f> 0b e9 91 fe ff ff e8 28 d7 e6 ff e9 ae 00 00 00 4c 89 fe 48 81
+RSP: 0018:ffffc90002b3fc88 EFLAGS: 00010093
+RAX: ffffffff815e6f8c RBX: 0000000000000000 RCX: ffff88803ac423c0
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 0000000000000000 R08: ffffffff815e6e17 R09: 0000000000000020
+R10: 0000000000000003 R11: 0000000000000000 R12: 0000000000000001
+R13: ffff888121e7c000 R14: ffff888104a48650 R15: ffffea00046d4600
+FS:  0000555557138500(0000) GS:ffff88813dc00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00005555571636b8 CR3: 0000000042e74000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ __folio_mark_dirty+0xa5/0x170 mm/page-writeback.c:2669
+ mark_buffer_dirty+0x10b/0x200 fs/buffer.c:1200
+ gfs2_unpin+0xac/0x350 fs/gfs2/lops.c:111
+ buf_lo_after_commit+0x7b/0xb0 fs/gfs2/lops.c:738
+ lops_after_commit fs/gfs2/lops.h:51 [inline]
+ gfs2_log_flush+0x7b8/0x1150 fs/gfs2/log.c:1122
+ gfs2_kill_sb+0x35/0x200 fs/gfs2/ops_fstype.c:1786
+ deactivate_locked_super+0x5a/0x90 fs/super.c:472
+ cleanup_mnt+0x1ba/0x220 fs/namespace.c:1267
+ task_work_run+0xc9/0x110 kernel/task_work.c:180
+ resume_user_mode_work include/linux/resume_user_mode.h:50 [inline]
+ exit_to_user_mode_loop kernel/entry/common.c:108 [inline]
+ exit_to_user_mode_prepare include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x111/0x260 kernel/entry/common.c:212
+ do_syscall_64+0x8e/0x150 arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f16b51afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007fff6fd66b88 EFLAGS: 00000202 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000064 RCX: 00007f16b51afb8b
+RDX: 0000000000000200 RSI: 0000000000000009 RDI: 00007fff6fd67d40
+RBP: 00007fff6fd66ba8 R08: 0000000000090800 R09: 000055555715b680
+R10: 0000000000000076 R11: 0000000000000202 R12: 00007f16b5247cae
+R13: 00007fff6fd67d40 R14: 00005555571384a8 R15: 000000000023669d
+ </TASK>

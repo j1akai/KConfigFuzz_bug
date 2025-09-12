@@ -1,0 +1,551 @@
+INFO: task kworker/u4:0:11 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/u4:0    state:D stack:12664 pid:11    tgid:11    ppid:2      flags:0x00004000
+Workqueue: nfc2_nci_rx_wq nci_rx_work
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ device_lock include/linux/device.h:990 [inline]
+ nfc_targets_found+0xe9/0x1e0 net/nfc/core.c:778
+ nci_rf_discover_ntf_packet+0x285/0x2b0 net/nfc/nci/ntf.c:390
+ nci_ntf_packet+0xda/0x370 net/nfc/nci/ntf.c:798
+ nci_rx_work+0xf0/0x1c0 net/nfc/nci/core.c:1526
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+INFO: task systemd-rfkill:53748 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:systemd-rfkill  state:D stack:12392 pid:53748 tgid:53748 ppid:1      flags:0x00004000
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ nci_close_device+0x71/0x240 net/nfc/nci/core.c:561
+ nci_dev_down+0x15/0x20 net/nfc/nci/core.c:639
+ nfc_dev_down+0xbf/0x120 net/nfc/core.c:161
+ nfc_rfkill_set_block+0x22/0x80 net/nfc/core.c:179
+ rfkill_set_block+0xa1/0x1e0 net/rfkill/core.c:346
+ rfkill_fop_write+0x201/0x340 net/rfkill/core.c:1313
+ vfs_write+0x162/0x530 fs/read_write.c:588
+ ksys_write+0xbf/0x170 fs/read_write.c:643
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f9c6c517513
+RSP: 002b:00007ffe97ab3b68 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007ffe97ab3b90 RCX: 00007f9c6c517513
+RDX: 0000000000000008 RSI: 00007ffe97ab3b98 RDI: 0000000000000003
+RBP: 0000558d1d2b2c20 R08: 0000000000000000 R09: 00000000ffffffff
+R10: 0000000000000008 R11: 0000000000000246 R12: 00007ffe97ab3b98
+R13: 0000000000000001 R14: 0000000000000001 R15: 0000558d1d2b1072
+ </TASK>
+INFO: task syz.7.9720:56085 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.7.9720      state:D stack:14072 pid:56085 tgid:56070 ppid:7940   flags:0x00004006
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_timeout+0x41/0x180 kernel/time/timer.c:2159
+ do_wait_for_common kernel/sched/completion.c:95 [inline]
+ __wait_for_common kernel/sched/completion.c:116 [inline]
+ wait_for_common kernel/sched/completion.c:127 [inline]
+ wait_for_completion+0xe8/0x180 kernel/sched/completion.c:148
+ __flush_workqueue+0x2fe/0x830 kernel/workqueue.c:3198
+ nci_close_device+0xea/0x240 net/nfc/nci/core.c:579
+ nci_unregister_device+0x20/0xd0 net/nfc/nci/core.c:1301
+ virtual_ncidev_close+0x18/0x40 drivers/nfc/virtual_ncidev.c:168
+ __fput+0x1d8/0x550 fs/file_table.c:376
+ task_work_run+0xc9/0x110 kernel/task_work.c:180
+ get_signal+0x9a3/0xa80 kernel/signal.c:2669
+ arch_do_signal_or_restart+0x2a/0x3c0 arch/x86/kernel/signal.c:310
+ exit_to_user_mode_loop kernel/entry/common.c:105 [inline]
+ exit_to_user_mode_prepare include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x85/0x260 kernel/entry/common.c:212
+ do_syscall_64+0x8e/0x150 arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f5beb1ae16d
+RSP: 002b:00007f5bebfa5f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000000
+RAX: fffffffffffffff2 RBX: 00007f5beb3f6090 RCX: 00007f5beb1ae16d
+RDX: 0000000000000064 RSI: 0000200000000840 RDI: 0000000000000003
+RBP: 00007f5beb2480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f5beb3f6128 R14: 00007f5beb3f6090 R15: 00007f5bebf86000
+ </TASK>
+INFO: task syz.7.9720:56092 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.7.9720      state:D stack:13448 pid:56092 tgid:56070 ppid:7940   flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ device_lock include/linux/device.h:990 [inline]
+ nfc_deactivate_target+0x2e/0x130 net/nfc/core.c:449
+ nfc_genl_activate_target+0x5d/0xb0 net/nfc/netlink.c:899
+ genl_family_rcv_msg_doit net/netlink/genetlink.c:1113 [inline]
+ genl_family_rcv_msg net/netlink/genetlink.c:1193 [inline]
+ genl_rcv_msg+0x50c/0x5a0 net/netlink/genetlink.c:1208
+ netlink_rcv_skb+0xfc/0x1f0 net/netlink/af_netlink.c:2543
+ genl_rcv+0x24/0x40 net/netlink/genetlink.c:1217
+ netlink_unicast_kernel net/netlink/af_netlink.c:1341 [inline]
+ netlink_unicast+0x3a4/0x470 net/netlink/af_netlink.c:1367
+ netlink_sendmsg+0x579/0x670 net/netlink/af_netlink.c:1908
+ sock_sendmsg_nosec net/socket.c:730 [inline]
+ __sock_sendmsg net/socket.c:745 [inline]
+ ____sys_sendmsg+0x260/0x3c0 net/socket.c:2584
+ ___sys_sendmsg net/socket.c:2638 [inline]
+ __sys_sendmsg+0x134/0x1c0 net/socket.c:2667
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f5beb1ae16d
+RSP: 002b:00007f5bebf84f98 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+RAX: ffffffffffffffda RBX: 00007f5beb3f6180 RCX: 00007f5beb1ae16d
+RDX: 0000000000000000 RSI: 0000200000000780 RDI: 0000000000000005
+RBP: 00007f5beb2480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f5beb3f6218 R14: 00007f5beb3f6180 R15: 00007f5bebf65000
+ </TASK>
+INFO: task syz.6.9726:56106 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.6.9726      state:D stack:14224 pid:56106 tgid:56104 ppid:7955   flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ genl_lock net/netlink/genetlink.c:33 [inline]
+ genl_op_lock net/netlink/genetlink.c:58 [inline]
+ genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+ netlink_rcv_skb+0xfc/0x1f0 net/netlink/af_netlink.c:2543
+ genl_rcv+0x24/0x40 net/netlink/genetlink.c:1217
+ netlink_unicast_kernel net/netlink/af_netlink.c:1341 [inline]
+ netlink_unicast+0x3a4/0x470 net/netlink/af_netlink.c:1367
+ netlink_sendmsg+0x579/0x670 net/netlink/af_netlink.c:1908
+ sock_sendmsg_nosec net/socket.c:730 [inline]
+ __sock_sendmsg net/socket.c:745 [inline]
+ __sys_sendto+0x1b7/0x260 net/socket.c:2191
+ __do_sys_sendto net/socket.c:2203 [inline]
+ __se_sys_sendto net/socket.c:2199 [inline]
+ __x64_sys_sendto+0x24/0x30 net/socket.c:2199
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f89945b06f6
+RSP: 002b:00007f8995425e00 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 00007f8995425f10 RCX: 00007f89945b06f6
+RDX: 0000000000000020 RSI: 00007f8995425f60 RDI: 0000000000000004
+RBP: 0000000000000000 R08: 00007f8995425e5c R09: 000000000000000c
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007f8995425f60 R14: 0000000000000004 R15: 0000000000000000
+ </TASK>
+INFO: task syz.2.9727:56118 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.2.9727      state:D stack:14224 pid:56118 tgid:56116 ppid:7939   flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ genl_lock net/netlink/genetlink.c:33 [inline]
+ genl_op_lock net/netlink/genetlink.c:58 [inline]
+ genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+ netlink_rcv_skb+0xfc/0x1f0 net/netlink/af_netlink.c:2543
+ genl_rcv+0x24/0x40 net/netlink/genetlink.c:1217
+ netlink_unicast_kernel net/netlink/af_netlink.c:1341 [inline]
+ netlink_unicast+0x3a4/0x470 net/netlink/af_netlink.c:1367
+ netlink_sendmsg+0x579/0x670 net/netlink/af_netlink.c:1908
+ sock_sendmsg_nosec net/socket.c:730 [inline]
+ __sock_sendmsg net/socket.c:745 [inline]
+ __sys_sendto+0x1b7/0x260 net/socket.c:2191
+ __do_sys_sendto net/socket.c:2203 [inline]
+ __se_sys_sendto net/socket.c:2199 [inline]
+ __x64_sys_sendto+0x24/0x30 net/socket.c:2199
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7fe961db06f6
+RSP: 002b:00007fe962beae00 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 00007fe962beaf10 RCX: 00007fe961db06f6
+RDX: 0000000000000020 RSI: 00007fe962beaf60 RDI: 0000000000000003
+RBP: 0000000000000000 R08: 00007fe962beae5c R09: 000000000000000c
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007fe962beaf60 R14: 0000000000000003 R15: 0000000000000000
+ </TASK>
+INFO: task syz.4.9737:56148 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.4.9737      state:D stack:14224 pid:56148 tgid:56147 ppid:7942   flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ genl_lock net/netlink/genetlink.c:33 [inline]
+ genl_op_lock net/netlink/genetlink.c:58 [inline]
+ genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+ netlink_rcv_skb+0xfc/0x1f0 net/netlink/af_netlink.c:2543
+ genl_rcv+0x24/0x40 net/netlink/genetlink.c:1217
+ netlink_unicast_kernel net/netlink/af_netlink.c:1341 [inline]
+ netlink_unicast+0x3a4/0x470 net/netlink/af_netlink.c:1367
+ netlink_sendmsg+0x579/0x670 net/netlink/af_netlink.c:1908
+ sock_sendmsg_nosec net/socket.c:730 [inline]
+ __sock_sendmsg net/socket.c:745 [inline]
+ __sys_sendto+0x1b7/0x260 net/socket.c:2191
+ __do_sys_sendto net/socket.c:2203 [inline]
+ __se_sys_sendto net/socket.c:2199 [inline]
+ __x64_sys_sendto+0x24/0x30 net/socket.c:2199
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f0927bb06f6
+RSP: 002b:00007f0928a76e00 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 00007f0928a76f10 RCX: 00007f0927bb06f6
+RDX: 0000000000000020 RSI: 00007f0928a76f60 RDI: 0000000000000003
+RBP: 0000000000000000 R08: 00007f0928a76e5c R09: 000000000000000c
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007f0928a76f60 R14: 0000000000000003 R15: 0000000000000000
+ </TASK>
+INFO: task syz.5.9763:56307 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.5.9763      state:D stack:14200 pid:56307 tgid:56306 ppid:55038  flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ genl_lock net/netlink/genetlink.c:33 [inline]
+ genl_op_lock net/netlink/genetlink.c:58 [inline]
+ genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+ netlink_rcv_skb+0xfc/0x1f0 net/netlink/af_netlink.c:2543
+ genl_rcv+0x24/0x40 net/netlink/genetlink.c:1217
+ netlink_unicast_kernel net/netlink/af_netlink.c:1341 [inline]
+ netlink_unicast+0x3a4/0x470 net/netlink/af_netlink.c:1367
+ netlink_sendmsg+0x579/0x670 net/netlink/af_netlink.c:1908
+ sock_sendmsg_nosec net/socket.c:730 [inline]
+ __sock_sendmsg net/socket.c:745 [inline]
+ __sys_sendto+0x1b7/0x260 net/socket.c:2191
+ __do_sys_sendto net/socket.c:2203 [inline]
+ __se_sys_sendto net/socket.c:2199 [inline]
+ __x64_sys_sendto+0x24/0x30 net/socket.c:2199
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f21eafb06f6
+RSP: 002b:00007f21ebdcce00 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 00007f21ebdccf10 RCX: 00007f21eafb06f6
+RDX: 000000000000001c RSI: 00007f21ebdccf60 RDI: 0000000000000003
+RBP: 0000000000000000 R08: 00007f21ebdcce5c R09: 000000000000000c
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007f21ebdccf60 R14: 0000000000000003 R15: 0000000000000000
+ </TASK>
+INFO: task syz.1.9774:56330 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.1.9774      state:D stack:13560 pid:56330 tgid:56329 ppid:7992   flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ rfkill_register+0x21/0x3d0 net/rfkill/core.c:1075
+ nfc_register_device+0xd5/0x1f0 net/nfc/core.c:1132
+ nci_register_device+0x3c6/0x440 net/nfc/nci/core.c:1266
+ virtual_ncidev_open+0x9d/0x100 drivers/nfc/virtual_ncidev.c:153
+ misc_open+0x1ad/0x1e0 drivers/char/misc.c:165
+ chrdev_open+0x276/0x2e0 fs/char_dev.c:414
+ do_dentry_open+0x4a1/0x900 fs/open.c:953
+ do_open fs/namei.c:3645 [inline]
+ path_openat+0x1285/0x1680 fs/namei.c:3802
+ do_filp_open+0xb9/0x1a0 fs/namei.c:3829
+ do_sys_openat2+0x91/0x100 fs/open.c:1404
+ do_sys_open fs/open.c:1419 [inline]
+ __do_sys_openat fs/open.c:1435 [inline]
+ __se_sys_openat fs/open.c:1430 [inline]
+ __x64_sys_openat+0xcb/0xf0 fs/open.c:1430
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7fa981dae16d
+RSP: 002b:00007fa982d22f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000101
+RAX: ffffffffffffffda RBX: 00007fa981ff5fa0 RCX: 00007fa981dae16d
+RDX: 0000000000000002 RSI: 0000200000000080 RDI: ffffffffffffff9c
+RBP: 00007fa981e480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fa981ff6038 R14: 00007fa981ff5fa0 R15: 00007fa982d03000
+ </TASK>
+INFO: task syz.1.9774:56335 blocked for more than 144 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.1.9774      state:D stack:14112 pid:56335 tgid:56329 ppid:7992   flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ genl_lock net/netlink/genetlink.c:33 [inline]
+ genl_op_lock net/netlink/genetlink.c:58 [inline]
+ genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+ netlink_rcv_skb+0xfc/0x1f0 net/netlink/af_netlink.c:2543
+ genl_rcv+0x24/0x40 net/netlink/genetlink.c:1217
+ netlink_unicast_kernel net/netlink/af_netlink.c:1341 [inline]
+ netlink_unicast+0x3a4/0x470 net/netlink/af_netlink.c:1367
+ netlink_sendmsg+0x579/0x670 net/netlink/af_netlink.c:1908
+ sock_sendmsg_nosec net/socket.c:730 [inline]
+ __sock_sendmsg net/socket.c:745 [inline]
+ __sys_sendto+0x1b7/0x260 net/socket.c:2191
+ __do_sys_sendto net/socket.c:2203 [inline]
+ __se_sys_sendto net/socket.c:2199 [inline]
+ __x64_sys_sendto+0x24/0x30 net/socket.c:2199
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7fa981db06f6
+RSP: 002b:00007fa982d00e00 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 00007fa982d00f10 RCX: 00007fa981db06f6
+RDX: 000000000000001c RSI: 00007fa982d00f60 RDI: 0000000000000005
+RBP: 0000000000000000 R08: 00007fa982d00e5c R09: 000000000000000c
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007fa982d00f60 R14: 0000000000000005 R15: 0000000000000000
+ </TASK>
+Future hung task reports are suppressed, see sysctl kernel.hung_task_warnings
+
+Showing all locks held in the system:
+3 locks held by kworker/u4:0/11:
+ #0: ffff888024fdc138 ((wq_completion)nfc2_nci_rx_wq){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff888024fdc138 ((wq_completion)nfc2_nci_rx_wq){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90000377e38 ((work_completion)(&ndev->rx_work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90000377e38 ((work_completion)(&ndev->rx_work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff888027e71100 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #2: ffff888027e71100 (&dev->mutex){....}-{3:3}, at: nfc_targets_found+0xe9/0x1e0 net/nfc/core.c:778
+2 locks held by kworker/u4:1/13:
+1 lock held by khungtaskd/33:
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: rcu_lock_acquire include/linux/rcupdate.h:298 [inline]
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: rcu_read_lock include/linux/rcupdate.h:750 [inline]
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: debug_show_all_locks+0x30/0x1a0 kernel/locking/lockdep.c:6614
+1 lock held by systemd-journal/4426:
+1 lock held by in:imklog/7502:
+ #0: ffff888010937ac8 (&f->f_pos_lock){+.+.}-{3:3}, at: __fdget_pos+0x112/0x160 fs/file.c:1191
+2 locks held by agetty/7848:
+ #0: ffff8880111260a0 (&tty->ldisc_sem){++++}-{0:0}, at: tty_ldisc_ref_wait+0x21/0x50 drivers/tty/tty_ldisc.c:243
+ #1: ffffc9000ceb72f0 (&ldata->atomic_read_lock){+.+.}-{3:3}, at: n_tty_read+0x1f7/0xa90 drivers/tty/n_tty.c:2201
+3 locks held by systemd-rfkill/53748:
+ #0: ffffffff86caebb0 (rfkill_global_mutex){+.+.}-{3:3}, at: rfkill_fop_write+0xff/0x340 net/rfkill/core.c:1297
+ #1: ffff888027e71100 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #1: ffff888027e71100 (&dev->mutex){....}-{3:3}, at: nfc_dev_down+0x22/0x120 net/nfc/core.c:143
+ #2: ffff888027e74350 (&ndev->req_lock){+.+.}-{3:3}, at: nci_close_device+0x71/0x240 net/nfc/nci/core.c:561
+1 lock held by syz.7.9720/56085:
+ #0: ffff888027e74350 (&ndev->req_lock){+.+.}-{3:3}, at: nci_close_device+0x71/0x240 net/nfc/nci/core.c:561
+3 locks held by syz.7.9720/56092:
+ #0: ffffffff86c0df18 (cb_lock){++++}-{3:3}, at: genl_rcv+0x15/0x40 net/netlink/genetlink.c:1216
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_lock net/netlink/genetlink.c:33 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_op_lock net/netlink/genetlink.c:58 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+ #2: ffff888027e71100 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #2: ffff888027e71100 (&dev->mutex){....}-{3:3}, at: nfc_deactivate_target+0x2e/0x130 net/nfc/core.c:449
+2 locks held by syz.6.9726/56106:
+ #0: ffffffff86c0df18 (cb_lock){++++}-{3:3}, at: genl_rcv+0x15/0x40 net/netlink/genetlink.c:1216
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_lock net/netlink/genetlink.c:33 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_op_lock net/netlink/genetlink.c:58 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+2 locks held by syz.2.9727/56118:
+ #0: ffffffff86c0df18 (cb_lock){++++}-{3:3}, at: genl_rcv+0x15/0x40 net/netlink/genetlink.c:1216
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_lock net/netlink/genetlink.c:33 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_op_lock net/netlink/genetlink.c:58 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+2 locks held by syz.4.9737/56148:
+ #0: ffffffff86c0df18 (cb_lock){++++}-{3:3}, at: genl_rcv+0x15/0x40 net/netlink/genetlink.c:1216
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_lock net/netlink/genetlink.c:33 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_op_lock net/netlink/genetlink.c:58 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+2 locks held by syz.5.9763/56307:
+ #0: ffffffff86c0df18 (cb_lock){++++}-{3:3}, at: genl_rcv+0x15/0x40 net/netlink/genetlink.c:1216
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_lock net/netlink/genetlink.c:33 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_op_lock net/netlink/genetlink.c:58 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+3 locks held by syz.1.9774/56330:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+ #1: ffff888042c4b100 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #1: ffff888042c4b100 (&dev->mutex){....}-{3:3}, at: nfc_register_device+0x83/0x1f0 net/nfc/core.c:1128
+ #2: ffffffff86caebb0 (rfkill_global_mutex){+.+.}-{3:3}, at: rfkill_register+0x21/0x3d0 net/rfkill/core.c:1075
+2 locks held by syz.1.9774/56335:
+ #0: ffffffff86c0df18 (cb_lock){++++}-{3:3}, at: genl_rcv+0x15/0x40 net/netlink/genetlink.c:1216
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_lock net/netlink/genetlink.c:33 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_op_lock net/netlink/genetlink.c:58 [inline]
+ #1: ffffffff86c0de28 (genl_mutex){+.+.}-{3:3}, at: genl_rcv_msg+0x72/0x5a0 net/netlink/genetlink.c:1207
+1 lock held by syz.0.9776/56341:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz.3.9777/56351:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz.3.9777/56352:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56356:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56357:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56359:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56360:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56362:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56365:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56366:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56368:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56370:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56374:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56375:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56376:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56378:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56380:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56382:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56384:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56389:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56393:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56394:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56395:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56397:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56400:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56402:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/56403:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+
+=============================================
+
+NMI backtrace for cpu 0
+CPU: 0 PID: 33 Comm: khungtaskd Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0xea/0x170 lib/dump_stack.c:106
+ nmi_cpu_backtrace+0x254/0x2a0 lib/nmi_backtrace.c:113
+ nmi_trigger_cpumask_backtrace+0x113/0x220 lib/nmi_backtrace.c:62
+ trigger_all_cpu_backtrace include/linux/nmi.h:160 [inline]
+ check_hung_uninterruptible_tasks kernel/hung_task.c:222 [inline]
+ watchdog+0xa1c/0xa60 kernel/hung_task.c:379
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 PID: 7503 Comm: rs:main Q:Reg Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:lock_is_held_type+0x1c/0x160 kernel/locking/lockdep.c:5810
+Code: e8 b9 91 29 fc 0f 0b eb bd e8 e0 fc ff ff 55 41 57 41 56 41 55 41 54 53 48 83 ec 10 65 48 8b 04 25 28 00 00 00 48 89 44 24 08 <bb> ff ff ff ff 83 3d 54 7a e2 01 00 0f 84 db 00 00 00 65 8b 05 fb
+RSP: 0018:ffffc9000c9ffa10 EFLAGS: 00000082
+RAX: bf5c5d62e9edf500 RBX: ffff88801568a190 RCX: 0000000000000000
+RDX: ffff888015a00000 RSI: 00000000ffffffff RDI: ffff88801568a190
+RBP: 0000000000000001 R08: ffffffff84ff7566 R09: 0000000000000001
+R10: ffffffff815c958f R11: 206e69616d3a7372 R12: 0000000000000003
+R13: ffffc9000c9ffb68 R14: ffff888023a426da R15: ffffc9000c9ffaf0
+FS:  00007f523b200700(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f5228029000 CR3: 000000001435c000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <NMI>
+ </NMI>
+ <TASK>
+ lock_is_held include/linux/lockdep.h:231 [inline]
+ xa_head include/linux/xarray.h:1200 [inline]
+ xas_start+0x10b/0x480 lib/xarray.c:190
+ xas_find_conflict+0x407/0x4e0 lib/xarray.c:1405
+ __filemap_add_folio+0x4d7/0xeb0 mm/filemap.c:878
+ filemap_add_folio+0x81/0x380 mm/filemap.c:938
+ __filemap_get_folio+0x3c1/0x9a0 mm/filemap.c:1927
+ ext4_da_write_begin+0x29a/0x430 fs/ext4/inode.c:2885
+ generic_perform_write+0x142/0x330 mm/filemap.c:3930
+ ext4_buffered_write_iter+0x15d/0x290 fs/ext4/file.c:299
+ ext4_file_write_iter+0x346/0xe00
+ call_write_iter include/linux/fs.h:2087 [inline]
+ new_sync_write fs/read_write.c:497 [inline]
+ vfs_write+0x4bd/0x530 fs/read_write.c:590
+ ksys_write+0xbf/0x170 fs/read_write.c:643
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f523c583fef
+Code: 89 54 24 18 48 89 74 24 10 89 7c 24 08 e8 29 fd ff ff 48 8b 54 24 18 48 8b 74 24 10 41 89 c0 8b 7c 24 08 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 31 44 89 c7 48 89 44 24 08 e8 5c fd ff ff 48
+RSP: 002b:00007f523b1ff860 EFLAGS: 00000293 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007f522802cd60 RCX: 00007f523c583fef
+RDX: 0000000000000752 RSI: 00007f522802d020 RDI: 000000000000000b
+RBP: 0000000000000752 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000293 R12: 00007f522802d020
+R13: 0000000000000000 R14: 000000000000005b R15: 00007f522802cd60
+ </TASK>

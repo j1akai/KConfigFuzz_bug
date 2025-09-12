@@ -1,0 +1,47 @@
+Bug 类型
+​​原子上下文调度（Scheduling in Atomic Context）​​ 或 ​​无效上下文睡眠（Sleeping Function Called from Invalid Context）​​
+
+内核明确禁止在“原子上下文”中调用可能引发调度的函数（如获取互斥锁、分配内存等）。这个警告就是内核检测到这种违规行为时触发的。
+
+触发条件
+这个 Bug 的触发需要两个条件同时满足：
+
+1.
+​​代码执行路径处于原子上下文​​：从日志中的 in_atomic(): 1, irqs_disabled(): 1, preempt_count: 1 可以明确看出：
+
+•
+in_atomic(): 1：当前处于原子上下文中。
+•
+irqs_disabled(): 1：​​本地 CPU 的中断已被禁用​​。
+•
+preempt_count: 1：​​内核抢占被禁用​​。
+这种状态（中断和抢占都被禁用）是典型的原子上下文，内核要求在此状态下的代码执行路径必须短小、快速，且​​绝对不能睡眠​​。
+2.
+​​在该上下文中调用了可能睡眠的函数​​：违规的函数调用链是：
+gsmld_write -> con_write -> do_con_write -> ​​console_lock​​
+console_lock() 函数内部会获取一个互斥锁（console_sem）。​​获取互斥锁的操作是可能引发调度的​​——如果锁已被其他线程持有，当前线程就会睡眠等待。
+
+​​简单来说：在一个不允许睡觉的地方（原子上下文），代码却试图去获取一个可能需要睡觉才能得到的锁（控制台锁）。​​
+
+根本原因分析
+调用栈清晰地展示了问题是如何发生的：
+
+1.
+​​起始点​​：用户空间程序 syz.3.8939 通过写文件操作（write系统调用）向一个 TTY 设备写入数据。
+
+•
+file_tty_write -> iterate_tty_write -> gsmld_write (这是 GSM 线路规程的写函数)
+2.
+​​获取锁​​：在 gsmld_write 函数的一开始（第3721行），它就获取了 &gsm->tx_lock。从日志 #2: ffff888057b91be0 (&gsm->tx_lock){....}-{2:2} 可以看出，这是一个​​自旋锁（spinlock）​​（{....}-{2:2} 是 spinlock 的标志）。
+
+•
+​​关键点​​：在 _raw_spin_lock_irqsave（获取自旋锁并禁用中断的函数）中，中断被禁用了（irqs_disabled(): 1），并且自旋锁的获取会增加 preempt_count（preempt_count: 1），从而禁用抢占。这就​​将当前执行上下文置为了原子上下文​​。
+3.
+​​违规调用​​：在持有自旋锁的原子上下文中，代码继续向下执行：
+
+•
+gsmld_write -> con_write -> do_con_write
+•
+在 do_con_write 中，它试图调用 console_lock() 来获取控制台输出锁，以便将内容打印到控制台。
+4.
+​​触发警告​​：console_lock() 函数包含 __might_resched() 检查，该检查会判断当前上下文是否允许重新调度。因为它检测到当前处于原子上下文（preempt_count != 0 且 irqs_disabled），所以立刻触发了这个 BUG 警告。

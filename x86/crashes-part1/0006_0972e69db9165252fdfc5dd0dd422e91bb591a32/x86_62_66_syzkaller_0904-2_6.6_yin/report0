@@ -1,0 +1,36 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 17677 at kernel/workqueue.c:1725 __queue_work+0x63b/0x860 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:1724
+Modules linked in:
+CPU: 0 PID: 17677 Comm: kworker/0:12 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events l2cap_info_timeout
+RIP: 0010:__queue_work+0x63b/0x860 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:1724
+Code: 13 00 31 ff 65 4c 8b 24 25 c0 d5 02 00 41 8b 5c 24 2c 83 e3 20 89 de e8 73 bb 13 00 85 db 0f 85 dc 00 00 00 e8 86 c2 13 00 90 <0f> 0b 90 e9 af fc ff ff e8 78 c2 13 00 90 0f 0b 90 e9 8f fc ff ff
+RSP: 0000:ffffc900040cfc48 EFLAGS: 00010093
+RAX: 0000000000000000 RBX: ffff88801c0d8cc0 RCX: 0000000000000000
+RDX: ffff8880155ee000 RSI: ffffffff812eda5a RDI: 0000000000000005
+RBP: ffff888074e709a8 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000200000 R11: ffffffff8484879c R12: ffff8880155ee000
+R13: ffff88801b61a200 R14: 0000000000000008 R15: ffff88801b61a200
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f2039329000 CR3: 0000000018108000 CR4: 0000000000752ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ queue_work_on+0x84/0x90 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:1834
+ l2cap_send_cmd+0x232/0x290 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:977
+ l2cap_send_conn_req+0xab/0xd0 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1286
+ l2cap_start_connection home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1514 [inline]
+ l2cap_start_connection+0x6c/0x150 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1506
+ l2cap_conn_start+0x3b2/0x500 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1661
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2630
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2703 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+---[ end trace 0000000000000000 ]---

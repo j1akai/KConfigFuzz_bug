@@ -1,0 +1,137 @@
+------------[ cut here ]------------
+DEBUG_LOCKS_WARN_ON(1)
+WARNING: CPU: 1 PID: 24280 at kernel/locking/lockdep.c:232 hlock_class kernel/locking/lockdep.c:232 [inline]
+WARNING: CPU: 1 PID: 24280 at kernel/locking/lockdep.c:232 check_wait_context kernel/locking/lockdep.c:4773 [inline]
+WARNING: CPU: 1 PID: 24280 at kernel/locking/lockdep.c:232 __lock_acquire+0x451/0xc10 kernel/locking/lockdep.c:5087
+Modules linked in:
+CPU: 1 PID: 24280 Comm: systemd-rfkill Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:hlock_class kernel/locking/lockdep.c:232 [inline]
+RIP: 0010:check_wait_context kernel/locking/lockdep.c:4773 [inline]
+RIP: 0010:__lock_acquire+0x451/0xc10 kernel/locking/lockdep.c:5087
+Code: 0f 84 4b fe ff ff 83 3d 3c 9c ae 05 00 0f 85 3e fe ff ff 31 ed 48 c7 c7 9d 72 09 86 48 c7 c6 79 83 2c 86 31 c0 e8 4f b3 f5 ff <0f> 0b e9 20 fe ff ff e8 d3 8c 42 01 45 31 f6 85 c0 0f 84 49 fe ff
+RSP: 0018:ffffc9000d39fb20 EFLAGS: 00010046
+RAX: 100695e00be10800 RBX: 000000000000000f RCX: ffff88804c1923c0
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 0000000000000000 R08: ffffffff812afc51 R09: 0000000000000000
+R10: ffffffff8502bf5b R11: ffff88804c1923c0 R12: ffff888062001d38
+R13: ffff88804c1923c0 R14: 0000000000000000 R15: ffff88804c192f18
+FS:  00007f4a35557900(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055b6bd9fb0a0 CR3: 0000000062902000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ lock_acquire+0xcb/0x1d0 kernel/locking/lockdep.c:5754
+ __flush_workqueue+0x95/0x830 kernel/workqueue.c:3146
+ nci_close_device+0x9f/0x240 net/nfc/nci/core.c:567
+ nci_dev_down+0x15/0x20 net/nfc/nci/core.c:639
+ nfc_dev_down+0xbf/0x120 net/nfc/core.c:161
+ nfc_rfkill_set_block+0x22/0x80 net/nfc/core.c:179
+ rfkill_set_block+0xa1/0x1e0 net/rfkill/core.c:346
+ rfkill_fop_write+0x201/0x340 net/rfkill/core.c:1313
+ vfs_write+0x162/0x530 fs/read_write.c:588
+ ksys_write+0xbf/0x170 fs/read_write.c:643
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f4a35917513
+Code: 8b 15 81 29 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 64 8b 04 25 18 00 00 00 85 c0 75 14 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 55 c3 0f 1f 40 00 48 83 ec 28 48 89 54 24 18
+RSP: 002b:00007fff620f4458 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007fff620f4480 RCX: 00007f4a35917513
+RDX: 0000000000000008 RSI: 00007fff620f4488 RDI: 0000000000000003
+RBP: 0000556d151ddc20 R08: 0000000000000000 R09: 00000000ffffffff
+R10: 0000000000000100 R11: 0000000000000246 R12: 00007fff620f4488
+R13: 0000000000000001 R14: 0000000000000001 R15: 0000556d151dc072
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+Modules linked in:
+CPU: 1 PID: 24280 Comm: systemd-rfkill Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__lock_acquire+0x451/0xc10
+Code: 0f 84 4b fe ff ff 83 3d 3c 9c ae 05 00 0f 85 3e fe ff ff 31 ed 48 c7 c7 9d 72 09 86 48 c7 c6 79 83 2c 86 31 c0 e8 4f b3 f5 ff <0f> 0b e9 20 fe ff ff e8 d3 8c 42 01 45 31 f6 85 c0 0f 84 49 fe ff
+RSP: 0018:ffffc9000d39fb20 EFLAGS: 00010046
+RAX: 100695e00be10800 RBX: 000000000000000f RCX: ffff88804c1923c0
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 0000000000000000 R08: ffffffff812afc51 R09: 0000000000000000
+R10: ffffffff8502bf5b R11: ffff88804c1923c0 R12: ffff888062001d38
+R13: ffff88804c1923c0 R14: 0000000000000000 R15: ffff88804c192f18
+FS:  00007f4a35557900(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055b6bd9fb0a0 CR3: 0000000062902000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ lock_acquire+0xcb/0x1d0
+ __flush_workqueue+0x95/0x830
+ nci_close_device+0x9f/0x240
+ nci_dev_down+0x15/0x20
+ nfc_dev_down+0xbf/0x120
+ nfc_rfkill_set_block+0x22/0x80
+ rfkill_set_block+0xa1/0x1e0
+ rfkill_fop_write+0x201/0x340
+ vfs_write+0x162/0x530
+ ksys_write+0xbf/0x170
+ do_syscall_64+0x82/0x150
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f4a35917513
+Code: 8b 15 81 29 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 64 8b 04 25 18 00 00 00 85 c0 75 14 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 55 c3 0f 1f 40 00 48 83 ec 28 48 89 54 24 18
+RSP: 002b:00007fff620f4458 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007fff620f4480 RCX: 00007f4a35917513
+RDX: 0000000000000008 RSI: 00007fff620f4488 RDI: 0000000000000003
+RBP: 0000556d151ddc20 R08: 0000000000000000 R09: 00000000ffffffff
+R10: 0000000000000100 R11: 0000000000000246 R12: 00007fff620f4488
+R13: 0000000000000001 R14: 0000000000000001 R15: 0000556d151dc072
+ </TASK>
+Kernel panic - not syncing: kernel: panic_on_warn set ...
+CPU: 1 PID: 24280 Comm: systemd-rfkill Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ dump_stack_lvl+0xea/0x170
+ panic+0x1c6/0x490
+ __warn+0x1f2/0x230
+ report_bug+0x1ae/0x270
+ handle_bug+0x3d/0x70
+ exc_invalid_op+0x16/0x40
+ asm_exc_invalid_op+0x16/0x20
+RIP: 0010:__lock_acquire+0x451/0xc10
+Code: 0f 84 4b fe ff ff 83 3d 3c 9c ae 05 00 0f 85 3e fe ff ff 31 ed 48 c7 c7 9d 72 09 86 48 c7 c6 79 83 2c 86 31 c0 e8 4f b3 f5 ff <0f> 0b e9 20 fe ff ff e8 d3 8c 42 01 45 31 f6 85 c0 0f 84 49 fe ff
+RSP: 0018:ffffc9000d39fb20 EFLAGS: 00010046
+RAX: 100695e00be10800 RBX: 000000000000000f RCX: ffff88804c1923c0
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 0000000000000000 R08: ffffffff812afc51 R09: 0000000000000000
+R10: ffffffff8502bf5b R11: ffff88804c1923c0 R12: ffff888062001d38
+R13: ffff88804c1923c0 R14: 0000000000000000 R15: ffff88804c192f18
+ lock_acquire+0xcb/0x1d0
+ __flush_workqueue+0x95/0x830
+ nci_close_device+0x9f/0x240
+ nci_dev_down+0x15/0x20
+ nfc_dev_down+0xbf/0x120
+ nfc_rfkill_set_block+0x22/0x80
+ rfkill_set_block+0xa1/0x1e0
+ rfkill_fop_write+0x201/0x340
+ vfs_write+0x162/0x530
+ ksys_write+0xbf/0x170
+ do_syscall_64+0x82/0x150
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f4a35917513
+Code: 8b 15 81 29 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 64 8b 04 25 18 00 00 00 85 c0 75 14 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 55 c3 0f 1f 40 00 48 83 ec 28 48 89 54 24 18
+RSP: 002b:00007fff620f4458 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007fff620f4480 RCX: 00007f4a35917513
+RDX: 0000000000000008 RSI: 00007fff620f4488 RDI: 0000000000000003
+RBP: 0000556d151ddc20 R08: 0000000000000000 R09: 00000000ffffffff
+R10: 0000000000000100 R11: 0000000000000246 R12: 00007fff620f4488
+R13: 0000000000000001 R14: 0000000000000001 R15: 0000556d151dc072
+ </TASK>
+Kernel Offset: disabled
+Rebooting in 86400 seconds..
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

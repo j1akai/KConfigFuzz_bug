@@ -1,0 +1,32 @@
+Bug 类型
+​​内核警告（WARNING）​​，由 ​​设备对象与 sysfs 属性组生命周期不同步​​ 导致，具体是 ​​试图移除一个不存在的 sysfs 属性组​​。
+
+触发条件与根本原因分析
+调用栈清晰地展示了问题发生的路径：
+
+1.
+​​操作上下文​​：内核工作队列线程 kworker/0:8 正在执行固件加载工作：
+
+•
+process_one_work -> request_firmware_work_func -> _request_firmware -> fw_load_from_user_helper -> ​​fw_load_sysfs_fallback​​
+2.
+​​固件回退机制​​：当内核无法直接加载固件时，会使用回退（fallback）机制，通过用户空间（udev）来加载。这个机制会​​创建一个临时的 sysfs 设备对象​​来与用户空间交互。
+
+3.
+​​清理过程​​：在固件加载完成或失败后（fw_load_sysfs_fallback 函数），代码需要​​删除这个临时设备​​：
+
+•
+device_del -> sysfs_remove_group
+4.
+​​警告触发点​​：在 sysfs_remove_group 函数中（fs/sysfs/group.c:282），代码试图从 kobject（内核对象）ueagle-atm!eagleII.fw 中移除名为 power 的属性组。然而，​​这个 power 属性组并不存在​​（或者已经被移除了），因此触发了 WARN_ON，打印出：
+sysfs group 'power' not found for kobject 'ueagle-atm!eagleII.fw'
+
+5.
+​​根本原因​​：
+
+•
+这个临时设备对象在创建时，可能​​没有成功添加 power 属性组​​（可能由于内存不足或其他错误）。
+•
+或者，power 属性组在之前的某个步骤中​​已经被意外移除​​了。
+•
+无论哪种情况，在清理时试图移除一个不存在的组，都表明设备创建和销毁路径中的状态管理存在缺陷。

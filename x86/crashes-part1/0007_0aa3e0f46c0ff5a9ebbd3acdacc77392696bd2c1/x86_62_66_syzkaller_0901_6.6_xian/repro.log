@@ -1,0 +1,627 @@
+Warning: Permanently added '[localhost]:11877' (ED25519) to the list of known hosts.
+2025/09/09 19:18:26 parsed 1 programs
+syzkaller login: [  199.085417][ T9360] cgroup: Unknown subsys name 'net'
+[  199.268780][ T9360] cgroup: Unknown subsys name 'rlimit'
+[  206.217428][ T9360] Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k 
+[  211.695679][ T2897] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  211.697833][ T2897] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  211.994239][ T2897] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  211.996918][ T2897] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  222.457804][ T9706] chnl_net:caif_netlink_parms(): no params data found
+[  222.678215][ T9706] bridge0: port 1(bridge_slave_0) entered blocking state
+[  222.682458][ T9706] bridge0: port 1(bridge_slave_0) entered disabled state
+[  222.684320][ T9706] bridge_slave_0: entered allmulticast mode
+[  222.687920][ T9706] bridge_slave_0: entered promiscuous mode
+[  222.697214][ T9706] bridge0: port 2(bridge_slave_1) entered blocking state
+[  222.699157][ T9706] bridge0: port 2(bridge_slave_1) entered disabled state
+[  222.702313][ T9706] bridge_slave_1: entered allmulticast mode
+[  222.705720][ T9706] bridge_slave_1: entered promiscuous mode
+[  222.818763][ T9706] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  222.828916][ T9706] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  222.954444][ T9706] team0: Port device team_slave_0 added
+[  222.964011][ T9706] team0: Port device team_slave_1 added
+[  223.073525][ T9706] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  223.075303][ T9706] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  223.084065][ T9706] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  223.095079][ T9706] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  223.097023][ T9706] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  223.104820][ T9706] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  223.258053][ T9706] hsr_slave_0: entered promiscuous mode
+[  223.264022][ T9706] hsr_slave_1: entered promiscuous mode
+[  223.818718][ T9706] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[  223.839883][ T9706] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[  223.850852][ T9706] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[  223.871262][ T9706] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[  224.211633][ T9706] 8021q: adding VLAN 0 to HW filter on device bond0
+[  224.283286][ T9706] 8021q: adding VLAN 0 to HW filter on device team0
+[  224.327591][   T60] bridge0: port 1(bridge_slave_0) entered blocking state
+[  224.329970][   T60] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  224.362453][   T60] bridge0: port 2(bridge_slave_1) entered blocking state
+[  224.364263][   T60] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  224.931765][ T9706] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  225.071847][ T9706] veth0_vlan: entered promiscuous mode
+[  225.104896][ T9706] veth1_vlan: entered promiscuous mode
+[  225.209416][ T9706] veth0_macvtap: entered promiscuous mode
+[  225.229448][ T9706] veth1_macvtap: entered promiscuous mode
+[  225.291896][ T9706] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  225.327555][ T9706] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  225.362107][ T9706] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  225.367533][ T9706] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  225.379279][ T9706] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  225.390634][ T9706] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  225.650240][ T1308] ieee802154 phy0 wpan0: encryption failed: -22
+[  225.653688][ T1308] ieee802154 phy1 wpan1: encryption failed: -22
+[  227.096839][T10096] Bluetooth: hci0: unexpected cc 0x0c03 length: 249 > 1
+[  227.113605][T10096] Bluetooth: hci0: unexpected cc 0x1003 length: 249 > 9
+[  227.129919][T10096] Bluetooth: hci0: unexpected cc 0x1001 length: 249 > 9
+[  227.138674][T10096] Bluetooth: hci0: unexpected cc 0x0c23 length: 249 > 4
+[  227.145274][T10096] Bluetooth: hci0: unexpected cc 0x0c25 length: 249 > 3
+[  227.148002][T10096] Bluetooth: hci0: unexpected cc 0x0c38 length: 249 > 2
+[  228.216784][   T11] netdevsim netdevsim0 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+2025/09/09 19:19:02 executed programs: 0
+[  229.324961][ T5117] Bluetooth: hci0: unexpected cc 0x0c03 length: 249 > 1
+[  229.349276][ T5117] Bluetooth: hci0: unexpected cc 0x1003 length: 249 > 9
+[  229.353362][ T5117] Bluetooth: hci0: unexpected cc 0x1001 length: 249 > 9
+[  229.357377][ T5117] Bluetooth: hci0: unexpected cc 0x0c23 length: 249 > 4
+[  229.366753][ T5117] Bluetooth: hci0: unexpected cc 0x0c25 length: 249 > 3
+[  229.370761][ T5117] Bluetooth: hci0: unexpected cc 0x0c38 length: 249 > 2
+[  229.717195][   T11] netdevsim netdevsim0 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  229.869729][   T11] netdevsim netdevsim0 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  229.925356][   T11] netdevsim netdevsim0 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  230.034519][T10163] chnl_net:caif_netlink_parms(): no params data found
+[  230.345795][T10163] bridge0: port 1(bridge_slave_0) entered blocking state
+[  230.347641][T10163] bridge0: port 1(bridge_slave_0) entered disabled state
+[  230.352566][T10163] bridge_slave_0: entered allmulticast mode
+[  230.356570][T10163] bridge_slave_0: entered promiscuous mode
+[  230.422482][T10163] bridge0: port 2(bridge_slave_1) entered blocking state
+[  230.429757][T10163] bridge0: port 2(bridge_slave_1) entered disabled state
+[  230.431567][T10163] bridge_slave_1: entered allmulticast mode
+[  230.474975][T10163] bridge_slave_1: entered promiscuous mode
+[  230.778743][T10163] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  230.795317][T10163] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  231.254761][T10163] team0: Port device team_slave_0 added
+[  231.316251][T10163] team0: Port device team_slave_1 added
+[  231.491947][T10096] Bluetooth: hci0: command 0x0409 tx timeout
+[  231.533826][T10163] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  231.535556][T10163] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  231.543385][T10163] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  231.548991][T10163] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  231.554378][T10163] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  231.562603][T10163] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  232.034936][T10163] hsr_slave_0: entered promiscuous mode
+[  232.046211][T10163] hsr_slave_1: entered promiscuous mode
+[  232.060158][T10163] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  232.062526][T10163] Cannot create hsr debugfs directory
+[  232.419127][   T11] hsr_slave_0: left promiscuous mode
+[  232.423042][   T11] hsr_slave_1: left promiscuous mode
+[  232.425858][   T11] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  232.427600][   T11] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  232.436612][   T11] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  232.438277][   T11] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  232.444055][   T11] bridge_slave_1: left allmulticast mode
+[  232.445488][   T11] bridge_slave_1: left promiscuous mode
+[  232.448043][   T11] bridge0: port 2(bridge_slave_1) entered disabled state
+[  232.463247][   T11] bridge_slave_0: left allmulticast mode
+[  232.465203][   T11] bridge_slave_0: left promiscuous mode
+[  232.469257][   T11] bridge0: port 1(bridge_slave_0) entered disabled state
+[  232.503119][   T11] veth1_macvtap: left promiscuous mode
+[  232.505898][   T11] veth0_macvtap: left promiscuous mode
+[  232.508170][   T11] veth1_vlan: left promiscuous mode
+[  232.510727][   T11] veth0_vlan: left promiscuous mode
+[  232.993661][   T11] team0 (unregistering): Port device team_slave_1 removed
+[  233.014679][   T11] team0 (unregistering): Port device team_slave_0 removed
+[  233.043388][   T11] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  233.061844][   T11] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  233.222430][   T11] bond0 (unregistering): Released all slaves
+[  233.562045][T10096] Bluetooth: hci0: command 0x041b tx timeout
+[  234.821705][T10163] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[  234.863205][T10163] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[  234.888250][T10163] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[  234.917004][T10163] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[  235.123427][T10163] 8021q: adding VLAN 0 to HW filter on device bond0
+[  235.156617][T10163] 8021q: adding VLAN 0 to HW filter on device team0
+[  235.172235][   T30] bridge0: port 1(bridge_slave_0) entered blocking state
+[  235.173949][   T30] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  235.196388][   T23] bridge0: port 2(bridge_slave_1) entered blocking state
+[  235.198083][   T23] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  235.640410][T10096] Bluetooth: hci0: command 0x040f tx timeout
+[  235.879118][T10163] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  235.999198][T10163] veth0_vlan: entered promiscuous mode
+[  236.061890][T10163] veth1_vlan: entered promiscuous mode
+[  236.134931][T10163] veth0_macvtap: entered promiscuous mode
+[  236.162844][T10163] veth1_macvtap: entered promiscuous mode
+[  236.204565][T10163] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  236.248438][T10163] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  236.268506][T10163] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  236.294736][T10163] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  236.303378][T10163] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  236.306207][T10163] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  236.611482][   T83] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  236.613225][   T83] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  236.872562][   T26] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  236.875035][   T26] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  237.124209][T10558] syz.0.17[10558]: memfd_create() called without MFD_EXEC or MFD_NOEXEC_SEAL set
+2025/09/09 19:19:10 executed programs: 2
+[  237.328774][T10558] loop0: detected capacity change from 0 to 8192
+[  237.360988][T10558] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  237.364007][T10558] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  237.366179][T10558] REISERFS (device loop0): using ordered data mode
+[  237.367569][T10558] reiserfs: using flush barriers
+[  237.374841][T10558] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  237.379264][T10558] REISERFS (device loop0): checking transaction log (loop0)
+[  237.570029][T10558] REISERFS (device loop0): Using rupasov hash to sort names
+[  237.575488][T10558] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  237.588852][T10558] 
+[  237.589455][T10558] ======================================================
+[  237.590903][T10558] WARNING: possible circular locking dependency detected
+[  237.592326][T10558] 6.6.0 #1 Not tainted
+[  237.593183][T10558] ------------------------------------------------------
+[  237.594728][T10558] syz.0.17/10558 is trying to acquire lock:
+[  237.597033][T10558] ffff88804e468410 (sb_writers#15){.+.+}-{0:0}, at: mnt_want_write_file+0x5d/0x1f0
+[  237.602019][T10558] 
+[  237.602019][T10558] but task is already holding lock:
+[  237.603542][T10558] ffff888057080090 (&sbi->lock){+.+.}-{3:3}, at: reiserfs_write_lock+0x77/0xd0
+[  237.605446][T10558] 
+[  237.605446][T10558] which lock already depends on the new lock.
+[  237.605446][T10558] 
+[  237.607576][T10558] 
+[  237.607576][T10558] the existing dependency chain (in reverse order) is:
+[  237.609398][T10558] 
+[  237.609398][T10558] -> #2 (&sbi->lock){+.+.}-{3:3}:
+[  237.610952][T10558]        lock_acquire+0x1a9/0x400
+[  237.612020][T10558]        __mutex_lock+0x131/0xd70
+[  237.615767][T10558]        reiserfs_write_lock+0x77/0xd0
+[  237.616929][T10558]        reiserfs_lookup+0x15c/0x570
+[  237.618152][T10558]        __lookup_slow+0x286/0x3e0
+[  237.619313][T10558]        lookup_one_len+0x430/0x690
+[  237.620526][T10558]        reiserfs_lookup_privroot+0x85/0x180
+[  237.621848][T10558]        reiserfs_fill_super+0x21c0/0x2620
+[  237.623142][T10558]        mount_bdev+0x232/0x2f0
+[  237.624389][T10558]        legacy_get_tree+0xea/0x180
+[  237.626146][T10558]        vfs_get_tree+0x88/0x280
+[  237.627834][T10558]        do_new_mount+0x289/0xad0
+[  237.629571][T10558]        __se_sys_mount+0x2e3/0x3d0
+[  237.631315][T10558]        do_syscall_64+0x2b/0x50
+[  237.632996][T10558]        entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[  237.635115][T10558] 
+[  237.635115][T10558] -> #1 (&type->i_mutex_dir_key#8){+.+.}-{3:3}:
+[  237.637753][T10558]        lock_acquire+0x1a9/0x400
+[  237.639448][T10558]        down_write+0x95/0x210
+[  237.640851][T10558]        path_openat+0x7d0/0x3120
+[  237.642470][T10558]        do_filp_open+0x275/0x500
+[  237.644155][T10558]        do_sys_openat2+0x13a/0x1c0
+[  237.645919][T10558]        __x64_sys_openat+0x243/0x290
+[  237.647761][T10558]        do_syscall_64+0x2b/0x50
+[  237.649476][T10558]        entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[  237.651618][T10558] 
+[  237.651618][T10558] -> #0 (sb_writers#15){.+.+}-{0:0}:
+[  237.654114][T10558]        validate_chain+0x185a/0x6510
+[  237.655828][T10558]        __lock_acquire+0x1302/0x2050
+[  237.656964][T10558]        lock_acquire+0x1a9/0x400
+[  237.658020][T10558]        sb_start_write+0x4d/0x1c0
+[  237.659096][T10558]        mnt_want_write_file+0x5d/0x1f0
+[  237.660259][T10558]        reiserfs_ioctl+0x172/0x2f0
+[  237.661429][T10558]        __se_sys_ioctl+0xfe/0x170
+[  237.662533][T10558]        do_syscall_64+0x2b/0x50
+[  237.663572][T10558]        entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[  237.665382][T10558] 
+[  237.665382][T10558] other info that might help us debug this:
+[  237.665382][T10558] 
+[  237.668702][T10558] Chain exists of:
+[  237.668702][T10558]   sb_writers#15 --> &type->i_mutex_dir_key#8 --> &sbi->lock
+[  237.668702][T10558] 
+[  237.673046][T10558]  Possible unsafe locking scenario:
+[  237.673046][T10558] 
+[  237.675471][T10558]        CPU0                    CPU1
+[  237.677247][T10558]        ----                    ----
+[  237.679006][T10558]   lock(&sbi->lock);
+[  237.680383][T10558]                                lock(&type->i_mutex_dir_key#8);
+[  237.682951][T10558]                                lock(&sbi->lock);
+[  237.685124][T10558]   rlock(sb_writers#15);
+[  237.686349][T10558] 
+[  237.686349][T10558]  *** DEADLOCK ***
+[  237.686349][T10558] 
+[  237.688037][T10558] 1 lock held by syz.0.17/10558:
+[  237.689072][T10558]  #0: ffff888057080090 (&sbi->lock){+.+.}-{3:3}, at: reiserfs_write_lock+0x77/0xd0
+[  237.691078][T10558] 
+[  237.691078][T10558] stack backtrace:
+[  237.692305][T10558] CPU: 0 PID: 10558 Comm: syz.0.17 Not tainted 6.6.0 #1
+[  237.693744][T10558] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  237.695834][T10558] Call Trace:
+[  237.696578][T10558]  <TASK>
+[  237.697222][T10558]  dump_stack_lvl+0x1e3/0x2d0
+[  237.698246][T10558]  ? nf_tcp_handle_invalid+0x650/0x650
+[  237.699426][T10558]  ? print_circular_bug+0x13e/0x1c0
+[  237.700541][T10558]  check_noncircular+0x36e/0x4a0
+[  237.701595][T10558]  ? print_deadlock_bug+0x640/0x640
+[  237.702695][T10558]  ? lockdep_lock+0x11d/0x2a0
+[  237.703690][T10558]  ? _find_first_zero_bit+0xe8/0x110
+[  237.704998][T10558]  validate_chain+0x185a/0x6510
+[  237.706226][T10558]  ? reacquire_held_locks+0x680/0x680
+[  237.707575][T10558]  ? mark_lock+0x9a/0x350
+[  237.708703][T10558]  ? mark_lock+0x9a/0x350
+[  237.709809][T10558]  ? do_vfs_ioctl+0x1acc/0x2aa0
+[  237.711027][T10558]  ? __lock_acquire+0x1302/0x2050
+[  237.712273][T10558]  ? mark_lock+0x9a/0x350
+[  237.713242][T10558]  __lock_acquire+0x1302/0x2050
+[  237.714307][T10558]  lock_acquire+0x1a9/0x400
+[  237.715303][T10558]  ? mnt_want_write_file+0x5d/0x1f0
+[  237.716431][T10558]  ? read_lock_is_recursive+0x10/0x10
+[  237.717582][T10558]  ? __might_sleep+0xc0/0xc0
+[  237.718566][T10558]  ? mutex_lock_nested+0x10/0x10
+[  237.719626][T10558]  sb_start_write+0x4d/0x1c0
+[  237.720632][T10558]  ? mnt_want_write_file+0x5d/0x1f0
+[  237.720704][T10096] Bluetooth: hci0: command 0x0419 tx timeout
+[  237.721737][T10558]  mnt_want_write_file+0x5d/0x1f0
+[  237.724097][T10558]  reiserfs_ioctl+0x172/0x2f0
+[  237.725100][T10558]  ? __se_sys_ioctl+0xf3/0x170
+[  237.726130][T10558]  ? reiserfs_unpack+0x390/0x390
+[  237.727176][T10558]  __se_sys_ioctl+0xfe/0x170
+[  237.728176][T10558]  do_syscall_64+0x2b/0x50
+[  237.729153][T10558]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+[  237.730418][T10558] RIP: 0033:0x7f1747bae16d
+[  237.731376][T10558] Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  237.735335][T10558] RSP: 002b:00007ffd8621c5d8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  237.737082][T10558] RAX: ffffffffffffffda RBX: 00007f1747df5fa0 RCX: 00007f1747bae16d
+[  237.738712][T10558] RDX: 0000000000000000 RSI: 0000000040087602 RDI: 0000000000000004
+[  237.740340][T10558] RBP: 00007f1747c480f0 R08: 0000000000000000 R09: 0000000000000000
+[  237.741996][T10558] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[  237.743630][T10558] R13: 00007f1747df5fac R14: 00007f1747df5fa0 R15: 0000000000000000
+[  237.745275][T10558]  </TASK>
+[  237.965987][T10565] loop0: detected capacity change from 0 to 8192
+[  237.971158][T10565] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  237.973877][T10565] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  237.975991][T10565] REISERFS (device loop0): using ordered data mode
+[  237.977356][T10565] reiserfs: using flush barriers
+[  237.982618][T10565] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  237.986621][T10565] REISERFS (device loop0): checking transaction log (loop0)
+[  238.072019][T10565] REISERFS (device loop0): Using rupasov hash to sort names
+[  238.074035][T10565] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  238.297080][T10571] loop0: detected capacity change from 0 to 8192
+[  238.301337][T10571] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  238.304080][T10571] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  238.306280][T10571] REISERFS (device loop0): using ordered data mode
+[  238.307668][T10571] reiserfs: using flush barriers
+[  238.313646][T10571] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  238.317674][T10571] REISERFS (device loop0): checking transaction log (loop0)
+[  238.424776][T10571] REISERFS (device loop0): Using rupasov hash to sort names
+[  238.426866][T10571] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  238.655633][T10578] loop0: detected capacity change from 0 to 8192
+[  238.669460][T10578] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  238.672211][T10578] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  238.674236][T10578] REISERFS (device loop0): using ordered data mode
+[  238.675637][T10578] reiserfs: using flush barriers
+[  238.678738][T10578] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  238.684760][T10578] REISERFS (device loop0): checking transaction log (loop0)
+[  238.818150][T10578] REISERFS (device loop0): Using rupasov hash to sort names
+[  238.821010][T10578] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  239.148700][T10584] loop0: detected capacity change from 0 to 8192
+[  239.152824][T10584] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  239.156335][T10584] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  239.158486][T10584] REISERFS (device loop0): using ordered data mode
+[  239.163996][T10584] reiserfs: using flush barriers
+[  239.167216][T10584] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  239.172191][T10584] REISERFS (device loop0): checking transaction log (loop0)
+[  239.281618][T10584] REISERFS (device loop0): Using rupasov hash to sort names
+[  239.283904][T10584] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  239.507410][T10591] loop0: detected capacity change from 0 to 8192
+[  239.513065][T10591] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  239.516148][T10591] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  239.518257][T10591] REISERFS (device loop0): using ordered data mode
+[  239.519771][T10591] reiserfs: using flush barriers
+[  239.525474][T10591] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  239.532086][T10591] REISERFS (device loop0): checking transaction log (loop0)
+[  239.657407][T10591] REISERFS (device loop0): Using rupasov hash to sort names
+[  239.660759][T10591] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  239.844298][T10598] loop0: detected capacity change from 0 to 8192
+[  239.848324][T10598] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  239.856990][T10598] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  239.859082][T10598] REISERFS (device loop0): using ordered data mode
+[  239.860628][T10598] reiserfs: using flush barriers
+[  239.863583][T10598] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  239.871029][T10598] REISERFS (device loop0): checking transaction log (loop0)
+[  239.964816][T10598] REISERFS (device loop0): Using rupasov hash to sort names
+[  239.966900][T10598] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  240.142408][T10604] loop0: detected capacity change from 0 to 8192
+[  240.146118][T10604] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  240.149633][T10604] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  240.152072][T10604] REISERFS (device loop0): using ordered data mode
+[  240.153682][T10604] reiserfs: using flush barriers
+[  240.159941][T10604] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  240.164976][T10604] REISERFS (device loop0): checking transaction log (loop0)
+[  240.330098][T10604] REISERFS (device loop0): Using rupasov hash to sort names
+[  240.332428][T10604] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  240.548687][T10610] loop0: detected capacity change from 0 to 8192
+[  240.553285][T10610] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  240.556421][T10610] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  240.558769][T10610] REISERFS (device loop0): using ordered data mode
+[  240.563090][T10610] reiserfs: using flush barriers
+[  240.566407][T10610] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  240.571488][T10610] REISERFS (device loop0): checking transaction log (loop0)
+[  240.671719][T10610] REISERFS (device loop0): Using rupasov hash to sort names
+[  240.674152][T10610] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  240.848859][T10616] loop0: detected capacity change from 0 to 8192
+[  240.852991][T10616] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  240.856213][T10616] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  240.858639][T10616] REISERFS (device loop0): using ordered data mode
+[  240.860504][T10616] reiserfs: using flush barriers
+[  240.866124][T10616] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  240.870839][T10616] REISERFS (device loop0): checking transaction log (loop0)
+[  240.965234][T10616] REISERFS (device loop0): Using rupasov hash to sort names
+[  240.967999][T10616] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  241.247337][T10622] loop0: detected capacity change from 0 to 8192
+[  241.254866][T10622] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  241.258117][T10622] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  241.262411][T10622] REISERFS (device loop0): using ordered data mode
+[  241.263938][T10622] reiserfs: using flush barriers
+[  241.267406][T10622] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  241.273814][T10622] REISERFS (device loop0): checking transaction log (loop0)
+[  241.381114][T10622] REISERFS (device loop0): Using rupasov hash to sort names
+[  241.383081][T10622] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  241.707526][T10628] loop0: detected capacity change from 0 to 8192
+[  241.722901][T10628] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  241.725609][T10628] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  241.727613][T10628] REISERFS (device loop0): using ordered data mode
+[  241.728981][T10628] reiserfs: using flush barriers
+[  241.734428][T10628] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  241.738350][T10628] REISERFS (device loop0): checking transaction log (loop0)
+[  241.853251][T10628] REISERFS (device loop0): Using rupasov hash to sort names
+[  241.855254][T10628] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  242.090768][T10635] loop0: detected capacity change from 0 to 8192
+[  242.097252][T10635] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  242.101741][T10635] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  242.105101][T10635] REISERFS (device loop0): using ordered data mode
+[  242.107337][T10635] reiserfs: using flush barriers
+[  242.112250][T10635] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  242.118839][T10635] REISERFS (device loop0): checking transaction log (loop0)
+[  242.272056][T10635] REISERFS (device loop0): Using rupasov hash to sort names
+[  242.275342][T10635] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+2025/09/09 19:19:16 executed programs: 15
+[  242.533760][T10641] loop0: detected capacity change from 0 to 8192
+[  242.537821][T10641] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  242.540645][T10641] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  242.542738][T10641] REISERFS (device loop0): using ordered data mode
+[  242.544097][T10641] reiserfs: using flush barriers
+[  242.547689][T10641] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  242.552310][T10641] REISERFS (device loop0): checking transaction log (loop0)
+[  242.650490][T10641] REISERFS (device loop0): Using rupasov hash to sort names
+[  242.652576][T10641] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  242.844465][T10647] loop0: detected capacity change from 0 to 8192
+[  242.848353][T10647] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  242.851322][T10647] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  242.853413][T10647] REISERFS (device loop0): using ordered data mode
+[  242.854980][T10647] reiserfs: using flush barriers
+[  242.859171][T10647] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  242.864130][T10647] REISERFS (device loop0): checking transaction log (loop0)
+[  242.956017][T10647] REISERFS (device loop0): Using rupasov hash to sort names
+[  242.958488][T10647] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  243.298528][T10652] loop0: detected capacity change from 0 to 8192
+[  243.302414][T10652] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  243.305082][T10652] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  243.307119][T10652] REISERFS (device loop0): using ordered data mode
+[  243.308476][T10652] reiserfs: using flush barriers
+[  243.311906][T10652] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  243.315901][T10652] REISERFS (device loop0): checking transaction log (loop0)
+[  243.409478][T10652] REISERFS (device loop0): Using rupasov hash to sort names
+[  243.411525][T10652] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  243.643228][T10659] loop0: detected capacity change from 0 to 8192
+[  243.649232][T10659] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  243.654115][T10659] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  243.657189][T10659] REISERFS (device loop0): using ordered data mode
+[  243.664990][T10659] reiserfs: using flush barriers
+[  243.670714][T10659] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  243.677108][T10659] REISERFS (device loop0): checking transaction log (loop0)
+[  243.831127][T10659] REISERFS (device loop0): Using rupasov hash to sort names
+[  243.834429][T10659] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  244.111357][T10666] loop0: detected capacity change from 0 to 8192
+[  244.117278][T10666] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  244.122258][T10666] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  244.125369][T10666] REISERFS (device loop0): using ordered data mode
+[  244.127473][T10666] reiserfs: using flush barriers
+[  244.133857][T10666] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  244.138946][T10666] REISERFS (device loop0): checking transaction log (loop0)
+[  244.230323][T10666] REISERFS (device loop0): Using rupasov hash to sort names
+[  244.232608][T10666] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  244.445871][T10672] loop0: detected capacity change from 0 to 8192
+[  244.454289][T10672] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  244.457012][T10672] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  244.461826][T10672] REISERFS (device loop0): using ordered data mode
+[  244.463312][T10672] reiserfs: using flush barriers
+[  244.466267][T10672] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  244.471951][T10672] REISERFS (device loop0): checking transaction log (loop0)
+[  244.578026][T10672] REISERFS (device loop0): Using rupasov hash to sort names
+[  244.580112][T10672] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  244.755596][T10678] loop0: detected capacity change from 0 to 8192
+[  244.760698][T10678] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  244.763694][T10678] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  244.765767][T10678] REISERFS (device loop0): using ordered data mode
+[  244.767137][T10678] reiserfs: using flush barriers
+[  244.771988][T10678] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  244.776124][T10678] REISERFS (device loop0): checking transaction log (loop0)
+[  244.869676][T10678] REISERFS (device loop0): Using rupasov hash to sort names
+[  244.871721][T10678] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  245.078737][T10684] loop0: detected capacity change from 0 to 8192
+[  245.101514][T10684] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  245.104648][T10684] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  245.106694][T10684] REISERFS (device loop0): using ordered data mode
+[  245.108053][T10684] reiserfs: using flush barriers
+[  245.111388][T10684] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  245.116457][T10684] REISERFS (device loop0): checking transaction log (loop0)
+[  245.210728][T10684] REISERFS (device loop0): Using rupasov hash to sort names
+[  245.212801][T10684] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  245.385374][T10688] loop0: detected capacity change from 0 to 8192
+[  245.391113][T10688] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  245.394075][T10688] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  245.396388][T10688] REISERFS (device loop0): using ordered data mode
+[  245.398086][T10688] reiserfs: using flush barriers
+[  245.402045][T10688] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  245.407115][T10688] REISERFS (device loop0): checking transaction log (loop0)
+[  245.507627][T10688] REISERFS (device loop0): Using rupasov hash to sort names
+[  245.509733][T10688] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  245.696891][T10695] loop0: detected capacity change from 0 to 8192
+[  245.709748][T10695] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  245.712554][T10695] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  245.714617][T10695] REISERFS (device loop0): using ordered data mode
+[  245.715968][T10695] reiserfs: using flush barriers
+[  245.718923][T10695] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  245.726361][T10695] REISERFS (device loop0): checking transaction log (loop0)
+[  245.816738][T10695] REISERFS (device loop0): Using rupasov hash to sort names
+[  245.818880][T10695] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  245.998650][T10702] loop0: detected capacity change from 0 to 8192
+[  246.002982][T10702] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  246.006317][T10702] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  246.008922][T10702] REISERFS (device loop0): using ordered data mode
+[  246.011024][T10702] reiserfs: using flush barriers
+[  246.014053][T10702] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  246.017934][T10702] REISERFS (device loop0): checking transaction log (loop0)
+[  246.126345][T10702] REISERFS (device loop0): Using rupasov hash to sort names
+[  246.128352][T10702] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  246.336460][T10708] loop0: detected capacity change from 0 to 8192
+[  246.351769][T10708] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  246.354516][T10708] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  246.356502][T10708] REISERFS (device loop0): using ordered data mode
+[  246.357828][T10708] reiserfs: using flush barriers
+[  246.366223][T10708] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  246.371558][T10708] REISERFS (device loop0): checking transaction log (loop0)
+[  246.474933][T10708] REISERFS (device loop0): Using rupasov hash to sort names
+[  246.476998][T10708] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  246.695733][T10714] loop0: detected capacity change from 0 to 8192
+[  246.701408][T10714] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  246.705358][T10714] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  246.708593][T10714] REISERFS (device loop0): using ordered data mode
+[  246.711008][T10714] reiserfs: using flush barriers
+[  246.718977][T10714] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  246.727719][T10714] REISERFS (device loop0): checking transaction log (loop0)
+[  246.872750][T10714] REISERFS (device loop0): Using rupasov hash to sort names
+[  246.876922][T10714] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+[  247.172120][T10720] loop0: detected capacity change from 0 to 8192
+[  247.180131][T10720] REISERFS warning:  read_super_block: reiserfs filesystem is deprecated and scheduled to be removed from the kernel in 2025
+[  247.183507][T10720] REISERFS (device loop0): found reiserfs format "3.6" with non-standard journal
+[  247.185511][T10720] REISERFS (device loop0): using ordered data mode
+[  247.186869][T10720] reiserfs: using flush barriers
+[  247.189872][T10720] REISERFS (device loop0): journal params: device loop0, size 512, journal first block 18, max trans len 256, max batch 225, max commit age 30, max trans age 30
+[  247.193845][T10720] REISERFS (device loop0): checking transaction log (loop0)
+[  247.300450][T10720] REISERFS (device loop0): Using rupasov hash to sort names
+[  247.302491][T10720] REISERFS (device loop0): Created .reiserfs_priv - reserved for xattr storage.
+2025/09/09 19:19:21 executed programs: 29
+
+VM DIAGNOSIS:
+03:19:11  Registers:
+info registers vcpu 0
+RAX=1ffffffff302dc05 RBX=ffffffff9816e580 RCX=0000000000000000 RDX=00000000000003f9
+RSI=0000000000000000 RDI=0000000000000020 RBP=0000000000000000 RSP=ffffc90007d36f58
+R8 =ffffffff84e2d611 R9 =fffff52000fa6dcc R10=dffffc0000000000 R11=fffff52000fa6dcc
+R12=ffffffff8e2aa260 R13=dffffc0000000000 R14=00000000000003f9 R15=dffffc0000000000
+RIP=ffffffff84e2d641 RFL=00000006 [-----P-] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 000055555649b500 ffffffff 00c00000
+GS =0000 ffff88802be00000 ffffffff 00c00000
+LDT=0000 0000000000000000 ffffffff 00c00000
+TR =0040 fffffe0000003000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe0000001000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=0000200000000040 CR3=0000000027f6b000 CR4=00750ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=00000000ffffffff Opmask01=0000000000000014 Opmask02=000000000000003f Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffd8621c3f0 0000003000000028
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffd8621c440
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffd8621c440 00007ffd8621c440
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffd8621c47f
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000055555649b500 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007f174892d660
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007f1747ba4878 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 7366726573696572
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000500060006
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 b8d44426ffff0000 0055300000000000 00000000000001b1 d1a75bf984000000
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 00058e0760fc0000 0000000000000000 0000000000000000 0000000000000000
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 1
+RAX=000055eb6f7adf38 RBX=000055eb6f7adf4b RCX=0000000080000000 RDX=ffff888043c80000
+RSI=0000000000000009 RDI=0000000000000007 RBP=0000000000000009 RSP=ffffc900021afc68
+R8 =ffffffff8200697d R9 =1ffff11008790000 R10=dffffc0000000000 R11=ffffed1008790001
+R12=0000000000000009 R13=ffffffff8bd93660 R14=dffffc0000000000 R15=ffffc900021afe90
+RIP=ffffffff818e50dd RFL=00040246 [---Z-P-] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00007f8d6bf498c0 ffffffff 00c00000
+GS =0000 ffff88807ec00000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe000004a000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe0000048000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=000055ccb84849a0 CR3=0000000045f60000 CR4=00750ee0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=00000000dfd81820 Opmask01=0000000000000410 Opmask02=0000000000000000 Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 e7bee49158ec0c41 dc4a60c9d12dc5c3
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0048544150564544
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffff0f0e0d0c0b 0a09080706050403
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 696e656420737365 636341002f737973
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff00 ff000000000000ff
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff00 ff000000000000ff
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff00 ffffffffffff0000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 6464318f0b035474 6464318f0b0e0664
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 64646464646464d5 6464646464645455
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2f2f2f2f2f2f2f2f 2f2f2f2f2f2f2f2f 2f2f2f2f2f2f2f2f 2f2f2f2f2f2f2f2f
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007f8d6c14cbe0 000055eb6f67ac00 30706f6f6c2f6b63 6f6c622f6c617574
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0030706f6f6c2f6b 636f6c622f6c6175 747269762f736563 697665642f737973
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00000000ff000000 ffffffff00000002 000055eb6f6b25e0
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 000055eb6f6f2490 0000000000000000 0000000000000000 0000000000000000
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000400000001 000055eb6f6a61c0 000055eb6f6aab30 0000000200000000
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 000055eb6f6a1740 000055eb6f6b2900 00000001ffffffff 000055eb6f679bd0
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000110 0000000000000100 ffff020202010102 0000000100000000
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000

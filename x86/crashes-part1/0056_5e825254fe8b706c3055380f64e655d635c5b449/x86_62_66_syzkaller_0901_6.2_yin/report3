@@ -1,0 +1,27 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 9281 at net/bluetooth/hci_conn.c:646 hci_conn_timeout+0x1b6/0x2d0
+Modules linked in:
+CPU: 0 PID: 9281 Comm: kworker/u7:3 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: hci2 hci_conn_timeout
+RIP: 0010:hci_conn_timeout+0x1b6/0x2d0 net/bluetooth/hci_conn.c:646
+Code: 48 89 df 5b 41 5c 41 5e 41 5f 5d e9 54 a7 ff ff e8 df 9c ab f7 48 89 df 5b 41 5c 41 5e 41 5f 5d e9 ff fd 00 00 e8 ca 9c ab f7 <0f> 0b e9 c4 fe ff ff 89 e9 80 e1 07 80 c1 03 38 c1 0f 8c 74 fe ff
+RSP: 0018:ffffc9000e167c10 EFLAGS: 00010293
+RAX: ffffffff89dfce56 RBX: ffff888045428000 RCX: ffff8880439ec880
+RDX: 0000000000000000 RSI: 00000000ffffffff RDI: 0000000000000000
+RBP: 00000000ffffffff R08: ffffffff89dfccf9 R09: ffffed1008a85003
+R10: ffffed1008a85003 R11: 1ffff11008a85002 R12: dffffc0000000000
+R13: ffff888027c40008 R14: ffff88802116b900 R15: dffffc0000000000
+FS:  0000000000000000(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00005555568f4638 CR3: 000000006de1e000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ process_one_work+0x877/0xdb0 kernel/workqueue.c:2289
+ worker_thread+0xb14/0x1330 kernel/workqueue.c:2436
+ kthread+0x26c/0x300 kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 arch/x86/entry/entry_64.S:308
+ </TASK>

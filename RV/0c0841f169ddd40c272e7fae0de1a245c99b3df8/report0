@@ -1,0 +1,26 @@
+------------[ cut here ]------------
+WARNING: CPU: 3 PID: 15761 at io_uring/io_uring.c:2921 io_ring_exit_work+0x3d0/0xad4
+Modules linked in:
+CPU: 3 UID: 0 PID: 15761 Comm: kworker/u20:6 Not tainted 6.16.0-dirty #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: iou_exit io_ring_exit_work
+epc : io_ring_exit_work+0x3d0/0xad4
+ ra : io_ring_exit_work+0x3d0/0xad4
+epc : ffffffff8001687c ra : ffffffff8001687c sp : ff20000004e47890
+ gp : ffffffff89cc9100 tp : ff60000081ec4ec0 t0 : 00000000000000c8
+ t1 : ffe3ffff009c8eec t2 : ffffffff8683e54c s0 : ff20000004e47a80
+ s1 : ff600000cb5586c8 a0 : 0000000000000007 a1 : 0000000000000000
+ a2 : fffffffffffffffd a3 : 0000000000000002 a4 : 0000000000000000
+ a5 : ff60000081ec5ec0 a6 : 0000000000000003 a7 : ff20000004e47767
+ s2 : ff600000cb558000 s3 : ff20000004e47a00 s4 : dfffffff00000000
+ s5 : ffffffff882141c0 s6 : fffffffffffffffd s7 : ff600000df7a7c00
+ s8 : 000000010002e90e s9 : ff600000cb558310 s10: 1fec0000196ab000
+ s11: ff600000cb5585a0 t3 : ffffffff91085400 t4 : ffe3ffff009c8eec
+ t5 : ffe3ffff009c8eed t6 : 0000000000001fff
+status: 0000000000000120 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff8001687c>] io_ring_exit_work+0x3d0/0xad4
+[<ffffffff801c0560>] process_one_work+0x930/0x1db0
+[<ffffffff801c1f1a>] worker_thread+0x53a/0xcac
+[<ffffffff801e1450>] kthread+0x37c/0x7a0
+[<ffffffff800698a0>] ret_from_fork_kernel+0x28/0xb30
+[<ffffffff8620dc9a>] ret_from_fork_kernel_asm+0x16/0x18

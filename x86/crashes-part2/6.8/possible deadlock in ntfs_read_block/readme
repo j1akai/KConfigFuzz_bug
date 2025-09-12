@@ -1,0 +1,50 @@
+Bug 类型
+​​循环锁依赖（Circular Locking Dependency）​​ 导致的 ​​潜在死锁（Potential Deadlock）​​。
+
+触发条件与根本原因分析
+Lockdep 的报告极其详细地描述了问题：
+
+1. 当前任务和锁状态
+•
+​​任务​​：kworker/u6:10/35147（一个写回工作队列线程）
+•
+​​已持有锁​​：&ni->mrec_lock（一个互斥锁，在 map_mft_record 中获取）
+•
+​​试图获取的锁​​：&rl->lock（一个读写信号量，在 ntfs_read_block 中获取）
+2. 依赖链分析（Lockdep 的核心发现）
+Lockdep 发现系统中存在一个​​锁的获取顺序环​​，构成了死锁的条件：
+
+•
+​​依赖链 #1（历史路径）​​：&rl->lock -> &ni->mrec_lock
+
+•
+这个依赖记录在之前某个时间点发生过：某个任务先持有 &rl->lock，然后又获取了 &ni->mrec_lock。
+•
+调用栈显示这个历史路径是通过 truncate -> ntfs_truncate -> map_mft_record 发生的。
+•
+​​依赖链 #0（当前路径）​​：&ni->mrec_lock -> &rl->lock
+
+•
+当前任务已经持有 &ni->mrec_lock，现在正试图获取 &rl->lock。
+•
+调用栈显示当前路径是通过写回机制：wb_workfn -> __writeback_single_inode -> __ntfs_write_inode -> write_mft_record -> ... -> ntfs_read_block。
+3. 死锁场景推演
+Lockdep 推断出的死锁场景如下：
+
+       CPU0                    CPU1
+       ----                    ----
+  lock(&ni->mrec_lock);
+                               lock(&rl->lock);
+                               lock(&ni->mrec_lock); <-- CPU1 等待 CPU0 释放 &ni->mrec_lock
+  lock(&rl->lock); <-- CPU0 等待 CPU1 释放 &rl->lock
+​​* DEADLOCK ​​*
+两个CPU互相等待对方释放自己所需的锁，导致系统永久挂起。
+
+4. 根本原因
+NTFS 驱动中存在​​两个不同的代码路径，以相反的顺序获取这两个锁​​：
+
+1.
+​​路径A（truncate）​​：先拿 &rl->lock，再拿 &ni->mrec_lock。
+2.
+​​路径B（writeback）​​：先拿 &ni->mrec_lock，再拿 &rl->lock。
+当这两个路径并发执行时，就满足了死锁的所有四个必要条件，从而可能引发真正的死锁。

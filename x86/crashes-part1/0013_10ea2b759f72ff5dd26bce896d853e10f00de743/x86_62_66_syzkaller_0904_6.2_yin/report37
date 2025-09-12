@@ -1,0 +1,55 @@
+unregister_netdevice: waiting for syz_tun to become free. Usage count = 3
+leaked reference.
+ __netdev_tracker_alloc -all/include/linux/netdevice.h:4018 [inline]
+ netdev_hold -all/include/linux/netdevice.h:4047 [inline]
+ dst_init+0xbc/0x1b0 -all/net/core/dst.c:52
+ dst_alloc+0x87/0x140 -all/net/core/dst.c:96
+ rt_dst_alloc+0x3a/0x110 -all/net/ipv4/route.c:1633
+ __mkroute_output -all/net/ipv4/route.c:2592 [inline]
+ ip_route_output_key_hash_rcu+0x435/0x1060 -all/net/ipv4/route.c:2814
+ ip_route_output_key_hash -all/net/ipv4/route.c:2643 [inline]
+ __ip_route_output_key -all/include/net/route.h:140 [inline]
+ ip_route_output_flow+0x91/0x130 -all/net/ipv4/route.c:2873
+ ip_route_output_key -all/include/net/route.h:156 [inline]
+ geneve_link_config.part.0+0xd2/0x1d0 -all/drivers/net/geneve.c:1634
+ geneve_link_config -all/drivers/net/geneve.c:1628 [inline]
+ geneve_newlink+0x139/0x150 -all/drivers/net/geneve.c:1687
+ rtnl_newlink_create -all/net/core/rtnetlink.c:3407 [inline]
+ __rtnl_newlink+0xa04/0xd70 -all/net/core/rtnetlink.c:3624
+ rtnl_newlink+0x4d/0x80 -all/net/core/rtnetlink.c:3637
+ rtnetlink_rcv_msg+0x22b/0x5b0 -all/net/core/rtnetlink.c:6141
+ netlink_rcv_skb+0x91/0x1e0 -all/net/netlink/af_netlink.c:2574
+ netlink_unicast_kernel -all/net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 -all/net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 -all/net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec -all/net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 -all/net/socket.c:734
+ __sys_sendto+0x16c/0x220 -all/net/socket.c:2120
+ __do_sys_sendto -all/net/socket.c:2132 [inline]
+ __se_sys_sendto -all/net/socket.c:2128 [inline]
+ __x64_sys_sendto+0x28/0x30 -all/net/socket.c:2128
+leaked reference.
+ __netdev_tracker_alloc -all/include/linux/netdevice.h:4018 [inline]
+ netdev_hold -all/include/linux/netdevice.h:4047 [inline]
+ netdev_hold -all/include/linux/netdevice.h:4042 [inline]
+ fib_check_nh_nongw -all/net/ipv4/fib_semantics.c:1238 [inline]
+ fib_check_nh+0x147/0x280 -all/net/ipv4/fib_semantics.c:1258
+ fib_create_info+0xf50/0x1b40 -all/net/ipv4/fib_semantics.c:1553
+ fib_table_insert+0x100/0xa60 -all/net/ipv4/fib_trie.c:1236
+ fib_magic+0x199/0x1d0 -all/net/ipv4/fib_frontend.c:1101
+ fib_add_ifaddr+0x1c6/0x2a0 -all/net/ipv4/fib_frontend.c:1138
+ fib_netdev_event+0x142/0x2c0 -all/net/ipv4/fib_frontend.c:1483
+ notifier_call_chain -all/kernel/notifier.c:87 [inline]
+ raw_notifier_call_chain+0x61/0xa0 -all/kernel/notifier.c:455
+ call_netdevice_notifiers_info+0x78/0xe0 -all/net/core/dev.c:1936
+ call_netdevice_notifiers_extack -all/net/core/dev.c:1974 [inline]
+ call_netdevice_notifiers -all/net/core/dev.c:1988 [inline]
+ __dev_notify_flags+0xb2/0x1b0 -all/net/core/dev.c:8561
+ dev_change_flags+0x71/0x90 -all/net/core/dev.c:8599
+ do_setlink+0x482/0x1ce0 -all/net/core/rtnetlink.c:2827
+ __rtnl_newlink+0x77a/0xd70 -all/net/core/rtnetlink.c:3590
+ rtnl_newlink+0x4d/0x80 -all/net/core/rtnetlink.c:3637
+ rtnetlink_rcv_msg+0x22b/0x5b0 -all/net/core/rtnetlink.c:6141
+ netlink_rcv_skb+0x91/0x1e0 -all/net/netlink/af_netlink.c:2574
+ netlink_unicast_kernel -all/net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 -all/net/netlink/af_netlink.c:1365

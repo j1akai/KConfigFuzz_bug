@@ -1,0 +1,68 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 23 at net/mptcp/protocol.c:1001 __mptcp_clean_una+0x333/0x480 home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:1001
+Modules linked in:
+CPU: 1 PID: 23 Comm: kworker/1:0 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events mptcp_worker
+RIP: 0010:__mptcp_clean_una+0x333/0x480 home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:1001
+Code: 61 5c fc 49 8d b4 24 40 04 00 00 4c 89 e7 e8 34 99 36 ff 49 c7 84 24 f8 05 00 00 00 00 00 00 e9 b0 fe ff ff e8 0e 61 5c fc 90 <0f> 0b 90 49 8b ac 24 e8 05 00 00 49 8b 9c 24 90 05 00 00 48 89 ef
+RSP: 0018:ffffc900003dfd50 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: ffffffff84e6e333
+RDX: ffff88804020e000 RSI: ffffffff84e6e5c2 RDI: 0000000000000001
+RBP: ffff888021600000 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000007 R12: ffff88802587ca40
+R13: ffff88802587d0c0 R14: 0000000000000000 R15: ffff88802587d0c0
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007faed471e540 CR3: 000000005dc42000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ __mptcp_clean_una_wakeup home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:1049 [inline]
+ mptcp_clean_una_wakeup home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:1056 [inline]
+ __mptcp_retrans+0x5c/0x5c0 home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:2588
+ mptcp_worker+0x4c0/0x800 home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:2740
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2633
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2706 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2787
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+---[ end trace 0000000000000000 ]---
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 23 at net/mptcp/protocol.c:1016 __mptcp_clean_una+0x471/0x480 home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:1016
+Modules linked in:
+CPU: 1 PID: 23 Comm: kworker/1:0 Tainted: G        W          6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events mptcp_worker
+RIP: 0010:__mptcp_clean_una+0x471/0x480 home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:1016
+Code: 50 01 00 00 29 c3 b8 00 00 00 00 0f 48 d8 41 29 dd e9 3a fe ff ff e8 de 5f 5c fc 90 0f 0b 90 e9 eb fc ff ff e8 d0 5f 5c fc 90 <0f> 0b 90 e9 dd fc ff ff 0f 1f 80 00 00 00 00 90 90 90 90 90 90 90
+RSP: 0018:ffffc900003dfd50 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff888021600000 RCX: ffffffff84e6e670
+RDX: ffff88804020e000 RSI: ffffffff84e6e700 RDI: 0000000000000001
+RBP: 28ba76c8f97022ac R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000007 R12: ffff88802587ca40
+R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007faed471e540 CR3: 000000005dc42000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ __mptcp_clean_una_wakeup home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:1049 [inline]
+ mptcp_clean_una_wakeup home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:1056 [inline]
+ __mptcp_retrans+0x5c/0x5c0 home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:2588
+ mptcp_worker+0x4c0/0x800 home/jiakai/62_66_amd_0904/linux68/linux/net/mptcp/protocol.c:2740
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2633
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2706 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2787
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+---[ end trace 0000000000000000 ]---

@@ -1,0 +1,119 @@
+assertion failed: list_empty(&fs_info->delayed_iputs), in fs/btrfs/disk-io.c:4367
+------------[ cut here ]------------
+kernel BUG at fs/btrfs/disk-io.c:4367!
+invalid opcode: 0000 [#1] PREEMPT SMP KASAN
+CPU: 0 PID: 22269 Comm: syz-executor Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:close_ctree+0x911/0xd50 home/jiakai/62_66_amd_0901/linux66/linux/fs/btrfs/disk-io.c:4367
+Code: 1d f9 ff ff e8 80 aa 7b f6 48 c7 c7 e0 56 9b 8b 48 c7 c6 c0 85 9b 8b 48 c7 c2 10 b5 9b 8b b9 0f 11 00 00 31 c0 e8 ff 9a ff ff <0f> 0b e8 58 aa 7b f6 48 c7 c7 e0 56 9b 8b 48 c7 c6 60 86 9b 8b 48
+RSP: 0018:ffffc9000205fb80 EFLAGS: 00010246
+RAX: 0000000000000051 RBX: ffff888060d68d48 RCX: 48447e3b7c704400
+RDX: 0000000000000000 RSI: 0000000080000000 RDI: 0000000000000000
+RBP: ffffc9000205fd20 R08: ffffffff8171480d R09: 1ffff9200040bf10
+R10: dffffc0000000000 R11: fffff5200040bf11 R12: ffff888060d68fb0
+R13: ffff888060d68000 R14: 1ffff1100c1ad25e R15: 0000000000000000
+FS:  0000555555f41500(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fc4cf1bc000 CR3: 000000002308c000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ generic_shutdown_super+0x136/0x2c0 home/jiakai/62_66_amd_0901/linux66/linux/fs/super.c:693
+ kill_anon_super+0x36/0x70 home/jiakai/62_66_amd_0901/linux66/linux/fs/super.c:1292
+ btrfs_kill_super+0x3d/0x50 home/jiakai/62_66_amd_0901/linux66/linux/fs/btrfs/super.c:2144
+ deactivate_locked_super+0xa7/0x100 home/jiakai/62_66_amd_0901/linux66/linux/fs/super.c:481
+ cleanup_mnt+0x3ec/0x480 home/jiakai/62_66_amd_0901/linux66/linux/fs/namespace.c:1254
+ task_work_run+0x243/0x300 home/jiakai/62_66_amd_0901/linux66/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0901/linux66/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop+0x134/0x160 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:171
+ exit_to_user_mode_prepare+0xad/0x110 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x2e/0x70 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:296
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7ff4167afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffcc81bd4f8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007ff4167afb8b
+RDX: 00007ff41664fd10 RSI: 0000000000000009 RDI: 00007ffcc81bd5b0
+RBP: 00007ffcc81bd5b0 R08: 0000000000000000 R09: 00007ffcc81bd380
+R10: 0000555555f546f3 R11: 0000000000000246 R12: 00007ff416847cae
+R13: 00007ffcc81be680 R14: 0000555555f54600 R15: 00000000000cd74a
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:close_ctree+0x911/0xd50 home/jiakai/62_66_amd_0901/linux66/linux/fs/btrfs/disk-io.c:4367
+Code: 1d f9 ff ff e8 80 aa 7b f6 48 c7 c7 e0 56 9b 8b 48 c7 c6 c0 85 9b 8b 48 c7 c2 10 b5 9b 8b b9 0f 11 00 00 31 c0 e8 ff 9a ff ff <0f> 0b e8 58 aa 7b f6 48 c7 c7 e0 56 9b 8b 48 c7 c6 60 86 9b 8b 48
+RSP: 0018:ffffc9000205fb80 EFLAGS: 00010246
+RAX: 0000000000000051 RBX: ffff888060d68d48 RCX: 48447e3b7c704400
+RDX: 0000000000000000 RSI: 0000000080000000 RDI: 0000000000000000
+RBP: ffffc9000205fd20 R08: ffffffff8171480d R09: 1ffff9200040bf10
+R10: dffffc0000000000 R11: fffff5200040bf11 R12: ffff888060d68fb0
+R13: ffff888060d68000 R14: 1ffff1100c1ad25e R15: 0000000000000000
+FS:  0000555555f41500(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fc4cf1bc000 CR3: 000000002308c000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+invalid opcode: 0000 [#1] PREEMPT SMP KASAN
+CPU: 0 PID: 22269 Comm: syz-executor Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:close_ctree+0x911/0xd50
+Code: 1d f9 ff ff e8 80 aa 7b f6 48 c7 c7 e0 56 9b 8b 48 c7 c6 c0 85 9b 8b 48 c7 c2 10 b5 9b 8b b9 0f 11 00 00 31 c0 e8 ff 9a ff ff <0f> 0b e8 58 aa 7b f6 48 c7 c7 e0 56 9b 8b 48 c7 c6 60 86 9b 8b 48
+RSP: 0018:ffffc9000205fb80 EFLAGS: 00010246
+RAX: 0000000000000051 RBX: ffff888060d68d48 RCX: 48447e3b7c704400
+RDX: 0000000000000000 RSI: 0000000080000000 RDI: 0000000000000000
+RBP: ffffc9000205fd20 R08: ffffffff8171480d R09: 1ffff9200040bf10
+R10: dffffc0000000000 R11: fffff5200040bf11 R12: ffff888060d68fb0
+R13: ffff888060d68000 R14: 1ffff1100c1ad25e R15: 0000000000000000
+FS:  0000555555f41500(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fc4cf1bc000 CR3: 000000002308c000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ generic_shutdown_super+0x136/0x2c0
+ kill_anon_super+0x36/0x70
+ btrfs_kill_super+0x3d/0x50
+ deactivate_locked_super+0xa7/0x100
+ cleanup_mnt+0x3ec/0x480
+ task_work_run+0x243/0x300
+ exit_to_user_mode_loop+0x134/0x160
+ exit_to_user_mode_prepare+0xad/0x110
+ syscall_exit_to_user_mode+0x2e/0x70
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7ff4167afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffcc81bd4f8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007ff4167afb8b
+RDX: 00007ff41664fd10 RSI: 0000000000000009 RDI: 00007ffcc81bd5b0
+RBP: 00007ffcc81bd5b0 R08: 0000000000000000 R09: 00007ffcc81bd380
+R10: 0000555555f546f3 R11: 0000000000000246 R12: 00007ff416847cae
+R13: 00007ffcc81be680 R14: 0000555555f54600 R15: 00000000000cd74a
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:close_ctree+0x911/0xd50
+Code: 1d f9 ff ff e8 80 aa 7b f6 48 c7 c7 e0 56 9b 8b 48 c7 c6 c0 85 9b 8b 48 c7 c2 10 b5 9b 8b b9 0f 11 00 00 31 c0 e8 ff 9a ff ff <0f> 0b e8 58 aa 7b f6 48 c7 c7 e0 56 9b 8b 48 c7 c6 60 86 9b 8b 48
+RSP: 0018:ffffc9000205fb80 EFLAGS: 00010246
+RAX: 0000000000000051 RBX: ffff888060d68d48 RCX: 48447e3b7c704400
+RDX: 0000000000000000 RSI: 0000000080000000 RDI: 0000000000000000
+RBP: ffffc9000205fd20 R08: ffffffff8171480d R09: 1ffff9200040bf10
+R10: dffffc0000000000 R11: fffff5200040bf11 R12: ffff888060d68fb0
+R13: ffff888060d68000 R14: 1ffff1100c1ad25e R15: 0000000000000000
+FS:  0000555555f41500(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fc4cf1bc000 CR3: 000000002308c000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

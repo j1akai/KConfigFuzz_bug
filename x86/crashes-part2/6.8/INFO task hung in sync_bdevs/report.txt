@@ -1,0 +1,153 @@
+INFO: task syz.1.2774:29578 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.1.2774      state:D stack:13096 pid:29578 tgid:29576 ppid:7946   flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ sync_bdevs+0xfa/0x1d0 block/bdev.c:1097
+ ksys_sync+0x66/0xb0 fs/sync.c:105
+ __do_sys_sync+0xa/0x10 fs/sync.c:113
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f827b1ae16d
+RSP: 002b:00007f827c0b0f98 EFLAGS: 00000246 ORIG_RAX: 00000000000000a2
+RAX: ffffffffffffffda RBX: 00007f827b3f5fa0 RCX: 00007f827b1ae16d
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 00007f827b2480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f827b3f6038 R14: 00007f827b3f5fa0 R15: 00007f827c091000
+ </TASK>
+
+Showing all locks held in the system:
+5 locks held by kworker/u4:0/11:
+ #0: ffff88800be40538 ((wq_completion)netns){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be40538 ((wq_completion)netns){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: 
+ffffc90000377e38
+ (net_cleanup_work){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ (net_cleanup_work){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffffffff86bf2998 (pernet_ops_rwsem){++++}-{3:3}, at: cleanup_net+0x46/0x6d0 net/core/net_namespace.c:580
+ #3: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: sit_exit_batch_net+0x38/0x370 net/ipv6/sit.c:1883
+ #4: ffffffff86806af8 (rcu_state.exp_mutex){+.+.}-{3:3}, at: exp_funnel_lock kernel/rcu/tree_exp.h:324 [inline]
+ #4: ffffffff86806af8 (rcu_state.exp_mutex){+.+.}-{3:3}, at: synchronize_rcu_expedited+0x217/0x510 kernel/rcu/tree_exp.h:995
+3 locks held by kworker/u4:1/13:
+2 locks held by kworker/u6:0/26:
+ #0: ffff88800a06ab38 ((wq_completion)events_unbound){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800a06ab38 ((wq_completion)events_unbound){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc900003fbe38 (connector_reaper_work){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc900003fbe38 (connector_reaper_work){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+1 lock held by khungtaskd/33:
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: rcu_lock_acquire include/linux/rcupdate.h:298 [inline]
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: rcu_read_lock include/linux/rcupdate.h:750 [inline]
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: debug_show_all_locks+0x30/0x1a0 kernel/locking/lockdep.c:6614
+5 locks held by kworker/0:2/770:
+ #0: ffff88800be4f738 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be4f738 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc900031d7e38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc900031d7e38 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff8880435a1990 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #2: ffff8880435a1990 (&dev->mutex){....}-{3:3}, at: hub_event+0x88/0x5e0 drivers/usb/core/hub.c:5811
+ #3: ffff888013a2f990 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #3: ffff888013a2f990 (&dev->mutex){....}-{3:3}, at: __device_attach+0x3b/0x240 drivers/base/dd.c:1005
+ #4: ffff88802413c960 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #4: ffff88802413c960 (&dev->mutex){....}-{3:3}, at: __device_attach+0x3b/0x240 drivers/base/dd.c:1005
+1 lock held by systemd-journal/4422:
+2 locks held by systemd-udevd/4437:
+1 lock held by systemd-udevd/4663:
+ #0: ffff88800d799cc8 (&disk->open_mutex){+.+.}-{3:3}, at: bdev_open_by_dev+0x151/0x500 block/bdev.c:859
+1 lock held by in:imklog/7487:
+3 locks held by rs:main Q:Reg/7488:
+ #0: ffff88807ec306d8 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested+0x1f/0x70 kernel/sched/core.c:559
+ #1: ffff88807ec1c988 (&per_cpu_ptr(group->pcpu, cpu)->seq){-.-.}-{0:0}, at: psi_task_switch+0x226/0x280 kernel/sched/psi.c:988
+ #2: ffff8880433a33a8 (&sb->s_type->i_mutex_key#8){++++}-{3:3}, at: inode_lock include/linux/fs.h:804 [inline]
+ #2: ffff8880433a33a8 (&sb->s_type->i_mutex_key#8){++++}-{3:3}, at: ext4_buffered_write_iter+0x46/0x290 fs/ext4/file.c:294
+3 locks held by kworker/1:5/7974:
+ #0: ffff8880469ced38 ((wq_completion)ipv6_addrconf){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff8880469ced38 ((wq_completion)ipv6_addrconf){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc9000cce3e38 ((work_completion)(&(&ifa->dad_work)->work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc9000cce3e38 ((work_completion)(&(&ifa->dad_work)->work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: addrconf_dad_work+0x3b/0x920 net/ipv6/addrconf.c:4144
+3 locks held by kworker/0:5/10533:
+ #0: ffff8880469ced38 ((wq_completion)ipv6_addrconf){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff8880469ced38 ((wq_completion)ipv6_addrconf){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90005e07e38 ((work_completion)(&(&ifa->dad_work)->work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90005e07e38 ((work_completion)(&(&ifa->dad_work)->work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: addrconf_dad_work+0x3b/0x920 net/ipv6/addrconf.c:4144
+3 locks held by kworker/0:6/10534:
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90005e0fe38 ((work_completion)(&data->fib_event_work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90005e0fe38 ((work_completion)(&data->fib_event_work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffff8880218df240 (&data->fib_lock){+.+.}-{3:3}, at: nsim_fib_event_work+0xa9/0x1ff0 drivers/net/netdevsim/fib.c:1489
+2 locks held by kworker/1:6/10545:
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90005e2fe38 ((work_completion)(&fw_work->work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90005e2fe38 ((work_completion)(&fw_work->work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+2 locks held by kworker/0:9/10592:
+ #0: ffff88800a06b338 ((wq_completion)rcu_gp){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800a06b338 ((wq_completion)rcu_gp){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90005e8fe38 ((work_completion)(&rew->rew_work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90005e8fe38 ((work_completion)(&rew->rew_work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+3 locks held by kworker/1:8/10718:
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90005fb7e38 ((linkwatch_work).work){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90005fb7e38 ((linkwatch_work).work){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: linkwatch_event+0xa/0x30 net/core/link_watch.c:281
+1 lock held by syz.1.2774/29578:
+ #0: ffff88800d799cc8 (&disk->open_mutex){+.+.}-{3:3}, at: sync_bdevs+0xfa/0x1d0 block/bdev.c:1097
+1 lock held by syz.7.4381/40301:
+ #0: ffff88800d799cc8 (&disk->open_mutex){+.+.}-{3:3}, at: sync_bdevs+0xfa/0x1d0 block/bdev.c:1097
+1 lock held by syz-executor/41775:
+ #0: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: rtnl_lock net/core/rtnetlink.c:79 [inline]
+ #0: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: rtnetlink_rcv_msg+0x506/0xa20 net/core/rtnetlink.c:6614
+2 locks held by syz.5.4693/42858:
+ #0: ffffffff86c0df18 (cb_lock){++++}-{3:3}, at: genl_rcv+0x15/0x40 net/netlink/genetlink.c:1216
+ #1: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: nl80211_pre_doit+0x37/0x4c0 net/wireless/nl80211.c:16463
+2 locks held by syz.5.4693/42864:
+ #0: ffffffff86c0df18 (cb_lock){++++}-{3:3}, at: genl_rcv+0x15/0x40 net/netlink/genetlink.c:1216
+ #1: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: nl80211_pre_doit+0x37/0x4c0 net/wireless/nl80211.c:16463
+1 lock held by syz.8.4692/42867:
+ #0: ffffffff86bf4918 (rtnl_mutex){+.+.}-{3:3}, at: do_ip_setsockopt+0x961/0x1b70 net/ipv4/ip_sockglue.c:1073
+3 locks held by syz.8.4692/42873:
+
+=============================================
+
+NMI backtrace for cpu 0
+CPU: 0 PID: 33 Comm: khungtaskd Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0xea/0x170 lib/dump_stack.c:106
+ nmi_cpu_backtrace+0x254/0x2a0 lib/nmi_backtrace.c:113
+ nmi_trigger_cpumask_backtrace+0x113/0x220 lib/nmi_backtrace.c:62
+ trigger_all_cpu_backtrace include/linux/nmi.h:160 [inline]
+ check_hung_uninterruptible_tasks kernel/hung_task.c:222 [inline]
+ watchdog+0xa1c/0xa60 kernel/hung_task.c:379
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 PID: 42722 Comm: syz.3.4681 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0033:0x7f4b72871234
+Code: 00 00 4c 89 f7 4c 89 fe e8 f9 8c ff ff 4c 39 fd 0f 84 56 fd ff ff 49 8b 0f 49 8b 57 f8 49 8d 47 f8 48 39 d1 73 34 48 89 50 08 <48> 89 c6 48 8b 50 f8 48 83 e8 08 48 39 d1 72 ec 49 83 c7 08 48 89
+RSP: 002b:00007fff08b7b0d0 EFLAGS: 00000293
+RAX: 00007f4b722585b0 RBX: 00007f4b73725720 RCX: ffffffff826cbf44
+RDX: ffffffff826cbf8a RSI: 00007f4b722585b0 RDI: 00007f4b72201010
+RBP: 00007f4b72286630 R08: 00007f4b722010f8 R09: 00007f4b72be2000
+R10: 00000000811a8d51 R11: 000000000000000b R12: 0000000000010ac5
+R13: 00007f4b72bf6038 R14: 00007f4b72201008 R15: 00007f4b722585b8
+FS:  00005555567ba500 GS:  0000000000000000

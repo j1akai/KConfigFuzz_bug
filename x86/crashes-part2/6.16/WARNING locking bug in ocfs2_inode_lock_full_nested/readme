@@ -1,0 +1,37 @@
+锁依赖检测失败（Lockdep Warning）​​ 导致的 ​​内核恐慌（Kernel Panic）​​。
+
+触发条件与根本原因分析
+1.
+​​执行路径​​：
+
+•
+用户空间通过 syz-executor 进程执行 newfstatat 系统调用
+•
+调用链：sys_newfstatat -> vfs_fstatat -> vfs_statx -> vfs_getattr_nosec -> ​​ocfs2_getattr​​
+•
+在 ocfs2_getattr 中调用 ocfs2_inode_revalidate 来验证 inode 状态
+•
+最终在 ocfs2_inode_lock_full_nested 中尝试获取 inode 锁时触发警告
+2.
+​​警告触发点​​：
+
+•
+在 __lock_acquire（锁依赖检测核心函数）中检测到 ​​无效的锁上下文​​（DEBUG_LOCKS_WARN_ON(1)）
+•
+具体错误：锁依赖检测器发现了一个不可能的条件，可能是锁获取顺序违反了锁依赖规则
+3.
+​​根本原因​​：
+
+•
+​​锁获取顺序违规​​：OCFS2 文件系统在获取 inode 锁时，可能违反了内核锁依赖规则
+•
+​​锁上下文问题​​：可能在错误的上下文中（如原子上下文）尝试获取锁
+•
+​​锁注解缺失​​：可能缺少必要的锁依赖注解（lockdep annotations）
+4.
+​​导致恐慌的原因​​：
+
+•
+内核配置了 panic_on_warn，使得任何警告都会升级为内核恐慌
+•
+系统在检测到这个严重锁问题后主动崩溃以防止更严重的数据损坏

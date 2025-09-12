@@ -1,0 +1,38 @@
+sysfs group 'power' not found for kobject 'ueagle-atm!adi930.fw'
+WARNING: CPU: 0 PID: 27 at fs/sysfs/group.c:278 sysfs_remove_group+0xa0/0xb0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/sysfs/group.c:278
+Modules linked in:
+
+CPU: 0 PID: 27 Comm: kworker/0:1 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events request_firmware_work_func
+
+RIP: 0010:sysfs_remove_group+0xa0/0xb0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/sysfs/group.c:278
+Code: ff e8 64 05 c4 ff 48 89 ef e8 7c 88 ff ff eb b6 e8 55 05 c4 ff 90 49 8b 14 24 48 8b 33 48 c7 c7 48 20 fa 85 e8 ee 1b 32 03 90 <0f> 0b 90 90 eb c6 66 2e 0f 1f 84 00 00 00 00 00 90 90 90 90 90 90
+RSP: 0018:ffffc9000040bce8 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: ffffffff852a7600 RCX: 0000000000000000
+RDX: ffff888009a32f80 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: 0000000000000000 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 6f6620646e756f66 R12: ffff88807c596008
+R13: ffffffff852a7648 R14: ffff8880086e18a8 R15: ffff88807c596008
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007faf90bbb938 CR3: 000000000f740000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ dpm_sysfs_remove+0x6e/0x80 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/power/sysfs.c:837
+ device_del+0xe8/0x500 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/core.c:3643
+ fw_load_sysfs_fallback home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/firmware_loader/fallback.c:120 [inline]
+ fw_load_from_user_helper home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/firmware_loader/fallback.c:158 [inline]
+ firmware_fallback_sysfs+0x30f/0x630 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/firmware_loader/fallback.c:234
+ _request_firmware+0x732/0x820 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/firmware_loader/main.c:856
+ request_firmware_work_func+0x3f/0x90 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/firmware_loader/main.c:1105
+ process_one_work+0x2c1/0x600 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2289
+ worker_thread+0x5d/0x5c0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2436
+ kthread+0xfc/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/entry_64.S:308
+ </TASK>
+---[ end trace 0000000000000000 ]---
+usb 3-1: [UEAGLE-ATM] firmware is not available

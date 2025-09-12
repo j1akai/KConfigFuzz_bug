@@ -1,0 +1,455 @@
+INFO: task kworker/3:2:804 blocked for more than 143 seconds.
+      Not tainted 6.16.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/3:2     state:D stack:10840 pid:804   tgid:804   ppid:2      task_flags:0x4208060 flags:0x00004000
+Workqueue: gfs2_recovery gfs2_recover_func
+Call Trace:
+ <TASK>
+ __schedule+0x8f7/0x1920
+ schedule+0xb4/0x140
+ io_schedule+0x3f/0x60
+ folio_wait_bit_common+0x382/0x6e0
+ gfs2_jhead_process_page+0x95/0x2f0
+ gfs2_find_jhead+0x440/0x630
+ gfs2_recover_func+0x289/0x1000
+ process_scheduled_works+0x482/0xb50
+ worker_thread+0x3a1/0x570
+ kthread+0x33b/0x3d0
+ ret_from_fork+0x2a5/0x430
+ ret_from_fork_asm+0x1a/0x30
+ </TASK>
+INFO: task syz.0.10030:113058 blocked for more than 143 seconds.
+      Not tainted 6.16.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.0.10030     state:D stack:12336 pid:113058 tgid:113057 ppid:79281  task_flags:0x400140 flags:0x00004004
+Call Trace:
+ <TASK>
+ __schedule+0x8f7/0x1920
+ schedule+0xb4/0x140
+ bit_wait+0xc/0x60
+ __wait_on_bit+0x48/0xf0
+ out_of_line_wait_on_bit+0x8b/0xb0
+ gfs2_recover_journal+0xd9/0x110
+ init_journal+0xade/0x1000
+ init_inodes+0x69/0x1a0
+ gfs2_fill_super+0xfa6/0x11e0
+ get_tree_bdev_flags+0x1ec/0x250
+ gfs2_get_tree+0x2a/0xe0
+ vfs_get_tree+0x38/0x140
+ do_new_mount+0x1dd/0x570
+ __se_sys_mount+0x291/0x2f0
+ do_syscall_64+0x8e/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7f7c971affde
+RSP: 002b:00007f7c9800eda8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+RAX: ffffffffffffffda RBX: 00000000000211ac RCX: 00007f7c971affde
+RDX: 0000200000021180 RSI: 00002000000211c0 RDI: 00007f7c9800ee00
+RBP: 00007f7c9800ee40 R08: 00007f7c9800ee40 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000200000021180
+R13: 00002000000211c0 R14: 00007f7c9800ee00 R15: 0000200000003140
+ </TASK>
+
+Showing all locks held in the system:
+1 lock held by khungtaskd/44:
+ #0: ffffffff8700f0e8 (rcu_read_lock){....}-{1:3}, at: debug_show_all_locks+0x30/0x180
+2 locks held by kworker/3:2/804:
+ #0: ffff888101e84f48 ((wq_completion)gfs2_recovery){+.+.}-{0:0}, at: process_scheduled_works+0x3b6/0xb50
+ #1: ffffc90002573e00 ((work_completion)(&jd->jd_work)){+.+.}-{0:0}, at: process_scheduled_works+0x3dd/0xb50
+1 lock held by in:imklog/7903:
+ #0: ffff888011bc38f8 (&f->f_pos_lock){+.+.}-{4:4}, at: fdget_pos+0x111/0x170
+5 locks held by kworker/1:0/72899:
+ #0: ffff888102669548 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_scheduled_works+0x3b6/0xb50
+ #1: ffffc9000fdebe00 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_scheduled_works+0x3dd/0xb50
+ #2: ffff888100fdb998 (&dev->mutex){....}-{4:4}, at: hub_event+0xba/0x29a0
+ #3: ffff888100fdd510 (&port_dev->status_lock){+.+.}-{4:4}, at: hub_event+0x1730/0x29a0
+ #4: ffff8880123ee4e8 (hcd->address0_mutex){+.+.}-{4:4}, at: hub_event+0x1743/0x29a0
+2 locks held by kworker/2:4/105781:
+1 lock held by syz.0.10030/113058:
+ #0: ffff88811c6e70e0 (&type->s_umount_key#60/1){+.+.}-{4:4}, at: alloc_super+0x107/0x490
+3 locks held by kworker/u16:5/119777:
+1 lock held by syz-executor/120718:
+ #0: ffffffff870103b8 (rcu_state.exp_mutex){+.+.}-{4:4}, at: synchronize_rcu_expedited+0x1fb/0x4b0
+1 lock held by syz-executor/124334:
+ #0: ffffffff870103b8 (rcu_state.exp_mutex){+.+.}-{4:4}, at: synchronize_rcu_expedited+0x223/0x4b0
+1 lock held by syz.4.11682/130838:
+ #0: ffffffff87010280 (rcu_state.barrier_mutex){+.+.}-{4:4}, at: rcu_barrier+0x34/0x2a0
+3 locks held by syz.5.11687/130878:
+
+=============================================
+
+NMI backtrace for cpu 1
+CPU: 1 UID: 0 PID: 44 Comm: khungtaskd Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ dump_stack_lvl+0x127/0x1d0
+ nmi_cpu_backtrace+0x25d/0x2b0
+ nmi_trigger_cpumask_backtrace+0x139/0x250
+ watchdog+0xe89/0xec0
+ kthread+0x33b/0x3d0
+ ret_from_fork+0x2a5/0x430
+ ret_from_fork_asm+0x1a/0x30
+ </TASK>
+Sending NMI from CPU 1 to CPUs 0,2-3:
+NMI backtrace for cpu 0
+CPU: 0 UID: 0 PID: 130878 Comm: syz.5.11687 Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:check_preemption_disabled+0x63/0x110
+Code: 3b 44 24 08 0f 85 c3 00 00 00 89 d8 48 83 c4 10 5b 41 5c 41 5d 41 5e 41 5f c3 cc cc cc cc cc 9c 8f 04 24 f7 04 24 00 02 00 00 <74> ce 49 89 f6 49 89 ff 65 4c 8b 2c 25 08 20 86 89 41 f6 45 2f 04
+RSP: 0018:ffffc90006d0ba98 EFLAGS: 00000046
+RAX: 0000000080000000 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: 0000000000000001 RSI: ffffffff86715a68 RDI: ffffffff8688163a
+RBP: 0000000000000000 R08: 00000000ffffffff R09: 0000000000000003
+R10: 0000000000000006 R11: 0000000000000002 R12: ffffffff89862020
+R13: ffffffff8700f0e8 R14: ffffffff89862020 R15: 0000000000000000
+FS:  00007f5582ef8640(0000) GS:ffff8880f41b2000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f5578bff000 CR3: 0000000030217000 CR4: 0000000000752ef0
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ lock_acquire+0x102/0x2a0
+ percpu_ref_tryget+0x2f/0x120
+ get_mem_cgroup_from_mm+0xc5/0x1e0
+ __mem_cgroup_charge+0x15/0x50
+ shmem_alloc_and_add_folio+0x4b0/0x930
+ shmem_get_folio_gfp+0x3a3/0xcd0
+ shmem_write_begin+0x89/0x190
+ generic_perform_write+0x113/0x400
+ shmem_file_write_iter+0xaa/0xd0
+ vfs_write+0x42b/0x580
+ ksys_write+0xbe/0x170
+ do_syscall_64+0x8e/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7f5581facbdf
+Code: 89 54 24 18 48 89 74 24 10 89 7c 24 08 e8 69 0d 03 00 48 8b 54 24 18 48 8b 74 24 10 41 89 c0 8b 7c 24 08 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 31 44 89 c7 48 89 44 24 08 e8 ac 0d 03 00 48
+RSP: 002b:00007f5582ef7d30 EFLAGS: 00000293 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007f5581facbdf
+RDX: 0000000001000000 RSI: 00007f5577c00000 RDI: 0000000000000003
+RBP: 0000000000004578 R08: 0000000000000000 R09: 0000000000004574
+R10: 0000000000000056 R11: 0000000000000293 R12: 0000000000000003
+R13: 00007f5582ef7dfc R14: 00007f5582ef7e00 R15: 00007f5577c00000
+ </TASK>
+NMI backtrace for cpu 2
+CPU: 2 UID: 0 PID: 72775 Comm: systemd-udevd Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__lock_acquire+0x615/0x2d50
+Code: ba 08 00 00 00 e8 bb 4a 00 00 31 d2 85 c0 0f 84 ac 0d 00 00 83 3d 1a ed 64 09 00 75 13 48 63 44 24 08 48 0f a3 05 db 42 6b 08 <0f> 83 15 20 00 00 48 8b 3c 24 4c 8b af e8 0a 00 00 48 83 7c 24 28
+RSP: 0018:ffffc900119b7a60 EFLAGS: 00000047
+RAX: 0000000000000087 RBX: 000000000000000a RCX: ffffffff89a25678
+RDX: 0000000000000000 RSI: ffff88800da5d2c8 RDI: ffff88800da5c780
+RBP: 0000000000000002 R08: 00000000ffffffff R09: 0000000000000002
+R10: 0000000000000406 R11: 0000000000000000 R12: ffff88800da5d2c8
+R13: 0000000000000001 R14: ffff88800da5d278 R15: ffff88800da5d2e8
+FS:  00007ff833b9a8c0(0000) GS:ffff8880f42b2000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055556346c638 CR3: 0000000017653000 CR4: 0000000000752ef0
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ lock_acquire+0xf2/0x2a0
+ _raw_spin_lock+0x2e/0x40
+ shmem_evict_inode+0x326/0x3a0
+ evict+0x266/0x450
+ __dentry_kill+0x11d/0x3c0
+ dput+0x19f/0x2b0
+ do_renameat2+0x5a2/0x920
+ __x64_sys_rename+0x43/0x50
+ do_syscall_64+0x8e/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7ff833cbbf87
+Code: e8 5e 82 09 00 85 c0 0f 95 c0 0f b6 c0 f7 d8 5d c3 66 90 b8 ff ff ff ff 5d c3 66 0f 1f 84 00 00 00 00 00 b8 52 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 01 c3 48 8b 15 d9 8e 17 00 f7 d8 64 89 02 b8
+RSP: 002b:00007fff41747748 EFLAGS: 00000246 ORIG_RAX: 0000000000000052
+RAX: ffffffffffffffda RBX: 0000557f91b4d560 RCX: 00007ff833cbbf87
+RDX: 0000000000000000 RSI: 00007fff41747750 RDI: 0000557f91b4da10
+RBP: 00007fff41747800 R08: 0000000000000000 R09: 00007ff833df6000
+R10: 00007fff417477b0 R11: 0000000000000246 R12: 00007fff41747750
+R13: 0000000000000001 R14: 0000000000000000 R15: 00007fff41747798
+ </TASK>
+NMI backtrace for cpu 3
+CPU: 3 UID: 0 PID: 120718 Comm: syz-executor Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:match_held_lock+0x79/0xb0
+Code: c7 c2 00 ed a1 89 48 29 d0 48 c1 f8 03 48 ba 29 5c 8f c2 f5 28 5c 8f 48 0f af d0 bb 01 00 00 00 48 39 ca 74 02 31 db 89 d8 5b <41> 5e c3 cc cc cc cc cc e8 da 42 49 fd 31 db 85 c0 74 ea 83 3d a1
+RSP: 0018:ffffc9000016cdb8 EFLAGS: 00000046
+RAX: 0000000000000001 RBX: ffff88811d9aaf08 RCX: 0000000000000008
+RDX: 0000000000000001 RSI: ffffffff8700f0e8 RDI: ffff88811d9aaf08
+RBP: 00000000ffffffff R08: 00000000000e4b09 R09: 0000000000000002
+R10: 0000000000000000 R11: ffffffff8154ca80 R12: 0000000000000046
+R13: ffff88811d9aa3c0 R14: ffffffff8700f0e8 R15: 0000000000000002
+FS:  0000555566f6e500(0000) GS:ffff8881b46b2000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fe9db5babb8 CR3: 0000000112663000 CR4: 0000000000752ef0
+PKRU: 80000000
+Call Trace:
+ <IRQ>
+ lock_is_held_type+0x9d/0x170
+ select_task_rq_fair+0x1e7/0x12d0
+ try_to_wake_up+0x361/0x720
+ hrtimer_wakeup+0x2d/0x40
+ __hrtimer_run_queues+0x25a/0x620
+ hrtimer_interrupt+0x1b5/0x340
+ __sysvec_apic_timer_interrupt+0x9e/0x290
+ sysvec_apic_timer_interrupt+0x9f/0xc0
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20
+RIP: 0010:vprintk_emit+0x43e/0x650
+Code: 49 21 dc 0f 85 1b 02 00 00 e8 fe 18 10 00 4d 89 ec 4d 85 ff 75 07 e8 f1 18 10 00 eb 06 e8 ea 18 10 00 fb 48 c7 c7 40 cd f2 86 <31> f6 ba 01 00 00 00 31 c9 41 b8 01 00 00 00 45 31 c9 41 56 e8 c9
+RSP: 0018:ffffc9000507fc38 EFLAGS: 00000293
+RAX: ffffffff815a8676 RBX: 0000000000000086 RCX: ffff88811d9aa3c0
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffffffff86f2cd40
+RBP: 0000000000000047 R08: 0000000000080000 R09: 0000000000000001
+R10: 0000000000000063 R11: 0000000000000000 R12: ffffffff89862020
+R13: ffffffff89862020 R14: ffffffff815a8534 R15: 0000000000000200
+ _printk+0x6a/0x90
+ xfs_printk_level+0xca/0x150
+ xfs_fs_put_super+0x30/0xa0
+ generic_shutdown_super+0x9e/0x180
+ kill_block_super+0x1e/0x50
+ xfs_kill_sb+0x15/0x30
+ deactivate_locked_super+0x5f/0xb0
+ cleanup_mnt+0x19a/0x200
+ task_work_run+0x103/0x150
+ exit_to_user_mode_loop+0xe4/0x110
+ do_syscall_64+0x240/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7efe11dafb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffc728358a8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000132 RCX: 00007efe11dafb8b
+RDX: 00007efe11c4fd10 RSI: 0000000000000009 RDI: 00007ffc72835960
+RBP: 00007ffc72835960 R08: 0000000000000000 R09: 00007ffc72835730
+R10: 0000555566f81673 R11: 0000000000000246 R12: 00007efe11e47cae
+R13: 00007ffc72836a30 R14: 0000555566f81600 R15: 000000000010af42
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+      Not tainted 6.16.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/3:2     state:D stack:10840 pid:804   tgid:804   ppid:2      task_flags:0x4208060 flags:0x00004000
+Workqueue: gfs2_recovery gfs2_recover_func
+Call Trace:
+ <TASK>
+ __schedule+0x8f7/0x1920
+ schedule+0xb4/0x140
+ io_schedule+0x3f/0x60
+ folio_wait_bit_common+0x382/0x6e0
+ gfs2_jhead_process_page+0x95/0x2f0
+ gfs2_find_jhead+0x440/0x630
+ gfs2_recover_func+0x289/0x1000
+ process_scheduled_works+0x482/0xb50
+ worker_thread+0x3a1/0x570
+ kthread+0x33b/0x3d0
+ ret_from_fork+0x2a5/0x430
+ ret_from_fork_asm+0x1a/0x30
+ </TASK>
+INFO: task syz.0.10030:113058 blocked for more than 143 seconds.
+      Not tainted 6.16.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.0.10030     state:D stack:12336 pid:113058 tgid:113057 ppid:79281  task_flags:0x400140 flags:0x00004004
+Call Trace:
+ <TASK>
+ __schedule+0x8f7/0x1920
+ schedule+0xb4/0x140
+ bit_wait+0xc/0x60
+ __wait_on_bit+0x48/0xf0
+ out_of_line_wait_on_bit+0x8b/0xb0
+ gfs2_recover_journal+0xd9/0x110
+ init_journal+0xade/0x1000
+ init_inodes+0x69/0x1a0
+ gfs2_fill_super+0xfa6/0x11e0
+ get_tree_bdev_flags+0x1ec/0x250
+ gfs2_get_tree+0x2a/0xe0
+ vfs_get_tree+0x38/0x140
+ do_new_mount+0x1dd/0x570
+ __se_sys_mount+0x291/0x2f0
+ do_syscall_64+0x8e/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7f7c971affde
+RSP: 002b:00007f7c9800eda8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+RAX: ffffffffffffffda RBX: 00000000000211ac RCX: 00007f7c971affde
+RDX: 0000200000021180 RSI: 00002000000211c0 RDI: 00007f7c9800ee00
+RBP: 00007f7c9800ee40 R08: 00007f7c9800ee40 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000200000021180
+R13: 00002000000211c0 R14: 00007f7c9800ee00 R15: 0000200000003140
+ </TASK>
+
+Showing all locks held in the system:
+1 lock held by khungtaskd/44:
+ #0: ffffffff8700f0e8 (rcu_read_lock){....}-{1:3}, at: debug_show_all_locks+0x30/0x180
+2 locks held by kworker/3:2/804:
+ #0: ffff888101e84f48 ((wq_completion)gfs2_recovery){+.+.}-{0:0}, at: process_scheduled_works+0x3b6/0xb50
+ #1: ffffc90002573e00 ((work_completion)(&jd->jd_work)){+.+.}-{0:0}, at: process_scheduled_works+0x3dd/0xb50
+1 lock held by in:imklog/7903:
+ #0: ffff888011bc38f8 (&f->f_pos_lock){+.+.}-{4:4}, at: fdget_pos+0x111/0x170
+5 locks held by kworker/1:0/72899:
+ #0: ffff888102669548 ((wq_completion)usb_hub_wq){+.+.}-{0:0}, at: process_scheduled_works+0x3b6/0xb50
+ #1: ffffc9000fdebe00 ((work_completion)(&hub->events)){+.+.}-{0:0}, at: process_scheduled_works+0x3dd/0xb50
+ #2: ffff888100fdb998 (&dev->mutex){....}-{4:4}, at: hub_event+0xba/0x29a0
+ #3: ffff888100fdd510 (&port_dev->status_lock){+.+.}-{4:4}, at: hub_event+0x1730/0x29a0
+ #4: ffff8880123ee4e8 (hcd->address0_mutex){+.+.}-{4:4}, at: hub_event+0x1743/0x29a0
+2 locks held by kworker/2:4/105781:
+1 lock held by syz.0.10030/113058:
+ #0: ffff88811c6e70e0 (&type->s_umount_key#60/1){+.+.}-{4:4}, at: alloc_super+0x107/0x490
+3 locks held by kworker/u16:5/119777:
+1 lock held by syz-executor/120718:
+ #0: ffffffff870103b8 (rcu_state.exp_mutex){+.+.}-{4:4}, at: synchronize_rcu_expedited+0x1fb/0x4b0
+1 lock held by syz-executor/124334:
+ #0: ffffffff870103b8 (rcu_state.exp_mutex){+.+.}-{4:4}, at: synchronize_rcu_expedited+0x223/0x4b0
+1 lock held by syz.4.11682/130838:
+ #0: ffffffff87010280 (rcu_state.barrier_mutex){+.+.}-{4:4}, at: rcu_barrier+0x34/0x2a0
+3 locks held by syz.5.11687/130878:
+
+=============================================
+
+NMI backtrace for cpu 1
+CPU: 1 UID: 0 PID: 44 Comm: khungtaskd Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ dump_stack_lvl+0x127/0x1d0
+ nmi_cpu_backtrace+0x25d/0x2b0
+ nmi_trigger_cpumask_backtrace+0x139/0x250
+ watchdog+0xe89/0xec0
+ kthread+0x33b/0x3d0
+ ret_from_fork+0x2a5/0x430
+ ret_from_fork_asm+0x1a/0x30
+ </TASK>
+Sending NMI from CPU 1 to CPUs 0,2-3:
+NMI backtrace for cpu 0
+CPU: 0 UID: 0 PID: 130878 Comm: syz.5.11687 Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:check_preemption_disabled+0x63/0x110
+Code: 3b 44 24 08 0f 85 c3 00 00 00 89 d8 48 83 c4 10 5b 41 5c 41 5d 41 5e 41 5f c3 cc cc cc cc cc 9c 8f 04 24 f7 04 24 00 02 00 00 <74> ce 49 89 f6 49 89 ff 65 4c 8b 2c 25 08 20 86 89 41 f6 45 2f 04
+RSP: 0018:ffffc90006d0ba98 EFLAGS: 00000046
+RAX: 0000000080000000 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: 0000000000000001 RSI: ffffffff86715a68 RDI: ffffffff8688163a
+RBP: 0000000000000000 R08: 00000000ffffffff R09: 0000000000000003
+R10: 0000000000000006 R11: 0000000000000002 R12: ffffffff89862020
+R13: ffffffff8700f0e8 R14: ffffffff89862020 R15: 0000000000000000
+FS:  00007f5582ef8640(0000) GS:ffff8880f41b2000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f5578bff000 CR3: 0000000030217000 CR4: 0000000000752ef0
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ lock_acquire+0x102/0x2a0
+ percpu_ref_tryget+0x2f/0x120
+ get_mem_cgroup_from_mm+0xc5/0x1e0
+ __mem_cgroup_charge+0x15/0x50
+ shmem_alloc_and_add_folio+0x4b0/0x930
+ shmem_get_folio_gfp+0x3a3/0xcd0
+ shmem_write_begin+0x89/0x190
+ generic_perform_write+0x113/0x400
+ shmem_file_write_iter+0xaa/0xd0
+ vfs_write+0x42b/0x580
+ ksys_write+0xbe/0x170
+ do_syscall_64+0x8e/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7f5581facbdf
+Code: 89 54 24 18 48 89 74 24 10 89 7c 24 08 e8 69 0d 03 00 48 8b 54 24 18 48 8b 74 24 10 41 89 c0 8b 7c 24 08 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 31 44 89 c7 48 89 44 24 08 e8 ac 0d 03 00 48
+RSP: 002b:00007f5582ef7d30 EFLAGS: 00000293 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007f5581facbdf
+RDX: 0000000001000000 RSI: 00007f5577c00000 RDI: 0000000000000003
+RBP: 0000000000004578 R08: 0000000000000000 R09: 0000000000004574
+R10: 0000000000000056 R11: 0000000000000293 R12: 0000000000000003
+R13: 00007f5582ef7dfc R14: 00007f5582ef7e00 R15: 00007f5577c00000
+ </TASK>
+NMI backtrace for cpu 2
+CPU: 2 UID: 0 PID: 72775 Comm: systemd-udevd Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__lock_acquire+0x615/0x2d50
+Code: ba 08 00 00 00 e8 bb 4a 00 00 31 d2 85 c0 0f 84 ac 0d 00 00 83 3d 1a ed 64 09 00 75 13 48 63 44 24 08 48 0f a3 05 db 42 6b 08 <0f> 83 15 20 00 00 48 8b 3c 24 4c 8b af e8 0a 00 00 48 83 7c 24 28
+RSP: 0018:ffffc900119b7a60 EFLAGS: 00000047
+RAX: 0000000000000087 RBX: 000000000000000a RCX: ffffffff89a25678
+RDX: 0000000000000000 RSI: ffff88800da5d2c8 RDI: ffff88800da5c780
+RBP: 0000000000000002 R08: 00000000ffffffff R09: 0000000000000002
+R10: 0000000000000406 R11: 0000000000000000 R12: ffff88800da5d2c8
+R13: 0000000000000001 R14: ffff88800da5d278 R15: ffff88800da5d2e8
+FS:  00007ff833b9a8c0(0000) GS:ffff8880f42b2000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055556346c638 CR3: 0000000017653000 CR4: 0000000000752ef0
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ lock_acquire+0xf2/0x2a0
+ _raw_spin_lock+0x2e/0x40
+ shmem_evict_inode+0x326/0x3a0
+ evict+0x266/0x450
+ __dentry_kill+0x11d/0x3c0
+ dput+0x19f/0x2b0
+ do_renameat2+0x5a2/0x920
+ __x64_sys_rename+0x43/0x50
+ do_syscall_64+0x8e/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7ff833cbbf87
+Code: e8 5e 82 09 00 85 c0 0f 95 c0 0f b6 c0 f7 d8 5d c3 66 90 b8 ff ff ff ff 5d c3 66 0f 1f 84 00 00 00 00 00 b8 52 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 01 c3 48 8b 15 d9 8e 17 00 f7 d8 64 89 02 b8
+RSP: 002b:00007fff41747748 EFLAGS: 00000246 ORIG_RAX: 0000000000000052
+RAX: ffffffffffffffda RBX: 0000557f91b4d560 RCX: 00007ff833cbbf87
+RDX: 0000000000000000 RSI: 00007fff41747750 RDI: 0000557f91b4da10
+RBP: 00007fff41747800 R08: 0000000000000000 R09: 00007ff833df6000
+R10: 00007fff417477b0 R11: 0000000000000246 R12: 00007fff41747750
+R13: 0000000000000001 R14: 0000000000000000 R15: 00007fff41747798
+ </TASK>
+NMI backtrace for cpu 3
+CPU: 3 UID: 0 PID: 120718 Comm: syz-executor Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:match_held_lock+0x79/0xb0
+Code: c7 c2 00 ed a1 89 48 29 d0 48 c1 f8 03 48 ba 29 5c 8f c2 f5 28 5c 8f 48 0f af d0 bb 01 00 00 00 48 39 ca 74 02 31 db 89 d8 5b <41> 5e c3 cc cc cc cc cc e8 da 42 49 fd 31 db 85 c0 74 ea 83 3d a1
+RSP: 0018:ffffc9000016cdb8 EFLAGS: 00000046
+RAX: 0000000000000001 RBX: ffff88811d9aaf08 RCX: 0000000000000008
+RDX: 0000000000000001 RSI: ffffffff8700f0e8 RDI: ffff88811d9aaf08
+RBP: 00000000ffffffff R08: 00000000000e4b09 R09: 0000000000000002
+R10: 0000000000000000 R11: ffffffff8154ca80 R12: 0000000000000046
+R13: ffff88811d9aa3c0 R14: ffffffff8700f0e8 R15: 0000000000000002
+FS:  0000555566f6e500(0000) GS:ffff8881b46b2000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fe9db5babb8 CR3: 0000000112663000 CR4: 0000000000752ef0
+PKRU: 80000000
+Call Trace:
+ <IRQ>
+ lock_is_held_type+0x9d/0x170
+ select_task_rq_fair+0x1e7/0x12d0
+ try_to_wake_up+0x361/0x720
+ hrtimer_wakeup+0x2d/0x40
+ __hrtimer_run_queues+0x25a/0x620
+ hrtimer_interrupt+0x1b5/0x340
+ __sysvec_apic_timer_interrupt+0x9e/0x290
+ sysvec_apic_timer_interrupt+0x9f/0xc0
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20
+RIP: 0010:vprintk_emit+0x43e/0x650
+Code: 49 21 dc 0f 85 1b 02 00 00 e8 fe 18 10 00 4d 89 ec 4d 85 ff 75 07 e8 f1 18 10 00 eb 06 e8 ea 18 10 00 fb 48 c7 c7 40 cd f2 86 <31> f6 ba 01 00 00 00 31 c9 41 b8 01 00 00 00 45 31 c9 41 56 e8 c9
+RSP: 0018:ffffc9000507fc38 EFLAGS: 00000293
+RAX: ffffffff815a8676 RBX: 0000000000000086 RCX: ffff88811d9aa3c0
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffffffff86f2cd40
+RBP: 0000000000000047 R08: 0000000000080000 R09: 0000000000000001
+R10: 0000000000000063 R11: 0000000000000000 R12: ffffffff89862020
+R13: ffffffff89862020 R14: ffffffff815a8534 R15: 0000000000000200
+ _printk+0x6a/0x90
+ xfs_printk_level+0xca/0x150
+ xfs_fs_put_super+0x30/0xa0
+ generic_shutdown_super+0x9e/0x180
+ kill_block_super+0x1e/0x50
+ xfs_kill_sb+0x15/0x30
+ deactivate_locked_super+0x5f/0xb0
+ cleanup_mnt+0x19a/0x200
+ task_work_run+0x103/0x150
+ exit_to_user_mode_loop+0xe4/0x110
+ do_syscall_64+0x240/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7efe11dafb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffc728358a8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000132 RCX: 00007efe11dafb8b
+RDX: 00007efe11c4fd10 RSI: 0000000000000009 RDI: 00007ffc72835960
+RBP: 00007ffc72835960 R08: 0000000000000000 R09: 00007ffc72835730
+R10: 0000555566f81673 R11: 0000000000000246 R12: 00007efe11e47cae
+R13: 00007ffc72836a30 R14: 0000555566f81600 R15: 000000000010af42
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

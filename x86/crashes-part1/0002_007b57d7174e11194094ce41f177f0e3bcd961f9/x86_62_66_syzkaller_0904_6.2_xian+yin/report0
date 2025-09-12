@@ -1,0 +1,96 @@
+RBP: 00007f3abfdf6010 R08: 0000000000000000 R09: 0000000000000000
+R10: 00000000000001ff R11: 0000000000000246 R12: 0000000000000002
+R13: 00007f3ac1df6038 R14: 00007f3ac1df5fa0 R15: 00007f3abfdd6000
+ </TASK>
+BUG: kernel NULL pointer dereference, address: 0000000000000016
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 15cf6067 P4D 15cf6067 PUD 0 
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 40404 Comm: syz.7.3198 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:is_rec_inuse fs/ntfs3/ntfs.h:312 [inline]
+RIP: 0010:ni_write_inode+0x101/0x1710 fs/ntfs3/frecord.c:3261
+Code: 44 24 18 e8 e1 3d 15 03 31 ff 89 c3 89 c6 e8 46 8e 85 ff 85 db 0f 84 d0 01 00 00 e8 19 95 85 ff 49 8b 84 24 b0 fe ff ff 31 ff <0f> b7 40 16 41 89 c5 41 83 e5 01 44 89 ee e8 bc 8d 85 ff 45 84 ed
+RSP: 0018:ffffc90001707958 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+RDX: ffff888015ca17c0 RSI: ffffffff81b8e3e7 RDI: 0000000000000000
+RBP: 0000000000000001 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000001 R11: 3e4b5341542f3c20 R12: ffff8880433afcf8
+R13: ffffffff85176160 R14: 0000000000000000 R15: ffff888058380000
+FS:  00007f3abfdf6640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000016 CR3: 0000000021070000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ ntfs_evict_inode+0x6b/0x70 fs/ntfs3/inode.c:1777
+ evict+0x11b/0x290 fs/inode.c:664
+ iput_final fs/inode.c:1747 [inline]
+ iput fs/inode.c:1773 [inline]
+ iput+0x2f4/0x470 fs/inode.c:1759
+ ntfs_new_inode+0x75/0xd0 fs/ntfs3/fsntfs.c:1686
+ ntfs_create_inode+0x276/0x16a0 fs/ntfs3/inode.c:1303
+ ntfs_atomic_open+0x30a/0x3c0 fs/ntfs3/namei.c:424
+ atomic_open fs/namei.c:3276 [inline]
+ lookup_open fs/namei.c:3384 [inline]
+ open_last_lookups fs/namei.c:3481 [inline]
+ path_openat+0xaa5/0x1ba0 fs/namei.c:3711
+ do_filp_open+0xce/0x1c0 fs/namei.c:3741
+ do_sys_openat2+0xf0/0x260 fs/open.c:1310
+ do_sys_open fs/open.c:1326 [inline]
+ __do_sys_openat fs/open.c:1342 [inline]
+ __se_sys_openat fs/open.c:1337 [inline]
+ __x64_sys_openat+0x83/0xf0 fs/open.c:1337
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f3ac1bae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f3abfdf5f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000101
+RAX: ffffffffffffffda RBX: 00007f3ac1df5fa0 RCX: 00007f3ac1bae16d
+RDX: 0000000000000041 RSI: 0000200000000040 RDI: ffffffffffffff9c
+RBP: 00007f3abfdf6010 R08: 0000000000000000 R09: 0000000000000000
+R10: 00000000000001ff R11: 0000000000000246 R12: 0000000000000002
+R13: 00007f3ac1df6038 R14: 00007f3ac1df5fa0 R15: 00007f3abfdd6000
+ </TASK>
+Modules linked in:
+CR2: 0000000000000016
+---[ end trace 0000000000000000 ]---
+RIP: 0010:is_rec_inuse fs/ntfs3/ntfs.h:312 [inline]
+RIP: 0010:ni_write_inode+0x101/0x1710 fs/ntfs3/frecord.c:3261
+Code: 44 24 18 e8 e1 3d 15 03 31 ff 89 c3 89 c6 e8 46 8e 85 ff 85 db 0f 84 d0 01 00 00 e8 19 95 85 ff 49 8b 84 24 b0 fe ff ff 31 ff <0f> b7 40 16 41 89 c5 41 83 e5 01 44 89 ee e8 bc 8d 85 ff 45 84 ed
+RSP: 0018:ffffc90001707958 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+RDX: ffff888015ca17c0 RSI: ffffffff81b8e3e7 RDI: 0000000000000000
+RBP: 0000000000000001 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000001 R11: 3e4b5341542f3c20 R12: ffff8880433afcf8
+R13: ffffffff85176160 R14: 0000000000000000 R15: ffff888058380000
+FS:  00007f3abfdf6640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000016 CR3: 0000000021070000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	44 24 18             	rex.R and $0x18,%al
+   3:	e8 e1 3d 15 03       	call   0x3153de9
+   8:	31 ff                	xor    %edi,%edi
+   a:	89 c3                	mov    %eax,%ebx
+   c:	89 c6                	mov    %eax,%esi
+   e:	e8 46 8e 85 ff       	call   0xff858e59
+  13:	85 db                	test   %ebx,%ebx
+  15:	0f 84 d0 01 00 00    	je     0x1eb
+  1b:	e8 19 95 85 ff       	call   0xff859539
+  20:	49 8b 84 24 b0 fe ff 	mov    -0x150(%r12),%rax
+  27:	ff
+  28:	31 ff                	xor    %edi,%edi
+* 2a:	0f b7 40 16          	movzwl 0x16(%rax),%eax <-- trapping instruction
+  2e:	41 89 c5             	mov    %eax,%r13d
+  31:	41 83 e5 01          	and    $0x1,%r13d
+  35:	44 89 ee             	mov    %r13d,%esi
+  38:	e8 bc 8d 85 ff       	call   0xff858df9
+  3d:	45 84 ed             	test   %r13b,%r13b

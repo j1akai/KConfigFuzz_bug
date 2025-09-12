@@ -1,0 +1,18 @@
+触发条件
+这个 Bug 的触发需要两个条件同时满足：
+
+1.
+​​根本原因​​：一个或多个内核工作线程（kworker）在​​等待网络块设备（NBD - Network Block Device）重新建立连接​​时进入了不可中断的睡眠状态。从调用栈可以清晰地看到：
+
+•
+nbd_queue_rq -> nbd_handle_cmd -> wait_for_reconnect
+•
+函数 wait_for_reconnect 的核心逻辑是一个循环，它检查 nbd->recv_timeout 并调用 schedule_timeout 进行睡眠等待，直到NBD设备与服务器端的连接恢复。在这个过程中，任务状态就是 D。
+2.
+​​检测条件​​：内核配置启用了 hung_task 检测（默认开启），并且 hung_task_timeout_secs 的值大于0（默认值为120秒）。当任务在 D 状态停留时间超过这个阈值时，就会被检测到并报告。
+
+根本原因分析
+​​NBD 连接丢失或服务器无响应。​​
+NBD 允许将远程服务器上的一个块设备（如磁盘镜像）通过网络映射到本地，作为一块普通的块设备使用。当本地的 NBD 客户端与远程的 NBD 服务器之间的网络连接断开，或者服务器本身宕机、无响应时，就会发生这种情况。
+
+本地系统上所有发往该 NBD 设备的 I/O 请求（由 kblockd 工作队列中的 kworker 线程处理）都会在 nbd_queue_rq 函数中被阻塞。这些线程会卡在 wait_for_reconnect 函数中，不断地睡眠并等待一个可能永远不会到来的“连接恢复”信号。

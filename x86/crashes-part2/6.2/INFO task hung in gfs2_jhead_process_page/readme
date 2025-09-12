@@ -1,0 +1,63 @@
+Bug 类型​​
+​​复合型死锁（Deadlock）​​，包含：
+
+1.
+​​工作队列阻塞​​（gfs2_recover_func 无法完成）
+2.
+​​日志恢复竞争​​（gfs2_recover_journal 与 gfs2_jhead_process_page 互锁）
+3.
+​​资源饥饿​​（NMI watchdog 触发）
+​​触发条件​​
+​​必要条件​​
+1.
+​​GFS2 文件系统​​ 处于恢复状态
+2.
+同时存在：
+•
+gfs_recovery 工作队列任务（gfs2_recover_func）
+•
+文件系统挂载/初始化操作（init_journal -> gfs2_recover_journal）
+​​并发路径​​
+graph TD
+    A[gfs_recovery工作队列] --> B[gfs2_recover_func]
+    B --> C[gfs2_jhead_process_page]
+    C --> D[folio_wait_locked]
+    E[init_journal] --> F[gfs2_recover_journal]
+    F --> G[wait_on_bit]
+
+
+
+
+
+
+
+​​根本原因​​
+1.
+​​锁顺序反转​​：
+
+•
+gfs2_recover_func 持有页锁后等待日志锁
+•
+init_journal 持有日志锁后等待页锁
+2.
+​​工作队列设计缺陷​​：
+
+// fs/gfs2/recovery.c
+void gfs2_recover_func() {
+    gfs2_jhead_process_page(); // 获取页锁
+    // 需要日志锁但被init_journal持有
+}
+
+int gfs2_recover_journal() {
+    wait_on_bit(&ji->ji_flags, ...); // 持有日志锁等待页锁
+}
+3.
+​​缺乏超时机制​​：
+
+•
+恢复操作未设置超时，导致永久阻塞
+​​影响范围​​
+子系统	影响程度	表现
+GFS2 文件系统	严重	文件系统无法完成恢复
+系统稳定性	高	触发hung task导致系统僵死
+存储服务	致命	挂载/访问失败

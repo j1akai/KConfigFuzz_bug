@@ -1,0 +1,24 @@
+unregister_netdevice: waiting for syz_tun to become free. Usage count = 2
+ref_tracker: syz_tun@ffff88801acbc510 has 1/1 users at
+     __netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4056 [inline]
+     netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4068 [inline]
+     netdev_get_by_index+0x74/0xa0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:898
+     fib6_nh_init+0x2fc/0xff0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:3531
+     ip6_route_info_create+0x949/0xbb0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:3799
+     ip6_route_add+0x28/0x120 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:3843
+     addrconf_prefix_route+0x12c/0x190 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:2434
+     addrconf_add_linklocal+0x116/0x240 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3254
+     addrconf_addr_gen+0x1c1/0x1d0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3383
+     addrconf_dev_config home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3428 [inline]
+     addrconf_init_auto_addrs+0x2da/0x4e0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3506
+     addrconf_notify+0x7b1/0xc80 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3679
+     notifier_call_chain+0x89/0x190 home/jiakai/62_66_amd_0904/linux66/linux/kernel/notifier.c:93
+     call_netdevice_notifiers_info+0x7c/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:1995
+     call_netdevice_notifiers_extack home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2033 [inline]
+     call_netdevice_notifiers home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2047 [inline]
+     __dev_notify_flags+0xb2/0x1b0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:8665
+     dev_change_flags+0x71/0x90 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:8703
+     do_setlink+0x440/0x1d70 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:2880
+     __rtnl_newlink+0x796/0xe00 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:3671
+     rtnl_newlink+0x4d/0x80 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:3718
+

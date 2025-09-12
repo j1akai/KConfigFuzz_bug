@@ -1,0 +1,80 @@
+unregister_netdevice: waiting for syz_tun to become free. Usage count = 4
+ref_tracker: syz_tun@ffff888042470510 has 1/3 users at
+     __netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4056 [inline]
+     netdev_hold home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4085 [inline]
+     dst_init+0xbd/0x1c0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dst.c:52
+     dst_alloc+0x87/0xf0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dst.c:93
+     ip6_dst_alloc+0x32/0x70 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:343
+     ip6_rt_pcpu_alloc home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:1370 [inline]
+     rt6_make_pcpu_route home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:1418 [inline]
+     ip6_pol_route+0x3ef/0x6a0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:2255
+     pol_lookup_func home/jiakai/62_66_amd_0904/linux66/linux/include/net/ip6_fib.h:614 [inline]
+     fib6_rule_lookup+0x21e/0x450 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/fib6_rules.c:121
+     ip6_route_output_flags_noref home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:2627 [inline]
+     ip6_route_output_flags+0x122/0x290 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:2639
+     ip6_route_output home/jiakai/62_66_amd_0904/linux66/linux/include/net/ip6_route.h:94 [inline]
+     icmpv6_rt_has_prefsrc home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/icmp.c:242 [inline]
+     icmp6_send+0xab9/0xdf0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/icmp.c:556
+     __icmpv6_send home/jiakai/62_66_amd_0904/linux66/linux/include/linux/icmpv6.h:28 [inline]
+     icmpv6_send home/jiakai/62_66_amd_0904/linux66/linux/include/linux/icmpv6.h:49 [inline]
+     ip6_pkt_drop+0x17f/0x2e0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:4515
+     dst_input home/jiakai/62_66_amd_0904/linux66/linux/include/net/dst.h:468 [inline]
+     ip6_rcv_finish home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/ip6_input.c:79 [inline]
+     NF_HOOK home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netfilter.h:304 [inline]
+     NF_HOOK home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netfilter.h:298 [inline]
+     ipv6_rcv+0x219/0x230 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/ip6_input.c:310
+     __netif_receive_skb_one_core+0x88/0x100 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:5552
+     __netif_receive_skb+0x1f/0x90 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:5666
+     netif_receive_skb_internal home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:5752 [inline]
+     netif_receive_skb+0x4b/0x250 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:5811
+     tun_rx_batched home/jiakai/62_66_amd_0904/linux66/linux/drivers/net/tun.c:1555 [inline]
+     tun_get_user+0x1d43/0x2030 home/jiakai/62_66_amd_0904/linux66/linux/drivers/net/tun.c:2002
+     tun_chr_write_iter+0x71/0x110 home/jiakai/62_66_amd_0904/linux66/linux/drivers/net/tun.c:2048
+     call_write_iter home/jiakai/62_66_amd_0904/linux66/linux/include/linux/fs.h:1956 [inline]
+     new_sync_write home/jiakai/62_66_amd_0904/linux66/linux/fs/read_write.c:491 [inline]
+     vfs_write+0x445/0x570 home/jiakai/62_66_amd_0904/linux66/linux/fs/read_write.c:584
+     ksys_write+0xa1/0x170 home/jiakai/62_66_amd_0904/linux66/linux/fs/read_write.c:637
+
+ref_tracker: syz_tun@ffff888042470510 has 1/3 users at
+     __netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4056 [inline]
+     netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4068 [inline]
+     netdev_get_by_index+0x74/0xa0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:898
+     fib6_nh_init+0x2fc/0xff0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:3531
+     ip6_route_info_create+0x949/0xbb0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:3799
+     ip6_route_add+0x28/0x120 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:3843
+     addrconf_prefix_route+0x12c/0x190 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:2434
+     addrconf_add_linklocal+0x116/0x240 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3254
+     addrconf_addr_gen+0x1c1/0x1d0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3383
+     addrconf_dev_config home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3428 [inline]
+     addrconf_init_auto_addrs+0x2da/0x4e0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3506
+     addrconf_notify+0x7b1/0xc80 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3679
+     notifier_call_chain+0x89/0x190 home/jiakai/62_66_amd_0904/linux66/linux/kernel/notifier.c:93
+     call_netdevice_notifiers_info+0x7c/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:1995
+     call_netdevice_notifiers_extack home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2033 [inline]
+     call_netdevice_notifiers home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2047 [inline]
+     __dev_notify_flags+0xb2/0x1b0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:8665
+     dev_change_flags+0x71/0x90 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:8703
+     do_setlink+0x440/0x1d70 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:2880
+     __rtnl_newlink+0x796/0xe00 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:3671
+     rtnl_newlink+0x4d/0x80 home/jiakai/62_66_amd_0904/linux66/linux/net/core/rtnetlink.c:3718
+
+ref_tracker: syz_tun@ffff888042470510 has 1/3 users at
+     __netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4056 [inline]
+     netdev_hold home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:4085 [inline]
+     ipv6_add_dev+0x20e/0x880 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:402
+     addrconf_notify+0x44d/0xc80 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3589
+     notifier_call_chain+0x89/0x190 home/jiakai/62_66_amd_0904/linux66/linux/kernel/notifier.c:93
+     call_netdevice_notifiers_info+0x7c/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:1995
+     call_netdevice_notifiers_extack home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2033 [inline]
+     call_netdevice_notifiers home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2047 [inline]
+     register_netdevice+0x71c/0x970 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:10198
+     tun_set_iff home/jiakai/62_66_amd_0904/linux66/linux/drivers/net/tun.c:2850 [inline]
+     __tun_chr_ioctl+0x1bef/0x2340 home/jiakai/62_66_amd_0904/linux66/linux/drivers/net/tun.c:3119
+     vfs_ioctl home/jiakai/62_66_amd_0904/linux66/linux/fs/ioctl.c:51 [inline]
+     __do_sys_ioctl home/jiakai/62_66_amd_0904/linux66/linux/fs/ioctl.c:871 [inline]
+     __se_sys_ioctl home/jiakai/62_66_amd_0904/linux66/linux/fs/ioctl.c:857 [inline]
+     __x64_sys_ioctl+0x107/0x150 home/jiakai/62_66_amd_0904/linux66/linux/fs/ioctl.c:857
+     do_syscall_x64 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:50 [inline]
+     do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:80
+     entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+

@@ -1,0 +1,56 @@
+------------[ cut here ]------------
+VFS: brelse: Trying to free free buffer
+WARNING: CPU: 1 PID: 63950 at fs/buffer.c:1145 __brelse.part.0+0x13/0x20 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/buffer.c:1145
+Modules linked in:
+CPU: 1 PID: 63950 Comm: syz-executor Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__brelse.part.0+0x13/0x20 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/buffer.c:1145
+Code: 84 00 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 e8 5b ea ce ff 90 48 c7 c7 e8 f2 f9 85 e8 fb 00 3d 03 90 <0f> 0b 90 90 c3 cc cc cc cc 0f 1f 40 00 90 90 90 90 90 90 90 90 90
+RSP: 0018:ffffc9000184bcf8 EFLAGS: 00010082
+RAX: 0000000000000000 RBX: 0000000000000006 RCX: 0000000000000000
+RDX: ffff8880488597c0 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff88805e11e750 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 000000003a534656 R12: ffff88807ec29b60
+R13: 0000000000000000 R14: ffff88807ec2de80 R15: 0000000000000001
+FS:  000055555559c500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055e67fce3c38 CR3: 000000005ce8c000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ __brelse home/jiakai/62_66_amd_0904/linux62/linux-all/fs/buffer.c:1141 [inline]
+ brelse home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/buffer_head.h:326 [inline]
+ __invalidate_bh_lrus home/jiakai/62_66_amd_0904/linux62/linux-all/fs/buffer.c:1380 [inline]
+ invalidate_bh_lru+0x8a/0xd0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/buffer.c:1393
+ smp_call_function_many_cond+0x23f/0x4c0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/smp.c:978
+ on_each_cpu_cond_mask+0x3d/0x80 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/smp.c:1155
+ kill_bdev home/jiakai/62_66_amd_0904/linux62/linux-all/block/bdev.c:75 [inline]
+ blkdev_flush_mapping+0x6e/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/block/bdev.c:662
+ blkdev_put_whole+0x64/0x70 home/jiakai/62_66_amd_0904/linux62/linux-all/block/bdev.c:693
+ blkdev_put+0x104/0x300 home/jiakai/62_66_amd_0904/linux62/linux-all/block/bdev.c:953
+ deactivate_locked_super+0x4a/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/super.c:332
+ deactivate_super+0x72/0x80 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/super.c:363
+ cleanup_mnt+0x172/0x200 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:1291
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/task_work.c:179
+ resume_user_mode_work home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:171 [inline]
+ exit_to_user_mode_prepare+0x11e/0x140 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f77a6dafb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffe35986c18 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 00000000000002c8 RCX: 00007f77a6dafb8b
+RDX: 00007f77a6c4fd10 RSI: 0000000000000009 RDI: 00007ffe35986cd0
+RBP: 00007ffe35986cd0 R08: 0000000000000000 R09: 00007ffe35986aa0
+R10: 00005555555af673 R11: 0000000000000246 R12: 00007f77a6e47cae
+R13: 00007ffe35987da0 R14: 00005555555af600 R15: 00000000001158a6
+ </TASK>
+---[ end trace 0000000000000000 ]---
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

@@ -1,0 +1,322 @@
+Extracting prog: 5m8.322912583s
+Minimizing prog: 49m45.452238901s
+Simplifying prog options: 17m10.071449153s
+Extracting C: 5m6.45605614s
+Simplifying C: 0s
+
+
+extracting reproducer from 56 programs
+testing a last program of every proc
+single: executing 16 programs separately with timeout 6m0s
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill-io_setup-eventfd-openat$pfkey-openat$ocfs2_control-socket$qrtr
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+io_setup(0x6, &(0x7f0000000080))
+eventfd(0x8)
+openat$pfkey(0xffffffffffffff9c, &(0x7f0000000180), 0x20000, 0x0)
+openat$ocfs2_control(0xffffffffffffff9c, &(0x7f0000000380), 0x1, 0x0)
+socket$qrtr(0x2a, 0x2, 0x0)
+
+program crashed: lost connection to test machine
+single: successfully extracted reproducer
+found reproducer with 7 syscalls
+minimizing guilty program
+testing program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill-io_setup-eventfd-openat$pfkey-openat$ocfs2_control
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+io_setup(0x6, &(0x7f0000000080))
+eventfd(0x8)
+openat$pfkey(0xffffffffffffff9c, &(0x7f0000000180), 0x20000, 0x0)
+openat$ocfs2_control(0xffffffffffffff9c, &(0x7f0000000380), 0x1, 0x0)
+
+program crashed: lost connection to test machine
+testing program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill-io_setup-eventfd-openat$pfkey
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+io_setup(0x6, &(0x7f0000000080))
+eventfd(0x8)
+openat$pfkey(0xffffffffffffff9c, &(0x7f0000000180), 0x20000, 0x0)
+
+program crashed: lost connection to test machine
+testing program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill-io_setup-eventfd
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+io_setup(0x6, &(0x7f0000000080))
+eventfd(0x8)
+
+program crashed: lost connection to test machine
+testing program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill-io_setup
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+io_setup(0x6, &(0x7f0000000080))
+
+program crashed: lost connection to test machine
+testing program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+
+program crashed: lost connection to test machine
+testing program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill
+detailed listing:
+executing program 0:
+openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+
+program did not crash
+testing program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): write$rfkill
+detailed listing:
+executing program 0:
+write$rfkill(0xffffffffffffffff, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+
+program did not crash
+testing program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, 0x0, 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+
+program did not crash
+testing program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, 0x0, 0x0)
+
+program did not crash
+extracting C reproducer
+testing compiled C program (duration=6m37.907853139s, {Threaded:true Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+program crashed: no output from test machine
+a never seen crash title: no output from test machine, ignore
+simplifying guilty program options
+testing program (duration=6m37.907853139s, {Threaded:false Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+
+program crashed: lost connection to test machine
+extracting C reproducer
+testing compiled C program (duration=6m37.907853139s, {Threaded:false Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+program crashed: no output from test machine
+a never seen crash title: no output from test machine, ignore
+testing program (duration=6m37.907853139s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+
+program did not crash
+testing program (duration=6m37.907853139s, {Threaded:false Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+
+program crashed: lost connection to test machine
+validation run: crashed=true
+testing program (duration=6m37.907853139s, {Threaded:false Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+
+program crashed: lost connection to test machine
+validation run: crashed=true
+testing program (duration=6m37.907853139s, {Threaded:false Repeat:true RepeatTimes:0 Procs:8 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$rfkill-write$rfkill
+detailed listing:
+executing program 0:
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0x0, 0x3, 0x1, 0x1}, 0x8)
+
+program crashed: WARNING in call_timer_fn
+validation run: crashed=true
+reproducing took 1h30m0.523999991s
+repro crashed as (corrupted=false):
+------------[ cut here ]------------
+workqueue: cannot queue hci_cmd_timeout on wq hci1
+WARNING: CPU: 0 PID: 18029 at kernel/workqueue.c:2258 __queue_work+0x899/0xa20
+Modules linked in:
+CPU: 0 UID: 0 PID: 18029 Comm: syz-executor Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__queue_work+0x899/0xa20
+Code: ff ff e8 8a b1 1a 00 c6 05 c6 dd 04 06 01 48 8b 73 18 48 8b 44 24 08 48 8d 90 78 01 00 00 48 c7 c7 3d 6d 83 86 e8 57 42 fc ff <0f> 0b 40 84 ed 0f 85 95 f8 ff ff e8 57 b1 1a 00 48 83 c4 20 5b 41
+RSP: 0018:ffffc90000003dd8 EFLAGS: 00010046
+RAX: 95a5ed2e1668bf00 RBX: ffff8881076cc970 RCX: ffff8881275dc780
+RDX: 0000000000000100 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 0000000000000000 R08: 0000000000082ae5 R09: 0000000000000005
+R10: 0000000000000003 R11: 0000000000000100 R12: ffff8881076cc9b8
+R13: 0000000000000008 R14: 0000000000010000 R15: ffffffff8160e27e
+FS:  000055555de24500(0000) GS:ffff8880f41b2000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f998df369b0 CR3: 00000001274d4000 CR4: 0000000000752ef0
+PKRU: 00000000
+Call Trace:
+ <IRQ>
+ call_timer_fn+0x121/0x4f0
+ __run_timer_base+0x2ed/0x3d0
+ run_timer_softirq+0x3f/0x80
+ handle_softirqs+0x168/0x480
+ __irq_exit_rcu+0x7b/0x160
+ irq_exit_rcu+0x9/0x30
+ sysvec_apic_timer_interrupt+0xa4/0xc0
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20
+RIP: 0010:lock_acquire+0x13b/0x2a0
+Code: 01 0f 85 d9 00 00 00 9c 8f 44 24 10 f7 44 24 10 00 02 00 00 0f 85 e4 00 00 00 f7 c3 00 02 00 00 4c 89 f3 74 01 fb 65 48 8b 03 <48> 3b 44 24 38 0f 85 4a 01 00 00 48 83 c4 40 5b 41 5c 41 5d 41 5e
+RSP: 0018:ffffc90005547850 EFLAGS: 00000206
+RAX: 95a5ed2e1668bf00 RBX: ffffffff89862020 RCX: ffffffff8a20a910
+RDX: 0000000000000001 RSI: ffffffff86715a68 RDI: ffffffff8688163a
+RBP: 0000000000000000 R08: ffff8881275dc780 R09: ffffffff8a20a910
+R10: 00000000fd42cd2b R11: 0000000090c78ea5 R12: 0000000000000000
+R13: ffff888112a05548 R14: ffffffff89862020 R15: 0000000000000001
+ touch_wq_lockdep_map+0x7a/0xe0
+ __flush_workqueue+0x7c/0x7b0
+ drain_workqueue+0x77/0x1c0
+ hci_dev_close_sync+0x360/0x9f0
+ hci_dev_do_close+0x2f/0x70
+ hci_rfkill_set_block+0x165/0x1e0
+ rfkill_set_block+0xb0/0x200
+ rfkill_fop_open+0x16f/0x340
+ misc_open+0x15f/0x190
+ chrdev_open+0x250/0x2c0
+ do_dentry_open+0x722/0xa40
+ vfs_open+0x39/0x190
+ path_openat+0x14c9/0x1910
+ do_filp_open+0xdb/0x1d0
+ do_sys_openat2+0x8e/0x100
+ __x64_sys_openat+0xd4/0x100
+ do_syscall_64+0x8e/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7f2b0c1aca94
+Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 b6 0e 03 00 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 f8 0e 03 00 8b 44
+RSP: 002b:00007ffde3d75ac0 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007f2b0c1aca94
+RDX: 0000000000000002 RSI: 00007f2b0c2485a2 RDI: 00000000ffffff9c
+RBP: 00007f2b0c2485a2 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000002
+R13: 00007ffde3d75f58 R14: 00007ffde3d75d20 R15: 0000000000000002
+ </TASK>
+----------------
+Code disassembly (best guess):
+   0:	01 0f                	add    %ecx,(%rdi)
+   2:	85 d9                	test   %ebx,%ecx
+   4:	00 00                	add    %al,(%rax)
+   6:	00 9c 8f 44 24 10 f7 	add    %bl,-0x8efdbbc(%rdi,%rcx,4)
+   d:	44 24 10             	rex.R and $0x10,%al
+  10:	00 02                	add    %al,(%rdx)
+  12:	00 00                	add    %al,(%rax)
+  14:	0f 85 e4 00 00 00    	jne    0xfe
+  1a:	f7 c3 00 02 00 00    	test   $0x200,%ebx
+  20:	4c 89 f3             	mov    %r14,%rbx
+  23:	74 01                	je     0x26
+  25:	fb                   	sti
+  26:	65 48 8b 03          	mov    %gs:(%rbx),%rax
+* 2a:	48 3b 44 24 38       	cmp    0x38(%rsp),%rax <-- trapping instruction
+  2f:	0f 85 4a 01 00 00    	jne    0x17f
+  35:	48 83 c4 40          	add    $0x40,%rsp
+  39:	5b                   	pop    %rbx
+  3a:	41 5c                	pop    %r12
+  3c:	41 5d                	pop    %r13
+  3e:	41 5e                	pop    %r14
+
+final repro crashed as (corrupted=false):
+------------[ cut here ]------------
+workqueue: cannot queue hci_cmd_timeout on wq hci1
+WARNING: CPU: 0 PID: 18029 at kernel/workqueue.c:2258 __queue_work+0x899/0xa20
+Modules linked in:
+CPU: 0 UID: 0 PID: 18029 Comm: syz-executor Not tainted 6.16.0 #1 PREEMPT(full) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__queue_work+0x899/0xa20
+Code: ff ff e8 8a b1 1a 00 c6 05 c6 dd 04 06 01 48 8b 73 18 48 8b 44 24 08 48 8d 90 78 01 00 00 48 c7 c7 3d 6d 83 86 e8 57 42 fc ff <0f> 0b 40 84 ed 0f 85 95 f8 ff ff e8 57 b1 1a 00 48 83 c4 20 5b 41
+RSP: 0018:ffffc90000003dd8 EFLAGS: 00010046
+RAX: 95a5ed2e1668bf00 RBX: ffff8881076cc970 RCX: ffff8881275dc780
+RDX: 0000000000000100 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 0000000000000000 R08: 0000000000082ae5 R09: 0000000000000005
+R10: 0000000000000003 R11: 0000000000000100 R12: ffff8881076cc9b8
+R13: 0000000000000008 R14: 0000000000010000 R15: ffffffff8160e27e
+FS:  000055555de24500(0000) GS:ffff8880f41b2000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f998df369b0 CR3: 00000001274d4000 CR4: 0000000000752ef0
+PKRU: 00000000
+Call Trace:
+ <IRQ>
+ call_timer_fn+0x121/0x4f0
+ __run_timer_base+0x2ed/0x3d0
+ run_timer_softirq+0x3f/0x80
+ handle_softirqs+0x168/0x480
+ __irq_exit_rcu+0x7b/0x160
+ irq_exit_rcu+0x9/0x30
+ sysvec_apic_timer_interrupt+0xa4/0xc0
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20
+RIP: 0010:lock_acquire+0x13b/0x2a0
+Code: 01 0f 85 d9 00 00 00 9c 8f 44 24 10 f7 44 24 10 00 02 00 00 0f 85 e4 00 00 00 f7 c3 00 02 00 00 4c 89 f3 74 01 fb 65 48 8b 03 <48> 3b 44 24 38 0f 85 4a 01 00 00 48 83 c4 40 5b 41 5c 41 5d 41 5e
+RSP: 0018:ffffc90005547850 EFLAGS: 00000206
+RAX: 95a5ed2e1668bf00 RBX: ffffffff89862020 RCX: ffffffff8a20a910
+RDX: 0000000000000001 RSI: ffffffff86715a68 RDI: ffffffff8688163a
+RBP: 0000000000000000 R08: ffff8881275dc780 R09: ffffffff8a20a910
+R10: 00000000fd42cd2b R11: 0000000090c78ea5 R12: 0000000000000000
+R13: ffff888112a05548 R14: ffffffff89862020 R15: 0000000000000001
+ touch_wq_lockdep_map+0x7a/0xe0
+ __flush_workqueue+0x7c/0x7b0
+ drain_workqueue+0x77/0x1c0
+ hci_dev_close_sync+0x360/0x9f0
+ hci_dev_do_close+0x2f/0x70
+ hci_rfkill_set_block+0x165/0x1e0
+ rfkill_set_block+0xb0/0x200
+ rfkill_fop_open+0x16f/0x340
+ misc_open+0x15f/0x190
+ chrdev_open+0x250/0x2c0
+ do_dentry_open+0x722/0xa40
+ vfs_open+0x39/0x190
+ path_openat+0x14c9/0x1910
+ do_filp_open+0xdb/0x1d0
+ do_sys_openat2+0x8e/0x100
+ __x64_sys_openat+0xd4/0x100
+ do_syscall_64+0x8e/0x3a0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7f2b0c1aca94
+Code: 24 20 eb 8f 66 90 44 89 54 24 0c e8 b6 0e 03 00 44 8b 54 24 0c 44 89 e2 48 89 ee 41 89 c0 bf 9c ff ff ff b8 01 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 34 44 89 c7 89 44 24 0c e8 f8 0e 03 00 8b 44
+RSP: 002b:00007ffde3d75ac0 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007f2b0c1aca94
+RDX: 0000000000000002 RSI: 00007f2b0c2485a2 RDI: 00000000ffffff9c
+RBP: 00007f2b0c2485a2 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000002
+R13: 00007ffde3d75f58 R14: 00007ffde3d75d20 R15: 0000000000000002
+ </TASK>
+----------------
+Code disassembly (best guess):
+   0:	01 0f                	add    %ecx,(%rdi)
+   2:	85 d9                	test   %ebx,%ecx
+   4:	00 00                	add    %al,(%rax)
+   6:	00 9c 8f 44 24 10 f7 	add    %bl,-0x8efdbbc(%rdi,%rcx,4)
+   d:	44 24 10             	rex.R and $0x10,%al
+  10:	00 02                	add    %al,(%rdx)
+  12:	00 00                	add    %al,(%rax)
+  14:	0f 85 e4 00 00 00    	jne    0xfe
+  1a:	f7 c3 00 02 00 00    	test   $0x200,%ebx
+  20:	4c 89 f3             	mov    %r14,%rbx
+  23:	74 01                	je     0x26
+  25:	fb                   	sti
+  26:	65 48 8b 03          	mov    %gs:(%rbx),%rax
+* 2a:	48 3b 44 24 38       	cmp    0x38(%rsp),%rax <-- trapping instruction
+  2f:	0f 85 4a 01 00 00    	jne    0x17f
+  35:	48 83 c4 40          	add    $0x40,%rsp
+  39:	5b                   	pop    %rbx
+  3a:	41 5c                	pop    %r12
+  3c:	41 5d                	pop    %r13
+  3e:	41 5e                	pop    %r14
+

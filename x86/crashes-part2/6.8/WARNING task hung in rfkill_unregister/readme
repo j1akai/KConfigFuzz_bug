@@ -1,0 +1,80 @@
+Bug 类型​​
+​​复合型死锁（Deadlock）​​，包含：
+
+1.
+​​AB-BA锁顺序死锁​​（rfkill与网络命名空间锁）
+2.
+​​工作队列阻塞​​（cleanup_net与rfkill_worker相互等待）
+3.
+​​资源竞争​​（多个进程争抢rfkill全局锁）
+​​触发条件​​
+​​必要条件​​
+1.
+同时存在以下操作：
+•
+网络命名空间销毁（cleanup_net工作队列）
+•
+rfkill设备注销（rfkill_unregister）
+•
+NFC/WiFi设备关闭（触发rfkill操作）
+2.
+并发执行路径：
+graph TD
+    A[cleanup_net工作队列] -->|持有 pernet_ops_rwsem | B[rfkill_unregister]
+    C[rfkill_led_worker] -->|持有 rfkill_global_mutex | D[等待网络子系统]
+    B -->|需要 rfkill_global_mutex | C
+
+
+
+
+
+
+
+​​具体触发序列​​
+1.
+CPU0: cleanup_net 工作队列：
+
+•
+获取 pernet_ops_rwsem
+•
+调用 mac80211_hwsim_del_radio()
+•
+尝试获取 rfkill_global_mutex（阻塞）
+2.
+CPU1: rfkill_led_worker：
+
+•
+持有 rfkill_global_mutex
+•
+尝试访问网络子系统资源（需要pernet_ops_rwsem）
+​​根本原因​​
+1.
+​​锁顺序反转​​：
+
+•
+正常顺序：应先拿rfkill_global_mutex，再拿pernet_ops_rwsem
+•
+实际顺序：cleanup_net反向获取
+2.
+​​工作队列设计缺陷​​：
+
+// 错误路径示例
+void cleanup_net() {
+    down_read(&pernet_ops_rwsem);  // A
+    rfkill_unregister();           // 需要B
+}
+
+void rfkill_worker() {
+    mutex_lock(&rfkill_mutex);     // B
+    netdev_do_something();        // 需要A
+}
+3.
+​​缺乏取消机制​​：
+
+•
+rfkill工作项无法被cleanup_net安全取消
+​​影响范围​​
+子系统	影响程度	表现
+网络命名空间	严重	命名空间泄漏
+无线子系统	高	WiFi/蓝牙设备无法注销
+系统稳定性	致命	内核hung task导致系统僵死

@@ -1,0 +1,31 @@
+Bug 类型
+​​内核断言失败（Kernel Assertion Failure / BUG）​​，其根本原因很可能是 ​​文件系统元数据损坏​​ 或 ​​内核代码中的假设被违反​​。
+
+触发条件与根本原因分析
+调用栈清晰地指出了问题所在：
+
+1.
+​​操作​​：用户程序 syz.6.6189（Syzkaller 模糊测试工具）执行了一个 write 系统调用，向一个 NTFS 文件系统上的文件写入数据。
+
+•
+sys_write -> ksys_write -> vfs_write -> call_write_iter -> ​​ntfs_file_write_iter​​
+2.
+​​错误位置​​：错误发生在 NTFS 文件系统驱动的写入例程深处：
+
+•
+ntfs_file_write_iter -> ntfs_perform_write -> ​​__ntfs_grab_cache_pages​​ (fs/ntfs/file.c:493)
+3.
+​​断言失败​​：在 __ntfs_grab_cache_pages 函数中，有一个内核断言（可能是 BUG_ON 或 WARN_ON）被触发，导致内核执行了非法操作指令（invalid opcode）并崩溃。
+
+4.
+​​根本原因推测​​（基于 NTFS 驱动和常见模式）：
+该函数负责为写入操作获取（grab）或锁定（lock）所需的页面缓存页。断言失败很可能意味着代码的某个​​基本假设被违反​​了，例如：
+
+•
+​​页面缓存 inconsistency​​：预期存在于页面缓存中的页面不见了，或者其状态异常（例如，不是 uptodate）。
+•
+​​文件大小/分配冲突​​：尝试写入的文件偏移量超出了文件的实际分配大小，而驱动在处理这种特殊情况时出现了错误。
+•
+​​并发修改​​：在写入过程中，另一个线程（或用户进程）并发地修改了文件（如截断truncate），导致写入器看到的状态不一致。
+•
+​​损坏的元数据​​：NTFS 文件系统的元数据（如 MFT 记录）可能已被 Syzkaller 之前的操作损坏，导致驱动对文件状态的解读出现错误。

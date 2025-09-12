@@ -1,0 +1,2287 @@
+last executing test programs:
+
+23.75948839s ago: executing program 0 (id=5961):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+
+23.397892922s ago: executing program 0 (id=5953):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+linkat(0xffffffffffffff9c, &(0x7f0000000500)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000540)='./file1/file4/file7/file5\x00', 0x0)
+
+23.273140547s ago: executing program 0 (id=5957):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000580)='./file1/file4/file6\x00', 0xffffffffffffff9c, &(0x7f00000005c0)='./file1/file4/file7/file6\x00', 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000600)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000640)='./file1/file4/file7/file6\x00', 0x2)
+
+22.983567007s ago: executing program 0 (id=5967):
+capset(&(0x7f0000000040)={0x20080522}, &(0x7f0000000080))
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+r0 = syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+ptrace(0x10, r0)
+ptrace(0x11, r0)
+r1 = landlock_create_ruleset(&(0x7f00000000c0)={0x100}, 0x18, 0x0)
+landlock_restrict_self(r1, 0x0)
+r2 = syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+ptrace(0x10, r2)
+r3 = landlock_create_ruleset(&(0x7f0000000100)={0x100}, 0x18, 0x0)
+landlock_restrict_self(r3, 0x0)
+ptrace(0x10, r0)
+ptrace(0x11, r0)
+ptrace(0x10, r2)
+ptrace(0x11, r2)
+ptrace(0xffffffffffffffff, 0x0)
+
+22.473627307s ago: executing program 0 (id=5986):
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', &(0x7f00000000c0), 0x0, 0x0)
+r0 = landlock_create_ruleset(&(0x7f0000000180)={0x100}, 0x18, 0x0)
+r1 = openat$dir(0xffffffffffffff9c, &(0x7f00000001c0)='./file0\x00', 0x200000, 0x0)
+landlock_add_rule$LANDLOCK_RULE_PATH_BENEATH(r0, 0x1, &(0x7f0000000200)={0x100, r1}, 0x0)
+close(r1)
+umount2(&(0x7f00000002c0)='./file0\x00', 0x0)
+
+22.431111414s ago: executing program 0 (id=5989):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+close(0xffffffffffffffff)
+umount2(&(0x7f00000002c0)='./file0\x00', 0x0)
+
+19.642073652s ago: executing program 1 (id=6078):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+
+19.423851746s ago: executing program 4 (id=6085):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000600)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000640)='./file1/file4/file7/file6\x00', 0x2)
+
+19.359199042s ago: executing program 4 (id=6089):
+capset(&(0x7f0000000040)={0x20080522}, &(0x7f0000000080))
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+r0 = syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+ptrace(0x10, r0)
+ptrace(0x11, r0)
+r1 = landlock_create_ruleset(&(0x7f00000000c0)={0x100}, 0x18, 0x0)
+landlock_restrict_self(r1, 0x0)
+r2 = syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+ptrace(0x10, r2)
+r3 = landlock_create_ruleset(&(0x7f0000000100)={0x100}, 0x18, 0x0)
+landlock_restrict_self(r3, 0x0)
+ptrace(0x10, r0)
+ptrace(0x11, r0)
+ptrace(0x10, r2)
+ptrace(0x11, r2)
+ptrace(0xffffffffffffffff, 0x0)
+
+19.307684699s ago: executing program 6 (id=6092):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000580)='./file1/file4/file6\x00', 0xffffffffffffff9c, &(0x7f00000005c0)='./file1/file4/file7/file6\x00', 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000600)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000640)='./file1/file4/file7/file6\x00', 0x2)
+
+19.141465046s ago: executing program 5 (id=6096):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0))
+
+19.128524741s ago: executing program 6 (id=6098):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+
+19.073041392s ago: executing program 1 (id=6113):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+r0 = landlock_create_ruleset(&(0x7f00000002c0)={0x2001}, 0x18, 0x0)
+r1 = openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file1\x00', 0x200000, 0x0)
+landlock_add_rule$LANDLOCK_RULE_PATH_BENEATH(r0, 0x1, &(0x7f0000000340)={0x2000, r1}, 0x0)
+landlock_restrict_self(r0, 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000580)='./file1/file4/file6\x00', 0xffffffffffffff9c, &(0x7f00000005c0)='./file1/file4/file7/file6\x00', 0x0)
+
+18.914056298s ago: executing program 1 (id=6100):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000400)='./file1/file3\x00', 0xffffffffffffff9c, &(0x7f0000000440)='./file0/file3\x00', 0x0)
+
+18.912565223s ago: executing program 4 (id=6101):
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', &(0x7f00000000c0), 0x0, 0x0)
+r0 = landlock_create_ruleset(&(0x7f0000000180)={0x100}, 0x18, 0x0)
+r1 = openat$dir(0xffffffffffffff9c, &(0x7f00000001c0)='./file0\x00', 0x200000, 0x0)
+landlock_add_rule$LANDLOCK_RULE_PATH_BENEATH(r0, 0x1, &(0x7f0000000200)={0x100, r1}, 0x0)
+close(r1)
+umount2(&(0x7f00000002c0)='./file0\x00', 0x0)
+
+18.833958025s ago: executing program 5 (id=6102):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000400)='./file1/file3\x00', 0xffffffffffffff9c, &(0x7f0000000440)='./file0/file3\x00', 0x0)
+
+18.767644637s ago: executing program 4 (id=6106):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000600)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000640)='./file1/file4/file7/file6\x00', 0x2)
+
+18.641572942s ago: executing program 1 (id=6108):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', &(0x7f00000000c0), 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000001c0)='./file0\x00', 0x200000, 0x0)
+umount2(0x0, 0x0)
+
+18.641242576s ago: executing program 5 (id=6109):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000480)='./file1/file2\x00', 0xffffffffffffff9c, &(0x7f00000004c0)='./file0\x00', 0x2)
+
+18.634647807s ago: executing program 3 (id=6111):
+capset(0x0, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+r0 = syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+ptrace(0x11, r0)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+
+18.634405891s ago: executing program 6 (id=6112):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+
+18.570705426s ago: executing program 4 (id=6115):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000580)='./file1/file4/file6\x00', 0xffffffffffffff9c, &(0x7f00000005c0)='./file1/file4/file7/file6\x00', 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000600)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000640)='./file1/file4/file7/file6\x00', 0x2)
+
+18.513671033s ago: executing program 5 (id=6116):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+
+18.513250527s ago: executing program 1 (id=6118):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+r0 = landlock_create_ruleset(&(0x7f00000002c0)={0x2001}, 0x18, 0x0)
+r1 = openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file1\x00', 0x200000, 0x0)
+landlock_add_rule$LANDLOCK_RULE_PATH_BENEATH(r0, 0x1, &(0x7f0000000340)={0x2000, r1}, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+linkat(0xffffffffffffff9c, &(0x7f0000000500)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000540)='./file1/file4/file7/file5\x00', 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000580)='./file1/file4/file6\x00', 0xffffffffffffff9c, &(0x7f00000005c0)='./file1/file4/file7/file6\x00', 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000600)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000640)='./file1/file4/file7/file6\x00', 0x2)
+
+18.401974141s ago: executing program 6 (id=6120):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0))
+
+18.380014626s ago: executing program 4 (id=6122):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x2c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_TARGET_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x2c}}, 0x0)
+
+18.301232134s ago: executing program 3 (id=6123):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mount$tmpfs(0x0, 0x0, &(0x7f00000000c0), 0x0, 0x0)
+r0 = landlock_create_ruleset(&(0x7f0000000180)={0x100}, 0x18, 0x0)
+r1 = openat$dir(0xffffffffffffff9c, &(0x7f00000001c0)='./file0\x00', 0x200000, 0x0)
+landlock_add_rule$LANDLOCK_RULE_PATH_BENEATH(r0, 0x1, &(0x7f0000000200)={0x100, r1}, 0x0)
+close(r1)
+umount2(&(0x7f00000002c0)='./file0\x00', 0x0)
+
+18.296592705s ago: executing program 5 (id=6124):
+capset(0x0, &(0x7f0000000080))
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+r0 = syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+ptrace(0x11, r0)
+r1 = landlock_create_ruleset(0x0, 0x0, 0x0)
+landlock_restrict_self(r1, 0x0)
+syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+
+18.214286095s ago: executing program 1 (id=6125):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+
+18.162188971s ago: executing program 6 (id=6126):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000400)='./file1/file3\x00', 0xffffffffffffff9c, &(0x7f0000000440)='./file0/file3\x00', 0x0)
+
+18.130665766s ago: executing program 3 (id=6127):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+landlock_create_ruleset(&(0x7f00000002c0)={0x2001}, 0x18, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file1\x00', 0x200000, 0x0)
+linkat(0xffffffffffffff9c, &(0x7f0000000500)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000540)='./file1/file4/file7/file5\x00', 0x0)
+
+18.130315273s ago: executing program 3 (id=6128):
+r0 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r0, 0x0, 0x0)
+
+18.128410526s ago: executing program 6 (id=6129):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), 0xffffffffffffffff)
+sendmsg$NFC_CMD_DEV_UP(0xffffffffffffffff, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+
+17.936967671s ago: executing program 5 (id=6130):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+
+17.936409903s ago: executing program 3 (id=6132):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+linkat(0xffffffffffffff9c, &(0x7f0000000500)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000540)='./file1/file4/file7/file5\x00', 0x0)
+
+17.833307026s ago: executing program 3 (id=6136):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+
+2.831886769s ago: executing program 32 (id=6125):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+
+2.619074035s ago: executing program 33 (id=6122):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x2c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_TARGET_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x2c}}, 0x0)
+
+2.2859486s ago: executing program 34 (id=6130):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+
+2.285865115s ago: executing program 35 (id=6129):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), 0xffffffffffffffff)
+sendmsg$NFC_CMD_DEV_UP(0xffffffffffffffff, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+
+2.06955971s ago: executing program 36 (id=6136):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+
+450.600927ms ago: executing program 2 (id=6178):
+capset(0x0, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+r0 = landlock_create_ruleset(&(0x7f00000000c0)={0x100}, 0x18, 0x0)
+landlock_restrict_self(r0, 0x0)
+syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+
+313.56703ms ago: executing program 7 (id=6179):
+r0 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r0, &(0x7f0000000140)={0x0, 0x0, 0x0}, 0x0)
+
+312.77537ms ago: executing program 2 (id=6180):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', 0x0, 0x0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1\x00', 0x1c0)
+r0 = landlock_create_ruleset(&(0x7f0000000180)={0x100}, 0x18, 0x0)
+r1 = openat$dir(0xffffffffffffff9c, &(0x7f00000001c0)='./file0\x00', 0x200000, 0x0)
+landlock_add_rule$LANDLOCK_RULE_PATH_BENEATH(r0, 0x1, &(0x7f0000000200)={0x100, r1}, 0x0)
+close(0xffffffffffffffff)
+close(r1)
+umount2(&(0x7f00000002c0)='./file0\x00', 0x0)
+r2 = openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file1\x00', 0x200000, 0x0)
+landlock_add_rule$LANDLOCK_RULE_PATH_BENEATH(r0, 0x1, &(0x7f0000000340)={0x100, r2}, 0x0)
+close(r0)
+
+238.036547ms ago: executing program 7 (id=6181):
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000600)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000640)='./file1/file4/file7/file6\x00', 0x2)
+
+237.660946ms ago: executing program 2 (id=6182):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', &(0x7f00000000c0), 0x0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file0/file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1\x00', 0x1c0)
+r0 = landlock_create_ruleset(&(0x7f0000000180)={0x100}, 0x18, 0x0)
+landlock_add_rule$LANDLOCK_RULE_PATH_BENEATH(r0, 0x1, &(0x7f0000000200)={0x100}, 0x0)
+r1 = openat$dir(0xffffffffffffff9c, &(0x7f0000000240)='./file0/file0\x00', 0x200000, 0x0)
+landlock_add_rule$LANDLOCK_RULE_PATH_BENEATH(r0, 0x1, &(0x7f0000000280)={0x100, r1}, 0x0)
+landlock_restrict_self(r0, 0x0)
+close(r0)
+
+162.015354ms ago: executing program 2 (id=6183):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', 0x0, 0x0, 0x0)
+close(0xffffffffffffffff)
+umount2(&(0x7f00000002c0)='./file0\x00', 0x0)
+
+161.246009ms ago: executing program 7 (id=6184):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000400)='./file1/file3\x00', 0xffffffffffffff9c, &(0x7f0000000440)='./file0/file3\x00', 0x0)
+
+72.513981ms ago: executing program 2 (id=6185):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000180)='./file1/file4\x00', &(0x7f00000001c0), 0x0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+r0 = landlock_create_ruleset(&(0x7f00000002c0)={0x2001}, 0x18, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file1\x00', 0x200000, 0x0)
+landlock_restrict_self(r0, 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000580)='./file1/file4/file6\x00', 0xffffffffffffff9c, &(0x7f00000005c0)='./file1/file4/file7/file6\x00', 0x0)
+
+72.329796ms ago: executing program 7 (id=6186):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000140)='./file1/file4\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+linkat(0xffffffffffffff9c, &(0x7f0000000500)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000540)='./file1/file4/file7/file5\x00', 0x0)
+
+8.183811ms ago: executing program 7 (id=6187):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000200)='./file1/file4/file5\x00', 0x81c0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000240)='./file1/file4/file6\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000280)='./file1/file4/file7\x00', 0x1c0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000580)='./file1/file4/file6\x00', 0xffffffffffffff9c, &(0x7f00000005c0)='./file1/file4/file7/file6\x00', 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000600)='./file1/file4/file5\x00', 0xffffffffffffff9c, &(0x7f0000000640)='./file1/file4/file7/file6\x00', 0x2)
+
+7.866527ms ago: executing program 7 (id=6188):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file1/file3\x00', 0x1c0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000400)='./file1/file3\x00', 0xffffffffffffff9c, &(0x7f0000000440)='./file0/file3\x00', 0x0)
+
+0s ago: executing program 2 (id=6189):
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file1/file2\x00', 0x81c0, 0x0)
+renameat2(0xffffffffffffff9c, &(0x7f0000000480)='./file1/file2\x00', 0xffffffffffffff9c, &(0x7f00000004c0)='./file0\x00', 0x2)
+
+kernel console output (not intermixed with test programs):
+
+321.693007][ T1253] ieee802154 phy0 wpan0: encryption failed: -22
+[  321.694545][ T1253] ieee802154 phy1 wpan1: encryption failed: -22
+[  321.708481][T21311] loop4: detected capacity change from 0 to 512
+[  321.738655][T21309] loop1: detected capacity change from 0 to 2048
+[  321.989598][T21326] loop2: detected capacity change from 0 to 128
+[  322.021240][T21330] loop1: detected capacity change from 0 to 128
+[  322.071694][T21330] UDF-fs: error (device loop1): udf_read_tagged: read failed, block=256, location=256
+[  322.083696][T21320] loop0: detected capacity change from 0 to 2048
+[  322.085952][T21336] loop6: detected capacity change from 0 to 128
+[  322.092029][T21337] loop4: detected capacity change from 0 to 128
+[  322.111971][T21330] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  322.234490][T21343] loop2: detected capacity change from 0 to 128
+[  322.269538][T21346] loop4: detected capacity change from 0 to 256
+[  322.569596][T21367] loop2: detected capacity change from 0 to 128
+[  322.572412][T21367] ufs: ufs was compiled with read-only support, can't be mounted as read-write
+[  322.688654][T21324] loop5: detected capacity change from 0 to 8192
+[  322.702733][T21324] UDF-fs: warning (device loop5): udf_load_vrs: No VRS found
+[  322.705286][T21324] UDF-fs: Scanning with blocksize 512 failed
+[  322.727992][T21324] UDF-fs: warning (device loop5): udf_load_vrs: No VRS found
+[  322.730663][T21324] UDF-fs: Scanning with blocksize 1024 failed
+[  322.754631][T21324] UDF-fs: warning (device loop5): udf_load_vrs: No VRS found
+[  322.763864][T21324] UDF-fs: Scanning with blocksize 2048 failed
+[  322.785217][T21324] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  322.844027][T21375] loop2: detected capacity change from 0 to 512
+[  322.877353][T21375] UDF-fs: warning (device loop2): udf_load_vrs: No VRS found
+[  322.879762][T21375] UDF-fs: Scanning with blocksize 512 failed
+[  322.917031][T21375] UDF-fs: warning (device loop2): udf_load_vrs: No VRS found
+[  322.927162][T21375] UDF-fs: Scanning with blocksize 1024 failed
+[  322.944033][T21375] UDF-fs: warning (device loop2): udf_load_vrs: No VRS found
+[  322.946450][T21375] UDF-fs: Scanning with blocksize 2048 failed
+[  322.975184][T21375] UDF-fs: error (device loop2): udf_read_tagged: read failed, block=256, location=256
+[  323.004029][T21375] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  323.125658][T21354] loop1: detected capacity change from 0 to 8192
+[  323.149013][T21354] UDF-fs: warning (device loop1): udf_load_vrs: No VRS found
+[  323.151533][T21354] UDF-fs: Scanning with blocksize 512 failed
+[  323.174797][T21354] UDF-fs: warning (device loop1): udf_load_vrs: No VRS found
+[  323.189760][T21354] UDF-fs: Scanning with blocksize 1024 failed
+[  323.210292][T21354] UDF-fs: warning (device loop1): udf_load_vrs: No VRS found
+[  323.212798][T21354] UDF-fs: Scanning with blocksize 2048 failed
+[  323.235780][T21354] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  323.309354][T21384] loop2: detected capacity change from 0 to 128
+[  323.327112][T21384] VFS: could not find a valid V7 on loop2.
+[  323.512139][T21392] loop5: detected capacity change from 0 to 256
+[  323.713412][T21399] loop1: detected capacity change from 0 to 128
+[  323.734367][T21394] loop2: detected capacity change from 0 to 2048
+[  323.806420][T21356] loop6: detected capacity change from 0 to 16384
+[  323.820519][T21356] UDF-fs: warning (device loop6): udf_load_vrs: No VRS found
+[  323.822102][T21356] UDF-fs: Scanning with blocksize 512 failed
+[  323.842239][T21356] UDF-fs: warning (device loop6): udf_load_vrs: No VRS found
+[  323.843911][T21356] UDF-fs: Scanning with blocksize 1024 failed
+[  323.877152][T21356] UDF-fs: warning (device loop6): udf_load_vrs: No VRS found
+[  323.896925][T21356] UDF-fs: Scanning with blocksize 2048 failed
+[  323.901790][T21360] loop0: detected capacity change from 0 to 16384
+[  323.920153][T21356] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  323.938677][T21360] UDF-fs: warning (device loop0): udf_load_vrs: No VRS found
+[  323.950248][T21360] UDF-fs: Scanning with blocksize 512 failed
+[  323.961685][T21360] UDF-fs: warning (device loop0): udf_load_vrs: No VRS found
+[  323.982347][T21410] loop1: detected capacity change from 0 to 128
+[  323.997522][T21360] UDF-fs: Scanning with blocksize 1024 failed
+[  324.005394][T21360] UDF-fs: warning (device loop0): udf_load_vrs: No VRS found
+[  324.008998][T21360] UDF-fs: Scanning with blocksize 2048 failed
+[  324.021408][T21360] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  324.171741][T21416] loop7: detected capacity change from 0 to 512
+[  324.743402][T21434] loop6: detected capacity change from 0 to 256
+[  324.795235][T21412] loop2: detected capacity change from 0 to 8192
+[  325.117698][T21429] loop7: detected capacity change from 0 to 8192
+[  325.286737][T21450] loop2: detected capacity change from 0 to 128
+[  325.472714][T21456] loop7: detected capacity change from 0 to 128
+[  325.596100][T21460] loop4: detected capacity change from 0 to 128
+[  325.664757][T21421] loop1: detected capacity change from 0 to 16384
+[  325.685710][T21421] UDF-fs: warning (device loop1): udf_load_vrs: No VRS found
+[  325.706501][T21465] loop7: detected capacity change from 0 to 512
+[  325.714243][T21421] UDF-fs: Scanning with blocksize 512 failed
+[  325.719967][T21421] UDF-fs: warning (device loop1): udf_load_vrs: No VRS found
+[  325.722344][T21421] UDF-fs: Scanning with blocksize 1024 failed
+[  325.745537][T21421] UDF-fs: warning (device loop1): udf_load_vrs: No VRS found
+[  325.764775][T21421] UDF-fs: Scanning with blocksize 2048 failed
+[  325.791625][T21421] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  325.954545][T21480] loop7: detected capacity change from 0 to 512
+[  326.085479][T21486] loop7: detected capacity change from 0 to 128
+[  326.153055][T21472] loop4: detected capacity change from 0 to 8192
+[  326.188179][T21472] UDF-fs: warning (device loop4): udf_load_vrs: No VRS found
+[  326.189822][T21472] UDF-fs: Scanning with blocksize 512 failed
+[  326.206408][T21472] UDF-fs: warning (device loop4): udf_load_vrs: No VRS found
+[  326.211410][T21472] UDF-fs: Scanning with blocksize 1024 failed
+[  326.228843][T21472] UDF-fs: warning (device loop4): udf_load_vrs: No VRS found
+[  326.231211][T21472] UDF-fs: Scanning with blocksize 2048 failed
+[  326.259287][T21473] loop3: detected capacity change from 0 to 8192
+[  326.269651][T21472] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  326.270305][T21473] UDF-fs: warning (device loop3): udf_load_vrs: No VRS found
+[  326.275082][T21473] UDF-fs: Scanning with blocksize 512 failed
+[  326.317308][T21473] UDF-fs: warning (device loop3): udf_load_vrs: No VRS found
+[  326.319767][T21473] UDF-fs: Scanning with blocksize 1024 failed
+[  326.328666][T21473] UDF-fs: warning (device loop3): udf_load_vrs: No VRS found
+[  326.331121][T21473] UDF-fs: Scanning with blocksize 2048 failed
+[  326.375478][T21473] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  327.000240][T21511] loop5: detected capacity change from 0 to 512
+[  327.022736][T21508] loop3: detected capacity change from 0 to 2048
+[  327.481584][T21526] loop3: detected capacity change from 0 to 128
+[  327.835370][T21535] loop0: detected capacity change from 0 to 128
+[  328.055542][T21542] loop0: detected capacity change from 0 to 256
+[  328.085681][T21532] loop3: detected capacity change from 0 to 8192
+[  328.107412][T21519] loop5: detected capacity change from 0 to 16384
+[  328.110331][T21519] UDF-fs: warning (device loop5): udf_load_vrs: No VRS found
+[  328.112758][T21519] UDF-fs: Scanning with blocksize 512 failed
+[  328.119216][T21519] UDF-fs: warning (device loop5): udf_load_vrs: No VRS found
+[  328.121527][T21519] UDF-fs: Scanning with blocksize 1024 failed
+[  328.134255][T21519] UDF-fs: warning (device loop5): udf_load_vrs: No VRS found
+[  328.136689][T21519] UDF-fs: Scanning with blocksize 2048 failed
+[  328.160223][T21519] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  328.521872][T21554] loop0: detected capacity change from 0 to 2048
+[  328.542270][T21560] loop5: detected capacity change from 0 to 128
+[  328.632019][T21557] loop6: detected capacity change from 0 to 2048
+[  328.743651][T21567] loop2: detected capacity change from 0 to 512
+[  328.785808][T21569] loop5: detected capacity change from 0 to 128
+[  328.833751][T21552] loop3: detected capacity change from 0 to 8192
+[  328.847554][T21576] loop6: detected capacity change from 0 to 256
+[  329.411049][T21604] loop1: detected capacity change from 0 to 128
+[  329.525066][T21589] loop2: detected capacity change from 0 to 8192
+[  329.577380][T21589] UDF-fs: warning (device loop2): udf_load_vrs: No VRS found
+[  329.586179][T21589] UDF-fs: Scanning with blocksize 512 failed
+[  329.597233][T21589] UDF-fs: warning (device loop2): udf_load_vrs: No VRS found
+[  329.599687][T21589] UDF-fs: Scanning with blocksize 1024 failed
+[  329.612330][T21589] UDF-fs: warning (device loop2): udf_load_vrs: No VRS found
+[  329.614815][T21589] UDF-fs: Scanning with blocksize 2048 failed
+[  329.663666][T21611] loop1: detected capacity change from 0 to 512
+[  329.691748][T21589] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  329.698831][T21599] loop3: detected capacity change from 0 to 8192
+[  329.889436][T21595] loop5: detected capacity change from 0 to 8192
+[  329.927710][T21595] UDF-fs: warning (device loop5): udf_load_vrs: No VRS found
+[  329.931291][T21595] UDF-fs: Scanning with blocksize 512 failed
+[  329.937366][T21595] UDF-fs: warning (device loop5): udf_load_vrs: No VRS found
+[  329.939823][T21595] UDF-fs: Scanning with blocksize 1024 failed
+[  329.957252][T21595] UDF-fs: warning (device loop5): udf_load_vrs: No VRS found
+[  329.959680][T21595] UDF-fs: Scanning with blocksize 2048 failed
+[  329.991242][T21595] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  330.084149][T21620] loop1: detected capacity change from 0 to 512
+[  330.210373][T21629] loop3: detected capacity change from 0 to 256
+[  330.461468][T21640] loop5: detected capacity change from 0 to 256
+[  330.669888][T21623] loop4: detected capacity change from 0 to 8192
+[  330.693046][T21649] loop5: detected capacity change from 0 to 512
+[  330.962912][T21657] loop4: detected capacity change from 0 to 128
+[  331.093438][T21659] loop5: detected capacity change from 0 to 512
+[  331.409822][T21671] loop5: detected capacity change from 0 to 512
+[  331.471892][T21668] loop4: detected capacity change from 0 to 2048
+[  331.497341][T21643] loop3: detected capacity change from 0 to 16384
+[  331.509829][T21643] UDF-fs: warning (device loop3): udf_load_vrs: No VRS found
+[  331.511426][T21643] UDF-fs: Scanning with blocksize 512 failed
+[  331.517483][T21643] UDF-fs: warning (device loop3): udf_load_vrs: No VRS found
+[  331.519100][T21643] UDF-fs: Scanning with blocksize 1024 failed
+[  331.523509][T21643] UDF-fs: warning (device loop3): udf_load_vrs: No VRS found
+[  331.525136][T21643] UDF-fs: Scanning with blocksize 2048 failed
+[  331.529096][T21643] UDF-fs: INFO Mounting volume 'LinuxUDF', timestamp 2022/11/22 14:59 (1000)
+[  331.816717][T21686] loop4: detected capacity change from 0 to 128
+[  331.919105][T21686] vxfs: WRONG superblock magic 7b3185b5 at 1
+[  331.929958][T21686] vxfs: WRONG superblock magic 7b318cb5 at 8
+[  331.931295][T21686] vxfs: can't find superblock.
+[  332.263436][T21696] loop3: detected capacity change from 0 to 2048
+[  335.360758][T21748] loop4: detected capacity change from 0 to 256
+[  335.660170][T21755] loop7: detected capacity change from 0 to 128
+[  335.869981][T21750] loop6: detected capacity change from 0 to 8192
+[  335.872241][T21759] loop3: detected capacity change from 0 to 512
+[  335.993391][ T4379] Bluetooth: hci6: unexpected event for opcode 0x041b
+[  336.083086][T21770] loop3: detected capacity change from 0 to 512
+[  336.399242][T21775] loop3: detected capacity change from 0 to 128
+[  336.429423][T21775] vxfs: WRONG superblock magic 7b3185b5 at 1
+[  336.440490][T21775] vxfs: WRONG superblock magic 7b318cb5 at 8
+[  336.452702][T21775] vxfs: can't find superblock.
+[  336.551572][T21743] loop5: detected capacity change from 0 to 32768
+[  336.665804][T21783] loop1: detected capacity change from 0 to 2048
+[  336.705628][T10081] I/O error, dev loop3, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 0
+[  336.785670][T21746] loop0: detected capacity change from 0 to 32768
+[  337.907604][T12702] usb 1-1: new high-speed USB device number 2 using dummy_hcd
+[  337.985060][T21773] loop7: detected capacity change from 0 to 32768
+[  338.006664][T21753] loop4: detected capacity change from 0 to 32768
+[  338.146981][T12702] usb 1-1: Using ep0 maxpacket: 8
+[  338.199410][T21773] XFS (loop7): Mounting V5 Filesystem bc2378ed-6193-40d5-9d59-7ebcb787b415
+[  338.259049][T21773] XFS (loop7): Ending clean mount
+[  338.306961][T12702] usb 1-1: config 0 has an invalid interface number: 143 but max is 0
+[  338.309014][T12702] usb 1-1: config 0 has no interface number 0
+[  338.333964][T12702] usb 1-1: New USB device found, idVendor=2058, idProduct=1005, bcdDevice=c1.9b
+[  338.339569][T10040] XFS (loop7): Unmounting Filesystem bc2378ed-6193-40d5-9d59-7ebcb787b415
+[  338.367167][T12702] usb 1-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  338.412065][T12702] usb 1-1: config 0 descriptor??
+[  338.491553][T21832] loop4: detected capacity change from 0 to 2048
+[  338.605255][T21788] loop6: detected capacity change from 0 to 32768
+[  338.696116][T21832]  loop4: p1 p2 p3
+[  338.717210][T12702] viperboard 1-1:0.143: version 0.00 found at bus 001 address 002
+[  338.822893][T12702] viperboard-i2c viperboard-i2c.2.auto: failure setting i2c_bus_freq to 100
+[  338.825041][T12702] viperboard-i2c: probe of viperboard-i2c.2.auto failed with error -5
+[  338.845455][T12702] usb 1-1: USB disconnect, device number 2
+[  338.871479][T21797] loop1: detected capacity change from 0 to 32768
+[  338.899873][T21788] XFS (loop6): Mounting V5 Filesystem ca7e2101-b8f1-4838-8e2d-7637b90620e6
+[  339.069085][T21797] XFS (loop1): Mounting V5 Filesystem a2f82aab-77f8-4286-afd4-a8f747a74bab
+[  339.129821][T21788] XFS (loop6): Ending clean mount
+[  339.202818][T21797] XFS (loop1): Ending clean mount
+[  339.476463][T10002] XFS (loop1): Unmounting Filesystem a2f82aab-77f8-4286-afd4-a8f747a74bab
+[  339.549854][T10046] XFS (loop6): Unmounting Filesystem ca7e2101-b8f1-4838-8e2d-7637b90620e6
+[  339.554667][T21921] loop4: detected capacity change from 0 to 2048
+[  339.644898][T21925] loop2: detected capacity change from 0 to 512
+[  339.793245][T21921]  loop4: p1 p2 p3
+[  339.960385][ T4379] Bluetooth: hci5: unexpected event for opcode 0x041b
+[  340.469994][T21967] loop2: detected capacity change from 0 to 128
+[  340.493031][T21967] zonefs (loop2) ERROR: Not a zoned block device
+[  340.561418][T21968] loop3: detected capacity change from 0 to 2048
+[  340.566508][T21973] loop1: detected capacity change from 0 to 128
+[  340.582503][T21974] loop6: detected capacity change from 0 to 256
+[  340.774861][T21968]  loop3: p2 p3 p7
+[  341.134311][T21991] loop1: detected capacity change from 0 to 2048
+[  341.264729][T22001] loop3: detected capacity change from 0 to 128
+[  341.285203][T22001] zonefs (loop3) ERROR: Not a zoned block device
+[  342.187978][T22013] loop7: detected capacity change from 0 to 2048
+[  342.848321][T22024] loop7: detected capacity change from 0 to 2048
+[  342.963291][T22024]  loop7: p1 p2 p3
+[  343.128301][ T4440] I/O error, dev loop7, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[  343.131015][ T4440] Buffer I/O error on dev loop7, logical block 0, async page read
+[  343.133033][ T4440] ldm_validate_partition_table(): Disk read failed.
+[  343.194772][ T4440] Dev loop7: unable to read RDB block 0
+[  343.214933][ T4440]  loop7: unable to read partition table
+[  343.216431][ T4440] loop7: partition table beyond EOD, truncated
+[  343.728339][T21993] loop6: detected capacity change from 0 to 32768
+[  343.897139][T21993] XFS (loop6): Mounting V5 Filesystem 9f91832a-3b79-45c3-9d6d-ed0bc7357fe4
+[  343.912038][T21993] workqueue: Failed to create a rescuer kthread for wq "xfs-log/loop6": -EINTR
+[  343.913742][T21993] XFS (loop6): log mount failed
+[  344.346914][ T8591] usb 5-1: new high-speed USB device number 2 using dummy_hcd
+[  344.590576][ T4379] Bluetooth: hci7: unexpected event for opcode 0x041b
+[  344.596963][ T8591] usb 5-1: Using ep0 maxpacket: 8
+[  344.717016][ T8591] usb 5-1: config 0 has an invalid interface number: 143 but max is 0
+[  344.719628][ T8591] usb 5-1: config 0 has no interface number 0
+[  344.721661][ T8591] usb 5-1: New USB device found, idVendor=2058, idProduct=1005, bcdDevice=c1.9b
+[  344.740758][ T8591] usb 5-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  344.772772][ T8591] usb 5-1: config 0 descriptor??
+[  344.967057][ T8591] viperboard 5-1:0.143: version 0.00 found at bus 005 address 002
+[  344.987817][T22080] loop3: detected capacity change from 0 to 2048
+[  345.037033][ T8591] viperboard-i2c viperboard-i2c.2.auto: failure setting i2c_bus_freq to 100
+[  345.038936][ T8591] viperboard-i2c: probe of viperboard-i2c.2.auto failed with error -5
+[  345.061497][T22080]  loop3: p1 p2 p3
+[  345.088049][ T8591] usb 5-1: USB disconnect, device number 2
+[  345.430301][ T4440]  loop3: p1 p2 p3
+[  345.502111][T22023] loop0: detected capacity change from 0 to 32768
+[  345.647067][T10081] I/O error, dev loop3, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 0
+[  345.669868][T22023] XFS (loop0): Mounting V5 Filesystem bc2378ed-6193-40d5-9d59-7ebcb787b415
+[  345.673262][T22023] workqueue: Failed to create a rescuer kthread for wq "xfs-log/loop0": -EINTR
+[  345.707030][T22023] XFS (loop0): log mount failed
+[  345.858878][T22142] loop3: detected capacity change from 0 to 128
+[  345.996759][T22150] loop4: detected capacity change from 0 to 2048
+[  346.127518][T22038] loop7: detected capacity change from 0 to 32768
+[  346.329151][T22038] XFS (loop7): Mounting V5 Filesystem ca7e2101-b8f1-4838-8e2d-7637b90620e6
+[  346.333931][T22150]  loop4: p2 p3 p7
+[  346.346738][T22053] loop5: detected capacity change from 0 to 32768
+[  346.357414][T22038] workqueue: Failed to create a rescuer kthread for wq "xfs-log/loop7": -EINTR
+[  346.359998][T22038] XFS (loop7): log mount failed
+[  346.510630][T22053] XFS (loop5): Mounting V5 Filesystem a2f82aab-77f8-4286-afd4-a8f747a74bab
+[  346.768896][T22197] loop0: detected capacity change from 0 to 128
+[  346.773094][T22197] zonefs (loop0) ERROR: Not a zoned block device
+[  346.891394][T22053] XFS (loop5): Ending clean mount
+[  347.093257][T22213] loop4: detected capacity change from 0 to 2048
+[  347.382552][ T9997] XFS (loop5): Unmounting Filesystem a2f82aab-77f8-4286-afd4-a8f747a74bab
+[  347.420574][T22218] loop2: detected capacity change from 0 to 2048
+[  347.620420][T22218]  loop2: p1 p2 p3
+[  347.634457][T22226] loop7: detected capacity change from 0 to 128
+[  347.654030][T22226] vxfs: WRONG superblock magic 7b3185b5 at 1
+[  347.681841][T22226] vxfs: WRONG superblock magic 7b318cb5 at 8
+[  347.683893][T22226] vxfs: can't find superblock.
+[  348.680269][T22144] loop1: detected capacity change from 0 to 32768
+[  348.717666][T22144] workqueue: Failed to create a rescuer kthread for wq "xfs-conv/loop1": -EINTR
+[  349.489687][T22256] loop5: detected capacity change from 0 to 8192
+[  349.761670][ T4440] I/O error, dev loop5, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 0
+[  349.793396][ T4440] Buffer I/O error on dev loop5, logical block 0, async page read
+[  349.815866][ T4440] ldm_validate_partition_table(): Disk read failed.
+[  349.834749][ T4440] Dev loop5: unable to read RDB block 0
+[  349.838548][ T4440]  loop5: unable to read partition table
+[  349.839933][ T4440] loop5: partition table beyond EOD, truncated
+[  350.586733][T22246] loop2: detected capacity change from 0 to 32768
+[  350.656165][T22246] XFS (loop2): Mounting V5 Filesystem c496e05e-540d-4c72-b591-04d79d8b4eeb
+[  350.857949][T22246] XFS (loop2): Ending clean mount
+[  350.985102][T22255] loop6: detected capacity change from 0 to 32768
+[  351.047610][T10026] XFS (loop2): Unmounting Filesystem c496e05e-540d-4c72-b591-04d79d8b4eeb
+[  351.082592][T22255] XFS (loop6): Mounting V5 Filesystem ed37bf6e-74ea-4e01-afba-5fee274b0f3a
+[  351.208138][T22255] XFS (loop6): Ending clean mount
+[  351.336487][T10046] XFS (loop6): Unmounting Filesystem ed37bf6e-74ea-4e01-afba-5fee274b0f3a
+[  351.590845][ T8586] usb 8-1: new high-speed USB device number 2 using dummy_hcd
+[  351.800869][T22271] loop1: detected capacity change from 0 to 32768
+[  351.827665][ T8586] usb 8-1: Using ep0 maxpacket: 8
+[  351.867179][T22271] XFS (loop1): Mounting V5 Filesystem 6b3d8c96-b8b2-4f73-8344-2893082bca0b
+[  351.947098][ T8586] usb 8-1: config 0 has an invalid interface number: 143 but max is 0
+[  351.955395][ T8586] usb 8-1: config 0 has no interface number 0
+[  351.968046][ T8586] usb 8-1: New USB device found, idVendor=2058, idProduct=1005, bcdDevice=c1.9b
+[  351.971181][ T8586] usb 8-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  352.019956][ T8586] usb 8-1: config 0 descriptor??
+[  352.141654][T22271] XFS (loop1): Ending clean mount
+[  352.256974][ T8586] viperboard 8-1:0.143: version 0.00 found at bus 008 address 002
+[  352.265247][T10002] XFS (loop1): Unmounting Filesystem 6b3d8c96-b8b2-4f73-8344-2893082bca0b
+[  352.307786][ T8586] viperboard-i2c viperboard-i2c.2.auto: failure setting i2c_bus_freq to 100
+[  352.310712][ T8586] viperboard-i2c: probe of viperboard-i2c.2.auto failed with error -5
+[  352.358174][ T8586] usb 8-1: USB disconnect, device number 2
+[  352.374858][T22301] loop0: detected capacity change from 0 to 32768
+[  352.771103][T22295] loop4: detected capacity change from 0 to 32768
+[  352.861130][T22295] XFS (loop4): Mounting V5 Filesystem bc2378ed-6193-40d5-9d59-7ebcb787b415
+[  353.040932][T22295] XFS (loop4): Ending clean mount
+[  353.263207][T22433] loop7: detected capacity change from 0 to 2048
+[  353.286553][T10010] XFS (loop4): Unmounting Filesystem bc2378ed-6193-40d5-9d59-7ebcb787b415
+[  353.665951][T22451] loop0: detected capacity change from 0 to 2048
+[  353.835407][T22451]  loop0: p2 p3 p7
+[  354.154431][T22350] loop2: detected capacity change from 0 to 32768
+[  354.267166][T22350] XFS (loop2): Mounting V5 Filesystem ca7e2101-b8f1-4838-8e2d-7637b90620e6
+[  354.387062][T22350] XFS (loop2): Ending clean mount
+[  354.438815][ T4440]  loop0: p2 p3 p7
+[  354.588139][T10026] XFS (loop2): Unmounting Filesystem ca7e2101-b8f1-4838-8e2d-7637b90620e6
+[  355.002493][T22436] loop6: detected capacity change from 0 to 32768
+[  356.123346][T22456] loop7: detected capacity change from 0 to 32768
+[  356.259935][T22456] XFS (loop7): Mounting V5 Filesystem a2f82aab-77f8-4286-afd4-a8f747a74bab
+[  356.450747][T22456] XFS (loop7): Ending clean mount
+[  356.677779][T10040] XFS (loop7): Unmounting Filesystem a2f82aab-77f8-4286-afd4-a8f747a74bab
+[  357.238075][T22537] loop1: detected capacity change from 0 to 8192
+[  357.358127][T22537]  loop1: p1 p2 p3
+[  357.552676][ T4440]  loop1: p1 p2 p3
+[  357.666377][T22514] loop2: detected capacity change from 0 to 32768
+[  357.808239][T22514] XFS (loop2): Mounting V5 Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  357.974633][T22514] XFS (loop2): Ending clean mount
+[  358.133296][T22517] loop6: detected capacity change from 0 to 32768
+[  358.148731][T10026] XFS (loop2): Unmounting Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  358.323116][T22517] XFS (loop6): Mounting V5 Filesystem 9f1cad42-11bd-4e12-8f0b-f07876b81d9a
+[  358.595338][T22617] loop5: detected capacity change from 0 to 2048
+[  358.643284][T22517] XFS (loop6): Ending clean mount
+[  358.653082][T22617]  loop5: p1 p2 p3
+[  358.757629][T10046] XFS (loop6): Unmounting Filesystem 9f1cad42-11bd-4e12-8f0b-f07876b81d9a
+[  361.098135][T22622] loop2: detected capacity change from 0 to 32768
+[  361.162675][T22622] XFS (loop2): Mounting V5 Filesystem 6b3d8c96-b8b2-4f73-8344-2893082bca0b
+[  361.382444][T22622] XFS (loop2): Ending clean mount
+[  361.538501][T10026] XFS (loop2): Unmounting Filesystem 6b3d8c96-b8b2-4f73-8344-2893082bca0b
+[  362.588600][T22649] loop6: detected capacity change from 0 to 32768
+[  362.798755][T22649] XFS (loop6): Mounting V5 Filesystem bc2378ed-6193-40d5-9d59-7ebcb787b415
+[  362.890849][T22649] XFS (loop6): Ending clean mount
+[  363.160225][T10046] XFS (loop6): Unmounting Filesystem bc2378ed-6193-40d5-9d59-7ebcb787b415
+[  365.055031][T22730] loop7: detected capacity change from 0 to 8192
+[  367.364490][T22735] loop1: detected capacity change from 0 to 32768
+[  367.496748][T22735] XFS (loop1): Mounting V5 Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  367.663954][T22735] XFS (loop1): Ending clean mount
+[  367.963698][T10002] XFS (loop1): Unmounting Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  371.209961][T22789] loop7: detected capacity change from 0 to 32768
+[  371.271910][T22789] XFS (loop7): Mounting V5 Filesystem 6b3d8c96-b8b2-4f73-8344-2893082bca0b
+[  371.450963][T22795] loop1: detected capacity change from 0 to 32768
+[  371.537271][T22795] XFS (loop1): Mounting V5 Filesystem ed37bf6e-74ea-4e01-afba-5fee274b0f3a
+[  371.548335][T22789] XFS (loop7): Ending clean mount
+[  371.697151][T22795] XFS (loop1): Ending clean mount
+[  371.879456][T10002] XFS (loop1): Unmounting Filesystem ed37bf6e-74ea-4e01-afba-5fee274b0f3a
+[  371.909554][T10040] XFS (loop7): Unmounting Filesystem 6b3d8c96-b8b2-4f73-8344-2893082bca0b
+[  372.511403][T22840] loop4: detected capacity change from 0 to 8192
+[  375.434291][T22872] loop4: detected capacity change from 0 to 32768
+[  375.540392][T22872] XFS (loop4): Mounting V5 Filesystem ca7e2101-b8f1-4838-8e2d-7637b90620e6
+[  375.610921][T22872] XFS (loop4): Ending clean mount
+[  375.731172][T10010] XFS (loop4): Unmounting Filesystem ca7e2101-b8f1-4838-8e2d-7637b90620e6
+[  377.124511][T22880] loop6: detected capacity change from 0 to 32768
+[  377.268756][T22880] XFS (loop6): Mounting V5 Filesystem a2f82aab-77f8-4286-afd4-a8f747a74bab
+[  377.469509][T22880] XFS (loop6): Ending clean mount
+[  377.623843][T10046] XFS (loop6): Unmounting Filesystem a2f82aab-77f8-4286-afd4-a8f747a74bab
+[  377.979362][T22894] loop3: detected capacity change from 0 to 32768
+[  378.116925][T22894] XFS (loop3): Mounting V5 Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  378.276537][T22894] XFS (loop3): Ending clean mount
+[  378.620377][T10020] XFS (loop3): Unmounting Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  380.821202][T22987] loop3: detected capacity change from 0 to 32768
+[  380.919014][T22987] XFS (loop3): Mounting V5 Filesystem c496e05e-540d-4c72-b591-04d79d8b4eeb
+[  381.057257][T22987] XFS (loop3): Ending clean mount
+[  381.288735][T10020] XFS (loop3): Unmounting Filesystem c496e05e-540d-4c72-b591-04d79d8b4eeb
+[  381.327529][T23030] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  383.133572][ T1253] ieee802154 phy0 wpan0: encryption failed: -22
+[  383.143965][ T1253] ieee802154 phy1 wpan1: encryption failed: -22
+[  383.543230][ T8578] usb 6-1: new high-speed USB device number 2 using dummy_hcd
+[  384.057097][ T8578] usb 6-1: New USB device found, idVendor=0cf3, idProduct=9271, bcdDevice= 1.08
+[  384.059272][ T8578] usb 6-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  384.075860][ T8578] usb 6-1: Product: syz
+[  384.077039][ T8578] usb 6-1: Manufacturer: syz
+[  384.078021][ T8578] usb 6-1: SerialNumber: syz
+[  384.143427][ T8578] usb 6-1: ath9k_htc: Firmware ath9k_htc/htc_9271-1.4.0.fw requested
+[  384.777112][ T4434] usb 6-1: ath9k_htc: Transferred FW: ath9k_htc/htc_9271-1.4.0.fw, size: 51008
+[  385.202503][T23133] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  385.204480][ T8591] usb 6-1: USB disconnect, device number 2
+[  385.593173][T23079] loop0: detected capacity change from 0 to 32768
+[  385.634969][T23079] XFS (loop0): Mounting V5 Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  385.748291][T23079] XFS (loop0): Ending clean mount
+[  385.892127][ T9991] XFS (loop0): Unmounting Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  386.057062][T12702] usb 7-1: new high-speed USB device number 2 using dummy_hcd
+[  386.076265][T23110] loop4: detected capacity change from 0 to 32768
+[  386.087422][ T4434] usb 6-1: Service connection timeout for: 256
+[  386.088851][ T4434] ath9k_htc 6-1:1.0: ath9k_htc: Unable to initialize HTC services
+[  386.106660][ T4434] ath9k_htc: Failed to initialize the device
+[  386.134322][ T8591] usb 6-1: ath9k_htc: USB layer deinitialized
+[  386.165106][T23110] XFS (loop4): Mounting V5 Filesystem c496e05e-540d-4c72-b591-04d79d8b4eeb
+[  386.277976][T23110] XFS (loop4): Ending clean mount
+[  386.316965][T12702] usb 7-1: Using ep0 maxpacket: 32
+[  386.407314][T12655] usb 1-1: new high-speed USB device number 3 using dummy_hcd
+[  386.411507][T23221] ptrace attach of "/syz-executor exec"[10002] was attempted by "/syz-executor exec"[23221]
+[  386.467320][T12702] usb 7-1: config 0 interface 0 altsetting 0 endpoint 0x1 has invalid wMaxPacketSize 0
+[  386.470538][T12702] usb 7-1: config 0 interface 0 altsetting 0 bulk endpoint 0x1 has invalid maxpacket 0
+[  386.503226][T12702] usb 7-1: config 0 interface 0 altsetting 0 endpoint 0x82 has invalid wMaxPacketSize 0
+[  386.519132][T12702] usb 7-1: config 0 interface 0 altsetting 0 bulk endpoint 0x82 has invalid maxpacket 0
+[  386.522518][T12702] usb 7-1: config 0 interface 0 altsetting 0 has 2 endpoint descriptors, different from the interface descriptor's value: 18
+[  386.557225][T12702] usb 7-1: New USB device found, idVendor=03f0, idProduct=6c17, bcdDevice= 0.40
+[  386.560482][T12702] usb 7-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  386.570911][T10010] XFS (loop4): Unmounting Filesystem c496e05e-540d-4c72-b591-04d79d8b4eeb
+[  386.713217][T12702] usb 7-1: config 0 descriptor??
+[  386.837042][T12655] usb 1-1: config 1 has an invalid interface number: 7 but max is 0
+[  386.840011][T12655] usb 1-1: config 1 has no interface number 0
+[  386.842085][T12655] usb 1-1: config 1 interface 7 altsetting 0 has an invalid endpoint with address 0xDB, skipping
+[  386.845599][T12655] usb 1-1: config 1 interface 7 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  387.007291][T12702] usblp 7-1:0.0: usblp0: USB Bidirectional printer dev 2 if 0 alt 0 proto 3 vid 0x03F0 pid 0x6C17
+[  387.054811][T23128] loop3: detected capacity change from 0 to 32768
+[  387.094215][T12655] usb 1-1: New USB device found, idVendor=1199, idProduct=68a3, bcdDevice= 0.00
+[  387.096147][T12655] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  387.100677][T12655] usb 1-1: Product: syz
+[  387.101693][T12655] usb 1-1: Manufacturer: syz
+[  387.102663][T12655] usb 1-1: SerialNumber: syz
+[  387.106923][T12622] usb 2-1: new high-speed USB device number 2 using dummy_hcd
+[  387.116592][T23128] XFS (loop3): Mounting V5 Filesystem ed37bf6e-74ea-4e01-afba-5fee274b0f3a
+[  387.143409][T23189] raw-gadget.1 gadget.0: fail, usb_ep_enable returned -22
+[  387.157317][T23128] XFS (loop3): Ending clean mount
+[  387.181717][T12655] usb 1-1: Expected 3 endpoints, found: 2
+[  387.202620][T10020] XFS (loop3): Unmounting Filesystem ed37bf6e-74ea-4e01-afba-5fee274b0f3a
+[  387.357141][ T8586] usb 3-1: new high-speed USB device number 2 using dummy_hcd
+[  387.544950][T12622] usb 2-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  387.555396][T12622] usb 2-1: config 0 interface 0 altsetting 0 endpoint 0x81 has invalid wMaxPacketSize 0
+[  387.567028][T12622] usb 2-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  387.585725][T12622] usb 2-1: New USB device found, idVendor=047f, idProduct=ffff, bcdDevice= 0.00
+[  387.595428][T12622] usb 2-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  387.624570][T12622] usb 2-1: config 0 descriptor??
+[  387.646599][T23315] process 'syz.4.2279' launched './file0' with NULL argv: empty string added
+[  387.651284][T23306] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  387.662803][T23314] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  387.727361][T23320] ptrace attach of "/syz-executor exec"[10010] was attempted by "/syz-executor exec"[23320]
+[  387.879226][ T8586] usb 3-1: New USB device found, idVendor=0cf3, idProduct=9271, bcdDevice= 1.08
+[  387.881321][ T8586] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  387.883798][ T8586] usb 3-1: Product: syz
+[  387.887548][ T8586] usb 3-1: Manufacturer: syz
+[  387.888564][ T8586] usb 3-1: SerialNumber: syz
+[  387.938732][ T8586] usb 3-1: ath9k_htc: Firmware ath9k_htc/htc_9271-1.4.0.fw requested
+[  388.122926][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.130061][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.136408][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.143920][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.151075][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.158386][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.164613][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.172480][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.181405][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.187584][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.199517][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.212961][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.219139][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.227072][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.232104][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.242289][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.252040][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.258488][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.266017][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.281750][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.287057][ T8586] usb 4-1: new high-speed USB device number 2 using dummy_hcd
+[  388.289644][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.294828][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.302728][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.309208][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.318322][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.325610][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.334259][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.351693][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.362168][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.371827][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.380278][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.389941][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.399613][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.409797][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.415997][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.425957][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.431324][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.440019][T12622] plantronics 0003:047F:FFFF.0001: unknown main item tag 0x0
+[  388.459908][T12622] plantronics 0003:047F:FFFF.0001: No inputs registered, leaving
+[  388.486214][T23253] loop7: detected capacity change from 0 to 32768
+[  388.496984][ T8578] usb 3-1: ath9k_htc: Transferred FW: ath9k_htc/htc_9271-1.4.0.fw, size: 51008
+[  388.555556][T12622] plantronics 0003:047F:FFFF.0001: hiddev1,hidraw0: USB HID v0.00 Device [HID 047f:ffff] on usb-dummy_hcd.1-1/input0
+[  388.562382][T23253] XFS (loop7): Mounting V5 Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  388.580104][T12622] usb 2-1: USB disconnect, device number 2
+[  388.630762][T23253] XFS (loop7): Ending clean mount
+[  388.647041][ T8586] usb 4-1: config 1 interface 0 altsetting 127 bulk endpoint 0x81 has invalid maxpacket 64
+[  388.650039][ T8586] usb 4-1: config 1 interface 0 altsetting 127 bulk endpoint 0x2 has invalid maxpacket 32
+[  388.658724][ T8586] usb 4-1: config 1 interface 0 has no altsetting 0
+[  388.707013][   T23] usb 5-1: new high-speed USB device number 3 using dummy_hcd
+[  388.735064][T10040] XFS (loop7): Unmounting Filesystem 986211a9-7d00-4ebf-a576-e3de63fa2cbd
+[  388.804102][ T4434] usb 7-1: USB disconnect, device number 2
+[  388.818733][ T8586] usb 4-1: New USB device found, idVendor=0bda, idProduct=8150, bcdDevice= 0.40
+[  388.821015][ T8586] usb 4-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  388.822696][ T8586] usb 4-1: Product: syz
+[  388.823578][ T8586] usb 4-1: Manufacturer: syz
+[  388.824573][ T8586] usb 4-1: SerialNumber: syz
+[  388.845250][ T4434] usblp0: removed
+[  388.867017][T23339] raw-gadget.4 gadget.3: fail, usb_ep_enable returned -22
+[  388.868932][T23339] raw-gadget.4 gadget.3: fail, usb_ep_enable returned -22
+[  388.986515][ T8588] usb 3-1: USB disconnect, device number 2
+[  389.067179][   T23] usb 5-1: config 1 interface 0 altsetting 0 has 2 endpoint descriptors, different from the interface descriptor's value: 18
+[  389.114619][ T4434] usb 1-1: USB disconnect, device number 3
+[  389.146989][   T23] usb 5-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  389.150654][   T23] usb 5-1: New USB device strings: Mfr=0, Product=0, SerialNumber=1
+[  389.156343][   T23] usb 5-1: SerialNumber: syz
+[  389.239292][T23451] ptrace attach of "/syz-executor exec"[10046] was attempted by "/syz-executor exec"[23451]
+[  389.328574][ T8591] usb 6-1: new high-speed USB device number 3 using dummy_hcd
+[  389.567317][ T8591] usb 6-1: Using ep0 maxpacket: 16
+[  389.686964][ T8591] usb 6-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  389.691025][ T8591] usb 6-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  389.696972][ T4434] usb 1-1: new high-speed USB device number 4 using dummy_hcd
+[  389.700501][ T8591] usb 6-1: New USB device found, idVendor=045e, idProduct=07da, bcdDevice= 0.00
+[  389.702443][ T8591] usb 6-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  389.711101][ T8591] usb 6-1: config 0 descriptor??
+[  389.847127][ T8578] usb 3-1: Service connection timeout for: 256
+[  389.848516][ T8578] ath9k_htc 3-1:1.0: ath9k_htc: Unable to initialize HTC services
+[  389.851609][ T8578] ath9k_htc: Failed to initialize the device
+[  389.855663][ T8588] usb 3-1: ath9k_htc: USB layer deinitialized
+[  389.891072][   T23] cdc_ether 5-1:1.0 usb0: register 'cdc_ether' at usb-dummy_hcd.4-1, CDC Ethernet Device, 42:42:42:42:42:42
+[  389.997007][ T8586] (unnamed net_device) (uninitialized): Assigned a random MAC address: f6:21:e8:c3:b8:18
+[  390.005218][ T8586] rtl8150 4-1:1.0: eth1: rtl8150 is detected
+[  390.015372][ T8586] usb 4-1: USB disconnect, device number 2
+[  390.057145][ T4434] usb 1-1: config 1 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  390.137044][T12655] usb 2-1: new high-speed USB device number 3 using dummy_hcd
+[  390.190505][ T8591] HID 045e:07da: Invalid code 65791 type 1
+[  390.203202][ T8591] input: HID 045e:07da as /devices/platform/dummy_hcd.5/usb6/6-1/6-1:0.0/0003:045E:07DA.0002/input/input4
+[  390.217849][ T4434] usb 1-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  390.219787][ T4434] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  390.222926][ T8591] microsoft 0003:045E:07DA.0002: input,hidraw0: USB HID v0.00 Device [HID 045e:07da] on usb-dummy_hcd.5-1/input0
+[  390.230291][ T4434] usb 1-1: Product: syz
+[  390.231231][ T4434] usb 1-1: Manufacturer: syz
+[  390.235770][ T4434] usb 1-1: SerialNumber: syz
+[  390.269920][ T8591] usb 5-1: USB disconnect, device number 3
+[  390.271858][ T8591] cdc_ether 5-1:1.0 usb0: unregister 'cdc_ether' usb-dummy_hcd.4-1, CDC Ethernet Device
+[  390.367420][ T8588] usb 3-1: new high-speed USB device number 3 using dummy_hcd
+[  390.388283][T12655] usb 2-1: Using ep0 maxpacket: 32
+[  390.397118][T12702] usb 8-1: new high-speed USB device number 3 using dummy_hcd
+[  390.537096][T12655] usb 2-1: config 0 interface 0 altsetting 0 endpoint 0x1 has invalid wMaxPacketSize 0
+[  390.540202][T12655] usb 2-1: config 0 interface 0 altsetting 0 bulk endpoint 0x1 has invalid maxpacket 0
+[  390.543310][T12655] usb 2-1: config 0 interface 0 altsetting 0 endpoint 0x82 has invalid wMaxPacketSize 0
+[  390.557609][T12655] usb 2-1: config 0 interface 0 altsetting 0 bulk endpoint 0x82 has invalid maxpacket 0
+[  390.560841][T12655] usb 2-1: config 0 interface 0 altsetting 0 has 2 endpoint descriptors, different from the interface descriptor's value: 18
+[  390.564968][T12655] usb 2-1: New USB device found, idVendor=03f0, idProduct=6c17, bcdDevice= 0.40
+[  390.577094][T12655] usb 2-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  390.639561][T23579] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  390.654860][T23579] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  390.670270][T12655] usb 2-1: config 0 descriptor??
+[  390.733324][ T8588] usb 3-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  390.741023][ T8588] usb 3-1: config 0 interface 0 altsetting 0 endpoint 0x81 has invalid wMaxPacketSize 0
+[  390.743125][ T8588] usb 3-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  390.745762][ T8588] usb 3-1: New USB device found, idVendor=047f, idProduct=ffff, bcdDevice= 0.00
+[  390.753266][ T8588] usb 3-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  390.763103][ T8588] usb 3-1: config 0 descriptor??
+[  390.779998][T12702] usb 8-1: config 1 has an invalid interface number: 7 but max is 0
+[  390.782726][T12702] usb 8-1: config 1 has no interface number 0
+[  390.784680][T12702] usb 8-1: config 1 interface 7 altsetting 0 has an invalid endpoint with address 0xDB, skipping
+[  390.816104][T12702] usb 8-1: config 1 interface 7 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  390.950975][T12655] usblp 2-1:0.0: usblp0: USB Bidirectional printer dev 3 if 0 alt 0 proto 3 vid 0x03F0 pid 0x6C17
+[  390.987109][T12702] usb 8-1: New USB device found, idVendor=1199, idProduct=68a3, bcdDevice= 0.00
+[  390.989075][T12702] usb 8-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  390.990832][T12702] usb 8-1: Product: syz
+[  390.991698][T12702] usb 8-1: Manufacturer: syz
+[  390.992662][T12702] usb 8-1: SerialNumber: syz
+[  391.027378][T23546] raw-gadget.4 gadget.7: fail, usb_ep_enable returned -22
+[  391.050774][T12702] usb 8-1: Expected 3 endpoints, found: 2
+[  391.230117][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.232751][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.246637][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.256273][T23613] loop4: detected capacity change from 0 to 128
+[  391.262020][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.275978][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.276548][T23613] EXT4-fs (loop4): mounted filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09 r/w without journal. Quota mode: none.
+[  391.281147][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.288710][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.296736][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.299673][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.302760][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.305420][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.308257][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.308633][T23613] ext4 filesystem being mounted at /223/mnt supports timestamps until 2038-01-19 (0x7fffffff)
+[  391.310912][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.315686][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.318496][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.321606][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.324263][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.327063][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.329480][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.331884][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.334302][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.336656][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.346240][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.349009][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.351715][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.354192][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.356730][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.361215][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.363639][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.366105][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.368727][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.371159][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.373534][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.375925][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.379929][ T4434] cdc_ncm 1-1:1.0: MAC-Address: 42:42:42:42:42:42
+[  391.382080][ T4434] cdc_ncm 1-1:1.0: dwNtbInMaxSize=16 is too small. Using 2048
+[  391.384450][ T4434] cdc_ncm 1-1:1.0: setting rx_max = 2048
+[  391.390192][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.392754][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.395176][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.397848][ T8588] plantronics 0003:047F:FFFF.0003: unknown main item tag 0x0
+[  391.401229][ T8588] plantronics 0003:047F:FFFF.0003: No inputs registered, leaving
+[  391.411499][ T8588] plantronics 0003:047F:FFFF.0003: hiddev1,hidraw1: USB HID v0.00 Device [HID 047f:ffff] on usb-dummy_hcd.2-1/input0
+[  391.465051][ T8578] usb 3-1: USB disconnect, device number 3
+[  391.686012][T10010] EXT4-fs (loop4): unmounting filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09.
+[  391.696960][ T8584] usb 4-1: new high-speed USB device number 3 using dummy_hcd
+[  391.797171][ T4434] cdc_ncm 1-1:1.0: setting tx_max = 88
+[  391.803712][ T4434] cdc_ncm 1-1:1.0 usb0: register 'cdc_ncm' at usb-dummy_hcd.0-1, CDC NCM (NO ZLP), 42:42:42:42:42:42
+[  391.828603][ T4434] usb 1-1: USB disconnect, device number 4
+[  391.832568][ T4434] cdc_ncm 1-1:1.0 usb0: unregister 'cdc_ncm' usb-dummy_hcd.0-1, CDC NCM (NO ZLP)
+[  391.980535][ T8588] usb 6-1: USB disconnect, device number 3
+[  392.217084][ T8584] usb 4-1: New USB device found, idVendor=0cf3, idProduct=9271, bcdDevice= 1.08
+[  392.220371][ T8584] usb 4-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  392.224404][ T8584] usb 4-1: Product: syz
+[  392.230869][ T8584] usb 4-1: Manufacturer: syz
+[  392.238369][ T8584] usb 4-1: SerialNumber: syz
+[  392.288295][ T8584] usb 4-1: ath9k_htc: Firmware ath9k_htc/htc_9271-1.4.0.fw requested
+[  392.717157][T12702] usb 1-1: new high-speed USB device number 5 using dummy_hcd
+[  392.731072][ T4431] usb 2-1: USB disconnect, device number 3
+[  392.736362][ T4431] usblp0: removed
+[  392.817706][ T8588] usb 6-1: new high-speed USB device number 4 using dummy_hcd
+[  392.870632][ T4434] usb 4-1: ath9k_htc: Transferred FW: ath9k_htc/htc_9271-1.4.0.fw, size: 51008
+[  392.911912][T23751] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  392.933877][T23751] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  393.142882][T12655] usb 8-1: USB disconnect, device number 3
+[  393.149588][T12702] usb 1-1: config 1 interface 0 altsetting 127 bulk endpoint 0x81 has invalid maxpacket 64
+[  393.153044][T12702] usb 1-1: config 1 interface 0 altsetting 127 bulk endpoint 0x2 has invalid maxpacket 32
+[  393.156234][T12702] usb 1-1: config 1 interface 0 has no altsetting 0
+[  393.177063][ T8588] usb 6-1: config 1 interface 0 altsetting 0 has 2 endpoint descriptors, different from the interface descriptor's value: 18
+[  393.250874][T23770] loop7: detected capacity change from 0 to 128
+[  393.257273][ T8588] usb 6-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  393.263920][ T8588] usb 6-1: New USB device strings: Mfr=0, Product=0, SerialNumber=1
+[  393.271877][ T8588] usb 6-1: SerialNumber: syz
+[  393.296559][T23770] EXT4-fs (loop7): mounted filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09 r/w without journal. Quota mode: none.
+[  393.316506][ T4431] usb 4-1: USB disconnect, device number 3
+[  393.324256][T23770] ext4 filesystem being mounted at /183/mnt supports timestamps until 2038-01-19 (0x7fffffff)
+[  393.337072][T12702] usb 1-1: New USB device found, idVendor=0bda, idProduct=8150, bcdDevice= 0.40
+[  393.357221][T12702] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  393.359874][T12702] usb 1-1: Product: syz
+[  393.366893][T12702] usb 1-1: Manufacturer: syz
+[  393.375132][T12702] usb 1-1: SerialNumber: syz
+[  393.437431][T23710] raw-gadget.0 gadget.0: fail, usb_ep_enable returned -22
+[  393.439961][T23710] raw-gadget.0 gadget.0: fail, usb_ep_enable returned -22
+[  393.487072][T12622] usb 7-1: new high-speed USB device number 3 using dummy_hcd
+[  393.665012][T23770] fscrypt: AES-256-CTS-CBC using implementation "cts-cbc-aes-aesni"
+[  393.766362][T23770] fscrypt: AES-256-XTS using implementation "xts-aes-aesni"
+[  393.819217][T10040] EXT4-fs (loop7): unmounting filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09.
+[  393.877057][ T4430] usb 5-1: new high-speed USB device number 4 using dummy_hcd
+[  393.907052][T12622] usb 7-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  393.910539][T12622] usb 7-1: config 0 interface 0 altsetting 0 endpoint 0x81 has invalid wMaxPacketSize 0
+[  393.926906][T12622] usb 7-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  393.930055][T12622] usb 7-1: New USB device found, idVendor=047f, idProduct=ffff, bcdDevice= 0.00
+[  393.932348][T12622] usb 7-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  393.937365][ T8586] usb 2-1: new high-speed USB device number 4 using dummy_hcd
+[  393.945487][T12622] usb 7-1: config 0 descriptor??
+[  394.052526][ T8588] cdc_ether 6-1:1.0 usb0: register 'cdc_ether' at usb-dummy_hcd.5-1, CDC Ethernet Device, 42:42:42:42:42:42
+[  394.133800][T23829] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  394.157099][ T4430] usb 5-1: Using ep0 maxpacket: 16
+[  394.160448][T23829] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  394.167964][ T4434] usb 4-1: Service connection timeout for: 256
+[  394.170041][ T4434] ath9k_htc 4-1:1.0: ath9k_htc: Unable to initialize HTC services
+[  394.182612][ T4434] ath9k_htc: Failed to initialize the device
+[  394.187689][ T4431] usb 4-1: ath9k_htc: USB layer deinitialized
+[  394.277321][ T4430] usb 5-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  394.286420][ T4430] usb 5-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  394.296698][ T4430] usb 5-1: New USB device found, idVendor=045e, idProduct=07da, bcdDevice= 0.00
+[  394.299915][ T4430] usb 5-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  394.302636][ T8586] usb 2-1: config 1 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  394.314870][ T4430] usb 5-1: config 0 descriptor??
+[  394.449297][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.451887][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.457296][ T8586] usb 2-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  394.460261][ T8586] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  394.463217][ T8586] usb 2-1: Product: syz
+[  394.464639][ T8586] usb 2-1: Manufacturer: syz
+[  394.464854][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.466175][ T8586] usb 2-1: SerialNumber: syz
+[  394.476871][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.485193][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.493526][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.502398][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.506940][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.510921][ T4434] usb 6-1: USB disconnect, device number 4
+[  394.514277][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.526893][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.529962][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.532404][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.534870][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.550182][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.552663][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.555115][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.574295][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.575313][ T4434] cdc_ether 6-1:1.0 usb0: unregister 'cdc_ether' usb-dummy_hcd.5-1, CDC Ethernet Device
+[  394.586956][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.591213][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.595917][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.601348][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.603822][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.606226][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.617016][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.619464][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.637020][T12702] (unnamed net_device) (uninitialized): Assigned a random MAC address: 46:ff:18:6c:fd:6c
+[  394.640606][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.646955][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.649362][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.651800][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.666650][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.673800][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.691471][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.694056][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.696461][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.700248][T12702] rtl8150 1-1:1.0: eth1: rtl8150 is detected
+[  394.723310][T12702] usb 1-1: USB disconnect, device number 5
+[  394.732170][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.740298][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.742783][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.753706][T12622] plantronics 0003:047F:FFFF.0004: unknown main item tag 0x0
+[  394.760452][T12622] plantronics 0003:047F:FFFF.0004: No inputs registered, leaving
+[  394.778480][T12622] plantronics 0003:047F:FFFF.0004: hiddev0,hidraw0: USB HID v0.00 Device [HID 047f:ffff] on usb-dummy_hcd.6-1/input0
+[  394.821858][ T4430] HID 045e:07da: Invalid code 65791 type 1
+[  394.824574][T12622] usb 7-1: USB disconnect, device number 3
+[  394.862137][ T4430] input: HID 045e:07da as /devices/platform/dummy_hcd.4/usb5/5-1/5-1:0.0/0003:045E:07DA.0005/input/input5
+[  394.895631][ T4430] microsoft 0003:045E:07DA.0005: input,hidraw0: USB HID v0.00 Device [HID 045e:07da] on usb-dummy_hcd.4-1/input0
+[  395.247261][ T4430] usb 4-1: new high-speed USB device number 4 using dummy_hcd
+[  395.506990][ T4430] usb 4-1: Using ep0 maxpacket: 32
+[  395.637100][ T8586] cdc_ncm 2-1:1.0: MAC-Address: 42:42:42:42:42:42
+[  395.637638][ T4430] usb 4-1: config 0 interface 0 altsetting 0 endpoint 0x1 has invalid wMaxPacketSize 0
+[  395.641922][ T8586] cdc_ncm 2-1:1.0: dwNtbInMaxSize=16 is too small. Using 2048
+[  395.643124][ T4430] usb 4-1: config 0 interface 0 altsetting 0 bulk endpoint 0x1 has invalid maxpacket 0
+[  395.643176][ T4430] usb 4-1: config 0 interface 0 altsetting 0 endpoint 0x82 has invalid wMaxPacketSize 0
+[  395.656332][ T8586] cdc_ncm 2-1:1.0: setting rx_max = 2048
+[  395.666969][ T4430] usb 4-1: config 0 interface 0 altsetting 0 bulk endpoint 0x82 has invalid maxpacket 0
+[  395.670248][ T4430] usb 4-1: config 0 interface 0 altsetting 0 has 2 endpoint descriptors, different from the interface descriptor's value: 18
+[  395.693125][ T4430] usb 4-1: New USB device found, idVendor=03f0, idProduct=6c17, bcdDevice= 0.40
+[  395.696476][ T4430] usb 4-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  395.724615][ T4430] usb 4-1: config 0 descriptor??
+[  395.837582][ T8584] usb 8-1: new high-speed USB device number 4 using dummy_hcd
+[  395.858039][T12702] usb 1-1: new high-speed USB device number 6 using dummy_hcd
+[  395.971100][ T4430] usblp 4-1:0.0: usblp0: USB Bidirectional printer dev 4 if 0 alt 0 proto 3 vid 0x03F0 pid 0x6C17
+[  396.031337][T12622] usb 7-1: new high-speed USB device number 4 using dummy_hcd
+[  396.062425][ T8586] cdc_ncm 2-1:1.0: setting tx_max = 88
+[  396.073870][ T8586] cdc_ncm 2-1:1.0 usb0: register 'cdc_ncm' at usb-dummy_hcd.1-1, CDC NCM (NO ZLP), 42:42:42:42:42:42
+[  396.110914][ T8586] usb 2-1: USB disconnect, device number 4
+[  396.197127][ T8584] usb 8-1: config 1 interface 0 altsetting 127 bulk endpoint 0x81 has invalid maxpacket 64
+[  396.201091][ T8584] usb 8-1: config 1 interface 0 altsetting 127 bulk endpoint 0x2 has invalid maxpacket 32
+[  396.207284][ T8584] usb 8-1: config 1 interface 0 has no altsetting 0
+[  396.214478][ T8586] cdc_ncm 2-1:1.0 usb0: unregister 'cdc_ncm' usb-dummy_hcd.1-1, CDC NCM (NO ZLP)
+[  396.268616][T12702] usb 1-1: config 1 interface 0 altsetting 0 has 2 endpoint descriptors, different from the interface descriptor's value: 18
+[  396.367054][ T8584] usb 8-1: New USB device found, idVendor=0bda, idProduct=8150, bcdDevice= 0.40
+[  396.367153][T12702] usb 1-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  396.370237][ T8584] usb 8-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  396.370275][ T8584] usb 8-1: Product: syz
+[  396.370301][ T8584] usb 8-1: Manufacturer: syz
+[  396.376925][T12702] usb 1-1: New USB device strings: Mfr=0, Product=0, SerialNumber=1
+[  396.386231][T12702] usb 1-1: SerialNumber: syz
+[  396.392570][ T8584] usb 8-1: SerialNumber: syz
+[  396.437028][T12622] usb 7-1: config 1 has an invalid interface number: 7 but max is 0
+[  396.444926][T12622] usb 7-1: config 1 has no interface number 0
+[  396.452111][T12622] usb 7-1: config 1 interface 7 altsetting 0 has an invalid endpoint with address 0xDB, skipping
+[  396.458035][T23931] raw-gadget.2 gadget.7: fail, usb_ep_enable returned -22
+[  396.460814][T23931] raw-gadget.2 gadget.7: fail, usb_ep_enable returned -22
+[  396.463556][T12622] usb 7-1: config 1 interface 7 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  396.657294][T12622] usb 7-1: New USB device found, idVendor=1199, idProduct=68a3, bcdDevice= 0.00
+[  396.668553][T12622] usb 7-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  396.690383][T12622] usb 7-1: Product: syz
+[  396.692957][T12622] usb 7-1: Manufacturer: syz
+[  396.697778][T12622] usb 7-1: SerialNumber: syz
+[  396.746154][ T4434] usb 5-1: USB disconnect, device number 4
+[  396.748078][T23938] raw-gadget.5 gadget.6: fail, usb_ep_enable returned -22
+[  396.787216][T12622] usb 7-1: Expected 3 endpoints, found: 2
+[  397.021578][T23994] loop1: detected capacity change from 0 to 128
+[  397.111500][T23994] EXT4-fs (loop1): mounted filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09 r/w without journal. Quota mode: none.
+[  397.147273][T23994] ext4 filesystem being mounted at /212/mnt supports timestamps until 2038-01-19 (0x7fffffff)
+[  397.151783][T12702] cdc_ether 1-1:1.0 usb0: register 'cdc_ether' at usb-dummy_hcd.0-1, CDC Ethernet Device, 42:42:42:42:42:42
+[  397.211870][T24004] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  397.289412][T24004] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  397.356277][T10002] EXT4-fs (loop1): unmounting filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09.
+[  397.406263][T24018] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  397.576997][ T8584] (unnamed net_device) (uninitialized): Assigned a random MAC address: ce:20:ed:e3:49:e1
+[  397.600957][ T8584] rtl8150 8-1:1.0: eth1: rtl8150 is detected
+[  397.609772][ T4434] usb 1-1: USB disconnect, device number 6
+[  397.612874][ T4434] cdc_ether 1-1:1.0 usb0: unregister 'cdc_ether' usb-dummy_hcd.0-1, CDC Ethernet Device
+[  397.638585][ T8584] usb 8-1: USB disconnect, device number 4
+[  397.706125][T24052] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  397.727841][T24052] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  397.964793][ T4434] usb 4-1: USB disconnect, device number 4
+[  397.967222][ T8591] usb 6-1: new high-speed USB device number 5 using dummy_hcd
+[  397.988242][ T4434] usblp0: removed
+[  398.339022][ T8591] usb 6-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  398.342820][ T8591] usb 6-1: config 0 interface 0 altsetting 0 endpoint 0x81 has invalid wMaxPacketSize 0
+[  398.354733][ T8591] usb 6-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  398.380322][ T8591] usb 6-1: New USB device found, idVendor=047f, idProduct=ffff, bcdDevice= 0.00
+[  398.389293][ T8591] usb 6-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  398.404531][ T8591] usb 6-1: config 0 descriptor??
+[  398.507001][T12702] usb 8-1: new high-speed USB device number 5 using dummy_hcd
+[  398.604819][T24126] loop2: detected capacity change from 0 to 128
+[  398.623547][T24126] EXT4-fs (loop2): mounted filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09 r/w without journal. Quota mode: none.
+[  398.628230][T24126] ext4 filesystem being mounted at /214/mnt supports timestamps until 2038-01-19 (0x7fffffff)
+[  398.724812][T10026] EXT4-fs (loop2): unmounting filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09.
+[  398.752310][ T8584] usb 7-1: USB disconnect, device number 4
+[  398.774562][T12702] usb 8-1: Using ep0 maxpacket: 16
+[  398.816957][ T8588] usb 5-1: new high-speed USB device number 5 using dummy_hcd
+[  398.887301][T12702] usb 8-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  398.889494][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  398.890911][T12702] usb 8-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  398.890972][T12702] usb 8-1: New USB device found, idVendor=045e, idProduct=07da, bcdDevice= 0.00
+[  398.891016][T12702] usb 8-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  398.897333][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  398.926476][T12702] usb 8-1: config 0 descriptor??
+[  398.928682][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  398.935827][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  398.957527][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  398.977138][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  398.992671][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  398.999259][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.005521][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.013247][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.029237][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.033384][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.040068][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.045121][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.052060][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.056388][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.062419][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.064766][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.071451][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.073158][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.082194][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.085109][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.090740][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.097257][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.101345][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.105335][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.128110][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.140489][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.157723][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.160083][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.162510][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.177199][ T8588] usb 5-1: config 1 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  399.182198][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.183797][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.185332][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.200785][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.206073][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.209461][T24167] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  399.214308][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.215879][ T8591] plantronics 0003:047F:FFFF.0006: unknown main item tag 0x0
+[  399.224983][ T8591] plantronics 0003:047F:FFFF.0006: No inputs registered, leaving
+[  399.232002][ T8591] plantronics 0003:047F:FFFF.0006: hiddev0,hidraw0: USB HID v0.00 Device [HID 047f:ffff] on usb-dummy_hcd.5-1/input0
+[  399.237363][ T8591] usb 6-1: USB disconnect, device number 5
+[  399.280380][T24185] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  399.336178][T24167] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  399.347073][ T8588] usb 5-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  399.348981][ T8588] usb 5-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  399.350601][ T8588] usb 5-1: Product: syz
+[  399.351475][ T8588] usb 5-1: Manufacturer: syz
+[  399.366953][ T8588] usb 5-1: SerialNumber: syz
+[  399.449776][T12702] HID 045e:07da: Invalid code 65791 type 1
+[  399.470014][T12702] input: HID 045e:07da as /devices/platform/dummy_hcd.7/usb8/8-1/8-1:0.0/0003:045E:07DA.0007/input/input6
+[  399.497860][T12702] microsoft 0003:045E:07DA.0007: input,hidraw0: USB HID v0.00 Device [HID 045e:07da] on usb-dummy_hcd.7-1/input0
+[  399.697291][ T4430] usb 3-1: new high-speed USB device number 4 using dummy_hcd
+[  399.698975][ T8586] usb 2-1: new high-speed USB device number 5 using dummy_hcd
+[  399.735818][T24233] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  399.761483][T24233] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  399.813405][T24238] loop5: detected capacity change from 0 to 128
+[  399.824464][T24238] EXT4-fs (loop5): mounted filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09 r/w without journal. Quota mode: none.
+[  399.832446][T24238] ext4 filesystem being mounted at /232/mnt supports timestamps until 2038-01-19 (0x7fffffff)
+[  399.977432][ T9997] EXT4-fs (loop5): unmounting filesystem 76b65be2-f6da-4727-8c75-0525a5b65a09.
+[  400.067267][ T8586] usb 2-1: config 1 interface 0 altsetting 0 has 2 endpoint descriptors, different from the interface descriptor's value: 18
+[  400.108324][ T4430] usb 3-1: config 1 interface 0 altsetting 127 bulk endpoint 0x81 has invalid maxpacket 64
+[  400.121649][ T4430] usb 3-1: config 1 interface 0 altsetting 127 bulk endpoint 0x2 has invalid maxpacket 32
+[  400.147769][ T8586] usb 2-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  400.149734][ T8586] usb 2-1: New USB device strings: Mfr=0, Product=0, SerialNumber=1
+[  400.152822][ T4430] usb 3-1: config 1 interface 0 has no altsetting 0
+[  400.156922][ T8586] usb 2-1: SerialNumber: syz
+[  400.357469][ T4430] usb 3-1: New USB device found, idVendor=0bda, idProduct=8150, bcdDevice= 0.40
+[  400.362929][ T4430] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  400.374660][ T4430] usb 3-1: Product: syz
+[  400.377355][ T4430] usb 3-1: Manufacturer: syz
+[  400.382455][ T4430] usb 3-1: SerialNumber: syz
+[  400.407320][T24194] raw-gadget.1 gadget.2: fail, usb_ep_enable returned -22
+[  400.410902][T24194] raw-gadget.1 gadget.2: fail, usb_ep_enable returned -22
+[  400.439191][ T8591] usb 7-1: new high-speed USB device number 5 using dummy_hcd
+[  400.536986][ T8588] cdc_ncm 5-1:1.0: MAC-Address: 42:42:42:42:42:42
+[  400.538499][ T8588] cdc_ncm 5-1:1.0: dwNtbInMaxSize=16 is too small. Using 2048
+[  400.544570][ T8588] cdc_ncm 5-1:1.0: setting rx_max = 2048
+[  400.862385][ T8586] cdc_ether 2-1:1.0 usb0: register 'cdc_ether' at usb-dummy_hcd.1-1, CDC Ethernet Device, 42:42:42:42:42:42
+[  400.956960][ T8591] usb 7-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  400.959106][ T8588] cdc_ncm 5-1:1.0: setting tx_max = 88
+[  400.962568][ T8591] usb 7-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  400.970340][ T8591] usb 7-1: Product: syz
+[  400.972070][ T8588] cdc_ncm 5-1:1.0 usb1: register 'cdc_ncm' at usb-dummy_hcd.4-1, CDC NCM (NO ZLP), 42:42:42:42:42:42
+[  400.976103][ T8591] usb 7-1: Manufacturer: syz
+[  400.979389][ T8591] usb 7-1: SerialNumber: syz
+[  400.992264][ T8588] usb 5-1: USB disconnect, device number 5
+[  401.244019][ T8588] cdc_ncm 5-1:1.0 usb1: unregister 'cdc_ncm' usb-dummy_hcd.4-1, CDC NCM (NO ZLP)
+[  401.299406][ T8586] usb 2-1: USB disconnect, device number 5
+[  401.302109][ T8586] cdc_ether 2-1:1.0 usb0: unregister 'cdc_ether' usb-dummy_hcd.1-1, CDC Ethernet Device
+[  401.306375][ T4434] usb 8-1: USB disconnect, device number 5
+[  401.557075][ T4430] (unnamed net_device) (uninitialized): Assigned a random MAC address: 52:db:66:90:10:a1
+[  401.576998][ T4430] rtl8150 3-1:1.0: eth1: rtl8150 is detected
+[  401.595209][ T4430] usb 3-1: USB disconnect, device number 4
+[  401.675350][T24388] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  401.691368][ T8591] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000010. ret = -32
+[  401.695090][ T8591] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  401.714625][ T8591] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  401.738710][ T8591] lan78xx: probe of 7-1:1.0 failed with error -32
+[  401.764562][T24388] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  401.826070][T24388] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  401.937287][ T8588] usb 5-1: new high-speed USB device number 6 using dummy_hcd
+[  402.297164][ T8588] usb 5-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  402.324131][ T8588] usb 5-1: config 0 interface 0 altsetting 0 endpoint 0x81 has invalid wMaxPacketSize 0
+[  402.348975][ T8588] usb 5-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  402.397997][ T8588] usb 5-1: New USB device found, idVendor=047f, idProduct=ffff, bcdDevice= 0.00
+[  402.401982][ T8588] usb 5-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  402.534377][ T8588] usb 5-1: config 0 descriptor??
+[  402.744552][T24464] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  402.812833][T24474] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  402.867034][T12702] usb 1-1: new high-speed USB device number 7 using dummy_hcd
+[  402.887211][ T4430] usb 6-1: new high-speed USB device number 6 using dummy_hcd
+[  402.891007][T24464] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  403.028490][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.036339][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.040503][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.042957][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.056920][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.068186][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.076716][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.079732][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.082157][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.084344][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.092888][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.095549][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.098731][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.101203][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.104132][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.115557][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.119380][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.121953][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.124396][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.127925][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.131274][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.133786][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.136439][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.139058][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.142038][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.144521][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.147394][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.149869][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.152868][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.155321][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.159493][T12702] usb 1-1: Using ep0 maxpacket: 16
+[  403.176903][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.183212][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.193322][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.194965][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.203437][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.205120][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.211817][ T8578] usb 7-1: USB disconnect, device number 5
+[  403.214510][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.232637][ T8588] plantronics 0003:047F:FFFF.0008: unknown main item tag 0x0
+[  403.237885][ T8588] plantronics 0003:047F:FFFF.0008: No inputs registered, leaving
+[  403.245364][ T8588] plantronics 0003:047F:FFFF.0008: hiddev0,hidraw0: USB HID v0.00 Device [HID 047f:ffff] on usb-dummy_hcd.4-1/input0
+[  403.259284][   T61] usb 4-1: new high-speed USB device number 5 using dummy_hcd
+[  403.288035][T12702] usb 1-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  403.292514][T12702] usb 1-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  403.313336][T12702] usb 1-1: New USB device found, idVendor=045e, idProduct=07da, bcdDevice= 0.00
+[  403.317156][ T4430] usb 6-1: config 1 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  403.327091][T12702] usb 1-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  403.405955][ T8588] usb 5-1: USB disconnect, device number 6
+[  403.414635][T12702] usb 1-1: config 0 descriptor??
+[  403.516985][ T4430] usb 6-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  403.527457][ T4430] usb 6-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  403.530082][ T4430] usb 6-1: Product: syz
+[  403.531447][ T4430] usb 6-1: Manufacturer: syz
+[  403.532981][ T4430] usb 6-1: SerialNumber: syz
+[  403.677719][   T61] usb 4-1: config 1 interface 0 altsetting 0 has 2 endpoint descriptors, different from the interface descriptor's value: 18
+[  403.757184][   T61] usb 4-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  403.760161][   T61] usb 4-1: New USB device strings: Mfr=0, Product=0, SerialNumber=1
+[  403.762753][   T61] usb 4-1: SerialNumber: syz
+[  403.900483][T12702] HID 045e:07da: Invalid code 65791 type 1
+[  403.942943][T12702] input: HID 045e:07da as /devices/platform/dummy_hcd.0/usb1/1-1/1-1:0.0/0003:045E:07DA.0009/input/input7
+[  403.958650][T12702] microsoft 0003:045E:07DA.0009: input,hidraw0: USB HID v0.00 Device [HID 045e:07da] on usb-dummy_hcd.0-1/input0
+[  404.283947][T12702] usb 2-1: new high-speed USB device number 6 using dummy_hcd
+[  404.477362][   T61] cdc_ether 4-1:1.0 usb0: register 'cdc_ether' at usb-dummy_hcd.3-1, CDC Ethernet Device, 42:42:42:42:42:42
+[  404.509416][T24610] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  404.571034][T24610] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  404.632074][T24628] mac80211_hwsim: wmediumd released netlink socket, switching to perfect channel medium
+[  404.697813][ T4430] cdc_ncm 6-1:1.0: MAC-Address: 42:42:42:42:42:42
+[  404.699255][ T4430] cdc_ncm 6-1:1.0: dwNtbInMaxSize=16 is too small. Using 2048
+[  404.700857][ T4430] cdc_ncm 6-1:1.0: setting rx_max = 2048
+[  404.717261][T12702] usb 2-1: config 1 interface 0 altsetting 127 bulk endpoint 0x81 has invalid maxpacket 64
+[  404.720626][T12702] usb 2-1: config 1 interface 0 altsetting 127 bulk endpoint 0x2 has invalid maxpacket 32
+[  404.728939][T12702] usb 2-1: config 1 interface 0 has no altsetting 0
+[  404.893521][   T61] usb 4-1: USB disconnect, device number 5
+[  404.896316][   T61] cdc_ether 4-1:1.0 usb0: unregister 'cdc_ether' usb-dummy_hcd.3-1, CDC Ethernet Device
+[  404.946959][T12702] usb 2-1: New USB device found, idVendor=0bda, idProduct=8150, bcdDevice= 0.40
+[  404.949024][T12702] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  404.950795][T12702] usb 2-1: Product: syz
+[  404.952105][T12702] usb 2-1: Manufacturer: syz
+[  404.954217][T12702] usb 2-1: SerialNumber: syz
+[  404.987902][T24569] raw-gadget.0 gadget.1: fail, usb_ep_enable returned -22
+[  404.989525][T24569] raw-gadget.0 gadget.1: fail, usb_ep_enable returned -22
+[  405.120178][ T4430] cdc_ncm 6-1:1.0: setting tx_max = 88
+[  405.129362][ T4430] cdc_ncm 6-1:1.0 usb0: register 'cdc_ncm' at usb-dummy_hcd.5-1, CDC NCM (NO ZLP), 42:42:42:42:42:42
+[  405.160436][ T4430] usb 6-1: USB disconnect, device number 6
+[  405.163275][ T4430] cdc_ncm 6-1:1.0 usb0: unregister 'cdc_ncm' usb-dummy_hcd.5-1, CDC NCM (NO ZLP)
+[  405.802137][T12655] usb 1-1: USB disconnect, device number 7
+[  406.127134][T12702] (unnamed net_device) (uninitialized): Assigned a random MAC address: 2a:12:9e:8b:02:fb
+[  406.142213][T12702] rtl8150 2-1:1.0: eth1: rtl8150 is detected
+[  406.191003][T12702] usb 2-1: USB disconnect, device number 6
+[  406.196932][ T8588] usb 4-1: new high-speed USB device number 6 using dummy_hcd
+[  406.738551][ T8588] usb 4-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  406.741653][ T8588] usb 4-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  406.744263][ T8588] usb 4-1: Product: syz
+[  406.745654][ T8588] usb 4-1: Manufacturer: syz
+[  406.766931][ T8588] usb 4-1: SerialNumber: syz
+[  406.778185][T12655] usb 7-1: new high-speed USB device number 6 using dummy_hcd
+[  406.917338][ T8591] usb 3-1: new high-speed USB device number 5 using dummy_hcd
+[  407.047168][T12655] usb 7-1: Using ep0 maxpacket: 16
+[  407.191219][T12655] usb 7-1: config 0 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  407.193651][T12655] usb 7-1: config 0 interface 0 altsetting 0 has 1 endpoint descriptor, different from the interface descriptor's value: 9
+[  407.196273][T12655] usb 7-1: New USB device found, idVendor=045e, idProduct=07da, bcdDevice= 0.00
+[  407.210281][T12655] usb 7-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  407.233123][T12655] usb 7-1: config 0 descriptor??
+[  407.276937][ T8591] usb 3-1: config 1 interface 0 altsetting 0 endpoint 0x81 has an invalid bInterval 0, changing to 7
+[  407.436958][ T8591] usb 3-1: New USB device found, idVendor=0525, idProduct=a4a1, bcdDevice= 0.40
+[  407.439148][ T8591] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  407.441636][ T8591] usb 3-1: Product: syz
+[  407.452136][ T8591] usb 3-1: Manufacturer: syz
+[  407.456959][ T8591] usb 3-1: SerialNumber: syz
+[  407.487246][ T8588] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000010. ret = -32
+[  407.494600][ T8588] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  407.517071][ T8588] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  407.545430][ T8588] lan78xx: probe of 4-1:1.0 failed with error -32
+[  407.761135][T12655] HID 045e:07da: Invalid code 65791 type 1
+[  407.782167][T12655] input: HID 045e:07da as /devices/platform/dummy_hcd.6/usb7/7-1/7-1:0.0/0003:045E:07DA.000A/input/input8
+[  407.806639][T12655] microsoft 0003:045E:07DA.000A: input,hidraw0: USB HID v0.00 Device [HID 045e:07da] on usb-dummy_hcd.6-1/input0
+[  408.625660][ T8591] cdc_ncm 3-1:1.0: MAC-Address: 42:42:42:42:42:42
+[  408.628125][ T8591] cdc_ncm 3-1:1.0: dwNtbInMaxSize=16 is too small. Using 2048
+[  408.630664][ T8591] cdc_ncm 3-1:1.0: setting rx_max = 2048
+[  408.965975][ T8588] usb 4-1: USB disconnect, device number 6
+[  409.053037][ T8591] cdc_ncm 3-1:1.0: setting tx_max = 88
+[  409.074042][ T8591] cdc_ncm 3-1:1.0 usb0: register 'cdc_ncm' at usb-dummy_hcd.2-1, CDC NCM (NO ZLP), 42:42:42:42:42:42
+[  409.097924][ T8591] usb 3-1: USB disconnect, device number 5
+[  409.099704][ T8591] cdc_ncm 3-1:1.0 usb0: unregister 'cdc_ncm' usb-dummy_hcd.2-1, CDC NCM (NO ZLP)
+[  409.677128][ T4434] usb 7-1: USB disconnect, device number 6
+[  429.296975][ T8588] usb 1-1: new high-speed USB device number 8 using dummy_hcd
+[  429.816911][ T8588] usb 1-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  429.819451][ T8588] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  429.821393][ T8588] usb 1-1: Product: syz
+[  429.822282][ T8588] usb 1-1: Manufacturer: syz
+[  429.823250][ T8588] usb 1-1: SerialNumber: syz
+[  430.618261][ T8588] lan78xx 1-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000010. ret = -32
+[  430.620830][ T8588] lan78xx 1-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  430.623373][ T8588] lan78xx 1-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  430.743502][ T8588] lan78xx: probe of 1-1:1.0 failed with error -32
+[  431.579378][T27356] cgroup: fork rejected by pids controller in /syz5
+[  432.080188][ T8578] usb 1-1: USB disconnect, device number 8
+[  436.154344][T28133] cgroup: fork rejected by pids controller in /syz4
+[  440.407835][T29621] cgroup: fork rejected by pids controller in /syz1
+[  444.568439][ T1253] ieee802154 phy0 wpan0: encryption failed: -22
+[  444.577110][ T1253] ieee802154 phy1 wpan1: encryption failed: -22
+[  447.266567][T31527] Zero length message leads to an empty skb
+[  448.928192][   T61] usb 3-1: new high-speed USB device number 6 using dummy_hcd
+[  449.496931][   T61] usb 3-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  449.498866][   T61] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  449.501216][   T61] usb 3-1: Product: syz
+[  449.502167][   T61] usb 3-1: Manufacturer: syz
+[  449.503142][   T61] usb 3-1: SerialNumber: syz
+[  449.786360][   T61] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  449.817528][   T61] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  449.849018][   T61] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Failed to write register index 0x00000098. ret = -71
+[  449.888122][   T61] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000010. ret = -71
+[  449.890501][   T61] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  449.906084][   T61] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  449.951654][   T61] lan78xx: probe of 3-1:1.0 failed with error -71
+[  449.956980][   T61] usb 3-1: USB disconnect, device number 6
+[  450.147710][T12655] usb 7-1: new high-speed USB device number 7 using dummy_hcd
+[  450.716940][T12655] usb 7-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  450.718871][T12655] usb 7-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  450.727177][T12655] usb 7-1: Product: syz
+[  450.728116][T12655] usb 7-1: Manufacturer: syz
+[  450.729080][T12655] usb 7-1: SerialNumber: syz
+[  451.297025][T12655] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  451.328587][T12655] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000010. ret = -71
+[  451.331725][T12655] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  451.333816][T12655] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  451.369460][T12655] lan78xx: probe of 7-1:1.0 failed with error -71
+[  451.389973][T12655] usb 7-1: USB disconnect, device number 7
+[  458.507396][T12622] usb 4-1: new high-speed USB device number 7 using dummy_hcd
+[  459.086942][T12622] usb 4-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  459.088979][T12622] usb 4-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  459.090618][T12622] usb 4-1: Product: syz
+[  459.091491][T12622] usb 4-1: Manufacturer: syz
+[  459.092445][T12622] usb 4-1: SerialNumber: syz
+[  459.378300][T12622] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  459.425341][T12622] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  459.457445][T12622] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Failed to write register index 0x00000098. ret = -71
+[  459.499209][T12622] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000010. ret = -71
+[  459.550818][T12622] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  459.554407][T12622] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  459.652050][T12622] lan78xx: probe of 4-1:1.0 failed with error -71
+[  459.757073][T12622] usb 4-1: USB disconnect, device number 7
+[  460.906167][T12622] usb 7-1: new high-speed USB device number 8 using dummy_hcd
+[  461.480935][T12622] usb 7-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  461.483969][T12622] usb 7-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  461.523278][T12622] usb 7-1: Product: syz
+[  461.524440][T12622] usb 7-1: Manufacturer: syz
+[  461.543266][T12622] usb 7-1: SerialNumber: syz
+[  461.862836][T12622] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  461.930819][T12622] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  461.970780][T12622] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Failed to write register index 0x00000098. ret = -71
+[  461.997373][T12622] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000010. ret = -71
+[  462.001800][T12622] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  462.004768][T12622] lan78xx 7-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  462.037857][T12622] lan78xx: probe of 7-1:1.0 failed with error -71
+[  462.066977][T12622] usb 7-1: USB disconnect, device number 8
+[  463.097361][ T8591] usb 3-1: new high-speed USB device number 7 using dummy_hcd
+[  463.616946][ T8591] usb 3-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  463.619142][ T8591] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  463.620802][ T8591] usb 3-1: Product: syz
+[  463.621765][ T8591] usb 3-1: Manufacturer: syz
+[  463.635306][ T8591] usb 3-1: SerialNumber: syz
+[  463.931616][ T8591] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  463.951297][ T8591] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  463.997561][ T8591] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  464.004199][ T8591] lan78xx 3-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  464.034705][ T8591] lan78xx: probe of 3-1:1.0 failed with error -71
+[  464.074122][ T8591] usb 3-1: USB disconnect, device number 7
+[  464.858580][ T8588] usb 4-1: new high-speed USB device number 8 using dummy_hcd
+[  465.376947][ T8588] usb 4-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  465.379958][ T8588] usb 4-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  465.398046][ T8588] usb 4-1: Product: syz
+[  465.398987][ T8588] usb 4-1: Manufacturer: syz
+[  465.399960][ T8588] usb 4-1: SerialNumber: syz
+[  465.733060][ T8588] net_ratelimit: 2 callbacks suppressed
+[  465.733081][ T8588] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  465.784454][ T8588] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  465.807195][ T8588] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Failed to write register index 0x00000098. ret = -71
+[  465.826886][ T8588] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000010. ret = -71
+[  465.842034][ T8588] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  465.844325][ T8588] lan78xx 4-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  465.872348][ T8588] lan78xx: probe of 4-1:1.0 failed with error -71
+[  465.891974][ T8588] usb 4-1: USB disconnect, device number 8
+[  466.494927][T35729] cgroup: fork rejected by pids controller in /syz0
+[  467.096863][ T8588] usb 1-1: new high-speed USB device number 9 using dummy_hcd
+[  467.626925][ T8588] usb 1-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  467.628850][ T8588] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  467.630489][ T8588] usb 1-1: Product: syz
+[  467.631359][ T8588] usb 1-1: Manufacturer: syz
+[  467.632318][ T8588] usb 1-1: SerialNumber: syz
+[  467.903483][ T8588] lan78xx 1-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  467.937013][ T8588] lan78xx 1-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  467.957789][ T8588] lan78xx 1-1:1.0 (unnamed net_device) (uninitialized): Failed to write register index 0x00000098. ret = -71
+[  467.996830][ T8588] lan78xx 1-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000010. ret = -71
+[  467.999252][ T8588] lan78xx 1-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  468.018883][ T8588] lan78xx 1-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  468.037563][ T8588] lan78xx: probe of 1-1:1.0 failed with error -71
+[  468.053434][ T8588] usb 1-1: USB disconnect, device number 9
+[  469.258774][T12622] usb 5-1: new high-speed USB device number 7 using dummy_hcd
+[  469.836967][T12622] usb 5-1: New USB device found, idVendor=0424, idProduct=7850, bcdDevice= 0.00
+[  469.839169][T12622] usb 5-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  469.854108][T12622] usb 5-1: Product: syz
+[  469.855089][T12622] usb 5-1: Manufacturer: syz
+[  469.856066][T12622] usb 5-1: SerialNumber: syz
+[  470.135493][T12622] lan78xx 5-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  470.187319][T12622] lan78xx 5-1:1.0 (unnamed net_device) (uninitialized): Failed to read register index 0x00000098. ret = -71
+[  470.249412][T12622] lan78xx 5-1:1.0 (unnamed net_device) (uninitialized): Registers INIT FAILED....
+[  470.261859][T12622] lan78xx 5-1:1.0 (unnamed net_device) (uninitialized): Bind routine FAILED
+[  470.349061][T12622] lan78xx: probe of 5-1:1.0 failed with error -71
+[  470.385706][T12622] usb 5-1: USB disconnect, device number 7
+[  470.522711][T36765] cgroup: fork rejected by pids controller in /syz3
+[  472.604484][T37288] cgroup: fork rejected by pids controller in /syz7
+[  472.689121][T37285] cgroup: fork rejected by pids controller in /syz2
+[  473.029698][T37407] cgroup: fork rejected by pids controller in /syz6
+[  483.849776][   T11] netdevsim netdevsim4 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  483.979860][   T11] netdevsim netdevsim4 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  484.137590][   T11] netdevsim netdevsim4 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  484.154569][   T54] Bluetooth: hci3: unexpected cc 0x0c03 length: 249 > 1
+[  484.160041][   T54] Bluetooth: hci3: unexpected cc 0x1003 length: 249 > 9
+[  484.162667][   T54] Bluetooth: hci3: unexpected cc 0x1001 length: 249 > 9
+[  484.173370][   T54] Bluetooth: hci3: unexpected cc 0x0c23 length: 249 > 4
+[  484.175445][   T54] Bluetooth: hci3: unexpected cc 0x0c25 length: 249 > 3
+[  484.177682][   T54] Bluetooth: hci3: unexpected cc 0x0c38 length: 249 > 2
+[  484.203907][   T11] netdevsim netdevsim4 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  484.226156][ T4379] Bluetooth: hci3: unexpected cc 0x0c03 length: 249 > 1
+[  484.254048][ T4379] Bluetooth: hci3: unexpected cc 0x1003 length: 249 > 9
+[  484.313335][ T4379] Bluetooth: hci3: unexpected cc 0x1001 length: 249 > 9
+[  484.375900][ T4379] Bluetooth: hci3: unexpected cc 0x0c23 length: 249 > 4
+[  484.388029][ T4379] Bluetooth: hci3: unexpected cc 0x0c25 length: 249 > 3
+[  484.389873][ T4379] Bluetooth: hci3: unexpected cc 0x0c38 length: 249 > 2
+[  485.615638][T42252] chnl_net:caif_netlink_parms(): no params data found
+[  486.216573][   T11] hsr_slave_0: left promiscuous mode
+[  486.221727][   T11] hsr_slave_1: left promiscuous mode
+[  486.268800][   T11] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  486.271022][   T11] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  486.302178][   T11] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  486.309440][   T11] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  486.351748][   T11] bridge_slave_1: left allmulticast mode
+[  486.353060][   T11] bridge_slave_1: left promiscuous mode
+[  486.354399][   T11] bridge0: port 2(bridge_slave_1) entered disabled state
+[  486.368056][   T11] bridge_slave_0: left allmulticast mode
+[  486.369356][   T11] bridge_slave_0: left promiscuous mode
+[  486.370715][   T11] bridge0: port 1(bridge_slave_0) entered disabled state
+[  486.385819][   T11] veth1_macvtap: left promiscuous mode
+[  486.390225][   T11] veth0_macvtap: left promiscuous mode
+[  486.391518][   T11] veth1_vlan: left promiscuous mode
+[  486.392718][   T11] veth0_vlan: left promiscuous mode
+[  486.488286][   T54] Bluetooth: hci3: command 0x0409 tx timeout
+[  487.807523][   T11] team0 (unregistering): Port device team_slave_1 removed
+[  487.855013][   T11] team0 (unregistering): Port device team_slave_0 removed
+[  487.977559][   T11] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  488.067928][   T11] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  488.530270][   T11] bond0 (unregistering): Released all slaves
+[  488.567579][   T54] Bluetooth: hci3: command 0x041b tx timeout
+[  488.950773][T42252] bridge0: port 1(bridge_slave_0) entered blocking state
+[  488.971233][T42252] bridge0: port 1(bridge_slave_0) entered disabled state
+[  488.990773][T42252] bridge_slave_0: entered allmulticast mode
+[  489.025019][T42252] bridge_slave_0: entered promiscuous mode
+[  489.041589][T42252] bridge0: port 2(bridge_slave_1) entered blocking state
+[  489.065217][T42252] bridge0: port 2(bridge_slave_1) entered disabled state
+[  489.099069][T42252] bridge_slave_1: entered allmulticast mode
+[  489.158113][T42252] bridge_slave_1: entered promiscuous mode
+[  489.457850][T42252] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  489.497571][T42252] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  489.797625][T42252] team0: Port device team_slave_0 added
+[  489.800399][T42252] team0: Port device team_slave_1 added
+[  490.231941][T42252] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  490.233529][T42252] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  490.290239][T42252] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  490.318475][T42252] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  490.319959][T42252] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  490.325163][T42252] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  490.647223][   T54] Bluetooth: hci3: command 0x040f tx timeout
+[  490.948298][T42252] hsr_slave_0: entered promiscuous mode
+[  490.975778][T42252] hsr_slave_1: entered promiscuous mode
+[  492.726980][   T54] Bluetooth: hci3: command 0x0419 tx timeout
+[  493.435271][T42252] netdevsim netdevsim4 netdevsim0: renamed from eth0
+[  493.480712][T42252] netdevsim netdevsim4 netdevsim1: renamed from eth1
+[  493.675035][T42252] netdevsim netdevsim4 netdevsim2: renamed from eth2
+[  493.818237][T42252] netdevsim netdevsim4 netdevsim3: renamed from eth3
+[  494.199316][T42252] 8021q: adding VLAN 0 to HW filter on device bond0
+[  494.251334][T42252] 8021q: adding VLAN 0 to HW filter on device team0
+[  494.341870][ T8591] bridge0: port 1(bridge_slave_0) entered blocking state
+[  494.343830][ T8591] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  494.376009][ T8591] bridge0: port 2(bridge_slave_1) entered blocking state
+[  494.379999][ T8591] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  494.587706][T42252] hsr0: Slave A (hsr_slave_0) is not up; please bring it up to get a fully working HSR network
+[  494.623152][T42252] hsr0: Slave B (hsr_slave_1) is not up; please bring it up to get a fully working HSR network
+[  494.992757][T42252] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  495.658778][T42252] veth0_vlan: entered promiscuous mode
+[  495.713067][T42252] veth1_vlan: entered promiscuous mode
+[  495.869100][T42252] veth0_macvtap: entered promiscuous mode
+[  495.899924][T42252] veth1_macvtap: entered promiscuous mode
+[  495.962103][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  495.964615][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  495.966606][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  495.997989][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.025828][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  496.080843][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.097739][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  496.099915][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.101907][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  496.178957][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.191497][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  496.205048][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.224266][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  496.247330][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.273492][T42252] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  496.315415][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  496.364548][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.368959][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  496.371126][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.373121][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  496.375280][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.444969][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  496.467409][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.469500][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  496.471621][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.505297][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  496.526505][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.529395][T42252] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  496.531526][T42252] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  496.577519][T42252] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  496.654407][T42252] netdevsim netdevsim4 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  496.656297][T42252] netdevsim netdevsim4 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  496.717210][T42252] netdevsim netdevsim4 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  496.724448][T42252] netdevsim netdevsim4 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  497.169853][T12702] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  497.172111][T12702] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  497.320431][  T696] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  497.324346][  T696] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  499.410833][T45185] netdevsim netdevsim5 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  499.632076][T45185] netdevsim netdevsim5 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  499.788969][T45185] netdevsim netdevsim5 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  499.898489][ T4379] Bluetooth: hci1: unexpected cc 0x0c03 length: 249 > 1
+[  499.931329][ T4379] Bluetooth: hci1: unexpected cc 0x1003 length: 249 > 9
+[  499.942831][ T4379] Bluetooth: hci1: unexpected cc 0x1001 length: 249 > 9
+[  499.944989][T45185] netdevsim netdevsim5 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  500.002904][ T4379] Bluetooth: hci1: unexpected cc 0x0c23 length: 249 > 4
+[  500.021319][ T4379] Bluetooth: hci1: unexpected cc 0x0c25 length: 249 > 3
+[  500.036796][ T4379] Bluetooth: hci1: unexpected cc 0x0c38 length: 249 > 2
+[  501.179283][T49817] chnl_net:caif_netlink_parms(): no params data found
+[  502.029118][T49817] bridge0: port 1(bridge_slave_0) entered blocking state
+[  502.086923][ T4379] Bluetooth: hci1: command 0x0409 tx timeout
+[  502.094346][T49817] bridge0: port 1(bridge_slave_0) entered disabled state
+[  502.096021][T49817] bridge_slave_0: entered allmulticast mode
+[  502.118706][T49817] bridge_slave_0: entered promiscuous mode
+[  502.168812][T49817] bridge0: port 2(bridge_slave_1) entered blocking state
+[  502.170339][T49817] bridge0: port 2(bridge_slave_1) entered disabled state
+[  502.171910][T49817] bridge_slave_1: entered allmulticast mode
+[  502.277847][T49817] bridge_slave_1: entered promiscuous mode
+[  502.764401][T49817] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  502.790794][T49817] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  503.176298][T49817] team0: Port device team_slave_0 added
+[  503.511295][T49817] team0: Port device team_slave_1 added
+[  504.166816][ T4379] Bluetooth: hci1: command 0x041b tx timeout
+[  504.269173][T49817] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  504.271270][T49817] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  504.369137][T49817] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  504.423626][T45185] hsr_slave_0: left promiscuous mode
+[  504.469842][T45185] hsr_slave_1: left promiscuous mode
+[  504.533637][T45185] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  504.535276][T45185] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  504.575657][T45185] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  504.593989][T45185] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  504.617593][T45185] bridge_slave_1: left allmulticast mode
+[  504.618844][T45185] bridge_slave_1: left promiscuous mode
+[  504.620057][T45185] bridge0: port 2(bridge_slave_1) entered disabled state
+[  504.674913][T45185] bridge_slave_0: left allmulticast mode
+[  504.687537][T45185] bridge_slave_0: left promiscuous mode
+[  504.688837][T45185] bridge0: port 1(bridge_slave_0) entered disabled state
+[  504.714120][T45185] veth1_macvtap: left promiscuous mode
+[  504.715360][T45185] veth0_macvtap: left promiscuous mode
+[  504.716563][T45185] veth1_vlan: left promiscuous mode
+[  504.735620][T45185] veth0_vlan: left promiscuous mode
+[  506.007985][ T1253] ieee802154 phy0 wpan0: encryption failed: -22
+[  506.009753][ T1253] ieee802154 phy1 wpan1: encryption failed: -22
+[  506.246936][ T4379] Bluetooth: hci1: command 0x040f tx timeout
+[  506.558517][T45185] team0 (unregistering): Port device team_slave_1 removed
+[  506.618169][T45185] team0 (unregistering): Port device team_slave_0 removed
+[  506.717141][T45185] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  506.794948][T45185] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  507.229911][T45185] bond0 (unregistering): Released all slaves
+[  507.364346][T49817] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  507.365869][T49817] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  507.417501][T49817] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  507.806392][T49817] hsr_slave_0: entered promiscuous mode
+[  507.842764][T49817] hsr_slave_1: entered promiscuous mode
+[  507.846061][T49817] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  507.864110][T49817] Cannot create hsr debugfs directory
+[  508.336979][ T4379] Bluetooth: hci1: command 0x0419 tx timeout
+[  510.232795][T49817] netdevsim netdevsim5 netdevsim0: renamed from eth0
+[  510.262028][T49817] netdevsim netdevsim5 netdevsim1: renamed from eth1
+[  510.384004][T49817] netdevsim netdevsim5 netdevsim2: renamed from eth2
+[  510.450701][T49817] netdevsim netdevsim5 netdevsim3: renamed from eth3
+[  510.770866][T49817] 8021q: adding VLAN 0 to HW filter on device bond0
+[  510.870465][T53448] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  510.914922][T49817] 8021q: adding VLAN 0 to HW filter on device team0
+[  510.967463][ T8586] bridge0: port 1(bridge_slave_0) entered blocking state
+[  510.968994][ T8586] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  511.022084][ T8586] bridge0: port 2(bridge_slave_1) entered blocking state
+[  511.023623][ T8586] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  511.621994][T49817] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  512.402230][T49817] veth0_vlan: entered promiscuous mode
+[  512.445441][T54206] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  512.491667][T49817] veth1_vlan: entered promiscuous mode
+[  512.653591][T49817] veth0_macvtap: entered promiscuous mode
+[  512.779745][T49817] veth1_macvtap: entered promiscuous mode
+[  512.918221][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  512.920458][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  512.922466][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  512.924784][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  512.973694][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  512.988302][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  512.993691][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  512.995982][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.033063][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  513.035239][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.047019][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  513.049340][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.063163][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  513.065469][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.095593][T49817] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  513.113895][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  513.125992][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.138985][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  513.150985][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.158474][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  513.161127][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.164237][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  513.168998][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.171186][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  513.173551][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.175749][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  513.179843][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.182644][T49817] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  513.243133][T49817] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  513.257741][T49817] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  513.328082][T49817] netdevsim netdevsim5 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  513.360415][T49817] netdevsim netdevsim5 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  513.459381][T49817] netdevsim netdevsim5 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  513.463549][T49817] netdevsim netdevsim5 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  513.836931][T12655] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  513.838619][T12655] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  514.144966][T12655] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  514.152963][T12655] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  515.552419][T55057] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  515.838786][   T54] Bluetooth: hci0: unexpected cc 0x0c03 length: 249 > 1
+[  515.867955][   T54] Bluetooth: hci0: unexpected cc 0x1003 length: 249 > 9
+[  515.899307][   T54] Bluetooth: hci0: unexpected cc 0x1001 length: 249 > 9
+[  516.043434][   T54] Bluetooth: hci0: unexpected cc 0x0c23 length: 249 > 4
+[  516.045787][T55367] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  516.058504][   T54] Bluetooth: hci0: unexpected cc 0x0c25 length: 249 > 3
+[  516.084683][   T54] Bluetooth: hci0: unexpected cc 0x0c38 length: 249 > 2
+[  516.293337][T55676] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  516.360110][T42296] netdevsim netdevsim0 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  516.828361][T42296] netdevsim netdevsim0 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  516.938938][T56164] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  517.062577][T42296] netdevsim netdevsim0 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  517.338309][T42296] netdevsim netdevsim0 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  517.448640][T56434] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  517.704704][T55320] chnl_net:caif_netlink_parms(): no params data found
+[  517.834347][T56781] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  518.166977][   T54] Bluetooth: hci0: command 0x0409 tx timeout
+[  518.694859][T55320] bridge0: port 1(bridge_slave_0) entered blocking state
+[  518.697890][T55320] bridge0: port 1(bridge_slave_0) entered disabled state
+[  518.708982][T55320] bridge_slave_0: entered allmulticast mode
+[  518.710865][T55320] bridge_slave_0: entered promiscuous mode
+[  518.804452][T57173] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  518.825638][T55320] bridge0: port 2(bridge_slave_1) entered blocking state
+[  518.874716][T55320] bridge0: port 2(bridge_slave_1) entered disabled state
+[  518.878172][T55320] bridge_slave_1: entered allmulticast mode
+[  518.893392][T55320] bridge_slave_1: entered promiscuous mode
+[  518.999630][T55320] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  519.003303][T55320] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  519.149699][T55320] team0: Port device team_slave_0 added
+[  519.167364][T55320] team0: Port device team_slave_1 added
+[  519.264845][T55320] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  519.268447][T55320] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  519.273998][T55320] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  519.289618][T55320] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  519.294100][T55320] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  519.300181][T55320] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  519.348834][T55320] hsr_slave_0: entered promiscuous mode
+[  519.356173][T55320] hsr_slave_1: entered promiscuous mode
+[  519.357962][T55320] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  519.359534][T55320] Cannot create hsr debugfs directory
+[  519.574893][T42296] hsr_slave_0: left promiscuous mode
+[  519.579905][T42296] hsr_slave_1: left promiscuous mode
+[  519.582807][T42296] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  519.585662][T42296] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  519.591558][T42296] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  519.594742][T42296] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  519.599854][T42296] bridge_slave_1: left allmulticast mode
+[  519.602269][T42296] bridge_slave_1: left promiscuous mode
+[  519.604838][T42296] bridge0: port 2(bridge_slave_1) entered disabled state
+[  519.627519][T42296] bridge_slave_0: left allmulticast mode
+[  519.632081][T42296] bridge_slave_0: left promiscuous mode
+[  519.633538][T42296] bridge0: port 1(bridge_slave_0) entered disabled state
+[  519.646127][T42296] veth1_macvtap: left promiscuous mode
+[  519.647426][T42296] veth0_macvtap: left promiscuous mode
+[  519.648602][T42296] veth1_vlan: left promiscuous mode
+[  519.649807][T42296] veth0_vlan: left promiscuous mode
+[  519.917616][T42296] team0 (unregistering): Port device team_slave_1 removed
+[  519.940980][T42296] team0 (unregistering): Port device team_slave_0 removed
+[  519.956401][T42296] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  519.964387][T42296] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  520.056519][T42296] bond0 (unregistering): Released all slaves
+[  520.248155][   T54] Bluetooth: hci0: command 0x041b tx timeout
+[  520.468929][T55320] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[  520.476017][T55320] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[  520.489425][T55320] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[  520.496204][T55320] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[  520.601432][T55320] 8021q: adding VLAN 0 to HW filter on device bond0
+[  520.616325][T55320] 8021q: adding VLAN 0 to HW filter on device team0
+[  520.623376][T12702] bridge0: port 1(bridge_slave_0) entered blocking state
+[  520.624925][T12702] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  520.637928][T12702] bridge0: port 2(bridge_slave_1) entered blocking state
+[  520.639446][T12702] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  520.808394][T55320] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  520.846197][T55320] veth0_vlan: entered promiscuous mode
+[  520.859181][T55320] veth1_vlan: entered promiscuous mode
+[  520.902494][T55320] veth0_macvtap: entered promiscuous mode
+[  520.906215][T55320] veth1_macvtap: entered promiscuous mode
+[  520.936088][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  520.944068][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  520.948441][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  520.956434][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  520.958908][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  520.981508][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  520.983580][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  520.985732][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.000455][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  521.002798][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.004852][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  521.016753][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.023074][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  521.025239][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.043022][T55320] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  521.050948][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  521.053149][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.055167][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  521.078278][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.087289][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  521.089463][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.097414][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  521.099575][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.112060][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  521.114252][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.116262][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  521.132547][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.134570][T55320] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  521.142304][T55320] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  521.153133][T55320] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  521.164727][T55320] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  521.178440][T55320] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  521.180288][T55320] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  521.182220][T55320] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  522.329351][   T54] Bluetooth: hci0: command 0x040f tx timeout
+[  524.417146][   T54] Bluetooth: hci0: command 0x0419 tx timeout
+[  535.503902][ T7799] netdevsim netdevsim1 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  535.575719][ T7799] netdevsim netdevsim1 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  535.894283][ T7799] netdevsim netdevsim1 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  536.042250][ T7799] netdevsim netdevsim1 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  537.759895][ T7799] hsr_slave_0: left promiscuous mode
+[  537.761457][ T7799] hsr_slave_1: left promiscuous mode
+[  537.763201][ T7799] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  537.764785][ T7799] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  537.768899][ T7799] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  537.770463][ T7799] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  537.784895][ T7799] bridge_slave_1: left allmulticast mode
+[  537.786146][ T7799] bridge_slave_1: left promiscuous mode
+[  537.787674][ T7799] bridge0: port 2(bridge_slave_1) entered disabled state
+[  537.841436][ T7799] bridge_slave_0: left allmulticast mode
+[  537.842659][ T7799] bridge_slave_0: left promiscuous mode
+[  537.843892][ T7799] bridge0: port 1(bridge_slave_0) entered disabled state
+[  537.860206][ T7799] veth1_macvtap: left promiscuous mode
+[  537.861424][ T7799] veth0_macvtap: left promiscuous mode
+[  537.862590][ T7799] veth1_vlan: left promiscuous mode
+[  537.863703][ T7799] veth0_vlan: left promiscuous mode
+[  538.574942][ T7799] team0 (unregistering): Port device team_slave_1 removed
+[  538.587144][ T7799] team0 (unregistering): Port device team_slave_0 removed
+[  538.630928][ T7799] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  538.651865][ T7799] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  539.176457][ T7799] bond0 (unregistering): Released all slaves
+[  548.887470][ T8586] nci: __nci_request: wait_for_completion_interruptible_timeout failed 0
+[  548.895564][T57151] nci: __nci_request: wait_for_completion_interruptible_timeout failed -512
+[  548.909506][T24280] ------------[ cut here ]------------
+[  548.910821][T24280] DEBUG_LOCKS_WARN_ON(1)
+[  548.910950][T24280] WARNING: CPU: 1 PID: 24280 at kernel/locking/lockdep.c:232 __lock_acquire+0x451/0xc10
+[  548.914504][T24280] Modules linked in:
+[  548.916012][T24280] CPU: 1 PID: 24280 Comm: systemd-rfkill Not tainted 6.8.0 #1
+[  548.918691][T24280] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  548.921798][T24280] RIP: 0010:__lock_acquire+0x451/0xc10
+[  548.923617][T24280] Code: 0f 84 4b fe ff ff 83 3d 3c 9c ae 05 00 0f 85 3e fe ff ff 31 ed 48 c7 c7 9d 72 09 86 48 c7 c6 79 83 2c 86 31 c0 e8 4f b3 f5 ff <0f> 0b e9 20 fe ff ff e8 d3 8c 42 01 45 31 f6 85 c0 0f 84 49 fe ff
+[  548.931816][T24280] RSP: 0018:ffffc9000d39fb20 EFLAGS: 00010046
+[  548.933103][T24280] RAX: 100695e00be10800 RBX: 000000000000000f RCX: ffff88804c1923c0
+[  548.934744][T24280] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[  548.936403][T24280] RBP: 0000000000000000 R08: ffffffff812afc51 R09: 0000000000000000
+[  548.938030][T24280] R10: ffffffff8502bf5b R11: ffff88804c1923c0 R12: ffff888062001d38
+[  548.939654][T24280] R13: ffff88804c1923c0 R14: 0000000000000000 R15: ffff88804c192f18
+[  548.941292][T24280] FS:  00007f4a35557900(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+[  548.943135][T24280] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  548.944480][T24280] CR2: 000055b6bd9fb0a0 CR3: 0000000062902000 CR4: 0000000000750ef0
+[  548.946144][T24280] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  548.947766][T24280] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  548.949397][T24280] PKRU: 55555554
+[  548.950169][T24280] Call Trace:
+[  548.950868][T24280]  <TASK>
+[  548.951520][T24280]  ? __warn+0x114/0x230
+[  548.952423][T24280]  ? report_bug+0x1ae/0x270
+[  548.953401][T24280]  ? __lock_acquire+0x451/0xc10
+[  548.954449][T24280]  ? handle_bug+0x3d/0x70
+[  548.955403][T24280]  ? exc_invalid_op+0x16/0x40
+[  548.956405][T24280]  ? asm_exc_invalid_op+0x16/0x20
+[  548.957470][T24280]  ? up+0xb/0x40
+[  548.958264][T24280]  ? __warn_printk+0x111/0x150
+[  548.959265][T24280]  ? __lock_acquire+0x451/0xc10
+[  548.960309][T24280]  lock_acquire+0xcb/0x1d0
+[  548.961249][T24280]  ? __flush_workqueue+0x7d/0x830
+[  548.962313][T24280]  ? __raw_spin_lock_init+0x35/0x60
+[  548.963420][T24280]  ? __flush_workqueue+0x7d/0x830
+[  548.964483][T24280]  __flush_workqueue+0x95/0x830
+[  548.965502][T24280]  ? __flush_workqueue+0x7d/0x830
+[  548.966547][T24280]  ? do_raw_spin_unlock+0x64/0x2c0
+[  548.967817][T24280]  ? nci_close_device+0x71/0x240
+[  548.968868][T24280]  ? __get_user_2+0x20/0x20
+[  548.969849][T24280]  nci_close_device+0x9f/0x240
+[  548.970878][T24280]  ? nci_dev_up+0x20/0x20
+[  548.971831][T24280]  nci_dev_down+0x15/0x20
+[  548.972769][T24280]  nfc_dev_down+0xbf/0x120
+[  548.973738][T24280]  nfc_rfkill_set_block+0x22/0x80
+[  548.974806][T24280]  rfkill_set_block+0xa1/0x1e0
+[  548.975820][T24280]  rfkill_fop_write+0x201/0x340
+[  548.976882][T24280]  ? rw_verify_area+0x130/0x2f0
+[  548.977938][T24280]  ? rfkill_fop_read+0x280/0x280
+[  548.978981][T24280]  vfs_write+0x162/0x530
+[  548.979919][T24280]  ksys_write+0xbf/0x170
+[  548.980816][T24280]  do_syscall_64+0x82/0x150
+[  548.981778][T24280]  ? irqentry_exit_to_user_mode+0x198/0x240
+[  548.983020][T24280]  entry_SYSCALL_64_after_hwframe+0x63/0x6b
+[  548.984293][T24280] RIP: 0033:0x7f4a35917513
+[  548.985249][T24280] Code: 8b 15 81 29 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 64 8b 04 25 18 00 00 00 85 c0 75 14 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 55 c3 0f 1f 40 00 48 83 ec 28 48 89 54 24 18
+[  548.989132][T24280] RSP: 002b:00007fff620f4458 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[  548.990851][T24280] RAX: ffffffffffffffda RBX: 00007fff620f4480 RCX: 00007f4a35917513
+[  548.992489][T24280] RDX: 0000000000000008 RSI: 00007fff620f4488 RDI: 0000000000000003
+[  548.994149][T24280] RBP: 0000556d151ddc20 R08: 0000000000000000 R09: 00000000ffffffff
+[  548.995746][T24280] R10: 0000000000000100 R11: 0000000000000246 R12: 00007fff620f4488
+[  548.997382][T24280] R13: 0000000000000001 R14: 0000000000000001 R15: 0000556d151dc072
+[  548.999012][T24280]  </TASK>
+[  548.999954][T24280] Kernel panic - not syncing: kernel: panic_on_warn set ...
+[  549.002151][T24280] CPU: 1 PID: 24280 Comm: systemd-rfkill Not tainted 6.8.0 #1
+[  549.004416][T24280] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  549.007134][T24280] Call Trace:
+[  549.008131][T24280]  <TASK>
+[  549.009046][T24280]  dump_stack_lvl+0xea/0x170
+[  549.010559][T24280]  panic+0x1c6/0x490
+[  549.011763][T24280]  ? __warn+0x123/0x230
+[  549.013061][T24280]  ? __lock_acquire+0x451/0xc10
+[  549.014532][T24280]  __warn+0x1f2/0x230
+[  549.015741][T24280]  report_bug+0x1ae/0x270
+[  549.017125][T24280]  ? __lock_acquire+0x451/0xc10
+[  549.018629][T24280]  handle_bug+0x3d/0x70
+[  549.019923][T24280]  exc_invalid_op+0x16/0x40
+[  549.021301][T24280]  asm_exc_invalid_op+0x16/0x20
+[  549.022770][T24280] RIP: 0010:__lock_acquire+0x451/0xc10
+[  549.024442][T24280] Code: 0f 84 4b fe ff ff 83 3d 3c 9c ae 05 00 0f 85 3e fe ff ff 31 ed 48 c7 c7 9d 72 09 86 48 c7 c6 79 83 2c 86 31 c0 e8 4f b3 f5 ff <0f> 0b e9 20 fe ff ff e8 d3 8c 42 01 45 31 f6 85 c0 0f 84 49 fe ff
+[  549.030328][T24280] RSP: 0018:ffffc9000d39fb20 EFLAGS: 00010046
+[  549.032223][T24280] RAX: 100695e00be10800 RBX: 000000000000000f RCX: ffff88804c1923c0
+[  549.034631][T24280] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[  549.037035][T24280] RBP: 0000000000000000 R08: ffffffff812afc51 R09: 0000000000000000
+[  549.039428][T24280] R10: ffffffff8502bf5b R11: ffff88804c1923c0 R12: ffff888062001d38
+[  549.041794][T24280] R13: ffff88804c1923c0 R14: 0000000000000000 R15: ffff88804c192f18
+[  549.044181][T24280]  ? up+0xb/0x40
+[  549.045297][T24280]  ? __warn_printk+0x111/0x150
+[  549.046780][T24280]  lock_acquire+0xcb/0x1d0
+[  549.048147][T24280]  ? __flush_workqueue+0x7d/0x830
+[  549.049669][T24280]  ? __raw_spin_lock_init+0x35/0x60
+[  549.051279][T24280]  ? __flush_workqueue+0x7d/0x830
+[  549.052792][T24280]  __flush_workqueue+0x95/0x830
+[  549.054290][T24280]  ? __flush_workqueue+0x7d/0x830
+[  549.055807][T24280]  ? do_raw_spin_unlock+0x64/0x2c0
+[  549.057394][T24280]  ? nci_close_device+0x71/0x240
+[  549.058930][T24280]  ? __get_user_2+0x20/0x20
+[  549.060347][T24280]  nci_close_device+0x9f/0x240
+[  549.061855][T24280]  ? nci_dev_up+0x20/0x20
+[  549.063200][T24280]  nci_dev_down+0x15/0x20
+[  549.064547][T24280]  nfc_dev_down+0xbf/0x120
+[  549.065927][T24280]  nfc_rfkill_set_block+0x22/0x80
+[  549.067459][T24280]  rfkill_set_block+0xa1/0x1e0
+[  549.068959][T24280]  rfkill_fop_write+0x201/0x340
+[  549.070468][T24280]  ? rw_verify_area+0x130/0x2f0
+[  549.071972][T24280]  ? rfkill_fop_read+0x280/0x280
+[  549.073471][T24280]  vfs_write+0x162/0x530
+[  549.074794][T24280]  ksys_write+0xbf/0x170
+[  549.076104][T24280]  do_syscall_64+0x82/0x150
+[  549.077505][T24280]  ? irqentry_exit_to_user_mode+0x198/0x240
+[  549.079300][T24280]  entry_SYSCALL_64_after_hwframe+0x63/0x6b
+[  549.081064][T24280] RIP: 0033:0x7f4a35917513
+[  549.082460][T24280] Code: 8b 15 81 29 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 64 8b 04 25 18 00 00 00 85 c0 75 14 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 55 c3 0f 1f 40 00 48 83 ec 28 48 89 54 24 18
+[  549.087034][T24280] RSP: 002b:00007fff620f4458 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[  549.088724][T24280] RAX: ffffffffffffffda RBX: 00007fff620f4480 RCX: 00007f4a35917513
+[  549.090336][T24280] RDX: 0000000000000008 RSI: 00007fff620f4488 RDI: 0000000000000003
+[  549.092044][T24280] RBP: 0000556d151ddc20 R08: 0000000000000000 R09: 00000000ffffffff
+[  549.093757][T24280] R10: 0000000000000100 R11: 0000000000000246 R12: 00007fff620f4488
+[  549.095378][T24280] R13: 0000000000000001 R14: 0000000000000001 R15: 0000556d151dc072
+[  549.096987][T24280]  </TASK>
+[  549.098430][T24280] Kernel Offset: disabled
+[  549.099340][T24280] Rebooting in 86400 seconds..
+
+VM DIAGNOSIS:
+16:59:07  Registers:
+info registers vcpu 0
+RAX=ffff88804c1923c0 RBX=ffff88804c1923c0 RCX=0000000000000000 RDX=0000000000000000
+RSI=ffff88804c1923c0 RDI=0000000000000001 RBP=ffff88804c1923c0 RSP=ffffc90004d9ba18
+R8 =0000000000000001 R9 =ffffffff86caeb48 R10=ffffffff84df4501 R11=ffff888010d39c10
+R12=ffffffff86caebb0 R13=ffffffff86caeb48 R14=ffffffff84df4501 R15=ffff88802ffa4780
+RIP=ffffffff8134f6d9 RFL=00000202 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00007f3129966640 ffffffff 00c00000
+GS =0000 ffff88803ec00000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe0000003000 00000067 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe0000001000 0000007f
+IDT=     fffffe0000000000 0000ffff
+CR0=80050033 CR2=00007fb05d1866f0 CR3=0000000031d68000 CR4=00750ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=0000000000000080 Opmask01=00000000ffffffff Opmask02=000000000000ffff Opmask03=0000000000000000
+Opmask04=00000000ffffffff Opmask05=00000000ffffffff Opmask06=00000000ffffffff Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 776451dfb7f77dd5 1cf3c8cb28fb3367
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 12f76c33702dd88b 1c0f3175118be205
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 74713d4e0961af79 33495e660294c540
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 f91682a0e03d5e30 ba134d3b695b2b31
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000000000bec0
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000040
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 b4e2e0e700000127 0080010000000127
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000012753b628aa 53eb67ac00000127
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00000000536f97f6 0000f68053599d16
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 53dd714a00800100 00800100d4201934
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 6c3a96cdf6e83138 281ee4afc93bf21a
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 4b8afd2294e7e720 e348d1198c15b7e2
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 a54ff53a3c6ef372 bb67ae856a09e667
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 5be0cd191f83d9ab 9b05688c510e527f
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 a1fcdcf819d7e1e5 000000000038fb28 5837fe9dc1c91f32 000000000038fa18
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 ae99ae2fa97400dd 000000000038fde8 8ca0b852b1c7c8e1 000000000038fbb8
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 d3fdd5f48436fbd7 000000000038ff30 495bfa0ad9b996d0 000000000038fe88
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 ab2b8456ff73edd0 0000000000769618 ac8bc31478ec8511 00000000003920c8
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 117864066a3bf720 0000000000769680 ab2b8456ff73edd0 0000000000769618
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 ac8bc31478ec8511 00000000003920c8 d3fdd5f48436fbd7 000000000038ff30
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 495bfa0ad9b996d0 000000000038fe88 ae99ae2fa97400dd 000000000038fde8
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 8ca0b852b1c7c8e1 000000000038fbb8 a1fcdcf819d7e1e5 000000000038fb28
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 443d8e68ca3e24a9 00000000004a52b8 8094975bd2700296 00000000004a0ff0
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 1
+RAX=0000000000000020 RBX=ffffffff89997eb0 RCX=ffff88804c192300 RDX=00000000000003f8
+RSI=0000000000000000 RDI=ffffffff89997eb0 RBP=00000000000003f8 RSP=ffffc9000d39f628
+R8 =ffffffff82b11eb9 R9 =0000000000000000 R10=ffffffff82b11608 R11=205d303832343254
+R12=ffffffff8974adcb R13=0000000000000000 R14=0000000000000020 R15=ffffffff89997eb0
+RIP=ffffffff82b128a2 RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00007f4a35557900 ffffffff 00c00000
+GS =0000 ffff88807ec00000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe000003e000 00000067 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe000003c000 0000007f
+IDT=     fffffe0000000000 0000ffff
+CR0=80050033 CR2=000055b6bd9fb0a0 CR3=0000000062902000 CR4=00750ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=0000000000000001 Opmask01=0000000006000000 Opmask02=0000000000000000 Opmask03=0000000006000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 6c3a96cdf6e83138 281ee4afc93bf21a
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 4b8afd2294e7e720 e348d1198c15b7e2
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 b8ee7a693de594dd 2e466d49d84be5b7
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 2f6261ddbce14a31 6e02c61596327853
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000000000be80
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000040
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000001275212df7a 0000012700000000
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 48348f1100009715 ceddb59c00800100
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 e0d0640069b6652a 28a2100d00800100
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000012748b1973d 53234cae260c3862
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 b223e9395f94cda2 cfd35a333781fdc1
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 a2a87bb58c6dc478 43cf29d9ce2bb4d8
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 a54ff53a3c6ef372 bb67ae856a09e667
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 5be0cd191f83d9ab 9b05688c510e527f
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0a0a0a0a0a0a0a0a 0a0a0a0a0a0a0a0a 0a0a0a0a0a0a0a0a 0a0a0a0a0a0a0a0a
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 207466656c203a6e 616c765f30687465 76205d3939373754 205b5d3330373300
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2074666566203064 6166765530627465 7620573333373754 2051573330373300
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 64615f6e616d7461 62205d3032333535 545b5d3030313439 322e39313520205b
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2e6d656c626f7270 206568742065766c 6f7320646c756f77 2030363531206f74
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2055544d20656874 20676e6974746553 202e65636e616d72 6f66726570206568
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 7420746361706d69 20646c756f632068 6369687720327265 79616c206e6f2064
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 65746e656d676172 66206562206c6c69 7720656361667265 746e692073696874
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2020513433000024 6765666265727020 6562742065766665 7320646675657720
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000

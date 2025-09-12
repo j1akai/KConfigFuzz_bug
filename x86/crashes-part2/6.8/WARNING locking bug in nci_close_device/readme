@@ -1,0 +1,42 @@
+Bug 类型
+​​锁依赖检测失败（Lockdep Warning）​​ 导致的 ​​内核恐慌（Kernel Panic）​​。
+
+触发条件与根本原因分析
+1.
+​​执行路径​​：
+
+•
+用户空间通过 systemd-rfkill 进程执行写操作（rfkill_fop_write）
+•
+调用链：rfkill_set_block -> nfc_rfkill_set_block -> nfc_dev_down -> nci_dev_down -> ​​nci_close_device​​
+•
+在 nci_close_device 中调用 __flush_workqueue 来刷新工作队列
+2.
+​​警告触发点​​：
+
+•
+在 __lock_acquire（锁依赖检测核心函数）中检测到 ​​无效的锁上下文​​（check_wait_context 失败）
+•
+具体错误：DEBUG_LOCKS_WARN_ON(1) 被触发，表明锁依赖检测器发现了一个不可能的条件
+3.
+​​根本原因​​：
+
+•
+​​锁上下文违规​​：代码在错误的上下文中尝试获取锁。可能是：
+•
+在原子上下文中尝试获取可能睡眠的锁
+•
+在中断上下文中尝试获取非本地锁
+•
+锁获取顺序违反了锁依赖规则
+•
+​​工作队列刷新问题​​：__flush_workqueue 函数在刷新工作队列时，可能没有正确处理锁的获取顺序或上下文要求
+•
+​​NFC 设备关闭路径缺陷​​：nci_close_device 可能在设备状态转换时没有正确管理锁的获取和释放
+4.
+​​导致恐慌的原因​​：
+
+•
+内核配置了 panic_on_warn，使得任何警告都会升级为内核恐慌
+•
+系统在检测到这个严重锁问题后主动崩溃以防止更严重的数据损坏

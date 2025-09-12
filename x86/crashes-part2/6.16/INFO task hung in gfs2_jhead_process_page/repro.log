@@ -1,0 +1,2363 @@
+0000
+[  189.445447][T12047] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  189.445459][T12047] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  189.445493][T12047]  </TASK>
+[  189.445502][T12047] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  189.499504][T12047] gfs2: fsid=syz:syz: error -17 adding sysfs files
+2025/09/01 07:14:22 executed programs: 173
+[  190.021000][T12056] loop1: detected capacity change from 0 to 32768
+[  190.024809][T12056] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  190.026503][T12056] CPU: 2 UID: 0 PID: 12056 Comm: syz.1.188 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  190.026528][T12056] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  190.026544][T12056] Call Trace:
+[  190.026552][T12056]  <TASK>
+[  190.026560][T12056]  dump_stack_lvl+0x127/0x1d0
+[  190.026633][T12056]  sysfs_create_dir_ns+0x12e/0x160
+[  190.026668][T12056]  kobject_add_internal+0x34b/0x630
+[  190.026717][T12056]  kobject_init_and_add+0xf3/0x1a0
+[  190.026745][T12056]  ? sprintf+0x79/0xa0
+[  190.026778][T12056]  gfs2_sys_fs_add+0xc9/0x200
+[  190.026819][T12056]  ? kfree+0x10d/0x3b0
+[  190.026858][T12056]  gfs2_fill_super+0x92d/0x11e0
+[  190.026890][T12056]  ? set_blocksize+0x15c/0x2b0
+[  190.026917][T12056]  ? sb_set_blocksize+0x8e/0xc0
+[  190.026946][T12056]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  190.026975][T12056]  get_tree_bdev_flags+0x1ec/0x250
+[  190.027007][T12056]  gfs2_get_tree+0x2a/0xe0
+[  190.027040][T12056]  vfs_get_tree+0x38/0x140
+[  190.027064][T12056]  do_new_mount+0x1dd/0x570
+[  190.027088][T12056]  ? path_mount+0x3a4/0x980
+[  190.027120][T12056]  __se_sys_mount+0x291/0x2f0
+[  190.027159][T12056]  do_syscall_64+0x8e/0x3a0
+[  190.027185][T12056]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  190.027227][T12056]  ? clear_bhb_loop+0x50/0xa0
+[  190.027254][T12056]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  190.027273][T12056] RIP: 0033:0x7fe087daffde
+[  190.027297][T12056] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  190.027314][T12056] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  190.027333][T12056] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  190.027346][T12056] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  190.027358][T12056] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  190.027369][T12056] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  190.027381][T12056] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  190.027415][T12056]  </TASK>
+[  190.027425][T12056] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  190.076177][T12056] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  190.598696][T12065] loop1: detected capacity change from 0 to 32768
+[  190.602218][T12065] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  190.603842][T12065] CPU: 2 UID: 0 PID: 12065 Comm: syz.1.189 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  190.603867][T12065] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  190.603877][T12065] Call Trace:
+[  190.603884][T12065]  <TASK>
+[  190.603893][T12065]  dump_stack_lvl+0x127/0x1d0
+[  190.603929][T12065]  sysfs_create_dir_ns+0x12e/0x160
+[  190.603958][T12065]  kobject_add_internal+0x34b/0x630
+[  190.603995][T12065]  kobject_init_and_add+0xf3/0x1a0
+[  190.604023][T12065]  ? sprintf+0x79/0xa0
+[  190.604055][T12065]  gfs2_sys_fs_add+0xc9/0x200
+[  190.604084][T12065]  ? kfree+0x10d/0x3b0
+[  190.604122][T12065]  gfs2_fill_super+0x92d/0x11e0
+[  190.604154][T12065]  ? set_blocksize+0x15c/0x2b0
+[  190.604181][T12065]  ? sb_set_blocksize+0x8e/0xc0
+[  190.604237][T12065]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  190.604267][T12065]  get_tree_bdev_flags+0x1ec/0x250
+[  190.604299][T12065]  gfs2_get_tree+0x2a/0xe0
+[  190.604333][T12065]  vfs_get_tree+0x38/0x140
+[  190.604357][T12065]  do_new_mount+0x1dd/0x570
+[  190.604382][T12065]  ? path_mount+0x3a4/0x980
+[  190.604413][T12065]  __se_sys_mount+0x291/0x2f0
+[  190.604453][T12065]  do_syscall_64+0x8e/0x3a0
+[  190.604480][T12065]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  190.604499][T12065]  ? clear_bhb_loop+0x50/0xa0
+[  190.604524][T12065]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  190.604542][T12065] RIP: 0033:0x7fe087daffde
+[  190.604560][T12065] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  190.604577][T12065] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  190.604596][T12065] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  190.604608][T12065] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  190.604619][T12065] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  190.604630][T12065] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  190.604642][T12065] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  190.604676][T12065]  </TASK>
+[  190.604685][T12065] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  190.652095][T12065] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  190.957774][ T4430] Bluetooth: hci0: command 0x0406 tx timeout
+[  191.201560][T12074] loop1: detected capacity change from 0 to 32768
+[  191.206359][T12074] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  191.209301][T12074] CPU: 3 UID: 0 PID: 12074 Comm: syz.1.190 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  191.209342][T12074] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  191.209359][T12074] Call Trace:
+[  191.209373][T12074]  <TASK>
+[  191.209386][T12074]  dump_stack_lvl+0x127/0x1d0
+[  191.209449][T12074]  sysfs_create_dir_ns+0x12e/0x160
+[  191.209500][T12074]  kobject_add_internal+0x34b/0x630
+[  191.209562][T12074]  kobject_init_and_add+0xf3/0x1a0
+[  191.209610][T12074]  ? sprintf+0x79/0xa0
+[  191.209671][T12074]  gfs2_sys_fs_add+0xc9/0x200
+[  191.209721][T12074]  ? kfree+0x234/0x3b0
+[  191.209791][T12074]  gfs2_fill_super+0x92d/0x11e0
+[  191.209846][T12074]  ? set_blocksize+0x15c/0x2b0
+[  191.209893][T12074]  ? sb_set_blocksize+0x8e/0xc0
+[  191.209946][T12074]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  191.209996][T12074]  get_tree_bdev_flags+0x1ec/0x250
+[  191.210051][T12074]  gfs2_get_tree+0x2a/0xe0
+[  191.210109][T12074]  vfs_get_tree+0x38/0x140
+[  191.210154][T12074]  do_new_mount+0x1dd/0x570
+[  191.210211][T12074]  ? path_mount+0x3a4/0x980
+[  191.210267][T12074]  __se_sys_mount+0x291/0x2f0
+[  191.210336][T12074]  do_syscall_64+0x8e/0x3a0
+[  191.210383][T12074]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  191.210418][T12074]  ? clear_bhb_loop+0x50/0xa0
+[  191.210461][T12074]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  191.210495][T12074] RIP: 0033:0x7fe087daffde
+[  191.210523][T12074] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  191.210552][T12074] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  191.210583][T12074] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  191.210606][T12074] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  191.210625][T12074] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  191.210646][T12074] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  191.210667][T12074] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  191.210735][T12074]  </TASK>
+[  191.210801][T12074] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  191.292601][T12074] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  191.870860][T12084] loop1: detected capacity change from 0 to 32768
+[  191.874630][T12084] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  191.876467][T12084] CPU: 0 UID: 0 PID: 12084 Comm: syz.1.191 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  191.876493][T12084] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  191.876503][T12084] Call Trace:
+[  191.876510][T12084]  <TASK>
+[  191.876519][T12084]  dump_stack_lvl+0x127/0x1d0
+[  191.876556][T12084]  sysfs_create_dir_ns+0x12e/0x160
+[  191.876585][T12084]  kobject_add_internal+0x34b/0x630
+[  191.876622][T12084]  kobject_init_and_add+0xf3/0x1a0
+[  191.876649][T12084]  ? sprintf+0x79/0xa0
+[  191.876682][T12084]  gfs2_sys_fs_add+0xc9/0x200
+[  191.876711][T12084]  ? kfree+0x10d/0x3b0
+[  191.876749][T12084]  gfs2_fill_super+0x92d/0x11e0
+[  191.876782][T12084]  ? set_blocksize+0x15c/0x2b0
+[  191.876808][T12084]  ? sb_set_blocksize+0x8e/0xc0
+[  191.876837][T12084]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  191.876866][T12084]  get_tree_bdev_flags+0x1ec/0x250
+[  191.876898][T12084]  gfs2_get_tree+0x2a/0xe0
+[  191.876931][T12084]  vfs_get_tree+0x38/0x140
+[  191.876956][T12084]  do_new_mount+0x1dd/0x570
+[  191.876981][T12084]  ? path_mount+0x3a4/0x980
+[  191.877012][T12084]  __se_sys_mount+0x291/0x2f0
+[  191.877051][T12084]  do_syscall_64+0x8e/0x3a0
+[  191.877078][T12084]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  191.877096][T12084]  ? clear_bhb_loop+0x50/0xa0
+[  191.877122][T12084]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  191.877140][T12084] RIP: 0033:0x7fe087daffde
+[  191.877158][T12084] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  191.877193][T12084] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  191.877213][T12084] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  191.877226][T12084] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  191.877237][T12084] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  191.877248][T12084] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  191.877259][T12084] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  191.877293][T12084]  </TASK>
+[  191.877303][T12084] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  191.938469][T12084] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  192.496476][T12093] loop1: detected capacity change from 0 to 32768
+[  192.500232][T12093] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  192.501906][T12093] CPU: 3 UID: 0 PID: 12093 Comm: syz.1.192 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  192.501931][T12093] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  192.501941][T12093] Call Trace:
+[  192.501950][T12093]  <TASK>
+[  192.501959][T12093]  dump_stack_lvl+0x127/0x1d0
+[  192.501995][T12093]  sysfs_create_dir_ns+0x12e/0x160
+[  192.502024][T12093]  kobject_add_internal+0x34b/0x630
+[  192.502077][T12093]  kobject_init_and_add+0xf3/0x1a0
+[  192.502118][T12093]  ? sprintf+0x79/0xa0
+[  192.502193][T12093]  gfs2_sys_fs_add+0xc9/0x200
+[  192.502238][T12093]  ? kfree+0x10d/0x3b0
+[  192.502296][T12093]  gfs2_fill_super+0x92d/0x11e0
+[  192.502329][T12093]  ? set_blocksize+0x15c/0x2b0
+[  192.502357][T12093]  ? sb_set_blocksize+0x8e/0xc0
+[  192.502386][T12093]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  192.502415][T12093]  get_tree_bdev_flags+0x1ec/0x250
+[  192.502447][T12093]  gfs2_get_tree+0x2a/0xe0
+[  192.502480][T12093]  vfs_get_tree+0x38/0x140
+[  192.502505][T12093]  do_new_mount+0x1dd/0x570
+[  192.502530][T12093]  ? path_mount+0x3a4/0x980
+[  192.502561][T12093]  __se_sys_mount+0x291/0x2f0
+[  192.502599][T12093]  do_syscall_64+0x8e/0x3a0
+[  192.502627][T12093]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  192.502645][T12093]  ? clear_bhb_loop+0x50/0xa0
+[  192.502671][T12093]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  192.502690][T12093] RIP: 0033:0x7fe087daffde
+[  192.502708][T12093] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  192.502724][T12093] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  192.502744][T12093] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  192.502756][T12093] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  192.502767][T12093] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  192.502779][T12093] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  192.502790][T12093] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  192.502824][T12093]  </TASK>
+[  192.502835][T12093] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  192.552719][T12093] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  193.117030][T12102] loop1: detected capacity change from 0 to 32768
+[  193.120853][T12102] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  193.122616][T12102] CPU: 3 UID: 0 PID: 12102 Comm: syz.1.193 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  193.122640][T12102] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  193.122651][T12102] Call Trace:
+[  193.122659][T12102]  <TASK>
+[  193.122667][T12102]  dump_stack_lvl+0x127/0x1d0
+[  193.122704][T12102]  sysfs_create_dir_ns+0x12e/0x160
+[  193.122733][T12102]  kobject_add_internal+0x34b/0x630
+[  193.122769][T12102]  kobject_init_and_add+0xf3/0x1a0
+[  193.122797][T12102]  ? sprintf+0x79/0xa0
+[  193.122829][T12102]  gfs2_sys_fs_add+0xc9/0x200
+[  193.122858][T12102]  ? kfree+0x10d/0x3b0
+[  193.122896][T12102]  gfs2_fill_super+0x92d/0x11e0
+[  193.122928][T12102]  ? set_blocksize+0x15c/0x2b0
+[  193.122955][T12102]  ? sb_set_blocksize+0x8e/0xc0
+[  193.122984][T12102]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  193.123013][T12102]  get_tree_bdev_flags+0x1ec/0x250
+[  193.123045][T12102]  gfs2_get_tree+0x2a/0xe0
+[  193.123078][T12102]  vfs_get_tree+0x38/0x140
+[  193.123103][T12102]  do_new_mount+0x1dd/0x570
+[  193.123127][T12102]  ? path_mount+0x3a4/0x980
+[  193.123181][T12102]  __se_sys_mount+0x291/0x2f0
+[  193.123220][T12102]  do_syscall_64+0x8e/0x3a0
+[  193.123247][T12102]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  193.123266][T12102]  ? clear_bhb_loop+0x50/0xa0
+[  193.123291][T12102]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  193.123310][T12102] RIP: 0033:0x7fe087daffde
+[  193.123328][T12102] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  193.123345][T12102] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  193.123364][T12102] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  193.123376][T12102] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  193.123387][T12102] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  193.123399][T12102] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  193.123411][T12102] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  193.123444][T12102]  </TASK>
+[  193.123455][T12102] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  193.172902][T12102] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  193.718229][T12111] loop1: detected capacity change from 0 to 32768
+[  193.727685][T12111] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  193.729461][T12111] CPU: 3 UID: 0 PID: 12111 Comm: syz.1.194 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  193.729486][T12111] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  193.729496][T12111] Call Trace:
+[  193.729503][T12111]  <TASK>
+[  193.729511][T12111]  dump_stack_lvl+0x127/0x1d0
+[  193.729548][T12111]  sysfs_create_dir_ns+0x12e/0x160
+[  193.729577][T12111]  kobject_add_internal+0x34b/0x630
+[  193.729613][T12111]  kobject_init_and_add+0xf3/0x1a0
+[  193.729641][T12111]  ? sprintf+0x79/0xa0
+[  193.729673][T12111]  gfs2_sys_fs_add+0xc9/0x200
+[  193.729701][T12111]  ? kfree+0x10d/0x3b0
+[  193.729739][T12111]  gfs2_fill_super+0x92d/0x11e0
+[  193.729772][T12111]  ? set_blocksize+0x15c/0x2b0
+[  193.729799][T12111]  ? sb_set_blocksize+0x8e/0xc0
+[  193.729827][T12111]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  193.729857][T12111]  get_tree_bdev_flags+0x1ec/0x250
+[  193.729888][T12111]  gfs2_get_tree+0x2a/0xe0
+[  193.729920][T12111]  vfs_get_tree+0x38/0x140
+[  193.729945][T12111]  do_new_mount+0x1dd/0x570
+[  193.729969][T12111]  ? path_mount+0x3a4/0x980
+[  193.730000][T12111]  __se_sys_mount+0x291/0x2f0
+[  193.730039][T12111]  do_syscall_64+0x8e/0x3a0
+[  193.730066][T12111]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  193.730084][T12111]  ? clear_bhb_loop+0x50/0xa0
+[  193.730109][T12111]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  193.730142][T12111] RIP: 0033:0x7fe087daffde
+[  193.730160][T12111] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  193.730177][T12111] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  193.730197][T12111] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  193.730209][T12111] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  193.730220][T12111] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  193.730232][T12111] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  193.730244][T12111] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  193.730278][T12111]  </TASK>
+[  193.730287][T12111] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  193.780417][T12111] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  194.303666][T12120] loop1: detected capacity change from 0 to 32768
+[  194.307477][T12120] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  194.309438][T12120] CPU: 2 UID: 0 PID: 12120 Comm: syz.1.195 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  194.309462][T12120] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  194.309472][T12120] Call Trace:
+[  194.309480][T12120]  <TASK>
+[  194.309489][T12120]  dump_stack_lvl+0x127/0x1d0
+[  194.309526][T12120]  sysfs_create_dir_ns+0x12e/0x160
+[  194.309557][T12120]  kobject_add_internal+0x34b/0x630
+[  194.309594][T12120]  kobject_init_and_add+0xf3/0x1a0
+[  194.309622][T12120]  ? sprintf+0x79/0xa0
+[  194.309654][T12120]  gfs2_sys_fs_add+0xc9/0x200
+[  194.309683][T12120]  ? kfree+0x10d/0x3b0
+[  194.309721][T12120]  gfs2_fill_super+0x92d/0x11e0
+[  194.309754][T12120]  ? set_blocksize+0x15c/0x2b0
+[  194.309780][T12120]  ? sb_set_blocksize+0x8e/0xc0
+[  194.309810][T12120]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  194.309839][T12120]  get_tree_bdev_flags+0x1ec/0x250
+[  194.309871][T12120]  gfs2_get_tree+0x2a/0xe0
+[  194.309904][T12120]  vfs_get_tree+0x38/0x140
+[  194.309929][T12120]  do_new_mount+0x1dd/0x570
+[  194.309953][T12120]  ? path_mount+0x3a4/0x980
+[  194.309985][T12120]  __se_sys_mount+0x291/0x2f0
+[  194.310023][T12120]  do_syscall_64+0x8e/0x3a0
+[  194.310051][T12120]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  194.310070][T12120]  ? clear_bhb_loop+0x50/0xa0
+[  194.310095][T12120]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  194.310129][T12120] RIP: 0033:0x7fe087daffde
+[  194.310147][T12120] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  194.310165][T12120] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  194.310184][T12120] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  194.310197][T12120] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  194.310208][T12120] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  194.310220][T12120] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  194.310231][T12120] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  194.310266][T12120]  </TASK>
+[  194.310275][T12120] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  194.360371][T12120] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  194.885832][T12129] loop1: detected capacity change from 0 to 32768
+[  194.889885][T12129] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  194.891684][T12129] CPU: 3 UID: 0 PID: 12129 Comm: syz.1.196 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  194.891708][T12129] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  194.891718][T12129] Call Trace:
+[  194.891726][T12129]  <TASK>
+[  194.891734][T12129]  dump_stack_lvl+0x127/0x1d0
+[  194.891771][T12129]  sysfs_create_dir_ns+0x12e/0x160
+[  194.891801][T12129]  kobject_add_internal+0x34b/0x630
+[  194.891837][T12129]  kobject_init_and_add+0xf3/0x1a0
+[  194.891864][T12129]  ? sprintf+0x79/0xa0
+[  194.891897][T12129]  gfs2_sys_fs_add+0xc9/0x200
+[  194.891926][T12129]  ? kfree+0x10d/0x3b0
+[  194.891964][T12129]  gfs2_fill_super+0x92d/0x11e0
+[  194.891997][T12129]  ? set_blocksize+0x15c/0x2b0
+[  194.892023][T12129]  ? sb_set_blocksize+0x8e/0xc0
+[  194.892052][T12129]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  194.892081][T12129]  get_tree_bdev_flags+0x1ec/0x250
+[  194.892131][T12129]  gfs2_get_tree+0x2a/0xe0
+[  194.892164][T12129]  vfs_get_tree+0x38/0x140
+[  194.892189][T12129]  do_new_mount+0x1dd/0x570
+[  194.892213][T12129]  ? path_mount+0x3a4/0x980
+[  194.892244][T12129]  __se_sys_mount+0x291/0x2f0
+[  194.892283][T12129]  do_syscall_64+0x8e/0x3a0
+[  194.892311][T12129]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  194.892329][T12129]  ? clear_bhb_loop+0x50/0xa0
+[  194.892354][T12129]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  194.892373][T12129] RIP: 0033:0x7fe087daffde
+[  194.892391][T12129] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  194.892407][T12129] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  194.892427][T12129] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  194.892439][T12129] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  194.892451][T12129] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  194.892462][T12129] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  194.892473][T12129] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  194.892507][T12129]  </TASK>
+[  194.892517][T12129] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  194.943579][T12129] gfs2: fsid=syz:syz: error -17 adding sysfs files
+2025/09/01 07:14:27 executed programs: 182
+[  195.530998][T12138] loop1: detected capacity change from 0 to 32768
+[  195.534682][T12138] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  195.536466][T12138] CPU: 0 UID: 0 PID: 12138 Comm: syz.1.197 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  195.536491][T12138] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  195.536501][T12138] Call Trace:
+[  195.536508][T12138]  <TASK>
+[  195.536516][T12138]  dump_stack_lvl+0x127/0x1d0
+[  195.536552][T12138]  sysfs_create_dir_ns+0x12e/0x160
+[  195.536581][T12138]  kobject_add_internal+0x34b/0x630
+[  195.536617][T12138]  kobject_init_and_add+0xf3/0x1a0
+[  195.536645][T12138]  ? sprintf+0x79/0xa0
+[  195.536677][T12138]  gfs2_sys_fs_add+0xc9/0x200
+[  195.536706][T12138]  ? kfree+0x10d/0x3b0
+[  195.536744][T12138]  gfs2_fill_super+0x92d/0x11e0
+[  195.536777][T12138]  ? set_blocksize+0x15c/0x2b0
+[  195.536804][T12138]  ? sb_set_blocksize+0x8e/0xc0
+[  195.536833][T12138]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  195.536862][T12138]  get_tree_bdev_flags+0x1ec/0x250
+[  195.536894][T12138]  gfs2_get_tree+0x2a/0xe0
+[  195.536927][T12138]  vfs_get_tree+0x38/0x140
+[  195.536952][T12138]  do_new_mount+0x1dd/0x570
+[  195.536976][T12138]  ? path_mount+0x3a4/0x980
+[  195.537008][T12138]  __se_sys_mount+0x291/0x2f0
+[  195.537047][T12138]  do_syscall_64+0x8e/0x3a0
+[  195.537074][T12138]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  195.537120][T12138]  ? clear_bhb_loop+0x50/0xa0
+[  195.537145][T12138]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  195.537164][T12138] RIP: 0033:0x7fe087daffde
+[  195.537182][T12138] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  195.537199][T12138] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  195.537219][T12138] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  195.537232][T12138] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  195.537243][T12138] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  195.537254][T12138] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  195.537265][T12138] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  195.537299][T12138]  </TASK>
+[  195.537309][T12138] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  195.587153][T12138] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  196.112864][T12147] loop1: detected capacity change from 0 to 32768
+[  196.116251][T12147] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  196.118068][T12147] CPU: 2 UID: 0 PID: 12147 Comm: syz.1.198 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  196.118114][T12147] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  196.118124][T12147] Call Trace:
+[  196.118133][T12147]  <TASK>
+[  196.118141][T12147]  dump_stack_lvl+0x127/0x1d0
+[  196.118178][T12147]  sysfs_create_dir_ns+0x12e/0x160
+[  196.118208][T12147]  kobject_add_internal+0x34b/0x630
+[  196.118245][T12147]  kobject_init_and_add+0xf3/0x1a0
+[  196.118273][T12147]  ? sprintf+0x79/0xa0
+[  196.118306][T12147]  gfs2_sys_fs_add+0xc9/0x200
+[  196.118336][T12147]  ? kfree+0x10d/0x3b0
+[  196.118374][T12147]  gfs2_fill_super+0x92d/0x11e0
+[  196.118407][T12147]  ? set_blocksize+0x15c/0x2b0
+[  196.118434][T12147]  ? sb_set_blocksize+0x8e/0xc0
+[  196.118463][T12147]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  196.118492][T12147]  get_tree_bdev_flags+0x1ec/0x250
+[  196.118524][T12147]  gfs2_get_tree+0x2a/0xe0
+[  196.118557][T12147]  vfs_get_tree+0x38/0x140
+[  196.118581][T12147]  do_new_mount+0x1dd/0x570
+[  196.118606][T12147]  ? path_mount+0x3a4/0x980
+[  196.118637][T12147]  __se_sys_mount+0x291/0x2f0
+[  196.118676][T12147]  do_syscall_64+0x8e/0x3a0
+[  196.118703][T12147]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  196.118722][T12147]  ? clear_bhb_loop+0x50/0xa0
+[  196.118747][T12147]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  196.118766][T12147] RIP: 0033:0x7fe087daffde
+[  196.118783][T12147] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  196.118800][T12147] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  196.118820][T12147] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  196.118832][T12147] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  196.118843][T12147] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  196.118855][T12147] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  196.118866][T12147] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  196.118900][T12147]  </TASK>
+[  196.118909][T12147] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  196.168700][T12147] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  196.690439][T12156] loop1: detected capacity change from 0 to 32768
+[  196.693796][T12156] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  196.695585][T12156] CPU: 2 UID: 0 PID: 12156 Comm: syz.1.199 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  196.695610][T12156] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  196.695620][T12156] Call Trace:
+[  196.695629][T12156]  <TASK>
+[  196.695637][T12156]  dump_stack_lvl+0x127/0x1d0
+[  196.695675][T12156]  sysfs_create_dir_ns+0x12e/0x160
+[  196.695704][T12156]  kobject_add_internal+0x34b/0x630
+[  196.695740][T12156]  kobject_init_and_add+0xf3/0x1a0
+[  196.695767][T12156]  ? sprintf+0x79/0xa0
+[  196.695800][T12156]  gfs2_sys_fs_add+0xc9/0x200
+[  196.695828][T12156]  ? kfree+0x10d/0x3b0
+[  196.695866][T12156]  gfs2_fill_super+0x92d/0x11e0
+[  196.695898][T12156]  ? set_blocksize+0x15c/0x2b0
+[  196.695925][T12156]  ? sb_set_blocksize+0x8e/0xc0
+[  196.695954][T12156]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  196.695983][T12156]  get_tree_bdev_flags+0x1ec/0x250
+[  196.696015][T12156]  gfs2_get_tree+0x2a/0xe0
+[  196.696048][T12156]  vfs_get_tree+0x38/0x140
+[  196.696089][T12156]  do_new_mount+0x1dd/0x570
+[  196.696113][T12156]  ? path_mount+0x3a4/0x980
+[  196.696145][T12156]  __se_sys_mount+0x291/0x2f0
+[  196.696183][T12156]  do_syscall_64+0x8e/0x3a0
+[  196.696211][T12156]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  196.696229][T12156]  ? clear_bhb_loop+0x50/0xa0
+[  196.696254][T12156]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  196.696273][T12156] RIP: 0033:0x7fe087daffde
+[  196.696290][T12156] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  196.696306][T12156] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  196.696326][T12156] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  196.696338][T12156] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  196.696350][T12156] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  196.696361][T12156] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  196.696372][T12156] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  196.696406][T12156]  </TASK>
+[  196.696416][T12156] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  196.746728][T12156] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  197.288649][T12165] loop1: detected capacity change from 0 to 32768
+[  197.292333][T12165] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  197.293988][T12165] CPU: 0 UID: 0 PID: 12165 Comm: syz.1.200 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  197.294012][T12165] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  197.294022][T12165] Call Trace:
+[  197.294031][T12165]  <TASK>
+[  197.294039][T12165]  dump_stack_lvl+0x127/0x1d0
+[  197.294092][T12165]  sysfs_create_dir_ns+0x12e/0x160
+[  197.294121][T12165]  kobject_add_internal+0x34b/0x630
+[  197.294158][T12165]  kobject_init_and_add+0xf3/0x1a0
+[  197.294187][T12165]  ? sprintf+0x79/0xa0
+[  197.294219][T12165]  gfs2_sys_fs_add+0xc9/0x200
+[  197.294248][T12165]  ? kfree+0x10d/0x3b0
+[  197.294286][T12165]  gfs2_fill_super+0x92d/0x11e0
+[  197.294319][T12165]  ? set_blocksize+0x15c/0x2b0
+[  197.294346][T12165]  ? sb_set_blocksize+0x8e/0xc0
+[  197.294374][T12165]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  197.294404][T12165]  get_tree_bdev_flags+0x1ec/0x250
+[  197.294435][T12165]  gfs2_get_tree+0x2a/0xe0
+[  197.294468][T12165]  vfs_get_tree+0x38/0x140
+[  197.294493][T12165]  do_new_mount+0x1dd/0x570
+[  197.294518][T12165]  ? path_mount+0x3a4/0x980
+[  197.294549][T12165]  __se_sys_mount+0x291/0x2f0
+[  197.294587][T12165]  do_syscall_64+0x8e/0x3a0
+[  197.294615][T12165]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  197.294633][T12165]  ? clear_bhb_loop+0x50/0xa0
+[  197.294658][T12165]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  197.294676][T12165] RIP: 0033:0x7fe087daffde
+[  197.294694][T12165] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  197.294710][T12165] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  197.294730][T12165] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  197.294742][T12165] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  197.294753][T12165] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  197.294765][T12165] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  197.294777][T12165] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  197.294811][T12165]  </TASK>
+[  197.294902][T12165] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  197.346084][T12165] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  197.891310][T12174] loop1: detected capacity change from 0 to 32768
+[  197.894730][T12174] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  197.896532][T12174] CPU: 0 UID: 0 PID: 12174 Comm: syz.1.201 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  197.896556][T12174] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  197.896566][T12174] Call Trace:
+[  197.896574][T12174]  <TASK>
+[  197.896583][T12174]  dump_stack_lvl+0x127/0x1d0
+[  197.896619][T12174]  sysfs_create_dir_ns+0x12e/0x160
+[  197.896650][T12174]  kobject_add_internal+0x34b/0x630
+[  197.896686][T12174]  kobject_init_and_add+0xf3/0x1a0
+[  197.896714][T12174]  ? sprintf+0x79/0xa0
+[  197.896746][T12174]  gfs2_sys_fs_add+0xc9/0x200
+[  197.896774][T12174]  ? kfree+0x10d/0x3b0
+[  197.896812][T12174]  gfs2_fill_super+0x92d/0x11e0
+[  197.896844][T12174]  ? set_blocksize+0x15c/0x2b0
+[  197.896871][T12174]  ? sb_set_blocksize+0x8e/0xc0
+[  197.896900][T12174]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  197.896929][T12174]  get_tree_bdev_flags+0x1ec/0x250
+[  197.896961][T12174]  gfs2_get_tree+0x2a/0xe0
+[  197.896994][T12174]  vfs_get_tree+0x38/0x140
+[  197.897019][T12174]  do_new_mount+0x1dd/0x570
+[  197.897057][T12174]  ? path_mount+0x3a4/0x980
+[  197.897089][T12174]  __se_sys_mount+0x291/0x2f0
+[  197.897127][T12174]  do_syscall_64+0x8e/0x3a0
+[  197.897155][T12174]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  197.897174][T12174]  ? clear_bhb_loop+0x50/0xa0
+[  197.897200][T12174]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  197.897218][T12174] RIP: 0033:0x7fe087daffde
+[  197.897236][T12174] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  197.897253][T12174] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  197.897273][T12174] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  197.897285][T12174] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  197.897296][T12174] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  197.897307][T12174] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  197.897319][T12174] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  197.897353][T12174]  </TASK>
+[  197.897444][T12174] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  197.947402][T12174] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  198.482117][T12183] loop1: detected capacity change from 0 to 32768
+[  198.485567][T12183] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  198.487227][T12183] CPU: 2 UID: 0 PID: 12183 Comm: syz.1.202 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  198.487251][T12183] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  198.487261][T12183] Call Trace:
+[  198.487269][T12183]  <TASK>
+[  198.487277][T12183]  dump_stack_lvl+0x127/0x1d0
+[  198.487314][T12183]  sysfs_create_dir_ns+0x12e/0x160
+[  198.487343][T12183]  kobject_add_internal+0x34b/0x630
+[  198.487379][T12183]  kobject_init_and_add+0xf3/0x1a0
+[  198.487407][T12183]  ? sprintf+0x79/0xa0
+[  198.487439][T12183]  gfs2_sys_fs_add+0xc9/0x200
+[  198.487468][T12183]  ? kfree+0x10d/0x3b0
+[  198.487507][T12183]  gfs2_fill_super+0x92d/0x11e0
+[  198.487543][T12183]  ? set_blocksize+0x15c/0x2b0
+[  198.487570][T12183]  ? sb_set_blocksize+0x8e/0xc0
+[  198.487599][T12183]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  198.487629][T12183]  get_tree_bdev_flags+0x1ec/0x250
+[  198.487660][T12183]  gfs2_get_tree+0x2a/0xe0
+[  198.487693][T12183]  vfs_get_tree+0x38/0x140
+[  198.487719][T12183]  do_new_mount+0x1dd/0x570
+[  198.487743][T12183]  ? path_mount+0x3a4/0x980
+[  198.487775][T12183]  __se_sys_mount+0x291/0x2f0
+[  198.487813][T12183]  do_syscall_64+0x8e/0x3a0
+[  198.487841][T12183]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  198.487859][T12183]  ? clear_bhb_loop+0x50/0xa0
+[  198.487885][T12183]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  198.487903][T12183] RIP: 0033:0x7fe087daffde
+[  198.487920][T12183] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  198.487937][T12183] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  198.487956][T12183] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  198.487968][T12183] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  198.487980][T12183] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  198.487991][T12183] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  198.488002][T12183] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  198.488054][T12183]  </TASK>
+[  198.533627][T12183] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  198.536756][T12183] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  199.092478][T12192] loop1: detected capacity change from 0 to 32768
+[  199.096169][T12192] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  199.098271][T12192] CPU: 0 UID: 0 PID: 12192 Comm: syz.1.203 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  199.098296][T12192] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  199.098306][T12192] Call Trace:
+[  199.098313][T12192]  <TASK>
+[  199.098321][T12192]  dump_stack_lvl+0x127/0x1d0
+[  199.098358][T12192]  sysfs_create_dir_ns+0x12e/0x160
+[  199.098386][T12192]  kobject_add_internal+0x34b/0x630
+[  199.098422][T12192]  kobject_init_and_add+0xf3/0x1a0
+[  199.098450][T12192]  ? sprintf+0x79/0xa0
+[  199.098482][T12192]  gfs2_sys_fs_add+0xc9/0x200
+[  199.098510][T12192]  ? kfree+0x10d/0x3b0
+[  199.098548][T12192]  gfs2_fill_super+0x92d/0x11e0
+[  199.098581][T12192]  ? set_blocksize+0x15c/0x2b0
+[  199.098608][T12192]  ? sb_set_blocksize+0x8e/0xc0
+[  199.098637][T12192]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  199.098666][T12192]  get_tree_bdev_flags+0x1ec/0x250
+[  199.098698][T12192]  gfs2_get_tree+0x2a/0xe0
+[  199.098731][T12192]  vfs_get_tree+0x38/0x140
+[  199.098756][T12192]  do_new_mount+0x1dd/0x570
+[  199.098780][T12192]  ? path_mount+0x3a4/0x980
+[  199.098811][T12192]  __se_sys_mount+0x291/0x2f0
+[  199.098850][T12192]  do_syscall_64+0x8e/0x3a0
+[  199.098876][T12192]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  199.098895][T12192]  ? clear_bhb_loop+0x50/0xa0
+[  199.098920][T12192]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  199.098939][T12192] RIP: 0033:0x7fe087daffde
+[  199.098956][T12192] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  199.098972][T12192] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  199.098992][T12192] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  199.099004][T12192] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  199.099032][T12192] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  199.099044][T12192] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  199.099056][T12192] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  199.099090][T12192]  </TASK>
+[  199.099099][T12192] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  199.129124][ T1302] ieee802154 phy0 wpan0: encryption failed: -22
+[  199.129967][T12192] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  199.135741][ T1302] ieee802154 phy1 wpan1: encryption failed: -22
+[  199.679217][T12201] loop1: detected capacity change from 0 to 32768
+[  199.682829][T12201] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  199.684464][T12201] CPU: 2 UID: 0 PID: 12201 Comm: syz.1.204 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  199.684489][T12201] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  199.684500][T12201] Call Trace:
+[  199.684508][T12201]  <TASK>
+[  199.684516][T12201]  dump_stack_lvl+0x127/0x1d0
+[  199.684553][T12201]  sysfs_create_dir_ns+0x12e/0x160
+[  199.684582][T12201]  kobject_add_internal+0x34b/0x630
+[  199.684618][T12201]  kobject_init_and_add+0xf3/0x1a0
+[  199.684646][T12201]  ? sprintf+0x79/0xa0
+[  199.684679][T12201]  gfs2_sys_fs_add+0xc9/0x200
+[  199.684707][T12201]  ? kfree+0x10d/0x3b0
+[  199.684745][T12201]  gfs2_fill_super+0x92d/0x11e0
+[  199.684777][T12201]  ? set_blocksize+0x15c/0x2b0
+[  199.684804][T12201]  ? sb_set_blocksize+0x8e/0xc0
+[  199.684833][T12201]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  199.684862][T12201]  get_tree_bdev_flags+0x1ec/0x250
+[  199.684894][T12201]  gfs2_get_tree+0x2a/0xe0
+[  199.684927][T12201]  vfs_get_tree+0x38/0x140
+[  199.684952][T12201]  do_new_mount+0x1dd/0x570
+[  199.684976][T12201]  ? path_mount+0x3a4/0x980
+[  199.685023][T12201]  __se_sys_mount+0x291/0x2f0
+[  199.685062][T12201]  do_syscall_64+0x8e/0x3a0
+[  199.685090][T12201]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  199.685108][T12201]  ? clear_bhb_loop+0x50/0xa0
+[  199.685133][T12201]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  199.685152][T12201] RIP: 0033:0x7fe087daffde
+[  199.685171][T12201] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  199.685188][T12201] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  199.685208][T12201] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  199.685220][T12201] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  199.685231][T12201] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  199.685243][T12201] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  199.685254][T12201] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  199.685288][T12201]  </TASK>
+[  199.685298][T12201] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  199.731715][T12201] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  200.286696][T12210] loop1: detected capacity change from 0 to 32768
+[  200.291708][T12210] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  200.294127][T12210] CPU: 0 UID: 0 PID: 12210 Comm: syz.1.205 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  200.294166][T12210] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  200.294182][T12210] Call Trace:
+[  200.294196][T12210]  <TASK>
+[  200.294209][T12210]  dump_stack_lvl+0x127/0x1d0
+[  200.294270][T12210]  sysfs_create_dir_ns+0x12e/0x160
+[  200.294319][T12210]  kobject_add_internal+0x34b/0x630
+[  200.294378][T12210]  kobject_init_and_add+0xf3/0x1a0
+[  200.294427][T12210]  ? sprintf+0x79/0xa0
+[  200.294487][T12210]  gfs2_sys_fs_add+0xc9/0x200
+[  200.294534][T12210]  ? kfree+0x10d/0x3b0
+[  200.294598][T12210]  gfs2_fill_super+0x92d/0x11e0
+[  200.294651][T12210]  ? set_blocksize+0x15c/0x2b0
+[  200.294695][T12210]  ? sb_set_blocksize+0x8e/0xc0
+[  200.294744][T12210]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  200.294792][T12210]  get_tree_bdev_flags+0x1ec/0x250
+[  200.294844][T12210]  gfs2_get_tree+0x2a/0xe0
+[  200.294899][T12210]  vfs_get_tree+0x38/0x140
+[  200.294940][T12210]  do_new_mount+0x1dd/0x570
+[  200.295008][T12210]  ? path_mount+0x3a4/0x980
+[  200.295064][T12210]  __se_sys_mount+0x291/0x2f0
+[  200.295132][T12210]  do_syscall_64+0x8e/0x3a0
+[  200.295178][T12210]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  200.295211][T12210]  ? clear_bhb_loop+0x50/0xa0
+[  200.295254][T12210]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  200.295286][T12210] RIP: 0033:0x7fe087daffde
+[  200.295315][T12210] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  200.295344][T12210] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  200.295375][T12210] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  200.295397][T12210] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  200.295419][T12210] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  200.295440][T12210] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  200.295461][T12210] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  200.295523][T12210]  </TASK>
+[  200.295541][T12210] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  200.363100][T12210] gfs2: fsid=syz:syz: error -17 adding sysfs files
+2025/09/01 07:14:33 executed programs: 191
+[  200.903635][T12219] loop1: detected capacity change from 0 to 32768
+[  200.907105][T12219] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  200.908918][T12219] CPU: 0 UID: 0 PID: 12219 Comm: syz.1.206 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  200.908942][T12219] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  200.908953][T12219] Call Trace:
+[  200.908961][T12219]  <TASK>
+[  200.908983][T12219]  dump_stack_lvl+0x127/0x1d0
+[  200.909020][T12219]  sysfs_create_dir_ns+0x12e/0x160
+[  200.909049][T12219]  kobject_add_internal+0x34b/0x630
+[  200.909086][T12219]  kobject_init_and_add+0xf3/0x1a0
+[  200.909114][T12219]  ? sprintf+0x79/0xa0
+[  200.909147][T12219]  gfs2_sys_fs_add+0xc9/0x200
+[  200.909176][T12219]  ? kfree+0x10d/0x3b0
+[  200.909215][T12219]  gfs2_fill_super+0x92d/0x11e0
+[  200.909248][T12219]  ? set_blocksize+0x15c/0x2b0
+[  200.909275][T12219]  ? sb_set_blocksize+0x8e/0xc0
+[  200.909304][T12219]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  200.909333][T12219]  get_tree_bdev_flags+0x1ec/0x250
+[  200.909365][T12219]  gfs2_get_tree+0x2a/0xe0
+[  200.909398][T12219]  vfs_get_tree+0x38/0x140
+[  200.909422][T12219]  do_new_mount+0x1dd/0x570
+[  200.909446][T12219]  ? path_mount+0x3a4/0x980
+[  200.909478][T12219]  __se_sys_mount+0x291/0x2f0
+[  200.909516][T12219]  do_syscall_64+0x8e/0x3a0
+[  200.909543][T12219]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  200.909562][T12219]  ? clear_bhb_loop+0x50/0xa0
+[  200.909587][T12219]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  200.909605][T12219] RIP: 0033:0x7fe087daffde
+[  200.909623][T12219] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  200.909639][T12219] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  200.909660][T12219] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  200.909672][T12219] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  200.909684][T12219] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  200.909695][T12219] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  200.909706][T12219] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  200.909740][T12219]  </TASK>
+[  200.909759][T12219] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  200.958764][T12219] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  201.487351][T12228] loop1: detected capacity change from 0 to 32768
+[  201.491051][T12228] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  201.492737][T12228] CPU: 0 UID: 0 PID: 12228 Comm: syz.1.207 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  201.492762][T12228] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  201.492771][T12228] Call Trace:
+[  201.492779][T12228]  <TASK>
+[  201.492788][T12228]  dump_stack_lvl+0x127/0x1d0
+[  201.492825][T12228]  sysfs_create_dir_ns+0x12e/0x160
+[  201.492854][T12228]  kobject_add_internal+0x34b/0x630
+[  201.492889][T12228]  kobject_init_and_add+0xf3/0x1a0
+[  201.492917][T12228]  ? sprintf+0x79/0xa0
+[  201.492950][T12228]  gfs2_sys_fs_add+0xc9/0x200
+[  201.492994][T12228]  ? kfree+0x10d/0x3b0
+[  201.493032][T12228]  gfs2_fill_super+0x92d/0x11e0
+[  201.493064][T12228]  ? set_blocksize+0x15c/0x2b0
+[  201.493091][T12228]  ? sb_set_blocksize+0x8e/0xc0
+[  201.493120][T12228]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  201.493149][T12228]  get_tree_bdev_flags+0x1ec/0x250
+[  201.493181][T12228]  gfs2_get_tree+0x2a/0xe0
+[  201.493214][T12228]  vfs_get_tree+0x38/0x140
+[  201.493239][T12228]  do_new_mount+0x1dd/0x570
+[  201.493263][T12228]  ? path_mount+0x3a4/0x980
+[  201.493295][T12228]  __se_sys_mount+0x291/0x2f0
+[  201.493333][T12228]  do_syscall_64+0x8e/0x3a0
+[  201.493361][T12228]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  201.493380][T12228]  ? clear_bhb_loop+0x50/0xa0
+[  201.493405][T12228]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  201.493423][T12228] RIP: 0033:0x7fe087daffde
+[  201.493440][T12228] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  201.493457][T12228] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  201.493476][T12228] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  201.493488][T12228] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  201.493499][T12228] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  201.493511][T12228] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  201.493522][T12228] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  201.493556][T12228]  </TASK>
+[  201.493566][T12228] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  201.540907][T12228] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  202.096470][T12237] loop1: detected capacity change from 0 to 32768
+[  202.100264][T12237] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  202.101905][T12237] CPU: 1 UID: 0 PID: 12237 Comm: syz.1.208 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  202.101930][T12237] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  202.101939][T12237] Call Trace:
+[  202.101965][T12237]  <TASK>
+[  202.101973][T12237]  dump_stack_lvl+0x127/0x1d0
+[  202.102009][T12237]  sysfs_create_dir_ns+0x12e/0x160
+[  202.102038][T12237]  kobject_add_internal+0x34b/0x630
+[  202.102074][T12237]  kobject_init_and_add+0xf3/0x1a0
+[  202.102102][T12237]  ? sprintf+0x79/0xa0
+[  202.102135][T12237]  gfs2_sys_fs_add+0xc9/0x200
+[  202.102163][T12237]  ? kfree+0x10d/0x3b0
+[  202.102201][T12237]  gfs2_fill_super+0x92d/0x11e0
+[  202.102234][T12237]  ? set_blocksize+0x15c/0x2b0
+[  202.102261][T12237]  ? sb_set_blocksize+0x8e/0xc0
+[  202.102289][T12237]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  202.102319][T12237]  get_tree_bdev_flags+0x1ec/0x250
+[  202.102350][T12237]  gfs2_get_tree+0x2a/0xe0
+[  202.102384][T12237]  vfs_get_tree+0x38/0x140
+[  202.102408][T12237]  do_new_mount+0x1dd/0x570
+[  202.102433][T12237]  ? path_mount+0x3a4/0x980
+[  202.102464][T12237]  __se_sys_mount+0x291/0x2f0
+[  202.102503][T12237]  do_syscall_64+0x8e/0x3a0
+[  202.102530][T12237]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  202.102549][T12237]  ? clear_bhb_loop+0x50/0xa0
+[  202.102574][T12237]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  202.102592][T12237] RIP: 0033:0x7fe087daffde
+[  202.102609][T12237] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  202.102626][T12237] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  202.102646][T12237] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  202.102659][T12237] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  202.102670][T12237] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  202.102682][T12237] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  202.102693][T12237] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  202.102727][T12237]  </TASK>
+[  202.102737][T12237] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  202.151992][T12237] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  202.672322][T12246] loop1: detected capacity change from 0 to 32768
+[  202.675738][T12246] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  202.677476][T12246] CPU: 1 UID: 0 PID: 12246 Comm: syz.1.209 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  202.677502][T12246] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  202.677511][T12246] Call Trace:
+[  202.677519][T12246]  <TASK>
+[  202.677527][T12246]  dump_stack_lvl+0x127/0x1d0
+[  202.677570][T12246]  sysfs_create_dir_ns+0x12e/0x160
+[  202.677599][T12246]  kobject_add_internal+0x34b/0x630
+[  202.677635][T12246]  kobject_init_and_add+0xf3/0x1a0
+[  202.677663][T12246]  ? sprintf+0x79/0xa0
+[  202.677695][T12246]  gfs2_sys_fs_add+0xc9/0x200
+[  202.677723][T12246]  ? kfree+0x10d/0x3b0
+[  202.677761][T12246]  gfs2_fill_super+0x92d/0x11e0
+[  202.677794][T12246]  ? set_blocksize+0x15c/0x2b0
+[  202.677821][T12246]  ? sb_set_blocksize+0x8e/0xc0
+[  202.677850][T12246]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  202.677879][T12246]  get_tree_bdev_flags+0x1ec/0x250
+[  202.677911][T12246]  gfs2_get_tree+0x2a/0xe0
+[  202.677961][T12246]  vfs_get_tree+0x38/0x140
+[  202.677985][T12246]  do_new_mount+0x1dd/0x570
+[  202.678010][T12246]  ? path_mount+0x3a4/0x980
+[  202.678041][T12246]  __se_sys_mount+0x291/0x2f0
+[  202.678080][T12246]  do_syscall_64+0x8e/0x3a0
+[  202.678107][T12246]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  202.678125][T12246]  ? clear_bhb_loop+0x50/0xa0
+[  202.678150][T12246]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  202.678169][T12246] RIP: 0033:0x7fe087daffde
+[  202.678186][T12246] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  202.678204][T12246] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  202.678223][T12246] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  202.678236][T12246] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  202.678247][T12246] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  202.678259][T12246] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  202.678270][T12246] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  202.678304][T12246]  </TASK>
+[  202.722343][T12246] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  202.725298][T12246] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  203.281102][T12255] loop1: detected capacity change from 0 to 32768
+[  203.284360][T12255] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  203.286028][T12255] CPU: 3 UID: 0 PID: 12255 Comm: syz.1.210 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  203.286052][T12255] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  203.286061][T12255] Call Trace:
+[  203.286070][T12255]  <TASK>
+[  203.286078][T12255]  dump_stack_lvl+0x127/0x1d0
+[  203.286114][T12255]  sysfs_create_dir_ns+0x12e/0x160
+[  203.286144][T12255]  kobject_add_internal+0x34b/0x630
+[  203.286180][T12255]  kobject_init_and_add+0xf3/0x1a0
+[  203.286208][T12255]  ? sprintf+0x79/0xa0
+[  203.286241][T12255]  gfs2_sys_fs_add+0xc9/0x200
+[  203.286269][T12255]  ? kfree+0x10d/0x3b0
+[  203.286308][T12255]  gfs2_fill_super+0x92d/0x11e0
+[  203.286340][T12255]  ? set_blocksize+0x15c/0x2b0
+[  203.286367][T12255]  ? sb_set_blocksize+0x8e/0xc0
+[  203.286396][T12255]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  203.286425][T12255]  get_tree_bdev_flags+0x1ec/0x250
+[  203.286457][T12255]  gfs2_get_tree+0x2a/0xe0
+[  203.286490][T12255]  vfs_get_tree+0x38/0x140
+[  203.286515][T12255]  do_new_mount+0x1dd/0x570
+[  203.286539][T12255]  ? path_mount+0x3a4/0x980
+[  203.286571][T12255]  __se_sys_mount+0x291/0x2f0
+[  203.286610][T12255]  do_syscall_64+0x8e/0x3a0
+[  203.286637][T12255]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  203.286655][T12255]  ? clear_bhb_loop+0x50/0xa0
+[  203.286680][T12255]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  203.286699][T12255] RIP: 0033:0x7fe087daffde
+[  203.286716][T12255] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  203.286733][T12255] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  203.286752][T12255] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  203.286765][T12255] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  203.286776][T12255] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  203.286788][T12255] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  203.286799][T12255] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  203.286833][T12255]  </TASK>
+[  203.286843][T12255] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  203.333946][T12255] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  203.885720][T12264] loop1: detected capacity change from 0 to 32768
+[  203.892784][T12264] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  203.895434][T12264] CPU: 2 UID: 0 PID: 12264 Comm: syz.1.211 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  203.895472][T12264] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  203.895487][T12264] Call Trace:
+[  203.895499][T12264]  <TASK>
+[  203.895511][T12264]  dump_stack_lvl+0x127/0x1d0
+[  203.895568][T12264]  sysfs_create_dir_ns+0x12e/0x160
+[  203.895613][T12264]  kobject_add_internal+0x34b/0x630
+[  203.895669][T12264]  kobject_init_and_add+0xf3/0x1a0
+[  203.895713][T12264]  ? sprintf+0x79/0xa0
+[  203.895767][T12264]  gfs2_sys_fs_add+0xc9/0x200
+[  203.895815][T12264]  ? kfree+0x10d/0x3b0
+[  203.895878][T12264]  gfs2_fill_super+0x92d/0x11e0
+[  203.895955][T12264]  ? set_blocksize+0x15c/0x2b0
+[  203.895999][T12264]  ? sb_set_blocksize+0x8e/0xc0
+[  203.896049][T12264]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  203.896101][T12264]  get_tree_bdev_flags+0x1ec/0x250
+[  203.896154][T12264]  gfs2_get_tree+0x2a/0xe0
+[  203.896205][T12264]  vfs_get_tree+0x38/0x140
+[  203.896244][T12264]  do_new_mount+0x1dd/0x570
+[  203.896281][T12264]  ? path_mount+0x3a4/0x980
+[  203.896332][T12264]  __se_sys_mount+0x291/0x2f0
+[  203.896392][T12264]  do_syscall_64+0x8e/0x3a0
+[  203.896429][T12264]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  203.896457][T12264]  ? clear_bhb_loop+0x50/0xa0
+[  203.896493][T12264]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  203.896518][T12264] RIP: 0033:0x7fe087daffde
+[  203.896545][T12264] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  203.896571][T12264] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  203.896600][T12264] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  203.896619][T12264] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  203.896636][T12264] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  203.896653][T12264] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  203.896670][T12264] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  203.896726][T12264]  </TASK>
+[  203.896742][T12264] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  203.966928][T12264] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  204.546192][T12273] loop1: detected capacity change from 0 to 32768
+[  204.549566][T12273] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  204.551306][T12273] CPU: 2 UID: 0 PID: 12273 Comm: syz.1.212 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  204.551331][T12273] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  204.551341][T12273] Call Trace:
+[  204.551349][T12273]  <TASK>
+[  204.551358][T12273]  dump_stack_lvl+0x127/0x1d0
+[  204.551395][T12273]  sysfs_create_dir_ns+0x12e/0x160
+[  204.551424][T12273]  kobject_add_internal+0x34b/0x630
+[  204.551460][T12273]  kobject_init_and_add+0xf3/0x1a0
+[  204.551488][T12273]  ? sprintf+0x79/0xa0
+[  204.551520][T12273]  gfs2_sys_fs_add+0xc9/0x200
+[  204.551548][T12273]  ? kfree+0x10d/0x3b0
+[  204.551587][T12273]  gfs2_fill_super+0x92d/0x11e0
+[  204.551619][T12273]  ? set_blocksize+0x15c/0x2b0
+[  204.551646][T12273]  ? sb_set_blocksize+0x8e/0xc0
+[  204.551674][T12273]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  204.551704][T12273]  get_tree_bdev_flags+0x1ec/0x250
+[  204.551735][T12273]  gfs2_get_tree+0x2a/0xe0
+[  204.551768][T12273]  vfs_get_tree+0x38/0x140
+[  204.551792][T12273]  do_new_mount+0x1dd/0x570
+[  204.551816][T12273]  ? path_mount+0x3a4/0x980
+[  204.551848][T12273]  __se_sys_mount+0x291/0x2f0
+[  204.551887][T12273]  do_syscall_64+0x8e/0x3a0
+[  204.551928][T12273]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  204.551946][T12273]  ? clear_bhb_loop+0x50/0xa0
+[  204.551971][T12273]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  204.551989][T12273] RIP: 0033:0x7fe087daffde
+[  204.552008][T12273] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  204.552024][T12273] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  204.552043][T12273] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  204.552056][T12273] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  204.552067][T12273] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  204.552079][T12273] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  204.552090][T12273] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  204.552124][T12273]  </TASK>
+[  204.552134][T12273] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  204.600945][T12273] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  205.122437][T12282] loop1: detected capacity change from 0 to 32768
+[  205.138647][T12282] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  205.140445][T12282] CPU: 2 UID: 0 PID: 12282 Comm: syz.1.213 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  205.140471][T12282] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  205.140481][T12282] Call Trace:
+[  205.140488][T12282]  <TASK>
+[  205.140497][T12282]  dump_stack_lvl+0x127/0x1d0
+[  205.140533][T12282]  sysfs_create_dir_ns+0x12e/0x160
+[  205.140562][T12282]  kobject_add_internal+0x34b/0x630
+[  205.140598][T12282]  kobject_init_and_add+0xf3/0x1a0
+[  205.140626][T12282]  ? sprintf+0x79/0xa0
+[  205.140659][T12282]  gfs2_sys_fs_add+0xc9/0x200
+[  205.140687][T12282]  ? kfree+0x10d/0x3b0
+[  205.140725][T12282]  gfs2_fill_super+0x92d/0x11e0
+[  205.140757][T12282]  ? set_blocksize+0x15c/0x2b0
+[  205.140784][T12282]  ? sb_set_blocksize+0x8e/0xc0
+[  205.140812][T12282]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  205.140842][T12282]  get_tree_bdev_flags+0x1ec/0x250
+[  205.140873][T12282]  gfs2_get_tree+0x2a/0xe0
+[  205.140924][T12282]  vfs_get_tree+0x38/0x140
+[  205.140949][T12282]  do_new_mount+0x1dd/0x570
+[  205.140973][T12282]  ? path_mount+0x3a4/0x980
+[  205.141005][T12282]  __se_sys_mount+0x291/0x2f0
+[  205.141044][T12282]  do_syscall_64+0x8e/0x3a0
+[  205.141071][T12282]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  205.141090][T12282]  ? clear_bhb_loop+0x50/0xa0
+[  205.141115][T12282]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  205.141134][T12282] RIP: 0033:0x7fe087daffde
+[  205.141152][T12282] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  205.141168][T12282] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  205.141188][T12282] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  205.141201][T12282] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  205.141212][T12282] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  205.141224][T12282] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  205.141235][T12282] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  205.141269][T12282]  </TASK>
+[  205.141279][T12282] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  205.190523][T12282] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  205.790932][T12291] loop1: detected capacity change from 0 to 32768
+[  205.804964][T12291] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  205.807089][T12291] CPU: 0 UID: 0 PID: 12291 Comm: syz.1.214 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  205.807126][T12291] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  205.807140][T12291] Call Trace:
+[  205.807149][T12291]  <TASK>
+[  205.807158][T12291]  dump_stack_lvl+0x127/0x1d0
+[  205.807195][T12291]  sysfs_create_dir_ns+0x12e/0x160
+[  205.807224][T12291]  kobject_add_internal+0x34b/0x630
+[  205.807260][T12291]  kobject_init_and_add+0xf3/0x1a0
+[  205.807288][T12291]  ? sprintf+0x79/0xa0
+[  205.807321][T12291]  gfs2_sys_fs_add+0xc9/0x200
+[  205.807349][T12291]  ? kfree+0x10d/0x3b0
+[  205.807387][T12291]  gfs2_fill_super+0x92d/0x11e0
+[  205.807420][T12291]  ? set_blocksize+0x15c/0x2b0
+[  205.807446][T12291]  ? sb_set_blocksize+0x8e/0xc0
+[  205.807475][T12291]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  205.807504][T12291]  get_tree_bdev_flags+0x1ec/0x250
+[  205.807542][T12291]  gfs2_get_tree+0x2a/0xe0
+[  205.807576][T12291]  vfs_get_tree+0x38/0x140
+[  205.807600][T12291]  do_new_mount+0x1dd/0x570
+[  205.807626][T12291]  ? path_mount+0x3a4/0x980
+[  205.807658][T12291]  __se_sys_mount+0x291/0x2f0
+[  205.807697][T12291]  do_syscall_64+0x8e/0x3a0
+[  205.807724][T12291]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  205.807743][T12291]  ? clear_bhb_loop+0x50/0xa0
+[  205.807768][T12291]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  205.807787][T12291] RIP: 0033:0x7fe087daffde
+[  205.807806][T12291] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  205.807823][T12291] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  205.807841][T12291] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  205.807854][T12291] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  205.807885][T12291] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  205.807897][T12291] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  205.807908][T12291] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  205.807942][T12291]  </TASK>
+[  205.860358][T12291] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  205.863519][T12291] gfs2: fsid=syz:syz: error -17 adding sysfs files
+2025/09/01 07:14:38 executed programs: 200
+[  206.392626][T12300] loop1: detected capacity change from 0 to 32768
+[  206.396273][T12300] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  206.399089][T12300] CPU: 1 UID: 0 PID: 12300 Comm: syz.1.215 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  206.399115][T12300] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  206.399125][T12300] Call Trace:
+[  206.399133][T12300]  <TASK>
+[  206.399141][T12300]  dump_stack_lvl+0x127/0x1d0
+[  206.399179][T12300]  sysfs_create_dir_ns+0x12e/0x160
+[  206.399208][T12300]  kobject_add_internal+0x34b/0x630
+[  206.399245][T12300]  kobject_init_and_add+0xf3/0x1a0
+[  206.399273][T12300]  ? sprintf+0x79/0xa0
+[  206.399305][T12300]  gfs2_sys_fs_add+0xc9/0x200
+[  206.399333][T12300]  ? kfree+0x10d/0x3b0
+[  206.399371][T12300]  gfs2_fill_super+0x92d/0x11e0
+[  206.399404][T12300]  ? set_blocksize+0x15c/0x2b0
+[  206.399430][T12300]  ? sb_set_blocksize+0x8e/0xc0
+[  206.399459][T12300]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  206.399488][T12300]  get_tree_bdev_flags+0x1ec/0x250
+[  206.399520][T12300]  gfs2_get_tree+0x2a/0xe0
+[  206.399553][T12300]  vfs_get_tree+0x38/0x140
+[  206.399578][T12300]  do_new_mount+0x1dd/0x570
+[  206.399602][T12300]  ? path_mount+0x3a4/0x980
+[  206.399633][T12300]  __se_sys_mount+0x291/0x2f0
+[  206.399672][T12300]  do_syscall_64+0x8e/0x3a0
+[  206.399699][T12300]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  206.399718][T12300]  ? clear_bhb_loop+0x50/0xa0
+[  206.399743][T12300]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  206.399761][T12300] RIP: 0033:0x7fe087daffde
+[  206.399779][T12300] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  206.399795][T12300] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  206.399814][T12300] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  206.399826][T12300] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  206.399838][T12300] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  206.399868][T12300] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  206.399880][T12300] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  206.399914][T12300]  </TASK>
+[  206.399924][T12300] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  206.447662][T12300] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  206.986278][T12309] loop1: detected capacity change from 0 to 32768
+[  207.000111][T12309] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  207.001775][T12309] CPU: 0 UID: 0 PID: 12309 Comm: syz.1.216 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  207.001800][T12309] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  207.001810][T12309] Call Trace:
+[  207.001817][T12309]  <TASK>
+[  207.001825][T12309]  dump_stack_lvl+0x127/0x1d0
+[  207.001875][T12309]  sysfs_create_dir_ns+0x12e/0x160
+[  207.001903][T12309]  kobject_add_internal+0x34b/0x630
+[  207.001939][T12309]  kobject_init_and_add+0xf3/0x1a0
+[  207.001967][T12309]  ? sprintf+0x79/0xa0
+[  207.002000][T12309]  gfs2_sys_fs_add+0xc9/0x200
+[  207.002028][T12309]  ? kfree+0x10d/0x3b0
+[  207.002066][T12309]  gfs2_fill_super+0x92d/0x11e0
+[  207.002099][T12309]  ? set_blocksize+0x15c/0x2b0
+[  207.002126][T12309]  ? sb_set_blocksize+0x8e/0xc0
+[  207.002155][T12309]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  207.002185][T12309]  get_tree_bdev_flags+0x1ec/0x250
+[  207.002217][T12309]  gfs2_get_tree+0x2a/0xe0
+[  207.002250][T12309]  vfs_get_tree+0x38/0x140
+[  207.002275][T12309]  do_new_mount+0x1dd/0x570
+[  207.002299][T12309]  ? path_mount+0x3a4/0x980
+[  207.002330][T12309]  __se_sys_mount+0x291/0x2f0
+[  207.002369][T12309]  do_syscall_64+0x8e/0x3a0
+[  207.002396][T12309]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  207.002415][T12309]  ? clear_bhb_loop+0x50/0xa0
+[  207.002440][T12309]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  207.002458][T12309] RIP: 0033:0x7fe087daffde
+[  207.002476][T12309] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  207.002492][T12309] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  207.002511][T12309] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  207.002524][T12309] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  207.002535][T12309] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  207.002546][T12309] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  207.002557][T12309] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  207.002591][T12309]  </TASK>
+[  207.002601][T12309] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  207.050162][T12309] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  207.581975][T12318] loop1: detected capacity change from 0 to 32768
+[  207.586541][T12318] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  207.588412][T12318] CPU: 0 UID: 0 PID: 12318 Comm: syz.1.217 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  207.588437][T12318] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  207.588447][T12318] Call Trace:
+[  207.588455][T12318]  <TASK>
+[  207.588464][T12318]  dump_stack_lvl+0x127/0x1d0
+[  207.588501][T12318]  sysfs_create_dir_ns+0x12e/0x160
+[  207.588531][T12318]  kobject_add_internal+0x34b/0x630
+[  207.588569][T12318]  kobject_init_and_add+0xf3/0x1a0
+[  207.588597][T12318]  ? sprintf+0x79/0xa0
+[  207.588630][T12318]  gfs2_sys_fs_add+0xc9/0x200
+[  207.588659][T12318]  ? kfree+0x10d/0x3b0
+[  207.588697][T12318]  gfs2_fill_super+0x92d/0x11e0
+[  207.588730][T12318]  ? set_blocksize+0x15c/0x2b0
+[  207.588756][T12318]  ? sb_set_blocksize+0x8e/0xc0
+[  207.588784][T12318]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  207.588814][T12318]  get_tree_bdev_flags+0x1ec/0x250
+[  207.588862][T12318]  gfs2_get_tree+0x2a/0xe0
+[  207.588896][T12318]  vfs_get_tree+0x38/0x140
+[  207.588920][T12318]  do_new_mount+0x1dd/0x570
+[  207.588944][T12318]  ? path_mount+0x3a4/0x980
+[  207.588976][T12318]  __se_sys_mount+0x291/0x2f0
+[  207.589014][T12318]  do_syscall_64+0x8e/0x3a0
+[  207.589041][T12318]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  207.589060][T12318]  ? clear_bhb_loop+0x50/0xa0
+[  207.589085][T12318]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  207.589104][T12318] RIP: 0033:0x7fe087daffde
+[  207.589122][T12318] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  207.589139][T12318] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  207.589159][T12318] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  207.589171][T12318] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  207.589183][T12318] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  207.589194][T12318] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  207.589205][T12318] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  207.589239][T12318]  </TASK>
+[  207.589249][T12318] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  207.638929][T12318] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  208.217839][T12327] loop1: detected capacity change from 0 to 32768
+[  208.221332][T12327] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  208.223102][T12327] CPU: 1 UID: 0 PID: 12327 Comm: syz.1.218 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  208.223126][T12327] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  208.223136][T12327] Call Trace:
+[  208.223145][T12327]  <TASK>
+[  208.223153][T12327]  dump_stack_lvl+0x127/0x1d0
+[  208.223189][T12327]  sysfs_create_dir_ns+0x12e/0x160
+[  208.223219][T12327]  kobject_add_internal+0x34b/0x630
+[  208.223254][T12327]  kobject_init_and_add+0xf3/0x1a0
+[  208.223282][T12327]  ? sprintf+0x79/0xa0
+[  208.223315][T12327]  gfs2_sys_fs_add+0xc9/0x200
+[  208.223343][T12327]  ? kfree+0x10d/0x3b0
+[  208.223381][T12327]  gfs2_fill_super+0x92d/0x11e0
+[  208.223413][T12327]  ? set_blocksize+0x15c/0x2b0
+[  208.223440][T12327]  ? sb_set_blocksize+0x8e/0xc0
+[  208.223469][T12327]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  208.223498][T12327]  get_tree_bdev_flags+0x1ec/0x250
+[  208.223530][T12327]  gfs2_get_tree+0x2a/0xe0
+[  208.223563][T12327]  vfs_get_tree+0x38/0x140
+[  208.223588][T12327]  do_new_mount+0x1dd/0x570
+[  208.223612][T12327]  ? path_mount+0x3a4/0x980
+[  208.223644][T12327]  __se_sys_mount+0x291/0x2f0
+[  208.223683][T12327]  do_syscall_64+0x8e/0x3a0
+[  208.223710][T12327]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  208.223729][T12327]  ? clear_bhb_loop+0x50/0xa0
+[  208.223754][T12327]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  208.223772][T12327] RIP: 0033:0x7fe087daffde
+[  208.223790][T12327] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  208.223806][T12327] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  208.223852][T12327] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  208.223865][T12327] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  208.223876][T12327] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  208.223887][T12327] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  208.223899][T12327] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  208.223933][T12327]  </TASK>
+[  208.223942][T12327] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  208.272084][T12327] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  208.801056][T12336] loop1: detected capacity change from 0 to 32768
+[  208.804503][T12336] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  208.806160][T12336] CPU: 1 UID: 0 PID: 12336 Comm: syz.1.219 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  208.806184][T12336] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  208.806195][T12336] Call Trace:
+[  208.806202][T12336]  <TASK>
+[  208.806211][T12336]  dump_stack_lvl+0x127/0x1d0
+[  208.806246][T12336]  sysfs_create_dir_ns+0x12e/0x160
+[  208.806276][T12336]  kobject_add_internal+0x34b/0x630
+[  208.806312][T12336]  kobject_init_and_add+0xf3/0x1a0
+[  208.806340][T12336]  ? sprintf+0x79/0xa0
+[  208.806373][T12336]  gfs2_sys_fs_add+0xc9/0x200
+[  208.806401][T12336]  ? kfree+0x10d/0x3b0
+[  208.806439][T12336]  gfs2_fill_super+0x92d/0x11e0
+[  208.806472][T12336]  ? set_blocksize+0x15c/0x2b0
+[  208.806499][T12336]  ? sb_set_blocksize+0x8e/0xc0
+[  208.806528][T12336]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  208.806557][T12336]  get_tree_bdev_flags+0x1ec/0x250
+[  208.806588][T12336]  gfs2_get_tree+0x2a/0xe0
+[  208.806622][T12336]  vfs_get_tree+0x38/0x140
+[  208.806647][T12336]  do_new_mount+0x1dd/0x570
+[  208.806671][T12336]  ? path_mount+0x3a4/0x980
+[  208.806702][T12336]  __se_sys_mount+0x291/0x2f0
+[  208.806741][T12336]  do_syscall_64+0x8e/0x3a0
+[  208.806768][T12336]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  208.806787][T12336]  ? clear_bhb_loop+0x50/0xa0
+[  208.806833][T12336]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  208.806852][T12336] RIP: 0033:0x7fe087daffde
+[  208.806870][T12336] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  208.806886][T12336] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  208.806906][T12336] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  208.806919][T12336] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  208.806930][T12336] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  208.806942][T12336] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  208.806954][T12336] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  208.806988][T12336]  </TASK>
+[  208.806998][T12336] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  208.856139][T12336] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  209.387299][T12345] loop1: detected capacity change from 0 to 32768
+[  209.391179][T12345] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  209.392949][T12345] CPU: 3 UID: 0 PID: 12345 Comm: syz.1.220 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  209.392974][T12345] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  209.392984][T12345] Call Trace:
+[  209.392992][T12345]  <TASK>
+[  209.393000][T12345]  dump_stack_lvl+0x127/0x1d0
+[  209.393037][T12345]  sysfs_create_dir_ns+0x12e/0x160
+[  209.393066][T12345]  kobject_add_internal+0x34b/0x630
+[  209.393102][T12345]  kobject_init_and_add+0xf3/0x1a0
+[  209.393130][T12345]  ? sprintf+0x79/0xa0
+[  209.393162][T12345]  gfs2_sys_fs_add+0xc9/0x200
+[  209.393191][T12345]  ? kfree+0x10d/0x3b0
+[  209.393228][T12345]  gfs2_fill_super+0x92d/0x11e0
+[  209.393261][T12345]  ? set_blocksize+0x15c/0x2b0
+[  209.393288][T12345]  ? sb_set_blocksize+0x8e/0xc0
+[  209.393317][T12345]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  209.393346][T12345]  get_tree_bdev_flags+0x1ec/0x250
+[  209.393378][T12345]  gfs2_get_tree+0x2a/0xe0
+[  209.393411][T12345]  vfs_get_tree+0x38/0x140
+[  209.393436][T12345]  do_new_mount+0x1dd/0x570
+[  209.393460][T12345]  ? path_mount+0x3a4/0x980
+[  209.393492][T12345]  __se_sys_mount+0x291/0x2f0
+[  209.393531][T12345]  do_syscall_64+0x8e/0x3a0
+[  209.393558][T12345]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  209.393577][T12345]  ? clear_bhb_loop+0x50/0xa0
+[  209.393602][T12345]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  209.393620][T12345] RIP: 0033:0x7fe087daffde
+[  209.393639][T12345] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  209.393656][T12345] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  209.393675][T12345] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  209.393688][T12345] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  209.393700][T12345] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  209.393711][T12345] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  209.393723][T12345] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  209.393756][T12345]  </TASK>
+[  209.393766][T12345] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  209.442908][T12345] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  209.990985][T12354] loop1: detected capacity change from 0 to 32768
+[  209.994695][T12354] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  209.996419][T12354] CPU: 0 UID: 0 PID: 12354 Comm: syz.1.221 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  209.996444][T12354] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  209.996454][T12354] Call Trace:
+[  209.996462][T12354]  <TASK>
+[  209.996470][T12354]  dump_stack_lvl+0x127/0x1d0
+[  209.996506][T12354]  sysfs_create_dir_ns+0x12e/0x160
+[  209.996535][T12354]  kobject_add_internal+0x34b/0x630
+[  209.996571][T12354]  kobject_init_and_add+0xf3/0x1a0
+[  209.996599][T12354]  ? sprintf+0x79/0xa0
+[  209.996631][T12354]  gfs2_sys_fs_add+0xc9/0x200
+[  209.996659][T12354]  ? kfree+0x10d/0x3b0
+[  209.996698][T12354]  gfs2_fill_super+0x92d/0x11e0
+[  209.996731][T12354]  ? set_blocksize+0x15c/0x2b0
+[  209.996757][T12354]  ? sb_set_blocksize+0x8e/0xc0
+[  209.996807][T12354]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  209.996837][T12354]  get_tree_bdev_flags+0x1ec/0x250
+[  209.996868][T12354]  gfs2_get_tree+0x2a/0xe0
+[  209.996901][T12354]  vfs_get_tree+0x38/0x140
+[  209.996926][T12354]  do_new_mount+0x1dd/0x570
+[  209.996951][T12354]  ? path_mount+0x3a4/0x980
+[  209.996983][T12354]  __se_sys_mount+0x291/0x2f0
+[  209.997021][T12354]  do_syscall_64+0x8e/0x3a0
+[  209.997049][T12354]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  209.997068][T12354]  ? clear_bhb_loop+0x50/0xa0
+[  209.997093][T12354]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  209.997111][T12354] RIP: 0033:0x7fe087daffde
+[  209.997129][T12354] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  209.997146][T12354] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  209.997166][T12354] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  209.997178][T12354] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  209.997189][T12354] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  209.997201][T12354] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  209.997212][T12354] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  209.997246][T12354]  </TASK>
+[  209.997256][T12354] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  210.046677][T12354] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  210.585743][T12363] loop1: detected capacity change from 0 to 32768
+[  210.590568][T12363] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  210.592332][T12363] CPU: 3 UID: 0 PID: 12363 Comm: syz.1.222 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  210.592356][T12363] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  210.592366][T12363] Call Trace:
+[  210.592374][T12363]  <TASK>
+[  210.592383][T12363]  dump_stack_lvl+0x127/0x1d0
+[  210.592420][T12363]  sysfs_create_dir_ns+0x12e/0x160
+[  210.592450][T12363]  kobject_add_internal+0x34b/0x630
+[  210.592485][T12363]  kobject_init_and_add+0xf3/0x1a0
+[  210.592513][T12363]  ? sprintf+0x79/0xa0
+[  210.592546][T12363]  gfs2_sys_fs_add+0xc9/0x200
+[  210.592575][T12363]  ? kfree+0x10d/0x3b0
+[  210.592613][T12363]  gfs2_fill_super+0x92d/0x11e0
+[  210.592646][T12363]  ? set_blocksize+0x15c/0x2b0
+[  210.592673][T12363]  ? sb_set_blocksize+0x8e/0xc0
+[  210.592701][T12363]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  210.592731][T12363]  get_tree_bdev_flags+0x1ec/0x250
+[  210.592780][T12363]  gfs2_get_tree+0x2a/0xe0
+[  210.592814][T12363]  vfs_get_tree+0x38/0x140
+[  210.592839][T12363]  do_new_mount+0x1dd/0x570
+[  210.592863][T12363]  ? path_mount+0x3a4/0x980
+[  210.592894][T12363]  __se_sys_mount+0x291/0x2f0
+[  210.592933][T12363]  do_syscall_64+0x8e/0x3a0
+[  210.592960][T12363]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  210.592978][T12363]  ? clear_bhb_loop+0x50/0xa0
+[  210.593004][T12363]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  210.593022][T12363] RIP: 0033:0x7fe087daffde
+[  210.593039][T12363] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  210.593056][T12363] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  210.593076][T12363] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  210.593088][T12363] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  210.593099][T12363] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  210.593111][T12363] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  210.593122][T12363] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  210.593156][T12363]  </TASK>
+[  210.593165][T12363] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  210.642620][T12363] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  211.182554][T12372] loop1: detected capacity change from 0 to 32768
+[  211.185972][T12372] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  211.187770][T12372] CPU: 1 UID: 0 PID: 12372 Comm: syz.1.223 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  211.187795][T12372] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  211.187806][T12372] Call Trace:
+[  211.187814][T12372]  <TASK>
+[  211.187823][T12372]  dump_stack_lvl+0x127/0x1d0
+[  211.187860][T12372]  sysfs_create_dir_ns+0x12e/0x160
+[  211.187890][T12372]  kobject_add_internal+0x34b/0x630
+[  211.187926][T12372]  kobject_init_and_add+0xf3/0x1a0
+[  211.187954][T12372]  ? sprintf+0x79/0xa0
+[  211.187987][T12372]  gfs2_sys_fs_add+0xc9/0x200
+[  211.188015][T12372]  ? kfree+0x10d/0x3b0
+[  211.188053][T12372]  gfs2_fill_super+0x92d/0x11e0
+[  211.188086][T12372]  ? set_blocksize+0x15c/0x2b0
+[  211.188113][T12372]  ? sb_set_blocksize+0x8e/0xc0
+[  211.188141][T12372]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  211.188171][T12372]  get_tree_bdev_flags+0x1ec/0x250
+[  211.188202][T12372]  gfs2_get_tree+0x2a/0xe0
+[  211.188235][T12372]  vfs_get_tree+0x38/0x140
+[  211.188260][T12372]  do_new_mount+0x1dd/0x570
+[  211.188284][T12372]  ? path_mount+0x3a4/0x980
+[  211.188316][T12372]  __se_sys_mount+0x291/0x2f0
+[  211.188354][T12372]  do_syscall_64+0x8e/0x3a0
+[  211.188382][T12372]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  211.188400][T12372]  ? clear_bhb_loop+0x50/0xa0
+[  211.188425][T12372]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  211.188444][T12372] RIP: 0033:0x7fe087daffde
+[  211.188462][T12372] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  211.188479][T12372] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  211.188498][T12372] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  211.188511][T12372] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  211.188522][T12372] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  211.188534][T12372] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  211.188545][T12372] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  211.188579][T12372]  </TASK>
+[  211.188589][T12372] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  211.236532][T12372] gfs2: fsid=syz:syz: error -17 adding sysfs files
+2025/09/01 07:14:43 executed programs: 209
+[  211.437713][ T4430] Bluetooth: hci1: command 0x0406 tx timeout
+[  211.797657][T12381] loop1: detected capacity change from 0 to 32768
+[  211.801912][T12381] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  211.804643][T12381] CPU: 0 UID: 0 PID: 12381 Comm: syz.1.224 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  211.804682][T12381] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  211.804699][T12381] Call Trace:
+[  211.804711][T12381]  <TASK>
+[  211.804725][T12381]  dump_stack_lvl+0x127/0x1d0
+[  211.804807][T12381]  sysfs_create_dir_ns+0x12e/0x160
+[  211.804856][T12381]  kobject_add_internal+0x34b/0x630
+[  211.804918][T12381]  kobject_init_and_add+0xf3/0x1a0
+[  211.804966][T12381]  ? sprintf+0x79/0xa0
+[  211.805026][T12381]  gfs2_sys_fs_add+0xc9/0x200
+[  211.805075][T12381]  ? kfree+0x10d/0x3b0
+[  211.805141][T12381]  gfs2_fill_super+0x92d/0x11e0
+[  211.805197][T12381]  ? set_blocksize+0x15c/0x2b0
+[  211.805244][T12381]  ? sb_set_blocksize+0x8e/0xc0
+[  211.805296][T12381]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  211.805346][T12381]  get_tree_bdev_flags+0x1ec/0x250
+[  211.805400][T12381]  gfs2_get_tree+0x2a/0xe0
+[  211.805458][T12381]  vfs_get_tree+0x38/0x140
+[  211.805501][T12381]  do_new_mount+0x1dd/0x570
+[  211.805542][T12381]  ? path_mount+0x3a4/0x980
+[  211.805599][T12381]  __se_sys_mount+0x291/0x2f0
+[  211.805669][T12381]  do_syscall_64+0x8e/0x3a0
+[  211.805716][T12381]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  211.805765][T12381]  ? clear_bhb_loop+0x50/0xa0
+[  211.805810][T12381]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  211.805842][T12381] RIP: 0033:0x7fe087daffde
+[  211.805870][T12381] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  211.805898][T12381] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  211.805928][T12381] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  211.805949][T12381] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  211.805969][T12381] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  211.805989][T12381] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  211.806009][T12381] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  211.806073][T12381]  </TASK>
+[  211.806089][T12381] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  211.866184][T12381] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  212.408553][T12391] loop1: detected capacity change from 0 to 32768
+[  212.411798][T12391] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  212.413492][T12391] CPU: 2 UID: 0 PID: 12391 Comm: syz.1.225 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  212.413517][T12391] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  212.413527][T12391] Call Trace:
+[  212.413535][T12391]  <TASK>
+[  212.413543][T12391]  dump_stack_lvl+0x127/0x1d0
+[  212.413580][T12391]  sysfs_create_dir_ns+0x12e/0x160
+[  212.413609][T12391]  kobject_add_internal+0x34b/0x630
+[  212.413645][T12391]  kobject_init_and_add+0xf3/0x1a0
+[  212.413673][T12391]  ? sprintf+0x79/0xa0
+[  212.413706][T12391]  gfs2_sys_fs_add+0xc9/0x200
+[  212.413753][T12391]  ? kfree+0x10d/0x3b0
+[  212.413791][T12391]  gfs2_fill_super+0x92d/0x11e0
+[  212.413824][T12391]  ? set_blocksize+0x15c/0x2b0
+[  212.413851][T12391]  ? sb_set_blocksize+0x8e/0xc0
+[  212.413880][T12391]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  212.413909][T12391]  get_tree_bdev_flags+0x1ec/0x250
+[  212.413941][T12391]  gfs2_get_tree+0x2a/0xe0
+[  212.413974][T12391]  vfs_get_tree+0x38/0x140
+[  212.413999][T12391]  do_new_mount+0x1dd/0x570
+[  212.414023][T12391]  ? path_mount+0x3a4/0x980
+[  212.414055][T12391]  __se_sys_mount+0x291/0x2f0
+[  212.414094][T12391]  do_syscall_64+0x8e/0x3a0
+[  212.414121][T12391]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  212.414140][T12391]  ? clear_bhb_loop+0x50/0xa0
+[  212.414165][T12391]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  212.414184][T12391] RIP: 0033:0x7fe087daffde
+[  212.414201][T12391] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  212.414218][T12391] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  212.414237][T12391] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  212.414249][T12391] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  212.414261][T12391] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  212.414272][T12391] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  212.414283][T12391] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  212.414316][T12391]  </TASK>
+[  212.414326][T12391] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  212.463571][T12391] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  212.982540][T12400] loop1: detected capacity change from 0 to 32768
+[  212.988374][T12400] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  212.990126][T12400] CPU: 2 UID: 0 PID: 12400 Comm: syz.1.226 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  212.990151][T12400] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  212.990161][T12400] Call Trace:
+[  212.990169][T12400]  <TASK>
+[  212.990177][T12400]  dump_stack_lvl+0x127/0x1d0
+[  212.990214][T12400]  sysfs_create_dir_ns+0x12e/0x160
+[  212.990242][T12400]  kobject_add_internal+0x34b/0x630
+[  212.990278][T12400]  kobject_init_and_add+0xf3/0x1a0
+[  212.990306][T12400]  ? sprintf+0x79/0xa0
+[  212.990339][T12400]  gfs2_sys_fs_add+0xc9/0x200
+[  212.990367][T12400]  ? kfree+0x10d/0x3b0
+[  212.990406][T12400]  gfs2_fill_super+0x92d/0x11e0
+[  212.990438][T12400]  ? set_blocksize+0x15c/0x2b0
+[  212.990465][T12400]  ? sb_set_blocksize+0x8e/0xc0
+[  212.990494][T12400]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  212.990523][T12400]  get_tree_bdev_flags+0x1ec/0x250
+[  212.990555][T12400]  gfs2_get_tree+0x2a/0xe0
+[  212.990588][T12400]  vfs_get_tree+0x38/0x140
+[  212.990613][T12400]  do_new_mount+0x1dd/0x570
+[  212.990637][T12400]  ? path_mount+0x3a4/0x980
+[  212.990669][T12400]  __se_sys_mount+0x291/0x2f0
+[  212.990727][T12400]  do_syscall_64+0x8e/0x3a0
+[  212.990754][T12400]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  212.990773][T12400]  ? clear_bhb_loop+0x50/0xa0
+[  212.990798][T12400]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  212.990817][T12400] RIP: 0033:0x7fe087daffde
+[  212.990835][T12400] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  212.990852][T12400] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  212.990871][T12400] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  212.990883][T12400] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  212.990895][T12400] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  212.990906][T12400] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  212.990918][T12400] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  212.990951][T12400]  </TASK>
+[  212.990993][T12400] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  213.041393][T12400] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  213.556426][T12409] loop1: detected capacity change from 0 to 32768
+[  213.559975][T12409] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  213.561713][T12409] CPU: 2 UID: 0 PID: 12409 Comm: syz.1.227 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  213.561737][T12409] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  213.561747][T12409] Call Trace:
+[  213.561755][T12409]  <TASK>
+[  213.561764][T12409]  dump_stack_lvl+0x127/0x1d0
+[  213.561801][T12409]  sysfs_create_dir_ns+0x12e/0x160
+[  213.561829][T12409]  kobject_add_internal+0x34b/0x630
+[  213.561865][T12409]  kobject_init_and_add+0xf3/0x1a0
+[  213.561893][T12409]  ? sprintf+0x79/0xa0
+[  213.561926][T12409]  gfs2_sys_fs_add+0xc9/0x200
+[  213.561954][T12409]  ? kfree+0x10d/0x3b0
+[  213.561992][T12409]  gfs2_fill_super+0x92d/0x11e0
+[  213.562024][T12409]  ? set_blocksize+0x15c/0x2b0
+[  213.562051][T12409]  ? sb_set_blocksize+0x8e/0xc0
+[  213.562080][T12409]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  213.562109][T12409]  get_tree_bdev_flags+0x1ec/0x250
+[  213.562141][T12409]  gfs2_get_tree+0x2a/0xe0
+[  213.562174][T12409]  vfs_get_tree+0x38/0x140
+[  213.562199][T12409]  do_new_mount+0x1dd/0x570
+[  213.562223][T12409]  ? path_mount+0x3a4/0x980
+[  213.562254][T12409]  __se_sys_mount+0x291/0x2f0
+[  213.562293][T12409]  do_syscall_64+0x8e/0x3a0
+[  213.562320][T12409]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  213.562338][T12409]  ? clear_bhb_loop+0x50/0xa0
+[  213.562364][T12409]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  213.562382][T12409] RIP: 0033:0x7fe087daffde
+[  213.562399][T12409] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  213.562416][T12409] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  213.562436][T12409] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  213.562448][T12409] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  213.562459][T12409] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  213.562471][T12409] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  213.562482][T12409] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  213.562516][T12409]  </TASK>
+[  213.562526][T12409] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  213.612074][T12409] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  214.127024][T12418] loop1: detected capacity change from 0 to 32768
+[  214.130588][T12418] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  214.132302][T12418] CPU: 2 UID: 0 PID: 12418 Comm: syz.1.228 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  214.132326][T12418] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  214.132336][T12418] Call Trace:
+[  214.132344][T12418]  <TASK>
+[  214.132351][T12418]  dump_stack_lvl+0x127/0x1d0
+[  214.132388][T12418]  sysfs_create_dir_ns+0x12e/0x160
+[  214.132417][T12418]  kobject_add_internal+0x34b/0x630
+[  214.132453][T12418]  kobject_init_and_add+0xf3/0x1a0
+[  214.132481][T12418]  ? sprintf+0x79/0xa0
+[  214.132514][T12418]  gfs2_sys_fs_add+0xc9/0x200
+[  214.132542][T12418]  ? kfree+0x10d/0x3b0
+[  214.132580][T12418]  gfs2_fill_super+0x92d/0x11e0
+[  214.132613][T12418]  ? set_blocksize+0x15c/0x2b0
+[  214.132640][T12418]  ? sb_set_blocksize+0x8e/0xc0
+[  214.132669][T12418]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  214.132715][T12418]  get_tree_bdev_flags+0x1ec/0x250
+[  214.132747][T12418]  gfs2_get_tree+0x2a/0xe0
+[  214.132781][T12418]  vfs_get_tree+0x38/0x140
+[  214.132805][T12418]  do_new_mount+0x1dd/0x570
+[  214.132830][T12418]  ? path_mount+0x3a4/0x980
+[  214.132861][T12418]  __se_sys_mount+0x291/0x2f0
+[  214.132900][T12418]  do_syscall_64+0x8e/0x3a0
+[  214.132928][T12418]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  214.132946][T12418]  ? clear_bhb_loop+0x50/0xa0
+[  214.132972][T12418]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  214.132990][T12418] RIP: 0033:0x7fe087daffde
+[  214.133007][T12418] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  214.133024][T12418] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  214.133043][T12418] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  214.133055][T12418] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  214.133067][T12418] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  214.133078][T12418] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  214.133090][T12418] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  214.133124][T12418]  </TASK>
+[  214.133133][T12418] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  214.182742][T12418] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  214.700808][T12427] loop1: detected capacity change from 0 to 32768
+[  214.704414][T12427] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  214.706181][T12427] CPU: 2 UID: 0 PID: 12427 Comm: syz.1.229 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  214.706206][T12427] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  214.706216][T12427] Call Trace:
+[  214.706224][T12427]  <TASK>
+[  214.706232][T12427]  dump_stack_lvl+0x127/0x1d0
+[  214.706269][T12427]  sysfs_create_dir_ns+0x12e/0x160
+[  214.706299][T12427]  kobject_add_internal+0x34b/0x630
+[  214.706335][T12427]  kobject_init_and_add+0xf3/0x1a0
+[  214.706362][T12427]  ? sprintf+0x79/0xa0
+[  214.706395][T12427]  gfs2_sys_fs_add+0xc9/0x200
+[  214.706424][T12427]  ? kfree+0x10d/0x3b0
+[  214.706463][T12427]  gfs2_fill_super+0x92d/0x11e0
+[  214.706496][T12427]  ? set_blocksize+0x15c/0x2b0
+[  214.706523][T12427]  ? sb_set_blocksize+0x8e/0xc0
+[  214.706551][T12427]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  214.706581][T12427]  get_tree_bdev_flags+0x1ec/0x250
+[  214.706612][T12427]  gfs2_get_tree+0x2a/0xe0
+[  214.706646][T12427]  vfs_get_tree+0x38/0x140
+[  214.706687][T12427]  do_new_mount+0x1dd/0x570
+[  214.706712][T12427]  ? path_mount+0x3a4/0x980
+[  214.706744][T12427]  __se_sys_mount+0x291/0x2f0
+[  214.706783][T12427]  do_syscall_64+0x8e/0x3a0
+[  214.706810][T12427]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  214.706828][T12427]  ? clear_bhb_loop+0x50/0xa0
+[  214.706854][T12427]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  214.706872][T12427] RIP: 0033:0x7fe087daffde
+[  214.706890][T12427] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  214.706907][T12427] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  214.706926][T12427] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  214.706939][T12427] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  214.706951][T12427] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  214.706963][T12427] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  214.706974][T12427] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  214.707007][T12427]  </TASK>
+[  214.707026][T12427] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  214.757749][T12427] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  215.278877][T12436] loop1: detected capacity change from 0 to 32768
+[  215.284132][T12436] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  215.285835][T12436] CPU: 2 UID: 0 PID: 12436 Comm: syz.1.230 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  215.285859][T12436] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  215.285869][T12436] Call Trace:
+[  215.285877][T12436]  <TASK>
+[  215.285885][T12436]  dump_stack_lvl+0x127/0x1d0
+[  215.285923][T12436]  sysfs_create_dir_ns+0x12e/0x160
+[  215.285952][T12436]  kobject_add_internal+0x34b/0x630
+[  215.285988][T12436]  kobject_init_and_add+0xf3/0x1a0
+[  215.286016][T12436]  ? sprintf+0x79/0xa0
+[  215.286049][T12436]  gfs2_sys_fs_add+0xc9/0x200
+[  215.286077][T12436]  ? kfree+0x10d/0x3b0
+[  215.286114][T12436]  gfs2_fill_super+0x92d/0x11e0
+[  215.286147][T12436]  ? set_blocksize+0x15c/0x2b0
+[  215.286173][T12436]  ? sb_set_blocksize+0x8e/0xc0
+[  215.286202][T12436]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  215.286231][T12436]  get_tree_bdev_flags+0x1ec/0x250
+[  215.286263][T12436]  gfs2_get_tree+0x2a/0xe0
+[  215.286296][T12436]  vfs_get_tree+0x38/0x140
+[  215.286321][T12436]  do_new_mount+0x1dd/0x570
+[  215.286345][T12436]  ? path_mount+0x3a4/0x980
+[  215.286377][T12436]  __se_sys_mount+0x291/0x2f0
+[  215.286416][T12436]  do_syscall_64+0x8e/0x3a0
+[  215.286443][T12436]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  215.286462][T12436]  ? clear_bhb_loop+0x50/0xa0
+[  215.286487][T12436]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  215.286506][T12436] RIP: 0033:0x7fe087daffde
+[  215.286523][T12436] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  215.286540][T12436] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  215.286559][T12436] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  215.286572][T12436] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  215.286583][T12436] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  215.286595][T12436] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  215.286606][T12436] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  215.286640][T12436]  </TASK>
+[  215.286650][T12436] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  215.335855][T12436] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  215.854534][T12445] loop1: detected capacity change from 0 to 32768
+[  215.858671][T12445] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  215.860294][T12445] CPU: 2 UID: 0 PID: 12445 Comm: syz.1.231 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  215.860318][T12445] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  215.860328][T12445] Call Trace:
+[  215.860336][T12445]  <TASK>
+[  215.860345][T12445]  dump_stack_lvl+0x127/0x1d0
+[  215.860382][T12445]  sysfs_create_dir_ns+0x12e/0x160
+[  215.860411][T12445]  kobject_add_internal+0x34b/0x630
+[  215.860448][T12445]  kobject_init_and_add+0xf3/0x1a0
+[  215.860475][T12445]  ? sprintf+0x79/0xa0
+[  215.860508][T12445]  gfs2_sys_fs_add+0xc9/0x200
+[  215.860536][T12445]  ? kfree+0x10d/0x3b0
+[  215.860574][T12445]  gfs2_fill_super+0x92d/0x11e0
+[  215.860606][T12445]  ? set_blocksize+0x15c/0x2b0
+[  215.860633][T12445]  ? sb_set_blocksize+0x8e/0xc0
+[  215.860685][T12445]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  215.860715][T12445]  get_tree_bdev_flags+0x1ec/0x250
+[  215.860746][T12445]  gfs2_get_tree+0x2a/0xe0
+[  215.860780][T12445]  vfs_get_tree+0x38/0x140
+[  215.860804][T12445]  do_new_mount+0x1dd/0x570
+[  215.860828][T12445]  ? path_mount+0x3a4/0x980
+[  215.860860][T12445]  __se_sys_mount+0x291/0x2f0
+[  215.860899][T12445]  do_syscall_64+0x8e/0x3a0
+[  215.860926][T12445]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  215.860944][T12445]  ? clear_bhb_loop+0x50/0xa0
+[  215.860969][T12445]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  215.860988][T12445] RIP: 0033:0x7fe087daffde
+[  215.861006][T12445] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  215.861022][T12445] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  215.861042][T12445] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  215.861054][T12445] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  215.861065][T12445] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  215.861077][T12445] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  215.861088][T12445] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  215.861122][T12445]  </TASK>
+[  215.861132][T12445] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  215.909636][T12445] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  216.426582][T12454] loop1: detected capacity change from 0 to 32768
+[  216.430220][T12454] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  216.431960][T12454] CPU: 2 UID: 0 PID: 12454 Comm: syz.1.232 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  216.431985][T12454] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  216.431996][T12454] Call Trace:
+[  216.432003][T12454]  <TASK>
+[  216.432012][T12454]  dump_stack_lvl+0x127/0x1d0
+[  216.432049][T12454]  sysfs_create_dir_ns+0x12e/0x160
+[  216.432078][T12454]  kobject_add_internal+0x34b/0x630
+[  216.432114][T12454]  kobject_init_and_add+0xf3/0x1a0
+[  216.432142][T12454]  ? sprintf+0x79/0xa0
+[  216.432175][T12454]  gfs2_sys_fs_add+0xc9/0x200
+[  216.432203][T12454]  ? kfree+0x10d/0x3b0
+[  216.432241][T12454]  gfs2_fill_super+0x92d/0x11e0
+[  216.432274][T12454]  ? set_blocksize+0x15c/0x2b0
+[  216.432301][T12454]  ? sb_set_blocksize+0x8e/0xc0
+[  216.432329][T12454]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  216.432359][T12454]  get_tree_bdev_flags+0x1ec/0x250
+[  216.432390][T12454]  gfs2_get_tree+0x2a/0xe0
+[  216.432424][T12454]  vfs_get_tree+0x38/0x140
+[  216.432448][T12454]  do_new_mount+0x1dd/0x570
+[  216.432473][T12454]  ? path_mount+0x3a4/0x980
+[  216.432504][T12454]  __se_sys_mount+0x291/0x2f0
+[  216.432542][T12454]  do_syscall_64+0x8e/0x3a0
+[  216.432569][T12454]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  216.432588][T12454]  ? clear_bhb_loop+0x50/0xa0
+[  216.432613][T12454]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  216.432632][T12454] RIP: 0033:0x7fe087daffde
+[  216.432676][T12454] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  216.432692][T12454] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  216.432712][T12454] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  216.432724][T12454] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  216.432736][T12454] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  216.432747][T12454] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  216.432759][T12454] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  216.432793][T12454]  </TASK>
+[  216.432803][T12454] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  216.481320][T12454] gfs2: fsid=syz:syz: error -17 adding sysfs files
+2025/09/01 07:14:49 executed programs: 218
+[  217.001886][T12463] loop1: detected capacity change from 0 to 32768
+[  217.006548][T12463] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  217.008285][T12463] CPU: 2 UID: 0 PID: 12463 Comm: syz.1.233 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  217.008310][T12463] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  217.008321][T12463] Call Trace:
+[  217.008330][T12463]  <TASK>
+[  217.008339][T12463]  dump_stack_lvl+0x127/0x1d0
+[  217.008377][T12463]  sysfs_create_dir_ns+0x12e/0x160
+[  217.008406][T12463]  kobject_add_internal+0x34b/0x630
+[  217.008442][T12463]  kobject_init_and_add+0xf3/0x1a0
+[  217.008470][T12463]  ? sprintf+0x79/0xa0
+[  217.008503][T12463]  gfs2_sys_fs_add+0xc9/0x200
+[  217.008532][T12463]  ? kfree+0x10d/0x3b0
+[  217.008570][T12463]  gfs2_fill_super+0x92d/0x11e0
+[  217.008602][T12463]  ? set_blocksize+0x15c/0x2b0
+[  217.008645][T12463]  ? sb_set_blocksize+0x8e/0xc0
+[  217.008674][T12463]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  217.008704][T12463]  get_tree_bdev_flags+0x1ec/0x250
+[  217.008735][T12463]  gfs2_get_tree+0x2a/0xe0
+[  217.008768][T12463]  vfs_get_tree+0x38/0x140
+[  217.008793][T12463]  do_new_mount+0x1dd/0x570
+[  217.008818][T12463]  ? path_mount+0x3a4/0x980
+[  217.008849][T12463]  __se_sys_mount+0x291/0x2f0
+[  217.008888][T12463]  do_syscall_64+0x8e/0x3a0
+[  217.008915][T12463]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  217.008934][T12463]  ? clear_bhb_loop+0x50/0xa0
+[  217.008960][T12463]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  217.008979][T12463] RIP: 0033:0x7fe087daffde
+[  217.008996][T12463] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  217.009013][T12463] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  217.009032][T12463] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  217.009044][T12463] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  217.009056][T12463] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  217.009067][T12463] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  217.009079][T12463] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  217.009113][T12463]  </TASK>
+[  217.009123][T12463] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  217.057397][T12463] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  217.587649][T12472] loop1: detected capacity change from 0 to 32768
+[  217.592350][T12472] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  217.594048][T12472] CPU: 0 UID: 0 PID: 12472 Comm: syz.1.234 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  217.594073][T12472] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  217.594083][T12472] Call Trace:
+[  217.594090][T12472]  <TASK>
+[  217.594098][T12472]  dump_stack_lvl+0x127/0x1d0
+[  217.594134][T12472]  sysfs_create_dir_ns+0x12e/0x160
+[  217.594164][T12472]  kobject_add_internal+0x34b/0x630
+[  217.594200][T12472]  kobject_init_and_add+0xf3/0x1a0
+[  217.594228][T12472]  ? sprintf+0x79/0xa0
+[  217.594260][T12472]  gfs2_sys_fs_add+0xc9/0x200
+[  217.594288][T12472]  ? kfree+0x234/0x3b0
+[  217.594326][T12472]  gfs2_fill_super+0x92d/0x11e0
+[  217.594358][T12472]  ? set_blocksize+0x15c/0x2b0
+[  217.594385][T12472]  ? sb_set_blocksize+0x8e/0xc0
+[  217.594414][T12472]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  217.594443][T12472]  get_tree_bdev_flags+0x1ec/0x250
+[  217.594474][T12472]  gfs2_get_tree+0x2a/0xe0
+[  217.594508][T12472]  vfs_get_tree+0x38/0x140
+[  217.594532][T12472]  do_new_mount+0x1dd/0x570
+[  217.594556][T12472]  ? path_mount+0x3a4/0x980
+[  217.594587][T12472]  __se_sys_mount+0x291/0x2f0
+[  217.594642][T12472]  do_syscall_64+0x8e/0x3a0
+[  217.594671][T12472]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  217.594689][T12472]  ? clear_bhb_loop+0x50/0xa0
+[  217.594714][T12472]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  217.594733][T12472] RIP: 0033:0x7fe087daffde
+[  217.594750][T12472] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  217.594767][T12472] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  217.594787][T12472] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  217.594799][T12472] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  217.594811][T12472] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  217.594822][T12472] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  217.594834][T12472] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  217.594867][T12472]  </TASK>
+[  217.594878][T12472] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  217.642600][T12472] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  218.223633][T12481] loop1: detected capacity change from 0 to 32768
+[  218.227151][T12481] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  218.229130][T12481] CPU: 3 UID: 0 PID: 12481 Comm: syz.1.235 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  218.229155][T12481] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  218.229165][T12481] Call Trace:
+[  218.229172][T12481]  <TASK>
+[  218.229180][T12481]  dump_stack_lvl+0x127/0x1d0
+[  218.229216][T12481]  sysfs_create_dir_ns+0x12e/0x160
+[  218.229244][T12481]  kobject_add_internal+0x34b/0x630
+[  218.229279][T12481]  kobject_init_and_add+0xf3/0x1a0
+[  218.229307][T12481]  ? sprintf+0x79/0xa0
+[  218.229340][T12481]  gfs2_sys_fs_add+0xc9/0x200
+[  218.229368][T12481]  ? kfree+0x10d/0x3b0
+[  218.229406][T12481]  gfs2_fill_super+0x92d/0x11e0
+[  218.229439][T12481]  ? set_blocksize+0x15c/0x2b0
+[  218.229466][T12481]  ? sb_set_blocksize+0x8e/0xc0
+[  218.229495][T12481]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  218.229524][T12481]  get_tree_bdev_flags+0x1ec/0x250
+[  218.229556][T12481]  gfs2_get_tree+0x2a/0xe0
+[  218.229589][T12481]  vfs_get_tree+0x38/0x140
+[  218.229631][T12481]  do_new_mount+0x1dd/0x570
+[  218.229655][T12481]  ? path_mount+0x3a4/0x980
+[  218.229687][T12481]  __se_sys_mount+0x291/0x2f0
+[  218.229726][T12481]  do_syscall_64+0x8e/0x3a0
+[  218.229754][T12481]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  218.229772][T12481]  ? clear_bhb_loop+0x50/0xa0
+[  218.229797][T12481]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  218.229816][T12481] RIP: 0033:0x7fe087daffde
+[  218.229834][T12481] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  218.229850][T12481] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  218.229870][T12481] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  218.229882][T12481] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  218.229893][T12481] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  218.229905][T12481] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  218.229916][T12481] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  218.229950][T12481]  </TASK>
+[  218.229959][T12481] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  218.277088][T12481] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  218.803156][T12491] loop1: detected capacity change from 0 to 32768
+[  218.806434][T12491] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  218.808178][T12491] CPU: 3 UID: 0 PID: 12491 Comm: syz.1.236 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  218.808203][T12491] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  218.808213][T12491] Call Trace:
+[  218.808222][T12491]  <TASK>
+[  218.808231][T12491]  dump_stack_lvl+0x127/0x1d0
+[  218.808268][T12491]  sysfs_create_dir_ns+0x12e/0x160
+[  218.808298][T12491]  kobject_add_internal+0x34b/0x630
+[  218.808334][T12491]  kobject_init_and_add+0xf3/0x1a0
+[  218.808363][T12491]  ? sprintf+0x79/0xa0
+[  218.808396][T12491]  gfs2_sys_fs_add+0xc9/0x200
+[  218.808424][T12491]  ? kfree+0x10d/0x3b0
+[  218.808463][T12491]  gfs2_fill_super+0x92d/0x11e0
+[  218.808496][T12491]  ? set_blocksize+0x15c/0x2b0
+[  218.808523][T12491]  ? sb_set_blocksize+0x8e/0xc0
+[  218.808551][T12491]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  218.808581][T12491]  get_tree_bdev_flags+0x1ec/0x250
+[  218.808635][T12491]  gfs2_get_tree+0x2a/0xe0
+[  218.808669][T12491]  vfs_get_tree+0x38/0x140
+[  218.808693][T12491]  do_new_mount+0x1dd/0x570
+[  218.808717][T12491]  ? path_mount+0x3a4/0x980
+[  218.808749][T12491]  __se_sys_mount+0x291/0x2f0
+[  218.808788][T12491]  do_syscall_64+0x8e/0x3a0
+[  218.808815][T12491]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  218.808834][T12491]  ? clear_bhb_loop+0x50/0xa0
+[  218.808859][T12491]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  218.808877][T12491] RIP: 0033:0x7fe087daffde
+[  218.808896][T12491] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  218.808913][T12491] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  218.808933][T12491] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  218.808945][T12491] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  218.808957][T12491] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  218.808968][T12491] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  218.808979][T12491] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  218.809013][T12491]  </TASK>
+[  218.809023][T12491] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  218.855672][T12491] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  219.377123][T12500] loop1: detected capacity change from 0 to 32768
+[  219.381186][T12500] sysfs: cannot create duplicate filename '/fs/gfs2/syz:syz'
+[  219.382853][T12500] CPU: 3 UID: 0 PID: 12500 Comm: syz.1.237 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  219.382878][T12500] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  219.382888][T12500] Call Trace:
+[  219.382895][T12500]  <TASK>
+[  219.382903][T12500]  dump_stack_lvl+0x127/0x1d0
+[  219.382940][T12500]  sysfs_create_dir_ns+0x12e/0x160
+[  219.382969][T12500]  kobject_add_internal+0x34b/0x630
+[  219.383005][T12500]  kobject_init_and_add+0xf3/0x1a0
+[  219.383033][T12500]  ? sprintf+0x79/0xa0
+[  219.383065][T12500]  gfs2_sys_fs_add+0xc9/0x200
+[  219.383093][T12500]  ? kfree+0x10d/0x3b0
+[  219.383132][T12500]  gfs2_fill_super+0x92d/0x11e0
+[  219.383164][T12500]  ? set_blocksize+0x15c/0x2b0
+[  219.383191][T12500]  ? sb_set_blocksize+0x8e/0xc0
+[  219.383220][T12500]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  219.383249][T12500]  get_tree_bdev_flags+0x1ec/0x250
+[  219.383281][T12500]  gfs2_get_tree+0x2a/0xe0
+[  219.383314][T12500]  vfs_get_tree+0x38/0x140
+[  219.383339][T12500]  do_new_mount+0x1dd/0x570
+[  219.383363][T12500]  ? path_mount+0x3a4/0x980
+[  219.383394][T12500]  __se_sys_mount+0x291/0x2f0
+[  219.383433][T12500]  do_syscall_64+0x8e/0x3a0
+[  219.383460][T12500]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  219.383478][T12500]  ? clear_bhb_loop+0x50/0xa0
+[  219.383503][T12500]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  219.383522][T12500] RIP: 0033:0x7fe087daffde
+[  219.383539][T12500] Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[  219.383556][T12500] RSP: 002b:00007ffc92da0be8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  219.383591][T12500] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fe087daffde
+[  219.383604][T12500] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffc92da0c40
+[  219.383615][T12500] RBP: 00007ffc92da0c80 R08: 00007ffc92da0c80 R09: 0000000000000000
+[  219.383627][T12500] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  219.383639][T12500] R13: 000020000001f6c0 R14: 00007ffc92da0c40 R15: 0000200000000100
+[  219.383673][T12500]  </TASK>
+[  219.383684][T12500] kobject: kobject_add_internal failed for syz:syz with -EEXIST, don't try to register things with the same name in the same directory.
+[  219.430596][T12500] gfs2: fsid=syz:syz: error -17 adding sysfs files
+[  219.608107][   T44] INFO: task kworker/2:1:59 blocked for more than 143 seconds.
+[  219.609830][   T44]       Not tainted 6.16.0 #1
+[  219.611395][   T44] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[  219.614299][   T44] task:kworker/2:1     state:D stack:12208 pid:59    tgid:59    ppid:2      task_flags:0x4208060 flags:0x00004000
+[  219.617994][   T44] Workqueue: gfs2_recovery gfs2_recover_func
+[  219.620279][   T44] Call Trace:
+[  219.621842][   T44]  <TASK>
+[  219.623201][   T44]  __schedule+0x8f7/0x1920
+[  219.624210][   T44]  ? schedule+0xb4/0x140
+[  219.626001][   T44]  ? schedule+0x33/0x140
+[  219.626943][   T44]  schedule+0xb4/0x140
+[  219.628263][   T44]  io_schedule+0x3f/0x60
+[  219.629223][   T44]  folio_wait_bit_common+0x382/0x6e0
+[  219.630390][   T44]  ? __pfx_wake_page_function+0x10/0x10
+[  219.631613][   T44]  gfs2_jhead_process_page+0x95/0x2f0
+[  219.632806][   T44]  gfs2_find_jhead+0x57d/0x630
+[  219.633874][   T44]  gfs2_recover_func+0x289/0x1000
+[  219.634979][   T44]  ? __lock_acquire+0x134d/0x2d50
+[  219.636092][   T44]  ? lockdep_hardirqs_on+0x95/0x140
+[  219.637225][   T44]  ? asm_sysvec_apic_timer_interrupt+0x1a/0x20
+[  219.638998][   T44]  ? process_scheduled_works+0x3dd/0xb50
+[  219.640245][   T44]  process_scheduled_works+0x482/0xb50
+[  219.641452][   T44]  worker_thread+0x3a1/0x570
+[  219.642476][   T44]  kthread+0x33b/0x3d0
+[  219.643371][   T44]  ? __pfx_worker_thread+0x10/0x10
+[  219.644482][   T44]  ? lockdep_hardirqs_on+0x95/0x140
+[  219.645634][   T44]  ? __pfx_kthread+0x10/0x10
+[  219.646658][   T44]  ret_from_fork+0x2a5/0x430
+[  219.647733][   T44]  ? __pfx_kthread+0x10/0x10
+[  219.648855][   T44]  ret_from_fork_asm+0x1a/0x30
+[  219.649945][   T44]  </TASK>
+[  219.650709][   T44] INFO: task syz.0.17:9940 blocked for more than 143 seconds.
+[  219.652296][   T44]       Not tainted 6.16.0 #1
+[  219.653322][   T44] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[  219.655171][   T44] task:syz.0.17        state:D stack:11984 pid:9940  tgid:9940  ppid:9315   task_flags:0x400140 flags:0x00004004
+[  219.657811][   T44] Call Trace:
+[  219.658588][   T44]  <TASK>
+[  219.659350][   T44]  __schedule+0x8f7/0x1920
+[  219.660404][   T44]  ? schedule+0xb4/0x140
+[  219.661414][   T44]  ? __pfx_bit_wait+0x10/0x10
+[  219.662502][   T44]  ? schedule+0x33/0x140
+[  219.663490][   T44]  schedule+0xb4/0x140
+[  219.664439][   T44]  bit_wait+0xc/0x60
+[  219.665363][   T44]  __wait_on_bit+0x48/0xf0
+[  219.666402][   T44]  out_of_line_wait_on_bit+0x8b/0xb0
+[  219.667702][   T44]  ? __pfx_wake_bit_function+0x10/0x10
+[  219.668974][   T44]  gfs2_recover_journal+0xd9/0x110
+[  219.670241][   T44]  init_journal+0xade/0x1000
+[  219.671340][   T44]  ? init_inodes+0x69/0x1a0
+[  219.672391][   T44]  ? init_inodes+0x69/0x1a0
+[  219.673474][   T44]  init_inodes+0x69/0x1a0
+[  219.674467][   T44]  gfs2_fill_super+0xfa6/0x11e0
+[  219.675628][   T44]  ? init_locking+0x7d/0x1d0
+[  219.676730][   T44]  ? __pfx_gfs2_fill_super+0x10/0x10
+[  219.678088][   T44]  get_tree_bdev_flags+0x1ec/0x250
+[  219.679305][   T44]  gfs2_get_tree+0x2a/0xe0
+[  219.680477][   T44]  vfs_get_tree+0x38/0x140
+[  219.681536][   T44]  do_new_mount+0x1dd/0x570
+[  219.682622][   T44]  ? path_mount+0x3a4/0x980
+[  219.683691][   T44]  __se_sys_mount+0x291/0x2f0
+[  219.684789][   T44]  do_syscall_64+0x8e/0x3a0
+[  219.685881][   T44]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  219.687274][   T44]  ? clear_bhb_loop+0x50/0xa0
+[  219.688416][   T44]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  219.689787][   T44] RIP: 0033:0x7fae0afaffde
+[  219.690891][   T44] RSP: 002b:00007ffecd3298c8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[  219.692808][   T44] RAX: ffffffffffffffda RBX: 000000000001f6bf RCX: 00007fae0afaffde
+[  219.694583][   T44] RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007ffecd329920
+[  219.696355][   T44] RBP: 00007ffecd329960 R08: 00007ffecd329960 R09: 0000000000000000
+[  219.698334][   T44] R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+[  219.700140][   T44] R13: 000020000001f6c0 R14: 00007ffecd329920 R15: 0000200000000100
+[  219.702037][   T44]  </TASK>
+[  219.702790][   T44] 
+[  219.702790][   T44] Showing all locks held in the system:
+[  219.704539][   T44] 1 lock held by khungtaskd/44:
+[  219.705670][   T44]  #0: ffffffff8700f0e8 (rcu_read_lock){....}-{1:3}, at: debug_show_all_locks+0x30/0x180
+[  219.708040][   T44] 2 locks held by kworker/2:1/59:
+[  219.709189][   T44]  #0: ffff88800de71548 ((wq_completion)gfs2_recovery){+.+.}-{0:0}, at: process_scheduled_works+0x3b6/0xb50
+[  219.711840][   T44]  #1: ffffc90000657e00 ((work_completion)(&jd->jd_work)){+.+.}-{0:0}, at: process_scheduled_works+0x3dd/0xb50
+[  219.714637][   T44] 1 lock held by in:imklog/7896:
+[  219.715788][   T44]  #0: ffff888100ecd8f8 (&f->f_pos_lock){+.+.}-{4:4}, at: fdget_pos+0x111/0x170
+[  219.717981][   T44] 2 locks held by kworker/u16:3/8451:
+[  219.719207][   T44] 1 lock held by syz.0.17/9940:
+[  219.720315][   T44]  #0: ffff88811d7070e0 (&type->s_umount_key#55/1){+.+.}-{4:4}, at: alloc_super+0x107/0x490
+[  219.722665][   T44] 
+[  219.723228][   T44] =============================================
+[  219.723228][   T44] 
+[  219.725165][   T44] NMI backtrace for cpu 0
+[  219.725179][   T44] CPU: 0 UID: 0 PID: 44 Comm: khungtaskd Not tainted 6.16.0 #1 PREEMPT(full) 
+[  219.725201][   T44] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  219.725211][   T44] Call Trace:
+[  219.725220][   T44]  <TASK>
+[  219.725227][   T44]  dump_stack_lvl+0x127/0x1d0
+[  219.725259][   T44]  nmi_cpu_backtrace+0x25d/0x2b0
+[  219.725279][   T44]  ? __pfx_nmi_raise_cpu_backtrace+0x10/0x10
+[  219.725308][   T44]  nmi_trigger_cpumask_backtrace+0x139/0x250
+[  219.725345][   T44]  watchdog+0xe89/0xec0
+[  219.725367][   T44]  ? watchdog+0x129/0xec0
+[  219.725393][   T44]  kthread+0x33b/0x3d0
+[  219.725413][   T44]  ? __pfx_watchdog+0x10/0x10
+[  219.725429][   T44]  ? lockdep_hardirqs_on+0x95/0x140
+[  219.725453][   T44]  ? __pfx_kthread+0x10/0x10
+[  219.725475][   T44]  ret_from_fork+0x2a5/0x430
+[  219.725497][   T44]  ? __pfx_kthread+0x10/0x10
+[  219.725521][   T44]  ret_from_fork_asm+0x1a/0x30
+[  219.725580][   T44]  </TASK>
+[  219.725586][   T44] Sending NMI from CPU 0 to CPUs 1-3:
+[  219.747253][    C2] NMI backtrace for cpu 2
+[  219.747272][    C2] CPU: 2 UID: 0 PID: 12509 Comm: syz.1.238 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  219.747295][    C2] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  219.747305][    C2] RIP: 0010:__sanitizer_cov_trace_const_cmp4+0x83/0x90
+[  219.747340][    C2] Code: 8d 52 28 4d 39 ca 77 22 89 ff 89 f6 49 ff c0 4c 89 01 48 c7 44 0a 08 05 00 00 00 48 89 7c 0a 10 48 89 74 0a 18 48 89 44 0a 20 <c3> cc cc cc cc cc 0f 1f 80 00 00 00 00 90 90 90 90 90 90 90 90 90
+[  219.747355][    C2] RSP: 0000:ffffc90006aa7da0 EFLAGS: 00000293
+[  219.747371][    C2] RAX: ffffffff81905c50 RBX: 0000000000000000 RCX: 0000000000000000
+[  219.747382][    C2] RDX: ffff8881145fc780 RSI: 0000000000000000 RDI: 0000000000000000
+[  219.747392][    C2] RBP: 0000000000000001 R08: 0000000000000000 R09: 0000000000000000
+[  219.747402][    C2] R10: 0000000000000000 R11: 0000000000000000 R12: 00007fe07fc9c000
+[  219.747412][    C2] R13: ffffffff89862020 R14: 0000000000000000 R15: 0000000000000004
+[  219.747422][    C2] FS:  00005555870bb500(0000) GS:ffff8880f42b2000(0000) knlGS:0000000000000000
+[  219.747437][    C2] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  219.747448][    C2] CR2: 00007fe07fc9c000 CR3: 000000001091f000 CR4: 0000000000752ef0
+[  219.747465][    C2] PKRU: 00000000
+[  219.747471][    C2] Call Trace:
+[  219.747477][    C2]  <TASK>
+[  219.747483][    C2]  handle_mm_fault+0xa60/0x2100
+[  219.747518][    C2]  ? handle_mm_fault+0x46/0x2100
+[  219.747551][    C2]  ? lock_vma_under_rcu+0x3b2/0x480
+[  219.747593][    C2]  ? lock_vma_under_rcu+0x82/0x480
+[  219.747617][    C2]  exc_page_fault+0x252/0x920
+[  219.747642][    C2]  asm_exc_page_fault+0x26/0x30
+[  219.747658][    C2] RIP: 0033:0x7fe087c4f857
+[  219.747672][    C2] Code: 70 48 63 d5 48 01 c2 49 3b 55 08 77 4e 8d 55 ff 85 ed 74 35 0f 1f 80 00 00 00 00 48 39 c6 77 1c 49 8b 7d 00 49 89 c1 49 29 f1 <46> 0f b6 0c 0f 45 84 c9 74 08 44 88 0c 07 49 8b 45 10 48 83 c0 01
+[  219.747686][    C2] RSP: 002b:00007ffc92da0260 EFLAGS: 00010206
+[  219.747699][    C2] RAX: 0000000000e9c001 RBX: 00007ffc92da02c0 RCX: 0000000000000000
+[  219.747710][    C2] RDX: 0000000000000059 RSI: 0000000000000001 RDI: 00007fe07ee00000
+[  219.747720][    C2] RBP: 0000000000000102 R08: 0000000000000001 R09: 0000000000e9c000
+[  219.747730][    C2] R10: 0000000000000000 R11: 00007ffc92da02d0 R12: 00007ffc92da02d0
+[  219.747740][    C2] R13: 00007ffc92da0360 R14: 0000000000000001 R15: 0000000000000000
+[  219.747760][    C2]  </TASK>
+[  219.747769][    C1] NMI backtrace for cpu 1
+[  219.747788][    C1] CPU: 1 UID: 0 PID: 0 Comm: swapper/1 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  219.747809][    C1] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  219.747819][    C1] RIP: 0010:pv_native_safe_halt+0x13/0x20
+[  219.747843][    C1] Code: d3 84 01 00 cc cc cc 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 66 90 0f 00 2d 39 fc 14 00 f3 0f 1e fa fb f4 <c3> cc cc cc cc cc cc cc cc cc cc cc cc 90 90 90 90 90 90 90 90 90
+[  219.747859][    C1] RSP: 0018:ffffc900000cfed8 EFLAGS: 000002c2
+[  219.747873][    C1] RAX: e896b7a2ef8df700 RBX: ffffffff81558c4a RCX: 4000000000000000
+[  219.747884][    C1] RDX: 0000000000000000 RSI: ffffffff869365ef RDI: ffffffff8688163a
+[  219.747895][    C1] RBP: ffff888100660000 R08: 0000000000080000 R09: 0000000000000000
+[  219.747906][    C1] R10: 0000000000000004 R11: ffffffff813ad050 R12: 0000000000000000
+[  219.747916][    C1] R13: 0000000000000000 R14: 0000000000000001 R15: 0000000000000000
+[  219.747926][    C1] FS:  0000000000000000(0000) GS:ffff8881b45b2000(0000) knlGS:0000000000000000
+[  219.747940][    C1] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  219.747952][    C1] CR2: 00007f7be1629600 CR3: 0000000103fad000 CR4: 0000000000752ef0
+[  219.747969][    C1] PKRU: 55555554
+[  219.747975][    C1] Call Trace:
+[  219.747983][    C1]  <TASK>
+[  219.747988][    C1]  default_idle+0x13/0x20
+[  219.748012][    C1]  default_idle_call+0x72/0xb0
+[  219.748037][    C1]  do_idle+0xea/0x290
+[  219.748056][    C1]  cpu_startup_entry+0x25/0x30
+[  219.748071][    C1]  start_secondary+0x9a/0xa0
+[  219.748093][    C1]  common_startup_64+0x12c/0x137
+[  219.748130][    C1]  </TASK>
+[  219.748138][    C3] NMI backtrace for cpu 3
+[  219.748157][    C3] CPU: 3 UID: 0 PID: 0 Comm: swapper/3 Not tainted 6.16.0 #1 PREEMPT(full) 
+[  219.748177][    C3] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  219.748187][    C3] RIP: 0010:pv_native_safe_halt+0x13/0x20
+[  219.748210][    C3] Code: d3 84 01 00 cc cc cc 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 66 90 0f 00 2d 39 fc 14 00 f3 0f 1e fa fb f4 <c3> cc cc cc cc cc cc cc cc cc cc cc cc 90 90 90 90 90 90 90 90 90
+[  219.748226][    C3] RSP: 0018:ffffc900000dfed8 EFLAGS: 000002c2
+[  219.748240][    C3] RAX: 67466f5fb7a1a700 RBX: ffffffff81558c4a RCX: 4000000000000000
+[  219.748251][    C3] RDX: 0000000000000000 RSI: ffffffff869365ef RDI: ffffffff8688163a
+[  219.748262][    C3] RBP: ffff8881006623c0 R08: 0000000000080000 R09: 0000000000000000
+[  219.748273][    C3] R10: 0000000000000004 R11: ffffffff813ad050 R12: 0000000000000000
+[  219.748283][    C3] R13: 0000000000000000 R14: 0000000000000003 R15: 0000000000000000
+[  219.748293][    C3] FS:  0000000000000000(0000) GS:ffff8881b46b2000(0000) knlGS:0000000000000000
+[  219.748307][    C3] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  219.748319][    C3] CR2: 00007f7be1915628 CR3: 0000000010868000 CR4: 0000000000752ef0
+[  219.748336][    C3] PKRU: 55555554
+[  219.748342][    C3] Call Trace:
+[  219.748350][    C3]  <TASK>
+[  219.748356][    C3]  default_idle+0x13/0x20
+[  219.748379][    C3]  default_idle_call+0x72/0xb0
+[  219.748405][    C3]  do_idle+0xea/0x290
+[  219.748424][    C3]  cpu_startup_entry+0x25/0x30
+[  219.748440][    C3]  start_secondary+0x9a/0xa0
+[  219.748462][    C3]  common_startup_64+0x12c/0x137
+[  219.748498][    C3]  </TASK>
+[  219.749238][   T44] Kernel panic - not syncing: hung_task: blocked tasks
+[  219.749254][   T44] CPU: 0 UID: 0 PID: 44 Comm: khungtaskd Not tainted 6.16.0 #1 PREEMPT(full) 
+[  219.749277][   T44] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  219.749288][   T44] Call Trace:
+[  219.749296][   T44]  <TASK>
+[  219.749304][   T44]  dump_stack_lvl+0x127/0x1d0
+[  219.749337][   T44]  panic+0x200/0x520
+[  219.749359][   T44]  ? preempt_schedule_thunk+0x16/0x30
+[  219.749398][   T44]  ? nmi_trigger_cpumask_backtrace+0x239/0x250
+[  219.749435][   T44]  watchdog+0xebe/0xec0
+[  219.749457][   T44]  ? watchdog+0x129/0xec0
+[  219.749484][   T44]  kthread+0x33b/0x3d0
+[  219.749505][   T44]  ? __pfx_watchdog+0x10/0x10
+[  219.749523][   T44]  ? lockdep_hardirqs_on+0x95/0x140
+[  219.749548][   T44]  ? __pfx_kthread+0x10/0x10
+[  219.749580][   T44]  ret_from_fork+0x2a5/0x430
+[  219.749603][   T44]  ? __pfx_kthread+0x10/0x10
+[  219.749629][   T44]  ret_from_fork_asm+0x1a/0x30
+[  219.749674][   T44]  </TASK>
+[  219.886701][   T44] Kernel Offset: disabled
+[  219.887657][   T44] Rebooting in 86400 seconds..
+
+VM DIAGNOSIS:
+15:14:52  Registers:
+info registers vcpu 0
+RAX=ffffffff82f28305 RBX=00000000000003f9 RCX=0000000000000000 RDX=00000000000003f9
+RSI=0000000000000001 RDI=ffffffff8ae6e7a0 RBP=0000000000000000 RSP=ffffc900001d7ab0
+R8 =00000000ffffffff R9 =0000000000000005 R10=5b5d343939373136 R11=ffffffff82f28300
+R12=ffffffff89862020 R13=0000000000000000 R14=ffffffff8ae6e7a0 R15=ffffffff8ae6e7a0
+RIP=ffffffff82f28322 RFL=00000006 [-----P-] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 0000000000000000 ffffffff 00c00000
+GS =0000 ffff8880f41b2000 ffffffff 00c00000
+LDT=0000 0000000000000000 ffffffff 00c00000
+TR =0040 fffffe0000003000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe0000001000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=00005555870bbe72 CR3=0000000107649000 CR4=00752ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=00000000ffffff00 Opmask01=0000000000000111 Opmask02=000000000000ffff Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00ffffffffffffff ffffffffff000000
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 74656e2f6e75722f 7261762f0074656e
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff0f 0e0d0c0b0a090807
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000020 0000000000002000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000ffffffffffff ffffffffffffff00
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 6c656e72656b2072 656c6c616b7a7973 2031353a34313a37 3020312020706553
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 66203a3273666720 5d3030353231545b 5d3639353033342e 39313220205b203a
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0a73656c69662073 6673797320676e69 6464612037312d20 726f727265203a7a
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 79733a7a79733d64 697366203a327366 67205d3030353231 545b5d3639353033
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0a35613030303030 3030303030303030 30203a5841525f47 49524f2036343230
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 30303030203a5347 414c464520386562 3061643239636666 37303030303a6232
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 3030203a50535220 5d3030353231545b 5d3635353338332e 39313220205b203a
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 6c656e72656b2072 656c6c616b7a7973 2031353a34313a37 3020312020706553
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 3934206166206531 2066302033662030 3020303420663120 6630203030203030
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 1
+RAX=e896b7a2ef8df700 RBX=ffffffff81558c4a RCX=4000000000000000 RDX=0000000000000000
+RSI=ffffffff869365ef RDI=ffffffff8688163a RBP=ffff888100660000 RSP=ffffc900000cfed8
+R8 =0000000000080000 R9 =0000000000000000 R10=0000000000000004 R11=ffffffff813ad050
+R12=0000000000000000 R13=0000000000000000 R14=0000000000000001 R15=0000000000000000
+RIP=ffffffff856d41f3 RFL=000002c2 [--SZ---] CPL=0 II=0 A20=1 SMM=0 HLT=1
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 0000000000000000 ffffffff 00c00000
+GS =0000 ffff8881b45b2000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe000003e000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe000003c000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=00007f7be197bea0 CR3=0000000107649000 CR4=00752ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=0000000000020001 Opmask01=0000000000030040 Opmask02=0000000000030000 Opmask03=0000000000000040
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000007e9002b0000 06340e0701010902
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 3043545500435455
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff0f 0e0d0c0b0a090807
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000020 0000000000002000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000ffffffffffff ffffffffffffff00
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0a0a0a0a0a0a0a0a 0a0a0a0a0a0a0a0a 0a0a0a0a0a0a0a0a 0a0a0a0a0a0a0a0a
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 383930362e393132 20205b3e333c002e 73646e6f63657320 333431206e616800
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 3233303624333132 2020513433360024 7364646563657320 3334312064616200
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 3030303430303030 78303a7367616c66 2030363038303234 78303a7367616c66
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 5f6b736174202020 202020323a646970 702020202039353a 6469677420202020
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 39353a6469702038 303232313a6b6361 747320443a657461 7473202020202031
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 3a322f72656b726f 776b3a6b73617420 5d3434542020205b 5d3939323431362e
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 7065654620303123 2020205731540000 2473726574636572 6364206567617320
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 5731542020202051 5736313437333324 3331202020513436 3600312061636162
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 2
+RAX=0000000000452355 RBX=00007ffc92da02c0 RCX=0000000000000000 RDX=00000000ffffffff
+RSI=0000000000000001 RDI=00007fe07ee00000 RBP=0000000000000102 RSP=00007ffc92da0260
+R8 =0000000000000001 R9 =0000000000000000 R10=0000000000000000 R11=00007ffc92da02d0
+R12=00007ffc92da02d0 R13=00007ffc92da0360 R14=0000000000000001 R15=0000000000000000
+RIP=00007fe087c4f750 RFL=00000287 [--S--PC] CPL=3 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0033 0000000000000000 ffffffff 00a0fb00 DPL=3 CS64 [-RA]
+SS =002b 0000000000000000 ffffffff 00c0f300 DPL=3 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00005555870bb500 ffffffff 00c00000
+GS =0000 0000000000000000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe0000079000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe0000077000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=00007fe07f252000 CR3=000000001091f000 CR4=00752ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=0000000080040001 Opmask01=0000000000000000 Opmask02=00000000ffffffef Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffc92da0bf0 0000003000000028
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffc92da0c40
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffc92da0c40 00007ffc92da0c40
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffc92da0c7f
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00005555870bb500 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007fe088b2d660
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007fe087da4878 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2525252525252525 2525252525252525 2525252525252525 2525252525252525
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0063696e61703d73 726f727265006f72 2d746e756f6d6572 3d73726f72726500
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 00464c4b44551856 574a575740004a57 08514b504a484057 1856574a57574000
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 4488190c07228d3d 69d33f341f46616f 61564a37194083b1 e9aecb6a35600cad
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 8306d8ff6bb76cac cd2b662304e5622f 2b0156d0cf99a8bf b7497d72c8998d69
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 54aa4cca9ab42c26 257cca7a7b9d6d42 16ab406a91964b53 ada5d94c273c0a2c
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 bf29a8832e40f060 17835302fd30f221 3706cbf90e89c310 3808b04029b978ae
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 3
+RAX=67466f5fb7a1a700 RBX=ffffffff81558c4a RCX=4000000000000000 RDX=0000000000000000
+RSI=ffffffff869365ef RDI=ffffffff8688163a RBP=ffff8881006623c0 RSP=ffffc900000dfed8
+R8 =0000000000080000 R9 =0000000000000000 R10=0000000000000004 R11=ffffffff813ad050
+R12=0000000000000000 R13=0000000000000000 R14=0000000000000003 R15=0000000000000000
+RIP=ffffffff856d41f3 RFL=000002c2 [--SZ---] CPL=0 II=0 A20=1 SMM=0 HLT=1
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 0000000000000000 ffffffff 00c00000
+GS =0000 ffff8881b46b2000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe00000b4000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe00000b2000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=0000001b32f63fff CR3=0000000107649000 CR4=00752ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=00000000ffffff00 Opmask01=0000000000000111 Opmask02=000000000000ffff Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00ffffffffffffff ffffffffff000000
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 74656e2f6e75722f 7261762f0074656e
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff0f 0e0d0c0b0a090807
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000020 0000000000002000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000ffffffffffff ffffffffffffff00
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 6c656e72656b2072 656c6c616b7a7973 2032353a34313a37 3020312020706553
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 6575716b726f5720 5d3434542020205b 5d3439393731362e 39313220205b203a
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0a636e75665f7265 766f6365725f3273 666720797265766f 6365725f32736667
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 203a65756575716b 726f57205d343454 2020205b5d343939 3731362e39313220
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0a30303034303030 3078303a7367616c 6620303630383032 3478303a7367616c
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 665f6b7361742020 20202020323a6469 7070202020203935 3a64696774202020
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2039353a64697020 38303232313a6b63 61747320443a6574 6174732020202020
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 313a322f72656b72 6f776b3a6b736174 205d343454202020 5b5d393932343136
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 3934206166206531 2066302033662030 3020303420663120 6630203030203030
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000

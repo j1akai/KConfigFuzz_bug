@@ -1,0 +1,94 @@
+BUG: unable to handle page fault for address: 0000000100040350
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 0 P4D 0 
+Oops: 0000 [#1] PREEMPT SMP
+CPU: 1 PID: 8766 Comm: syz-executor Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:neigh_flush_dev+0x126/0x680 net/core/neighbour.c:395
+Code: 27 fd 85 db 0f 84 4a 01 00 00 e8 45 da 27 fd eb 08 0f 1f 00 e8 3b da 27 fd 49 8b 2e 48 85 ed 0f 84 bf 04 00 00 4d 85 e4 74 4a <4c> 39 a5 08 03 00 00 0f 85 52 04 00 00 e8 18 da 27 fd 80 7c 24 04
+RSP: 0018:ffffc9001409f4f8 EFLAGS: 00010286
+RAX: ffffffff841d6c7b RBX: 0000000000000001 RCX: ffff8880543d8000
+RDX: 0000000000000000 RSI: 0000000000000001 RDI: 0000000000000000
+RBP: 0000000100040048 R08: ffffffff841d6c6e R09: 0000000000000000
+R10: ffffffff841d6b4f R11: ffff8880543d8000 R12: ffff88804a821000
+R13: ffffc9001409f5e8 R14: ffff88802049fc00 R15: ffffffff86c2f6f0
+FS:  0000555555560500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000100040350 CR3: 0000000055ade000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 00000000
+Call Trace:
+ <TASK>
+ neigh_changeaddr+0x2c/0x40 net/core/neighbour.c:437
+ ndisc_netdev_event+0xe2/0x2e0 net/ipv6/ndisc.c:1877
+ notifier_call_chain kernel/notifier.c:93 [inline]
+ raw_notifier_call_chain+0x64/0xf0 kernel/notifier.c:461
+ call_netdevice_notifiers_extack net/core/dev.c:2004 [inline]
+ call_netdevice_notifiers net/core/dev.c:2018 [inline]
+ dev_set_mac_address+0x16a/0x1b0 net/core/dev.c:8911
+ dev_set_mac_address_user+0x2d/0x50 net/core/dev.c:8925
+ do_setlink+0x36d/0x1c70 net/core/rtnetlink.c:2861
+ __rtnl_newlink net/core/rtnetlink.c:3704 [inline]
+ rtnl_newlink+0xf8e/0x12f0 net/core/rtnetlink.c:3751
+ rtnetlink_rcv_msg+0x540/0xa20 net/core/rtnetlink.c:6617
+ netlink_rcv_skb+0xfc/0x1f0 net/netlink/af_netlink.c:2543
+ netlink_unicast_kernel net/netlink/af_netlink.c:1341 [inline]
+ netlink_unicast+0x3a4/0x470 net/netlink/af_netlink.c:1367
+ netlink_sendmsg+0x579/0x670 net/netlink/af_netlink.c:1908
+ sock_sendmsg_nosec net/socket.c:730 [inline]
+ __sock_sendmsg net/socket.c:745 [inline]
+ __sys_sendto+0x1b7/0x260 net/socket.c:2191
+ __do_sys_sendto net/socket.c:2203 [inline]
+ __se_sys_sendto net/socket.c:2199 [inline]
+ __x64_sys_sendto+0x24/0x30 net/socket.c:2199
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f5c203b06f6
+Code: d2 02 00 44 8b 4c 24 2c 4c 8b 44 24 20 41 89 c4 44 8b 54 24 28 48 8b 54 24 18 b8 2c 00 00 00 48 8b 74 24 10 8b 7c 24 08 0f 05 <48> 3d 00 f0 ff ff 77 3a 44 89 e7 48 89 44 24 08 e8 95 d2 02 00 48
+RSP: 002b:00007ffecd5ff6c0 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 00007f5c21124620 RCX: 00007f5c203b06f6
+RDX: 000000000000002c RSI: 00007f5c21124670 RDI: 0000000000000003
+RBP: 0000000000000001 R08: 00007ffecd5ff71c R09: 000000000000000c
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007f5c21124670 R14: 0000000000000003 R15: 0000000000000000
+ </TASK>
+Modules linked in:
+CR2: 0000000100040350
+---[ end trace 0000000000000000 ]---
+RIP: 0010:neigh_flush_dev+0x126/0x680 net/core/neighbour.c:395
+Code: 27 fd 85 db 0f 84 4a 01 00 00 e8 45 da 27 fd eb 08 0f 1f 00 e8 3b da 27 fd 49 8b 2e 48 85 ed 0f 84 bf 04 00 00 4d 85 e4 74 4a <4c> 39 a5 08 03 00 00 0f 85 52 04 00 00 e8 18 da 27 fd 80 7c 24 04
+RSP: 0018:ffffc9001409f4f8 EFLAGS: 00010286
+RAX: ffffffff841d6c7b RBX: 0000000000000001 RCX: ffff8880543d8000
+RDX: 0000000000000000 RSI: 0000000000000001 RDI: 0000000000000000
+RBP: 0000000100040048 R08: ffffffff841d6c6e R09: 0000000000000000
+R10: ffffffff841d6b4f R11: ffff8880543d8000 R12: ffff88804a821000
+R13: ffffc9001409f5e8 R14: ffff88802049fc00 R15: ffffffff86c2f6f0
+FS:  0000555555560500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000100040350 CR3: 0000000055ade000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 00000000
+----------------
+Code disassembly (best guess), 1 bytes skipped:
+   0:	fd                   	std
+   1:	85 db                	test   %ebx,%ebx
+   3:	0f 84 4a 01 00 00    	je     0x153
+   9:	e8 45 da 27 fd       	call   0xfd27da53
+   e:	eb 08                	jmp    0x18
+  10:	0f 1f 00             	nopl   (%rax)
+  13:	e8 3b da 27 fd       	call   0xfd27da53
+  18:	49 8b 2e             	mov    (%r14),%rbp
+  1b:	48 85 ed             	test   %rbp,%rbp
+  1e:	0f 84 bf 04 00 00    	je     0x4e3
+  24:	4d 85 e4             	test   %r12,%r12
+  27:	74 4a                	je     0x73
+* 29:	4c 39 a5 08 03 00 00 	cmp    %r12,0x308(%rbp) <-- trapping instruction
+  30:	0f 85 52 04 00 00    	jne    0x488
+  36:	e8 18 da 27 fd       	call   0xfd27da53
+  3b:	80                   	.byte 0x80
+  3c:	7c 24                	jl     0x62
+  3e:	04                   	.byte 0x4

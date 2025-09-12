@@ -1,0 +1,20 @@
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P133098
+	(detected by 0, t=10002 jiffies, g=617849, q=35972 ncpus=2)
+task:syz-executor    state:R  running task     stack:12176 pid:133098 ppid:1      flags:0x00004006
+Call Trace:
+ <TASK>
+ context_switch home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5296 [inline]
+ __schedule+0x33d/0x1370 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6609
+ preempt_schedule_irq+0x35/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6921
+ irqentry_exit+0x21/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:432
+ asm_common_interrupt+0x26/0x40 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/idtentry.h:640
+RIP: 0010:write_comp_data+0x3c/0x90 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kcov.c:236
+Code: 81 e6 00 01 00 00 65 48 8b 14 25 40 c6 02 00 a9 00 01 ff 00 74 0e 85 f6 74 59 8b 82 34 0b 00 00 85 c0 74 4f 8b 82 10 0b 00 00 <83> f8 03 75 44 48 8b 82 18 0b 00 00 8b 92 14 0b 00 00 48 8b 38 48
+RSP: 84aaf060:ffffc90001b0f990 EFLAGS: ffff88806f0af000 ORIG_RAX: 0000000000000000
+RAX: 0000000000000034 RBX: ffffffffffffffff RCX: ffff888000000000
+RDX: 0000000000000003 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: ffffffff8684f2c0 R08: ffffffff8684f2c0 R09: ffffffff84aaf0f4
+R10: ffff88802d130400 R11: ffff888048aced80 R12: ffffc90001b0f990
+R13: 0000000000000001 R14: 0000000100aad09f R15: 0000000000000230
+ </TASK>

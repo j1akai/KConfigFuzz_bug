@@ -1,0 +1,11 @@
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P64286
+	(detected by 0, t=10002 jiffies, g=268461, q=105389 ncpus=2)
+task:syz-executor    state:R  running task     stack:12248 pid:64286 ppid:1      flags:0x00004006
+Call Trace:
+ <TASK>
+ context_switch home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5296 [inline]
+ __schedule+0x33d/0x1370 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6609
+ preempt_schedule_irq+0x35/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6921
+ </TASK>
+vkms_vblank_simulate: vblank timer overrun

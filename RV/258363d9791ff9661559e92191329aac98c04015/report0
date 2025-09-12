@@ -1,0 +1,41 @@
+WARNING: CPU: 1 PID: 15553 at kernel/sched/completion.c:71 complete_all+0x1d2/0x284 kernel/sched/completion.c:71
+Modules linked in:
+CPU: 1 UID: 0 PID: 15553 Comm: syz.3.2875 Not tainted 6.16.0-dirty #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+epc : complete_all+0x1d2/0x284 kernel/sched/completion.c:71
+ ra : complete_all+0x1d2/0x284 kernel/sched/completion.c:71
+epc : ffffffff802cf83a ra : ffffffff802cf83a sp : ff20000005007430
+ gp : ffffffff89cc9100 tp : ff600000e0ccb480 t0 : 00000000000000c8
+ t1 : ff600000e0ccb480 t2 : 000000000000001f s0 : ff20000005007470
+ s1 : ff600000f01312b8 a0 : ff600000e0ccb488 a1 : 0000000000000000
+ a2 : ffffffff80141f8a a3 : 0000000000080000 a4 : 0000000000000000
+ a5 : 0000000000000000 a6 : 0000000000000001 a7 : ff600000e0ccbf70
+ s2 : ff600001fdd4b460 s3 : 0000000000000005 s4 : 1fec00001e02624b
+ s5 : ff600000df303018 s6 : ff600000df303000 s7 : 1fec00001e089400
+ s8 : ff600000df303068 s9 : ff600000f044a0f0 s10: 1fec00001e089428
+ s11: ff600000f044a140 t3 : ffffffff89e46090 t4 : ffebffff3fba7e10
+ t5 : ffebffff3fba7e11 t6 : 0000000000001fff
+status: 0000000000000120 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff802cf83a>] complete_all+0x1d2/0x284 kernel/sched/completion.c:71
+[<ffffffff82b86f9c>] device_pm_sleep_init+0x8c/0x124 drivers/base/power/main.c:104
+[<ffffffff82b30804>] device_pm_init drivers/base/power/power.h:168 [inline]
+[<ffffffff82b30804>] device_initialize+0x1e0/0x4c8 drivers/base/core.c:3168
+[<ffffffff85efa5fc>] rfkill_alloc+0x1c0/0x278 net/rfkill/core.c:1016
+[<ffffffff85fd0952>] nfc_register_device+0xf6/0x424 net/nfc/core.c:1129
+[<ffffffff85ff9656>] nci_register_device+0x6ba/0x9dc net/nfc/nci/core.c:1277
+[<ffffffff82c6b28e>] virtual_ncidev_open+0x12a/0x1f4 drivers/nfc/virtual_ncidev.c:157
+[<ffffffff81f103ee>] misc_open+0x32a/0x3f8 drivers/char/misc.c:161
+[<ffffffff80c31dbe>] chrdev_open+0x22e/0x6c4 fs/char_dev.c:414
+[<ffffffff80c0c28c>] do_dentry_open+0x7e0/0x1694 fs/open.c:964
+[<ffffffff80c11312>] vfs_open+0xb6/0x3b4 fs/open.c:1094
+[<ffffffff80c66220>] do_open fs/namei.c:3896 [inline]
+[<ffffffff80c66220>] path_openat+0x10f4/0x29d4 fs/namei.c:4055
+[<ffffffff80c67c94>] do_filp_open+0x194/0x378 fs/namei.c:4082
+[<ffffffff80c1216a>] do_sys_openat2+0x116/0x1c0 fs/open.c:1437
+[<ffffffff80c12a96>] do_sys_open fs/open.c:1452 [inline]
+[<ffffffff80c12a96>] __do_sys_openat fs/open.c:1468 [inline]
+[<ffffffff80c12a96>] __se_sys_openat fs/open.c:1463 [inline]
+[<ffffffff80c12a96>] __riscv_sys_openat+0x13a/0x1e8 fs/open.c:1463
+[<ffffffff8007736e>] syscall_handler+0x96/0x128 arch/riscv/include/asm/syscall.h:112
+[<ffffffff861e449e>] do_trap_ecall_u+0x396/0x5d0 arch/riscv/kernel/traps.c:343
+[<ffffffff8620db7a>] handle_exception+0x146/0x152 arch/riscv/kernel/entry.S:197

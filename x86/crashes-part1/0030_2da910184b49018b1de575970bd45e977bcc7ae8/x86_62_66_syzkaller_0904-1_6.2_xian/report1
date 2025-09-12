@@ -1,0 +1,79 @@
+general protection fault, probably for non-canonical address 0x5ab4e00000000000: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 9065 Comm: kworker/u4:2 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: netns cleanup_net
+RIP: 0010:ovs_ct_limit_exit home/jiakai/62_66_amd_0904/linux62/linux-all/net/openvswitch/conntrack.c:1710 [inline]
+RIP: 0010:ovs_ct_exit+0x75/0x100 home/jiakai/62_66_amd_0904/linux62/linux-all/net/openvswitch/conntrack.c:2108
+Code: ff 4d 8b 7c 24 08 e8 aa ef 9d fc 49 8d 04 ef 48 8b 18 48 85 db 74 25 e8 99 ef 9d fc 48 8d 7b 10 be 10 00 00 00 e8 2b 8e 94 fc <48> 8b 1b 48 85 db 75 e5 e8 7e ef 9d fc 4d 8b 7c 24 08 e8 74 ef 9d
+RSP: 0018:ffffc9000e4b3d50 EFLAGS: 00010286
+RAX: 0000000000000001 RBX: 5ab4e00000000000 RCX: 00000000000001f4
+RDX: ffff88803ec1ccd0 RSI: 0000000000000206 RDI: ffff88803ec1ccc8
+RBP: 00000000000001fe R08: 0000000000000006 R09: ffffc90000000000
+R10: 5ab4e00000000000 R11: 0000000000040001 R12: ffff88805e170000
+R13: ffff88800ffd9240 R14: ffff8880637d2840 R15: ffff88805eba3000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f19df530000 CR3: 000000004d7bc000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ ovs_exit_net+0x75/0x380 home/jiakai/62_66_amd_0904/linux62/linux-all/net/openvswitch/datapath.c:2694
+ ops_exit_list+0x41/0x80 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/net_namespace.c:169
+ cleanup_net+0x2cc/0x520 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/net_namespace.c:613
+ process_one_work+0x2c1/0x600 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2289
+ worker_thread+0x5d/0x5c0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2436
+ kthread+0xfc/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/entry_64.S:308
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:ovs_ct_limit_exit home/jiakai/62_66_amd_0904/linux62/linux-all/net/openvswitch/conntrack.c:1710 [inline]
+RIP: 0010:ovs_ct_exit+0x75/0x100 home/jiakai/62_66_amd_0904/linux62/linux-all/net/openvswitch/conntrack.c:2108
+Code: ff 4d 8b 7c 24 08 e8 aa ef 9d fc 49 8d 04 ef 48 8b 18 48 85 db 74 25 e8 99 ef 9d fc 48 8d 7b 10 be 10 00 00 00 e8 2b 8e 94 fc <48> 8b 1b 48 85 db 75 e5 e8 7e ef 9d fc 4d 8b 7c 24 08 e8 74 ef 9d
+RSP: 0018:ffffc9000e4b3d50 EFLAGS: 00010286
+RAX: 0000000000000001 RBX: 5ab4e00000000000 RCX: 00000000000001f4
+RDX: ffff88803ec1ccd0 RSI: 0000000000000206 RDI: ffff88803ec1ccc8
+RBP: 00000000000001fe R08: 0000000000000006 R09: ffffc90000000000
+R10: 5ab4e00000000000 R11: 0000000000040001 R12: ffff88805e170000
+R13: ffff88800ffd9240 R14: ffff8880637d2840 R15: ffff88805eba3000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055747652ae08 CR3: 0000000012606000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+----------------
+Code disassembly (best guess):
+   0:	ff 4d 8b             	decl   -0x75(%rbp)
+   3:	7c 24                	jl     0x29
+   5:	08 e8                	or     %ch,%al
+   7:	aa                   	stos   %al,%es:(%rdi)
+   8:	ef                   	out    %eax,(%dx)
+   9:	9d                   	popf
+   a:	fc                   	cld
+   b:	49 8d 04 ef          	lea    (%r15,%rbp,8),%rax
+   f:	48 8b 18             	mov    (%rax),%rbx
+  12:	48 85 db             	test   %rbx,%rbx
+  15:	74 25                	je     0x3c
+  17:	e8 99 ef 9d fc       	call   0xfc9defb5
+  1c:	48 8d 7b 10          	lea    0x10(%rbx),%rdi
+  20:	be 10 00 00 00       	mov    $0x10,%esi
+  25:	e8 2b 8e 94 fc       	call   0xfc948e55
+* 2a:	48 8b 1b             	mov    (%rbx),%rbx <-- trapping instruction
+  2d:	48 85 db             	test   %rbx,%rbx
+  30:	75 e5                	jne    0x17
+  32:	e8 7e ef 9d fc       	call   0xfc9defb5
+  37:	4d 8b 7c 24 08       	mov    0x8(%r12),%r15
+  3c:	e8                   	.byte 0xe8
+  3d:	74 ef                	je     0x2e
+  3f:	9d                   	popf
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

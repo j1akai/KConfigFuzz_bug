@@ -1,0 +1,154 @@
+[  178.894027] sg_write: data in/out 348/1530 bytes for SCSI command 0x0-- guessing data in;
+[  178.894027]    program syz-executor not setting count and/or reply_len properly
+[  178.897814] ------------[ cut here ]------------
+[  178.898921] WARNING: CPU: 1 PID: 5574 at lib/iov_iter.c:629 _copy_from_iter+0x2b6/0xe80
+[  178.900727] Modules linked in:
+[  178.901481] CPU: 1 PID: 5574 Comm: syz-executor Not tainted 6.2.0 #1
+[  178.902983] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  178.904820] RIP: 0010:_copy_from_iter+0x2b6/0xe80
+[  178.905925] Code: 00 00 00 fc ff df 48 c1 ea 03 80 3c 02 00 0f 85 ce 09 00 00 4c 8b 63 10 e9 b5 fe ff ff 4c 89 fd e9 ad fe ff ff e8 2a f0 54 ff <0f> 0b 45 31 ff e9 f3 fe ff ff e8 1b f0 54 ff 40 84 ed 0f 85 97 02
+[  178.909961] RSP: 0018:ffff888106e675e8 EFLAGS: 00010282
+[  178.911160] RAX: 0000000000000cd3 RBX: ffff888106e67820 RCX: ffffffff81e9abd6
+[  178.912743] RDX: 0000000000040000 RSI: ffffc9000057d000 RDI: ffff888106e67822
+[  178.914353] RBP: 00000000000005fa R08: 0000000000000000 R09: ffff888103e4b360
+[  178.915957] R10: ffffed10207c966c R11: 0000000000000001 R12: dffffc0000000000
+[  178.917545] R13: 0000000000000000 R14: 1ffffffff3e22a00 R15: 00000000000005fa
+[  178.919149] FS:  00007f6b91324640(0000) GS:ffff88811b300000(0000) knlGS:0000000000000000
+[  178.920955] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  178.922269] CR2: 0000000020001080 CR3: 00000001098c6002 CR4: 0000000000770ee0
+[  178.923870] DR0: 0000000020000080 DR1: 0000000000000000 DR2: 0000000000000000
+[  178.925492] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000600
+[  178.927095] PKRU: 55555554
+[  178.927715] Call Trace:
+[  178.928317]  <TASK>
+[  178.928822]  ? __pfx__copy_from_iter+0x10/0x10
+[  178.929896]  ? bio_add_hw_page+0x417/0x780
+[  178.930836]  ? bio_add_pc_page+0xbc/0x100
+[  178.931795]  copy_page_from_iter+0xd9/0x160
+[  178.932787]  blk_rq_map_user_iov+0x9b2/0x13b0
+[  178.933824]  ? finish_task_switch.isra.0+0x1ff/0x6c0
+[  178.935021]  ? __pfx_blk_rq_map_user_iov+0x10/0x10
+[  178.936144]  ? __pfx___schedule+0x10/0x10
+[  178.937113]  blk_rq_map_user_io+0x1d0/0x200
+[  178.938102]  ? __pfx_blk_rq_map_user_io+0x10/0x10
+[  178.939209]  ? mutex_unlock+0x7f/0xd0
+[  178.940091]  ? __pfx_mutex_unlock+0x10/0x10
+[  178.941075]  sg_common_write.constprop.0+0xc36/0x1400
+[  178.942271]  ? __pfx__printk+0x10/0x10
+[  178.943188]  ? __pfx_sg_common_write.constprop.0+0x10/0x10
+[  178.944445]  ? mutex_unlock+0x7f/0xd0
+[  178.945322]  ? _raw_spin_unlock_irqrestore+0x41/0x80
+[  178.946482]  ? ___ratelimit+0x90/0x3c0
+[  178.947384]  sg_write.part.0+0x5e3/0x900
+[  178.948322]  ? __pfx_sg_write.part.0+0x10/0x10
+[  178.949369]  ? check_preempt_curr+0x15c/0x250
+[  178.950420]  ? ttwu_do_wakeup.constprop.0+0x13/0x340
+[  178.951576]  ? _raw_spin_unlock_irqrestore+0x41/0x80
+[  178.952744]  ? try_to_wake_up+0x101/0x1140
+[  178.953716]  ? __pfx_try_to_wake_up+0x10/0x10
+[  178.954740]  ? plist_del+0x11e/0x2a0
+[  178.955606]  ? wake_up_q+0x8f/0xf0
+[  178.956438]  ? futex_wake_mark+0x120/0x180
+[  178.957411]  ? inode_security+0xd5/0x100
+[  178.958359]  ? avc_policy_seqno+0xd/0x70
+[  178.959305]  ? selinux_file_permission+0x109/0x4a0
+[  178.960435]  sg_write+0x88/0xe0
+[  178.961255]  vfs_write+0x1fb/0xb40
+[  178.962082]  ? __pfx_sg_write+0x10/0x10
+[  178.962998]  ? __pfx_vfs_write+0x10/0x10
+[  178.963934]  ? memset+0x24/0x50
+[  178.964675]  ? __fget_light+0x272/0x4e0
+[  178.965599]  ksys_write+0x104/0x210
+[  178.966444]  ? __pfx_ksys_write+0x10/0x10
+[  178.967397]  ? fpregs_restore_userregs+0x105/0x230
+[  178.968534]  do_syscall_64+0x3c/0x90
+[  178.969405]  entry_SYSCALL_64_after_hwframe+0x72/0xdc
+[  178.970579] RIP: 0033:0x7f6b935b946d
+[  178.971436] Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 b4 ff ff ff f7 d8 64 89 01 48
+[  178.975508] RSP: 002b:00007f6b91324048 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[  178.977215] RAX: ffffffffffffffda RBX: 00007f6b936f10a0 RCX: 00007f6b935b946d
+[  178.978803] RDX: 0000000000000624 RSI: 0000000020001140 RDI: 0000000000000003
+[  178.980415] RBP: 00007f6b936264b8 R08: 0000000000000000 R09: 0000000000000000
+[  178.982023] R10: 0000000000000000 R11: 0000000000000246 R12: 00007f6b93625b51
+[  178.983619] R13: 0000000000000006 R14: 00007f6b936f10a0 R15: 00007f6b91304000
+[  178.985237]  </TASK>
+[  178.985776] Kernel panic - not syncing: kernel: panic_on_warn set ...
+[  178.987229] CPU: 1 PID: 5574 Comm: syz-executor Not tainted 6.2.0 #1
+[  178.988637] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  178.990450] Call Trace:
+[  178.991033]  <TASK>
+[  178.991526]  dump_stack_lvl+0x51/0x6a
+[  178.992389]  panic+0x217/0x4e3
+[  178.993121]  ? __pfx_panic+0x10/0x10
+[  178.993963]  ? _copy_from_iter+0x2b6/0xe80
+[  178.994896]  check_panic_on_warn.cold+0x19/0x35
+[  178.995938]  __warn+0xf2/0x1a0
+[  178.996651]  ? _copy_from_iter+0x2b6/0xe80
+[  178.997600]  report_bug+0x171/0x1c0
+[  178.998432]  handle_bug+0x3c/0x70
+[  178.999226]  exc_invalid_op+0x18/0x50
+[  179.000089]  asm_exc_invalid_op+0x1a/0x20
+[  179.001010] RIP: 0010:_copy_from_iter+0x2b6/0xe80
+[  179.002075] Code: 00 00 00 fc ff df 48 c1 ea 03 80 3c 02 00 0f 85 ce 09 00 00 4c 8b 63 10 e9 b5 fe ff ff 4c 89 fd e9 ad fe ff ff e8 2a f0 54 ff <0f> 0b 45 31 ff e9 f3 fe ff ff e8 1b f0 54 ff 40 84 ed 0f 85 97 02
+[  179.006152] RSP: 0018:ffff888106e675e8 EFLAGS: 00010282
+[  179.007323] RAX: 0000000000000cd3 RBX: ffff888106e67820 RCX: ffffffff81e9abd6
+[  179.008903] RDX: 0000000000040000 RSI: ffffc9000057d000 RDI: ffff888106e67822
+[  179.010469] RBP: 00000000000005fa R08: 0000000000000000 R09: ffff888103e4b360
+[  179.012045] R10: ffffed10207c966c R11: 0000000000000001 R12: dffffc0000000000
+[  179.013603] R13: 0000000000000000 R14: 1ffffffff3e22a00 R15: 00000000000005fa
+[  179.015188]  ? _copy_from_iter+0x2b6/0xe80
+[  179.016124]  ? __pfx__copy_from_iter+0x10/0x10
+[  179.017137]  ? bio_add_hw_page+0x417/0x780
+[  179.018076]  ? bio_add_pc_page+0xbc/0x100
+[  179.019002]  copy_page_from_iter+0xd9/0x160
+[  179.019957]  blk_rq_map_user_iov+0x9b2/0x13b0
+[  179.020962]  ? finish_task_switch.isra.0+0x1ff/0x6c0
+[  179.022090]  ? __pfx_blk_rq_map_user_iov+0x10/0x10
+[  179.023180]  ? __pfx___schedule+0x10/0x10
+[  179.024106]  blk_rq_map_user_io+0x1d0/0x200
+[  179.025065]  ? __pfx_blk_rq_map_user_io+0x10/0x10
+[  179.026139]  ? mutex_unlock+0x7f/0xd0
+[  179.026984]  ? __pfx_mutex_unlock+0x10/0x10
+[  179.027939]  sg_common_write.constprop.0+0xc36/0x1400
+[  179.029079]  ? __pfx__printk+0x10/0x10
+[  179.029949]  ? __pfx_sg_common_write.constprop.0+0x10/0x10
+[  179.031177]  ? mutex_unlock+0x7f/0xd0
+[  179.032022]  ? _raw_spin_unlock_irqrestore+0x41/0x80
+[  179.033151]  ? ___ratelimit+0x90/0x3c0
+[  179.034022]  sg_write.part.0+0x5e3/0x900
+[  179.034925]  ? __pfx_sg_write.part.0+0x10/0x10
+[  179.035943]  ? check_preempt_curr+0x15c/0x250
+[  179.036955]  ? ttwu_do_wakeup.constprop.0+0x13/0x340
+[  179.038070]  ? _raw_spin_unlock_irqrestore+0x41/0x80
+[  179.039201]  ? try_to_wake_up+0x101/0x1140
+[  179.040132]  ? __pfx_try_to_wake_up+0x10/0x10
+[  179.041128]  ? plist_del+0x11e/0x2a0
+[  179.041955]  ? wake_up_q+0x8f/0xf0
+[  179.042732]  ? futex_wake_mark+0x120/0x180
+[  179.043673]  ? inode_security+0xd5/0x100
+[  179.044581]  ? avc_policy_seqno+0xd/0x70
+[  179.045484]  ? selinux_file_permission+0x109/0x4a0
+[  179.046587]  sg_write+0x88/0xe0
+[  179.047332]  vfs_write+0x1fb/0xb40
+[  179.048128]  ? __pfx_sg_write+0x10/0x10
+[  179.049013]  ? __pfx_vfs_write+0x10/0x10
+[  179.049911]  ? memset+0x24/0x50
+[  179.050642]  ? __fget_light+0x272/0x4e0
+[  179.051534]  ksys_write+0x104/0x210
+[  179.052345]  ? __pfx_ksys_write+0x10/0x10
+[  179.053258]  ? fpregs_restore_userregs+0x105/0x230
+[  179.054358]  do_syscall_64+0x3c/0x90
+[  179.055196]  entry_SYSCALL_64_after_hwframe+0x72/0xdc
+[  179.056333] RIP: 0033:0x7f6b935b946d
+[  179.057160] Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 b4 ff ff ff f7 d8 64 89 01 48
+[  179.061172] RSP: 002b:00007f6b91324048 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[  179.062826] RAX: ffffffffffffffda RBX: 00007f6b936f10a0 RCX: 00007f6b935b946d
+[  179.064400] RDX: 0000000000000624 RSI: 0000000020001140 RDI: 0000000000000003
+[  179.065969] RBP: 00007f6b936264b8 R08: 0000000000000000 R09: 0000000000000000
+[  179.067519] R10: 0000000000000000 R11: 0000000000000246 R12: 00007f6b93625b51
+[  179.069088] R13: 0000000000000006 R14: 00007f6b936f10a0 R15: 00007f6b91304000
+[  179.070655]  </TASK>
+[  179.071650] Dumping ftrace buffer:
+[  179.072462]    (ftrace buffer empty)
+[  179.073280] Kernel Offset: 0x1a800000 from 0xffffffff81000000 (relocation range: 0xffffffff80000000-0xffffffffbfffffff)
+[  179.075596] Rebooting in 1 seconds..

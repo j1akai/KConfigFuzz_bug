@@ -1,0 +1,35 @@
+------------[ cut here ]------------
+sysfs group 'power' not found for kobject 'ueagle-atm!eagleII.fw'
+WARNING: CPU: 0 PID: 10660 at fs/sysfs/group.c:284 sysfs_remove_group+0xa7/0x140 fs/sysfs/group.c:282
+Modules linked in:
+CPU: 0 PID: 10660 Comm: kworker/0:8 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events request_firmware_work_func
+RIP: 0010:sysfs_remove_group+0xa7/0x140 fs/sysfs/group.c:282
+Code: ff eb e0 e8 4b d4 b3 ff eb 2f e8 44 d4 b3 ff eb 28 e8 3d d4 b3 ff 49 8b 36 49 8b 17 48 c7 c7 67 6e 36 86 31 c0 e8 a9 88 99 ff <0f> 0b 5b 41 5c 41 5e 41 5f c3 e8 1a d4 b3 ff 4d 8b 7e 20 4d 85 ff
+RSP: 0018:ffffc9000598fc78 EFLAGS: 00010246
+RAX: 1b79c08c098de400 RBX: 0000000000000000 RCX: ffff88802a2f23c0
+RDX: 0000000000000000 RSI: 0000000000000001 RDI: 0000000000000000
+RBP: 0000000004208060 R08: ffffffff812afc51 R09: 0000000000000001
+R10: ffffffff8502bf5b R11: 205d303636303154 R12: ffff888032bc5a80
+R13: ffff88802b454008 R14: ffffffff8566be88 R15: ffff88802b454008
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b2ce24000 CR3: 0000000037da0000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ device_del+0x116/0x4e0 drivers/base/core.c:3803
+ fw_load_sysfs_fallback+0xbd/0x2f0 drivers/base/firmware_loader/fallback.c:124
+ fw_load_from_user_helper+0xcc/0x160 drivers/base/firmware_loader/fallback.c:162
+ _request_firmware+0x214/0x3b0 drivers/base/firmware_loader/main.c:910
+ request_firmware_work_func+0x37/0x90 drivers/base/firmware_loader/main.c:1161
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>

@@ -1,0 +1,295 @@
+INFO: task kworker/u4:3:9559 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/u4:3    state:D stack:12568 pid:9559  tgid:9559  ppid:2      flags:0x00004000
+Workqueue: netns cleanup_net
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ rfkill_unregister+0x6c/0x100 net/rfkill/core.c:1149
+ wiphy_unregister+0x130/0x3d0 net/wireless/core.c:1094
+ ieee80211_unregister_hw+0x11f/0x170 net/mac80211/main.c:1518
+ mac80211_hwsim_del_radio+0x14e/0x1f0 drivers/net/wireless/virtual/mac80211_hwsim.c:5435
+ hwsim_exit_net+0x239/0x2a0 drivers/net/wireless/virtual/mac80211_hwsim.c:6312
+ ops_exit_list net/core/net_namespace.c:170 [inline]
+ cleanup_net+0x3d4/0x6d0 net/core/net_namespace.c:618
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+INFO: task kworker/1:7:10595 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/1:7     state:D stack:10328 pid:10595 tgid:10595 ppid:2      flags:0x00004000
+Workqueue: events rfkill_global_led_trigger_worker
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ rfkill_global_led_trigger_worker+0x1c/0xb0 net/rfkill/core.c:182
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+INFO: task syz-executor:33392 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz-executor    state:D stack:10720 pid:33392 tgid:33392 ppid:1      flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ rfkill_fop_open+0x97/0x360 net/rfkill/core.c:1182
+ misc_open+0x1ad/0x1e0 drivers/char/misc.c:165
+ chrdev_open+0x276/0x2e0 fs/char_dev.c:414
+ do_dentry_open+0x4a1/0x900 fs/open.c:953
+ do_open fs/namei.c:3645 [inline]
+ path_openat+0x1285/0x1680 fs/namei.c:3802
+ do_filp_open+0xb9/0x1a0 fs/namei.c:3829
+ do_sys_openat2+0x91/0x100 fs/open.c:1404
+ do_sys_open fs/open.c:1419 [inline]
+ __do_sys_openat fs/open.c:1435 [inline]
+ __se_sys_openat fs/open.c:1430 [inline]
+ __x64_sys_openat+0xcb/0xf0 fs/open.c:1430
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7fc6347aca94
+RSP: 002b:00007ffddcdffe60 EFLAGS: 00000293 ORIG_RAX: 0000000000000101
+RAX: ffffffffffffffda RBX: 0000000000000008 RCX: 00007fc6347aca94
+RDX: 0000000000000002 RSI: 00007fc6348485a2 RDI: 00000000ffffff9c
+RBP: 00007fc6348485a2 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000002
+R13: 0000000000000003 R14: 00007fc634848aee R15: 0000000000000002
+ </TASK>
+INFO: task syz.2.3646:35669 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.2.3646      state:D stack:13224 pid:35669 tgid:35669 ppid:32843  flags:0x00004006
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ rfkill_unregister+0x6c/0x100 net/rfkill/core.c:1149
+ nfc_unregister_device+0x78/0x180 net/nfc/core.c:1167
+ virtual_ncidev_close+0x18/0x40 drivers/nfc/virtual_ncidev.c:168
+ __fput+0x1d8/0x550 fs/file_table.c:376
+ task_work_run+0xc9/0x110 kernel/task_work.c:180
+ resume_user_mode_work include/linux/resume_user_mode.h:50 [inline]
+ exit_to_user_mode_loop kernel/entry/common.c:108 [inline]
+ exit_to_user_mode_prepare include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x111/0x260 kernel/entry/common.c:212
+ do_syscall_64+0x8e/0x150 arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f7847fae16d
+RSP: 002b:00007fffbc383348 EFLAGS: 00000246 ORIG_RAX: 00000000000001b4
+RAX: 0000000000000000 RBX: 00007f78481f7da0 RCX: 00007f7847fae16d
+RDX: 0000000000000000 RSI: 000000000000001e RDI: 0000000000000003
+RBP: 00007f78481f7da0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 00000000000566f5
+R13: 00007f78481f5fac R14: 00007f78481f7da0 R15: 00007fffbc383410
+ </TASK>
+INFO: task syz.6.3891:35689 blocked for more than 143 seconds.
+      Not tainted 6.8.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.6.3891      state:D stack:12712 pid:35689 tgid:35688 ppid:7942   flags:0x00004006
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5400 [inline]
+ __schedule+0x4ca/0x5d0 kernel/sched/core.c:6727
+ __schedule_loop kernel/sched/core.c:6802 [inline]
+ schedule+0xb1/0x100 kernel/sched/core.c:6817
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6874
+ __mutex_lock_common kernel/locking/mutex.c:684 [inline]
+ __mutex_lock+0x4e4/0x850 kernel/locking/mutex.c:752
+ device_lock include/linux/device.h:990 [inline]
+ nfc_dev_down+0x22/0x120 net/nfc/core.c:143
+ nfc_rfkill_set_block+0x22/0x80 net/nfc/core.c:179
+ rfkill_set_block+0xa1/0x1e0 net/rfkill/core.c:346
+ rfkill_fop_write+0x2da/0x340 net/rfkill/core.c:1305
+ vfs_write+0x162/0x530 fs/read_write.c:588
+ ksys_write+0xbf/0x170 fs/read_write.c:643
+ do_syscall_x64 arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0x82/0x150 arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7fd4879ae16d
+RSP: 002b:00007fd488923f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007fd487bf5fa0 RCX: 00007fd4879ae16d
+RDX: 0000000000000008 RSI: 0000200000000080 RDI: 0000000000000003
+RBP: 00007fd487a480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fd487bf6038 R14: 00007fd487bf5fa0 R15: 00007fd488904000
+ </TASK>
+
+Showing all locks held in the system:
+2 locks held by kworker/u4:1/13:
+1 lock held by ksoftirqd/1/22:
+1 lock held by khungtaskd/33:
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: rcu_lock_acquire include/linux/rcupdate.h:298 [inline]
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: rcu_read_lock include/linux/rcupdate.h:750 [inline]
+ #0: ffffffff86805470 (rcu_read_lock){....}-{1:2}, at: debug_show_all_locks+0x30/0x1a0 kernel/locking/lockdep.c:6614
+2 locks held by kworker/0:2/61:
+5 locks held by kworker/u5:3/65:
+1 lock held by systemd-journal/4422:
+ #0: ffff8880136dee78 (mapping.invalidate_lock){++++}-{3:3}, at: filemap_invalidate_lock_shared include/linux/fs.h:859 [inline]
+ #0: ffff8880136dee78 (mapping.invalidate_lock){++++}-{3:3}, at: page_cache_ra_unbounded+0x5e/0x440 mm/readahead.c:225
+1 lock held by in:imklog/7494:
+ #0: ffff88800ff14cc8 (&f->f_pos_lock){+.+.}-{3:3}, at: __fdget_pos+0x112/0x160 fs/file.c:1191
+1 lock held by agetty/7844:
+ #0: ffff888043d528a0 (&tty->ldisc_sem){++++}-{0:0}, at: tty_ldisc_ref_wait+0x21/0x50 drivers/tty/tty_ldisc.c:243
+2 locks held by agetty/7845:
+ #0: ffff8880144180a0 (&tty->ldisc_sem){++++}-{0:0}, at: tty_ldisc_ref_wait+0x21/0x50 drivers/tty/tty_ldisc.c:243
+ #1: ffffc9000c4c32f0 (&ldata->atomic_read_lock){+.+.}-{3:3}, at: n_tty_read+0x1f7/0xa90 drivers/tty/n_tty.c:2201
+4 locks held by kworker/u4:3/9559:
+ #0: ffff88800be40538 ((wq_completion)netns){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800be40538 ((wq_completion)netns){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90002677e38 (net_cleanup_work){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90002677e38 (net_cleanup_work){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffffffff86bf2998 (pernet_ops_rwsem){++++}-{3:3}, at: cleanup_net+0x46/0x6d0 net/core/net_namespace.c:580
+ #3: ffffffff86caebb0 (rfkill_global_mutex){+.+.}-{3:3}, at: rfkill_unregister+0x6c/0x100 net/rfkill/core.c:1149
+3 locks held by kworker/1:7/10595:
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #0: ffff88800a06a538 ((wq_completion)events){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #1: ffffc90005707e38 ((work_completion)(&rfkill_global_led_trigger_work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2608 [inline]
+ #1: ffffc90005707e38 ((work_completion)(&rfkill_global_led_trigger_work)){+.+.}-{0:0}, at: process_scheduled_works+0x32d/0x6d0 kernel/workqueue.c:2706
+ #2: ffffffff86caebb0 (rfkill_global_mutex){+.+.}-{3:3}, at: rfkill_global_led_trigger_worker+0x1c/0xb0 net/rfkill/core.c:182
+1 lock held by systemd-rfkill/11826:
+ #0: ffffffff86caebb0 (rfkill_global_mutex){+.+.}-{3:3}, at: rfkill_fop_write+0xff/0x340 net/rfkill/core.c:1297
+2 locks held by syz-executor/33392:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+ #1: ffffffff86caebb0 (rfkill_global_mutex){+.+.}-{3:3}, at: rfkill_fop_open+0x97/0x360 net/rfkill/core.c:1182
+1 lock held by syz-executor/33839:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/34214:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+2 locks held by syz.2.3646/35669:
+ #0: ffff88802eafe100 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #0: ffff88802eafe100 (&dev->mutex){....}-{3:3}, at: nfc_unregister_device+0x5f/0x180 net/nfc/core.c:1165
+ #1: ffffffff86caebb0 (rfkill_global_mutex){+.+.}-{3:3}, at: rfkill_unregister+0x6c/0x100 net/rfkill/core.c:1149
+2 locks held by syz.6.3891/35689:
+ #0: ffffffff86caebb0 (rfkill_global_mutex){+.+.}-{3:3}, at: rfkill_fop_write+0xff/0x340 net/rfkill/core.c:1297
+ #1: ffff88802eafe100 (&dev->mutex){....}-{3:3}, at: device_lock include/linux/device.h:990 [inline]
+ #1: ffff88802eafe100 (&dev->mutex){....}-{3:3}, at: nfc_dev_down+0x22/0x120 net/nfc/core.c:143
+1 lock held by syz.7.3884/35856:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz.1.3887/35867:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz.5.3892/35888:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/35890:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/35893:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/35983:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/35984:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/35986:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36055:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36134:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36169:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36172:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36173:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36177:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36178:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36179:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36181:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36183:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36185:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36188:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+1 lock held by syz-executor/36189:
+ #0: ffffffff86a05fa8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x2d/0x1e0 drivers/char/misc.c:129
+
+=============================================
+
+NMI backtrace for cpu 1
+CPU: 1 PID: 33 Comm: khungtaskd Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0xea/0x170 lib/dump_stack.c:106
+ nmi_cpu_backtrace+0x254/0x2a0 lib/nmi_backtrace.c:113
+ nmi_trigger_cpumask_backtrace+0x113/0x220 lib/nmi_backtrace.c:62
+ trigger_all_cpu_backtrace include/linux/nmi.h:160 [inline]
+ check_hung_uninterruptible_tasks kernel/hung_task.c:222 [inline]
+ watchdog+0xa1c/0xa60 kernel/hung_task.c:379
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>
+Sending NMI from CPU 1 to CPUs 0:
+NMI backtrace for cpu 0
+CPU: 0 PID: 13 Comm: kworker/u4:1 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: bat_events batadv_nc_worker
+RIP: 0010:lock_release+0x3/0x290 kernel/locking/lockdep.c:5762
+Code: 86 31 c0 e8 9f 02 cb 03 4c 89 ef e8 77 18 00 00 e8 d2 16 00 00 e9 93 fb ff ff 0f 0b e9 d7 fc ff ff 66 0f 1f 44 00 00 55 41 57 <41> 56 41 55 41 54 53 48 83 ec 28 48 89 f5 49 89 fd 65 48 8b 04 25
+RSP: 0000:ffffc90000387d98 EFLAGS: 00000287
+RAX: 0000000000000000 RBX: ffffffff84ecc13f RCX: ffff88800b280000
+RDX: 0000000000000000 RSI: ffffffff84ecc13f RDI: ffffffff86805470
+RBP: 000000000000011c R08: ffffffff84ecc46a R09: 0000000000000000
+R10: ffffffff84ecc13f R11: 6e6576655f746162 R12: ffff8880299d2be0
+R13: ffff888046eb1e00 R14: ffff88800e22cac0 R15: ffff8880299d3640
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f5e35c5f930 CR3: 00000000121f3000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <NMI>
+ </NMI>
+ <TASK>
+ rcu_lock_release include/linux/rcupdate.h:308 [inline]
+ rcu_read_unlock include/linux/rcupdate.h:783 [inline]
+ batadv_nc_purge_orig_hash net/batman-adv/network-coding.c:412 [inline]
+ batadv_nc_worker+0x434/0x590 net/batman-adv/network-coding.c:719
+ process_one_work kernel/workqueue.c:2633 [inline]
+ process_scheduled_works+0x377/0x6d0 kernel/workqueue.c:2706
+ worker_thread+0x3d2/0x5e0 kernel/workqueue.c:2787
+ kthread+0x141/0x180 kernel/kthread.c:388
+ ret_from_fork+0x44/0x50 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:243
+ </TASK>

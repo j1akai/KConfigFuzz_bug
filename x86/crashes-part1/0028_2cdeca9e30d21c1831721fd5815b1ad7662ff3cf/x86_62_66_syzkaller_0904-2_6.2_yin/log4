@@ -1,0 +1,653 @@
+last executing test programs:
+
+305.17698ms ago: executing program 2 (id=3):
+openat$vimc1(0xffffffffffffff9c, &(0x7f0000000240), 0x2, 0x0)
+r0 = shmget(0x0, 0x1000, 0x78000000, &(0x7f0000ffc000/0x1000)=nil)
+r1 = syz_init_net_socket$llc(0x1a, 0x1, 0x0)
+ioctl$sock_inet_SIOCSIFFLAGS(r1, 0x8914, &(0x7f0000000000)={'pim6reg0\x00', 0x1})
+shmctl$IPC_RMID(r0, 0x0)
+shmctl$IPC_STAT(r0, 0x2, &(0x7f0000000480)=""/135)
+r2 = openat$cuse(0xffffffffffffff9c, &(0x7f0000000200), 0x2, 0x0)
+write$FUSE_NOTIFY_DELETE(r2, &(0x7f00000009c0)=ANY=[@ANYBLOB="2d0000000600000000000000000000000100000000000000040067747000000b5ebe"], 0x2d)
+r3 = syz_open_procfs(0x0, &(0x7f0000000000)='net/ip6_mr_vif\x00')
+pread64(r3, &(0x7f0000000580)=""/116, 0x74, 0x4)
+openat2$dir(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', &(0x7f0000000080)={0x228000, 0x2, 0x8}, 0x18)
+semctl$GETZCNT(0x0, 0x3, 0xf, &(0x7f0000000140)=""/104)
+syz_usb_connect(0x0, 0x2d, &(0x7f0000000000)={{0x12, 0x1, 0x200, 0xce, 0x84, 0xe2, 0x8, 0x2201, 0x12c, 0x5ce5, 0x1, 0x2, 0x3, 0x1, [{{0x9, 0x2, 0x1b, 0x1, 0x5, 0x0, 0xa0, 0x80, [{{0x9, 0x4, 0x6f, 0x7, 0x1, 0x61, 0x6e, 0x1a, 0x7, [], [{{0x9, 0x5, 0xe, 0x4, 0x3ff, 0x1, 0xe, 0x2}}]}}]}}]}}, 0x0)
+
+112.115704ms ago: executing program 1 (id=2):
+socket$key(0xf, 0x3, 0x2)
+r0 = socket$key(0xf, 0x3, 0x2)
+syz_mount_image$ext4(&(0x7f0000000580)='ext4\x00', &(0x7f00000005c0)='./file0\x00', 0x0, &(0x7f0000000000)={[{@acl}, {@min_batch_time={'min_batch_time', 0x3d, 0x6}}]}, 0x1, 0x571, &(0x7f0000000640)="$eJzs3UFrHFUcAPD/zGZj2kaTikjrxaBQC+I2TbWiF9ueFQS9eGtoNyV225Qkggke2oN48VBB6EFQSi9+CA9B8Av0ZL15FYpIUvS2MruzyZrsJiFkOzHz+8Hsvjdvu+/9d/oy783sSwIorYnsIY04GRGXk4ixrrKhyAsn2q9b/euLK9mWRLP50Z9JJPm+zuuT/PlYnhmJiIeXIp6vbK13YWn5+nSjUZ/P82cWb9w6s7C0/Mbsjelr9Wv1m+fffOudqbfPT53bv1g/+alx78Rvl/7+av7JqQf/xKdJXIjRvKw7jv0yERPrn0m37HN9b78rK0glj6dXnBx8neNXjYgXYywqea/PjMXs14U2DhioZiWiCZRUov9DSXXGAZ25/SDmwQfZ44vtCdDW+Ifa10ZipDU3OrqadM2M2vPd8X2oP6tj5Jcfv8m2GNB1iO3cvhMRJ3rFn7TaNr6W/0dZTf8TfxoRk/lztn9qj/VPbMofuPhbV7Gy45/G0MONq2NZ3Be64r+0x/qLjh+Aclq52D6Rbz3/pevjn+gx/hntce7ai6LPf/3HfxvxV/qM/z7cZR0P7v9woV9Z9/gv27L6O2PBp+HxnYiXesafrMef9Ig/G/dc7vOeI5vyr9S/f9Sv/qLjb96PONVz/rNxRyvZ9v7kmZnZRn2y/di7jrtfNu/1q7/o+LPjf7RP/Nsd/2zfrV3W8fPak9/7le0cf/rHcPJxKzWc7/l8enFx/mzEcPL+1v07TEQ6r+m8Rxb/6Ve37/+94j+SzR12Gf/q6fMf7D3+wcriv9p7/p93gP7H/+4u65iarH3Xr6zo+AEAAAAAAOAwSVvf5UjS2no6TWu19hreF+Jo2phbWHx9Zu6zm1fb3/kYj2raudU91s4nWf5s/n3YTn5qU/5cRByPiG8rR1r52pW5xtWigwcAAAAAAAAAAAAAAAAAAIAD4tim9f9rlfb6f6AkhopuAFAY/R/KS/+H8tL/obz0fygv/R/KS/+H8tL/obz0fygv/R/KS/8HAAAAgEPp+Msrj5KIuP3ukdaWGc7LqhFRKbR1wCClRTcAKIzzO5RXfut/pOh2AE9ftegGAIVLdijvO0BY2elfAgAAAAAAAAAAAAD75bWT26//Bw4v6/+hvKz/h/Lyq/+hvMzxAev/AQAAAAAAAAAAAODgG21tSVrL1wKPRprWahHPRsR4VJOZ2UZ9MiKei4hfK9VnsvzZohsNAAAAAAAAAAAAAAAAAAAAh8zC0vL16UajPi8hISGxnij6JxMAAAAAAAAAAAAAAAAAAJTPxqLfolsCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMXZ+Pv/g0sUHSMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8P/0bwAAAP//ZnMlsA==")
+r1 = openat$dir(0xffffffffffffff9c, &(0x7f0000000400)='./file0\x00', 0x301, 0x30)
+unlinkat(r1, &(0x7f0000000440)='./file0/file0\x00', 0x200)
+openat$vfio(0xffffffffffffff9c, &(0x7f00000004c0), 0x11d480, 0x0)
+r2 = openat$hpet(0xffffffffffffff9c, &(0x7f0000000040), 0x40, 0x0)
+ioctl$sock_qrtr_TIOCINQ(r2, 0x541b, 0x0)
+pipe(0xffffffffffffffff)
+ioctl$SCSI_IOCTL_SEND_COMMAND(0xffffffffffffffff, 0x1, &(0x7f0000000180)=ANY=[@ANYBLOB="450000001c71de6d05000000a44f9d49a522d002730fce54d95f5d1c4eb528279a10447ea804cb00da4d17b3585175051074e71a7cee8febe7bcda5e17945617f6655062317f0a3e8314b8a9ef7be6d6dc"])
+setsockopt$netrom_NETROM_IDLE(r2, 0x103, 0x7, &(0x7f00000000c0)=0x7fffffff, 0x4)
+r3 = socket$nl_crypto(0x10, 0x3, 0x15)
+ioctl$TIOCL_SETSEL(r2, 0x541c, &(0x7f00000003c0)={0x2, {0x2, 0x5, 0x0, 0xff7f, 0x5, 0x1}})
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', &(0x7f00000000c0), 0x0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000100)='./file0/file0\x00', 0x1c0)
+setxattr$security_ima(&(0x7f0000000000)='./file0/file0\x00', &(0x7f0000000140), &(0x7f0000000300)=@md5={0x1, "1c0b048e09266c8149f64576ae37c06a"}, 0x11, 0x1)
+close(0xffffffffffffffff)
+close(0xffffffffffffffff)
+umount2(&(0x7f00000002c0)='./file0\x00', 0x0)
+sendmsg$inet(r3, &(0x7f0000001440)={&(0x7f0000000100)={0x2, 0x4e22, @local}, 0x10, &(0x7f0000001340)=[{&(0x7f0000000140)="15", 0x1}], 0x1, &(0x7f00000013c0)=[@ip_ttl={{0x14, 0x0, 0x2, 0x1ff}}, @ip_pktinfo={{0x1c, 0x0, 0x8, {0x0, @remote, @multicast1}}}], 0x38}, 0x4000)
+sendmsg$key(r0, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000100)={&(0x7f0000000000)={0x2, 0xf, 0xe1, 0x9, 0x4, 0x0, 0x70bd26, 0x25dfdbfe, [@sadb_ident={0x2, 0x0, 0x82e1, 0x0, 0xb3}]}, 0x20}}, 0x0)
+openat$sw_sync_info(0xffffffffffffff9c, &(0x7f0000000380), 0x200, 0x0)
+pipe2(&(0x7f0000000040)={<r4=>0xffffffffffffffff, <r5=>0xffffffffffffffff}, 0x2000)
+ioctl$HIDIOCGREPORTINFO(r5, 0xc00c4809, &(0x7f0000000080)={0x1, 0x2})
+r6 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000180)='/proc/locks\x00', 0x0, 0x0)
+read$ptp(r6, &(0x7f0000000240)=""/72, 0x48)
+fcntl$setlease(r6, 0x400, 0x1)
+ioctl$vim2m_VIDIOC_G_FMT(0xffffffffffffffff, 0xc0d05604, &(0x7f0000000280)={0x2, @pix_mp={0xd, 0x6, 0x38415262, 0x6, 0x1, [{0x1, 0x2}, {0x4b, 0x5}, {0x9, 0x6}, {0xfffffffd, 0x8}, {0x6, 0x9c7}, {0x101, 0xb5}, {0xd, 0x800}, {0x5, 0x7}], 0x1, 0x3, 0x0, 0x2, 0x4}})
+ioctl$KVM_CAP_DIRTY_LOG_RING(r4, 0x4068aea3, &(0x7f0000000200)={0xc0, 0x0, 0x16000})
+
+0s ago: executing program 3 (id=4):
+r0 = syz_open_dev$sg(&(0x7f0000000080), 0x0, 0x40000)
+ioctl$SG_IO(r0, 0x2285, &(0x7f0000000380)={0x53, 0xfffffffc, 0x6, 0x45, @scatter={0x0, 0xf6, 0x0}, &(0x7f0000000180)="6c7676e98bb1", 0x0, 0x596, 0x0, 0x3, 0x0})
+
+kernel console output (not intermixed with test programs):
+
+syzkaller login: [   60.577359][ T9161] scp (9161) used greatest stack depth: 10752 bytes left
+Warning: Permanently added '[localhost]:10054' (ED25519) to the list of known hosts.
+[   66.386091][ T9168] cgroup: Unknown subsys name 'net'
+[   66.530838][ T9168] cgroup: Unknown subsys name 'rlimit'
+Setting up swapspace version 1, size = 122.1 MiB (127995904 bytes)
+no label, UUID=f02e3d0a-5327-4714-bf8e-5b820ea3a7c3
+[   80.471838][ T1277] ieee802154 phy0 wpan0: encryption failed: -22
+[   80.473151][ T1277] ieee802154 phy1 wpan1: encryption failed: -22
+[   83.767861][ T9168] Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k FS
+[   88.817849][ T9194] Bluetooth: hci0: unexpected cc 0x0c03 length: 249 > 1
+[   88.820530][ T9194] Bluetooth: hci0: unexpected cc 0x1003 length: 249 > 9
+[   88.824432][ T9194] Bluetooth: hci0: unexpected cc 0x1001 length: 249 > 9
+[   88.827311][ T9194] Bluetooth: hci0: unexpected cc 0x0c23 length: 249 > 4
+[   88.829904][ T9194] Bluetooth: hci0: unexpected cc 0x0c25 length: 249 > 3
+[   88.832525][ T9194] Bluetooth: hci0: unexpected cc 0x0c38 length: 249 > 2
+[   88.862365][ T5012] Bluetooth: hci1: unexpected cc 0x1003 length: 249 > 9
+[   88.864890][ T5012] Bluetooth: hci1: unexpected cc 0x1001 length: 249 > 9
+[   88.867600][ T5012] Bluetooth: hci1: unexpected cc 0x0c23 length: 249 > 4
+[   88.879676][ T5012] Bluetooth: hci1: unexpected cc 0x0c25 length: 249 > 3
+[   88.881979][ T5012] Bluetooth: hci1: unexpected cc 0x0c38 length: 249 > 2
+[   89.001063][ T5012] Bluetooth: hci2: unexpected cc 0x1003 length: 249 > 9
+[   89.003328][ T5012] Bluetooth: hci2: unexpected cc 0x1001 length: 249 > 9
+[   89.005472][ T5012] Bluetooth: hci2: unexpected cc 0x0c23 length: 249 > 4
+[   89.007428][ T5012] Bluetooth: hci2: unexpected cc 0x0c25 length: 249 > 3
+[   89.009284][ T5012] Bluetooth: hci2: unexpected cc 0x0c38 length: 249 > 2
+[   89.070725][ T5012] Bluetooth: hci3: unexpected cc 0x1003 length: 249 > 9
+[   89.072692][ T5012] Bluetooth: hci3: unexpected cc 0x1001 length: 249 > 9
+[   89.074979][ T5012] Bluetooth: hci3: unexpected cc 0x0c23 length: 249 > 4
+[   89.076982][ T5012] Bluetooth: hci3: unexpected cc 0x0c25 length: 249 > 3
+[   89.079500][ T5012] Bluetooth: hci3: unexpected cc 0x0c38 length: 249 > 2
+[   89.280436][ T9190] chnl_net:caif_netlink_parms(): no params data found
+[   89.353971][ T9197] chnl_net:caif_netlink_parms(): no params data found
+[   89.499773][ T9190] bridge0: port 1(bridge_slave_0) entered blocking state
+[   89.504314][ T9190] bridge0: port 1(bridge_slave_0) entered disabled state
+[   89.507906][ T9190] device bridge_slave_0 entered promiscuous mode
+[   89.513150][ T9190] bridge0: port 2(bridge_slave_1) entered blocking state
+[   89.515727][ T9190] bridge0: port 2(bridge_slave_1) entered disabled state
+[   89.519194][ T9190] device bridge_slave_1 entered promiscuous mode
+[   89.612166][ T9226] chnl_net:caif_netlink_parms(): no params data found
+[   89.654447][ T9190] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[   89.685434][ T9190] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[   89.703772][ T9253] chnl_net:caif_netlink_parms(): no params data found
+[   89.708248][ T9197] bridge0: port 1(bridge_slave_0) entered blocking state
+[   89.709827][ T9197] bridge0: port 1(bridge_slave_0) entered disabled state
+[   89.712834][ T9197] device bridge_slave_0 entered promiscuous mode
+[   89.739167][ T9197] bridge0: port 2(bridge_slave_1) entered blocking state
+[   89.740839][ T9197] bridge0: port 2(bridge_slave_1) entered disabled state
+[   89.742998][ T9197] device bridge_slave_1 entered promiscuous mode
+[   89.745330][ T9190] team0: Port device team_slave_0 added
+[   89.781401][ T9190] team0: Port device team_slave_1 added
+[   89.855826][ T9197] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[   89.859427][ T9190] batman_adv: batadv0: Adding interface: batadv_slave_0
+[   89.862050][ T9190] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[   89.870085][ T9190] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[   89.885472][ T9253] bridge0: port 1(bridge_slave_0) entered blocking state
+[   89.888410][ T9253] bridge0: port 1(bridge_slave_0) entered disabled state
+[   89.892517][ T9253] device bridge_slave_0 entered promiscuous mode
+[   89.897527][ T9197] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[   89.915548][ T9190] batman_adv: batadv0: Adding interface: batadv_slave_1
+[   89.917820][ T9190] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[   89.926625][ T9190] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[   89.930494][ T9226] bridge0: port 1(bridge_slave_0) entered blocking state
+[   89.933067][ T9226] bridge0: port 1(bridge_slave_0) entered disabled state
+[   89.936356][ T9226] device bridge_slave_0 entered promiscuous mode
+[   89.939365][ T9253] bridge0: port 2(bridge_slave_1) entered blocking state
+[   89.942317][ T9253] bridge0: port 2(bridge_slave_1) entered disabled state
+[   89.944437][ T9253] device bridge_slave_1 entered promiscuous mode
+[   89.960487][ T9226] bridge0: port 2(bridge_slave_1) entered blocking state
+[   89.962474][ T9226] bridge0: port 2(bridge_slave_1) entered disabled state
+[   89.964531][ T9226] device bridge_slave_1 entered promiscuous mode
+[   89.981270][ T9197] team0: Port device team_slave_0 added
+[   90.012389][ T9197] team0: Port device team_slave_1 added
+[   90.043620][ T9253] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[   90.094716][ T9253] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[   90.101993][ T9226] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[   90.108642][ T9190] device hsr_slave_0 entered promiscuous mode
+[   90.112635][ T9190] device hsr_slave_1 entered promiscuous mode
+[   90.115750][ T9197] batman_adv: batadv0: Adding interface: batadv_slave_0
+[   90.118106][ T9197] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[   90.126285][ T9197] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[   90.132007][ T9226] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[   90.175859][ T9197] batman_adv: batadv0: Adding interface: batadv_slave_1
+[   90.178257][ T9197] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[   90.187792][ T9197] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[   90.207884][ T9253] team0: Port device team_slave_0 added
+[   90.228470][ T9226] team0: Port device team_slave_0 added
+[   90.233971][ T9253] team0: Port device team_slave_1 added
+[   90.262198][ T9226] team0: Port device team_slave_1 added
+[   90.356749][ T9253] batman_adv: batadv0: Adding interface: batadv_slave_0
+[   90.358899][ T9253] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[   90.367632][ T9253] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[   90.372573][ T9253] batman_adv: batadv0: Adding interface: batadv_slave_1
+[   90.374496][ T9253] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[   90.382692][ T9253] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[   90.408105][ T9197] device hsr_slave_0 entered promiscuous mode
+[   90.411640][ T9197] device hsr_slave_1 entered promiscuous mode
+[   90.414326][ T9197] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[   90.416995][ T9197] Cannot create hsr debugfs directory
+[   90.429438][ T9226] batman_adv: batadv0: Adding interface: batadv_slave_0
+[   90.433490][ T9226] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[   90.444744][ T9226] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[   90.472080][ T9226] batman_adv: batadv0: Adding interface: batadv_slave_1
+[   90.474526][ T9226] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[   90.483018][ T9226] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[   90.576918][ T9253] device hsr_slave_0 entered promiscuous mode
+[   90.580814][ T9253] device hsr_slave_1 entered promiscuous mode
+[   90.583332][ T9253] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[   90.585794][ T9253] Cannot create hsr debugfs directory
+[   90.644985][ T9226] device hsr_slave_0 entered promiscuous mode
+[   90.647111][ T9226] device hsr_slave_1 entered promiscuous mode
+[   90.648910][ T9226] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[   90.650493][ T9226] Cannot create hsr debugfs directory
+[   90.776439][ T9190] netdevsim netdevsim2 netdevsim0: renamed from eth0
+[   90.857174][ T9190] netdevsim netdevsim2 netdevsim1: renamed from eth1
+[   90.873101][ T9194] Bluetooth: hci0: command 0x0409 tx timeout
+[   90.919621][ T9190] netdevsim netdevsim2 netdevsim2: renamed from eth2
+[   90.952094][ T5012] Bluetooth: hci1: command 0x0409 tx timeout
+[   90.958340][ T9190] netdevsim netdevsim2 netdevsim3: renamed from eth3
+[   91.030675][ T9194] Bluetooth: hci2: command 0x0409 tx timeout
+[   91.078848][ T9197] netdevsim netdevsim1 netdevsim0: renamed from eth0
+[   91.087469][ T9197] netdevsim netdevsim1 netdevsim1: renamed from eth1
+[   91.095729][ T9197] netdevsim netdevsim1 netdevsim2: renamed from eth2
+[   91.106108][ T9197] netdevsim netdevsim1 netdevsim3: renamed from eth3
+[   91.110609][ T9194] Bluetooth: hci3: command 0x0409 tx timeout
+[   91.132118][ T9253] netdevsim netdevsim3 netdevsim0: renamed from eth0
+[   91.136864][ T9253] netdevsim netdevsim3 netdevsim1: renamed from eth1
+[   91.140248][ T9253] netdevsim netdevsim3 netdevsim2: renamed from eth2
+[   91.157921][ T9253] netdevsim netdevsim3 netdevsim3: renamed from eth3
+[   91.173872][ T9226] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[   91.184204][ T9190] 8021q: adding VLAN 0 to HW filter on device bond0
+[   91.191753][ T9226] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[   91.196268][ T9226] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[   91.206128][ T9226] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[   91.228796][ T5054] IPv6: ADDRCONF(NETDEV_CHANGE): veth1: link becomes ready
+[   91.232053][ T5054] IPv6: ADDRCONF(NETDEV_CHANGE): veth0: link becomes ready
+[   91.243569][ T9190] 8021q: adding VLAN 0 to HW filter on device team0
+[   91.256494][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_bridge: link becomes ready
+[   91.259112][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): bridge_slave_0: link becomes ready
+[   91.261655][ T5055] bridge0: port 1(bridge_slave_0) entered blocking state
+[   91.263137][ T5055] bridge0: port 1(bridge_slave_0) entered forwarding state
+[   91.265355][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): bridge0: link becomes ready
+[   91.274797][ T5054] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_bridge: link becomes ready
+[   91.277237][ T5054] IPv6: ADDRCONF(NETDEV_CHANGE): bridge_slave_1: link becomes ready
+[   91.279467][ T5054] bridge0: port 2(bridge_slave_1) entered blocking state
+[   91.280998][ T5054] bridge0: port 2(bridge_slave_1) entered forwarding state
+[   91.288205][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_bond: link becomes ready
+[   91.305833][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_bond: link becomes ready
+[   91.321544][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_team: link becomes ready
+[   91.324200][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): team_slave_0: link becomes ready
+[   91.326644][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): team0: link becomes ready
+[   91.339069][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_team: link becomes ready
+[   91.342042][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): team_slave_1: link becomes ready
+[   91.344391][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_hsr: link becomes ready
+[   91.346366][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): hsr_slave_0: link becomes ready
+[   91.352451][ T9190] hsr0: Slave B (hsr_slave_1) is not up; please bring it up to get a fully working HSR network
+[   91.355311][ T9190] IPv6: ADDRCONF(NETDEV_CHANGE): hsr0: link becomes ready
+[   91.358486][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_hsr: link becomes ready
+[   91.361142][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): hsr_slave_1: link becomes ready
+[   91.375078][ T9253] 8021q: adding VLAN 0 to HW filter on device bond0
+[   91.398456][ T9197] 8021q: adding VLAN 0 to HW filter on device bond0
+[   91.404076][ T1155] IPv6: ADDRCONF(NETDEV_CHANGE): veth1: link becomes ready
+[   91.405982][ T1155] IPv6: ADDRCONF(NETDEV_CHANGE): veth0: link becomes ready
+[   91.413366][ T9253] 8021q: adding VLAN 0 to HW filter on device team0
+[   91.430203][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth1: link becomes ready
+[   91.432435][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth0: link becomes ready
+[   91.434469][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_bridge: link becomes ready
+[   91.436661][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): bridge_slave_0: link becomes ready
+[   91.438751][T10492] bridge0: port 1(bridge_slave_0) entered blocking state
+[   91.440236][T10492] bridge0: port 1(bridge_slave_0) entered forwarding state
+[   91.446084][ T9197] 8021q: adding VLAN 0 to HW filter on device team0
+[   91.452098][ T9226] 8021q: adding VLAN 0 to HW filter on device bond0
+[   91.460514][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): bridge0: link becomes ready
+[   91.462676][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_bridge: link becomes ready
+[   91.464859][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): bridge_slave_1: link becomes ready
+[   91.467007][   T27] bridge0: port 2(bridge_slave_1) entered blocking state
+[   91.468469][   T27] bridge0: port 2(bridge_slave_1) entered forwarding state
+[   91.470322][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_bond: link becomes ready
+[   91.484722][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_bond: link becomes ready
+[   91.487311][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_bridge: link becomes ready
+[   91.489767][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): bridge_slave_0: link becomes ready
+[   91.492868][   T27] bridge0: port 1(bridge_slave_0) entered blocking state
+[   91.494381][   T27] bridge0: port 1(bridge_slave_0) entered forwarding state
+[   91.496290][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_bridge: link becomes ready
+[   91.498334][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): bridge_slave_1: link becomes ready
+[   91.500416][   T27] bridge0: port 2(bridge_slave_1) entered blocking state
+[   91.501974][   T27] bridge0: port 2(bridge_slave_1) entered forwarding state
+[   91.517151][ T9190] 8021q: adding VLAN 0 to HW filter on device batadv0
+[   91.521976][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): bridge0: link becomes ready
+[   91.524130][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): vxcan1: link becomes ready
+[   91.525721][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): vxcan0: link becomes ready
+[   91.527278][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_team: link becomes ready
+[   91.529569][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): team_slave_0: link becomes ready
+[   91.533116][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth1: link becomes ready
+[   91.535004][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth0: link becomes ready
+[   91.537047][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_team: link becomes ready
+[   91.539311][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): team_slave_1: link becomes ready
+[   91.542695][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_bond: link becomes ready
+[   91.545500][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): team0: link becomes ready
+[   91.548884][ T9226] 8021q: adding VLAN 0 to HW filter on device team0
+[   91.567707][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_bridge: link becomes ready
+[   91.570134][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): bridge_slave_0: link becomes ready
+[   91.572401][T10505] bridge0: port 1(bridge_slave_0) entered blocking state
+[   91.573868][T10505] bridge0: port 1(bridge_slave_0) entered forwarding state
+[   91.575740][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_bridge: link becomes ready
+[   91.577962][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): bridge_slave_1: link becomes ready
+[   91.580100][T10505] bridge0: port 2(bridge_slave_1) entered blocking state
+[   91.581588][T10505] bridge0: port 2(bridge_slave_1) entered forwarding state
+[   91.583868][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_bond: link becomes ready
+[   91.586210][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_bond: link becomes ready
+[   91.588472][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_team: link becomes ready
+[   91.590531][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): team_slave_0: link becomes ready
+[   91.592995][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_bond: link becomes ready
+[   91.597695][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): bridge0: link becomes ready
+[   91.599882][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): team0: link becomes ready
+[   91.602361][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_team: link becomes ready
+[   91.604647][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): team_slave_1: link becomes ready
+[   91.607046][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_hsr: link becomes ready
+[   91.609287][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): hsr_slave_0: link becomes ready
+[   91.615583][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_team: link becomes ready
+[   91.618115][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): team_slave_0: link becomes ready
+[   91.620816][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): team0: link becomes ready
+[   91.630672][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_hsr: link becomes ready
+[   91.633163][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): hsr_slave_1: link becomes ready
+[   91.637076][ T9253] IPv6: ADDRCONF(NETDEV_CHANGE): hsr0: link becomes ready
+[   91.646800][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_hsr: link becomes ready
+[   91.649393][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): hsr_slave_0: link becomes ready
+[   91.652645][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_team: link becomes ready
+[   91.655270][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): team_slave_1: link becomes ready
+[   91.673645][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_hsr: link becomes ready
+[   91.677437][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): hsr_slave_0: link becomes ready
+[   91.683150][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_hsr: link becomes ready
+[   91.686786][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): hsr_slave_1: link becomes ready
+[   91.690504][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_hsr: link becomes ready
+[   91.695042][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): hsr_slave_1: link becomes ready
+[   91.713346][ T9197] IPv6: ADDRCONF(NETDEV_CHANGE): hsr0: link becomes ready
+[   91.715768][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_virt_wifi: link becomes ready
+[   91.719688][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_virt_wifi: link becomes ready
+[   91.727151][ T9226] IPv6: ADDRCONF(NETDEV_CHANGE): hsr0: link becomes ready
+[   91.736971][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_vlan: link becomes ready
+[   91.739194][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_vlan: link becomes ready
+[   91.742128][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): vlan0: link becomes ready
+[   91.745156][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): vlan1: link becomes ready
+[   91.751972][ T9190] device veth0_vlan entered promiscuous mode
+[   91.776252][ T9253] 8021q: adding VLAN 0 to HW filter on device batadv0
+[   91.792558][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): vxcan1: link becomes ready
+[   91.794560][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): vxcan0: link becomes ready
+[   91.797864][ T9190] device veth1_vlan entered promiscuous mode
+[   91.823356][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): macvlan0: link becomes ready
+[   91.827091][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): macvlan1: link becomes ready
+[   91.835612][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_virt_wifi: link becomes ready
+[   91.839559][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_virt_wifi: link becomes ready
+[   91.856353][ T9190] device veth0_macvtap entered promiscuous mode
+[   91.860145][ T9190] device veth1_macvtap entered promiscuous mode
+[   91.872923][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_macvtap: link becomes ready
+[   91.876398][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_macvtap: link becomes ready
+[   91.878638][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): macsec0: link becomes ready
+[   91.881722][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): macvtap0: link becomes ready
+[   91.894348][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): vxcan1: link becomes ready
+[   91.896799][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): vxcan0: link becomes ready
+[   91.903887][ T9197] 8021q: adding VLAN 0 to HW filter on device batadv0
+[   91.905867][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): vxcan1: link becomes ready
+[   91.907590][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): vxcan0: link becomes ready
+[   91.916774][ T9190] batman_adv: batadv0: Interface activated: batadv_slave_0
+[   91.918661][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_vlan: link becomes ready
+[   91.921194][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_vlan: link becomes ready
+[   91.923432][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): batadv_slave_0: link becomes ready
+[   91.925636][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_batadv: link becomes ready
+[   91.934035][ T9226] 8021q: adding VLAN 0 to HW filter on device batadv0
+[   91.937444][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): vlan0: link becomes ready
+[   91.939790][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): vlan1: link becomes ready
+[   91.943129][ T9253] device veth0_vlan entered promiscuous mode
+[   91.949910][ T9190] batman_adv: batadv0: Interface activated: batadv_slave_1
+[   91.956203][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): batadv_slave_1: link becomes ready
+[   91.959438][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_batadv: link becomes ready
+[   91.972596][ T9190] netdevsim netdevsim2 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[   91.975648][ T9190] netdevsim netdevsim2 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[   91.978606][ T9190] netdevsim netdevsim2 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[   91.983093][ T9190] netdevsim netdevsim2 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[   91.988600][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_virt_wifi: link becomes ready
+[   91.991750][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_virt_wifi: link becomes ready
+[   92.003217][ T9253] device veth1_vlan entered promiscuous mode
+[   92.009083][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): macvlan0: link becomes ready
+[   92.011410][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_vlan: link becomes ready
+[   92.013666][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_vlan: link becomes ready
+[   92.017423][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): vlan0: link becomes ready
+[   92.019505][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): vlan1: link becomes ready
+[   92.023333][ T9197] device veth0_vlan entered promiscuous mode
+[   92.029302][ T9197] device veth1_vlan entered promiscuous mode
+[   92.053532][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): macvlan1: link becomes ready
+[   92.055902][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): macvlan0: link becomes ready
+[   92.058070][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_virt_wifi: link becomes ready
+[   92.060293][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_virt_wifi: link becomes ready
+[   92.066997][ T9226] device veth0_vlan entered promiscuous mode
+[   92.075628][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_vlan: link becomes ready
+[   92.078011][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_vlan: link becomes ready
+[   92.080509][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): vlan0: link becomes ready
+[   92.082734][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): vlan1: link becomes ready
+[   92.092461][ T9226] device veth1_vlan entered promiscuous mode
+[   92.106862][ T9197] device veth0_macvtap entered promiscuous mode
+[   92.113331][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): macvlan1: link becomes ready
+[   92.115421][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): macvlan0: link becomes ready
+[   92.117469][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_macvtap: link becomes ready
+[   92.119565][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_macvtap: link becomes ready
+[   92.122601][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_macvtap: link becomes ready
+[   92.124836][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_macvtap: link becomes ready
+[   92.127048][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): macvtap0: link becomes ready
+[   92.132966][ T9253] device veth0_macvtap entered promiscuous mode
+[   92.138630][ T9197] device veth1_macvtap entered promiscuous mode
+[   92.154268][ T9253] device veth1_macvtap entered promiscuous mode
+[   92.182117][ T9253] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[   92.185554][ T9253] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.192756][ T9253] batman_adv: batadv0: Interface activated: batadv_slave_0
+[   92.199160][ T9226] device veth0_macvtap entered promiscuous mode
+[   92.209559][ T9197] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[   92.213887][ T9197] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.217077][ T9197] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[   92.220530][ T9197] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.226477][ T9197] batman_adv: batadv0: Interface activated: batadv_slave_0
+[   92.230138][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): macvlan1: link becomes ready
+[   92.233587][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): macvtap0: link becomes ready
+[   92.237008][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): macsec0: link becomes ready
+[   92.240477][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): macsec0: link becomes ready
+[   92.244800][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): batadv_slave_0: link becomes ready
+[   92.248549][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_batadv: link becomes ready
+[   92.253334][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_macvtap: link becomes ready
+[   92.257207][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_macvtap: link becomes ready
+[   92.261808][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): batadv_slave_0: link becomes ready
+[   92.265726][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_batadv: link becomes ready
+[   92.269789][   T27] IPv6: ADDRCONF(NETDEV_CHANGE): macvtap0: link becomes ready
+[   92.286274][ T9253] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[   92.288710][ T9253] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.295348][ T9253] batman_adv: batadv0: Interface activated: batadv_slave_1
+[   92.298772][ T9226] device veth1_macvtap entered promiscuous mode
+[   92.305296][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): batadv_slave_1: link becomes ready
+[   92.308804][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_batadv: link becomes ready
+[   92.313443][ T9197] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[   92.317209][ T9197] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.319223][ T9197] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[   92.324146][ T9197] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.328664][ T9197] batman_adv: batadv0: Interface activated: batadv_slave_1
+[   92.340377][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): batadv_slave_1: link becomes ready
+[   92.344528][ T5024] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_batadv: link becomes ready
+[   92.351453][ T9253] netdevsim netdevsim3 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.354597][ T9253] netdevsim netdevsim3 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.357699][ T9253] netdevsim netdevsim3 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.368688][ T9253] netdevsim netdevsim3 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.385836][ T9197] netdevsim netdevsim1 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.388585][ T9197] netdevsim netdevsim1 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.392377][ T9197] netdevsim netdevsim1 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.395300][ T9197] netdevsim netdevsim1 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.407619][ T1078] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[   92.410122][ T1078] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[   92.414276][ T9226] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[   92.425993][ T9226] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.429355][ T9226] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[   92.434272][ T9226] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.437657][ T9226] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[   92.443524][ T9226] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.448562][ T9226] batman_adv: batadv0: Interface activated: batadv_slave_0
+[   92.457881][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[   92.461156][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): batadv_slave_0: link becomes ready
+[   92.465097][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): veth0_to_batadv: link becomes ready
+[   92.505861][ T9226] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[   92.509535][ T9226] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.514050][ T9226] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[   92.517622][ T9226] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.522256][ T9226] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[   92.526004][ T9226] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[   92.532331][ T9226] batman_adv: batadv0: Interface activated: batadv_slave_1
+[   92.538112][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): batadv_slave_1: link becomes ready
+[   92.542442][T10492] IPv6: ADDRCONF(NETDEV_CHANGE): veth1_to_batadv: link becomes ready
+[   92.563708][ T9226] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.566655][ T9226] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.569524][ T9226] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.573267][ T9226] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[   92.579811][   T10] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[   92.582632][   T10] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[   92.588514][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): wlan1: link becomes ready
+[   92.655059][ T1078] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[   92.657819][ T1078] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[   92.664660][ T5054] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[   92.726549][   T10] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[   92.729279][   T10] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[   92.769851][ T5054] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[   92.811916][   T10] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[   92.814277][   T10] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[   92.816595][ T5055] IPv6: ADDRCONF(NETDEV_CHANGE): wlan1: link becomes ready
+[   92.884697][   T10] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[   92.887441][   T10] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[   92.890237][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): wlan1: link becomes ready
+[   92.920802][T10563] loop1: detected capacity change from 0 to 1024
+[   92.927921][   T10] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[   92.931169][   T10] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[   92.931377][T10563] EXT4-fs error (device loop1): ext4_ext_check_inode:520: inode #3: comm syz.1.2: pblk 0 bad header/extent: invalid magic - magic f3ff, entries 2, max 4(0), depth 0(0)
+[   92.933852][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[   92.937184][T10563] EXT4-fs error (device loop1): ext4_quota_enable:6929: comm syz.1.2: Bad quota inode: 3, type: 0
+[   92.944727][T10563] EXT4-fs warning (device loop1): ext4_enable_quotas:6967: Failed to enable quota tracking (type=0, err=-117, ino=3). Please run e2fsck to fix.
+[   92.947999][T10563] EXT4-fs (loop1): mount failed
+[   92.950679][ T9194] Bluetooth: hci0: command 0x041b tx timeout
+[   93.014690][T10576] ------------[ cut here ]------------
+[   93.016164][T10576] WARNING: CPU: 1 PID: 10576 at lib/iov_iter.c:629 _copy_from_iter+0x162/0x8b0
+[   93.018364][T10576] Modules linked in:
+[   93.029276][T10576] CPU: 1 PID: 10576 Comm: syz.3.4 Not tainted 6.2.0 #1
+[   93.032287][ T9194] Bluetooth: hci1: command 0x041b tx timeout
+[   93.034392][T10576] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[   93.037617][ T1078] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[   93.039731][ T1078] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[   93.046822][T10505] IPv6: ADDRCONF(NETDEV_CHANGE): wlan1: link becomes ready
+[   93.059160][T10576] RIP: 0010:_copy_from_iter+0x162/0x8b0
+[   93.060868][ T5024] usb 3-1: new high-speed USB device number 2 using dummy_hcd
+[   93.066801][T10576] Code: 48 2b 04 25 28 00 00 00 0f 85 15 07 00 00 48 83 c4 70 4c 89 e0 5b 5d 41 5c 41 5d 41 5e 41 5f c3 cc cc cc cc e8 2f 7e f5 fe 90 <0f> 0b 90 45 31 e4 eb c3 e8 21 7e f5 fe 31 ff 44 89 ee e8 d7 76 f5
+[   93.072343][T10576] RSP: 0018:ffffc90001bbba10 EFLAGS: 00010212
+[   93.074514][T10576] RAX: 00000000000007b1 RBX: ffffc90001bbbb40 RCX: ffffc900111d1000
+[   93.077241][T10576] RDX: 0000000000080000 RSI: ffffffff8248fad1 RDI: 0000000000000001
+[   93.079410][T10576] RBP: 0000000000000000 R08: 0000000000000001 R09: 0000000000000000
+[   93.091026][T10576] R10: 0000000000000000 R11: 0000000000000064 R12: 00000000000000f6
+[   93.093358][T10576] R13: ffffea0001598c00 R14: 0000000000000000 R15: ffffc90001bbbb40
+[   93.095869][T10576] FS:  00007fa9de78e640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+[   93.098599][T10576] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   93.101742][T10576] CR2: 0000001b33500ff8 CR3: 0000000056388000 CR4: 0000000000750ee0
+[   93.104236][T10576] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[   93.106736][T10576] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[   93.109303][T10576] PKRU: 80000000
+[   93.110767][ T5012] Bluetooth: hci2: command 0x041b tx timeout
+[   93.113002][T10576] Call Trace:
+[   93.120237][T10576]  <TASK>
+[   93.121496][T10576]  ? bio_add_hw_page+0x23c/0x2f0
+[   93.123156][T10576]  ? page_copy_sane+0xb7/0x250
+[   93.124321][T10576]  copy_page_from_iter+0x94/0x110
+[   93.125374][T10576]  blk_rq_map_user_iov+0x5f7/0xab0
+[   93.126472][T10576]  blk_rq_map_user_io+0x129/0x140
+[   93.127538][T10576]  sg_common_write.constprop.0+0x693/0xb40
+[   93.128761][T10576]  sg_new_write.isra.0+0x211/0x510
+[   93.129837][T10576]  ? pmd_migration_entry_wait+0x11b/0x350
+[   93.131645][T10576]  ? tomoyo_path_number_perm+0x89/0x290
+[   93.133329][T10576]  ? scsi_block_when_processing_errors+0x133/0x170
+[   93.135863][T10576]  sg_ioctl+0x5f0/0x1040
+[   93.137226][T10576]  ? do_vfs_ioctl+0xa0/0xc50
+[   93.138498][T10576]  ? __pfx_sg_ioctl+0x10/0x10
+[   93.139777][T10576]  __x64_sys_ioctl+0x104/0x150
+[   93.141182][T10576]  do_syscall_64+0x3d/0xc0
+[   93.142371][T10576]  entry_SYSCALL_64_after_hwframe+0x73/0xdd
+[   93.143860][T10576] RIP: 0033:0x7fa9dd9ae16d
+[   93.145175][T10576] Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+[   93.149444][T10576] RSP: 002b:00007fa9de78df98 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   93.152085][T10576] RAX: ffffffffffffffda RBX: 00007fa9ddbf5fa0 RCX: 00007fa9dd9ae16d
+[   93.154443][T10576] RDX: 0000200000000380 RSI: 0000000000002285 RDI: 0000000000000003
+[   93.156784][T10576] RBP: 00007fa9dda480f0 R08: 0000000000000000 R09: 0000000000000000
+[   93.158765][T10576] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[   93.161143][T10576] R13: 00007fa9ddbf6038 R14: 00007fa9ddbf5fa0 R15: 00007fa9de76e000
+[   93.163101][T10576]  </TASK>
+[   93.164115][T10576] ---[ end trace 0000000000000000 ]---
+[   93.197590][ T5012] Bluetooth: hci3: command 0x041b tx timeout
+[   93.330612][ T5024] usb 3-1: Using ep0 maxpacket: 8
+[   93.480767][ T5024] usb 3-1: config 5 has an invalid interface number: 111 but max is 0
+[   93.482655][ T5024] usb 3-1: config 5 has no interface number 0
+[   93.484284][ T5024] usb 3-1: config 5 interface 111 altsetting 7 endpoint 0xE has invalid maxpacket 1023, setting to 64
+[   93.486720][ T5024] usb 3-1: config 5 interface 111 has no altsetting 0
+[   93.640855][ T5024] usb 3-1: New USB device found, idVendor=2201, idProduct=012c, bcdDevice=5c.e5
+[   93.642763][ T5024] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   93.644405][ T5024] usb 3-1: Product: syz
+[   93.645282][ T5024] usb 3-1: Manufacturer: syz
+[   93.646281][ T5024] usb 3-1: SerialNumber: syz
+[   94.050734][ T5024] usb 3-1: probing VID:PID(2201:012C)   
+[   94.053717][ T5024] usb 3-1: vub300 testing UNKNOWN EndPoint(0) 0E
+[   94.055891][ T5024] usb 3-1: vub300 ignoring EndPoint(0) 0E
+[   94.057825][ T5024] usb 3-1: Could not find two sets of bulk-in/out endpoint pairs
+[   94.061348][ T5024] vub300: probe of 3-1:5.111 failed with error -22
+[   94.076273][ T5024] usb 3-1: USB disconnect, device number 2
+[   95.030892][ T9194] Bluetooth: hci0: command 0x040f tx timeout
+[   95.111094][ T9194] Bluetooth: hci1: command 0x040f tx timeout
+[   95.200760][ T5012] Bluetooth: hci2: command 0x040f tx timeout
+[   95.270869][ T5012] Bluetooth: hci3: command 0x040f tx timeout
+[   97.110986][ T9194] Bluetooth: hci0: command 0x0419 tx timeout
+[   97.191324][ T5012] Bluetooth: hci1: command 0x0419 tx timeout
+[   97.280657][ T9194] Bluetooth: hci2: command 0x0419 tx timeout
+[   97.351334][ T9194] Bluetooth: hci3: command 0x0419 tx timeout
+
+VM DIAGNOSIS:
+06:10:59  Registers:
+info registers vcpu 0
+RAX=ffffffff8712937c RBX=ffffc90001727c58 RCX=0000000000000008 RDX=0000000000000000
+RSI=ffffffff86a81640 RDI=ffffffff86a81660 RBP=ffffc90001727ce0 RSP=ffffc90001727c18
+R8 =ffffffff816a1c9c R9 =ffffffff86a8161c R10=ffffffff86a8163c R11=0000000000040001
+R12=ffffffff816a1c9c R13=ffffffff816a1c9d R14=ffffc90001727e70 R15=0000000000000001
+RIP=ffffffff8119672e RFL=00000202 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00007fc6c39178c0 ffffffff 00c00000
+GS =0000 ffff88803ec00000 ffffffff 00c00000
+LDT=0000 0000000000000000 ffffffff 00c00000
+TR =0040 fffffe5596556000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe5596554000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=0000001b33523ffc CR3=0000000048af6000 CR4=00750ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=00000000c0c0fcc0 Opmask01=00000000e2f0fcc4 Opmask02=0000000000040040 Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00006c696146002f
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000696e656420 737365636341002f
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffff0f0e0d0c0b 0a09080706050403
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 696e656420737365 636341002f737973
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffff0000 0000000000000000
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffff00 ffffffffffffffff
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000396d69737768
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 08080d0f02164b5d 1d0c144b55555654
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 5c0101010d4b5c09 0d17130c4b090d17
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 31706f6f6c2f6b63 6f6c622f6c617574 7269762f73656369 7665642f7379732f
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0065756575712f31 706f6f6c2f6b636f 6c622f6c61757472 69762f7365636976
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 7469726765746e69 0400200000000054 cc013f0000000000 0034c500657a6973
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0800180000000052 7e3d680000000000 0034aa7974742f6c 6175006575657571
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000090 003432000000ff01 0000000200000003 000055fb8907cd40
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 000055fb8907d420 0000000400000000 000055fb890ad980 000055fb8909fc90
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffff00000004 000055fb890a5aa0 000055fb890bcc10 0000000000000000
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00000003ffffffff 000055fb8909faf0
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000500000007 000055fb890bf9a0 000055fb890a6340 0000000300000006
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 1
+RAX=0000000000000020 RBX=0000000000000000 RCX=0000000000000000 RDX=00000000000003f8
+RSI=ffffffff827a4e25 RDI=ffffffff88c939e0 RBP=ffffffff88c939e0 RSP=ffffc90001bbb590
+R8 =0000000000000001 R9 =000000000000000a R10=0000000000000020 R11=502031203a555043
+R12=0000000000000020 R13=ffffffff888da302 R14=0000000000000010 R15=ffffffff827a4e10
+RIP=ffffffff827a4e38 RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00007fa9de78e640 ffffffff 00c00000
+GS =0000 ffff88807ec00000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe4f36dfc000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe4f36dfa000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=00007fa9de78dff0 CR3=0000000056388000 CR4=00750ee0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=0000000008000100 Opmask01=0000000000000000 Opmask02=00000000ffffffef Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000989680 0000000000000000
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000989680
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007fa9de72d660 00007fa9de72d660
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffc36b7dd90 00007ffc36b7dd90
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffc36b7ddcf
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00005555563af500 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007fa9de72d660
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007fa9dd9a4878 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000524f525245
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000

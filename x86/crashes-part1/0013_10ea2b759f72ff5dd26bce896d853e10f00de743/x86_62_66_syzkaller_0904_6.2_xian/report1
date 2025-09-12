@@ -1,0 +1,29 @@
+unregister_netdevice: waiting for syz_tun to become free. Usage count = 2
+leaked reference.
+ __netdev_tracker_alloc home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/netdevice.h:4018 [inline]
+ netdev_hold home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/netdevice.h:4047 [inline]
+ netdev_hold home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/netdevice.h:4042 [inline]
+ fib_check_nh_nongw home/jiakai/62_66_amd_0904/linux62/linux-all/net/ipv4/fib_semantics.c:1238 [inline]
+ fib_check_nh+0x147/0x280 home/jiakai/62_66_amd_0904/linux62/linux-all/net/ipv4/fib_semantics.c:1258
+ fib_create_info+0xf50/0x1b40 home/jiakai/62_66_amd_0904/linux62/linux-all/net/ipv4/fib_semantics.c:1553
+ fib_table_insert+0x100/0xa60 home/jiakai/62_66_amd_0904/linux62/linux-all/net/ipv4/fib_trie.c:1236
+ fib_magic+0x199/0x1d0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/ipv4/fib_frontend.c:1101
+ fib_add_ifaddr+0x28a/0x2a0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/ipv4/fib_frontend.c:1145
+ fib_netdev_event+0x142/0x2c0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/ipv4/fib_frontend.c:1483
+ notifier_call_chain home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/notifier.c:87 [inline]
+ raw_notifier_call_chain+0x61/0xa0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/notifier.c:455
+ call_netdevice_notifiers_info+0x78/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/dev.c:1936
+ call_netdevice_notifiers_extack home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/dev.c:1974 [inline]
+ call_netdevice_notifiers home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/dev.c:1988 [inline]
+ __dev_notify_flags+0xb2/0x1b0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/dev.c:8561
+ dev_change_flags+0x71/0x90 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/dev.c:8599
+ do_setlink+0x482/0x1ce0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/rtnetlink.c:2827
+ __rtnl_newlink+0x77a/0xd70 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/rtnetlink.c:3590
+ rtnl_newlink+0x4d/0x80 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/rtnetlink.c:3637
+ rtnetlink_rcv_msg+0x22b/0x5b0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/rtnetlink.c:6141
+ netlink_rcv_skb+0x91/0x1e0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:2574
+ netlink_unicast_kernel home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1365
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

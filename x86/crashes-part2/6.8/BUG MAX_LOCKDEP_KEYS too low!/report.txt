@@ -1,0 +1,41 @@
+BUG: MAX_LOCKDEP_KEYS too low!
+turning off the locking correctness validator.
+CPU: 0 PID: 191974 Comm: syz-executor Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0xea/0x170 lib/dump_stack.c:106
+ register_lock_class+0x2d2/0x2f0 kernel/locking/lockdep.c:1321
+ __lock_acquire+0x6c/0xc10 kernel/locking/lockdep.c:5014
+ lock_acquire+0xcb/0x1d0 kernel/locking/lockdep.c:5754
+ __flush_workqueue+0x95/0x830 kernel/workqueue.c:3146
+ drain_workqueue+0x79/0x1d0 kernel/workqueue.c:3311
+ destroy_workqueue+0x66/0x730 kernel/workqueue.c:4793
+ btrfs_destroy_workqueue+0x1b/0x40 fs/btrfs/async-thread.c:361
+ btrfs_stop_all_workers+0xcb/0x120 fs/btrfs/disk-io.c:1796
+ close_ctree+0x35f/0x670 fs/btrfs/disk-io.c:4368
+ generic_shutdown_super+0x91/0x170 fs/super.c:641
+ kill_anon_super+0x1a/0x40 fs/super.c:1225
+ btrfs_kill_super+0x1a/0x30 fs/btrfs/super.c:2093
+ deactivate_locked_super+0x5a/0x90 fs/super.c:472
+ cleanup_mnt+0x1ba/0x220 fs/namespace.c:1267
+ task_work_run+0xc9/0x110 kernel/task_work.c:180
+ resume_user_mode_work include/linux/resume_user_mode.h:50 [inline]
+ exit_to_user_mode_loop kernel/entry/common.c:108 [inline]
+ exit_to_user_mode_prepare include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x111/0x260 kernel/entry/common.c:212
+ do_syscall_64+0x8e/0x150 arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x63/0x6b
+RIP: 0033:0x7f60e55afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007fffeef29ed8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007f60e55afb8b
+RDX: 00007f60e544fd10 RSI: 0000000000000009 RDI: 00007fffeef29f90
+RBP: 00007fffeef29f90 R08: 0000000000000000 R09: 00007fffeef29d60
+R10: 00005555558166f3 R11: 0000000000000246 R12: 00007f60e5647cae
+R13: 00007fffeef2b060 R14: 0000555555816600 R15: 000000000025bfcf
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>

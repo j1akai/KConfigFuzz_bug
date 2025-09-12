@@ -1,0 +1,27 @@
+QEMU emulator version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.26)
+qemu-system-riscv64 ["-m" "8192" "-smp" "4" "-chardev" "socket,id=SOCKSYZ,server=on,wait=off,host=localhost,port=49497" "-mon" "chardev=SOCKSYZ,mode=control" "-display" "none" "-serial" "stdio" "-no-reboot" "-name" "VM-0" "-device" "virtio-rng-pci" "-machine" "virt" "-device" "virtio-net-pci,netdev=net0" "-netdev" "user,id=net0,restrict=on,hostfwd=tcp:127.0.0.1:52176-:22" "-device" "virtio-blk-device,drive=hd0" "-drive" "file=/home/jiakai/rv/rootfs.ext2,if=none,format=raw,id=hd0" "-snapshot" "-kernel" "/home/jiakai/rv/linux/arch/riscv/boot/Image" "-append" "root=/dev/vda console=ttyS0 "]
+
+[CPU Info]
+processor           : 0, 1, 2, 3
+hart                : 3, 0, 1, 2
+isa                 : rv64imafdc_zicntr_zicsr_zifencei_zihpm_zaamo_zalrsc_zca_zcd
+mmu                 : sv57
+mvendorid           : 0x0
+marchid             : 0x0
+mimpid              : 0x0
+hart isa            : rv64imafdc_zicntr_zicsr_zifencei_zihpm_zaamo_zalrsc_zca_zcd
+
+--------------------------------------------------------------------------------
+
+[KVM]
+/sys/module/kvm:
+	halt_poll_ns_shrink: 2
+	halt_poll_ns_grow: 2
+	halt_poll_ns: 500000
+	allow_unsafe_mappings: N
+	enable_virt_at_load: Y
+	halt_poll_ns_grow_start: 10000
+
+
+--------------------------------------------------------------------------------
+

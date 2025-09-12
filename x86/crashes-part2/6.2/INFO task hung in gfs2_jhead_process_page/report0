@@ -1,0 +1,125 @@
+INFO: task kworker/0:7:10406 blocked for more than 143 seconds.
+      Not tainted 6.2.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/0:7     state:D stack:11936 pid:10406 ppid:2      flags:0x00004000
+Workqueue: gfs_recovery gfs2_recover_func
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5296 [inline]
+ __schedule+0x34c/0x470 kernel/sched/core.c:6609
+ schedule+0x71/0xc0 kernel/sched/core.c:6685
+ io_schedule+0x3b/0x50 kernel/sched/core.c:8871
+ folio_wait_bit_common+0x3fa/0x9a0 mm/filemap.c:1297
+ folio_wait_locked include/linux/pagemap.h:1021 [inline]
+ gfs2_jhead_process_page+0xa4/0x440 fs/gfs2/lops.c:476
+ gfs2_find_jhead+0x46c/0x670 fs/gfs2/lops.c:583
+ gfs2_recover_func+0x293/0xf00 fs/gfs2/recovery.c:460
+ process_one_work+0x36b/0x5b0 kernel/workqueue.c:2289
+ worker_thread+0x3a7/0x6d0 kernel/workqueue.c:2436
+ kthread+0x12c/0x160 kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 arch/x86/entry/entry_64.S:308
+ </TASK>
+INFO: task syz.2.593:13476 blocked for more than 143 seconds.
+      Not tainted 6.2.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.2.593       state:D stack:12984 pid:13476 ppid:7797   flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5296 [inline]
+ __schedule+0x34c/0x470 kernel/sched/core.c:6609
+ schedule+0x71/0xc0 kernel/sched/core.c:6685
+ bit_wait+0x8/0x50 kernel/sched/wait_bit.c:199
+ __wait_on_bit+0x49/0x80 kernel/sched/wait_bit.c:49
+ out_of_line_wait_on_bit+0x84/0xa0 kernel/sched/wait_bit.c:64
+ wait_on_bit include/linux/wait_bit.h:76 [inline]
+ gfs2_recover_journal+0xba/0xd0 fs/gfs2/recovery.c:577
+ init_journal+0xac3/0xea0 fs/gfs2/ops_fstype.c:835
+ init_inodes+0x69/0x1a0 fs/gfs2/ops_fstype.c:889
+ gfs2_fill_super+0xe70/0x10c0 fs/gfs2/ops_fstype.c:1247
+ get_tree_bdev+0x215/0x2c0 fs/super.c:1282
+ gfs2_get_tree+0x27/0xd0 fs/gfs2/ops_fstype.c:1330
+ vfs_get_tree+0x33/0x120 fs/super.c:1489
+ do_new_mount+0x1de/0x560 fs/namespace.c:3145
+ do_mount fs/namespace.c:3488 [inline]
+ __do_sys_mount fs/namespace.c:3697 [inline]
+ __se_sys_mount+0x28d/0x2e0 fs/namespace.c:3674
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x41/0x90 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7fe3311affde
+RSP: 002b:00007fe331fe0da8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+RAX: ffffffffffffffda RBX: 000000000001f6b5 RCX: 00007fe3311affde
+RDX: 000020000001f680 RSI: 000020000001f6c0 RDI: 00007fe331fe0e00
+RBP: 00007fe331fe0e40 R08: 00007fe331fe0e40 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 000020000001f680
+R13: 000020000001f6c0 R14: 00007fe331fe0e00 R15: 000020000001f700
+ </TASK>
+INFO: lockdep is turned off.
+NMI backtrace for cpu 0
+CPU: 0 PID: 31 Comm: khungtaskd Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0xea/0x170 lib/dump_stack.c:106
+ nmi_cpu_backtrace+0x254/0x2b0 lib/nmi_backtrace.c:111
+ nmi_trigger_cpumask_backtrace+0x137/0x280 lib/nmi_backtrace.c:62
+ trigger_all_cpu_backtrace include/linux/nmi.h:148 [inline]
+ check_hung_uninterruptible_tasks kernel/hung_task.c:220 [inline]
+ watchdog+0x8fb/0x940 kernel/hung_task.c:377
+ kthread+0x12c/0x160 kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 arch/x86/entry/entry_64.S:308
+ </TASK>
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 PID: 32375 Comm: syz.1.3351 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:rcu_dynticks_curr_cpu_in_eqs include/linux/context_tracking.h:121 [inline]
+RIP: 0010:rcu_is_watching+0x28/0x40 kernel/rcu/tree.c:713
+Code: 00 00 65 ff 05 01 bb c9 7e e8 d4 25 a7 03 89 c0 48 8b 04 c5 e0 77 08 86 8b 80 f8 8d 02 00 65 ff 0d e5 ba c9 7e 74 07 83 e0 04 <c1> e8 02 c3 e8 3f 2d c7 ff eb f2 66 2e 0f 1f 84 00 00 00 00 00 0f
+RSP: 0018:ffffc90004d9bb98 EFLAGS: 00000202
+RAX: 0000000000000004 RBX: ffff88800aeeef40 RCX: ffff888061e3a300
+RDX: 0000000000000000 RSI: ffffffff85fe9f44 RDI: ffffffff860304f4
+RBP: 000000000000016e R08: ffffffff81744526 R09: 0000000000000001
+R10: ffffffff850001f0 R11: ffffffff813b5180 R12: 0000000000000000
+R13: 00000000008eef00 R14: 0000000000000000 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f940f71a2d8 CR3: 000000004a9f4000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ rcu_read_unlock include/linux/rcupdate.h:793 [inline]
+ page_ext_put+0x13/0x90 mm/page_ext.c:182
+ reset_page_owner include/linux/page_owner.h:24 [inline]
+ free_pages_prepare mm/page_alloc.c:1446 [inline]
+ free_pcp_prepare+0x329/0x350 mm/page_alloc.c:1496
+ free_unref_page_prepare mm/page_alloc.c:3369 [inline]
+ free_unref_page+0x1f/0x1d0 mm/page_alloc.c:3464
+ __vunmap+0x4cd/0x570 mm/vmalloc.c:2727
+ kcov_put kernel/kcov.c:428 [inline]
+ kcov_close+0x27/0x50 kernel/kcov.c:524
+ __fput+0x1ca/0x460 fs/file_table.c:320
+ task_work_run+0xcd/0x110 kernel/task_work.c:179
+ exit_task_work include/linux/task_work.h:38 [inline]
+ do_exit+0x31f/0xd40 kernel/exit.c:867
+ do_group_exit+0xa7/0xe0 kernel/exit.c:1012
+ get_signal+0x9eb/0xa80 kernel/signal.c:2859
+ arch_do_signal_or_restart+0x23/0x230 arch/x86/kernel/signal.c:306
+ exit_to_user_mode_loop+0x74/0x150 kernel/entry/common.c:168
+ exit_to_user_mode_prepare+0xb2/0x140 kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x26/0x60 kernel/entry/common.c:296
+ do_syscall_64+0x4f/0x90 arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7faa0dfae16d
+Code: Unable to access opcode bytes at 0x7faa0dfae143.
+RSP: 002b:00007faa0eead068 EFLAGS: 00000246 ORIG_RAX: 00000000000000ca
+RAX: fffffffffffffe00 RBX: 00007faa0e1f5fa8 RCX: 00007faa0dfae16d
+RDX: 0000000000000000 RSI: 0000000000000080 RDI: 00007faa0e1f5fa8
+RBP: 00007faa0e1f5fa0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007faa0e1f6038 R14: 00007faa0df4a2e0 R15: 00007faa0ee8d000
+ </TASK>

@@ -1,0 +1,85 @@
+rcu: INFO: rcu_preempt self-detected stall on CPU
+rcu: 	1-....: (10001 ticks this GP) idle=305c/1/0x4000000000000000 softirq=1045553/1045553 fqs=4908
+rcu: 	         hardirqs   softirqs   csw/system
+rcu: 	 number:        4          0            0
+rcu: 	cputime:      168          0        49823   ==> 50000(ms)
+rcu: 	(t=10001 jiffies g=305981 q=74715 ncpus=2)
+CPU: 1 PID: 49 Comm: kworker/1:1 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events sco_sock_timeout
+RIP: 0010:__pv_queued_spin_lock_slowpath+0x212/0x380 home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/qspinlock.c:554
+Code: 48 8b 78 08 31 d2 48 89 ee e8 0a df 43 fc 65 ff 0d 9b 83 11 7b 0f 85 53 ff ff ff e8 38 ec 0e fc e9 49 ff ff ff f3 90 4c 8b 23 <4d> 85 e4 74 f6 e9 16 ff ff ff 83 e0 03 c1 ea 12 4c 8d 6b 14 41 be
+RSP: 0018:ffffc900004bbdd0 EFLAGS: 00000246
+RAX: 0000000000000001 RBX: ffff88807ec2f200 RCX: ffffffff811b175e
+RDX: 0000000000000000 RSI: ffffffff84f159ac RDI: 0000000000000000
+RBP: ffff888023b79c98 R08: 0000000000000000 R09: 0000000000000003
+R10: 0000000000000003 R11: 0000000000000001 R12: 0000000000000000
+R13: 0000000000000001 R14: 0000000000000100 R15: 0000000000080000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f43aabe5be0 CR3: 000000000665e000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <IRQ>
+ </IRQ>
+ <TASK>
+ pv_queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/include/asm/paravirt.h:584 [inline]
+ queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/include/asm/qspinlock.h:51 [inline]
+ queued_spin_lock home/jiakai/62_66_amd_0904/linux68/linux/include/asm-generic/qspinlock.h:114 [inline]
+ do_raw_spin_lock home/jiakai/62_66_amd_0904/linux68/linux/include/linux/spinlock.h:187 [inline]
+ __raw_spin_lock_bh home/jiakai/62_66_amd_0904/linux68/linux/include/linux/spinlock_api_smp.h:127 [inline]
+ _raw_spin_lock_bh+0x32/0x40 home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/spinlock.c:178
+ spin_lock_bh home/jiakai/62_66_amd_0904/linux68/linux/include/linux/spinlock.h:356 [inline]
+ lock_sock_nested+0x24/0x70 home/jiakai/62_66_amd_0904/linux68/linux/net/core/sock.c:3526
+ lock_sock home/jiakai/62_66_amd_0904/linux68/linux/include/net/sock.h:1691 [inline]
+ sco_sock_timeout+0xa0/0x190 home/jiakai/62_66_amd_0904/linux68/linux/net/bluetooth/sco.c:96
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2633
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2706 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2787
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+vkms_vblank_simulate: vblank timer overrun
+NMI backtrace for cpu 1
+CPU: 1 PID: 49 Comm: kworker/1:1 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events sco_sock_timeout
+RIP: 0010:__pv_queued_spin_lock_slowpath+0x20f/0x380 home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/qspinlock.c:554
+Code: c0 74 0e 48 8b 78 08 31 d2 48 89 ee e8 0a df 43 fc 65 ff 0d 9b 83 11 7b 0f 85 53 ff ff ff e8 38 ec 0e fc e9 49 ff ff ff f3 90 <4c> 8b 23 4d 85 e4 74 f6 e9 16 ff ff ff 83 e0 03 c1 ea 12 4c 8d 6b
+RSP: 0018:ffffc900004bbdd0 EFLAGS: 00000246
+RAX: 0000000000000001 RBX: ffff88807ec2f200 RCX: ffffffff811b175e
+RDX: 0000000000000000 RSI: ffffffff84f159ac RDI: 0000000000000000
+RBP: ffff888023b79c98 R08: 0000000000000000 R09: 0000000000000003
+R10: 0000000000000003 R11: 0000000000000001 R12: 0000000000000000
+R13: 0000000000000001 R14: 0000000000000100 R15: 0000000000080000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f43aabe5be0 CR3: 000000000665e000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <NMI>
+ </NMI>
+ <TASK>
+ pv_queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/include/asm/paravirt.h:584 [inline]
+ queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/include/asm/qspinlock.h:51 [inline]
+ queued_spin_lock home/jiakai/62_66_amd_0904/linux68/linux/include/asm-generic/qspinlock.h:114 [inline]
+ do_raw_spin_lock home/jiakai/62_66_amd_0904/linux68/linux/include/linux/spinlock.h:187 [inline]
+ __raw_spin_lock_bh home/jiakai/62_66_amd_0904/linux68/linux/include/linux/spinlock_api_smp.h:127 [inline]
+ _raw_spin_lock_bh+0x32/0x40 home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/spinlock.c:178
+ spin_lock_bh home/jiakai/62_66_amd_0904/linux68/linux/include/linux/spinlock.h:356 [inline]
+ lock_sock_nested+0x24/0x70 home/jiakai/62_66_amd_0904/linux68/linux/net/core/sock.c:3526
+ lock_sock home/jiakai/62_66_amd_0904/linux68/linux/include/net/sock.h:1691 [inline]
+ sco_sock_timeout+0xa0/0x190 home/jiakai/62_66_amd_0904/linux68/linux/net/bluetooth/sco.c:96
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2633
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2706 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2787
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+vkms_vblank_simulate: vblank timer overrun

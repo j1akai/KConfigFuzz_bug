@@ -1,0 +1,51 @@
+------------[ cut here ]------------
+kernel BUG at fs/hfs/inode.c:446!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 61 Comm: kworker/u5:3 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: writeback wb_workfn (flush-7:5)
+RIP: 0010:hfs_write_inode+0x16f/0x400 home/jiakai/62_66_amd_0904/linux66/linux/fs/hfs/inode.c:446
+Code: 28 85 48 89 df e8 a1 a1 a9 ff 48 83 fb 03 0f 84 55 01 00 00 48 83 fb 04 74 12 48 83 fb 02 0f 84 00 ff ff ff e8 42 a8 a9 ff 90 <0f> 0b e8 3a a8 a9 ff 48 8b 45 28 48 8b 80 80 03 00 00 48 8b 78 30
+RSP: 0018:ffffc9000065fb20 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: ffff88800a473000 RSI: ffffffff8198f49e RDI: 0000000000000007
+RBP: ffff88802c35ae30 R08: 0000000000000007 R09: 0000000000000004
+R10: 0000000000000000 R11: ffff88802440fb00 R12: 0000000000000000
+R13: 0000000000000000 R14: 0000000000000000 R15: ffff88802c35aeb8
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000200000000200 CR3: 000000001bb10000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ write_inode home/jiakai/62_66_amd_0904/linux66/linux/fs/fs-writeback.c:1456 [inline]
+ __writeback_single_inode+0x479/0x5a0 home/jiakai/62_66_amd_0904/linux66/linux/fs/fs-writeback.c:1673
+ writeback_sb_inodes+0x2db/0x730 home/jiakai/62_66_amd_0904/linux66/linux/fs/fs-writeback.c:1899
+ wb_writeback+0x7d/0x450 home/jiakai/62_66_amd_0904/linux66/linux/fs/fs-writeback.c:2075
+ wb_do_writeback home/jiakai/62_66_amd_0904/linux66/linux/fs/fs-writeback.c:2222 [inline]
+ wb_workfn+0x105/0x6c0 home/jiakai/62_66_amd_0904/linux66/linux/fs/fs-writeback.c:2262
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2630
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2703 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:hfs_write_inode+0x16f/0x400 home/jiakai/62_66_amd_0904/linux66/linux/fs/hfs/inode.c:446
+Code: 28 85 48 89 df e8 a1 a1 a9 ff 48 83 fb 03 0f 84 55 01 00 00 48 83 fb 04 74 12 48 83 fb 02 0f 84 00 ff ff ff e8 42 a8 a9 ff 90 <0f> 0b e8 3a a8 a9 ff 48 8b 45 28 48 8b 80 80 03 00 00 48 8b 78 30
+RSP: 0018:ffffc9000065fb20 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: ffff88800a473000 RSI: ffffffff8198f49e RDI: 0000000000000007
+RBP: ffff88802c35ae30 R08: 0000000000000007 R09: 0000000000000004
+R10: 0000000000000000 R11: ffff88802440fb00 R12: 0000000000000000
+R13: 0000000000000000 R14: 0000000000000000 R15: ffff88802c35aeb8
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fb103c7d658 CR3: 0000000051f78000 CR4: 0000000000752ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
