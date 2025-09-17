@@ -1,0 +1,46 @@
+list_del corruption. next->prev should be ffffffff86844fa8, but was 0000000000000000. (next=ffff88802189cbf8)
+------------[ cut here ]------------
+kernel BUG at lib/list_debug.c:62!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 47002 Comm: kworker/1:1 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events linkwatch_event
+RIP: 0010:__list_del_entry_valid.cold+0x25/0x75 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/list_debug.c:62
+Code: f9 ff 90 0f 0b 48 89 fe 48 c7 c7 f8 b8 01 86 e8 a3 3f f9 ff 90 0f 0b 48 89 d1 48 c7 c7 18 ba 01 86 4c 89 c2 e8 8e 3f f9 ff 90 <0f> 0b 48 89 f2 48 89 fe 48 c7 c7 c8 b9 01 86 e8 79 3f f9 ff 90 0f
+RSP: 0018:ffffc9000186fe80 EFLAGS: 00010082
+RAX: 000000000000006d RBX: ffffffff86844fa8 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffffffff86844fa0 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 6c65645f7473696c R12: ffff888054782480
+R13: ffff88807ec2c7c0 R14: 0000000000000000 R15: ffff88807ec30e00
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fdfb0fb9158 CR3: 0000000053aac000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ __list_del_entry home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/list.h:134 [inline]
+ list_del_init home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/list.h:206 [inline]
+ process_one_work+0x1c9/0x600 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2233
+ worker_thread+0x5d/0x5c0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2436
+ kthread+0xfc/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/entry_64.S:308
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:__list_del_entry_valid.cold+0x25/0x75 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/list_debug.c:62
+Code: f9 ff 90 0f 0b 48 89 fe 48 c7 c7 f8 b8 01 86 e8 a3 3f f9 ff 90 0f 0b 48 89 d1 48 c7 c7 18 ba 01 86 4c 89 c2 e8 8e 3f f9 ff 90 <0f> 0b 48 89 f2 48 89 fe 48 c7 c7 c8 b9 01 86 e8 79 3f f9 ff 90 0f
+RSP: 0018:ffffc9000186fe80 EFLAGS: 00010082
+RAX: 000000000000006d RBX: ffffffff86844fa8 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffffffff86844fa0 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 6c65645f7473696c R12: ffff888054782480
+R13: ffff88807ec2c7c0 R14: 0000000000000000 R15: ffff88807ec30e00
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fdfb0fb9158 CR3: 0000000053aac000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554

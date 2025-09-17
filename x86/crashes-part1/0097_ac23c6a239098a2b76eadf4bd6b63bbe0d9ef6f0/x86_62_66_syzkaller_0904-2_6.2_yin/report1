@@ -1,0 +1,55 @@
+loop7: detected capacity change from 0 to 2048
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 74015 at fs/nilfs2/dat.c:158 nilfs_dat_prepare_end+0xf8/0x150 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/dat.c:158
+Modules linked in:
+CPU: 0 PID: 74015 Comm: syz.7.5376 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:nilfs_dat_prepare_end+0xf8/0x150 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/dat.c:158
+Code: e0 5b 5d 41 5c 41 5d c3 cc cc cc cc e8 c1 09 55 ff 44 89 e6 bf fe ff ff ff e8 d4 02 55 ff 41 83 fc fe 75 d5 e8 a9 09 55 ff 90 <0f> 0b 90 eb ca e8 9e 09 55 ff 48 89 de 48 89 ef e8 73 81 01 00 31
+RSP: 0018:ffffc90010ccb9d8 EFLAGS: 00010206
+RAX: 0000000000001bd0 RBX: ffffc90010ccba00 RCX: ffffc900125ff000
+RDX: 0000000000080000 RSI: ffffffff81e96f57 RDI: 0000000000000005
+RBP: ffff888013854458 R08: 0000000000000005 R09: 00000000fffffffe
+R10: 00000000fffffffe R11: 0000000000040001 R12: 00000000fffffffe
+R13: ffff888013856cf8 R14: 0000000000000000 R15: ffff888013856d98
+FS:  00007f5fa56c4640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f5f9a636000 CR3: 0000000050178000 CR4: 0000000000752ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ nilfs_bmap_prepare_end_ptr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/bmap.h:211 [inline]
+ nilfs_direct_delete+0xfb/0x150 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/direct.c:155
+ nilfs_bmap_do_delete+0xe4/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/bmap.c:176
+ nilfs_bmap_do_truncate home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/bmap.c:264 [inline]
+ nilfs_bmap_truncate+0x6b/0x160 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/bmap.c:297
+ nilfs_truncate_bmap+0xc9/0x180 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/inode.c:846
+ nilfs_truncate+0xda/0x180 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/inode.c:876
+ nilfs_setattr+0x135/0x140 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/inode.c:972
+ notify_change+0x7bf/0xb40 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/attr.c:482
+ do_truncate+0xce/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/open.c:65
+ handle_truncate home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namei.c:3216 [inline]
+ do_open home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namei.c:3561 [inline]
+ path_openat+0x1986/0x1ba0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namei.c:3714
+ do_filp_open+0xce/0x1c0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namei.c:3741
+ do_sys_openat2+0xf0/0x260 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/open.c:1310
+ do_sys_open home/jiakai/62_66_amd_0904/linux62/linux-all/fs/open.c:1326 [inline]
+ __do_sys_creat home/jiakai/62_66_amd_0904/linux62/linux-all/fs/open.c:1402 [inline]
+ __se_sys_creat home/jiakai/62_66_amd_0904/linux62/linux-all/fs/open.c:1396 [inline]
+ __x64_sys_creat+0x51/0x70 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/open.c:1396
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f5fa47ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f5fa56c3f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000055
+RAX: ffffffffffffffda RBX: 00007f5fa49f5fa0 RCX: 00007f5fa47ae16d
+RDX: 0000000000000000 RSI: 0000000000000001 RDI: 0000200000000000
+RBP: 00007f5fa48480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f5fa49f6038 R14: 00007f5fa49f5fa0 R15: 00007f5fa56a4000
+ </TASK>
+---[ end trace 0000000000000000 ]---
+NILFS (loop7): error -2 truncating bmap (ino=15)

@@ -1,0 +1,70 @@
+general protection fault, probably for non-canonical address 0xdffffc000000014b: 0000 [#1] PREEMPT SMP KASAN
+KASAN: null-ptr-deref in range [0x0000000000000a58-0x0000000000000a5f]
+CPU: 0 PID: 9273 Comm: kworker/0:4 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events l2cap_info_timeout
+RIP: 0010:hci_send_acl+0x4c/0x100 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_core.c:3231
+Code: 49 8d 5c 24 18 48 89 d8 48 c1 e8 03 42 80 3c 28 00 74 08 48 89 df e8 d3 6f d8 f7 bd 58 0a 00 00 48 03 2b 48 89 e8 48 c1 e8 03 <42> 80 3c 28 00 74 08 48 89 ef e8 b5 6f d8 f7 48 8b 6d 00 66 90 49
+RSP: 0018:ffffc90005aaf908 EFLAGS: 00010206
+RAX: 000000000000014b RBX: ffff88801dec1a18 RCX: ffff88801bf324c0
+RDX: 0000000000000000 RSI: ffff888065431140 RDI: ffff88801dec1a00
+RBP: 0000000000000a58 R08: ffffffff8a1c32e6 R09: 1ffff11003e6308c
+R10: dffffc0000000000 R11: ffffed1003e6308d R12: ffff88801dec1a00
+R13: dffffc0000000000 R14: ffff888065431140 R15: 0000000000000002
+FS:  0000000000000000(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000110c34e214 CR3: 000000004f68c000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ l2cap_send_cmd home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:977 [inline]
+ l2cap_send_conn_req+0x30e/0x4c0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:1286
+ l2cap_conn_start+0xbc2/0x14c0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:1661
+ process_one_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2630 [inline]
+ process_scheduled_works+0x8c5/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2703
+ worker_thread+0xa7a/0x1040 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x2cd/0x360 home/jiakai/62_66_amd_0901/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:hci_send_acl+0x4c/0x100 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_core.c:3231
+Code: 49 8d 5c 24 18 48 89 d8 48 c1 e8 03 42 80 3c 28 00 74 08 48 89 df e8 d3 6f d8 f7 bd 58 0a 00 00 48 03 2b 48 89 e8 48 c1 e8 03 <42> 80 3c 28 00 74 08 48 89 ef e8 b5 6f d8 f7 48 8b 6d 00 66 90 49
+RSP: 0018:ffffc90005aaf908 EFLAGS: 00010206
+RAX: 000000000000014b RBX: ffff88801dec1a18 RCX: ffff88801bf324c0
+RDX: 0000000000000000 RSI: ffff888065431140 RDI: ffff88801dec1a00
+RBP: 0000000000000a58 R08: ffffffff8a1c32e6 R09: 1ffff11003e6308c
+R10: dffffc0000000000 R11: ffffed1003e6308d R12: ffff88801dec1a00
+R13: dffffc0000000000 R14: ffff888065431140 R15: 0000000000000002
+FS:  0000000000000000(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000110c34e214 CR3: 000000001c19e000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+----------------
+Code disassembly (best guess):
+   0:	49 8d 5c 24 18       	lea    0x18(%r12),%rbx
+   5:	48 89 d8             	mov    %rbx,%rax
+   8:	48 c1 e8 03          	shr    $0x3,%rax
+   c:	42 80 3c 28 00       	cmpb   $0x0,(%rax,%r13,1)
+  11:	74 08                	je     0x1b
+  13:	48 89 df             	mov    %rbx,%rdi
+  16:	e8 d3 6f d8 f7       	call   0xf7d86fee
+  1b:	bd 58 0a 00 00       	mov    $0xa58,%ebp
+  20:	48 03 2b             	add    (%rbx),%rbp
+  23:	48 89 e8             	mov    %rbp,%rax
+  26:	48 c1 e8 03          	shr    $0x3,%rax
+* 2a:	42 80 3c 28 00       	cmpb   $0x0,(%rax,%r13,1) <-- trapping instruction
+  2f:	74 08                	je     0x39
+  31:	48 89 ef             	mov    %rbp,%rdi
+  34:	e8 b5 6f d8 f7       	call   0xf7d86fee
+  39:	48 8b 6d 00          	mov    0x0(%rbp),%rbp
+  3d:	66 90                	xchg   %ax,%ax
+  3f:	49                   	rex.WB
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

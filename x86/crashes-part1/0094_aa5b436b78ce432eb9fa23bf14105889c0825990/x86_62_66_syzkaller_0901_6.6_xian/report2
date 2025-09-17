@@ -1,0 +1,210 @@
+==================================================================
+BUG: KASAN: slab-use-after-free in hci_send_acl+0x3d/0x100 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_core.c:3231
+Read of size 8 at addr ffff8880439ddd18 by task kworker/1:8/10701
+
+CPU: 1 PID: 10701 Comm: kworker/1:8 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events l2cap_info_timeout
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:106
+ print_address_description+0x78/0x390 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/report.c:364
+ print_report+0x107/0x220 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/report.c:475
+ kasan_report+0x141/0x170 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/report.c:588
+ hci_send_acl+0x3d/0x100 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_core.c:3231
+ l2cap_send_cmd home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:977 [inline]
+ l2cap_send_conn_req+0x30e/0x4c0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:1286
+ l2cap_conn_start+0xbc2/0x14c0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:1661
+ process_one_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2630 [inline]
+ process_scheduled_works+0x8c5/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2703
+ worker_thread+0xa7a/0x1040 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x2cd/0x360 home/jiakai/62_66_amd_0901/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+
+Allocated by task 10581:
+ kasan_save_stack home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:45 [inline]
+ kasan_set_track+0x4c/0x70 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:52
+ ____kasan_kmalloc home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:374 [inline]
+ __kasan_kmalloc+0x94/0xa0 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:383
+ kmalloc home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:599 [inline]
+ kzalloc home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:720 [inline]
+ kernfs_get_open_node home/jiakai/62_66_amd_0901/linux66/linux/fs/kernfs/file.c:572 [inline]
+ kernfs_fop_open+0x7f4/0xcb0 home/jiakai/62_66_amd_0901/linux66/linux/fs/kernfs/file.c:740
+ do_dentry_open+0x7ee/0x13f0 home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:929
+ do_open home/jiakai/62_66_amd_0901/linux66/linux/fs/namei.c:3640 [inline]
+ path_openat+0x279c/0x3120 home/jiakai/62_66_amd_0901/linux66/linux/fs/namei.c:3797
+ do_filp_open+0x275/0x500 home/jiakai/62_66_amd_0901/linux66/linux/fs/namei.c:3824
+ do_sys_openat2+0x13a/0x1c0 home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1422
+ do_sys_open home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1437 [inline]
+ __do_sys_openat home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1453 [inline]
+ __se_sys_openat home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1448 [inline]
+ __x64_sys_openat+0x243/0x290 home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1448
+ do_syscall_x64 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+
+Last potentially related work creation:
+ kasan_save_stack+0x3b/0x60 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:45
+ __kasan_record_aux_stack+0xad/0xc0 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/generic.c:492
+ kvfree_call_rcu+0xf6/0x7a0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/rcu/tree.c:3372
+ kernfs_unlink_open_file+0x427/0x510 home/jiakai/62_66_amd_0901/linux66/linux/fs/kernfs/file.c:633
+ kernfs_fop_release+0x2f6/0x440 home/jiakai/62_66_amd_0901/linux66/linux/fs/kernfs/file.c:805
+ __fput+0x405/0x940 home/jiakai/62_66_amd_0901/linux66/linux/fs/file_table.c:384
+ __do_sys_close home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1572 [inline]
+ __se_sys_close+0x155/0x1e0 home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1557
+ do_syscall_x64 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+
+The buggy address belongs to the object at ffff8880439ddd00
+ which belongs to the cache kmalloc-128 of size 128
+The buggy address is located 24 bytes inside of
+ freed 128-byte region [ffff8880439ddd00, ffff8880439ddd80)
+
+The buggy address belongs to the physical page:
+page:ffffea00010e7740 refcount:1 mapcount:0 mapping:0000000000000000 index:0xffff8880439ddd00 pfn:0x439dd
+flags: 0x4fff00000000800(slab|node=1|zone=1|lastcpupid=0x7ff)
+page_type: 0xffffffff()
+raw: 04fff00000000800 ffff8880188418c0 ffffea000193a950 ffffea00019c4550
+raw: ffff8880439ddd00 000000000010000e 00000001ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+page_owner tracks the page as allocated
+page last allocated via order 0, migratetype Unmovable, gfp_mask 0x112cc0(GFP_USER|__GFP_NOWARN|__GFP_NORETRY), pid 9408, tgid 9408 (syz-executor), ts 197169968574, free_ts 196784426114
+ set_page_owner home/jiakai/62_66_amd_0901/linux66/linux/include/linux/page_owner.h:31 [inline]
+ post_alloc_hook+0x1f4/0x220 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:1536
+ prep_new_page home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:1543 [inline]
+ get_page_from_freelist+0x72b/0x7a0 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:3170
+ __alloc_pages+0x259/0x560 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:4426
+ __alloc_pages_node home/jiakai/62_66_amd_0901/linux66/linux/include/linux/gfp.h:237 [inline]
+ alloc_slab_page+0x61/0x190 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:1872
+ allocate_slab+0x5e/0x3c0 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:2017
+ new_slab home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:2070 [inline]
+ ___slab_alloc+0xa0f/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3223
+ __slab_alloc home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3322 [inline]
+ __slab_alloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3375 [inline]
+ slab_alloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3468 [inline]
+ __kmem_cache_alloc_node+0x23b/0x320 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3517
+ __do_kmalloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1025 [inline]
+ __kmalloc_node+0x9e/0x190 home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1033
+ kmalloc_array_node home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:697 [inline]
+ kcalloc_node home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:702 [inline]
+ memcg_alloc_slab_cgroups+0x7c/0x120 home/jiakai/62_66_amd_0901/linux66/linux/mm/memcontrol.c:2895
+ account_slab home/jiakai/62_66_amd_0901/linux66/linux/mm/slab.h:636 [inline]
+ allocate_slab+0x9b/0x3c0 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:2035
+ new_slab home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:2070 [inline]
+ ___slab_alloc+0xa0f/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3223
+ __slab_alloc home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3322 [inline]
+ __slab_alloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3375 [inline]
+ slab_alloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3468 [inline]
+ __kmem_cache_alloc_node+0x23b/0x320 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3517
+ __do_kmalloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1025 [inline]
+ __kmalloc_node+0x9e/0x190 home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1033
+ kmalloc_node home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:619 [inline]
+ kvmalloc_node+0x6e/0x180 home/jiakai/62_66_amd_0901/linux66/linux/mm/util.c:607
+ kvmalloc home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:737 [inline]
+ kvzalloc home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:745 [inline]
+ allocate_hook_entries_size home/jiakai/62_66_amd_0901/linux66/linux/net/netfilter/core.c:61 [inline]
+ nf_hook_entries_grow+0x2a8/0x750 home/jiakai/62_66_amd_0901/linux66/linux/net/netfilter/core.c:140
+ __nf_register_net_hook+0x2ad/0x900 home/jiakai/62_66_amd_0901/linux66/linux/net/netfilter/core.c:435
+page last free stack trace:
+ reset_page_owner home/jiakai/62_66_amd_0901/linux66/linux/include/linux/page_owner.h:24 [inline]
+ free_pages_prepare home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:1136 [inline]
+ free_unref_page_prepare+0x7f0/0x900 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:2312
+ free_unref_page+0x30/0x3c0 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:2405
+ mm_free_pgd home/jiakai/62_66_amd_0901/linux66/linux/kernel/fork.c:803 [inline]
+ __mmdrop+0xb5/0x3f0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/fork.c:919
+ free_bprm+0x144/0x330 home/jiakai/62_66_amd_0901/linux66/linux/fs/exec.c:1492
+ kernel_execve+0x40d/0xa00 home/jiakai/62_66_amd_0901/linux66/linux/fs/exec.c:2026
+ call_usermodehelper_exec_async+0x22f/0x370 home/jiakai/62_66_amd_0901/linux66/linux/kernel/umh.c:110
+ ret_from_fork+0x44/0x70 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/entry_64.S:304
+
+Memory state around the buggy address:
+ ffff8880439ddc00: 00 00 00 00 00 00 00 00 00 00 00 00 00 fc fc fc
+ ffff8880439ddc80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+>ffff8880439ddd00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+                            ^
+ ffff8880439ddd80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff8880439dde00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+==================================================================
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+ __fput+0x405/0x940
+ __se_sys_close+0x155/0x1e0
+ do_syscall_64+0x2b/0x50
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+The buggy address belongs to the object at ffff8880439ddd00
+ which belongs to the cache kmalloc-128 of size 128
+The buggy address is located 24 bytes inside of
+ freed 128-byte region [ffff8880439ddd00, ffff8880439ddd80)
+The buggy address belongs to the physical page:
+page:ffffea00010e7740 refcount:1 mapcount:0 mapping:0000000000000000 index:0xffff8880439ddd00 pfn:0x439dd
+flags: 0x4fff00000000800(slab|node=1|zone=1|lastcpupid=0x7ff)
+page_type: 0xffffffff()
+raw: 04fff00000000800 ffff8880188418c0 ffffea000193a950 ffffea00019c4550
+raw: ffff8880439ddd00 000000000010000e 00000001ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+page_owner tracks the page as allocated
+page last allocated via order 0, migratetype Unmovable, gfp_mask 0x112cc0(GFP_USER|__GFP_NOWARN|__GFP_NORETRY), pid 9408, tgid 9408 (syz-executor), ts 197169968574, free_ts 196784426114
+ post_alloc_hook+0x1f4/0x220
+ get_page_from_freelist+0x72b/0x7a0
+ __alloc_pages+0x259/0x560
+ alloc_slab_page+0x61/0x190
+ allocate_slab+0x5e/0x3c0
+ ___slab_alloc+0xa0f/0x1130
+ __kmem_cache_alloc_node+0x23b/0x320
+ __kmalloc_node+0x9e/0x190
+ memcg_alloc_slab_cgroups+0x7c/0x120
+ allocate_slab+0x9b/0x3c0
+ ___slab_alloc+0xa0f/0x1130
+ __kmem_cache_alloc_node+0x23b/0x320
+ __kmalloc_node+0x9e/0x190
+ kvmalloc_node+0x6e/0x180
+ nf_hook_entries_grow+0x2a8/0x750
+ __nf_register_net_hook+0x2ad/0x900
+page last free stack trace:
+ free_unref_page_prepare+0x7f0/0x900
+ free_unref_page+0x30/0x3c0
+ __mmdrop+0xb5/0x3f0
+ free_bprm+0x144/0x330
+ kernel_execve+0x40d/0xa00
+ call_usermodehelper_exec_async+0x22f/0x370
+ ret_from_fork+0x44/0x70
+ ret_from_fork_asm+0x11/0x20
+Memory state around the buggy address:
+ ffff8880439ddc00: 00 00 00 00 00 00 00 00 00 00 00 00 00 fc fc fc
+ ffff8880439ddc80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+>ffff8880439ddd00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+                            ^
+ ffff8880439ddd80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff8880439dde00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+==================================================================
+Kernel panic - not syncing: KASAN: panic_on_warn set ...
+CPU: 1 PID: 10701 Comm: kworker/1:8 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events l2cap_info_timeout
+Call Trace:
+ <TASK>
+ dump_stack_lvl+0x1e3/0x2d0
+ panic+0x2f5/0x760
+ check_panic_on_warn+0x80/0xa0
+ end_report+0x4a/0xb0
+ kasan_report+0x152/0x170
+ hci_send_acl+0x3d/0x100
+ l2cap_send_conn_req+0x30e/0x4c0
+ l2cap_conn_start+0xbc2/0x14c0
+ process_scheduled_works+0x8c5/0x1130
+ worker_thread+0xa7a/0x1040
+ kthread+0x2cd/0x360
+ ret_from_fork+0x44/0x70
+ ret_from_fork_asm+0x11/0x20
+ </TASK>
+Kernel Offset: disabled
+Rebooting in 86400 seconds..
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

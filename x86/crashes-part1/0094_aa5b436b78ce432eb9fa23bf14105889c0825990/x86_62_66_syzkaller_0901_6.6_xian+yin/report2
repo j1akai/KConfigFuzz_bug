@@ -1,0 +1,163 @@
+==================================================================
+BUG: KASAN: slab-use-after-free in hci_send_acl+0x3d/0x100 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_core.c:3231
+Read of size 8 at addr ffff888000f24318 by task kworker/1:6/25072
+
+CPU: 1 PID: 25072 Comm: kworker/1:6 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events l2cap_info_timeout
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:106
+ print_address_description+0x78/0x390 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/report.c:364
+ print_report+0x107/0x220 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/report.c:475
+ kasan_report+0x141/0x170 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/report.c:588
+ hci_send_acl+0x3d/0x100 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_core.c:3231
+ l2cap_send_cmd home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:977 [inline]
+ l2cap_send_conn_req+0x30e/0x4c0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:1286
+ l2cap_conn_start+0xbc2/0x14c0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:1661
+ process_one_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2630 [inline]
+ process_scheduled_works+0x8c5/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2703
+ worker_thread+0xa7a/0x1040 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x2cd/0x360 home/jiakai/62_66_amd_0901/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+
+Allocated by task 59786:
+ kasan_save_stack home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:45 [inline]
+ kasan_set_track+0x4c/0x70 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:52
+ ____kasan_kmalloc home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:374 [inline]
+ __kasan_kmalloc+0x94/0xa0 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:383
+ kmalloc home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:599 [inline]
+ kzalloc home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:720 [inline]
+ hci_chan_create+0xbf/0x2f0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_conn.c:2723
+ l2cap_conn_add+0x6c/0xb20 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:7841
+ l2cap_chan_connect+0x671/0xf90 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_core.c:8053
+ l2cap_sock_connect+0x5d7/0x8e0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/l2cap_sock.c:256
+ kernel_connect+0x108/0x160 home/jiakai/62_66_amd_0901/linux66/linux/net/socket.c:3599
+ rfcomm_session_create+0x54e/0x880 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/rfcomm/core.c:811
+ __rfcomm_dlc_open+0x30d/0xbd0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/rfcomm/core.c:388
+ rfcomm_dlc_open+0x36/0x50 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/rfcomm/core.c:431
+ rfcomm_sock_connect+0x2d7/0x5e0 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/rfcomm/sock.c:409
+ __sys_connect_file home/jiakai/62_66_amd_0901/linux66/linux/net/socket.c:2050 [inline]
+ __sys_connect+0x2a5/0x2e0 home/jiakai/62_66_amd_0901/linux66/linux/net/socket.c:2067
+ __do_sys_connect home/jiakai/62_66_amd_0901/linux66/linux/net/socket.c:2077 [inline]
+ __se_sys_connect home/jiakai/62_66_amd_0901/linux66/linux/net/socket.c:2074 [inline]
+ __x64_sys_connect+0x76/0x80 home/jiakai/62_66_amd_0901/linux66/linux/net/socket.c:2074
+ do_syscall_x64 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+
+Freed by task 48043:
+ kasan_save_stack home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:45 [inline]
+ kasan_set_track+0x4c/0x70 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:52
+ kasan_save_free_info+0x24/0x40 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/generic.c:522
+ ____kasan_slab_free+0xd6/0x120 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:236
+ kasan_slab_free home/jiakai/62_66_amd_0901/linux66/linux/include/linux/kasan.h:164 [inline]
+ slab_free_hook home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:1800 [inline]
+ slab_free_freelist_hook+0x12d/0x1a0 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:1826
+ slab_free home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3809 [inline]
+ __kmem_cache_free+0x71/0x110 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3822
+ hci_chan_list_flush home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_conn.c:2763 [inline]
+ hci_conn_cleanup+0x1aa/0x770 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_conn.c:152
+ hci_abort_conn_sync+0x78e/0x1090 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_sync.c:5428
+ hci_cmd_sync_work+0x228/0x410 home/jiakai/62_66_amd_0901/linux66/linux/net/bluetooth/hci_sync.c:306
+ process_one_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2630 [inline]
+ process_scheduled_works+0x8c5/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2703
+ worker_thread+0xa7a/0x1040 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x2cd/0x360 home/jiakai/62_66_amd_0901/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/entry_64.S:304
+
+Last potentially related work creation:
+ kasan_save_stack+0x3b/0x60 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:45
+ __kasan_record_aux_stack+0xad/0xc0 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/generic.c:492
+ kvfree_call_rcu+0xf6/0x7a0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/rcu/tree.c:3372
+ kernfs_unlink_open_file+0x427/0x510 home/jiakai/62_66_amd_0901/linux66/linux/fs/kernfs/file.c:633
+ kernfs_fop_release+0x2f6/0x440 home/jiakai/62_66_amd_0901/linux66/linux/fs/kernfs/file.c:805
+ __fput+0x405/0x940 home/jiakai/62_66_amd_0901/linux66/linux/fs/file_table.c:384
+ __do_sys_close home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1572 [inline]
+ __se_sys_close+0x155/0x1e0 home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1557
+ do_syscall_x64 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+
+Second to last potentially related work creation:
+ kasan_save_stack+0x3b/0x60 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/common.c:45
+ __kasan_record_aux_stack+0xad/0xc0 home/jiakai/62_66_amd_0901/linux66/linux/mm/kasan/generic.c:492
+ kvfree_call_rcu+0xf6/0x7a0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/rcu/tree.c:3372
+ kernfs_unlink_open_file+0x427/0x510 home/jiakai/62_66_amd_0901/linux66/linux/fs/kernfs/file.c:633
+ kernfs_fop_release+0x2f6/0x440 home/jiakai/62_66_amd_0901/linux66/linux/fs/kernfs/file.c:805
+ __fput+0x405/0x940 home/jiakai/62_66_amd_0901/linux66/linux/fs/file_table.c:384
+ __do_sys_close home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1572 [inline]
+ __se_sys_close+0x155/0x1e0 home/jiakai/62_66_amd_0901/linux66/linux/fs/open.c:1557
+ do_syscall_x64 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+
+The buggy address belongs to the object at ffff888000f24300
+ which belongs to the cache kmalloc-128 of size 128
+The buggy address is located 24 bytes inside of
+ freed 128-byte region [ffff888000f24300, ffff888000f24380)
+
+The buggy address belongs to the physical page:
+page:ffffea000003c900 refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0xf24
+flags: 0x7ff00000000800(slab|node=0|zone=0|lastcpupid=0x7ff)
+page_type: 0xffffffff()
+raw: 007ff00000000800 ffff8880188418c0 dead000000000100 dead000000000122
+raw: 0000000000000000 0000000000100010 00000001ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+page_owner tracks the page as allocated
+page last allocated via order 0, migratetype Unmovable, gfp_mask 0x112cc0(GFP_USER|__GFP_NOWARN|__GFP_NORETRY), pid 1, tgid 1 (systemd), ts 700494165607, free_ts 700488709522
+ set_page_owner home/jiakai/62_66_amd_0901/linux66/linux/include/linux/page_owner.h:31 [inline]
+ post_alloc_hook+0x1f4/0x220 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:1536
+ prep_new_page home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:1543 [inline]
+ get_page_from_freelist+0x72b/0x7a0 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:3170
+ __alloc_pages+0x259/0x560 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:4426
+ __alloc_pages_node home/jiakai/62_66_amd_0901/linux66/linux/include/linux/gfp.h:237 [inline]
+ alloc_slab_page+0x61/0x190 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:1872
+ allocate_slab+0x5e/0x3c0 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:2017
+ new_slab home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:2070 [inline]
+ ___slab_alloc+0xa0f/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3223
+ __slab_alloc home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3322 [inline]
+ __slab_alloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3375 [inline]
+ slab_alloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3468 [inline]
+ __kmem_cache_alloc_node+0x23b/0x320 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3517
+ __do_kmalloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1025 [inline]
+ __kmalloc_node+0x9e/0x190 home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1033
+ kmalloc_array_node home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:697 [inline]
+ kcalloc_node home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:702 [inline]
+ memcg_alloc_slab_cgroups+0x7c/0x120 home/jiakai/62_66_amd_0901/linux66/linux/mm/memcontrol.c:2895
+ account_slab home/jiakai/62_66_amd_0901/linux66/linux/mm/slab.h:636 [inline]
+ allocate_slab+0x9b/0x3c0 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:2035
+ new_slab home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:2070 [inline]
+ ___slab_alloc+0xa0f/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3223
+ __slab_alloc home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3322 [inline]
+ __slab_alloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3375 [inline]
+ slab_alloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3468 [inline]
+ __kmem_cache_alloc_node+0x23b/0x320 home/jiakai/62_66_amd_0901/linux66/linux/mm/slub.c:3517
+ kmalloc_trace+0x26/0x60 home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1117
+ kmalloc home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:599 [inline]
+ kzalloc home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:720 [inline]
+ alloc_pipe_info+0xe5/0x4b0 home/jiakai/62_66_amd_0901/linux66/linux/fs/pipe.c:791
+ get_pipe_inode home/jiakai/62_66_amd_0901/linux66/linux/fs/pipe.c:882 [inline]
+ create_pipe_files+0x83/0x6e0 home/jiakai/62_66_amd_0901/linux66/linux/fs/pipe.c:914
+ __do_pipe_flags+0x48/0x2c0 home/jiakai/62_66_amd_0901/linux66/linux/fs/pipe.c:963
+page last free stack trace:
+ reset_page_owner home/jiakai/62_66_amd_0901/linux66/linux/include/linux/page_owner.h:24 [inline]
+ free_pages_prepare home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:1136 [inline]
+ free_unref_page_prepare+0x7f0/0x900 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:2312
+ free_unref_page+0x30/0x3c0 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:2405
+ rcu_do_batch home/jiakai/62_66_amd_0901/linux66/linux/kernel/rcu/tree.c:2139 [inline]
+ rcu_core+0xac8/0x1790 home/jiakai/62_66_amd_0901/linux66/linux/kernel/rcu/tree.c:2403
+ __do_softirq+0x277/0x74e home/jiakai/62_66_amd_0901/linux66/linux/kernel/softirq.c:553
+
+Memory state around the buggy address:
+ ffff888000f24200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 fc fc
+ ffff888000f24280: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+>ffff888000f24300: fa fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+                            ^
+ ffff888000f24380: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff888000f24400: fa fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+==================================================================

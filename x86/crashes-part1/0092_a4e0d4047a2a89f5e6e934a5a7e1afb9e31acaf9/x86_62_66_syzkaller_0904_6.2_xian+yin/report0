@@ -1,0 +1,64 @@
+usb 5-1: USB2VGA dongle found at address 18
+usb 5-1: Allocated 8 output buffers
+------------[ cut here ]------------
+usb 5-1: BOGUS urb xfer, pipe 3 != type 1
+WARNING: CPU: 0 PID: 5062 at drivers/usb/core/urb.c:504 usb_submit_urb+0x789/0xb10 drivers/usb/core/urb.c:504
+Modules linked in:
+CPU: 0 PID: 5062 Comm: kworker/0:3 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: usb_hub_wq hub_event
+RIP: 0010:usb_submit_urb+0x789/0xb10 drivers/usb/core/urb.c:504
+Code: fe 48 8b 04 24 48 8d b8 a8 00 00 00 e8 30 2d 96 ff 41 89 d8 44 89 e1 4c 89 ea 48 89 c6 48 c7 c7 c8 1f 0c 86 e8 45 5d 8b 01 90 <0f> 0b 90 90 e9 66 fb ff ff e8 89 46 1d fe 49 81 c4 38 04 00 00 e9
+RSP: 0018:ffffc9000163f5a0 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: ffffc90017c5a000
+RDX: 0000000000100000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff8880169203c0 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 3a312d3520627375 R12: 0000000000000003
+R13: ffff888019d99720 R14: 0000000000000003 R15: ffff888010854000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fc9351661d0 CR3: 000000004c640000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ sisusb_bulkout_msg drivers/usb/misc/sisusbvga/sisusbvga.c:224 [inline]
+ sisusb_send_bulk_msg.constprop.0+0x44f/0x820 drivers/usb/misc/sisusbvga/sisusbvga.c:379
+ sisusb_send_bridge_packet drivers/usb/misc/sisusbvga/sisusbvga.c:567 [inline]
+ sisusb_do_init_gfxdevice drivers/usb/misc/sisusbvga/sisusbvga.c:2077 [inline]
+ sisusb_init_gfxdevice+0x7cc/0x2ea0 drivers/usb/misc/sisusbvga/sisusbvga.c:2177
+ sisusb_probe+0x316/0x410 drivers/usb/misc/sisusbvga/sisusbvga.c:2869
+ usb_probe_interface+0x17e/0x380 drivers/usb/core/driver.c:396
+ call_driver_probe drivers/base/dd.c:560 [inline]
+ really_probe+0x133/0x3a0 drivers/base/dd.c:639
+ __driver_probe_device+0xbf/0x140 drivers/base/dd.c:778
+ driver_probe_device+0x2a/0x120 drivers/base/dd.c:808
+ __device_attach_driver+0x102/0x150 drivers/base/dd.c:936
+ bus_for_each_drv+0xbb/0x110 drivers/base/bus.c:427
+ __device_attach+0x105/0x2d0 drivers/base/dd.c:1008
+ bus_probe_device+0xcd/0xe0 drivers/base/bus.c:487
+ device_add+0x64d/0xdd0 drivers/base/core.c:3479
+ usb_set_configuration+0x8d8/0xb50 drivers/usb/core/message.c:2171
+ usb_generic_driver_probe+0x94/0xd0 drivers/usb/core/generic.c:238
+ usb_probe_device+0x63/0x150 drivers/usb/core/driver.c:293
+ call_driver_probe drivers/base/dd.c:560 [inline]
+ really_probe+0x133/0x3a0 drivers/base/dd.c:639
+ __driver_probe_device+0xbf/0x140 drivers/base/dd.c:778
+ driver_probe_device+0x2a/0x120 drivers/base/dd.c:808
+ __device_attach_driver+0x102/0x150 drivers/base/dd.c:936
+ bus_for_each_drv+0xbb/0x110 drivers/base/bus.c:427
+ __device_attach+0x105/0x2d0 drivers/base/dd.c:1008
+ bus_probe_device+0xcd/0xe0 drivers/base/bus.c:487
+ device_add+0x64d/0xdd0 drivers/base/core.c:3479
+ usb_new_device.cold+0x10f/0x58e drivers/usb/core/hub.c:2576
+ hub_port_connect drivers/usb/core/hub.c:5408 [inline]
+ hub_port_connect_change drivers/usb/core/hub.c:5552 [inline]
+ port_event drivers/usb/core/hub.c:5712 [inline]
+ hub_event+0x16bb/0x2300 drivers/usb/core/hub.c:5794
+ process_one_work+0x2c1/0x600 kernel/workqueue.c:2289
+ worker_thread+0x5d/0x5c0 kernel/workqueue.c:2436
+ kthread+0xfc/0x130 kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 arch/x86/entry/entry_64.S:308
+ </TASK>
+---[ end trace 0000000000000000 ]---

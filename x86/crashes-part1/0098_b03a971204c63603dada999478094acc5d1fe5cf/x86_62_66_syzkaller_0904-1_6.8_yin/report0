@@ -1,0 +1,65 @@
+general protection fault, probably for non-canonical address 0xff88807ac62c813f: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 86439 Comm: syz.2.13293 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:freelist_ptr_decode home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:500 [inline]
+RIP: 0010:get_freepointer home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:513 [inline]
+RIP: 0010:get_freepointer_safe home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:540 [inline]
+RIP: 0010:__slab_alloc_node home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3680 [inline]
+RIP: 0010:slab_alloc_node home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:3850 [inline]
+RIP: 0010:kmalloc_trace+0xc8/0x350 home/jiakai/62_66_amd_0904/linux68/linux/mm/slub.c:4007
+Code: 9c 7e 48 8b 50 08 48 83 78 10 00 48 8b 38 0f 84 21 02 00 00 48 85 ff 0f 84 18 02 00 00 41 8b 44 24 28 49 8b 34 24 48 8d 4a 08 <48> 8b 1c 07 48 89 f8 65 48 0f c7 0e 75 be 41 8b 44 24 28 0f 0d 0c
+RSP: 0018:ffffc90001c1fcd0 EFLAGS: 00010286
+RAX: 0000000000000040 RBX: 0000000000000cc0 RCX: 0000000000084f01
+RDX: 0000000000084ef9 RSI: 00000000000320b0 RDI: ff88807ac62c80ff
+RBP: ffffc90001c1fd20 R08: 0000000000000007 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff888009441700
+R13: 0000000000000cc0 R14: 0000000000000080 R15: ffffffff8370b24d
+FS:  00007f0f3a622640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f0f39b20300 CR3: 0000000069e9c000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ kmalloc home/jiakai/62_66_amd_0904/linux68/linux/include/linux/slab.h:590 [inline]
+ raw_ioctl_init+0x11d/0x410 home/jiakai/62_66_amd_0904/linux68/linux/drivers/usb/gadget/legacy/raw_gadget.c:517
+ raw_ioctl+0x5e8/0x1120 home/jiakai/62_66_amd_0904/linux68/linux/drivers/usb/gadget/legacy/raw_gadget.c:1303
+ vfs_ioctl home/jiakai/62_66_amd_0904/linux68/linux/fs/ioctl.c:51 [inline]
+ __do_sys_ioctl home/jiakai/62_66_amd_0904/linux68/linux/fs/ioctl.c:871 [inline]
+ __se_sys_ioctl home/jiakai/62_66_amd_0904/linux68/linux/fs/ioctl.c:857 [inline]
+ __x64_sys_ioctl+0x107/0x150 home/jiakai/62_66_amd_0904/linux68/linux/fs/ioctl.c:857
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0xb0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f0f397add2f
+Code: 00 48 89 44 24 18 31 c0 48 8d 44 24 60 c7 04 24 10 00 00 00 48 89 44 24 08 48 8d 44 24 20 48 89 44 24 10 b8 10 00 00 00 0f 05 <41> 89 c0 3d 00 f0 ff ff 77 1f 48 8b 44 24 18 64 48 2b 04 25 28 00
+RSP: 002b:00007f0f3a61fe60 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f0f3a620f10 RCX: 00007f0f397add2f
+RDX: 00007f0f3a620f10 RSI: 0000000041015500 RDI: 0000000000000003
+RBP: 0000000000000003 R08: 0000000000000010 R09: 00322e6364755f79
+R10: 000000000000000a R11: 0000000000000246 R12: 00007f0f3a621f20
+R13: 00002000000000c0 R14: 00002000000000ed R15: 00007f0f39b20320
+ </TASK>
+Modules linked in:
+----------------
+Code disassembly (best guess):
+   0:	9c                   	pushf
+   1:	7e 48                	jle    0x4b
+   3:	8b 50 08             	mov    0x8(%rax),%edx
+   6:	48 83 78 10 00       	cmpq   $0x0,0x10(%rax)
+   b:	48 8b 38             	mov    (%rax),%rdi
+   e:	0f 84 21 02 00 00    	je     0x235
+  14:	48 85 ff             	test   %rdi,%rdi
+  17:	0f 84 18 02 00 00    	je     0x235
+  1d:	41 8b 44 24 28       	mov    0x28(%r12),%eax
+  22:	49 8b 34 24          	mov    (%r12),%rsi
+  26:	48 8d 4a 08          	lea    0x8(%rdx),%rcx
+* 2a:	48 8b 1c 07          	mov    (%rdi,%rax,1),%rbx <-- trapping instruction
+  2e:	48 89 f8             	mov    %rdi,%rax
+  31:	65 48 0f c7 0e       	cmpxchg16b %gs:(%rsi)
+  36:	75 be                	jne    0xfffffff6
+  38:	41 8b 44 24 28       	mov    0x28(%r12),%eax
+  3d:	0f                   	.byte 0xf
+  3e:	0d                   	.byte 0xd
+  3f:	0c                   	.byte 0xc

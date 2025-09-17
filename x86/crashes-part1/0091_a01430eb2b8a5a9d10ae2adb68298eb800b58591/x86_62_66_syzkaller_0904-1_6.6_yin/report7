@@ -1,0 +1,72 @@
+general protection fault, probably for non-canonical address 0x400000400000043: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 10597 Comm: kworker/0:4 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events l2cap_info_timeout
+RIP: 0010:hci_queue_acl home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/hci_core.c:3179 [inline]
+RIP: 0010:hci_send_acl+0x4b/0x1e0 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/hci_core.c:3235
+Code: 0c e8 f9 32 c2 fc 4d 8b 66 18 8b 45 74 48 c7 c6 e0 a9 7c 85 49 8b 8c 24 50 07 00 00 29 45 70 c7 45 74 00 00 00 00 c6 45 28 02 <0f> b6 79 43 48 89 0c 24 48 89 fb e8 05 2c c2 fc 84 db 74 6d 80 fb
+RSP: 0018:ffffc90001b3bc80 EFLAGS: 00010206
+RAX: 0000000000000000 RBX: 0000000000000002 RCX: 0400000400000000
+RDX: ffff888022664800 RSI: ffffffff857ca9e0 RDI: ffff88802390b180
+RBP: ffff888012e36300 R08: 0000000000000001 R09: 0000000000000080
+R10: 0000000000000001 R11: ffffffff8484879c R12: ffff88802390b190
+R13: 0000000000000002 R14: ffff88802390b180 R15: ffff888023535a48
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f49ab5b9158 CR3: 00000000483ae000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ l2cap_send_cmd+0x232/0x290 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:977
+ l2cap_send_conn_req+0xab/0xd0 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1286
+ l2cap_start_connection home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1514 [inline]
+ l2cap_start_connection+0x6c/0x150 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1506
+ l2cap_conn_start+0x3b2/0x500 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1661
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2630
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2703 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:hci_queue_acl home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/hci_core.c:3179 [inline]
+RIP: 0010:hci_send_acl+0x4b/0x1e0 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/hci_core.c:3235
+Code: 0c e8 f9 32 c2 fc 4d 8b 66 18 8b 45 74 48 c7 c6 e0 a9 7c 85 49 8b 8c 24 50 07 00 00 29 45 70 c7 45 74 00 00 00 00 c6 45 28 02 <0f> b6 79 43 48 89 0c 24 48 89 fb e8 05 2c c2 fc 84 db 74 6d 80 fb
+RSP: 0018:ffffc90001b3bc80 EFLAGS: 00010206
+RAX: 0000000000000000 RBX: 0000000000000002 RCX: 0400000400000000
+RDX: ffff888022664800 RSI: ffffffff857ca9e0 RDI: ffff88802390b180
+RBP: ffff888012e36300 R08: 0000000000000001 R09: 0000000000000080
+R10: 0000000000000001 R11: ffffffff8484879c R12: ffff88802390b190
+R13: 0000000000000002 R14: ffff88802390b180 R15: ffff888023535a48
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f49ab5f7dac CR3: 000000004805e000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+----------------
+Code disassembly (best guess):
+   0:	0c e8                	or     $0xe8,%al
+   2:	f9                   	stc
+   3:	32 c2                	xor    %dl,%al
+   5:	fc                   	cld
+   6:	4d 8b 66 18          	mov    0x18(%r14),%r12
+   a:	8b 45 74             	mov    0x74(%rbp),%eax
+   d:	48 c7 c6 e0 a9 7c 85 	mov    $0xffffffff857ca9e0,%rsi
+  14:	49 8b 8c 24 50 07 00 	mov    0x750(%r12),%rcx
+  1b:	00
+  1c:	29 45 70             	sub    %eax,0x70(%rbp)
+  1f:	c7 45 74 00 00 00 00 	movl   $0x0,0x74(%rbp)
+  26:	c6 45 28 02          	movb   $0x2,0x28(%rbp)
+* 2a:	0f b6 79 43          	movzbl 0x43(%rcx),%edi <-- trapping instruction
+  2e:	48 89 0c 24          	mov    %rcx,(%rsp)
+  32:	48 89 fb             	mov    %rdi,%rbx
+  35:	e8 05 2c c2 fc       	call   0xfcc22c3f
+  3a:	84 db                	test   %bl,%bl
+  3c:	74 6d                	je     0xab
+  3e:	80                   	.byte 0x80
+  3f:	fb                   	sti

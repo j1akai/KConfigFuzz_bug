@@ -1,0 +1,61 @@
+============================================
+WARNING: possible recursive locking detected
+6.2.0 #1 Not tainted
+--------------------------------------------
+syz.2.444/13821 is trying to acquire lock:
+ffff888000fa3130 (sk_lock-AF_PPPOX){+.+.}-{0:0}, at: lock_sock home/jiakai/62_66_amd_0901/linux62/linux/include/net/sock.h:1725 [inline]
+ffff888000fa3130 (sk_lock-AF_PPPOX){+.+.}-{0:0}, at: l2tp_tunnel_register+0xb27/0x1b80 home/jiakai/62_66_amd_0901/linux62/linux/net/l2tp/l2tp_core.c:1483
+
+but task is already holding lock:
+ffff888000fa3130 (sk_lock-AF_PPPOX){+.+.}-{0:0}, at: lock_sock home/jiakai/62_66_amd_0901/linux62/linux/include/net/sock.h:1725 [inline]
+ffff888000fa3130 (sk_lock-AF_PPPOX){+.+.}-{0:0}, at: pppol2tp_connect+0x63c/0x1750 home/jiakai/62_66_amd_0901/linux62/linux/net/l2tp/l2tp_ppp.c:675
+
+other info that might help us debug this:
+ Possible unsafe locking scenario:
+
+       CPU0
+       ----
+  lock(sk_lock-AF_PPPOX);
+  lock(sk_lock-AF_PPPOX);
+
+ *** DEADLOCK ***
+
+ May be due to missing lock nesting notation
+
+1 lock held by syz.2.444/13821:
+ #0: ffff888000fa3130 (sk_lock-AF_PPPOX){+.+.}-{0:0}, at: lock_sock home/jiakai/62_66_amd_0901/linux62/linux/include/net/sock.h:1725 [inline]
+ #0: ffff888000fa3130 (sk_lock-AF_PPPOX){+.+.}-{0:0}, at: pppol2tp_connect+0x63c/0x1750 home/jiakai/62_66_amd_0901/linux62/linux/net/l2tp/l2tp_ppp.c:675
+
+stack backtrace:
+CPU: 0 PID: 13821 Comm: syz.2.444 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0901/linux62/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 home/jiakai/62_66_amd_0901/linux62/linux/lib/dump_stack.c:106
+ print_deadlock_bug home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/lockdep.c:2990 [inline]
+ check_deadlock home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/lockdep.c:3033 [inline]
+ validate_chain+0x4721/0x6470 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/lockdep.c:3818
+ __lock_acquire+0x1292/0x1f60 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/lockdep.c:5055
+ lock_acquire+0x1a7/0x400 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/lockdep.c:5668
+ lock_sock_nested+0x44/0xf0 home/jiakai/62_66_amd_0901/linux62/linux/net/core/sock.c:3471
+ lock_sock home/jiakai/62_66_amd_0901/linux62/linux/include/net/sock.h:1725 [inline]
+ l2tp_tunnel_register+0xb27/0x1b80 home/jiakai/62_66_amd_0901/linux62/linux/net/l2tp/l2tp_core.c:1483
+ pppol2tp_connect+0xb73/0x1750 home/jiakai/62_66_amd_0901/linux62/linux/net/l2tp/l2tp_ppp.c:723
+ __sys_connect_file home/jiakai/62_66_amd_0901/linux62/linux/net/socket.c:1979 [inline]
+ __sys_connect+0x29b/0x2d0 home/jiakai/62_66_amd_0901/linux62/linux/net/socket.c:1996
+ __do_sys_connect home/jiakai/62_66_amd_0901/linux62/linux/net/socket.c:2006 [inline]
+ __se_sys_connect home/jiakai/62_66_amd_0901/linux62/linux/net/socket.c:2003 [inline]
+ __x64_sys_connect+0x76/0x80 home/jiakai/62_66_amd_0901/linux62/linux/net/socket.c:2003
+ do_syscall_x64 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7fbc0e3ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fbc0f1a2f98 EFLAGS: 00000246 ORIG_RAX: 000000000000002a
+RAX: ffffffffffffffda RBX: 00007fbc0e5f5fa0 RCX: 00007fbc0e3ae16d
+RDX: 000000000000003a RSI: 0000200000000000 RDI: 0000000000000003
+RBP: 00007fbc0e4480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fbc0e5f6038 R14: 00007fbc0e5f5fa0 R15: 00007fbc0f183000
+ </TASK>
