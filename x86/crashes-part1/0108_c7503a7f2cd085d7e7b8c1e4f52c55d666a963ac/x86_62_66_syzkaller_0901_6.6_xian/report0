@@ -1,0 +1,122 @@
+loop4: detected capacity change from 0 to 4096
+ntfs: volume version 3.1.
+======================================================
+WARNING: possible circular locking dependency detected
+6.6.0 #1 Not tainted
+------------------------------------------------------
+syz.4.1728/28927 is trying to acquire lock:
+ffff8880698f3b50 (&ni->mrec_lock){+.+.}-{3:3}, at: map_mft_record+0x46/0x610 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/mft.c:154
+
+but task is already holding lock:
+ffff8880698f3ac0 (&rl->lock){++++}-{3:3}, at: ntfs_attr_extend_allocation+0x584/0x3c90 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/attrib.c:2001
+
+which lock already depends on the new lock.
+
+
+the existing dependency chain (in reverse order) is:
+
+-> #1 (&rl->lock){++++}-{3:3}:
+       lock_acquire+0x1a9/0x400 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5753
+       down_read+0xad/0xa50 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/rwsem.c:1520
+       ntfs_read_block+0x8b1/0x1aa0 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/aops.c:248
+       filemap_read_folio+0x1a0/0x610 home/jiakai/62_66_amd_0901/linux66/linux/mm/filemap.c:2382
+       do_read_cache_folio+0x2e3/0x7a0 home/jiakai/62_66_amd_0901/linux66/linux/mm/filemap.c:3742
+       do_read_cache_page home/jiakai/62_66_amd_0901/linux66/linux/mm/filemap.c:3808 [inline]
+       read_cache_page+0x58/0x410 home/jiakai/62_66_amd_0901/linux66/linux/mm/filemap.c:3817
+       read_mapping_page home/jiakai/62_66_amd_0901/linux66/linux/include/linux/pagemap.h:860 [inline]
+       ntfs_map_page home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/aops.h:75 [inline]
+       ntfs_sync_mft_mirror+0x249/0x1ae0 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/mft.c:480
+       write_mft_record_nolock+0x13fa/0x1960 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/mft.c:787
+       write_mft_record home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/mft.h:95 [inline]
+       __ntfs_write_inode+0x721/0xc90 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/inode.c:3051
+       write_inode home/jiakai/62_66_amd_0901/linux66/linux/fs/fs-writeback.c:1456 [inline]
+       __writeback_single_inode+0x4d6/0x670 home/jiakai/62_66_amd_0901/linux66/linux/fs/fs-writeback.c:1673
+       writeback_sb_inodes+0x862/0x1040 home/jiakai/62_66_amd_0901/linux66/linux/fs/fs-writeback.c:1899
+       wb_writeback+0x42c/0x780 home/jiakai/62_66_amd_0901/linux66/linux/fs/fs-writeback.c:2075
+       wb_do_writeback home/jiakai/62_66_amd_0901/linux66/linux/fs/fs-writeback.c:2222 [inline]
+       wb_workfn+0x3cb/0xf10 home/jiakai/62_66_amd_0901/linux66/linux/fs/fs-writeback.c:2262
+       process_one_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2630 [inline]
+       process_scheduled_works+0x8c5/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2703
+       worker_thread+0xa7a/0x1040 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2784
+       kthread+0x2cd/0x360 home/jiakai/62_66_amd_0901/linux66/linux/kernel/kthread.c:388
+       ret_from_fork+0x44/0x70 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/kernel/process.c:147
+       ret_from_fork_asm+0x11/0x20 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/entry_64.S:304
+
+-> #0 (&ni->mrec_lock){+.+.}-{3:3}:
+       check_prev_add home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:3134 [inline]
+       check_prevs_add home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:3253 [inline]
+       validate_chain+0x185a/0x6510 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:3868
+       __lock_acquire+0x1302/0x2050 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5136
+       lock_acquire+0x1a9/0x400 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5753
+       __mutex_lock_common home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/mutex.c:603 [inline]
+       __mutex_lock+0x131/0xd70 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/mutex.c:747
+       map_mft_record+0x46/0x610 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/mft.c:154
+       ntfs_attr_extend_allocation+0x58c/0x3c90 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/attrib.c:2002
+       ntfs_prepare_file_for_write home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/file.c:391 [inline]
+       ntfs_file_write_iter+0x39f/0x2f50 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/file.c:1914
+       call_write_iter home/jiakai/62_66_amd_0901/linux66/linux/include/linux/fs.h:1956 [inline]
+       new_sync_write home/jiakai/62_66_amd_0901/linux66/linux/fs/read_write.c:491 [inline]
+       vfs_write+0x783/0xaf0 home/jiakai/62_66_amd_0901/linux66/linux/fs/read_write.c:584
+       ksys_write+0x19b/0x2c0 home/jiakai/62_66_amd_0901/linux66/linux/fs/read_write.c:637
+       do_syscall_x64 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:50 [inline]
+       do_syscall_64+0x2b/0x50 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:80
+       entry_SYSCALL_64_after_hwframe+0x63/0xcd
+
+other info that might help us debug this:
+
+ Possible unsafe locking scenario:
+
+       CPU0                    CPU1
+       ----                    ----
+  lock(&rl->lock);
+                               lock(&ni->mrec_lock);
+                               lock(&rl->lock);
+  lock(&ni->mrec_lock);
+
+ *** DEADLOCK ***
+
+4 locks held by syz.4.1728/28927:
+ #0: ffff88804cbe9c48 (&f->f_pos_lock){+.+.}-{3:3}, at: __fdget_pos+0x2a0/0x330 home/jiakai/62_66_amd_0901/linux66/linux/fs/file.c:1064
+ #1: ffff88804f3f6410 (sb_writers#34){.+.+}-{0:0}, at: vfs_write+0x21e/0xaf0 home/jiakai/62_66_amd_0901/linux66/linux/fs/read_write.c:580
+ #2: ffff8880698f3e30 (&sb->s_type->i_mutex_key#34){+.+.}-{3:3}, at: inode_lock home/jiakai/62_66_amd_0901/linux66/linux/include/linux/fs.h:802 [inline]
+ #2: ffff8880698f3e30 (&sb->s_type->i_mutex_key#34){+.+.}-{3:3}, at: ntfs_file_write_iter+0xe9/0x2f50 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/file.c:1912
+ #3: ffff8880698f3ac0 (&rl->lock){++++}-{3:3}, at: ntfs_attr_extend_allocation+0x584/0x3c90 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/attrib.c:2001
+
+stack backtrace:
+CPU: 1 PID: 28927 Comm: syz.4.1728 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:106
+ check_noncircular+0x36e/0x4a0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:2187
+ check_prev_add home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:3134 [inline]
+ check_prevs_add home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:3253 [inline]
+ validate_chain+0x185a/0x6510 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:3868
+ __lock_acquire+0x1302/0x2050 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5136
+ lock_acquire+0x1a9/0x400 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5753
+ __mutex_lock_common home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/mutex.c:603 [inline]
+ __mutex_lock+0x131/0xd70 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/mutex.c:747
+ map_mft_record+0x46/0x610 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/mft.c:154
+ ntfs_attr_extend_allocation+0x58c/0x3c90 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/attrib.c:2002
+ ntfs_prepare_file_for_write home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/file.c:391 [inline]
+ ntfs_file_write_iter+0x39f/0x2f50 home/jiakai/62_66_amd_0901/linux66/linux/fs/ntfs/file.c:1914
+ call_write_iter home/jiakai/62_66_amd_0901/linux66/linux/include/linux/fs.h:1956 [inline]
+ new_sync_write home/jiakai/62_66_amd_0901/linux66/linux/fs/read_write.c:491 [inline]
+ vfs_write+0x783/0xaf0 home/jiakai/62_66_amd_0901/linux66/linux/fs/read_write.c:584
+ ksys_write+0x19b/0x2c0 home/jiakai/62_66_amd_0901/linux66/linux/fs/read_write.c:637
+ do_syscall_x64 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7fb4859ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fb48681bf98 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007fb485bf5fa0 RCX: 00007fb4859ae16d
+RDX: 0000000000000001 RSI: 0000200000000180 RDI: 0000000000000005
+RBP: 00007fb485a480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fb485bf6038 R14: 00007fb485bf5fa0 R15: 00007fb4867fc000
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

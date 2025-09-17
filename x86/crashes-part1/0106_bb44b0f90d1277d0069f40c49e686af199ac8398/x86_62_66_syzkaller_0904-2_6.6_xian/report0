@@ -1,0 +1,79 @@
+general protection fault, probably for non-canonical address 0xfad2dd30fad5c957: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 20872 Comm: kworker/0:7 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events l2cap_info_timeout
+RIP: 0010:__pv_queued_spin_lock_slowpath+0x244/0x380 home/jiakai/62_66_amd_0904/linux66/linux/kernel/locking/qspinlock.c:474
+Code: ff ff 83 e0 03 c1 ea 12 4c 8d 6b 14 41 be 01 00 00 00 48 c1 e0 05 4c 8d a0 00 ec 02 00 8d 42 ff 48 98 4c 03 24 c5 20 fa 3d 86 <49> 89 1c 24 b8 00 80 00 00 eb 15 84 c0 75 0a 41 0f b6 54 24 14 84
+RSP: 0000:ffffc90000b0fc10 EFLAGS: 00010082
+RAX: 0000000000003ffe RBX: ffff88803ec2ec00 RCX: 0000000000000001
+RDX: 0000000000003fff RSI: 0000000000000000 RDI: ffff8880727474f4
+RBP: ffff8880727474f4 R08: 0000000000000003 R09: 000000000000ffff
+R10: 0000000000000004 R11: ffffffff81002dbb R12: fad2dd30fad5c957
+R13: ffff88803ec2ec14 R14: 0000000000000001 R15: 0000000000040000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fea85877000 CR3: 0000000021fc8000 CR4: 0000000000750ef0
+DR0: 0000000000000002 DR1: 0000000000000002 DR2: 0000000000000008
+DR3: 0000000000000005 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ pv_queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/include/asm/paravirt.h:586 [inline]
+ queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/include/asm/qspinlock.h:51 [inline]
+ queued_spin_lock home/jiakai/62_66_amd_0904/linux66/linux/include/asm-generic/qspinlock.h:114 [inline]
+ do_raw_spin_lock home/jiakai/62_66_amd_0904/linux66/linux/include/linux/spinlock.h:187 [inline]
+ __raw_spin_lock_irqsave home/jiakai/62_66_amd_0904/linux66/linux/include/linux/spinlock_api_smp.h:111 [inline]
+ _raw_spin_lock_irqsave+0x39/0x40 home/jiakai/62_66_amd_0904/linux66/linux/kernel/locking/spinlock.c:162
+ skb_queue_tail+0x1f/0x50 home/jiakai/62_66_amd_0904/linux66/linux/net/core/skbuff.c:3811
+ hci_queue_acl home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/hci_core.c:3196 [inline]
+ hci_send_acl+0x1cf/0x1e0 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/hci_core.c:3235
+ l2cap_send_cmd+0x232/0x290 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:977
+ l2cap_send_conn_req+0xab/0xd0 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1286
+ l2cap_start_connection home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1514 [inline]
+ l2cap_start_connection+0x6c/0x150 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1506
+ l2cap_conn_start+0x3b2/0x500 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1661
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2630
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2703 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:__pv_queued_spin_lock_slowpath+0x244/0x380 home/jiakai/62_66_amd_0904/linux66/linux/kernel/locking/qspinlock.c:474
+Code: ff ff 83 e0 03 c1 ea 12 4c 8d 6b 14 41 be 01 00 00 00 48 c1 e0 05 4c 8d a0 00 ec 02 00 8d 42 ff 48 98 4c 03 24 c5 20 fa 3d 86 <49> 89 1c 24 b8 00 80 00 00 eb 15 84 c0 75 0a 41 0f b6 54 24 14 84
+RSP: 0000:ffffc90000b0fc10 EFLAGS: 00010082
+RAX: 0000000000003ffe RBX: ffff88803ec2ec00 RCX: 0000000000000001
+RDX: 0000000000003fff RSI: 0000000000000000 RDI: ffff8880727474f4
+RBP: ffff8880727474f4 R08: 0000000000000003 R09: 000000000000ffff
+R10: 0000000000000004 R11: ffffffff81002dbb R12: fad2dd30fad5c957
+R13: ffff88803ec2ec14 R14: 0000000000000001 R15: 0000000000040000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fea85877000 CR3: 0000000021fc8000 CR4: 0000000000750ef0
+DR0: 0000000000000002 DR1: 0000000000000002 DR2: 0000000000000008
+DR3: 0000000000000005 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+----------------
+Code disassembly (best guess), 1 bytes skipped:
+   0:	ff 83 e0 03 c1 ea    	incl   -0x153efc20(%rbx)
+   6:	12 4c 8d 6b          	adc    0x6b(%rbp,%rcx,4),%cl
+   a:	14 41                	adc    $0x41,%al
+   c:	be 01 00 00 00       	mov    $0x1,%esi
+  11:	48 c1 e0 05          	shl    $0x5,%rax
+  15:	4c 8d a0 00 ec 02 00 	lea    0x2ec00(%rax),%r12
+  1c:	8d 42 ff             	lea    -0x1(%rdx),%eax
+  1f:	48 98                	cltq
+  21:	4c 03 24 c5 20 fa 3d 	add    -0x79c205e0(,%rax,8),%r12
+  28:	86
+* 29:	49 89 1c 24          	mov    %rbx,(%r12) <-- trapping instruction
+  2d:	b8 00 80 00 00       	mov    $0x8000,%eax
+  32:	eb 15                	jmp    0x49
+  34:	84 c0                	test   %al,%al
+  36:	75 0a                	jne    0x42
+  38:	41 0f b6 54 24 14    	movzbl 0x14(%r12),%edx
+  3e:	84                   	.byte 0x84
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

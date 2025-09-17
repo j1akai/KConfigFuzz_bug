@@ -1,0 +1,66 @@
+BUG: kernel NULL pointer dereference, address: 0000000000000426
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 21e1d067 P4D 21e1d067 PUD 0 
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 35 Comm: ksmd Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:scan_get_next_rmap_item home/jiakai/62_66_amd_0904/linux68/linux/mm/ksm.c:2641 [inline]
+RIP: 0010:ksm_do_scan home/jiakai/62_66_amd_0904/linux68/linux/mm/ksm.c:2754 [inline]
+RIP: 0010:ksm_scan_thread+0x228/0x3530 home/jiakai/62_66_amd_0904/linux68/linux/mm/ksm.c:2780
+Code: 44 24 20 e8 5a 87 da ff 48 8b 7c 24 20 48 c7 c6 ff ff ff ff e8 59 89 83 03 49 89 c7 48 85 c0 0f 84 8f 0b 00 00 e8 38 87 da ff <49> 8b 5f 20 31 ff 81 e3 00 00 00 80 48 89 de e8 54 80 da ff 48 85
+RSP: 0018:ffffc9000044be08 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: ffffffff84ec3c7b
+RDX: ffff88800a331800 RSI: ffffffff8168bf98 RDI: 0000000000000005
+RBP: 0000000000000000 R08: 0000000000000005 R09: 0000000000000003
+R10: 0000000000000001 R11: 0000000000000000 R12: 0000000000000001
+R13: ffffc9000044be78 R14: 0000000000000014 R15: 0000000000000406
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000426 CR3: 000000006a1c2000 CR4: 0000000000750ef0
+DR0: 0000000000000009 DR1: 0000000000000004 DR2: 0000000000000006
+DR3: 0000000000000005 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+Modules linked in:
+CR2: 0000000000000426
+---[ end trace 0000000000000000 ]---
+RIP: 0010:scan_get_next_rmap_item home/jiakai/62_66_amd_0904/linux68/linux/mm/ksm.c:2641 [inline]
+RIP: 0010:ksm_do_scan home/jiakai/62_66_amd_0904/linux68/linux/mm/ksm.c:2754 [inline]
+RIP: 0010:ksm_scan_thread+0x228/0x3530 home/jiakai/62_66_amd_0904/linux68/linux/mm/ksm.c:2780
+Code: 44 24 20 e8 5a 87 da ff 48 8b 7c 24 20 48 c7 c6 ff ff ff ff e8 59 89 83 03 49 89 c7 48 85 c0 0f 84 8f 0b 00 00 e8 38 87 da ff <49> 8b 5f 20 31 ff 81 e3 00 00 00 80 48 89 de e8 54 80 da ff 48 85
+RSP: 0018:ffffc9000044be08 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: ffffffff84ec3c7b
+RDX: ffff88800a331800 RSI: ffffffff8168bf98 RDI: 0000000000000005
+RBP: 0000000000000000 R08: 0000000000000005 R09: 0000000000000003
+R10: 0000000000000001 R11: 0000000000000000 R12: 0000000000000001
+R13: ffffc9000044be78 R14: 0000000000000014 R15: 0000000000000406
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000426 CR3: 000000006a1c2000 CR4: 0000000000750ef0
+DR0: 0000000000000009 DR1: 0000000000000004 DR2: 0000000000000006
+DR3: 0000000000000005 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+----------------
+Code disassembly (best guess):
+   0:	44 24 20             	rex.R and $0x20,%al
+   3:	e8 5a 87 da ff       	call   0xffda8762
+   8:	48 8b 7c 24 20       	mov    0x20(%rsp),%rdi
+   d:	48 c7 c6 ff ff ff ff 	mov    $0xffffffffffffffff,%rsi
+  14:	e8 59 89 83 03       	call   0x3838972
+  19:	49 89 c7             	mov    %rax,%r15
+  1c:	48 85 c0             	test   %rax,%rax
+  1f:	0f 84 8f 0b 00 00    	je     0xbb4
+  25:	e8 38 87 da ff       	call   0xffda8762
+* 2a:	49 8b 5f 20          	mov    0x20(%r15),%rbx <-- trapping instruction
+  2e:	31 ff                	xor    %edi,%edi
+  30:	81 e3 00 00 00 80    	and    $0x80000000,%ebx
+  36:	48 89 de             	mov    %rbx,%rsi
+  39:	e8 54 80 da ff       	call   0xffda8092
+  3e:	48                   	rex.W
+  3f:	85                   	.byte 0x85

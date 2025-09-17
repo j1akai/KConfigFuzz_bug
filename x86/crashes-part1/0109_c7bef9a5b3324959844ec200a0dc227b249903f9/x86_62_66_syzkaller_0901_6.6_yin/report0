@@ -1,0 +1,151 @@
+INFO: task syz.6.10525:82375 blocked for more than 143 seconds.
+      Not tainted 6.6.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.6.10525     state:D stack:27328 pid:82375 ppid:78675  flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5382 [inline]
+ __schedule+0x110e/0x18b0 kernel/sched/core.c:6695
+ schedule+0xcb/0x180 kernel/sched/core.c:6771
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6830
+ rwsem_down_read_slowpath kernel/locking/rwsem.c:1086 [inline]
+ __down_read_common kernel/locking/rwsem.c:1250 [inline]
+ __down_read kernel/locking/rwsem.c:1263 [inline]
+ down_read+0x712/0xa50 kernel/locking/rwsem.c:1522
+ __super_lock fs/super.c:58 [inline]
+ super_lock+0x18a/0x3c0 fs/super.c:117
+ super_lock_shared fs/super.c:146 [inline]
+ iterate_supers+0x8c/0x1a0 fs/super.c:966
+ ksys_sync+0xb7/0x1c0 fs/sync.c:102
+ __do_sys_sync+0xa/0x10 fs/sync.c:113
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7f96fe9ae16d
+RSP: 002b:00007f96ff8d0f98 EFLAGS: 00000246 ORIG_RAX: 00000000000000a2
+RAX: ffffffffffffffda RBX: 00007f96febf5fa0 RCX: 00007f96fe9ae16d
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 00007f96fea480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f96febf6038 R14: 00007f96febf5fa0 R15: 00007f96ff8b1000
+ </TASK>
+
+Showing all locks held in the system:
+1 lock held by khungtaskd/33:
+ #0: ffffffff8db2e020 (rcu_read_lock){....}-{1:2}, at: rcu_lock_acquire include/linux/rcupdate.h:303 [inline]
+ #0: ffffffff8db2e020 (rcu_read_lock){....}-{1:2}, at: rcu_read_lock include/linux/rcupdate.h:749 [inline]
+ #0: ffffffff8db2e020 (rcu_read_lock){....}-{1:2}, at: debug_show_all_locks+0x52/0x2b0 kernel/locking/lockdep.c:6613
+1 lock held by in:imklog/8675:
+ #0: ffff88801e2fe0c8 (&f->f_pos_lock){+.+.}-{3:3}, at: __fdget_pos+0x2a0/0x330 fs/file.c:1064
+2 locks held by agetty/9261:
+ #0: ffff88804dc3a0a0 (&tty->ldisc_sem){++++}-{0:0}, at: tty_ldisc_ref_wait+0x21/0x70 drivers/tty/tty_ldisc.c:243
+ #1: ffffc900025832f0 (&ldata->atomic_read_lock){+.+.}-{3:3}, at: n_tty_read+0x555/0x1650 drivers/tty/n_tty.c:2206
+2 locks held by agetty/9263:
+ #0: ffff8880215900a0 (&tty->ldisc_sem){++++}-{0:0}, at: tty_ldisc_ref_wait+0x21/0x70 drivers/tty/tty_ldisc.c:243
+ #1: ffffc900025132f0 (&ldata->atomic_read_lock){+.+.}-{3:3}, at: n_tty_read+0x555/0x1650 drivers/tty/n_tty.c:2206
+2 locks held by agetty/49354:
+ #0: ffff88804e6610a0 (&tty->ldisc_sem){++++}-{0:0}, at: tty_ldisc_ref_wait+0x21/0x70 drivers/tty/tty_ldisc.c:243
+ #1: ffffc90005ef32f0 (&ldata->atomic_read_lock){+.+.}-{3:3}, at: n_tty_read+0x555/0x1650 drivers/tty/n_tty.c:2206
+2 locks held by kworker/u6:3/64958:
+4 locks held by kworker/u4:2/71016:
+1 lock held by syz-executor/71908:
+ #0: ffff88801f8ca0e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff88801f8ca0e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff88801f8ca0e0 (&type->s_umount_key#102){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by syz.6.9986/73716:
+ #0: ffff8880261380e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff8880261380e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff8880261380e0 (&type->s_umount_key#102){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by syz-executor/74196:
+ #0: ffff8880440be0e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff8880440be0e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff8880440be0e0 (&type->s_umount_key#102){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by syz.5.10065/76059:
+ #0: ffff888066e920e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff888066e920e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff888066e920e0 (&type->s_umount_key#102){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by syz-executor/76315:
+ #0: ffff88804e7740e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff88804e7740e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff88804e7740e0 (&type->s_umount_key#102){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by syz-executor/76321:
+ #0: ffff888063d680e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff888063d680e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff888063d680e0 (&type->s_umount_key#102){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by syz-executor/77777:
+ #0: ffff88804c1e20e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff88804c1e20e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff88804c1e20e0 (&type->s_umount_key#102){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by syz.7.10181/79851:
+ #0: ffff88805e4140e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff88805e4140e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff88805e4140e0 (&type->s_umount_key#102){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+3 locks held by syz-executor/80071:
+1 lock held by syz.6.10525/82375:
+ #0: ffff88801f8ca0e0 (&type->s_umount_key#102){++++}-{3:3}, at: __super_lock fs/super.c:58 [inline]
+ #0: ffff88801f8ca0e0 (&type->s_umount_key#102){++++}-{3:3}, at: super_lock+0x18a/0x3c0 fs/super.c:117
+2 locks held by syz.4.10920/84687:
+1 lock held by syz.5.10936/84792:
+
+=============================================
+
+NMI backtrace for cpu 0
+CPU: 0 PID: 33 Comm: khungtaskd Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 lib/dump_stack.c:106
+ nmi_cpu_backtrace+0x47c/0x4b0 lib/nmi_backtrace.c:113
+ nmi_trigger_cpumask_backtrace+0x181/0x300 lib/nmi_backtrace.c:62
+ trigger_all_cpu_backtrace include/linux/nmi.h:160 [inline]
+ check_hung_uninterruptible_tasks kernel/hung_task.c:222 [inline]
+ watchdog+0xe28/0xe70 kernel/hung_task.c:379
+ kthread+0x2cd/0x360 kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:304
+ </TASK>
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 PID: 71016 Comm: kworker/u4:2 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: bat_events batadv_mcast_mla_update
+RIP: 0010:unwind_next_frame+0x1958/0x28b0 arch/x86/kernel/unwind_orc.c:648
+Code: 00 00 48 0f bf 03 48 01 c5 4c 89 ff 48 89 ee 4c 89 f2 e8 ab 12 00 00 84 c0 74 77 e8 42 f8 50 00 e9 51 02 00 00 49 8d 6c 24 02 <49> 83 c4 03 48 89 e8 48 c1 e8 03 42 8a 04 28 84 c0 0f 85 96 0d 00
+RSP: 0018:ffffc900028ef468 EFLAGS: 00000246
+RAX: 0000000000000003 RBX: 0000000000000001 RCX: 0000000000000000
+RDX: 0000000000000003 RSI: ffffffff8d99d520 RDI: 0000000000000001
+RBP: ffffffff8fc3909e R08: 0000000000000005 R09: ffffffff813d52d4
+R10: 0000000000000003 R11: ffff88801d5b0000 R12: ffffffff8fc3909c
+R13: dffffc0000000000 R14: 1ffffffff1f87214 R15: ffffc900028ef540
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f50939bb938 CR3: 000000004f8b3000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <NMI>
+ </NMI>
+ <TASK>
+ arch_stack_walk+0x14f/0x1a0 arch/x86/kernel/stacktrace.c:25
+ stack_trace_save+0x12d/0x1f0 kernel/stacktrace.c:122
+ kasan_save_stack mm/kasan/common.c:45 [inline]
+ kasan_set_track+0x4c/0x70 mm/kasan/common.c:52
+ kasan_save_free_info+0x24/0x40 mm/kasan/generic.c:522
+ ____kasan_slab_free+0xd6/0x120 mm/kasan/common.c:236
+ kasan_slab_free include/linux/kasan.h:164 [inline]
+ slab_free_hook mm/slub.c:1800 [inline]
+ slab_free_freelist_hook+0x12d/0x1a0 mm/slub.c:1826
+ slab_free mm/slub.c:3809 [inline]
+ __kmem_cache_free+0x71/0x110 mm/slub.c:3822
+ batadv_mcast_mla_list_free net/batman-adv/multicast.c:638 [inline]
+ __batadv_mcast_mla_update net/batman-adv/multicast.c:893 [inline]
+ batadv_mcast_mla_update+0x3880/0x3d60 net/batman-adv/multicast.c:915
+ process_one_work kernel/workqueue.c:2630 [inline]
+ process_scheduled_works+0x8c5/0x1130 kernel/workqueue.c:2703
+ worker_thread+0xa7a/0x1040 kernel/workqueue.c:2784
+ kthread+0x2cd/0x360 kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:304
+ </TASK>

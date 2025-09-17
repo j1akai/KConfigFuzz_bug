@@ -1,0 +1,310 @@
+INFO: task kworker/u4:2:9121 blocked for more than 143 seconds.
+      Not tainted 6.2.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/u4:2    state:D stack:23872 pid:9121  ppid:2      flags:0x00004000
+Workqueue: nfc4_nci_rx_wq nci_rx_work
+Call Trace:
+ <TASK>
+ context_switch home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:5296 [inline]
+ __schedule+0xa39/0xeb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6609
+ schedule+0xcb/0x190 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6685
+ schedule_preempt_disabled+0xf/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6744
+ __mutex_lock_common+0xecf/0x26c0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:679
+ __mutex_lock home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:747 [inline]
+ mutex_lock_nested+0x17/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:799
+ device_lock home/jiakai/62_66_amd_0901/linux62/linux/include/linux/device.h:831 [inline]
+ nfc_targets_found+0x273/0x590 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/core.c:778
+ nci_rf_discover_ntf_packet+0x9a5/0xae0 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/ntf.c:390
+ nci_ntf_packet+0x13c/0x790 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/ntf.c:798
+ nci_rx_work+0x160/0x2b0 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/core.c:1517
+ process_one_work+0x877/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2289
+ worker_thread+0xb14/0x1330 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2436
+ kthread+0x26c/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/entry/entry_64.S:308
+ </TASK>
+INFO: task kworker/0:10:56290 blocked for more than 143 seconds.
+      Not tainted 6.2.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/0:10    state:D stack:20920 pid:56290 ppid:2      flags:0x00004000
+Workqueue: events nfc_urelease_event_work
+Call Trace:
+ <TASK>
+ context_switch home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:5296 [inline]
+ __schedule+0xa39/0xeb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6609
+ schedule+0xcb/0x190 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6685
+ schedule_preempt_disabled+0xf/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6744
+ __mutex_lock_common+0xecf/0x26c0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:679
+ __mutex_lock home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:747 [inline]
+ mutex_lock_nested+0x17/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:799
+ nfc_urelease_event_work+0xa4/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1829
+ process_one_work+0x877/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2289
+ worker_thread+0xb14/0x1330 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2436
+ kthread+0x26c/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/entry/entry_64.S:308
+ </TASK>
+INFO: task kworker/1:0:78295 blocked for more than 143 seconds.
+      Not tainted 6.2.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/1:0     state:D stack:21784 pid:78295 ppid:2      flags:0x00004000
+Workqueue: events nfc_urelease_event_work
+Call Trace:
+ <TASK>
+ context_switch home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:5296 [inline]
+ __schedule+0xa39/0xeb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6609
+ schedule+0xcb/0x190 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6685
+ schedule_preempt_disabled+0xf/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6744
+ __mutex_lock_common+0xecf/0x26c0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:679
+ __mutex_lock home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:747 [inline]
+ mutex_lock_nested+0x17/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:799
+ nci_request home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/core.c:149 [inline]
+ nci_stop_poll+0x11d/0x470 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/core.c:873
+ nfc_stop_poll+0xdf/0x210 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/core.c:259
+ nfc_urelease_event_work+0x159/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1838
+ process_one_work+0x877/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2289
+ worker_thread+0xb14/0x1330 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2436
+ kthread+0x26c/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/entry/entry_64.S:308
+ </TASK>
+INFO: task syz.0.11465:88904 blocked for more than 143 seconds.
+      Not tainted 6.2.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.0.11465     state:D stack:26488 pid:88904 ppid:80785  flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:5296 [inline]
+ __schedule+0xa39/0xeb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6609
+ schedule+0xcb/0x190 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6685
+ schedule_preempt_disabled+0xf/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6744
+ __mutex_lock_common+0xecf/0x26c0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:679
+ __mutex_lock home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:747 [inline]
+ mutex_lock_nested+0x17/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:799
+ nfc_unregister_device+0x198/0x290 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/core.c:1181
+ virtual_ncidev_close+0x55/0x90 home/jiakai/62_66_amd_0901/linux62/linux/drivers/nfc/virtual_ncidev.c:163
+ __fput+0x3ba/0x880 home/jiakai/62_66_amd_0901/linux62/linux/fs/file_table.c:320
+ task_work_run+0x243/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/task_work.c:179
+ resume_user_mode_work home/jiakai/62_66_amd_0901/linux62/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop+0x134/0x160 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:171
+ exit_to_user_mode_prepare+0xad/0x110 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x2e/0x60 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:296
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7f99539ae16d
+RSP: 002b:00007ffc645f4ed8 EFLAGS: 00000246 ORIG_RAX: 00000000000001b4
+RAX: 0000000000000000 RBX: 00007f9953bf7da0 RCX: 00007f99539ae16d
+RDX: 0000000000000000 RSI: 000000000000001e RDI: 0000000000000003
+RBP: 00007f9953bf7da0 R08: 0000000000000000 R09: 0000000000000000
+R10: 00007f9953bf7cb0 R11: 0000000000000246 R12: 00000000002b2d08
+R13: 00007f9953bf5fac R14: 00007f9953bf7da0 R15: 00007ffc645f4fa0
+ </TASK>
+INFO: task syz.1.11473:88933 blocked for more than 143 seconds.
+      Not tainted 6.2.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.1.11473     state:D stack:26056 pid:88933 ppid:76687  flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:5296 [inline]
+ __schedule+0xa39/0xeb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6609
+ schedule+0xcb/0x190 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6685
+ schedule_preempt_disabled+0xf/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6744
+ __mutex_lock_common+0xecf/0x26c0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:679
+ __mutex_lock home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:747 [inline]
+ mutex_lock_nested+0x17/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/mutex.c:799
+ nfc_unregister_device+0x198/0x290 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/core.c:1181
+ virtual_ncidev_close+0x55/0x90 home/jiakai/62_66_amd_0901/linux62/linux/drivers/nfc/virtual_ncidev.c:163
+ __fput+0x3ba/0x880 home/jiakai/62_66_amd_0901/linux62/linux/fs/file_table.c:320
+ task_work_run+0x243/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/task_work.c:179
+ resume_user_mode_work home/jiakai/62_66_amd_0901/linux62/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop+0x134/0x160 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:171
+ exit_to_user_mode_prepare+0xad/0x110 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x2e/0x60 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:296
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7f63bf9ae16d
+RSP: 002b:00007ffe1752b658 EFLAGS: 00000246 ORIG_RAX: 00000000000001b4
+RAX: 0000000000000000 RBX: 00007f63bfbf7da0 RCX: 00007f63bf9ae16d
+RDX: 0000000000000000 RSI: 000000000000001e RDI: 0000000000000003
+RBP: 00007f63bfbf7da0 R08: 0000000000000000 R09: 0000000000000000
+R10: 00007f63bfbf7cb0 R11: 0000000000000246 R12: 00000000002b31fe
+R13: 00007f63bfbf618c R14: 00007f63bfbf7da0 R15: 00007ffe1752b720
+ </TASK>
+INFO: task syz.3.11477:88968 blocked for more than 143 seconds.
+      Not tainted 6.2.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.3.11477     state:D stack:27144 pid:88968 ppid:78214  flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:5296 [inline]
+ __schedule+0xa39/0xeb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6609
+ schedule+0xcb/0x190 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/core.c:6685
+ schedule_timeout+0xac/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/time/timer.c:2143
+ do_wait_for_common+0x3ea/0x560 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/completion.c:85
+ __wait_for_common home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/completion.c:106 [inline]
+ wait_for_common home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/completion.c:117 [inline]
+ wait_for_completion+0x46/0x60 home/jiakai/62_66_amd_0901/linux62/linux/kernel/sched/completion.c:138
+ __flush_workqueue+0x76a/0x16a0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2861
+ nci_close_device+0x1b2/0x5e0 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/core.c:579
+ nci_unregister_device+0x3c/0x250 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/core.c:1292
+ virtual_ncidev_close+0x55/0x90 home/jiakai/62_66_amd_0901/linux62/linux/drivers/nfc/virtual_ncidev.c:163
+ __fput+0x3ba/0x880 home/jiakai/62_66_amd_0901/linux62/linux/fs/file_table.c:320
+ task_work_run+0x243/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/task_work.c:179
+ resume_user_mode_work home/jiakai/62_66_amd_0901/linux62/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop+0x134/0x160 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:171
+ exit_to_user_mode_prepare+0xad/0x110 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x2e/0x60 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:296
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7f53971ae16d
+RSP: 002b:00007ffe734a3b38 EFLAGS: 00000246 ORIG_RAX: 00000000000001b4
+RAX: 0000000000000000 RBX: 00007f53973f7da0 RCX: 00007f53971ae16d
+RDX: 0000000000000000 RSI: 000000000000001e RDI: 0000000000000003
+RBP: 00007f53973f7da0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 00000000002b36ae
+R13: 00007f53973f609c R14: 00007f53973f7da0 R15: 00007ffe734a3c00
+ </TASK>
+
+Showing all locks held in the system:
+3 locks held by kworker/0:0/7:
+ #0: ffff888018470d38 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x7f2/0xdb0
+ #1: ffffc9000038fd00 ((work_completion)(&w->w)){+.+.}-{0:0}, at: process_one_work+0x831/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2264
+ #2: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_urelease_event_work+0xa4/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1829
+1 lock held by rcu_tasks_kthre/13:
+ #0: ffffffff8d92a650 (rcu_tasks.tasks_gp_mutex){+.+.}-{3:3}, at: rcu_tasks_one_gp+0x30/0xd00 home/jiakai/62_66_amd_0901/linux62/linux/kernel/rcu/tasks.h:507
+1 lock held by rcu_tasks_trace/14:
+ #0: ffffffff8d92ae50 (rcu_tasks_trace.tasks_gp_mutex){+.+.}-{3:3}, at: rcu_tasks_one_gp+0x30/0xd00 home/jiakai/62_66_amd_0901/linux62/linux/kernel/rcu/tasks.h:507
+1 lock held by khungtaskd/31:
+ #0: ffffffff8d92a480 (rcu_read_lock){....}-{1:2}, at: rcu_lock_acquire+0x0/0x30
+1 lock held by in:imklog/8652:
+ #0: ffff888046220368 (&f->f_pos_lock){+.+.}-{3:3}, at: __fdget_pos+0x242/0x2e0 home/jiakai/62_66_amd_0901/linux62/linux/fs/file.c:1046
+3 locks held by kworker/u4:2/9121:
+ #0: ffff88806984e938 ((wq_completion)nfc4_nci_rx_wq){+.+.}-{0:0}, at: process_one_work+0x7f2/0xdb0
+ #1: ffffc9000e90fd00 ((work_completion)(&ndev->rx_work)){+.+.}-{0:0}, at: process_one_work+0x831/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2264
+ #2: ffff888027692100 (&dev->mutex){....}-{3:3}, at: device_lock home/jiakai/62_66_amd_0901/linux62/linux/include/linux/device.h:831 [inline]
+ #2: ffff888027692100 (&dev->mutex){....}-{3:3}, at: nfc_targets_found+0x273/0x590 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/core.c:778
+3 locks held by kworker/1:2/46994:
+ #0: ffff888018470d38 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x7f2/0xdb0
+ #1: ffffc900038cfd00 ((work_completion)(&w->w)){+.+.}-{0:0}, at: process_one_work+0x831/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2264
+ #2: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_urelease_event_work+0xa4/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1829
+3 locks held by kworker/0:4/55781:
+ #0: ffff888018470d38 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x7f2/0xdb0
+ #1: ffffc900029afd00 ((work_completion)(&w->w)){+.+.}-{0:0}, at: process_one_work+0x831/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2264
+ #2: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_urelease_event_work+0xa4/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1829
+3 locks held by kworker/0:5/55782:
+ #0: ffff888018470d38 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x7f2/0xdb0
+ #1: ffffc90002a6fd00 ((work_completion)(&w->w)){+.+.}-{0:0}, at: process_one_work+0x831/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2264
+ #2: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_urelease_event_work+0xa4/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1829
+3 locks held by kworker/0:10/56290:
+ #0: ffff888018470d38 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x7f2/0xdb0
+ #1: ffffc90003b17d00 ((work_completion)(&w->w)){+.+.}-{0:0}, at: process_one_work+0x831/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2264
+ #2: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_urelease_event_work+0xa4/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1829
+6 locks held by kworker/1:0/78295:
+ #0: ffff888018470d38 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x7f2/0xdb0
+ #1: ffffc90005397d00 ((work_completion)(&w->w)){+.+.}-{0:0}, at: process_one_work+0x831/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2264
+ #2: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_urelease_event_work+0xa4/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1829
+ #3: ffff888027692508 (&genl_data->genl_data_mutex){+.+.}-{3:3}, at: nfc_urelease_event_work+0x10a/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1835
+ #4: ffff888027692100 (&dev->mutex){....}-{3:3}, at: device_lock home/jiakai/62_66_amd_0901/linux62/linux/include/linux/device.h:831 [inline]
+ #4: ffff888027692100 (&dev->mutex){....}-{3:3}, at: nfc_stop_poll+0x33/0x210 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/core.c:247
+ #5: ffff88802b740350 (&ndev->req_lock){+.+.}-{3:3}, at: nci_request home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/core.c:149 [inline]
+ #5: ffff88802b740350 (&ndev->req_lock){+.+.}-{3:3}, at: nci_stop_poll+0x11d/0x470 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/core.c:873
+3 locks held by kworker/0:1/79621:
+ #0: ffff888018470d38 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x7f2/0xdb0
+ #1: ffffc90006377d00 ((work_completion)(&w->w)){+.+.}-{0:0}, at: process_one_work+0x831/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2264
+ #2: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_urelease_event_work+0xa4/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1829
+3 locks held by kworker/1:3/80355:
+ #0: ffff888018470d38 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x7f2/0xdb0
+ #1: ffffc9000293fd00 ((work_completion)(&w->w)){+.+.}-{0:0}, at: process_one_work+0x831/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2264
+ #2: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_urelease_event_work+0xa4/0x300 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/netlink.c:1829
+1 lock held by syz.0.11465/88904:
+ #0: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_unregister_device+0x198/0x290 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/core.c:1181
+1 lock held by syz.1.11473/88933:
+ #0: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_unregister_device+0x198/0x290 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/core.c:1181
+1 lock held by syz.3.11477/88968:
+ #0: ffff88802b740350 (&ndev->req_lock){+.+.}-{3:3}, at: nci_close_device+0xfe/0x5e0 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/nci/core.c:561
+1 lock held by syz-executor/88990:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+1 lock held by syz-executor/89183:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+2 locks held by syz.2.11484/89223:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+ #1: ffffffff8ee52a48 (nfc_devlist_mutex){+.+.}-{3:3}, at: nfc_register_device+0x33/0x320 home/jiakai/62_66_amd_0901/linux62/linux/net/nfc/core.c:1116
+1 lock held by syz-executor/89343:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+1 lock held by syz-executor/89402:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+1 lock held by syz-executor/89404:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+1 lock held by syz-executor/89407:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+1 lock held by syz-executor/89409:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+1 lock held by syz-executor/89411:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+1 lock held by syz-executor/89413:
+ #0: ffffffff8e099fe8 (misc_mtx){+.+.}-{3:3}, at: misc_open+0x57/0x3c0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/char/misc.c:129
+
+=============================================
+
+NMI backtrace for cpu 0
+CPU: 0 PID: 31 Comm: khungtaskd Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0901/linux62/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 home/jiakai/62_66_amd_0901/linux62/linux/lib/dump_stack.c:106
+ nmi_cpu_backtrace+0x4e3/0x560 home/jiakai/62_66_amd_0901/linux62/linux/lib/nmi_backtrace.c:111
+ nmi_trigger_cpumask_backtrace+0x1ba/0x420 home/jiakai/62_66_amd_0901/linux62/linux/lib/nmi_backtrace.c:62
+ trigger_all_cpu_backtrace home/jiakai/62_66_amd_0901/linux62/linux/include/linux/nmi.h:148 [inline]
+ check_hung_uninterruptible_tasks home/jiakai/62_66_amd_0901/linux62/linux/kernel/hung_task.c:220 [inline]
+ watchdog+0xcd5/0xd20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/hung_task.c:377
+ kthread+0x26c/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/entry/entry_64.S:308
+ </TASK>
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 PID: 8654 Comm: rs:main Q:Reg Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:check_kcov_mode home/jiakai/62_66_amd_0901/linux62/linux/kernel/kcov.c:184 [inline]
+RIP: 0010:write_comp_data home/jiakai/62_66_amd_0901/linux62/linux/kernel/kcov.c:236 [inline]
+RIP: 0010:__sanitizer_cov_trace_cmp8+0x33/0xa0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/kcov.c:284
+Code: 40 98 03 00 65 8b 0d d4 2a 78 7e f7 c1 00 01 ff 00 74 11 f7 c1 00 01 00 00 74 76 83 ba 6c 15 00 00 00 74 6d 8b 8a 48 15 00 00 <83> f9 03 75 62 48 8b 8a 50 15 00 00 44 8b 8a 4c 15 00 00 49 c1 e1
+RSP: 0000:ffffc9000e0372b0 EFLAGS: 00000246
+RAX: ffffffff844e3ef1 RBX: 0000000000000023 RCX: 0000000000000000
+RDX: ffff888044462440 RSI: 0000000000000023 RDI: 0000000000000204
+RBP: 0000000000000014 R08: ffffffff844e35bd R09: ffffffff844e2b0b
+R10: 0000000000000002 R11: ffff888044462440 R12: ffffc90006423604
+R13: 0000000000000204 R14: ffffc90006444bc3 R15: ffffc90006423603
+FS:  00007f462bd16700(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f46200033d0 CR3: 000000004dfa4000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ lzo1x_decompress_safe+0xd2d/0x25e0 home/jiakai/62_66_amd_0901/linux62/linux/lib/lzo/lzo1x_decompress_safe.c:96
+ __lzo_decompress home/jiakai/62_66_amd_0901/linux62/linux/crypto/lzo.c:88 [inline]
+ lzo_sdecompress+0xcd/0x1b0 home/jiakai/62_66_amd_0901/linux62/linux/crypto/lzo.c:107
+ scomp_acomp_comp_decomp+0x32f/0x570
+ crypto_acomp_decompress home/jiakai/62_66_amd_0901/linux62/linux/include/crypto/acompress.h:292 [inline]
+ zswap_frontswap_load+0x7a3/0xc80 home/jiakai/62_66_amd_0901/linux62/linux/mm/zswap.c:1342
+ __frontswap_load+0x219/0x450 home/jiakai/62_66_amd_0901/linux62/linux/mm/frontswap.c:218
+ frontswap_load home/jiakai/62_66_amd_0901/linux62/linux/include/linux/frontswap.h:74 [inline]
+ swap_readpage+0x1297/0x1a60 home/jiakai/62_66_amd_0901/linux62/linux/mm/page_io.c:473
+ swap_cluster_readahead+0x431/0x7d0 home/jiakai/62_66_amd_0901/linux62/linux/mm/swap_state.c:644
+ swapin_readahead+0x10a/0xc10 home/jiakai/62_66_amd_0901/linux62/linux/mm/swap_state.c:852
+ do_swap_page+0xc9f/0x2b60 home/jiakai/62_66_amd_0901/linux62/linux/mm/memory.c:3783
+ handle_pte_fault home/jiakai/62_66_amd_0901/linux62/linux/mm/memory.c:4938 [inline]
+ __handle_mm_fault home/jiakai/62_66_amd_0901/linux62/linux/mm/memory.c:5076 [inline]
+ handle_mm_fault+0x1936/0x2870 home/jiakai/62_66_amd_0901/linux62/linux/mm/memory.c:5222
+ do_user_addr_fault+0x69b/0xcb0 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/mm/fault.c:1428
+ handle_page_fault home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/mm/fault.c:1519 [inline]
+ exc_page_fault+0x7a/0x120 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/mm/fault.c:1575
+ asm_exc_page_fault+0x22/0x30 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/include/asm/idtentry.h:570
+RIP: 0033:0x55dec7f3c67d
+Code: 04 00 4c 8b 04 24 4c 8b 54 24 08 85 c0 0f 85 b2 00 00 00 49 8b 10 48 8b 03 41 8d 6c 24 11 41 83 c4 10 48 8b 74 24 18 4d 63 e4 <48> 89 10 41 8b 50 08 89 50 08 41 0f b7 50 0c 66 89 50 0c 41 0f b6
+RSP: 002b:00007f462bd15760 EFLAGS: 00010202
+RAX: 00007f46200033d0 RBX: 00007f4620012360 RCX: 0000000000000001
+RDX: 3220342020706553 RSI: 00007f461c016ba5 RDI: 00007f461c0169f0
+RBP: 000000000000001a R08: 00007f461c016bf8 R09: 0000000000000000
+R10: 0000000000000009 R11: 0000000000000286 R12: 0000000000000019
+R13: 00007f461c016b40 R14: 0000000000000042 R15: 0000000000000066
+ </TASK>

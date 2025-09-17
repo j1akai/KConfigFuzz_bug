@@ -1,0 +1,70 @@
+divide error: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 45 Comm: kworker/u5:1 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events_unbound cfg80211_wiphy_work
+RIP: 0010:mac80211_hwsim_link_info_changed+0x268/0x290 home/jiakai/62_66_amd_0904/linux68/linux/drivers/net/wireless/virtual/mac80211_hwsim.c:2506
+Code: ff 48 ba cf f7 53 e3 a5 9b c4 20 48 89 c1 48 f7 ea 48 c1 f9 3f 48 89 d0 31 d2 48 c1 f8 07 48 29 c8 89 f1 48 03 83 80 3c 00 00 <48> f7 f1 b9 05 00 00 00 29 d6 31 d2 48 69 f6 e8 03 00 00 e8 50 f0
+RSP: 0018:ffffc9000049bc78 EFLAGS: 00010202
+RAX: 00063e7c727b83ec RBX: ffff88801dab1fa0 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffff88801dab5ca0
+RBP: ffff88801dab08e0 R08: 0000000000000004 R09: 000000000006adde
+R10: 000000000006adde R11: 0000000000000000 R12: ffff88801dab1fa0
+R13: ffff88801dab1fa0 R14: 0000000000000000 R15: ffff88801dab5ca0
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fdb05bf1f78 CR3: 0000000062904000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ drv_link_info_changed+0x22e/0x3d0 home/jiakai/62_66_amd_0904/linux68/linux/net/mac80211/driver-ops.c:473
+ ieee80211_link_info_change_notify+0x163/0x1a0 home/jiakai/62_66_amd_0904/linux68/linux/net/mac80211/main.c:293
+ ieee80211_offchannel_return+0x161/0x240 home/jiakai/62_66_amd_0904/linux68/linux/net/mac80211/offchannel.c:160
+ __ieee80211_scan_completed+0x359/0x4b0 home/jiakai/62_66_amd_0904/linux68/linux/net/mac80211/scan.c:484
+ ieee80211_scan_work+0x1ff/0x8f0 home/jiakai/62_66_amd_0904/linux68/linux/net/mac80211/scan.c:1146
+ cfg80211_wiphy_work+0xfd/0x120 home/jiakai/62_66_amd_0904/linux68/linux/net/wireless/core.c:437
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2633
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2706 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2787
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:mac80211_hwsim_link_info_changed+0x268/0x290 home/jiakai/62_66_amd_0904/linux68/linux/drivers/net/wireless/virtual/mac80211_hwsim.c:2506
+Code: ff 48 ba cf f7 53 e3 a5 9b c4 20 48 89 c1 48 f7 ea 48 c1 f9 3f 48 89 d0 31 d2 48 c1 f8 07 48 29 c8 89 f1 48 03 83 80 3c 00 00 <48> f7 f1 b9 05 00 00 00 29 d6 31 d2 48 69 f6 e8 03 00 00 e8 50 f0
+RSP: 0018:ffffc9000049bc78 EFLAGS: 00010202
+RAX: 00063e7c727b83ec RBX: ffff88801dab1fa0 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffff88801dab5ca0
+RBP: ffff88801dab08e0 R08: 0000000000000004 R09: 000000000006adde
+R10: 000000000006adde R11: 0000000000000000 R12: ffff88801dab1fa0
+R13: ffff88801dab1fa0 R14: 0000000000000000 R15: ffff88801dab5ca0
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fdb032bf540 CR3: 0000000062904000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+----------------
+Code disassembly (best guess), 1 bytes skipped:
+   0:	48 ba cf f7 53 e3 a5 	movabs $0x20c49ba5e353f7cf,%rdx
+   7:	9b c4 20
+   a:	48 89 c1             	mov    %rax,%rcx
+   d:	48 f7 ea             	imul   %rdx
+  10:	48 c1 f9 3f          	sar    $0x3f,%rcx
+  14:	48 89 d0             	mov    %rdx,%rax
+  17:	31 d2                	xor    %edx,%edx
+  19:	48 c1 f8 07          	sar    $0x7,%rax
+  1d:	48 29 c8             	sub    %rcx,%rax
+  20:	89 f1                	mov    %esi,%ecx
+  22:	48 03 83 80 3c 00 00 	add    0x3c80(%rbx),%rax
+* 29:	48 f7 f1             	div    %rcx <-- trapping instruction
+  2c:	b9 05 00 00 00       	mov    $0x5,%ecx
+  31:	29 d6                	sub    %edx,%esi
+  33:	31 d2                	xor    %edx,%edx
+  35:	48 69 f6 e8 03 00 00 	imul   $0x3e8,%rsi,%rsi
+  3c:	e8                   	.byte 0xe8
+  3d:	50                   	push   %rax
+  3e:	f0                   	lock

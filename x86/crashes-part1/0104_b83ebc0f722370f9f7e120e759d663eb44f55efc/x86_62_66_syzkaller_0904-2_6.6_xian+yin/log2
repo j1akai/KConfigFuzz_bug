@@ -1,0 +1,1300 @@
+last executing test programs:
+
+11.859611576s ago: executing program 0 (id=1):
+ioctl$BLKGETSIZE(0xffffffffffffffff, 0x1260, &(0x7f0000000000))
+r0 = openat$snapshot(0xffffffffffffff9c, &(0x7f0000000040), 0x0, 0x0)
+ioctl$SNAPSHOT_CREATE_IMAGE(r0, 0x40043311, &(0x7f0000000080))
+r1 = syz_open_dev$hiddev(&(0x7f00000000c0), 0x8, 0x8080)
+ioctl$HIDIOCSFLAG(r1, 0x4004480f, &(0x7f0000000100)=0x3)
+r2 = openat$nullb(0xffffffffffffff9c, &(0x7f0000000140), 0x80, 0x0)
+ioctl$BLKROTATIONAL(r2, 0x127e, &(0x7f0000000180))
+
+11.728954675s ago: executing program 0 (id=8):
+r0 = syz_open_dev$loop(&(0x7f0000000000), 0xfffffffffffffeff, 0x2000)
+r1 = syz_clone(0x83040200, &(0x7f0000000040)="4f236e45e34a7dd7e4a3919fc89bf5365e58fa8ac38c94b36e057b8f2e600854e1b6a97e1acd5915bcd68a4b427e797dd25cba99a0fcaed58007dbf9b75da7ec2a3e5e1e5d5cc5cf3cf185d93085b2392a161e57d469deedb9524c29520928dc9ad8a148d7b6e6a6f335605e48a43007fa144f59d2c1376b9254c5f19c3f36a205657ec57e04ea9a0f52cb68cbdb59c50146ff076cf630b85ded0049c40c68a561e4fd8a8cc5de8a7b227163737fd9ebd30d", 0xb2, &(0x7f0000000100), &(0x7f0000000140), &(0x7f0000000180)="c248984c335a726e9143d65141dd8b2156aecd8bd258307523dd76d78f0ffd8decf7abfa818abdc8ac2d88a086e9a4e29fac7606750841e6e2c02e0b2c81d6fc34b57b44b62fd768823a5b4086d193a6416c9f664442dfb0baec97fa6cdd19c6498f7e238552005579cb7f23089dfc2dda196c1b39c69f17c045f2dfb87a0e9cf86907d79b7d26f9e5e747881727addde2b895a1c42ce9b0cd11b6bbd3aac32670df09ced6e2fd074913737ee1cf927493db19684de471b9e5885dc8c7257334c3ff1fd5d2a50eb25798eec8a6edfae01ef80c75184aeef17afd614573")
+ioctl$BLKTRACESETUP(r0, 0xc0481273, &(0x7f0000000280)={'\x00', 0x1, 0xfffffffb, 0x1, 0x9, 0x1, <r2=>r1})
+ioctl$BLKTRACESETUP(r0, 0xc0481273, &(0x7f0000000300)={'\x00', 0x1, 0xfff, 0xfffffff4, 0x8, 0x8001, r2})
+ioctl$BLKGETSIZE64(r0, 0x80081272, &(0x7f0000000380))
+r3 = syz_open_dev$ndb(&(0x7f00000003c0), 0x0, 0x400)
+ioctl$IOC_PR_REGISTER(r3, 0x401870c8, &(0x7f0000000400)={0x6, 0x1ff})
+
+9.763807802s ago: executing program 3 (id=55):
+pipe2(&(0x7f0000000040)={0xffffffffffffffff, <r0=>0xffffffffffffffff}, 0x800)
+ioctl$FS_IOC_FSSETXATTR(r0, 0x401c5820, 0x0)
+
+1.423403846s ago: executing program 0 (id=49):
+ioctl$SNDRV_TIMER_IOCTL_CREATE(0xffffffffffffffff, 0xc02054a5, &(0x7f0000000000)={0x100000001, <r0=>0xffffffffffffffff, 'id1\x00'})
+ioctl$BLKBSZGET(r0, 0x80081270, &(0x7f0000000080))
+ioctl$SNAPSHOT_CREATE_IMAGE(0xffffffffffffffff, 0x40043311, &(0x7f00000000c0))
+sendmsg$NFQNL_MSG_VERDICT(r0, &(0x7f00000001c0)={&(0x7f0000000100), 0xc, &(0x7f0000000180)={&(0x7f0000000140)={0x1c, 0x1, 0x3, 0x5, 0x0, 0x0, {0x0, 0x0, 0x6}, [@NFQA_MARK={0x8, 0x3, 0x1, 0x0, 0x6}]}, 0x1c}, 0x1, 0x0, 0x0, 0x4008800}, 0x4000042)
+r1 = socket$nl_generic(0x10, 0x3, 0x10)
+r2 = syz_genetlink_get_family_id$team(&(0x7f0000000240), r0)
+ioctl$sock_ipv4_tunnel_SIOCCHGTUNNEL(r0, 0x89f3, &(0x7f0000000300)={'gre0\x00', &(0x7f0000000280)={'syztnl1\x00', <r3=>0x0, 0x7, 0x8, 0x2, 0x80000000, {{0x9, 0x4, 0x3, 0x2, 0x24, 0x66, 0x0, 0x3, 0x4, 0x0, @empty, @remote, {[@rr={0x7, 0xf, 0xcb, [@local, @multicast2, @remote]}]}}}}})
+bpf$BPF_GET_PROG_INFO(0xf, &(0x7f0000000600)={r0, 0xe0, &(0x7f0000000500)={0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x2, &(0x7f0000000340)=[0x0, 0x0], ""/16, <r4=>0x0, 0x0, 0x0, 0x0, 0x8, 0x1, &(0x7f0000000380)=[0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0], &(0x7f00000003c0)=[0x0], 0x0, 0x80, &(0x7f0000000400)=[{}], 0x8, 0x10, &(0x7f0000000440), &(0x7f0000000480), 0x8, 0xf2, 0x8, 0x8, &(0x7f00000004c0)}}, 0x10)
+ioctl$sock_ipv4_tunnel_SIOCDELTUNNEL(r0, 0x89f2, &(0x7f0000000700)={'gretap0\x00', &(0x7f0000000640)={'erspan0\x00', <r5=>0x0, 0x8, 0x7, 0x6, 0x10001, {{0x1d, 0x4, 0x2, 0x9, 0x74, 0x68, 0x0, 0x60, 0x4, 0x0, @empty, @local, {[@lsrr={0x83, 0x7, 0x85, [@multicast2]}, @timestamp={0x44, 0x28, 0x52, 0x0, 0x0, [0x9, 0x500, 0x3, 0x7, 0x1, 0x6, 0x2, 0xffffffff, 0x3a]}, @cipso={0x86, 0x31, 0x0, [{0x7, 0x6, "45948294"}, {0x5, 0x5, "b9c07a"}, {0x0, 0x5, "5db6b9"}, {0x1, 0xf, "d1f15e903b95812908c3200559"}, {0x2, 0x2}, {0x0, 0xa, "9b7c7f88b940ba76"}]}]}}}}})
+sendmsg$TEAM_CMD_NOOP(r1, &(0x7f0000000940)={&(0x7f0000000200)={0x10, 0x0, 0x0, 0x100}, 0xc, &(0x7f0000000900)={&(0x7f0000000740)={0x184, r2, 0x4, 0x70bd2c, 0x25dfdbff, {}, [{{0x8, 0x1, r3}, {0x168, 0x2, 0x0, 0x1, [{0x3c, 0x1, @enabled={{{0x24}, {0x5}, {0x4}}, {0x8, 0x6, r4}}}, {0x40, 0x1, @lb_hash_stats={{{0x24}, {0x5}, {0x8}}, {0x8}}}, {0x3c, 0x1, @lb_tx_method={{0x24}, {0x5}, {0x9, 0x4, 'hash\x00'}}}, {0x38, 0x1, @notify_peers_count={{0x24}, {0x5}, {0x8, 0x4, 0x8000}}}, {0x3c, 0x1, @enabled={{{0x24}, {0x5}, {0x4}}, {0x8, 0x6, r5}}}, {0x38, 0x1, @lb_stats_refresh_interval={{0x24}, {0x5}, {0x8, 0x4, 0x959}}}]}}]}, 0x184}, 0x1, 0x0, 0x0, 0x8000}, 0x4010)
+
+1.422937848s ago: executing program 3 (id=51):
+r0 = socket$netlink(0x10, 0x3, 0x2)
+sendmsg$ETHTOOL_MSG_FEATURES_GET(r0, &(0x7f0000000300)={0x0, 0x0, &(0x7f00000002c0)={&(0x7f0000000200)={0xa8, 0x0, 0x200, 0x70bd2d, 0x25dfdbfd, {}, [@HEADER={0x28, 0x1, 0x0, 0x1, [@ETHTOOL_A_HEADER_DEV_INDEX={0x8}, @ETHTOOL_A_HEADER_FLAGS={0x8, 0x3, 0x1}, @ETHTOOL_A_HEADER_DEV_NAME={0x14, 0x2, 'vxcan1\x00'}]}, @HEADER={0x40, 0x1, 0x0, 0x1, [@ETHTOOL_A_HEADER_DEV_INDEX={0x8}, @ETHTOOL_A_HEADER_FLAGS={0x8, 0x3, 0x1}, @ETHTOOL_A_HEADER_DEV_INDEX={0x8}, @ETHTOOL_A_HEADER_DEV_NAME={0x14, 0x2, 'wlan0\x00'}, @ETHTOOL_A_HEADER_FLAGS={0x8, 0x3, 0x2}, @ETHTOOL_A_HEADER_FLAGS={0x8, 0x3, 0x2}]}, @HEADER={0x2c, 0x1, 0x0, 0x1, [@ETHTOOL_A_HEADER_DEV_NAME={0x14, 0x2, 'macvtap0\x00'}, @ETHTOOL_A_HEADER_DEV_NAME={0x14, 0x2, 'nicvf0\x00'}]}]}, 0xa8}, 0x1, 0x0, 0x0, 0x20}, 0x40)
+
+1.404023161s ago: executing program 1 (id=58):
+r0 = openat$drirender128(0xffffffffffffff9c, &(0x7f0000000100), 0x181400, 0x0)
+ppoll(&(0x7f0000000180)=[{r0, 0x84c0}], 0x1, 0x0, &(0x7f0000000200)={[0x9]}, 0x8)
+
+1.328877645s ago: executing program 3 (id=52):
+r0 = syz_open_dev$loop(&(0x7f0000000000), 0x994, 0x8800)
+ioctl$LOOP_CLR_FD(r0, 0x4c01)
+r1 = openat$snapshot(0xffffffffffffff9c, &(0x7f0000000040), 0xc1080, 0x0)
+ioctl$SNAPSHOT_CREATE_IMAGE(r1, 0x40043311, &(0x7f0000000080))
+syz_open_dev$char_usb(0xc, 0xb4, 0x7)
+r2 = syz_open_dev$ndb(&(0x7f00000000c0), 0x0, 0x40000)
+ioctl$NBD_CLEAR_QUE(r2, 0xab05)
+
+1.24241375s ago: executing program 0 (id=54):
+ioctl$BLKGETSIZE(0xffffffffffffffff, 0x1260, &(0x7f0000000000))
+r0 = openat$snapshot(0xffffffffffffff9c, &(0x7f0000000040), 0x0, 0x0)
+ioctl$SNAPSHOT_CREATE_IMAGE(r0, 0x40043311, &(0x7f0000000080))
+r1 = syz_open_dev$hiddev(&(0x7f00000000c0), 0x8, 0x8080)
+ioctl$HIDIOCSFLAG(r1, 0x4004480f, &(0x7f0000000100)=0x3)
+r2 = openat$nullb(0xffffffffffffff9c, &(0x7f0000000140), 0x80, 0x0)
+ioctl$BLKROTATIONAL(r2, 0x127e, &(0x7f0000000180))
+
+1.172816499s ago: executing program 3 (id=57):
+r0 = openat$fuse(0xffffffffffffff9c, &(0x7f00000010c0), 0x2, 0x0)
+openat$cuse(0xffffffffffffff9c, &(0x7f0000001100), 0x2, 0x0)
+ioctl$FUSE_DEV_IOC_CLONE(r0, 0x8004e500, 0x0)
+
+1.171165698s ago: executing program 3 (id=59):
+pipe2(&(0x7f0000000040)={0xffffffffffffffff, <r0=>0xffffffffffffffff}, 0x800)
+ioctl$FS_IOC_FSSETXATTR(r0, 0x401c5820, 0x0)
+
+1.081129238s ago: executing program 3 (id=61):
+r0 = syz_open_dev$loop(&(0x7f0000000000), 0xfffffffffffffeff, 0x2000)
+r1 = syz_clone(0x83040200, &(0x7f0000000040)="4f236e45e34a7dd7e4a3919fc89bf5365e58fa8ac38c94b36e057b8f2e600854e1b6a97e1acd5915bcd68a4b427e797dd25cba99a0fcaed58007dbf9b75da7ec2a3e5e1e5d5cc5cf3cf185d93085b2392a161e57d469deedb9524c29520928dc9ad8a148d7b6e6a6f335605e48a43007fa144f59d2c1376b9254c5f19c3f36a205657ec57e04ea9a0f52cb68cbdb59c50146ff076cf630b85ded0049c40c68a561e4fd8a8cc5de8a7b227163737fd9ebd30d", 0xb2, &(0x7f0000000100), &(0x7f0000000140), &(0x7f0000000180)="c248984c335a726e9143d65141dd8b2156aecd8bd258307523dd76d78f0ffd8decf7abfa818abdc8ac2d88a086e9a4e29fac7606750841e6e2c02e0b2c81d6fc34b57b44b62fd768823a5b4086d193a6416c9f664442dfb0baec97fa6cdd19c6498f7e238552005579cb7f23089dfc2dda196c1b39c69f17c045f2dfb87a0e9cf86907d79b7d26f9e5e747881727addde2b895a1c42ce9b0cd11b6bbd3aac32670df09ced6e2fd074913737ee1cf927493db19684de471b9e5885dc8c7257334c3ff1fd5d2a50eb25798eec8a6edfae01ef80c75184aeef17afd614573")
+ioctl$BLKTRACESETUP(r0, 0xc0481273, &(0x7f0000000280)={'\x00', 0x1, 0xfffffffb, 0x1, 0x9, 0x1, r1})
+
+1.077942749s ago: executing program 0 (id=62):
+r0 = syz_open_dev$loop(&(0x7f0000000000), 0xfffffffffffffeff, 0x2000)
+r1 = syz_clone(0x83040200, &(0x7f0000000040)="4f236e45e34a7dd7e4a3919fc89bf5365e58fa8ac38c94b36e057b8f2e600854e1b6a97e1acd5915bcd68a4b427e797dd25cba99a0fcaed58007dbf9b75da7ec2a3e5e1e5d5cc5cf3cf185d93085b2392a161e57d469deedb9524c29520928dc9ad8a148d7b6e6a6f335605e48a43007fa144f59d2c1376b9254c5f19c3f36a205657ec57e04ea9a0f52cb68cbdb59c50146ff076cf630b85ded0049c40c68a561e4fd8a8cc5de8a7b227163737fd9ebd30d", 0xb2, &(0x7f0000000100), &(0x7f0000000140), &(0x7f0000000180)="c248984c335a726e9143d65141dd8b2156aecd8bd258307523dd76d78f0ffd8decf7abfa818abdc8ac2d88a086e9a4e29fac7606750841e6e2c02e0b2c81d6fc34b57b44b62fd768823a5b4086d193a6416c9f664442dfb0baec97fa6cdd19c6498f7e238552005579cb7f23089dfc2dda196c1b39c69f17c045f2dfb87a0e9cf86907d79b7d26f9e5e747881727addde2b895a1c42ce9b0cd11b6bbd3aac32670df09ced6e2fd074913737ee1cf927493db19684de471b9e5885dc8c7257334c3ff1fd5d2a50eb25798eec8a6edfae01ef80c75184aeef17afd614573")
+ioctl$BLKTRACESETUP(r0, 0xc0481273, &(0x7f0000000280)={'\x00', 0x1, 0xfffffffb, 0x1, 0x9, 0x1, <r2=>r1})
+ioctl$BLKTRACESETUP(r0, 0xc0481273, &(0x7f0000000300)={'\x00', 0x1, 0xfff, 0xfffffff4, 0x8, 0x8001, r2})
+
+476.605455ms ago: executing program 1 (id=70):
+ioctl$sock_SIOCGIFINDEX(0xffffffffffffffff, 0x8933, &(0x7f0000000000)={'geneve0\x00', <r0=>0x0})
+ioctl$sock_ipv4_tunnel_SIOCGETTUNNEL(0xffffffffffffffff, 0x89f0, &(0x7f00000000c0)={'tunl0\x00', &(0x7f0000000040)={'erspan0\x00', r0, 0x8000, 0x80, 0xf, 0x7, {{0xc, 0x4, 0x3, 0x3a, 0x30, 0x64, 0x0, 0x1, 0x29, 0x0, @dev={0xac, 0x14, 0x14, 0xa}, @private=0xa010101, {[@rr={0x7, 0x13, 0xca, [@empty, @private=0xa010102, @remote, @multicast1]}, @generic={0x44, 0x6, "dd0b6c77"}]}}}}})
+r1 = creat(&(0x7f0000000100)='./file0\x00', 0x40)
+ioctl$SNAPSHOT_CREATE_IMAGE(r1, 0x40043311, &(0x7f0000000140))
+socketpair$nbd(0x1, 0x1, 0x0, &(0x7f0000000180)={0xffffffffffffffff, <r2=>0xffffffffffffffff})
+write$nbd(r2, &(0x7f00000001c0)={0x67446698, 0x1, 0x3, 0x1, 0x2, "edc23bdbd37e321a072d9dea77b64df57b4daaebc998177b24403d1921fd90daa78ca2df69acc4e7e3ab2f7ab852b7faae36217fd399f7f47927d5dea48a5d7f7e818ca6037899bd16d744941192784de0aca49383048060fee8b7425f5431edc2ede018b6a4c3ba85d357ebf99fa4f3d1d7852da2d5082b3c284f042c47f4f9659b82d2359884b54850d99d6bf9d6f7df2c9a42617b39732d71c83f5951840b24210423d4683fde62327570385fed93e3d65ef898fdad39c6a2d81998c01b66551f02f9df2de022619572139d75969611e69246bf5a9c2ace240354fedd826da95e440c80bc219ef051354ec682d24cc6d61439c56b2c2c46fb11e9fc952425e18e083fe3297afd6a041205274df55053c7cb3b5a1f1c57335665c37d2c9d0e147773469da17fb04d5883ae4af9ccfdea8a77b9d85570365345be91e851c9b7c21e84d58f9214453dc1097eb5ce1e35341a641a8697a179355685de60865bb2ebcb0b0ca010bf790d91e77d505c237cffe3114651f07fa0bb2431d9d8686db6560cb9044d001a35a189fdd7a96e7a095477ff86b0f5b1a90c1eeb459c6324ead6beede29c4a6863a183b8575a72366dc8c2699c2f08bf26144784be6c4a1a91148a85617369f1c72de8aec26639ec3386d2f50b12674da9acb12b68c806e6d1c4c93ae0b80275e4ffff5a4e5fcb09bcd924de72a3f029d8b3f95a68118d18a1ab321b55ff5cca7a9879a3b251e0ef0b41f11962b8babb1adb75708ae6b06fb377e2aba9f5d03eea32d014923dccc87154dc0614c779c53d1630470274b8d8e01bc4770df4e4f3f7eb9e58157f3ad879eefafc1dc0820b8a89319caaf9f90e0cf86ff63798b9b2a8a7d241fc95ad7bd6ff96b7d4a4b88ce3b94baa097be036ca08a1c37bf215d8624cea9ee92c8f621bed788c8c9d44f5935d7667a26107edf98be11e03fe49b3c88051b2fdd715b105977b5270e71caa674c58c618ac8c60f95ba8da2041f3c345f96b337d5d103eeb6899b828377c952ef07decda095b3351ce08a42ba3961d96f9864f97619ffec6fe5e0c9b5cf175a356c83eb39fe3d72ddede48b3dae3ce8b0a286a92c7fe20fb780a2ab353ac96911c70933b736c47452b43ebf89098dc1daf4d890e007d47809a0a286b0491fb0c0f3525126fbf3a71d098e987d0e818b68e4b7e0d8546059fb730fe3d7921113af2fd8855aba35fb908f639df463b80768e9b37c4f8ee4a61d4c3ab5057b510e6ff0c96be2833bb904e73dc55762468da3c3df9f50247dd2054805a9cd0634c2ca80b7c873af547253a714d1b1fb289325566f51d71803c2213f0fba49b9fc3e81e0630138333c79dd0a287f281a795b8f934d61674cf085fdc6cef2c11c0947f692a450ce6cac794f8229d052851b137b7ed559649846587c9ce8e5520553f2ab4e5cbecfb868ad485eb41a8e5c55516270e209825d6519fef477a77bc9a09e2d38fe6d6dde28f3486fd6c9d1d4474c47acb32fa755fa0cd18204efd60dd4189cfdbb65214e74e0b4ad4ebe16d7a76fa0b698484dd797b1495ae0b8d77fac0cbafe9b3909b9ee7b0d1d285fd99439ca9b495b0da369baea0ab2159f19a02555cebfe261d7467a2c2447f6ca020959f42b6139fd38bf0a4106c5588a3ce3c617e0a84406daedb28f9e5cc8e4f80c45a37cb0020fbc1126f3620368e0e9e2a3c1363f211ee177f8c34920928945d4d486aba5f02c5c1fe0ac63388772caa0d8b4f03a43e51f7ab991100a0e8e241e923e06a0813719c49e6b40d84af3b4a1de50fae1e8fb69d377df069e7d18d9fd31dc07b67e2a201ac8b214fd75b28c5902da26fed26cc2485cfad48ca68bc6b7fdf024e060c44e71bcdf8ce3e25a419b372644166a53c55a9b16fd6bd4bf2947d743b0f1f7217f113ad4c6a566f47d3e21eccc24a1c2468b4a659f2de62e6704585cbf3197c7b8ebb9960bbfb86d8a92fd5b91947d123477de0d9e4971ae98a761f04aa740d269abbe83ccc6dea71321ba2ae78db260e92c56275a955dc598ce6f2f0ca8992c5b3b37adf29e309077191ff4d355356cb9f20cc772c5916d5491fa0cbae9ab60adc61e161f73d597f496e344877501e2bf87c8e583a10dded5013e8c78cfc994099d5ccee915b3cb8458d15cbece68f4e67e46f20255aa0ceedd44f3b76a33c0036da5991e0648c6d2d62bc3cc6ac7a66d6c84a5cc3d7cadccf5a4826d746049b9c2de4ac1937f6797dfffe492d9313f30faeb0c51a6b434ef6cbea2a5297fdeec0ba317a3d65136c48d3a82820da0b6e9e7be73238abfe550c28f945dbe3e242fbba5496a16d551e807928585adaf0595d1ef0205d2899a41d1df34f844c414783e74bf9fa32947ac7cc00efe060c7210ee9c73211b74e58eba916ae18fd6004880ed9f724b4e253534cb1a2d97e192d649b644cb2afe0a34b0d3ab3e2e52e8c674ec17899854bb0d89e7b8cc9d5b82a717f2325e164dd7a15e9b0ea5b1623a91c9d8dfbadc2b4ab29b291f24ccd69471bc1ceb1bb1fabbc7da0c5e0cc0ce15061d61a8f57b4683ef92ae7b32d88915380c30feb9a08f9eaba75cd769cc9713b65e08f7de43b0375ea5aaa4bca1597fb47363ee54c01193863a1df68514005af3cf562bd4ac9a68e6cdbdb9949e24d9b253eab9a620ff2b2406594238f037d0d1b299d370994d4c4e539cb693302af07c8cb679c600a29c19e607c765f671fd7752b16be5e82ccb357908235b62a8897f0345621b6452529f83b07100e5378b835bb36318980fe213b0a76d9f83421c9b92e67cbd6869a5399d818a5bc55f9a8e9fefc1f4738878ad320c654fab409750a4728a50fb36fd627f8a32501d6fc53e65abcf093cbd51096b89828c68225b66e7e1236508a1b40921ca25c7bde931dfa96a0f895c5271c4d7cedfa3423d881712e4e47e96d8ab15d9af5964ee3926eb561240628f4884358eebd45c7baf56ab8f339ca8ec1285488d3223748645630d01325d04189ba5fc6796ccb4fe18f6c93ab168717ea979362bc17513c85e384757fcf8bffee7c1f15fca25bd00a6a53d66585600ed370a31f2e5fa2af379e4c35ad7881d45783a6c09da9a90a725b2e8525f03029a2d1c27e42bad4ccb319495121ae9486c9b26dfda06328eb19c116341cee6edc87d50a4a344f51bcdb771d840dc409382ca41accc2317280acaf57c6d91e5948e1dda5a8c6704ba03cfb8c5c554122d7a42e36a227e78386c8f80a3cad8ccda8e124c1b9ad66b0252786adc4477636ea33de6f8d44be7cda950bf7b95ee252a77668732a8830cfe062af3fcf32a6e8cc351e6350d926bf6b060e03eed987056b066f9e2d08d9195ceb64110745eee78c436d52061ac56f04b2ab72f29fc5e0f0ec4538ff8b5939d83132f043ae3b6e3c802991be496f45d9ced96448846a6994f8d93795e3733f254145cf3465e36a9b11495bfec97929b84632e5837492c583ee8fe747a006fbea0f229724e7e33bfad0303d9e5adb03b71a4f3f87fdbb11a4797cf2d391c4f32b6827dc40d153f703b04cbb44169d82536ce33fe9ecaa251362ed437b493890da9f832582dd987cdc149434352afc267529d3ebc0b377f768fdce2771aa37f5d7fe812dc573de154ea6035fcb2f865ee547f13fdc2c134cbd85867748a5e97ad1d43df4f5b57e2a8b2f003b93f1dd2a83e9d8b987f7d8b69c3c0b455bf4ff28966759f55eaaca1bd140170556c531a09b82a1d38f1a7b3f71a884ff6fa976414d97d0a60893985ba5180993b5ec868e5cb1b2a41e92f524dbc732872bb3dfbd286b3d8fc66d8b935e1d3b312653283afa1aacfdc36d30712cc466d12e2100c28e0e7703f9a844d44e3e4d5560b46b55dd797bb6433a6ffb25926492f9b5ab17899a9ec5be5788ba00209892ef75ed94fd95bcfd42c53261cb73546be9a3b94cb9f1b818ed616d7e7d9709ade024f2430335cd084b730dc11eadd71277f0ffc9da8e73250c6f48fec11a6acbc7d5d2230f9815b64ab3e2bb9d24b14e931b81433a5c65754ca1354c78629f533979186926812c04ce130fc70c69d4a802043c7e677f75350fc819b05bca72ae6c427885f18f7296a2eb7772fcf602d1b2bc7657c82230661a055066734f1811432e2551d7588e8905ebe63fd10e8b341ce5bc67f10cf181d7c57ac259f92a836052724bc4376f2b684d72f699cdbb683a006c85265e2cb343b254bcb499176debf49004743a806aa2bf8835c193764ce1b9ee44860f69bf647fa8ab7b4f2322dc68fa85e662ffe64a29c01db3d9582d7562b412d64365f0632530ce7314cf523463cd7193ecd73b8c8026f16d0d7e514de620dd5225cdf1ef2eae08924fea756d52f3b6e329cdfb22c880ec773e0d3d5d8bc8fe8c367555889eabe56ce9dff565319dd4af1d9c4e61f7c649ae65a51b9c720af209a9a6afe1668febdba09d0ad3ff2ab2a83a6a36e986c081ad29f1e458a4384f8472bd38098100c5180055cd00391b5b9fb9610c932e520eebf9c760b72da8f726144d833f8416726fd24a1f25f90f4051c9c67978af7b16fe653f85775f7a08b31e2ccdd533684437b1d3122e6ca10807c831bbcdbff1c565399887166236dd9b44e089fd3a1a2e4dca272b3968484bf639b3885159a48472aed64fd5bb2623f123f1c553d5bc1f3bef0b7f809e9dae2d8240285e93965c92d9e6fe7434255b7f0befd0e4d154742fba63de06b93bfd56cddc112c5f29d49af6e1e42a186a7d5182ee8b52ab83800d0fd0fcb34a20c6944833b71bbaff7759c055c9991e7e57c6683589afcf7644e0b812853f8fb50e28d7b2f123ef28ae99b2b314fad2c804401b5f77a53184829c17f4b9b92bc747e8992907ecec3c9eeaca4fe8e8827c56b8042eaeadc97aca708b4d01dacf97cf7952191b964f4b22db437a4d23627776bfc7ffd542925fd6e17013abc8efe56c9725b4ceb84ca5653a398285cea4c4692a372e4cc11e2564157d4adcb53cb40d362acee674e37aeb3dd8fe4310f5d03a58e7ba8a4dcb1bfe7e9d3137a14807ea5a604e5a13c6cc56ecf658457fed23c30d593584dab2504bf5aa47d1f204399a95ff76928f6d061508a6074498f4fec20dc08c4090d50aa523be18bd4d259e50df506838b413c8365a653d465e685df609f93997dc4b88738c2813892c668f12439da4c209d6c0e3515f09606b606c0834f5c9a220d1f7bafe84282067ee89ac2e0e178140261dfbc0a95551458229537d5deeb1a597d1a888c9c0b41a86572b73555290a57412293015a6e973e4c2a0791f02fa82263a27c2784d4d4c4d141fb12afde85b03140c00d3556c4f003e69de555dbe50b912be66900782beea0063228c44c27a132c105edcde02095e34da2284ad0e6b8b55e9bd88f8243d203521041e61333ac8e21963bd22a8971c50ba09862e238d7b0b0307bf0886b220f62b8c3e150343cc78b5858e315d3428e2d4df768973cdaa9c54e030d140ade140f4fbc049de99345a7d53f90ded7973488f73d116bc0e7132032565e5bde4fc178a784a22982a73a71b4d722687be52c20f1d336e88935d4bef9eb43d0f19a75dc3d61006f50149a692b0df685239d16bdb2e1c9a692dc3a72a0b91a6099c6548be9cb1150a6ba50f2a69dd9359d298dd1d94a9de025f1cb8f3e1439ae67929f2eb772c1125eaaad5d4da768d48201552543b10a2a319e085b124f48c0e9717472603085c49aa8d58fd88b578f0053b40b967513af18bf5de9d9cabddb8d2a02eae2d3ba0445db6ad31"}, 0x1010)
+openat$nvme_fabrics(0xffffffffffffff9c, &(0x7f0000001200), 0x20200, 0x0)
+
+420.44777ms ago: executing program 2 (id=71):
+ioctl$sock_ipv4_tunnel_SIOCDELTUNNEL(0xffffffffffffffff, 0x89f2, &(0x7f00000000c0)={'sit0\x00', &(0x7f0000000000)={'gre0\x00', <r0=>0x0, 0x7800, 0x10, 0x800, 0x4, {{0x20, 0x4, 0x0, 0x6, 0x80, 0x68, 0x0, 0x7, 0x0, 0x0, @multicast2, @initdev={0xac, 0x1e, 0x1, 0x0}, {[@ra={0x94, 0x4}, @cipso={0x86, 0x44, 0x3, [{0x2, 0x5, "8cf7ec"}, {0x6, 0x12, "735395a5f9d604176a6a84635097ca0c"}, {0x1, 0x5, "d7214a"}, {0x5, 0x8, "019048d70572"}, {0x1, 0x6, "55f4199c"}, {0x5, 0x9, "21bb386be8d81f"}, {0x0, 0xb, "e63226e140ce31f7e2"}]}, @cipso={0x86, 0x18, 0x3, [{0x0, 0x12, "e2ca37dc465a7a46d291c16ac584f2b9"}]}, @timestamp={0x44, 0x8, 0xc5, 0x0, 0x1, [0x7]}, @ra={0x94, 0x4, 0x1}]}}}}})
+ioctl$sock_ipv6_tunnel_SIOCGETTUNNEL(0xffffffffffffffff, 0x89f0, &(0x7f0000000180)={'syztnl1\x00', &(0x7f0000000100)={'ip6gre0\x00', <r1=>r0, 0x29, 0x8, 0x5, 0x3, 0x5, @empty, @private0, 0x7800, 0x47, 0x0, 0x6}})
+r2 = openat$snapshot(0xffffffffffffff9c, &(0x7f00000001c0), 0x161000, 0x0)
+ioctl$SNAPSHOT_CREATE_IMAGE(r2, 0x40043311, &(0x7f0000000200))
+ioctl$sock_ipv6_tunnel_SIOCADDTUNNEL(0xffffffffffffffff, 0x89f1, &(0x7f00000002c0)={'ip6_vti0\x00', &(0x7f0000000240)={'ip6_vti0\x00', <r3=>r1, 0x29, 0x2, 0x0, 0x7f, 0x8, @local, @mcast1, 0x7, 0x20, 0x7, 0x7f}})
+r4 = getuid()
+setsockopt$inet6_IPV6_XFRM_POLICY(0xffffffffffffffff, 0x29, 0x23, &(0x7f0000000300)={{{@in=@rand_addr=0x64010102, @in=@initdev={0xac, 0x1e, 0x1, 0x0}, 0x4e20, 0xffff, 0x4e21, 0x2, 0x8, 0x20, 0x0, 0x3a, r3, r4}, {0x3, 0x0, 0x1, 0x0, 0x2, 0x8000, 0x5, 0x1000}, {0x3, 0x6, 0x3, 0x8}, 0x8, 0x6e6bb2, 0x1, 0x1, 0x2, 0x1}, {{@in6=@empty, 0x4d4, 0x32}, 0x2, @in6=@private1={0xfc, 0x1, '\x00', 0x1}, 0x3504, 0x1, 0x2, 0x10, 0x7bd22bc6, 0x1, 0x6}}, 0xe8)
+
+250.566554ms ago: executing program 1 (id=72):
+ioctl$IOC_PR_REGISTER(0xffffffffffffffff, 0x401870c8, &(0x7f0000000400)={0x6, 0x1ff})
+
+249.516537ms ago: executing program 2 (id=73):
+r0 = socket$netlink(0x10, 0x3, 0x2)
+sendmsg$ETHTOOL_MSG_FEATURES_GET(r0, &(0x7f0000000300)={0x0, 0x0, &(0x7f00000002c0)={&(0x7f0000000200)={0xa8, 0x0, 0x200, 0x70bd2d, 0x25dfdbfd, {}, [@HEADER={0x28, 0x1, 0x0, 0x1, [@ETHTOOL_A_HEADER_DEV_INDEX={0x8}, @ETHTOOL_A_HEADER_FLAGS={0x8, 0x3, 0x1}, @ETHTOOL_A_HEADER_DEV_NAME={0x14, 0x2, 'vxcan1\x00'}]}, @HEADER={0x40, 0x1, 0x0, 0x1, [@ETHTOOL_A_HEADER_DEV_INDEX={0x8}, @ETHTOOL_A_HEADER_FLAGS={0x8, 0x3, 0x1}, @ETHTOOL_A_HEADER_DEV_INDEX={0x8}, @ETHTOOL_A_HEADER_DEV_NAME={0x14, 0x2, 'wlan0\x00'}, @ETHTOOL_A_HEADER_FLAGS={0x8, 0x3, 0x2}, @ETHTOOL_A_HEADER_FLAGS={0x8, 0x3, 0x2}]}, @HEADER={0x2c, 0x1, 0x0, 0x1, [@ETHTOOL_A_HEADER_DEV_NAME={0x14, 0x2, 'macvtap0\x00'}, @ETHTOOL_A_HEADER_DEV_NAME={0x14, 0x2, 'nicvf0\x00'}]}]}, 0xa8}, 0x1, 0x0, 0x0, 0x20}, 0x40)
+
+178.687654ms ago: executing program 2 (id=74):
+r0 = socket$igmp(0x2, 0x3, 0x2)
+connect$inet(r0, &(0x7f0000000000)={0x2, 0x4e20, @dev={0xac, 0x14, 0x14, 0x19}}, 0x10)
+write(r0, &(0x7f0000000040)="81d10cd51933de614df0d1ee8fc6d6dbc0cc023a955c0cc2cb995a1c4abce2a513e3bcfa8e", 0x25)
+fadvise64(0xffffffffffffffff, 0x5, 0x9, 0x2)
+r1 = syz_init_net_socket$x25(0x9, 0x5, 0x0)
+ioctl$INCFS_IOC_FILL_BLOCKS(r1, 0x80106720, &(0x7f00000003c0)={0x4, &(0x7f0000000340)=[{0x49e, 0xf0, &(0x7f0000000080)="26c9bc6849b86ac7acc747ba00c360f0661a54ff9155fbe02e2d4d8101a2216c84af34a1162b68c0297fcd3a844d4d5f622f358b292a7babbec0d1f1c24a3e86e70a0d3ccafda7535b9879e2c3e92a7299ddf7e90856a3ad10ace8b3fea0993d066ae78315deb20d284874e106ce371c28ca4455688f78ad6804f7236eee09ec9440a2d3d9d5cff6f29d45f54225ad43151f29f8886e00e39b0173af611243f7f09ad194c15b75cc0b14fd7776bc73ef026ae4f9367f83e9802d30c2a44a11678f55fa1e9227375a33b2062445c0dbc7d0bfbcd7ff668e6112f3376aca7826f301756eda8eb91e77b16c735648acdfd8", 0x1}, {0x7, 0x3c, &(0x7f0000000180)="066096f97aa0c58936b4ade113e3c9bffec616ab7a17b1d833feb4b0ccf49c462068b262cfa442d8fd23948db1eb700b722063d91368a1ad543116e2", 0x0, 0x1}, {0x2, 0x5f, &(0x7f00000001c0)="d2c7ab199304276e0275794fb00f5bbf5bf43e174bb9f34698855bc7919ffefcd70e1aba4d52cee3bdd2be22cb402e4f502beaa2166eebf46e761b81d53340fa7de99cfdc6c00f7b337ae5178b5ef9e59d1846738fbdcce2b3b69ec31a0ade", 0x1, 0x1}, {0x5, 0xe4, &(0x7f0000000240)="05bfa754a0a8c5721bb00bc756805352f3d2bb332a235f9ea0476d88b60fcbff3498797b43a898b6d07f71502c28181f03a1bd00a5387a1c87d60d53456a8e55393ff7476b71b318fd8b88a1dfe604545ad3d8771372ce23efe15ac4afb096d51b3ccfaa30bc1a4d863016e36d4995c0daff454b9f990f740849f347b4e7f715901a0e00ffee9c62b9549299fcceb7d2e34f6d70276c3d2616f8ca5b82bbe5a5319fb9849c93668af4df21009ef87a9e6a81f4e40f2592e7a1997ab29d9e8a4dd24cf9141eea22da41a7240245bb6f8407d3fcd978dacd41b00440bdcec88ae05187a7d5"}]})
+
+178.333172ms ago: executing program 1 (id=75):
+bpf$BPF_TASK_FD_QUERY(0x14, &(0x7f00000002c0)={0x0, 0xffffffffffffffff, 0x0, 0x9, &(0x7f0000000280)='/dev/loop'}, 0x30)
+
+115.074999ms ago: executing program 1 (id=76):
+r0 = openat$nullb(0xffffffffffffff9c, &(0x7f0000000140), 0x80, 0x0)
+ioctl$BLKROTATIONAL(r0, 0x127e, &(0x7f0000000180))
+
+113.994164ms ago: executing program 2 (id=77):
+r0 = syz_open_dev$dri(&(0x7f00000001c0), 0x1, 0x202)
+ioctl$DRM_IOCTL_MODE_GETCRTC(r0, 0xc06864a1, &(0x7f0000000380)={&(0x7f0000000200)=[0x0, 0x0, 0x0, 0x0, 0x0, 0x0], 0x6})
+
+20.332038ms ago: executing program 1 (id=78):
+r0 = syz_open_dev$loop(&(0x7f0000000000), 0x994, 0x8800)
+ioctl$LOOP_CLR_FD(r0, 0x4c01)
+r1 = openat$snapshot(0xffffffffffffff9c, &(0x7f0000000040), 0xc1080, 0x0)
+ioctl$SNAPSHOT_CREATE_IMAGE(r1, 0x40043311, &(0x7f0000000080))
+syz_open_dev$char_usb(0xc, 0xb4, 0x7)
+r2 = syz_open_dev$ndb(&(0x7f00000000c0), 0x0, 0x40000)
+ioctl$NBD_CLEAR_QUE(r2, 0xab05)
+
+19.998115ms ago: executing program 2 (id=79):
+r0 = openat$drirender128(0xffffffffffffff9c, &(0x7f0000000100), 0x181400, 0x0)
+ppoll(&(0x7f0000000180)=[{r0, 0x84c0}], 0x1, &(0x7f00000001c0), 0x0, 0x0)
+
+0s ago: executing program 2 (id=86):
+r0 = socket$igmp(0x2, 0x3, 0x2)
+connect$inet(r0, &(0x7f0000000000)={0x2, 0x4e20, @dev={0xac, 0x14, 0x14, 0x19}}, 0x10)
+write(r0, &(0x7f0000000040)="81d10cd51933de614df0d1ee8fc6d6dbc0cc023a955c0cc2cb995a1c4abce2a513e3bcfa8e", 0x25)
+fadvise64(0xffffffffffffffff, 0x5, 0x9, 0x2)
+r1 = syz_init_net_socket$x25(0x9, 0x5, 0x0)
+ioctl$INCFS_IOC_FILL_BLOCKS(r1, 0x80106720, &(0x7f00000003c0)={0x4, &(0x7f0000000340)=[{0x49e, 0xf0, &(0x7f0000000080)="26c9bc6849b86ac7acc747ba00c360f0661a54ff9155fbe02e2d4d8101a2216c84af34a1162b68c0297fcd3a844d4d5f622f358b292a7babbec0d1f1c24a3e86e70a0d3ccafda7535b9879e2c3e92a7299ddf7e90856a3ad10ace8b3fea0993d066ae78315deb20d284874e106ce371c28ca4455688f78ad6804f7236eee09ec9440a2d3d9d5cff6f29d45f54225ad43151f29f8886e00e39b0173af611243f7f09ad194c15b75cc0b14fd7776bc73ef026ae4f9367f83e9802d30c2a44a11678f55fa1e9227375a33b2062445c0dbc7d0bfbcd7ff668e6112f3376aca7826f301756eda8eb91e77b16c735648acdfd8", 0x1}, {0x7, 0x3c, &(0x7f0000000180)="066096f97aa0c58936b4ade113e3c9bffec616ab7a17b1d833feb4b0ccf49c462068b262cfa442d8fd23948db1eb700b722063d91368a1ad543116e2", 0x0, 0x1}, {0x2, 0x5f, &(0x7f00000001c0)="d2c7ab199304276e0275794fb00f5bbf5bf43e174bb9f34698855bc7919ffefcd70e1aba4d52cee3bdd2be22cb402e4f502beaa2166eebf46e761b81d53340fa7de99cfdc6c00f7b337ae5178b5ef9e59d1846738fbdcce2b3b69ec31a0ade", 0x1, 0x1}, {0x5, 0xe4, &(0x7f0000000240)="05bfa754a0a8c5721bb00bc756805352f3d2bb332a235f9ea0476d88b60fcbff3498797b43a898b6d07f71502c28181f03a1bd00a5387a1c87d60d53456a8e55393ff7476b71b318fd8b88a1dfe604545ad3d8771372ce23efe15ac4afb096d51b3ccfaa30bc1a4d863016e36d4995c0daff454b9f990f740849f347b4e7f715901a0e00ffee9c62b9549299fcceb7d2e34f6d70276c3d2616f8ca5b82bbe5a5319fb9849c93668af4df21009ef87a9e6a81f4e40f2592e7a1997ab29d9e8a4dd24cf9141eea22da41a7240245bb6f8407d3fcd978dacd41b00440bdcec88ae05187a7d5"}]})
+
+kernel console output (not intermixed with test programs):
+
+Warning: Permanently added '[localhost]:1397' (ED25519) to the list of known hosts.
+syzkaller login: [   96.569531][ T9275] cgroup: Unknown subsys name 'net'
+[   96.746457][ T9275] cgroup: Unknown subsys name 'rlimit'
+Setting up swapspace version 1, size = 122.1 MiB (127995904 bytes)
+no label, UUID=f0f0ac56-1d8b-4d2a-8106-9b06be6ef05c
+[  112.387229][ T9275] Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k 
+[  117.094786][   T51] Bluetooth: hci0: unexpected cc 0x0c03 length: 249 > 1
+[  117.102313][   T51] Bluetooth: hci0: unexpected cc 0x1003 length: 249 > 9
+[  117.104370][   T51] Bluetooth: hci0: unexpected cc 0x1001 length: 249 > 9
+[  117.106514][   T51] Bluetooth: hci0: unexpected cc 0x0c23 length: 249 > 4
+[  117.109269][   T51] Bluetooth: hci0: unexpected cc 0x0c25 length: 249 > 3
+[  117.110967][   T51] Bluetooth: hci0: unexpected cc 0x0c38 length: 249 > 2
+[  117.140395][ T9303] Bluetooth: hci1: unexpected cc 0x0c03 length: 249 > 1
+[  117.144786][ T9296] Bluetooth: hci1: unexpected cc 0x1003 length: 249 > 9
+[  117.152023][ T9312] Bluetooth: hci1: unexpected cc 0x1001 length: 249 > 9
+[  117.161580][ T9312] Bluetooth: hci1: unexpected cc 0x0c23 length: 249 > 4
+[  117.163571][ T9312] Bluetooth: hci2: unexpected cc 0x0c03 length: 249 > 1
+[  117.165136][ T9312] Bluetooth: hci3: unexpected cc 0x0c03 length: 249 > 1
+[  117.166891][ T9296] Bluetooth: hci3: unexpected cc 0x1003 length: 249 > 9
+[  117.168596][ T9296] Bluetooth: hci1: unexpected cc 0x0c25 length: 249 > 3
+[  117.170453][ T9296] Bluetooth: hci2: unexpected cc 0x1003 length: 249 > 9
+[  117.172689][ T9296] Bluetooth: hci1: unexpected cc 0x0c38 length: 249 > 2
+[  117.181465][ T9316] Bluetooth: hci2: unexpected cc 0x1001 length: 249 > 9
+[  117.184379][   T51] Bluetooth: hci2: unexpected cc 0x0c23 length: 249 > 4
+[  117.186350][   T51] Bluetooth: hci2: unexpected cc 0x0c25 length: 249 > 3
+[  117.188646][   T51] Bluetooth: hci2: unexpected cc 0x0c38 length: 249 > 2
+[  117.191625][ T9303] Bluetooth: hci3: unexpected cc 0x1001 length: 249 > 9
+[  117.193817][ T9303] Bluetooth: hci3: unexpected cc 0x0c23 length: 249 > 4
+[  117.195779][ T9303] Bluetooth: hci3: unexpected cc 0x0c25 length: 249 > 3
+[  117.197879][ T9303] Bluetooth: hci3: unexpected cc 0x0c38 length: 249 > 2
+[  118.344659][ T9292] chnl_net:caif_netlink_parms(): no params data found
+[  118.403072][ T9299] chnl_net:caif_netlink_parms(): no params data found
+[  118.478350][ T9298] chnl_net:caif_netlink_parms(): no params data found
+[  118.500987][ T9297] chnl_net:caif_netlink_parms(): no params data found
+[  118.800595][ T9292] bridge0: port 1(bridge_slave_0) entered blocking state
+[  118.803109][ T9292] bridge0: port 1(bridge_slave_0) entered disabled state
+[  118.804836][ T9292] bridge_slave_0: entered allmulticast mode
+[  118.807694][ T9292] bridge_slave_0: entered promiscuous mode
+[  118.859503][ T9299] bridge0: port 1(bridge_slave_0) entered blocking state
+[  118.861231][ T9299] bridge0: port 1(bridge_slave_0) entered disabled state
+[  118.863953][ T9299] bridge_slave_0: entered allmulticast mode
+[  118.866793][ T9299] bridge_slave_0: entered promiscuous mode
+[  118.908290][ T9292] bridge0: port 2(bridge_slave_1) entered blocking state
+[  118.909968][ T9292] bridge0: port 2(bridge_slave_1) entered disabled state
+[  118.913384][ T9292] bridge_slave_1: entered allmulticast mode
+[  118.916268][ T9292] bridge_slave_1: entered promiscuous mode
+[  118.918794][ T9298] bridge0: port 1(bridge_slave_0) entered blocking state
+[  118.920567][ T9298] bridge0: port 1(bridge_slave_0) entered disabled state
+[  118.922429][ T9298] bridge_slave_0: entered allmulticast mode
+[  118.925388][ T9298] bridge_slave_0: entered promiscuous mode
+[  118.928198][ T9299] bridge0: port 2(bridge_slave_1) entered blocking state
+[  118.930221][ T9299] bridge0: port 2(bridge_slave_1) entered disabled state
+[  118.932404][ T9299] bridge_slave_1: entered allmulticast mode
+[  118.935373][ T9299] bridge_slave_1: entered promiscuous mode
+[  118.979407][ T9297] bridge0: port 1(bridge_slave_0) entered blocking state
+[  118.981285][ T9297] bridge0: port 1(bridge_slave_0) entered disabled state
+[  118.983226][ T9297] bridge_slave_0: entered allmulticast mode
+[  118.986305][ T9297] bridge_slave_0: entered promiscuous mode
+[  119.012179][ T9298] bridge0: port 2(bridge_slave_1) entered blocking state
+[  119.014181][ T9298] bridge0: port 2(bridge_slave_1) entered disabled state
+[  119.016211][ T9298] bridge_slave_1: entered allmulticast mode
+[  119.019295][ T9298] bridge_slave_1: entered promiscuous mode
+[  119.046902][ T9299] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  119.049396][ T9297] bridge0: port 2(bridge_slave_1) entered blocking state
+[  119.052561][ T9297] bridge0: port 2(bridge_slave_1) entered disabled state
+[  119.054326][ T9297] bridge_slave_1: entered allmulticast mode
+[  119.057154][ T9297] bridge_slave_1: entered promiscuous mode
+[  119.105518][ T9299] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  119.109849][ T9298] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  119.162643][ T9292] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  119.192082][ T9311] Bluetooth: hci0: command 0x0409 tx timeout
+[  119.206802][ T9298] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  119.241553][ T9297] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  119.248145][ T9292] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  119.255285][ T9297] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  119.261289][ T9299] team0: Port device team_slave_0 added
+[  119.263283][ T9311] Bluetooth: hci1: command 0x0409 tx timeout
+[  119.263298][ T9303] Bluetooth: hci3: command 0x0409 tx timeout
+[  119.263337][ T9303] Bluetooth: hci2: command 0x0409 tx timeout
+[  119.401548][ T9299] team0: Port device team_slave_1 added
+[  119.405132][ T9298] team0: Port device team_slave_0 added
+[  119.427360][ T9292] team0: Port device team_slave_0 added
+[  119.433413][ T9297] team0: Port device team_slave_0 added
+[  119.437333][ T9297] team0: Port device team_slave_1 added
+[  119.440305][ T9298] team0: Port device team_slave_1 added
+[  119.464564][ T9292] team0: Port device team_slave_1 added
+[  119.507526][ T9299] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  119.509295][ T9299] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  119.515962][ T9299] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  119.629310][ T9292] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  119.630835][ T9292] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  119.636430][ T9292] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  119.640510][ T9299] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  119.643110][ T9299] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  119.651389][ T9299] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  119.655957][ T9297] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  119.657928][ T9297] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  119.664606][ T9297] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  119.668753][ T9298] batman_adv: batadv0: Adding interface: batadv_slave_0
+[  119.671020][ T9298] batman_adv: batadv0: The MTU of interface batadv_slave_0 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  119.680358][ T9298] batman_adv: batadv0: Not using interface batadv_slave_0 (retrying later): interface not active
+[  119.684892][ T9292] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  119.686387][ T9292] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  119.692384][ T9292] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  119.724670][ T9297] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  119.726215][ T9297] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  119.733967][ T9297] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  119.738079][ T9298] batman_adv: batadv0: Adding interface: batadv_slave_1
+[  119.740511][ T9298] batman_adv: batadv0: The MTU of interface batadv_slave_1 is too small (1500) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1560 would solve the problem.
+[  119.749375][ T9298] batman_adv: batadv0: Not using interface batadv_slave_1 (retrying later): interface not active
+[  119.884462][ T9292] hsr_slave_0: entered promiscuous mode
+[  119.886617][ T9292] hsr_slave_1: entered promiscuous mode
+[  119.918427][ T9298] hsr_slave_0: entered promiscuous mode
+[  119.920570][ T9298] hsr_slave_1: entered promiscuous mode
+[  119.923226][ T9298] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  119.925062][ T9298] Cannot create hsr debugfs directory
+[  120.053268][ T9297] hsr_slave_0: entered promiscuous mode
+[  120.057064][ T9297] hsr_slave_1: entered promiscuous mode
+[  120.060393][ T9297] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  120.063607][ T9297] Cannot create hsr debugfs directory
+[  120.099705][ T9299] hsr_slave_0: entered promiscuous mode
+[  120.103447][ T9299] hsr_slave_1: entered promiscuous mode
+[  120.106947][ T9299] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  120.110018][ T9299] Cannot create hsr debugfs directory
+[  120.972358][ T9292] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[  120.988803][ T9292] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[  121.003101][ T9292] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[  121.022658][ T9292] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[  121.127820][ T9298] netdevsim netdevsim2 netdevsim0: renamed from eth0
+[  121.138136][ T9298] netdevsim netdevsim2 netdevsim1: renamed from eth1
+[  121.161169][ T9298] netdevsim netdevsim2 netdevsim2: renamed from eth2
+[  121.172927][ T9298] netdevsim netdevsim2 netdevsim3: renamed from eth3
+[  121.261850][ T9303] Bluetooth: hci0: command 0x041b tx timeout
+[  121.335944][ T9299] netdevsim netdevsim1 netdevsim0: renamed from eth0
+[  121.341857][ T9303] Bluetooth: hci2: command 0x041b tx timeout
+[  121.341871][   T51] Bluetooth: hci1: command 0x041b tx timeout
+[  121.341901][   T51] Bluetooth: hci3: command 0x041b tx timeout
+[  121.348217][ T9299] netdevsim netdevsim1 netdevsim1: renamed from eth1
+[  121.357485][ T9299] netdevsim netdevsim1 netdevsim2: renamed from eth2
+[  121.382672][ T9299] netdevsim netdevsim1 netdevsim3: renamed from eth3
+[  121.532776][ T9297] netdevsim netdevsim3 netdevsim0: renamed from eth0
+[  121.545676][ T9297] netdevsim netdevsim3 netdevsim1: renamed from eth1
+[  121.551134][ T9297] netdevsim netdevsim3 netdevsim2: renamed from eth2
+[  121.558992][ T9297] netdevsim netdevsim3 netdevsim3: renamed from eth3
+[  121.623006][ T9292] 8021q: adding VLAN 0 to HW filter on device bond0
+[  121.702799][ T9292] 8021q: adding VLAN 0 to HW filter on device team0
+[  121.714660][ T9298] 8021q: adding VLAN 0 to HW filter on device bond0
+[  121.733481][   T10] bridge0: port 1(bridge_slave_0) entered blocking state
+[  121.735158][   T10] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  121.763358][   T31] bridge0: port 2(bridge_slave_1) entered blocking state
+[  121.765114][   T31] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  121.773407][ T9298] 8021q: adding VLAN 0 to HW filter on device team0
+[  121.820300][ T1178] bridge0: port 1(bridge_slave_0) entered blocking state
+[  121.822011][ T1178] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  121.826290][ T1178] bridge0: port 2(bridge_slave_1) entered blocking state
+[  121.827902][ T1178] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  121.976563][ T9299] 8021q: adding VLAN 0 to HW filter on device bond0
+[  122.071108][ T9297] 8021q: adding VLAN 0 to HW filter on device bond0
+[  122.109615][ T9299] 8021q: adding VLAN 0 to HW filter on device team0
+[  122.139757][T10606] bridge0: port 1(bridge_slave_0) entered blocking state
+[  122.141482][T10606] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  122.160819][   T10] bridge0: port 2(bridge_slave_1) entered blocking state
+[  122.162573][   T10] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  122.179619][ T9297] 8021q: adding VLAN 0 to HW filter on device team0
+[  122.201582][T10616] bridge0: port 1(bridge_slave_0) entered blocking state
+[  122.203329][T10616] bridge0: port 1(bridge_slave_0) entered forwarding state
+[  122.208162][T10616] bridge0: port 2(bridge_slave_1) entered blocking state
+[  122.209879][T10616] bridge0: port 2(bridge_slave_1) entered forwarding state
+[  122.307444][ T9292] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  122.339821][ T9298] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  122.475851][ T9292] veth0_vlan: entered promiscuous mode
+[  122.500098][ T9298] veth0_vlan: entered promiscuous mode
+[  122.505884][ T9292] veth1_vlan: entered promiscuous mode
+[  122.536448][ T9298] veth1_vlan: entered promiscuous mode
+[  122.603296][ T9297] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  122.612871][ T9299] 8021q: adding VLAN 0 to HW filter on device batadv0
+[  122.646326][ T9298] veth0_macvtap: entered promiscuous mode
+[  122.653065][ T9292] veth0_macvtap: entered promiscuous mode
+[  122.676886][ T9292] veth1_macvtap: entered promiscuous mode
+[  122.687459][ T9298] veth1_macvtap: entered promiscuous mode
+[  122.738585][ T9298] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  122.757813][ T9298] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  122.764362][ T9298] netdevsim netdevsim2 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  122.766249][ T9298] netdevsim netdevsim2 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  122.768129][ T9298] netdevsim netdevsim2 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  122.769944][ T9298] netdevsim netdevsim2 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  122.787118][ T9292] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  122.789435][ T9292] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  122.795646][ T9292] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  122.811502][ T9297] veth0_vlan: entered promiscuous mode
+[  122.848874][ T9292] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  122.851102][ T9292] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  122.857630][ T9292] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  122.872898][ T9299] veth0_vlan: entered promiscuous mode
+[  122.883612][ T9292] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  122.885499][ T9292] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  122.887534][ T9292] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  122.889389][ T9292] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  122.915639][ T9297] veth1_vlan: entered promiscuous mode
+[  122.984369][ T9299] veth1_vlan: entered promiscuous mode
+[  123.064768][   T25] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  123.066471][   T25] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  123.107584][ T9297] veth0_macvtap: entered promiscuous mode
+[  123.146436][   T25] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  123.148133][   T25] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  123.149417][ T9297] veth1_macvtap: entered promiscuous mode
+[  123.190139][ T9299] veth0_macvtap: entered promiscuous mode
+[  123.229052][ T9299] veth1_macvtap: entered promiscuous mode
+[  123.250121][   T63] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  123.251876][   T63] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  123.258753][ T9297] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  123.267520][ T9297] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.269682][ T9297] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  123.272603][ T9297] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.276658][ T9297] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  123.290737][ T9299] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  123.293671][ T9299] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.295689][ T9299] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  123.297820][ T9299] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.299876][ T9299] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3e) already exists on: batadv_slave_0
+[  123.302139][ T9299] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.307133][ T9299] batman_adv: batadv0: Interface activated: batadv_slave_0
+[  123.331922][   T63] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  123.333617][   T63] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  123.340195][ T9297] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  123.343617][ T9297] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.345874][ T9297] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  123.347975][ T9297] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.353587][ T9311] Bluetooth: hci0: command 0x040f tx timeout
+[  123.357312][ T9297] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  123.385657][ T9297] netdevsim netdevsim3 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  123.388539][ T9297] netdevsim netdevsim3 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  123.391345][ T9297] netdevsim netdevsim3 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  123.398371][ T9297] netdevsim netdevsim3 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  123.422279][ T9311] Bluetooth: hci2: command 0x040f tx timeout
+[  123.424378][ T9311] Bluetooth: hci1: command 0x040f tx timeout
+[  123.426301][ T9311] Bluetooth: hci3: command 0x040f tx timeout
+[  123.442329][ T9299] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  123.444522][ T9299] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.446508][ T9299] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  123.482320][ T9299] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.484398][ T9299] batman_adv: The newly added mac address (aa:aa:aa:aa:aa:3f) already exists on: batadv_slave_1
+[  123.486505][ T9299] batman_adv: It is strongly recommended to keep mac addresses unique to avoid problems!
+[  123.507468][ T9299] batman_adv: batadv0: Interface activated: batadv_slave_1
+[  123.563281][ T9299] netdevsim netdevsim1 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  123.565156][ T9299] netdevsim netdevsim1 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  123.566979][ T9299] netdevsim netdevsim1 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  123.569132][ T9299] netdevsim netdevsim1 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  123.815540][ T1085] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  123.817258][ T1085] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  123.878063][ T1085] wlan0: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  123.879730][ T1085] wlan0: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  124.047981][ T1085] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  124.049710][ T1085] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  124.139830][ T1085] wlan1: Created IBSS using preconfigured BSSID 50:50:50:50:50:50
+[  124.150139][ T1085] wlan1: Creating new IBSS network, BSSID 50:50:50:50:50:50
+[  125.422256][   T51] Bluetooth: hci0: command 0x0419 tx timeout
+[  125.502183][   T51] Bluetooth: hci3: command 0x0419 tx timeout
+[  125.503594][   T51] Bluetooth: hci1: command 0x0419 tx timeout
+[  125.504887][   T51] Bluetooth: hci2: command 0x0419 tx timeout
+[  130.272135][T10640] systemd-rfkill (10640) used greatest stack depth: 10200 bytes left
+[  133.610610][T10684] syz.0.8: page allocation failure: order:0, mode:0xcc0(GFP_KERNEL), nodemask=(null),cpuset=syz0,mems_allowed=0-1
+[  133.617730][T10684] CPU: 0 PID: 10684 Comm: syz.0.8 Not tainted 6.6.0 #2
+[  133.619228][T10684] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  133.621109][T10684] Call Trace:
+[  133.621807][T10684]  <TASK>
+[  133.622439][T10684]  dump_stack_lvl+0x72/0xa0
+[  133.623496][T10684]  warn_alloc+0x137/0x1b0
+[  133.624455][T10684]  ? out_of_memory+0x1ad/0x950
+[  133.625512][T10684]  __alloc_pages+0xf0f/0xfc0
+[  133.626519][T10684]  alloc_pages+0xc9/0x1d0
+[  133.627473][T10684]  relay_open_buf.part.0+0x186/0x4d0
+[  133.628600][T10684]  relay_open+0x49a/0x540
+[  133.629544][T10684]  do_blk_trace_setup+0x1e3/0x3a0
+[  133.630638][T10684]  __blk_trace_setup+0x70/0x130
+[  133.631692][T10684]  blk_trace_ioctl+0xab/0x1f0
+[  133.632697][T10684]  ? do_vfs_ioctl+0xa3/0xca0
+[  133.633675][T10684]  ? __pfx_blkdev_ioctl+0x10/0x10
+[  133.634754][T10684]  blkdev_ioctl+0xa0/0x390
+[  133.635717][T10684]  ? __pfx_blkdev_ioctl+0x10/0x10
+[  133.636795][T10684]  __x64_sys_ioctl+0x107/0x150
+[  133.637808][T10684]  do_syscall_64+0x3d/0xc0
+[  133.638749][T10684]  entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+[  133.640017][T10684] RIP: 0033:0x7f9da1dae16d
+[  133.640984][T10684] Code: Unable to access opcode bytes at 0x7f9da1dae143.
+[  133.642415][T10684] RSP: 002b:00007f9da2d11f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  133.644166][T10684] RAX: ffffffffffffffda RBX: 00007f9da1ff5fa0 RCX: 00007f9da1dae16d
+[  133.645791][T10684] RDX: 0000200000000280 RSI: 00000000c0481273 RDI: 0000000000000003
+[  133.647435][T10684] RBP: 00007f9da1e480f0 R08: 0000000000000000 R09: 0000000000000000
+[  133.649078][T10684] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[  133.650718][T10684] R13: 00007f9da1ff6038 R14: 00007f9da1ff5fa0 R15: 00007f9da2cf2000
+[  133.652381][T10684]  </TASK>
+[  133.661999][T10684] Mem-Info:
+[  133.662743][T10684] active_anon:6 inactive_anon:5 isolated_anon:0
+[  133.662743][T10684]  active_file:25 inactive_file:9 isolated_file:0
+[  133.662743][T10684]  unevictable:768 dirty:4 writeback:0
+[  133.662743][T10684]  slab_reclaimable:5060 slab_unreclaimable:40521
+[  133.662743][T10684]  mapped:20483 shmem:768 pagetables:397
+[  133.662743][T10684]  sec_pagetables:0 bounce:0
+[  133.662743][T10684]  kernel_misc_reclaimable:0
+[  133.662743][T10684]  free:9330 free_pcp:262 free_cma:0
+[  133.671616][T10684] Node 0 active_anon:4kB inactive_anon:20kB active_file:0kB inactive_file:76kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:40968kB dirty:0kB writeback:0kB shmem:1536kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:3512kB pagetables:820kB sec_pagetables:0kB all_unreclaimable? no
+[  133.680736][T10684] Node 1 active_anon:20kB inactive_anon:0kB active_file:132kB inactive_file:0kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:40964kB dirty:16kB writeback:0kB shmem:1536kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:1720kB pagetables:768kB sec_pagetables:0kB all_unreclaimable? no
+[  133.701739][T10684] Node 0 DMA free:3712kB boost:0kB min:536kB low:668kB high:800kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[  133.707277][T10684] lowmem_reserve[]: 0 863 863 863 863
+[  133.708432][T10684] Node 0 DMA32 free:15028kB boost:0kB min:30964kB low:38704kB high:46444kB reserved_highatomic:0KB active_anon:4kB inactive_anon:20kB active_file:40kB inactive_file:8kB unevictable:1536kB writepending:0kB present:1032192kB managed:900204kB mlocked:0kB bounce:0kB free_pcp:676kB local_pcp:160kB free_cma:0kB
+[  133.731752][T10684] lowmem_reserve[]: 0 0 0 0 0
+[  133.733251][T10684] Node 1 DMA32 free:18580kB boost:0kB min:36080kB low:45100kB high:54120kB reserved_highatomic:2048KB active_anon:20kB inactive_anon:0kB active_file:64kB inactive_file:28kB unevictable:1536kB writepending:16kB present:1048448kB managed:1030744kB mlocked:0kB bounce:0kB free_pcp:372kB local_pcp:124kB free_cma:0kB
+[  133.739148][T10684] lowmem_reserve[]: 0 0 0 0 0
+[  133.740173][T10684] Node 0 DMA: 0*4kB 0*8kB 0*16kB 0*32kB 0*64kB 1*128kB (U) 0*256kB 1*512kB (U) 1*1024kB (U) 1*2048kB (M) 0*4096kB = 3712kB
+[  133.761693][T10684] Node 0 DMA32: 469*4kB (ME) 410*8kB (UME) 259*16kB (UME) 111*32kB (UME) 32*64kB (UME) 1*128kB (U) 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 15028kB
+[  133.765035][T10684] Node 1 DMA32: 177*4kB (UME) 80*8kB (UME) 43*16kB (ME) 157*32kB (UM) 168*64kB (M) 6*128kB (UM) 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 18580kB
+[  133.768261][T10684] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  133.770227][T10684] Node 0 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  133.772371][T10684] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  133.774531][T10684] Node 1 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  133.776606][T10684] 804 total pagecache pages
+[  133.777733][T10684] 1 pages in swap cache
+[  133.778697][T10684] Free swap  = 32092kB
+[  133.779553][T10684] Total swap = 124996kB
+[  133.780428][T10684] 524158 pages RAM
+[  133.781228][T10684] 0 pages HighMem/MovableOnly
+[  133.782261][T10684] 37581 pages reserved
+[  133.783129][T10684] 0 pages cma reserved
+[  139.538556][ T9275] syz-executor invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[  139.541228][ T9275] CPU: 0 PID: 9275 Comm: syz-executor Not tainted 6.6.0 #2
+[  139.542824][ T9275] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  139.544795][ T9275] Call Trace:
+[  139.545551][ T9275]  <TASK>
+[  139.546224][ T9275]  dump_stack_lvl+0x72/0xa0
+[  139.547221][ T9275]  dump_header+0x4c/0x290
+[  139.548279][ T9275]  oom_kill_process+0x169/0x290
+[  139.549506][ T9275]  out_of_memory+0x596/0x950
+[  139.550656][ T9275]  __alloc_pages+0xe65/0xfc0
+[  139.551770][ T9275]  alloc_pages+0xc9/0x1d0
+[  139.552735][ T9275]  folio_alloc+0x20/0x70
+[  139.553729][ T9275]  filemap_alloc_folio+0x1a0/0x1c0
+[  139.554905][ T9275]  __filemap_get_folio+0x337/0x590
+[  139.556108][ T9275]  filemap_fault+0x278/0x1160
+[  139.557187][ T9275]  __do_fault+0x47/0xf0
+[  139.558160][ T9275]  __handle_mm_fault+0x1c0d/0x2660
+[  139.559335][ T9275]  handle_mm_fault+0x26a/0x690
+[  139.560434][ T9275]  ? lock_mm_and_find_vma+0x89/0x3d0
+[  139.561658][ T9275]  exc_page_fault+0x42d/0xd10
+[  139.562756][ T9275]  asm_exc_page_fault+0x26/0x30
+[  139.563884][ T9275] RIP: 0033:0x7fc9d3fb2000
+[  139.564918][ T9275] Code: Unable to access opcode bytes at 0x7fc9d3fb1fd6.
+[  139.566459][ T9275] RSP: 002b:00007fff24c41428 EFLAGS: 00010283
+[  139.567818][ T9275] RAX: 00005555572b8c60 RBX: 00005555572c46e0 RCX: 00005555572b8c60
+[  139.569561][ T9275] RDX: 0000000000000003 RSI: 00005555572b8c60 RDI: 000000000000000e
+[  139.571313][ T9275] RBP: 00007fff24c41730 R08: 0000000000000000 R09: 00007fff24d76080
+[  139.573052][ T9275] R10: 0000000000000001 R11: 7fffffffffffffff R12: 000000000000000e
+[  139.574766][ T9275] R13: 00007fff24c418b0 R14: 00005555572c4700 R15: 00005555572ba3c8
+[  139.576597][ T9275]  </TASK>
+[  139.577374][    C0] vkms_vblank_simulate: vblank timer overrun
+[  139.580903][ T9275] Mem-Info:
+[  139.585901][ T9275] active_anon:5302 inactive_anon:2923 isolated_anon:0
+[  139.585901][ T9275]  active_file:24 inactive_file:8 isolated_file:0
+[  139.585901][ T9275]  unevictable:768 dirty:11 writeback:0
+[  139.585901][ T9275]  slab_reclaimable:5091 slab_unreclaimable:40787
+[  139.585901][ T9275]  mapped:20481 shmem:8036 pagetables:446
+[  139.585901][ T9275]  sec_pagetables:0 bounce:0
+[  139.585901][ T9275]  kernel_misc_reclaimable:0
+[  139.585901][ T9275]  free:14008 free_pcp:293 free_cma:0
+[  139.600028][ T9275] Node 0 active_anon:2364kB inactive_anon:2112kB active_file:20kB inactive_file:32kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:40964kB dirty:16kB writeback:0kB shmem:3480kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:3512kB pagetables:832kB sec_pagetables:0kB all_unreclaimable? no
+[  139.606884][ T9275] Node 1 active_anon:19000kB inactive_anon:9424kB active_file:76kB inactive_file:0kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:40960kB dirty:28kB writeback:0kB shmem:28664kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:1768kB pagetables:952kB sec_pagetables:0kB all_unreclaimable? no
+[  139.623564][ T9275] Node 0 DMA free:3968kB boost:0kB min:536kB low:668kB high:800kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[  139.633420][ T9275] lowmem_reserve[]: 0 863 863 863 863
+[  139.635198][ T9275] Node 0 DMA32 free:20840kB boost:0kB min:30964kB low:38704kB high:46444kB reserved_highatomic:2048KB active_anon:2364kB inactive_anon:2112kB active_file:32kB inactive_file:16kB unevictable:1536kB writepending:16kB present:1032192kB managed:900204kB mlocked:0kB bounce:0kB free_pcp:644kB local_pcp:476kB free_cma:0kB
+[  139.644405][ T9275] lowmem_reserve[]: 0 0 0 0 0
+[  139.645980][ T9275] Node 1 DMA32 free:19632kB boost:4096kB min:40176kB low:49196kB high:58216kB reserved_highatomic:0KB active_anon:18984kB inactive_anon:9440kB active_file:40kB inactive_file:36kB unevictable:1536kB writepending:28kB present:1048448kB managed:1030744kB mlocked:0kB bounce:0kB free_pcp:504kB local_pcp:248kB free_cma:0kB
+[  139.658497][ T9275] lowmem_reserve[]: 0 0 0 0 0
+[  139.660083][ T9275] Node 0 DMA: 0*4kB 0*8kB 1*16kB (U) 1*32kB (U) 1*64kB (U) 0*128kB 0*256kB 1*512kB (U) 1*1024kB (U) 1*2048kB (M) 0*4096kB = 3696kB
+[  139.664481][ T9275] Node 0 DMA32: 505*4kB (UME) 430*8kB (MH) 267*16kB (ME) 97*32kB (UM) 38*64kB (M) 10*128kB (M) 2*256kB (UM) 0*512kB 0*1024kB 0*2048kB 0*4096kB = 17060kB
+[  139.669432][ T9275] Node 1 DMA32: 504*4kB (M) 316*8kB (M) 165*16kB (UME) 133*32kB (M) 124*64kB (UM) 2*128kB (UM) 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 19632kB
+[  139.678409][ T9275] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  139.681407][ T9275] Node 0 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  139.707576][ T9275] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  139.710604][ T9275] Node 1 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  139.720418][ T9275] 8318 total pagecache pages
+[  139.723744][ T9275] 251 pages in swap cache
+[  139.725158][ T9275] Free swap  = 0kB
+[  139.726338][ T9275] Total swap = 124996kB
+[  139.727754][ T9275] 524158 pages RAM
+[  139.728935][ T9275] 0 pages HighMem/MovableOnly
+[  139.731002][ T9275] 37581 pages reserved
+[  139.732359][ T9275] 0 pages cma reserved
+[  139.733812][ T9275] Unreclaimable slab info:
+[  139.735268][ T9275] Name                      Used          Total
+[  139.737250][ T9275] bio-312                    3KB          3KB
+[  139.738756][ T9275] bio-376                    7KB          7KB
+[  139.740098][ T9275] bio-392                    7KB          7KB
+[  139.741386][ T9275] bio-448                    8KB          8KB
+[  139.751759][ T9275] zs_handle                 53KB         64KB
+[  139.753087][ T9275] SCTPv6                    62KB         62KB
+[  139.754348][ T9275] PINGv6                    15KB         15KB
+[  139.755638][ T9275] RAWv6                     46KB         46KB
+[  139.756888][ T9275] UDPv6                     47KB         47KB
+[  139.758179][ T9275] TCPv6                     63KB         63KB
+[  139.759427][ T9275] nf_conntrack              16KB         16KB
+[  139.760695][ T9275] wg_peer                   63KB         63KB
+[  139.791712][ T9275] scsi_sense_cache           8KB          8KB
+[  139.793150][ T9275] bio-136                   31KB         31KB
+[  139.794535][ T9275] drm_i915_gem_object         78KB         78KB
+[  139.795928][ T9275] mqueue_inode_cache         16KB         16KB
+[  139.798191][ T9275] fuse_request               7KB          7KB
+[  139.799548][ T9275] cifs_small_rq             15KB         15KB
+[  139.800896][ T9275] cifs_request              65KB         65KB
+[  139.811017][ T9275] nfs_commit_data           15KB         15KB
+[  139.815875][ T9275] UNIX                      63KB         63KB
+[  139.817825][ T9275] ip_fib_trie               15KB         15KB
+[  139.819513][ T9275] ip_fib_alias              43KB         43KB
+[  139.821092][ T9275] PING                      32KB         32KB
+[  139.836379][ T9275] RAW                       32KB         32KB
+[  139.845198][ T9275] request_sock_TCP           3KB          3KB
+[  139.851747][ T9275] TCP                       63KB         63KB
+[  139.853038][ T9275] hugetlbfs_inode_cache         15KB         15KB
+[  139.854692][ T9275] bio-264                   11KB         11KB
+[  139.856314][ T9275] ep_head                    8KB          8KB
+[  139.858125][ T9275] request_queue             95KB         95KB
+[  139.859498][ T9275] bio-200                   24KB         24KB
+[  139.860729][ T9275] biovec-max               288KB        288KB
+[  139.902649][ T9275] biovec-128                64KB         64KB
+[  139.920199][ T9275] biovec-64                 32KB         32KB
+[  139.921873][ T9275] khugepaged_mm_slot          7KB          7KB
+[  139.923335][ T9275] dmaengine-unmap-256         30KB         30KB
+[  139.942099][ T9275] dmaengine-unmap-128         15KB         15KB
+[  139.943543][ T9275] dmaengine-unmap-2         16KB         16KB
+[  139.981883][ T9275] QIPCRTR                   15KB         15KB
+[  139.983652][ T9275] audit_buffer               3KB          3KB
+[  139.984922][ T9275] skbuff_ext_cache          23KB         23KB
+[  139.986291][ T9275] skbuff_small_head         97KB         97KB
+[  139.987539][ T9275] skbuff_head_cache         36KB         56KB
+[  139.988838][ T9275] file_lock_cache            7KB          7KB
+[  139.990300][ T9275] task_delay_info            7KB          7KB
+[  139.991578][ T9275] taskstats                 15KB         15KB
+[  140.023156][ T9275] proc_dir_entry           315KB        315KB
+[  140.024773][ T9275] seq_file                   7KB          7KB
+[  140.026046][ T9275] sigqueue                  15KB         15KB
+[  140.030683][ T9275] shmem_inode_cache       4608KB       4608KB
+[  140.032614][ T9275] kernfs_node_cache      12004KB      12004KB
+[  140.033896][ T9275] mnt_cache                 82KB         82KB
+[  140.035511][ T9275] filp                     164KB        192KB
+[  140.039534][ T9275] names_cache              192KB        192KB
+[  140.043148][ T9275] net_namespace             56KB         56KB
+[  140.048053][ T9275] iint_cache                47KB         47KB
+[  140.049625][ T9275] uts_namespace             15KB         15KB
+[  140.050895][ T9275] nsproxy                    7KB          7KB
+[  140.053449][ T9275] vma_lock                  70KB         99KB
+[  140.056325][ T9275] files_cache               94KB         94KB
+[  140.057803][ T9275] signal_cache             405KB        441KB
+[  140.059108][ T9275] sighand_cache            730KB        835KB
+[  140.060344][ T9275] task_struct             2076KB       2190KB
+[  140.066692][ T9275] cred_jar                 383KB        496KB
+[  140.068213][ T9275] anon_vma_chain            65KB        128KB
+[  140.069512][ T9275] anon_vma                  70KB         99KB
+[  140.070764][ T9275] pid                      180KB        180KB
+[  140.073905][ T9275] Acpi-State              1651KB       1892KB
+[  140.076838][ T9275] shared_policy_node         19KB         19KB
+[  140.079308][ T9275] numa_policy              697KB        816KB
+[  140.080822][ T9275] trace_event_file         336KB        336KB
+[  140.085047][ T9275] ftrace_event_field        686KB        710KB
+[  140.086531][ T9275] pool_workqueue           274KB        288KB
+[  140.087785][ T9275] maple_node                88KB        136KB
+[  140.089071][ T9275] task_group                15KB         15KB
+[  140.090753][ T9275] mm_struct                 94KB         94KB
+[  140.094741][ T9275] vmap_area                238KB        492KB
+[  140.097256][ T9275] kmemleak_scan_area         78KB        152KB
+[  140.101430][ T9275] kmemleak_object        68879KB      70290KB
+[  140.104987][ T9275] kmalloc-cg-8k            384KB        384KB
+[  140.106796][ T9275] kmalloc-cg-4k           5376KB       5408KB
+[  140.108074][ T9275] kmalloc-cg-2k           3744KB       3744KB
+[  140.109323][ T9275] kmalloc-cg-1k            891KB        896KB
+[  140.110589][ T9275] kmalloc-cg-512           504KB        504KB
+[  140.120879][ T9275] kmalloc-cg-256            20KB         20KB
+[  140.122916][ T9275] kmalloc-cg-192            78KB         78KB
+[  140.124280][ T9275] kmalloc-cg-128            96KB         96KB
+[  140.125600][ T9275] kmalloc-cg-96             11KB         11KB
+[  140.126846][ T9275] kmalloc-cg-64              8KB         12KB
+[  140.128108][ T9275] kmalloc-cg-32              8KB          8KB
+[  140.129583][ T9275] kmalloc-cg-16             14KB         20KB
+[  140.131324][ T9275] kmalloc-cg-8               8KB          8KB
+[  140.153042][ T9275] kmalloc-8k              1632KB       1632KB
+[  140.154630][ T9275] kmalloc-4k              1616KB       1696KB
+[  140.156178][ T9275] kmalloc-2k              1632KB       1728KB
+[  140.161741][ T9275] kmalloc-1k              2636KB       2720KB
+[  140.163314][ T9275] kmalloc-512             4917KB       4936KB
+[  140.164555][ T9275] kmalloc-256             2440KB       2440KB
+[  140.166086][ T9275] kmalloc-192              993KB        996KB
+[  140.167482][ T9275] kmalloc-128              603KB        604KB
+[  140.168745][ T9275] kmalloc-96              3028KB       3079KB
+[  140.191704][ T9275] kmalloc-64              1465KB       1484KB
+[  140.193013][ T9275] kmalloc-32               559KB        560KB
+[  140.194265][ T9275] kmalloc-16               205KB        208KB
+[  140.195615][ T9275] kmalloc-8                267KB        268KB
+[  140.196854][ T9275] kmem_cache_node           42KB         44KB
+[  140.198581][ T9275] kmem_cache                80KB         80KB
+[  140.199821][ T9275] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/system.slice/ssh.service,task=syz-executor,pid=9275,uid=0
+[  140.231833][ T9275] Out of memory (oom_kill_allocating_task): Killed process 9275 (syz-executor) total-vm:123184kB, anon-rss:104kB, file-rss:128kB, shmem-rss:0kB, UID:0 pgtables:108kB oom_score_adj:0
+[  140.746274][ T1100] netdevsim netdevsim1 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  140.902439][ T1100] netdevsim netdevsim1 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  140.994231][ T1100] netdevsim netdevsim1 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  141.112453][ T1100] netdevsim netdevsim1 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  141.824673][ T1100] hsr_slave_0: left promiscuous mode
+[  141.834266][ T1100] hsr_slave_1: left promiscuous mode
+[  141.845694][ T1100] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  141.848299][ T1100] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  141.869307][ T1100] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  141.872182][ T1100] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  141.874387][ T1100] bridge_slave_1: left allmulticast mode
+[  141.875642][ T1100] bridge_slave_1: left promiscuous mode
+[  141.877081][ T1100] bridge0: port 2(bridge_slave_1) entered disabled state
+[  141.893439][ T1100] bridge_slave_0: left allmulticast mode
+[  141.894746][ T1100] bridge_slave_0: left promiscuous mode
+[  141.896113][ T1100] bridge0: port 1(bridge_slave_0) entered disabled state
+[  141.912125][ T1100] veth1_macvtap: left promiscuous mode
+[  141.913398][ T1100] veth0_macvtap: left promiscuous mode
+[  141.914631][ T1100] veth1_vlan: left promiscuous mode
+[  141.915854][ T1100] veth0_vlan: left promiscuous mode
+[  142.349010][ T1100] team0 (unregistering): Port device team_slave_1 removed
+[  142.382081][ T1100] team0 (unregistering): Port device team_slave_0 removed
+[  142.394021][ T1100] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  142.411834][ T1100] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  142.513733][ T1100] bond0 (unregistering): Released all slaves
+[  142.933082][ T1100] netdevsim netdevsim3 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  142.970640][ T1100] netdevsim netdevsim3 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  143.142034][ T1100] netdevsim netdevsim3 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  143.232264][ T1100] netdevsim netdevsim3 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  143.402131][ T1100] netdevsim netdevsim2 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  143.472059][ T1100] netdevsim netdevsim2 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  143.582123][ T1100] netdevsim netdevsim2 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  143.662330][ T1100] netdevsim netdevsim2 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  144.699422][ T1100] hsr_slave_0: left promiscuous mode
+[  144.702672][ T1100] hsr_slave_1: left promiscuous mode
+[  144.712678][ T1100] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  144.714348][ T1100] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  144.717131][ T1100] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  144.718764][ T1100] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  144.722155][ T1100] bridge_slave_1: left allmulticast mode
+[  144.723428][ T1100] bridge_slave_1: left promiscuous mode
+[  144.724845][ T1100] bridge0: port 2(bridge_slave_1) entered disabled state
+[  144.743711][ T1100] bridge_slave_0: left allmulticast mode
+[  144.745396][ T1100] bridge_slave_0: left promiscuous mode
+[  144.747077][ T1100] bridge0: port 1(bridge_slave_0) entered disabled state
+[  144.775184][ T1100] hsr_slave_0: left promiscuous mode
+[  144.779007][ T1100] hsr_slave_1: left promiscuous mode
+[  144.781250][ T1100] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  144.782984][ T1100] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  144.785624][ T1100] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  144.787234][ T1100] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  144.789206][ T1100] bridge_slave_1: left allmulticast mode
+[  144.790400][ T1100] bridge_slave_1: left promiscuous mode
+[  144.792333][ T1100] bridge0: port 2(bridge_slave_1) entered disabled state
+[  144.812501][ T1100] bridge_slave_0: left allmulticast mode
+[  144.813748][ T1100] bridge_slave_0: left promiscuous mode
+[  144.815098][ T1100] bridge0: port 1(bridge_slave_0) entered disabled state
+[  144.829628][ T1100] veth1_macvtap: left promiscuous mode
+[  144.830828][ T1100] veth0_macvtap: left promiscuous mode
+[  144.832369][ T1100] veth1_vlan: left promiscuous mode
+[  144.833742][ T1100] veth0_vlan: left promiscuous mode
+[  144.849116][ T1100] veth1_macvtap: left promiscuous mode
+[  144.850324][ T1100] veth0_macvtap: left promiscuous mode
+[  144.851571][ T1100] veth1_vlan: left promiscuous mode
+[  144.852846][ T1100] veth0_vlan: left promiscuous mode
+[  145.335218][ T1100] team0 (unregistering): Port device team_slave_1 removed
+[  145.342598][ T1100] team0 (unregistering): Port device team_slave_0 removed
+[  145.349516][ T1100] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  145.359321][ T1100] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  145.470441][ T1100] bond0 (unregistering): Released all slaves
+[  145.569456][ T1100] team0 (unregistering): Port device team_slave_1 removed
+[  145.580420][ T1100] team0 (unregistering): Port device team_slave_0 removed
+[  145.587616][ T1100] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  145.595831][ T1100] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  145.638442][ T1100] bond0 (unregistering): Released all slaves
+[  146.794254][    T1] systemd invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[  146.799400][    T1] CPU: 1 PID: 1 Comm: systemd Not tainted 6.6.0 #2
+[  146.800797][    T1] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  146.802699][    T1] Call Trace:
+[  146.803399][    T1]  <TASK>
+[  146.804048][    T1]  dump_stack_lvl+0x72/0xa0
+[  146.805030][    T1]  dump_header+0x4c/0x290
+[  146.805978][    T1]  oom_kill_process+0x169/0x290
+[  146.807034][    T1]  out_of_memory+0x198/0x950
+[  146.808032][    T1]  __alloc_pages+0xe65/0xfc0
+[  146.809029][    T1]  __folio_alloc+0x16/0x50
+[  146.809985][    T1]  vma_alloc_folio+0xe6/0x5c0
+[  146.810987][    T1]  ? __filemap_get_folio+0x100/0x590
+[  146.812171][    T1]  ? finish_task_switch.isra.0+0x80/0x290
+[  146.813375][    T1]  __read_swap_cache_async+0x1fd/0x450
+[  146.814585][    T1]  swap_cluster_readahead+0x296/0x5c0
+[  146.815723][    T1]  swapin_readahead+0x79/0x7c0
+[  146.816735][    T1]  ? __filemap_get_folio+0x15d/0x590
+[  146.817862][    T1]  ? swap_cache_get_folio+0x1c1/0x200
+[  146.819009][    T1]  do_swap_page+0x7f6/0x16d0
+[  146.819993][    T1]  ? pte_offset_map_nolock+0xf3/0x120
+[  146.821198][    T1]  __handle_mm_fault+0xc3c/0x2660
+[  146.822648][    T1]  handle_mm_fault+0x26a/0x690
+[  146.823666][    T1]  exc_page_fault+0x2d5/0xd10
+[  146.824683][    T1]  asm_exc_page_fault+0x26/0x30
+[  146.825728][    T1] RIP: 0033:0x7f0c485b4c64
+[  146.826680][    T1] Code: Unable to access opcode bytes at 0x7f0c485b4c3a.
+[  146.828106][    T1] RSP: 002b:00007ffd46ff55d0 EFLAGS: 00010202
+[  146.829360][    T1] RAX: 0000000000000001 RBX: 00005590645a2d20 RCX: fffffffffffffff9
+[  146.831056][    T1] RDX: 0000000000000000 RSI: 00005590645447d0 RDI: 0000559064595e80
+[  146.832665][    T1] RBP: 0000000000000000 R08: 0000559064595eb8 R09: 0000559064544808
+[  146.834305][    T1] R10: 0000000000000000 R11: 0000000000000000 R12: 00005590645a2d20
+[  146.835931][    T1] R13: 0000559064543bf0 R14: 0000000000000703 R15: 0000559062951b4e
+[  146.837562][    T1]  </TASK>
+[  146.891692][    T1] Mem-Info:
+[  146.892502][    T1] active_anon:9 inactive_anon:23 isolated_anon:0
+[  146.892502][    T1]  active_file:25 inactive_file:31 isolated_file:0
+[  146.892502][    T1]  unevictable:768 dirty:28 writeback:0
+[  146.892502][    T1]  slab_reclaimable:4934 slab_unreclaimable:36923
+[  146.892502][    T1]  mapped:5147 shmem:768 pagetables:309
+[  146.892502][    T1]  sec_pagetables:0 bounce:0
+[  146.892502][    T1]  kernel_misc_reclaimable:0
+[  146.892502][    T1]  free:18154 free_pcp:0 free_cma:0
+[  146.916222][    T1] Node 0 active_anon:0kB inactive_anon:44kB active_file:28kB inactive_file:96kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:32kB dirty:48kB writeback:0kB shmem:1536kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:3256kB pagetables:652kB sec_pagetables:0kB all_unreclaimable? no
+[  146.931696][    T1] Node 1 active_anon:64kB inactive_anon:48kB active_file:80kB inactive_file:20kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:20556kB dirty:64kB writeback:0kB shmem:1536kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:1752kB pagetables:584kB sec_pagetables:0kB all_unreclaimable? no
+[  146.938019][    T1] Node 0 DMA free:3964kB boost:0kB min:536kB low:668kB high:800kB reserved_highatomic:0KB active_anon:24kB inactive_anon:0kB active_file:0kB inactive_file:36kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[  146.961678][    T1] lowmem_reserve[]: 0 863 863 863 863
+[  146.962957][    T1] Node 0 DMA32 free:32648kB boost:0kB min:30964kB low:38704kB high:46444kB reserved_highatomic:2048KB active_anon:180kB inactive_anon:20kB active_file:0kB inactive_file:0kB unevictable:1536kB writepending:48kB present:1032192kB managed:900204kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[  146.968731][    T1] lowmem_reserve[]: 0 0 0 0 0
+[  146.969745][    T1] Node 1 DMA32 free:36004kB boost:0kB min:36080kB low:45100kB high:54120kB reserved_highatomic:0KB active_anon:68kB inactive_anon:172kB active_file:8kB inactive_file:512kB unevictable:1536kB writepending:64kB present:1048448kB managed:1030744kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[  146.995249][    T1] lowmem_reserve[]: 0 0 0 0 0
+[  146.996343][    T1] Node 0 DMA: 1*4kB (U) 0*8kB 0*16kB 0*32kB 0*64kB 1*128kB (U) 1*256kB (U) 1*512kB (U) 1*1024kB (U) 1*2048kB (M) 0*4096kB = 3972kB
+[  147.000038][    T1] Node 0 DMA32: 372*4kB (MEH) 256*8kB (MH) 161*16kB (UMEH) 85*32kB (UMH) 28*64kB (M) 5*128kB (UM) 3*256kB (UM) 1*512kB (M) 2*1024kB (UM) 1*2048kB (U) 4*4096kB (U) = 33024kB
+[  147.012561][    T1] Node 1 DMA32: 763*4kB (UM) 532*8kB (M) 252*16kB (UME) 235*32kB (UM) 176*64kB (UM) 28*128kB (M) 7*256kB (UM) 1*512kB (M) 0*1024kB 0*2048kB 0*4096kB = 36012kB
+[  147.016181][    T1] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  147.018144][    T1] Node 0 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  147.020013][    T1] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  147.034333][    T1] Node 1 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  147.036304][    T1] 818 total pagecache pages
+[  147.037268][    T1] 23 pages in swap cache
+[  147.038150][    T1] Free swap  = 36632kB
+[  147.038989][    T1] Total swap = 124996kB
+[  147.039838][    T1] 524158 pages RAM
+[  147.040618][    T1] 0 pages HighMem/MovableOnly
+[  147.041576][    T1] 37581 pages reserved
+[  147.056696][    T1] 0 pages cma reserved
+[  147.057603][    T1] Unreclaimable slab info:
+[  147.058521][    T1] Name                      Used          Total
+[  147.059785][    T1] bio-312                    3KB          3KB
+[  147.061030][    T1] bio-376                    7KB          7KB
+[  147.071797][    T1] bio-392                    7KB          7KB
+[  147.073144][    T1] bio-448                    8KB          8KB
+[  147.074390][    T1] zs_handle                 58KB         64KB
+[  147.075629][    T1] SCTPv6                    62KB         62KB
+[  147.076886][    T1] PINGv6                    15KB         15KB
+[  147.078169][    T1] RAWv6                     46KB         46KB
+[  147.079686][    T1] UDPv6                     47KB         47KB
+[  147.080964][    T1] TCPv6                     63KB         63KB
+[  147.094143][    T1] nf_conntrack              16KB         16KB
+[  147.095580][    T1] wg_peer                   63KB         63KB
+[  147.096813][    T1] scsi_sense_cache           8KB          8KB
+[  147.098064][    T1] bio-136                   31KB         31KB
+[  147.099307][    T1] drm_i915_gem_object         78KB         78KB
+[  147.100587][    T1] mqueue_inode_cache         16KB         16KB
+[  147.118643][    T1] fuse_request               7KB          7KB
+[  147.120028][    T1] cifs_small_rq             15KB         15KB
+[  147.121275][    T1] cifs_request              65KB         65KB
+[  147.131779][    T1] nfs_commit_data           15KB         15KB
+[  147.133100][    T1] UNIX                      63KB         63KB
+[  147.134354][    T1] ip_fib_trie               15KB         15KB
+[  147.135616][    T1] ip_fib_alias              31KB         43KB
+[  147.136854][    T1] PING                      32KB         32KB
+[  147.138101][    T1] RAW                       32KB         32KB
+[  147.139332][    T1] tw_sock_TCP                3KB          3KB
+[  147.140597][    T1] request_sock_TCP           3KB          3KB
+[  147.151810][    T1] TCP                       63KB         63KB
+[  147.153130][    T1] hugetlbfs_inode_cache         15KB         15KB
+[  147.154455][    T1] bio-264                   11KB         11KB
+[  147.155701][    T1] ep_head                    8KB          8KB
+[  147.156971][    T1] request_queue             95KB         95KB
+[  147.158276][    T1] bio-200                   24KB         24KB
+[  147.159505][    T1] biovec-max               288KB        288KB
+[  147.160742][    T1] biovec-128                64KB         64KB
+[  147.174104][    T1] biovec-64                 32KB         32KB
+[  147.175396][    T1] khugepaged_mm_slot          7KB          7KB
+[  147.176682][    T1] dmaengine-unmap-256         30KB         30KB
+[  147.178253][    T1] dmaengine-unmap-128         15KB         15KB
+[  147.179765][    T1] dmaengine-unmap-2         16KB         16KB
+[  147.181229][    T1] QIPCRTR                   15KB         15KB
+[  147.196681][    T1] audit_buffer               3KB          3KB
+[  147.198010][    T1] skbuff_ext_cache          23KB         23KB
+[  147.199252][    T1] skbuff_small_head         97KB         97KB
+[  147.200478][    T1] skbuff_head_cache         36KB         56KB
+[  147.201861][    T1] file_lock_cache            7KB          7KB
+[  147.203137][    T1] task_delay_info            7KB          7KB
+[  147.211784][    T1] taskstats                 15KB         15KB
+[  147.213113][    T1] proc_dir_entry           234KB        275KB
+[  147.214422][    T1] seq_file                   7KB          7KB
+[  147.215665][    T1] sigqueue                  15KB         15KB
+[  147.217000][    T1] shmem_inode_cache       4544KB       4608KB
+[  147.218356][    T1] kernfs_node_cache       9580KB       9892KB
+[  147.219696][    T1] mnt_cache                 82KB         82KB
+[  147.221148][    T1] filp                     154KB        196KB
+[  147.236534][    T1] names_cache              192KB        192KB
+[  147.237919][    T1] net_namespace             56KB         56KB
+[  147.239155][    T1] iint_cache                47KB         47KB
+[  147.240483][    T1] uts_namespace             15KB         15KB
+[  147.251781][    T1] nsproxy                    7KB          7KB
+[  147.253094][    T1] vma_lock                  87KB         95KB
+[  147.254328][    T1] files_cache               94KB         94KB
+[  147.255570][    T1] signal_cache             398KB        441KB
+[  147.256816][    T1] sighand_cache            695KB        835KB
+[  147.258070][    T1] task_struct             1938KB       2190KB
+[  147.259312][    T1] cred_jar                 483KB        488KB
+[  147.260544][    T1] anon_vma_chain            88KB        124KB
+[  147.271782][    T1] anon_vma                  77KB         99KB
+[  147.273141][    T1] pid                      115KB        180KB
+[  147.274392][    T1] Acpi-State              1725KB       1725KB
+[  147.275644][    T1] shared_policy_node         19KB         19KB
+[  147.276900][    T1] numa_policy              671KB        816KB
+[  147.278159][    T1] trace_event_file         336KB        336KB
+[  147.279461][    T1] ftrace_event_field        705KB        710KB
+[  147.280781][    T1] pool_workqueue           232KB        272KB
+[  147.296972][    T1] maple_node                91KB        124KB
+[  147.298325][    T1] task_group                15KB         15KB
+[  147.299597][    T1] mm_struct                 94KB         94KB
+[  147.300842][    T1] vmap_area                209KB        492KB
+[  147.307278][    T1] kmemleak_scan_area         78KB        152KB
+[  147.309514][    T1] kmemleak_object        60302KB      67875KB
+[  147.310780][    T1] kmalloc-cg-8k            336KB        384KB
+[  147.321688][    T1] kmalloc-cg-4k           2252KB       3360KB
+[  147.323054][    T1] kmalloc-cg-2k           1576KB       2720KB
+[  147.324401][    T1] kmalloc-cg-1k            385KB        736KB
+[  147.325639][    T1] kmalloc-cg-512           213KB        448KB
+[  147.326871][    T1] kmalloc-cg-256            20KB         20KB
+[  147.328128][    T1] kmalloc-cg-192            78KB         78KB
+[  147.329360][    T1] kmalloc-cg-128            70KB         96KB
+[  147.330808][    T1] kmalloc-cg-96             11KB         11KB
+[  147.340994][    T1] kmalloc-cg-64              8KB         12KB
+[  147.343070][    T1] kmalloc-cg-32              8KB          8KB
+[  147.344329][    T1] kmalloc-cg-16             14KB         20KB
+[  147.345632][    T1] kmalloc-cg-8               8KB          8KB
+[  147.346889][    T1] kmalloc-8k               928KB       1184KB
+[  147.348161][    T1] kmalloc-4k              1400KB       1600KB
+[  147.349479][    T1] kmalloc-2k              1448KB       1664KB
+[  147.350958][    T1] kmalloc-1k              2522KB       2688KB
+[  147.366286][    T1] kmalloc-512             3430KB       4320KB
+[  147.367617][    T1] kmalloc-256             1945KB       2272KB
+[  147.368870][    T1] kmalloc-192              858KB        988KB
+[  147.370145][    T1] kmalloc-128              463KB        604KB
+[  147.371394][    T1] kmalloc-96              2946KB       3055KB
+[  147.381709][    T1] kmalloc-64              1344KB       1484KB
+[  147.383067][    T1] kmalloc-32               310KB        560KB
+[  147.384507][    T1] kmalloc-16               195KB        208KB
+[  147.385883][    T1] kmalloc-8                258KB        268KB
+[  147.387262][    T1] kmem_cache_node           42KB         44KB
+[  147.388524][    T1] kmem_cache                80KB         80KB
+[  147.389806][    T1] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/syz0,task=syz.0.62,pid=10845,uid=0
+[  147.409586][    T1] Out of memory: Killed process 10846 (syz.0.62) total-vm:102100kB, anon-rss:128kB, file-rss:20608kB, shmem-rss:0kB, UID:0 pgtables:128kB oom_score_adj:1000
+[  147.483967][T10997] systemd-sysctl invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[  147.486487][T10997] CPU: 0 PID: 10997 Comm: systemd-sysctl Not tainted 6.6.0 #2
+[  147.488029][T10997] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  147.489856][T10997] Call Trace:
+[  147.490557][T10997]  <TASK>
+[  147.491178][T10997]  dump_stack_lvl+0x72/0xa0
+[  147.492180][T10997]  dump_header+0x4c/0x290
+[  147.493114][T10997]  oom_kill_process+0x169/0x290
+[  147.494164][T10997]  out_of_memory+0x596/0x950
+[  147.495176][T10997]  __alloc_pages+0xe65/0xfc0
+[  147.496233][T10997]  __folio_alloc+0x16/0x50
+[  147.497199][T10997]  vma_alloc_folio+0xe6/0x5c0
+[  147.498320][T10997]  ? __filemap_get_folio+0x100/0x590
+[  147.499455][T10997]  __read_swap_cache_async+0x1fd/0x450
+[  147.500674][T10997]  swap_cluster_readahead+0x296/0x5c0
+[  147.501821][T10997]  swapin_readahead+0x79/0x7c0
+[  147.502848][T10997]  ? __filemap_get_folio+0x15d/0x590
+[  147.504032][T10997]  ? __page_set_anon_rmap+0xc1/0x110
+[  147.505193][T10997]  ? swap_cache_get_folio+0x1c1/0x200
+[  147.506341][T10997]  do_swap_page+0x7f6/0x16d0
+[  147.507343][T10997]  ? pte_offset_map_nolock+0xf3/0x120
+[  147.508499][T10997]  __handle_mm_fault+0xc3c/0x2660
+[  147.509573][T10997]  handle_mm_fault+0x26a/0x690
+[  147.510574][T10997]  exc_page_fault+0x2d5/0xd10
+[  147.511588][T10997]  asm_exc_page_fault+0x26/0x30
+[  147.512668][T10997] RIP: 0033:0x7fa0dc007c1b
+[  147.513614][T10997] Code: Unable to access opcode bytes at 0x7fa0dc007bf1.
+[  147.515033][T10997] RSP: 002b:00007fff53bf9580 EFLAGS: 00010206
+[  147.516293][T10997] RAX: 00007fa0dbf52000 RBX: 0000000000000000 RCX: 000000000000000c
+[  147.518023][T10997] RDX: 00007fa0dbf52000 RSI: 0000000000000000 RDI: 00007fa0dc027990
+[  147.519830][T10997] RBP: 00007fa0dbe98f30 R08: 00007fa0db7d8270 R09: 00000000effffef5
+[  147.521997][T10997] R10: 0000000070000022 R11: 0000000000000246 R12: 00007fa0dc027060
+[  147.524105][T10997] R13: 000000006ffffeff R14: 000000006ffffe35 R15: 00007fff53bf9780
+[  147.525800][T10997]  </TASK>
+[  147.674618][T10997] Mem-Info:
+[  147.675377][T10997] active_anon:0 inactive_anon:0 isolated_anon:0
+[  147.675377][T10997]  active_file:36 inactive_file:20 isolated_file:0
+[  147.675377][T10997]  unevictable:768 dirty:28 writeback:0
+[  147.675377][T10997]  slab_reclaimable:4934 slab_unreclaimable:36927
+[  147.675377][T10997]  mapped:5136 shmem:768 pagetables:310
+[  147.675377][T10997]  sec_pagetables:0 bounce:0
+[  147.675377][T10997]  kernel_misc_reclaimable:0
+[  147.675377][T10997]  free:9173 free_pcp:124 free_cma:0
+[  147.693994][T10997] Node 0 active_anon:0kB inactive_anon:0kB active_file:92kB inactive_file:32kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:20kB dirty:48kB writeback:0kB shmem:1536kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:3256kB pagetables:652kB sec_pagetables:0kB all_unreclaimable? no
+[  147.707234][T10997] Node 1 active_anon:0kB inactive_anon:0kB active_file:116kB inactive_file:0kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:20524kB dirty:64kB writeback:0kB shmem:1536kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:1752kB pagetables:588kB sec_pagetables:0kB all_unreclaimable? no
+[  147.720933][T10997] Node 0 DMA free:3692kB boost:0kB min:536kB low:668kB high:800kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[  147.732763][T10997] lowmem_reserve[]: 0 863 863 863 863
+[  147.734935][T10997] Node 0 DMA32 free:15384kB boost:0kB min:30964kB low:38704kB high:46444kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:140kB inactive_file:0kB unevictable:1536kB writepending:48kB present:1032192kB managed:900204kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:0kB free_cma:0kB
+[  147.747262][T10997] lowmem_reserve[]: 0 0 0 0 0
+[  147.748321][T10997] Node 1 DMA32 free:17616kB boost:0kB min:36080kB low:45100kB high:54120kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:36kB inactive_file:64kB unevictable:1536kB writepending:64kB present:1048448kB managed:1030744kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:0kB free_cma:0kB
+[  147.761804][T10997] lowmem_reserve[]: 0 0 0 0 0
+[  147.763108][T10997] Node 0 DMA: 1*4kB (U) 1*8kB (U) 0*16kB 1*32kB (U) 1*64kB (U) 0*128kB 0*256kB 1*512kB (U) 1*1024kB (U) 1*2048kB (M) 0*4096kB = 3692kB
+[  147.766122][T10997] Node 0 DMA32: 360*4kB (ME) 249*8kB (M) 159*16kB (UME) 84*32kB (UM) 29*64kB (UM) 4*128kB (M) 3*256kB (UM) 1*512kB (M) 1*1024kB (M) 1*2048kB (U) 0*4096kB = 15384kB
+[  147.769823][T10997] Node 1 DMA32: 442*4kB (UM) 311*8kB (M) 127*16kB (UME) 126*32kB (UM) 114*64kB (UM) 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 17616kB
+[  147.784713][T10997] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  147.789185][T10997] Node 0 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  147.793269][T10997] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  147.797542][T10997] Node 1 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  147.801315][T10997] 824 total pagecache pages
+[  147.803889][T10997] 0 pages in swap cache
+[  147.805632][T10997] Free swap  = 36632kB
+[  147.807354][T10997] Total swap = 124996kB
+[  147.809571][T10997] 524158 pages RAM
+[  147.811597][T10997] 0 pages HighMem/MovableOnly
+[  147.811727][T10846] warn_alloc: 1 callbacks suppressed
+[  147.811749][T10846] syz.0.62: page allocation failure: order:0, mode:0xcc0(GFP_KERNEL), nodemask=(null)
+[  147.813570][T10997] 37581 pages reserved
+[  147.813833][T10846] ,cpuset=
+[  147.815752][T10997] 0 pages cma reserved
+[  147.815763][T10997] Unreclaimable slab info:
+[  147.816596][T10846] syz0,mems_allowed=0-1
+[  147.817227][T10997] Name                      Used          Total
+[  147.817238][T10997] bio-312                    3KB          3KB
+[  147.818074][T10846] 
+[  147.818083][T10846] CPU: 0 PID: 10846 Comm: syz.0.62 Not tainted 6.6.0 #2
+[  147.824657][T10846] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  147.825673][T10997] bio-376                    7KB          7KB
+[  147.826510][T10846] Call Trace:
+[  147.826524][T10846]  <TASK>
+[  147.827765][T10997] bio-392                    7KB          7KB
+[  147.828457][T10846]  dump_stack_lvl+0x72/0xa0
+[  147.829060][T10997] bio-448                    8KB          8KB
+[  147.830284][T10846]  warn_alloc+0x137/0x1b0
+[  147.831205][T10997] zs_handle                 58KB         64KB
+[  147.832427][T10846]  ? schedule_timeout+0xdb/0x1d0
+[  147.832470][T10846]  __alloc_pages+0xf0f/0xfc0
+[  147.836757][T10846]  alloc_pages+0xc9/0x1d0
+[  147.837726][T10846]  relay_open_buf.part.0+0x186/0x4d0
+[  147.839039][T10846]  relay_open+0x49a/0x540
+[  147.839978][T10846]  do_blk_trace_setup+0x1e3/0x3a0
+[  147.841065][T10846]  __blk_trace_setup+0x70/0x130
+[  147.841421][T10997] SCTPv6                    62KB         62KB
+[  147.842097][T10846]  blk_trace_ioctl+0xab/0x1f0
+[  147.842133][T10846]  ? do_vfs_ioctl+0xa3/0xca0
+[  147.844308][T10997] PINGv6                    15KB         15KB
+[  147.844401][T10846]  ? __pfx_blkdev_ioctl+0x10/0x10
+[  147.845415][T10997] RAWv6                     46KB         46KB
+[  147.846624][T10846]  blkdev_ioctl+0xa0/0x390
+[  147.847699][T10997] UDPv6                     47KB         47KB
+[  147.848937][T10846]  ? __pfx_blkdev_ioctl+0x10/0x10
+[  147.849988][T10997] TCPv6                     63KB         63KB
+[  147.851229][T10846]  __x64_sys_ioctl+0x107/0x150
+[  147.854737][T10846]  do_syscall_64+0x3d/0xc0
+[  147.855695][T10846]  entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+[  147.856950][T10846] RIP: 0033:0x7f9da1dae16d
+[  147.857885][T10846] Code: Unable to access opcode bytes at 0x7f9da1dae143.
+[  147.859328][T10846] RSP: 002b:00007f9da2d11f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[  147.860445][T10997] nf_conntrack              16KB         16KB
+[  147.861029][T10846] RAX: ffffffffffffffda RBX: 00007f9da1ff5fa0 RCX: 00007f9da1dae16d
+[  147.864038][T10846] RDX: 0000200000000280 RSI: 00000000c0481273 RDI: 0000000000000003
+[  147.864925][T10997] wg_peer                   63KB         63KB
+[  147.865649][T10846] RBP: 00007f9da1e480f0 R08: 0000000000000000 R09: 0000000000000000
+[  147.866890][T10997] scsi_sense_cache           8KB          8KB
+[  147.868496][T10846] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[  147.869841][T10997] bio-136                   31KB         31KB
+[  147.871507][T10846] R13: 00007f9da1ff6038 R14: 00007f9da1ff5fa0 R15: 00007f9da2cf2000
+[  147.874572][T10846]  </TASK>
+[  147.881318][T10997] drm_i915_gem_object         78KB         78KB
+[  147.884475][T10997] mqueue_inode_cache         16KB         16KB
+[  147.886637][T10997] fuse_request               7KB          7KB
+[  147.889582][T10997] cifs_small_rq             15KB         15KB
+[  147.893228][T10997] cifs_request              65KB         65KB
+[  147.896174][T10997] nfs_commit_data           15KB         15KB
+[  147.898407][T10997] UNIX                      63KB         63KB
+[  147.901375][T10997] ip_fib_trie               15KB         15KB
+[  147.904394][T10997] ip_fib_alias              31KB         43KB
+[  147.907411][T10997] PING                      32KB         32KB
+[  147.910404][T10997] RAW                       32KB         32KB
+[  147.913454][T10997] tw_sock_TCP                3KB          3KB
+[  147.915660][T10997] request_sock_TCP           3KB          3KB
+[  147.918627][T10997] TCP                       63KB         63KB
+[  147.921961][T10997] hugetlbfs_inode_cache         15KB         15KB
+[  147.925599][T10997] bio-264                   11KB         11KB
+[  147.929360][T10997] ep_head                    8KB          8KB
+[  147.932415][T10997] request_queue             95KB         95KB
+[  147.935344][T10997] bio-200                   24KB         24KB
+[  147.937505][T10997] biovec-max               288KB        288KB
+[  147.940364][T10997] biovec-128                64KB         64KB
+[  147.941673][T10846] Mem-Info:
+[  147.941686][T10846] active_anon:0 inactive_anon:0 isolated_anon:0
+[  147.941686][T10846]  active_file:35 inactive_file:21 isolated_file:0
+[  147.941686][T10846]  unevictable:768 dirty:28 writeback:0
+[  147.941686][T10846]  slab_reclaimable:4934 slab_unreclaimable:36927
+[  147.941686][T10846]  mapped:5136 shmem:768 pagetables:310
+[  147.941686][T10846]  sec_pagetables:0 bounce:0
+[  147.941686][T10846]  kernel_misc_reclaimable:0
+[  147.941686][T10846]  free:9173 free_pcp:124 free_cma:0
+[  147.944110][T10997] biovec-64                 32KB         32KB
+[  147.951576][T10846] Node 0 active_anon:0kB inactive_anon:0kB active_file:92kB inactive_file:32kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:20kB dirty:48kB writeback:0kB shmem:1536kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:3256kB pagetables:652kB sec_pagetables:0kB all_unreclaimable? no
+[  147.961682][T10846] Node 1 active_anon:0kB inactive_anon:0kB active_file:48kB inactive_file:52kB unevictable:1536kB isolated(anon):0kB isolated(file):0kB mapped:20524kB dirty:64kB writeback:0kB shmem:1536kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB writeback_tmp:0kB kernel_stack:1752kB pagetables:588kB sec_pagetables:0kB all_unreclaimable? no
+[  147.968340][T10997] khugepaged_mm_slot          7KB          7KB
+[  147.968360][T10846] Node 0 DMA free:3692kB boost:0kB min:536kB low:668kB high:800kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[  147.969786][T10997] dmaengine-unmap-256         30KB         30KB
+[  147.986583][T10997] dmaengine-unmap-128         15KB         15KB
+[  147.989492][T10997] dmaengine-unmap-2         16KB         16KB
+[  147.991678][T10846] lowmem_reserve[]: 0 863 863 863 863
+[  147.992013][T10997] QIPCRTR                   15KB         15KB
+[  147.992961][T10846] Node 0 DMA32 free:15384kB boost:0kB min:30964kB low:38704kB high:46444kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:140kB inactive_file:0kB unevictable:1536kB writepending:48kB present:1032192kB managed:900204kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:248kB free_cma:0kB
+[  147.994266][T10997] audit_buffer               3KB          3KB
+[  148.000822][T10846] lowmem_reserve[]: 0 0 0 0 0
+[  148.012880][T10846] Node 1 DMA32 free:17616kB boost:0kB min:36080kB low:45100kB high:54120kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:36kB inactive_file:64kB unevictable:1536kB writepending:64kB present:1048448kB managed:1030744kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:248kB free_cma:0kB
+[  148.013812][T10997] skbuff_ext_cache          23KB         23KB
+[  148.019291][T10846] lowmem_reserve[]: 0
+[  148.020884][T10997] skbuff_small_head         97KB         97KB
+[  148.031723][T10846]  0 0 0 0
+[  148.032564][T10846] Node 0 DMA: 1*4kB (U) 1*8kB (U) 0*16kB 1*32kB (U) 1*64kB (U) 0*128kB 0*256kB 1*512kB (U) 1*1024kB (U) 1*2048kB (M) 0*4096kB = 3692kB
+[  148.033452][T10997] skbuff_head_cache         36KB         56KB
+[  148.035740][T10846] Node 0 DMA32: 
+[  148.037084][T10997] file_lock_cache            7KB          7KB
+[  148.037109][T10997] task_delay_info            7KB          7KB
+[  148.037896][T10846] 360*4kB 
+[  148.039211][T10997] taskstats                 15KB         15KB
+[  148.040568][T10846] (ME) 249*8kB 
+[  148.041250][T10997] proc_dir_entry           234KB        275KB
+[  148.051745][T10846] (M) 159*16kB (UME) 84*32kB (UM) 29*64kB (UM) 4*128kB (M) 3*256kB (UM) 1*512kB (M) 1*1024kB (M) 1*2048kB (U) 0*4096kB = 15384kB
+[  148.054887][T10846] Node 1 DMA32: 442*4kB (UM) 311*8kB (M) 127*16kB (UME) 126*32kB (UM) 114*64kB (UM) 0*128kB 0*256kB 0*512kB 0*1024kB 0*2048kB 0*4096kB = 17616kB
+[  148.056347][T10997] seq_file                   7KB          7KB
+[  148.058302][T10846] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  148.059627][T10997] sigqueue                  15KB         15KB
+[  148.071564][T10997] shmem_inode_cache       4544KB       4608KB
+[  148.071678][T10846] Node 0 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  148.075051][T10846] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[  148.075262][T10997] kernfs_node_cache       9580KB       9892KB
+[  148.077106][T10846] Node 1 hugepages_total=2 hugepages_free=2 hugepages_surp=0 hugepages_size=2048kB
+[  148.078446][T10997] mnt_cache                 82KB         82KB
+[  148.080417][T10846] 824 total pagecache pages
+[  148.080429][T10846] 0 pages in swap cache
+[  148.089186][T10997] filp                     154KB        196KB
+[  148.091687][T10846] Free swap  = 36632kB
+[  148.092258][T10997] names_cache              192KB        192KB
+[  148.092593][T10846] Total swap = 124996kB
+[  148.092606][T10846] 524158 pages RAM
+[  148.093941][T10997] net_namespace             56KB         56KB
+[  148.094825][T10846] 0 pages HighMem/MovableOnly
+[  148.094835][T10846] 37581 pages reserved
+[  148.095632][T10997] iint_cache                47KB         47KB
+[  148.096983][T10846] 0 pages cma reserved
+[  148.101179][T10997] uts_namespace             15KB         15KB
+[  148.271141][T10997] nsproxy                    7KB          7KB
+[  148.273343][T10997] vma_lock                  87KB         95KB
+[  148.274896][T10997] files_cache               94KB         94KB
+[  148.276627][T10997] signal_cache             398KB        441KB
+[  148.278326][T10997] sighand_cache            695KB        835KB
+[  148.279999][T10997] task_struct             1938KB       2190KB
+[  148.281340][T10997] cred_jar                 483KB        488KB
+[  148.296627][T10997] anon_vma_chain            87KB        124KB
+[  148.299928][T10997] anon_vma                  75KB         99KB
+[  148.302324][T10997] pid                      115KB        180KB
+[  148.307462][T10997] Acpi-State              1283KB       1422KB
+[  148.311982][T10997] shared_policy_node         19KB         19KB
+[  148.313931][T10997] numa_policy              671KB        816KB
+[  148.315434][T10997] trace_event_file         336KB        336KB
+[  148.316774][T10997] ftrace_event_field        697KB        710KB
+[  148.318144][T10997] pool_workqueue           232KB        272KB
+[  148.319474][T10997] maple_node                90KB        124KB
+[  148.320843][T10997] task_group                15KB         15KB
+[  148.324000][T10997] mm_struct                 94KB         94KB
+[  148.327723][T10997] vmap_area                209KB        492KB
+[  148.331480][T10997] kmemleak_scan_area         78KB        152KB
+[  148.353864][T10997] kmemleak_object        58715KB      67780KB
+[  148.355642][T10997] kmalloc-cg-8k            336KB        384KB
+[  148.357022][T10997] kmalloc-cg-4k           2252KB       3360KB
+[  148.358396][T10997] kmalloc-cg-2k           1572KB       2720KB
+[  148.359737][T10997] kmalloc-cg-1k            385KB        736KB
+[  148.361116][T10997] kmalloc-cg-512           213KB        448KB
+[  148.383182][T10997] kmalloc-cg-256            20KB         20KB
+[  148.384635][T10997] kmalloc-cg-192            78KB         78KB
+[  148.385996][T10997] kmalloc-cg-128            70KB         96KB
+[  148.387372][T10997] kmalloc-cg-96             11KB         11KB
+[  148.388818][T10997] kmalloc-cg-64              8KB         12KB
+[  148.390459][T10997] kmalloc-cg-32              8KB          8KB
+[  148.428811][T10997] kmalloc-cg-16             14KB         20KB
+[  148.442867][T10997] kmalloc-cg-8               8KB          8KB
+[  148.445858][T10997] kmalloc-8k               928KB       1184KB
+[  148.450013][T10997] kmalloc-4k              1400KB       1600KB
+[  148.451551][T10997] kmalloc-2k              1440KB       1664KB
+[  148.453071][T10997] kmalloc-1k              2518KB       2688KB
+[  148.454449][T10997] kmalloc-512             3428KB       4320KB
+[  148.455801][T10997] kmalloc-256             1943KB       2272KB
+[  148.457391][T10997] kmalloc-192              856KB        988KB
+[  148.458807][T10997] kmalloc-128              461KB        604KB
+[  148.460215][T10997] kmalloc-96              2946KB       3055KB
+[  148.461553][T10997] kmalloc-64              1340KB       1484KB
+[  148.494283][T10997] kmalloc-32               309KB        560KB
+[  148.500291][T10997] kmalloc-16               195KB        208KB
+[  148.501871][T10997] kmalloc-8                258KB        268KB
+[  148.506200][T10997] kmem_cache_node           42KB         44KB
+[  148.511210][T10997] kmem_cache                80KB         80KB
+[  148.512706][T10997] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=/,mems_allowed=0-1,global_oom,task_memcg=/system.slice/systemd-udevd.service,task=systemd-sysctl,pid=10997,uid=0
+[  148.516835][T10997] Out of memory (oom_kill_allocating_task): Killed process 10997 (systemd-sysctl) total-vm:8680kB, anon-rss:128kB, file-rss:128kB, shmem-rss:0kB, UID:0 pgtables:56kB oom_score_adj:0
+[  148.668549][ T1100] netdevsim netdevsim0 netdevsim3 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  148.728624][ T1100] netdevsim netdevsim0 netdevsim2 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  148.774786][ T1100] netdevsim netdevsim0 netdevsim1 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  148.805446][ T1100] netdevsim netdevsim0 netdevsim0 (unregistering): unset [1, 0] type 2 family 0 port 6081 - 0
+[  149.427853][ T1100] hsr_slave_0: left promiscuous mode
+[  149.429623][ T1100] hsr_slave_1: left promiscuous mode
+[  149.431455][ T1100] batman_adv: batadv0: Interface deactivated: batadv_slave_0
+[  149.433545][ T1100] batman_adv: batadv0: Removing interface: batadv_slave_0
+[  149.436519][ T1100] batman_adv: batadv0: Interface deactivated: batadv_slave_1
+[  149.438219][ T1100] batman_adv: batadv0: Removing interface: batadv_slave_1
+[  149.440232][ T1100] bridge_slave_1: left allmulticast mode
+[  149.442196][ T1100] bridge_slave_1: left promiscuous mode
+[  149.443952][ T1100] bridge0: port 2(bridge_slave_1) entered disabled state
+[  149.447589][ T1100] bridge_slave_0: left allmulticast mode
+[  149.448958][ T1100] bridge_slave_0: left promiscuous mode
+[  149.450383][ T1100] bridge0: port 1(bridge_slave_0) entered disabled state
+[  149.455666][ T1100] veth1_macvtap: left promiscuous mode
+[  149.457095][ T1100] veth0_macvtap: left promiscuous mode
+[  149.458599][ T1100] veth1_vlan: left promiscuous mode
+[  149.459838][ T1100] veth0_vlan: left promiscuous mode
+[  149.578632][ T1100] team0 (unregistering): Port device team_slave_1 removed
+[  149.584297][ T1100] team0 (unregistering): Port device team_slave_0 removed
+[  149.588753][ T1100] bond0 (unregistering): (slave bond_slave_1): Releasing backup interface
+[  149.596304][ T1100] bond0 (unregistering): (slave bond_slave_0): Releasing backup interface
+[  149.625989][ T1100] bond0 (unregistering): Released all slaves
+[  152.946922][ T1305] ieee802154 phy0 wpan0: encryption failed: -22
+[  152.948388][ T1305] ieee802154 phy1 wpan1: encryption failed: -22
+
+VM DIAGNOSIS:
+18:47:42  Registers:
+info registers vcpu 0
+RAX=ffff88803ec29c20 RBX=ffffffff8662a940 RCX=0000000000000000 RDX=0000000000000000
+RSI=0000000000000001 RDI=0000000000015f6c RBP=0000000000000000 RSP=ffffffff86603e80
+R8 =0000000000000001 R9 =0000000000000000 R10=0000000000000002 R11=0000000000000000
+R12=0000000000000000 R13=0000000000000000 R14=0000000000000000 R15=ffffffff8662a050
+RIP=ffffffff84e4145e RFL=00000256 [---ZAP-] CPL=0 II=0 A20=1 SMM=0 HLT=1
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 0000000000000000 ffffffff 00c00000
+GS =0000 ffff88803ec00000 ffffffff 00c00000
+LDT=0000 0000000000000000 ffffffff 00c00000
+TR =0040 fffffe0000003000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe0000001000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=00007f442646b970 CR3=000000004bb0e000 CR4=00750ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=0000000040000002 Opmask01=0000000000008001 Opmask02=0000000000000000 Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00007ffd52420640 0000003000000010
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000004
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 08080d0f02164b50 1d0c144b55555654
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 5c0101010d4b5709 0d17130c4b090d17
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffff
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2c2c2c2c2c2c2c2c 2c2c2c2c2c2c2c2c 2c2c2c2c2c2c2c2c 2c2c2c2c2c2c2c2c
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 5500474e49444e45 505f544e4556455f 4453203d3d206574 6174733e2d650065
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 5500474e49444e45 505f544e4556455f 44530c11110c4958 4d585f1201490049
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000030 78303d4e4f534145 525f4b434f4c425f 57485f4c4c494b46
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 5200313d45544154 535f4c4c494b4652 006e616c773d4550 59545f4c4c494b46
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 5200347968703d45 4d414e5f4c4c494b 4652006c6c696b66 723d4d4554535953
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 4255530030316c6c 696b66722f347968 702f313132303865 6565692f336d6973
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000000000ff00 00000201010000ff 0000000000000000
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 1
+RAX=ffff88807ec29c20 RBX=ffff8880401c8000 RCX=0000000000000000 RDX=0000000000000001
+RSI=0000000000000001 RDI=000000000001fda4 RBP=0000000000000001 RSP=ffffc900003afee8
+R8 =0000000000000001 R9 =0000000000000000 R10=0000000000000001 R11=0000000000009740
+R12=0000000000000000 R13=0000000000000000 R14=0000000000000000 R15=0000000000000000
+RIP=ffffffff84e4145e RFL=00000246 [---Z-P-] CPL=0 II=0 A20=1 SMM=0 HLT=1
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 0000000000000000 ffffffff 00c00000
+GS =0000 ffff88807ec00000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe000003e000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe000003c000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=0000558ba06d8008 CR3=000000000665e000 CR4=00750ee0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000fffe0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+Opmask00=00000000feffc080 Opmask01=0000000001fec0c4 Opmask02=00000000c0c0c0f2 Opmask03=0000000000000000
+Opmask04=0000000000000000 Opmask05=0000000000000000 Opmask06=0000000000000000 Opmask07=0000000000000000
+ZMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 a29e6bd1b07f06e0 af7fbfd3aa67837b
+ZMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 c1e05d8471bfcf26 c4a45d9f22eb3b81
+ZMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 245b2a18b527d91f 0b452e6ef198a778
+ZMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 34f210e0d398af1f 3bd954f2bf878dc9
+ZMM04=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 00000000000023c0
+ZMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000040
+ZMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 a42927cb74674d68 4b1fdc2afeb81441
+ZMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 faa04eabbe7cdc5b 63a0de0d34180b76
+ZMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 791972886e3a0387 0a47671d431b2898
+ZMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 6a8d38bb27df7b3a a67bc03e2dab2bbc
+ZMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 2ec5e24d49edac40 11343e55ddf87dc6
+ZMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 9145fefe28211fce 749306546be9e3d6
+ZMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 a54ff53a3c6ef372 bb67ae856a09e667
+ZMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 5be0cd191f83d9ab 9b05688c510e527f
+ZMM16=0000000000000000 0000000000000000 0000000000000000 0000000000000000 ffffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffff
+ZMM17=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 000000000000002d 0000558ba06d4b70
+ZMM18=0000000000000000 0000000000000000 0000000000000000 0000000000000000 69616d657200632e 6570616373652f63 697361622f637273 2f2e2e000d0a0920
+ZMM19=0000000000000000 0000000000000000 0000000000000000 0000000000000000 5c5458504700561b 5045545646501a56 5c4654571a564746 1a1b1b000d0a0915
+ZMM20=0000000000000000 0000000000000000 0000000000000000 0000000000000000 00356874652f6867 69656e2f36767069 2f74656e2f3d7869 666572702d2d2035
+ZMM21=0000000000000000 0000000000000000 0000000000000000 0000000000000000 6874652f666e6f63 2f367670692f7465 6e2f3d7869666572 702d2d2035687465
+ZMM22=0000000000000000 0000000000000000 0000000000000000 0000000000000000 2f686769656e2f34 7670692f74656e2f 3d7869666572702d 2d20356874652f66
+ZMM23=0000000000000000 0000000000000000 0000000000000000 0000000000000000 6e6f632f34767069 2f74656e2f3d7869 666572702d2d206c 74637379732d646d
+ZMM24=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000030008 0000336d69737665 6474656e0002000f 0000006d69737665
+ZMM25=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM26=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM27=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM28=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM29=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM30=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000
+ZMM31=0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000

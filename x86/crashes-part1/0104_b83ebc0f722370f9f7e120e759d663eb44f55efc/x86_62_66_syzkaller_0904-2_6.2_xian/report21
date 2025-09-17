@@ -1,0 +1,56 @@
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P72369/2:b.el
+	(detected by 1, t=10002 jiffies, g=403749, q=522202 ncpus=2)
+task:syz-executor    state:R  running task     stack:11936 pid:72369 ppid:1      flags:0x00004006
+Call Trace:
+ <TASK>
+ context_switch home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5296 [inline]
+ __schedule+0x33d/0x1370 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6609
+ preempt_schedule_irq+0x35/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6921
+ irqentry_exit+0x21/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:432
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/idtentry.h:649
+RIP: 0010:check_kcov_mode home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kcov.c:173 [inline]
+RIP: 0010:write_comp_data+0x12/0x90 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kcov.c:236
+Code: cc cc 66 0f 1f 44 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 49 89 f1 49 89 d2 49 89 f8 65 8b 05 d8 55 c4 7e 89 c6 <81> e6 00 01 00 00 65 48 8b 14 25 40 c6 02 00 a9 00 01 ff 00 74 0e
+RSP: 0018:ffffc90001f378a0 EFLAGS: 00000246
+RAX: 0000000080000000 RBX: 0000000000000022 RCX: ffffffff84aad094
+RDX: 0000000000000000 RSI: 0000000080000000 RDI: 0000000000000007
+RBP: ffff888008198ff8 R08: 0000000000000007 R09: 0000000000000002
+R10: 0000000000000000 R11: 0000000000040001 R12: ffff888010ab1800
+R13: ffffc90001f378d8 R14: 0000000000000000 R15: ffff88802ba08500
+ xa_is_sibling home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/xarray.h:1265 [inline]
+ xas_descend+0x44/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/xarray.c:207
+ xa_get_mark+0x169/0x1d0 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/xarray.c:1950
+ devlinks_xa_find_get.constprop.0+0x5e/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/devlink.c:314
+ devlinks_xa_find_get_first home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/devlink.c:334 [inline]
+ devlink_nl_cmd_port_get_dumpit+0x59/0x1f0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/devlink.c:1699
+ netlink_dump+0x217/0x440 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:2296
+ __netlink_dump_start+0x27e/0x470 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:2401
+ genl_family_rcv_msg_dumpit+0x15b/0x170 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:929
+ genl_family_rcv_msg home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:1045 [inline]
+ genl_rcv_msg+0x228/0x430 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:1065
+ netlink_rcv_skb+0x91/0x1e0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:2574
+ genl_rcv+0x28/0x40 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:1076
+ netlink_unicast_kernel home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:734
+ __sys_sendto+0x16c/0x220 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2120
+ __do_sys_sendto home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2132 [inline]
+ __se_sys_sendto home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2128 [inline]
+ __x64_sys_sendto+0x28/0x30 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2128
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f6b4c5b06f6
+RSP: 002b:00007fff75a30560 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 00007f6b4d324620 RCX: 00007f6b4c5b06f6
+RDX: 0000000000000034 RSI: 00007f6b4d324670 RDI: 0000000000000005
+RBP: 0000000000000001 R08: 00007fff75a305bc R09: 000000000000000c
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007f6b4d324670 R14: 0000000000000005 R15: 0000000000000000
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
