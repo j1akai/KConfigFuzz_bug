@@ -1,0 +1,134 @@
+gfs2: fsid=syz:syz.0: G:  s:EX n:8/1 f:qb t:EX d:EX/0 a:0 v:0 r:5 m:20 p:0
+gfs2: fsid=syz:syz.0:  H: s:EX f:cH e:0 p:72755 [syz-executor] gfs2_quota_sync+0x2bc/0x370 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/quota.c:1370
+------------[ cut here ]------------
+kernel BUG at fs/gfs2/glock.c:1560!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 72755 Comm: syz-executor Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:add_to_queue home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/glock.c:1560 [inline]
+RIP: 0010:gfs2_glock_nq+0x344/0xbc0 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/glock.c:1604
+Code: 48 89 ee 41 0f b7 4c 24 22 48 c7 c7 d0 a8 28 86 8b 50 18 e8 4e 9b 0f ff 48 8b 74 24 08 ba 01 00 00 00 31 ff e8 9d b6 ff ff 90 <0f> 0b e8 c5 54 1c ff 41 0f b7 5c 24 20 e9 0a fd ff ff e8 b5 54 1c
+RSP: 0018:ffffc900016abc00 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: ffff88802a90ea80 RCX: ffffffff8226b0fa
+RDX: ffff88801f55e000 RSI: ffffffff8226b130 RDI: 0000000000000001
+RBP: ffff88802abdd9c8 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 205d353537323754 R12: ffff88805c328ab8
+R13: 0000000000011c33 R14: ffff88802a90ea80 R15: 0000000000000000
+FS:  00005555569c8500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b30723ffc CR3: 0000000018ce4000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ gfs2_glock_nq_init home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/glock.h:238 [inline]
+ do_sync+0x215/0x7b0 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/quota.c:946
+ gfs2_quota_sync+0x2bc/0x370 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/quota.c:1370
+ gfs2_sync_fs+0x26/0x60 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/super.c:669
+ sync_filesystem home/jiakai/62_66_amd_0904/linux68/linux/fs/sync.c:56 [inline]
+ sync_filesystem+0x80/0x130 home/jiakai/62_66_amd_0904/linux68/linux/fs/sync.c:30
+ generic_shutdown_super+0x34/0x160 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:620
+ kill_block_super+0x1d/0x50 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:1675
+ gfs2_kill_sb+0x1c6/0x1f0 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/ops_fstype.c:1804
+ deactivate_locked_super+0x4c/0x180 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:472
+ deactivate_super+0x72/0x80 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:505
+ cleanup_mnt+0x172/0x200 home/jiakai/62_66_amd_0904/linux68/linux/fs/namespace.c:1267
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0904/linux68/linux/include/linux/resume_user_mode.h:50 [inline]
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:108 [inline]
+ exit_to_user_mode_prepare home/jiakai/62_66_amd_0904/linux68/linux/include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x182/0x190 home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:212
+ do_syscall_64+0xc0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f1a1a3afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffde4b2f368 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007f1a1a3afb8b
+RDX: 00007f1a1a24fd10 RSI: 0000000000000009 RDI: 00007ffde4b2f420
+RBP: 00007ffde4b2f420 R08: 0000000000000000 R09: 00007ffde4b2f1f0
+R10: 00005555569db6f3 R11: 0000000000000246 R12: 00007f1a1a447cae
+R13: 00007ffde4b304f0 R14: 00005555569db600 R15: 0000000000161e99
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:add_to_queue home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/glock.c:1560 [inline]
+RIP: 0010:gfs2_glock_nq+0x344/0xbc0 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/glock.c:1604
+Code: 48 89 ee 41 0f b7 4c 24 22 48 c7 c7 d0 a8 28 86 8b 50 18 e8 4e 9b 0f ff 48 8b 74 24 08 ba 01 00 00 00 31 ff e8 9d b6 ff ff 90 <0f> 0b e8 c5 54 1c ff 41 0f b7 5c 24 20 e9 0a fd ff ff e8 b5 54 1c
+RSP: 0018:ffffc900016abc00 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: ffff88802a90ea80 RCX: ffffffff8226b0fa
+RDX: ffff88801f55e000 RSI: ffffffff8226b130 RDI: 0000000000000001
+RBP: ffff88802abdd9c8 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 205d353537323754 R12: ffff88805c328ab8
+R13: 0000000000011c33 R14: ffff88802a90ea80 R15: 0000000000000000
+FS:  00005555569c8500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b30723ffc CR3: 0000000018ce4000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 72755 Comm: syz-executor Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:gfs2_glock_nq+0x344/0xbc0
+Code: 48 89 ee 41 0f b7 4c 24 22 48 c7 c7 d0 a8 28 86 8b 50 18 e8 4e 9b 0f ff 48 8b 74 24 08 ba 01 00 00 00 31 ff e8 9d b6 ff ff 90 <0f> 0b e8 c5 54 1c ff 41 0f b7 5c 24 20 e9 0a fd ff ff e8 b5 54 1c
+RSP: 0018:ffffc900016abc00 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: ffff88802a90ea80 RCX: ffffffff8226b0fa
+RDX: ffff88801f55e000 RSI: ffffffff8226b130 RDI: 0000000000000001
+RBP: ffff88802abdd9c8 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 205d353537323754 R12: ffff88805c328ab8
+R13: 0000000000011c33 R14: ffff88802a90ea80 R15: 0000000000000000
+FS:  00005555569c8500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b30723ffc CR3: 0000000018ce4000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ do_sync+0x215/0x7b0
+ gfs2_quota_sync+0x2bc/0x370
+ gfs2_sync_fs+0x26/0x60
+ sync_filesystem+0x80/0x130
+ generic_shutdown_super+0x34/0x160
+ kill_block_super+0x1d/0x50
+ gfs2_kill_sb+0x1c6/0x1f0
+ deactivate_locked_super+0x4c/0x180
+ deactivate_super+0x72/0x80
+ cleanup_mnt+0x172/0x200
+ task_work_run+0x8f/0xe0
+ syscall_exit_to_user_mode+0x182/0x190
+ do_syscall_64+0xc0/0x1e0
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f1a1a3afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffde4b2f368 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007f1a1a3afb8b
+RDX: 00007f1a1a24fd10 RSI: 0000000000000009 RDI: 00007ffde4b2f420
+RBP: 00007ffde4b2f420 R08: 0000000000000000 R09: 00007ffde4b2f1f0
+R10: 00005555569db6f3 R11: 0000000000000246 R12: 00007f1a1a447cae
+R13: 00007ffde4b304f0 R14: 00005555569db600 R15: 0000000000161e99
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:gfs2_glock_nq+0x344/0xbc0
+Code: 48 89 ee 41 0f b7 4c 24 22 48 c7 c7 d0 a8 28 86 8b 50 18 e8 4e 9b 0f ff 48 8b 74 24 08 ba 01 00 00 00 31 ff e8 9d b6 ff ff 90 <0f> 0b e8 c5 54 1c ff 41 0f b7 5c 24 20 e9 0a fd ff ff e8 b5 54 1c
+RSP: 0018:ffffc900016abc00 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: ffff88802a90ea80 RCX: ffffffff8226b0fa
+RDX: ffff88801f55e000 RSI: ffffffff8226b130 RDI: 0000000000000001
+RBP: ffff88802abdd9c8 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 205d353537323754 R12: ffff88805c328ab8
+R13: 0000000000011c33 R14: ffff88802a90ea80 R15: 0000000000000000
+FS:  00005555569c8500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b30723ffc CR3: 0000000018ce4000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

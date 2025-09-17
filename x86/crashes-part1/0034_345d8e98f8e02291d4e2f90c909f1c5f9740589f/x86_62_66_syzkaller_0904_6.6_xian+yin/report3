@@ -1,0 +1,69 @@
+gfs2: fsid=syz:syz.0:  H: s:SH f:aH e:0 p:84921 [syz.5.9254] statfs_by_dentry+0x81/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/fs/statfs.c:66
+gfs2: fsid=syz:syz.0:  R: n:18 f:80000000 b:0/0 i:0 q:0 r:0 e:0
+------------[ cut here ]------------
+kernel BUG at fs/gfs2/glock.c:1544!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 84921 Comm: syz.5.9254 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:add_to_queue home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/glock.c:1544 [inline]
+RIP: 0010:gfs2_glock_nq+0x296/0x7f0 home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/glock.c:1569
+Code: 10 48 89 ee 41 0f b7 4c 24 22 48 c7 c7 a8 cb 24 86 8b 50 18 e8 db 2a 13 ff 48 8b 34 24 ba 01 00 00 00 31 ff e8 5b b7 ff ff 90 <0f> 0b e8 73 ae 1f ff 31 ff 44 89 fe e8 49 a7 1f ff 45 85 ff 74 1e
+RSP: 0000:ffffc9000b43bac0 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: ffff88805b864a00 RCX: 0000000000000000
+RDX: ffff88801d3cc800 RSI: ffffffff8222ae50 RDI: ffff88802f655514
+RBP: ffff888019a6c9c8 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 205d313239343854 R12: ffff88807d7d3070
+R13: 0000000000014bb9 R14: ffff88805b864a00 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f9f62539000 CR3: 0000000065cb4000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ gfs2_glock_nq_init home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/glock.h:252 [inline]
+ gfs2_statfs_slow home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/super.c:920 [inline]
+ gfs2_statfs+0x26b/0x510 home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/super.c:994
+ statfs_by_dentry+0x81/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/fs/statfs.c:66
+ vfs_statfs+0x1f/0x60 home/jiakai/62_66_amd_0904/linux66/linux/fs/statfs.c:90
+ check_free_space+0x5e/0x1c0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/acct.c:128
+ do_acct_process+0x6d/0x940 home/jiakai/62_66_amd_0904/linux66/linux/kernel/acct.c:511
+ slow_acct_process home/jiakai/62_66_amd_0904/linux66/linux/kernel/acct.c:598 [inline]
+ acct_process+0x162/0x1a0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/acct.c:622
+ do_exit+0xbe6/0x1180 home/jiakai/62_66_amd_0904/linux66/linux/kernel/exit.c:864
+ do_group_exit+0x4f/0xd0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/exit.c:1024
+ get_signal+0x108d/0x1090 home/jiakai/62_66_amd_0904/linux66/linux/kernel/signal.c:2892
+ arch_do_signal_or_restart+0x30/0x480 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/signal.c:309
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:168 [inline]
+ exit_to_user_mode_prepare+0xd9/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+RIP: 0033:0x7f7945bae16d
+Code: Unable to access opcode bytes at 0x7f7945bae143.
+RSP: 002b:00007f7946978068 EFLAGS: 00000246 ORIG_RAX: 00000000000000ca
+RAX: fffffffffffffe00 RBX: 00007f7945df5fa8 RCX: 00007f7945bae16d
+RDX: 0000000000000000 RSI: 0000000000000080 RDI: 00007f7945df5fa8
+RBP: 00007f7945df5fa0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f7945df6038 R14: 00007f7945b4a2e0 R15: 00007f7946958000
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:add_to_queue home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/glock.c:1544 [inline]
+RIP: 0010:gfs2_glock_nq+0x296/0x7f0 home/jiakai/62_66_amd_0904/linux66/linux/fs/gfs2/glock.c:1569
+Code: 10 48 89 ee 41 0f b7 4c 24 22 48 c7 c7 a8 cb 24 86 8b 50 18 e8 db 2a 13 ff 48 8b 34 24 ba 01 00 00 00 31 ff e8 5b b7 ff ff 90 <0f> 0b e8 73 ae 1f ff 31 ff 44 89 fe e8 49 a7 1f ff 45 85 ff 74 1e
+RSP: 0000:ffffc9000b43bac0 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: ffff88805b864a00 RCX: 0000000000000000
+RDX: ffff88801d3cc800 RSI: ffffffff8222ae50 RDI: ffff88802f655514
+RBP: ffff888019a6c9c8 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 205d313239343854 R12: ffff88807d7d3070
+R13: 0000000000014bb9 R14: ffff88805b864a00 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f9f62539000 CR3: 0000000065cb4000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000

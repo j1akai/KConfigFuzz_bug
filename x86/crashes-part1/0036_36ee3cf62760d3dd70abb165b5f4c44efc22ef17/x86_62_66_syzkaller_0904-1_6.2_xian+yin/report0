@@ -1,0 +1,52 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 60743 at fs/buffer.c:1081 mark_buffer_dirty+0x217/0x330 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/buffer.c:1081
+Modules linked in:
+CPU: 0 PID: 60743 Comm: syz-executor Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:mark_buffer_dirty+0x217/0x330 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/buffer.c:1081
+Code: ec 41 83 e4 01 4c 89 e6 e8 26 8c ce ff 4d 85 e4 0f 84 63 ff ff ff e8 c8 92 ce ff 49 8d 5d ff e9 55 ff ff ff e8 ba 92 ce ff 90 <0f> 0b 90 e9 0e fe ff ff e8 ac 92 ce ff 48 89 ef e8 14 f7 e1 ff 48
+RSP: 0018:ffffc900045d7c00 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff88802a44b478 RCX: 0000000000000000
+RDX: ffff88800aa02f80 RSI: ffffffff816fe646 RDI: 0000000000000001
+RBP: ffffc900045d7d00 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff88802a45c438
+R13: ffff88802a45f390 R14: ffff88802a44b478 R15: ffff88801b07fe18
+FS:  0000555556af5500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f57b5f256c0 CR3: 000000001bbf8000 CR4: 0000000000750ef0
+DR0: 00000000000000ff DR1: 000000000000002b DR2: 00000000000003ff
+DR3: 0000000000000001 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ nilfs_segctor_collect_dirty_files home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:1966 [inline]
+ nilfs_segctor_do_construct+0xe8/0x3760 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:2025
+ nilfs_segctor_construct+0x383/0x480 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:2379
+ nilfs_segctor_write_out home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:2701 [inline]
+ nilfs_segctor_destroy home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:2734 [inline]
+ nilfs_detach_log_writer+0x1d8/0x490 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:2814
+ nilfs_put_super+0x1f/0xa0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/super.c:477
+ generic_shutdown_super+0x9d/0x1a0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/super.c:492
+ kill_block_super+0x36/0x70 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/super.c:1386
+ deactivate_locked_super+0x4a/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/super.c:332
+ deactivate_super+0x72/0x80 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/super.c:363
+ cleanup_mnt+0x172/0x200 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:1291
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/task_work.c:179
+ resume_user_mode_work home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:171 [inline]
+ exit_to_user_mode_prepare+0x11e/0x140 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f402c7afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffca68cf778 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 00000000000003a9 RCX: 00007f402c7afb8b
+RDX: 00007f402c64fd10 RSI: 0000000000000009 RDI: 00007ffca68cf830
+RBP: 00007ffca68cf830 R08: 0000000000000000 R09: 00007ffca68cf600
+R10: 0000555556b08673 R11: 0000000000000246 R12: 00007f402c847cae
+R13: 00007ffca68d0900 R14: 0000555556b08600 R15: 000000000010a9e5
+ </TASK>
+---[ end trace 0000000000000000 ]---
+XFS (loop9): Unmounting Filesystem 9f91832a-3b79-45c3-9d6d-ed0bc7357fe4

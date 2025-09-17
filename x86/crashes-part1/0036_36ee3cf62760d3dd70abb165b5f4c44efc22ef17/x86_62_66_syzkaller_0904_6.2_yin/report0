@@ -1,0 +1,56 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 11579 at fs/buffer.c:1081 mark_buffer_dirty+0x217/0x330 -all/fs/buffer.c:1081
+Modules linked in:
+CPU: 0 PID: 11579 Comm: syz.4.85 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:mark_buffer_dirty+0x217/0x330 -all/fs/buffer.c:1081
+Code: ec 41 83 e4 01 4c 89 e6 e8 26 8c ce ff 4d 85 e4 0f 84 63 ff ff ff e8 c8 92 ce ff 49 8d 5d ff e9 55 ff ff ff e8 ba 92 ce ff 90 <0f> 0b 90 e9 0e fe ff ff e8 ac 92 ce ff 48 89 ef e8 14 f7 e1 ff 48
+RSP: 0018:ffffc90004a77600 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff888019064270 RCX: 0000000000000000
+RDX: ffff888026652f80 RSI: ffffffff816fe646 RDI: 0000000000000001
+RBP: ffff88804b364a00 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000040001 R12: ffff88801046b000
+R13: 000000000000000f R14: ffff888019068000 R15: ffff888019064270
+FS:  00007f434e002640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f97ffb37630 CR3: 000000001dc2c000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ bfs_move_block -all/fs/bfs/file.c:43 [inline]
+ bfs_move_blocks -all/fs/bfs/file.c:56 [inline]
+ bfs_get_block+0x191/0x3c0 -all/fs/bfs/file.c:125
+ __block_write_begin_int+0x1db/0x9f0 -all/fs/buffer.c:1991
+ __block_write_begin -all/fs/buffer.c:2041 [inline]
+ block_write_begin+0x8c/0x2a0 -all/fs/buffer.c:2102
+ bfs_write_begin+0x31/0x90 -all/fs/bfs/file.c:177
+ generic_perform_write+0x10b/0x2c0 -all/mm/filemap.c:3773
+ __generic_file_write_iter+0x177/0x290 -all/mm/filemap.c:3901
+ generic_file_write_iter+0x86/0x160 -all/mm/filemap.c:3933
+ __kernel_write_iter+0x109/0x300 -all/fs/read_write.c:517
+ __kernel_write+0x6e/0xa0 -all/fs/read_write.c:537
+ __dump_emit -all/fs/coredump.c:811 [inline]
+ dump_emit+0x101/0x140 -all/fs/coredump.c:848
+ writenote+0xe5/0x130 -all/fs/binfmt_elf.c:1482
+ write_note_info -all/fs/binfmt_elf.c:1972 [inline]
+ elf_core_dump+0xff8/0x1420 -all/fs/binfmt_elf.c:2124
+ do_coredump+0x164f/0x1ed0 -all/fs/coredump.c:762
+ get_signal+0xea6/0xfe0 -all/kernel/signal.c:2845
+ arch_do_signal_or_restart+0x29/0x260 -all/arch/x86/kernel/signal.c:306
+ exit_to_user_mode_loop -all/kernel/entry/common.c:168 [inline]
+ exit_to_user_mode_prepare+0xd9/0x140 -all/kernel/entry/common.c:203
+ irqentry_exit_to_user_mode+0xa/0x20 -all/kernel/entry/common.c:309
+ exc_page_fault+0x5fd/0xe50 -all/arch/x86/mm/fault.c:1578
+ asm_exc_page_fault+0x26/0x30 -all/arch/x86/include/asm/idtentry.h:570
+RIP: 0033:0x9a9e35b0
+Code: Unable to access opcode bytes at 0x9a9e3586.
+RSP: 002b:00002000000000e8 EFLAGS: 00010217
+RAX: 0000000000000000 RBX: 00007f434d3f5fa0 RCX: 00007f434d1ae16d
+RDX: 0000000000000000 RSI: 00002000000000e0 RDI: 0000000000000400
+RBP: 00007f434d2480f0 R08: 00002000000001c0 R09: 00002000000001c0
+R10: 0000200000000180 R11: 0000000000000206 R12: 0000000000000000
+R13: 00007f434d3f6038 R14: 00007f434d3f5fa0 R15: 00007f434dfe2000
+ </TASK>
+---[ end trace 0000000000000000 ]---

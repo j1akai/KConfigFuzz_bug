@@ -1,0 +1,52 @@
+vxcan1: tx drop: invalid sa for name 0x0000000000000001
+------------[ cut here ]------------
+wlan1: Failed check-sdata-in-driver check, flags: 0x0
+WARNING: CPU: 1 PID: 36216 at net/mac80211/main.c:288 ieee80211_link_info_change_notify+0x115/0x190 home/jiakai/62_66_amd_0904/linux66/linux/net/mac80211/main.c:288
+Modules linked in:
+CPU: 1 PID: 36216 Comm: syz.0.3114 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:ieee80211_link_info_change_notify+0x115/0x190 home/jiakai/62_66_amd_0904/linux66/linux/net/mac80211/main.c:288
+Code: 49 8b ac 24 88 07 00 00 48 85 ed 74 79 e8 53 10 96 fc e8 4e 10 96 fc 44 89 fa 48 89 ee 48 c7 c7 d0 33 3c 86 e8 fc 99 7e fc 90 <0f> 0b 90 90 e8 32 10 96 fc 41 8b ac 24 98 07 00 00 31 ff 83 e5 20
+RSP: 0018:ffffc9000f967968 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: 0000000002000000 RCX: ffffc9000fdcd000
+RDX: 0000000000080000 RSI: ffffffff812b2793 RDI: 0000000000000001
+RBP: ffff888014ae8000 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 205d363132363354 R12: ffff888014ae8a40
+R13: ffff888014ae9970 R14: ffff88802c5e08e0 R15: 0000000000000000
+FS:  00007f598d4b6640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000110c2f66bf CR3: 0000000057c7a000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ ieee80211_set_mcast_rate+0x4a/0x60 home/jiakai/62_66_amd_0904/linux66/linux/net/mac80211/cfg.c:2955
+ rdev_set_mcast_rate home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/rdev-ops.h:1233 [inline]
+ nl80211_set_mcast_rate+0x139/0x280 home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/nl80211.c:11545
+ genl_family_rcv_msg_doit+0x103/0x170 home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/genetlink.c:971
+ genl_family_rcv_msg home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/genetlink.c:1051 [inline]
+ genl_rcv_msg+0x2ea/0x430 home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/genetlink.c:1066
+ netlink_rcv_skb+0x91/0x1e0 home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/af_netlink.c:2545
+ genl_rcv+0x28/0x40 home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/genetlink.c:1075
+ netlink_unicast_kernel home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/af_netlink.c:1342 [inline]
+ netlink_unicast+0x3ab/0x500 home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/af_netlink.c:1368
+ netlink_sendmsg+0x39c/0x740 home/jiakai/62_66_amd_0904/linux66/linux/net/netlink/af_netlink.c:1910
+ sock_sendmsg_nosec home/jiakai/62_66_amd_0904/linux66/linux/net/socket.c:730 [inline]
+ __sock_sendmsg home/jiakai/62_66_amd_0904/linux66/linux/net/socket.c:745 [inline]
+ ____sys_sendmsg+0x5a3/0x5e0 home/jiakai/62_66_amd_0904/linux66/linux/net/socket.c:2558
+ ___sys_sendmsg+0xb4/0x120 home/jiakai/62_66_amd_0904/linux66/linux/net/socket.c:2612
+ __sys_sendmsg+0x8e/0x110 home/jiakai/62_66_amd_0904/linux66/linux/net/socket.c:2641
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+RIP: 0033:0x7f598c5ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f598d4b5f98 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+RAX: ffffffffffffffda RBX: 00007f598c7f5fa0 RCX: 00007f598c5ae16d
+RDX: 0000000000004800 RSI: 0000200000000400 RDI: 0000000000000007
+RBP: 00007f598c6480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f598c7f6038 R14: 00007f598c7f5fa0 R15: 00007f598d496000
+ </TASK>
+---[ end trace 0000000000000000 ]---

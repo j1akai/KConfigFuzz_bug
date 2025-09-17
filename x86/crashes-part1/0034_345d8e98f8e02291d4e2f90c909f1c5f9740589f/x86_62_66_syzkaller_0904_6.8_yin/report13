@@ -1,0 +1,71 @@
+gfs2: fsid=syz:syz.0: G:  s:EX n:8/1 f:qb t:EX d:EX/0 a:0 v:0 r:5 m:20 p:0
+gfs2: fsid=syz:syz.0:  H: s:EX f:cH e:0 p:63055 [syz.4.5306] gfs2_quota_sync+0x2bc/0x370 fs/gfs2/quota.c:1370
+------------[ cut here ]------------
+kernel BUG at fs/gfs2/glock.c:1560!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 63055 Comm: syz.4.5306 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:add_to_queue fs/gfs2/glock.c:1560 [inline]
+RIP: 0010:gfs2_glock_nq+0x344/0xbc0 fs/gfs2/glock.c:1604
+Code: 48 89 ee 41 0f b7 4c 24 22 48 c7 c7 d0 a8 28 86 8b 50 18 e8 4e 9b 0f ff 48 8b 74 24 08 ba 01 00 00 00 31 ff e8 9d b6 ff ff 90 <0f> 0b e8 c5 54 1c ff 41 0f b7 5c 24 20 e9 0a fd ff ff e8 b5 54 1c
+RSP: 0018:ffffc9000236fae0 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: ffff888054350000 RCX: ffffffff8226b0fa
+RDX: ffff8880458e8000 RSI: ffffffff8226b130 RDI: 0000000000000001
+RBP: ffff8880238409c8 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 205d353530333654 R12: ffff8880236e5d38
+R13: 000000000000f64f R14: ffff888054350000 R15: 0000000000000000
+FS:  00007efd81ad3640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f7f55e4ac58 CR3: 000000002ec04000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ gfs2_glock_nq_init fs/gfs2/glock.h:238 [inline]
+ do_sync+0x215/0x7b0 fs/gfs2/quota.c:946
+ gfs2_quota_sync+0x2bc/0x370 fs/gfs2/quota.c:1370
+ gfs2_sync_fs+0x26/0x60 fs/gfs2/super.c:669
+ sync_filesystem fs/sync.c:56 [inline]
+ sync_filesystem+0x80/0x130 fs/sync.c:30
+ generic_shutdown_super+0x34/0x160 fs/super.c:620
+ kill_block_super+0x1d/0x50 fs/super.c:1675
+ gfs2_kill_sb+0x1c6/0x1f0 fs/gfs2/ops_fstype.c:1804
+ deactivate_locked_super+0x4c/0x180 fs/super.c:472
+ deactivate_super+0x72/0x80 fs/super.c:505
+ cleanup_mnt+0x172/0x200 fs/namespace.c:1267
+ task_work_run+0x8f/0xe0 kernel/task_work.c:180
+ get_signal+0xbf/0x1090 kernel/signal.c:2669
+ arch_do_signal_or_restart+0x30/0x480 arch/x86/kernel/signal.c:310
+ exit_to_user_mode_loop kernel/entry/common.c:105 [inline]
+ exit_to_user_mode_prepare include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0xc6/0x190 kernel/entry/common.c:212
+ do_syscall_64+0xc0/0x1e0 arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7efd80baffde
+Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007efd81ad2da8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+RAX: ffffffffffffffec RBX: 00000000000211cc RCX: 00007efd80baffde
+RDX: 0000200000021180 RSI: 00002000000211c0 RDI: 00007efd81ad2e00
+RBP: 00007efd81ad2e40 R08: 00007efd81ad2e40 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000200000021180
+R13: 00002000000211c0 R14: 00007efd81ad2e00 R15: 0000200000000040
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:add_to_queue fs/gfs2/glock.c:1560 [inline]
+RIP: 0010:gfs2_glock_nq+0x344/0xbc0 fs/gfs2/glock.c:1604
+Code: 48 89 ee 41 0f b7 4c 24 22 48 c7 c7 d0 a8 28 86 8b 50 18 e8 4e 9b 0f ff 48 8b 74 24 08 ba 01 00 00 00 31 ff e8 9d b6 ff ff 90 <0f> 0b e8 c5 54 1c ff 41 0f b7 5c 24 20 e9 0a fd ff ff e8 b5 54 1c
+RSP: 0018:ffffc9000236fae0 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: ffff888054350000 RCX: ffffffff8226b0fa
+RDX: ffff8880458e8000 RSI: ffffffff8226b130 RDI: 0000000000000001
+RBP: ffff8880238409c8 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 205d353530333654 R12: ffff8880236e5d38
+R13: 000000000000f64f R14: ffff888054350000 R15: 0000000000000000
+FS:  00007efd81ad3640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f7f55e4ac58 CR3: 000000002ec04000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000

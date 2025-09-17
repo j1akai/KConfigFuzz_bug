@@ -1,0 +1,55 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 85890 at fs/buffer.c:1188 mark_buffer_dirty+0x19a/0x1b0 home/jiakai/62_66_amd_0904/linux66/linux/fs/buffer.c:1188
+Modules linked in:
+CPU: 0 PID: 85890 Comm: syz.0.9134 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:mark_buffer_dirty+0x19a/0x1b0 home/jiakai/62_66_amd_0904/linux66/linux/fs/buffer.c:1188
+Code: 04 00 00 00 e8 f7 7c fe ff 5b 5d e9 20 b9 cc ff e8 1b b9 cc ff 48 89 ef e8 e3 e5 f4 ff 5b 5d e9 0c b9 cc ff e8 07 b9 cc ff 90 <0f> 0b 90 e9 85 fe ff ff 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 00
+RSP: 0018:ffffc900054eb6a8 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff8880147edea0 RCX: 0000000000000000
+RDX: ffff888020451800 RSI: ffffffff8175e3d9 RDI: 0000000000000001
+RBP: ffff8880145a8a00 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff888018cff800
+R13: 000000000000000a R14: ffff88801463e340 R15: ffff8880147edea0
+FS:  00007fe0ea693640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00002000000011e0 CR3: 000000003dd08000 CR4: 0000000000752ef0
+DR0: 0000000000000008 DR1: 0000000000001000 DR2: 00000000000004e3
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ bfs_move_block home/jiakai/62_66_amd_0904/linux66/linux/fs/bfs/file.c:43 [inline]
+ bfs_move_blocks home/jiakai/62_66_amd_0904/linux66/linux/fs/bfs/file.c:56 [inline]
+ bfs_get_block+0x191/0x3c0 home/jiakai/62_66_amd_0904/linux66/linux/fs/bfs/file.c:125
+ __block_write_begin_int+0x206/0xaa0 home/jiakai/62_66_amd_0904/linux66/linux/fs/buffer.c:2120
+ __block_write_begin home/jiakai/62_66_amd_0904/linux66/linux/fs/buffer.c:2169 [inline]
+ block_write_begin+0x8c/0x2a0 home/jiakai/62_66_amd_0904/linux66/linux/fs/buffer.c:2228
+ bfs_write_begin+0x31/0x90 home/jiakai/62_66_amd_0904/linux66/linux/fs/bfs/file.c:177
+ generic_perform_write+0x10b/0x2d0 home/jiakai/62_66_amd_0904/linux66/linux/mm/filemap.c:3969
+ __generic_file_write_iter+0x12c/0x140 home/jiakai/62_66_amd_0904/linux66/linux/mm/filemap.c:4064
+ generic_file_write_iter+0x86/0x160 home/jiakai/62_66_amd_0904/linux66/linux/mm/filemap.c:4090
+ __kernel_write_iter+0x10f/0x370 home/jiakai/62_66_amd_0904/linux66/linux/fs/read_write.c:517
+ __kernel_write+0x6e/0xa0 home/jiakai/62_66_amd_0904/linux66/linux/fs/read_write.c:537
+ __dump_emit home/jiakai/62_66_amd_0904/linux66/linux/fs/coredump.c:813 [inline]
+ dump_emit+0x101/0x140 home/jiakai/62_66_amd_0904/linux66/linux/fs/coredump.c:850
+ elf_core_dump+0xd86/0x1460 home/jiakai/62_66_amd_0904/linux66/linux/fs/binfmt_elf.c:2121
+ do_coredump+0x1a13/0x1fa0 home/jiakai/62_66_amd_0904/linux66/linux/fs/coredump.c:764
+ get_signal+0xea9/0x1090 home/jiakai/62_66_amd_0904/linux66/linux/kernel/signal.c:2878
+ arch_do_signal_or_restart+0x30/0x480 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/signal.c:309
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:168 [inline]
+ exit_to_user_mode_prepare+0xd9/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+RIP: 0033:0x7fe0e97ee468
+Code: ff eb 9d 0f 1f 80 00 00 00 00 89 7c 24 0c e8 df f4 fe ff 8b 7c 24 0c 4d 89 f2 4c 89 e2 41 89 c0 44 89 ee b8 e6 00 00 00 0f 05 <44> 89 c7 48 89 c5 e8 2d f5 fe ff eb 88 0f 1f 00 49 81 7c 24 08 ff
+RSP: 002b:00007fe0ea692e90 EFLAGS: 00000293 ORIG_RAX: 00000000000000e6
+RAX: fffffffffffffdfc RBX: 00007fe0e99f5f01 RCX: 00007fe0e97ee468
+RDX: 00007fe0ea692f20 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 00007fe0e98480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000293 R12: 00007fe0ea692f20
+R13: 0000000000000000 R14: 0000000000000000 R15: 00007fe0ea673000
+ </TASK>
+---[ end trace 0000000000000000 ]---

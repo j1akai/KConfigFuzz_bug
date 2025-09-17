@@ -1,0 +1,97 @@
+gfs2: fsid=syz:syz.0: G:  s:EX n:8/1 f:qb t:EX d:EX/0 a:0 v:0 r:5 m:20 p:0
+gfs2: fsid=syz:syz.0:  H: s:EX f:cH e:0 p:27485 [gfs2_quotad] gfs2_quota_sync+0x1be/0x380 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/quota.c:1318
+------------[ cut here ]------------
+kernel BUG at fs/gfs2/glock.c:1531!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 27485 Comm: gfs2_quotad Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:add_to_queue home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/glock.c:1531 [inline]
+RIP: 0010:gfs2_glock_nq.cold+0xd4/0xe3 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/glock.c:1556
+Code: 10 4c 89 e6 41 0f b7 4e 22 48 c7 c7 b8 7f 00 86 8b 50 18 e8 49 6f fa ff 48 8b 74 24 10 ba 01 00 00 00 31 ff e8 ea bd 63 fd 90 <0f> 0b 45 31 ed e9 5c ff ff ff 45 31 ed eb ad e8 b5 da 8b fc 4c 8b
+RSP: 0018:ffffc90002fbfd08 EFLAGS: 00010292
+RAX: 0000000000000000 RBX: ffff88805ca07500 RCX: 0000000000000000
+RDX: ffff88805bf597c0 RSI: ffffffff821664af RDI: 0000000000000001
+RBP: ffff88801933bb80 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 7366203a32736667 R12: ffff88804da7d9c8
+R13: 0000000000006b5d R14: ffff88801933bbb8 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fe2bffb5c00 CR3: 000000000642a000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ gfs2_glock_nq_init home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/glock.h:262 [inline]
+ do_sync+0x271/0x780 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/quota.c:910
+ gfs2_quota_sync+0x1be/0x380 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/quota.c:1318
+ quotad_check_timeo home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/quota.c:1508 [inline]
+ quotad_check_timeo home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/quota.c:1502 [inline]
+ gfs2_quotad+0x81/0x290 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/quota.c:1555
+ kthread+0xfc/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/entry_64.S:308
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:add_to_queue home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/glock.c:1531 [inline]
+RIP: 0010:gfs2_glock_nq.cold+0xd4/0xe3 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/gfs2/glock.c:1556
+Code: 10 4c 89 e6 41 0f b7 4e 22 48 c7 c7 b8 7f 00 86 8b 50 18 e8 49 6f fa ff 48 8b 74 24 10 ba 01 00 00 00 31 ff e8 ea bd 63 fd 90 <0f> 0b 45 31 ed e9 5c ff ff ff 45 31 ed eb ad e8 b5 da 8b fc 4c 8b
+RSP: 0018:ffffc90002fbfd08 EFLAGS: 00010292
+RAX: 0000000000000000 RBX: ffff88805ca07500 RCX: 0000000000000000
+RDX: ffff88805bf597c0 RSI: ffffffff821664af RDI: 0000000000000001
+RBP: ffff88801933bb80 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 7366203a32736667 R12: ffff88804da7d9c8
+R13: 0000000000006b5d R14: ffff88801933bbb8 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fe2bffb5c00 CR3: 000000000642a000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 27485 Comm: gfs2_quotad Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:gfs2_glock_nq.cold+0xd4/0xe3
+Code: 10 4c 89 e6 41 0f b7 4e 22 48 c7 c7 b8 7f 00 86 8b 50 18 e8 49 6f fa ff 48 8b 74 24 10 ba 01 00 00 00 31 ff e8 ea bd 63 fd 90 <0f> 0b 45 31 ed e9 5c ff ff ff 45 31 ed eb ad e8 b5 da 8b fc 4c 8b
+RSP: 0018:ffffc90002fbfd08 EFLAGS: 00010292
+RAX: 0000000000000000 RBX: ffff88805ca07500 RCX: 0000000000000000
+RDX: ffff88805bf597c0 RSI: ffffffff821664af RDI: 0000000000000001
+RBP: ffff88801933bb80 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 7366203a32736667 R12: ffff88804da7d9c8
+R13: 0000000000006b5d R14: ffff88801933bbb8 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fe2bffb5c00 CR3: 000000000642a000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ do_sync+0x271/0x780
+ gfs2_quota_sync+0x1be/0x380
+ gfs2_quotad+0x81/0x290
+ kthread+0xfc/0x130
+ ret_from_fork+0x29/0x50
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:gfs2_glock_nq.cold+0xd4/0xe3
+Code: 10 4c 89 e6 41 0f b7 4e 22 48 c7 c7 b8 7f 00 86 8b 50 18 e8 49 6f fa ff 48 8b 74 24 10 ba 01 00 00 00 31 ff e8 ea bd 63 fd 90 <0f> 0b 45 31 ed e9 5c ff ff ff 45 31 ed eb ad e8 b5 da 8b fc 4c 8b
+RSP: 0018:ffffc90002fbfd08 EFLAGS: 00010292
+RAX: 0000000000000000 RBX: ffff88805ca07500 RCX: 0000000000000000
+RDX: ffff88805bf597c0 RSI: ffffffff821664af RDI: 0000000000000001
+RBP: ffff88801933bb80 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000001 R11: 7366203a32736667 R12: ffff88804da7d9c8
+R13: 0000000000006b5d R14: ffff88801933bbb8 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fe2bffb5c00 CR3: 000000000642a000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
