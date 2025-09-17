@@ -1,0 +1,51 @@
+usb 1-1: USB disconnect, device number 2
+------------[ cut here ]------------
+refcount_t: underflow; use-after-free.
+WARNING: CPU: 1 PID: 10523 at lib/refcount.c:28 refcount_warn_saturate+0x14f/0x1c0 lib/refcount.c:28
+Modules linked in:
+CPU: 1 PID: 10523 Comm: kworker/1:5 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: usb_hub_wq hub_event
+RIP: 0010:refcount_warn_saturate+0x14f/0x1c0 lib/refcount.c:28
+Code: ff 89 de e8 d3 d0 f4 fe 84 db 0f 85 26 ff ff ff e8 06 d8 f4 fe c6 05 c5 ca 45 04 01 90 48 c7 c7 80 b5 01 86 e8 9f ee 62 02 90 <0f> 0b 90 90 e9 03 ff ff ff e8 e3 d7 f4 fe 0f b6 1d a0 ca 45 04 31
+RSP: 0018:ffffc9001ad93b20 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: ffffc900196af000
+RDX: 0000000000100000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff88801a488c38 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000063666572 R12: 00000000ffffffff
+R13: ffff88801a488c38 R14: ffff88801a4898b0 R15: 0000000000000080
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fdcb5c9e780 CR3: 00000000129da000 CR4: 0000000000752ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ __refcount_sub_and_test include/linux/refcount.h:283 [inline]
+ __refcount_dec_and_test include/linux/refcount.h:315 [inline]
+ refcount_dec_and_test include/linux/refcount.h:333 [inline]
+ kref_put include/linux/kref.h:64 [inline]
+ kobject_put+0x142/0x170 lib/kobject.c:721
+ put_device+0x1f/0x30 drivers/base/core.c:3586
+ hdm_disconnect+0xc2/0xd0 drivers/most/most_usb.c:1129
+ usb_unbind_interface+0xe6/0x3e0 drivers/usb/core/driver.c:458
+ device_remove drivers/base/dd.c:550 [inline]
+ device_remove+0x70/0x80 drivers/base/dd.c:542
+ __device_release_driver drivers/base/dd.c:1253 [inline]
+ device_release_driver_internal+0x271/0x320 drivers/base/dd.c:1279
+ bus_remove_device+0x10f/0x160 drivers/base/bus.c:529
+ device_del+0x203/0x500 drivers/base/core.c:3666
+ usb_disable_device+0x145/0x240 drivers/usb/core/message.c:1420
+ usb_disconnect.cold+0xaf/0x2d7 drivers/usb/core/hub.c:2238
+ hub_port_connect drivers/usb/core/hub.c:5247 [inline]
+ hub_port_connect_change drivers/usb/core/hub.c:5552 [inline]
+ port_event drivers/usb/core/hub.c:5712 [inline]
+ hub_event+0x123c/0x2300 drivers/usb/core/hub.c:5794
+ process_one_work+0x2c1/0x600 kernel/workqueue.c:2289
+ process_scheduled_works kernel/workqueue.c:2352 [inline]
+ worker_thread+0x327/0x5c0 kernel/workqueue.c:2438
+ kthread+0xfc/0x130 kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 arch/x86/entry/entry_64.S:308
+ </TASK>
+---[ end trace 0000000000000000 ]---

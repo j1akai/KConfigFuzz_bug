@@ -1,0 +1,88 @@
+BUG: kernel NULL pointer dereference, address: 0000000000000030
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 141d6067 P4D 141d6067 PUD 0 
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 88645 Comm: syz-executor Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:write_special_inodes+0x32/0x70 home/jiakai/62_66_amd_0904/linux66/linux/fs/jfs/jfs_logmgr.c:208
+Code: f5 53 e8 81 b7 69 ff 49 8b 04 24 49 39 c4 74 40 48 8d 58 c8 e8 6f b7 69 ff 48 8b 43 10 48 8b 78 30 ff d5 0f 1f 00 48 8b 43 28 <48> 8b 78 30 ff d5 0f 1f 00 48 8b 83 b0 00 00 00 48 8b 78 30 ff d5
+RSP: 0018:ffffc9000679fd40 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: ffff888037d2d500 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff81561451 RDI: 0000000000000005
+RBP: ffffffff81566610 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff88801d0a5a00
+R13: ffff88801d0a5a80 R14: 0000000000000000 R15: 0000000000000000
+FS:  00005555574a6500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000030 CR3: 000000005710c000 CR4: 0000000000752ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ lmLogSync+0x245/0x320 home/jiakai/62_66_amd_0904/linux66/linux/fs/jfs/jfs_logmgr.c:937
+ jfs_syncpt+0x5f/0x70 home/jiakai/62_66_amd_0904/linux66/linux/fs/jfs/jfs_logmgr.c:1041
+ jfs_sync_fs+0x4b/0x60 home/jiakai/62_66_amd_0904/linux66/linux/fs/jfs/super.c:685
+ sync_filesystem home/jiakai/62_66_amd_0904/linux66/linux/fs/sync.c:56 [inline]
+ sync_filesystem+0x80/0x130 home/jiakai/62_66_amd_0904/linux66/linux/fs/sync.c:30
+ generic_shutdown_super+0x34/0x160 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:666
+ kill_block_super+0x1e/0x50 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:1646
+ deactivate_locked_super+0x4c/0x180 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:481
+ deactivate_super+0x72/0x80 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:514
+ cleanup_mnt+0x172/0x200 home/jiakai/62_66_amd_0904/linux66/linux/fs/namespace.c:1254
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0904/linux66/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:171 [inline]
+ exit_to_user_mode_prepare+0x123/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+RIP: 0033:0x7f5abc5afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007fff09279a78 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007f5abc5afb8b
+RDX: 00007f5abc44fd10 RSI: 0000000000000009 RDI: 00007fff09279b30
+RBP: 00007fff09279b30 R08: 0000000000000000 R09: 00007fff09279900
+R10: 00005555574b96f3 R11: 0000000000000246 R12: 00007f5abc647cae
+R13: 00007fff0927ac00 R14: 00005555574b9600 R15: 00000000001c5d03
+ </TASK>
+Modules linked in:
+CR2: 0000000000000030
+---[ end trace 0000000000000000 ]---
+RIP: 0010:write_special_inodes+0x32/0x70 home/jiakai/62_66_amd_0904/linux66/linux/fs/jfs/jfs_logmgr.c:208
+Code: f5 53 e8 81 b7 69 ff 49 8b 04 24 49 39 c4 74 40 48 8d 58 c8 e8 6f b7 69 ff 48 8b 43 10 48 8b 78 30 ff d5 0f 1f 00 48 8b 43 28 <48> 8b 78 30 ff d5 0f 1f 00 48 8b 83 b0 00 00 00 48 8b 78 30 ff d5
+RSP: 0018:ffffc9000679fd40 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: ffff888037d2d500 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff81561451 RDI: 0000000000000005
+RBP: ffffffff81566610 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff88801d0a5a00
+R13: ffff88801d0a5a80 R14: 0000000000000000 R15: 0000000000000000
+FS:  00005555574a6500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000030 CR3: 000000005710c000 CR4: 0000000000752ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	f5                   	cmc
+   1:	53                   	push   %rbx
+   2:	e8 81 b7 69 ff       	call   0xff69b788
+   7:	49 8b 04 24          	mov    (%r12),%rax
+   b:	49 39 c4             	cmp    %rax,%r12
+   e:	74 40                	je     0x50
+  10:	48 8d 58 c8          	lea    -0x38(%rax),%rbx
+  14:	e8 6f b7 69 ff       	call   0xff69b788
+  19:	48 8b 43 10          	mov    0x10(%rbx),%rax
+  1d:	48 8b 78 30          	mov    0x30(%rax),%rdi
+  21:	ff d5                	call   *%rbp
+  23:	0f 1f 00             	nopl   (%rax)
+  26:	48 8b 43 28          	mov    0x28(%rbx),%rax
+* 2a:	48 8b 78 30          	mov    0x30(%rax),%rdi <-- trapping instruction
+  2e:	ff d5                	call   *%rbp
+  30:	0f 1f 00             	nopl   (%rax)
+  33:	48 8b 83 b0 00 00 00 	mov    0xb0(%rbx),%rax
+  3a:	48 8b 78 30          	mov    0x30(%rax),%rdi
+  3e:	ff d5                	call   *%rbp

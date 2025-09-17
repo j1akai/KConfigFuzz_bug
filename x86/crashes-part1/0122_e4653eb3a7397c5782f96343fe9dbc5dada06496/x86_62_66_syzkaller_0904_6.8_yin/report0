@@ -1,0 +1,86 @@
+BUG: kernel NULL pointer dereference, address: 0000000000000030
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 1fcda067 P4D 1fcda067 PUD 0 
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 53184 Comm: syz-executor Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:write_special_inodes+0x32/0x70 fs/jfs/jfs_logmgr.c:208
+Code: f5 53 e8 41 36 67 ff 49 8b 04 24 49 39 c4 74 40 48 8d 58 c8 e8 2f 36 67 ff 48 8b 43 10 48 8b 78 30 ff d5 0f 1f 00 48 8b 43 28 <48> 8b 78 30 ff d5 0f 1f 00 48 8b 83 b0 00 00 00 48 8b 78 30 ff d5
+RSP: 0018:ffffc90001657d50 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: ffff888059055700 RCX: ffffffff81574a68
+RDX: 0000000000000000 RSI: ffffffff81574a71 RDI: 0000000000000005
+RBP: ffffffff81579630 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff88802525dc00
+R13: ffff88802525dd08 R14: ffff888014cc87c8 R15: ffff88802525dcf0
+FS:  000055555734e500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000030 CR3: 0000000023c44000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ jfs_flush_journal+0x182/0x4b0 fs/jfs/jfs_logmgr.c:1582
+ jfs_umount+0x73/0x1a0 fs/jfs/jfs_umount.c:58
+ jfs_put_super+0x63/0x100 fs/jfs/super.c:194
+ generic_shutdown_super+0x96/0x160 fs/super.c:641
+ kill_block_super+0x1d/0x50 fs/super.c:1675
+ deactivate_locked_super+0x4c/0x180 fs/super.c:472
+ deactivate_super+0x72/0x80 fs/super.c:505
+ cleanup_mnt+0x172/0x200 fs/namespace.c:1267
+ task_work_run+0x8f/0xe0 kernel/task_work.c:180
+ resume_user_mode_work include/linux/resume_user_mode.h:50 [inline]
+ exit_to_user_mode_loop kernel/entry/common.c:108 [inline]
+ exit_to_user_mode_prepare include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x182/0x190 kernel/entry/common.c:212
+ do_syscall_64+0xc0/0x1e0 arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f0be7dafb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffd53cb8d48 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007f0be7dafb8b
+RDX: 00007f0be7c4fd10 RSI: 0000000000000009 RDI: 00007ffd53cb8e00
+RBP: 00007ffd53cb8e00 R08: 0000000000000000 R09: 00007ffd53cb8bd0
+R10: 00005555573616f3 R11: 0000000000000246 R12: 00007f0be7e47cae
+R13: 00007ffd53cb9ed0 R14: 0000555557361600 R15: 00000000000e6b94
+ </TASK>
+Modules linked in:
+CR2: 0000000000000030
+---[ end trace 0000000000000000 ]---
+RIP: 0010:write_special_inodes+0x32/0x70 fs/jfs/jfs_logmgr.c:208
+Code: f5 53 e8 41 36 67 ff 49 8b 04 24 49 39 c4 74 40 48 8d 58 c8 e8 2f 36 67 ff 48 8b 43 10 48 8b 78 30 ff d5 0f 1f 00 48 8b 43 28 <48> 8b 78 30 ff d5 0f 1f 00 48 8b 83 b0 00 00 00 48 8b 78 30 ff d5
+RSP: 0018:ffffc90001657d50 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: ffff888059055700 RCX: ffffffff81574a68
+RDX: 0000000000000000 RSI: ffffffff81574a71 RDI: 0000000000000005
+RBP: ffffffff81579630 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff88802525dc00
+R13: ffff88802525dd08 R14: ffff888014cc87c8 R15: ffff88802525dcf0
+FS:  000055555734e500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000030 CR3: 0000000023c44000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	f5                   	cmc
+   1:	53                   	push   %rbx
+   2:	e8 41 36 67 ff       	call   0xff673648
+   7:	49 8b 04 24          	mov    (%r12),%rax
+   b:	49 39 c4             	cmp    %rax,%r12
+   e:	74 40                	je     0x50
+  10:	48 8d 58 c8          	lea    -0x38(%rax),%rbx
+  14:	e8 2f 36 67 ff       	call   0xff673648
+  19:	48 8b 43 10          	mov    0x10(%rbx),%rax
+  1d:	48 8b 78 30          	mov    0x30(%rax),%rdi
+  21:	ff d5                	call   *%rbp
+  23:	0f 1f 00             	nopl   (%rax)
+  26:	48 8b 43 28          	mov    0x28(%rbx),%rax
+* 2a:	48 8b 78 30          	mov    0x30(%rax),%rdi <-- trapping instruction
+  2e:	ff d5                	call   *%rbp
+  30:	0f 1f 00             	nopl   (%rax)
+  33:	48 8b 83 b0 00 00 00 	mov    0xb0(%rbx),%rax
+  3a:	48 8b 78 30          	mov    0x30(%rax),%rdi
+  3e:	ff d5                	call   *%rbp

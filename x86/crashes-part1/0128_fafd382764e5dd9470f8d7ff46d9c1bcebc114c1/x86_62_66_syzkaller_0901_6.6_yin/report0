@@ -1,0 +1,142 @@
+INFO: task syz.5.1318:24813 blocked for more than 143 seconds.
+      Not tainted 6.6.0 #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.5.1318      state:D stack:25344 pid:24813 ppid:15150  flags:0x00004004
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5382 [inline]
+ __schedule+0x110e/0x18b0 kernel/sched/core.c:6695
+ schedule+0xcb/0x180 kernel/sched/core.c:6771
+ schedule_preempt_disabled+0xf/0x20 kernel/sched/core.c:6830
+ rwsem_down_read_slowpath kernel/locking/rwsem.c:1086 [inline]
+ __down_read_common kernel/locking/rwsem.c:1250 [inline]
+ __down_read kernel/locking/rwsem.c:1263 [inline]
+ down_read+0x712/0xa50 kernel/locking/rwsem.c:1522
+ __super_lock fs/super.c:58 [inline]
+ super_lock+0x18a/0x3c0 fs/super.c:117
+ user_get_super+0xe7/0x1a0 fs/super.c:1059
+ quotactl_block fs/quota/quota.c:890 [inline]
+ __do_sys_quotactl fs/quota/quota.c:955 [inline]
+ __se_sys_quotactl+0x492/0x9a0 fs/quota/quota.c:917
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7feee1fae16d
+RSP: 002b:00007feee2ed4f98 EFLAGS: 00000246 ORIG_RAX: 00000000000000b3
+RAX: ffffffffffffffda RBX: 00007feee21f5fa0 RCX: 00007feee1fae16d
+RDX: 0000000000000000 RSI: 0000200000000100 RDI: ffffffff80000900
+RBP: 00007feee20480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007feee21f6038 R14: 00007feee21f5fa0 R15: 00007feee2eb5000
+ </TASK>
+
+Showing all locks held in the system:
+2 locks held by kworker/u4:1/13:
+1 lock held by khungtaskd/33:
+ #0: ffffffff8db2e020 (rcu_read_lock){....}-{1:2}, at: rcu_lock_acquire include/linux/rcupdate.h:303 [inline]
+ #0: ffffffff8db2e020 (rcu_read_lock){....}-{1:2}, at: rcu_read_lock include/linux/rcupdate.h:749 [inline]
+ #0: ffffffff8db2e020 (rcu_read_lock){....}-{1:2}, at: debug_show_all_locks+0x52/0x2b0 kernel/locking/lockdep.c:6613
+3 locks held by kworker/1:2/962:
+ #0: ffff888018870d38 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2605 [inline]
+ #0: ffff888018870d38 ((wq_completion)events){+.+.}-{0:0}, at: process_scheduled_works+0x867/0x1130 kernel/workqueue.c:2703
+ #1: ffffc90005287d00 (deferred_process_work){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2605 [inline]
+ #1: ffffc90005287d00 (deferred_process_work){+.+.}-{0:0}, at: process_scheduled_works+0x867/0x1130 kernel/workqueue.c:2703
+ #2: ffffffff8eda4e08 (rtnl_mutex){+.+.}-{3:3}, at: switchdev_deferred_process_work+0xa/0x20 net/switchdev/switchdev.c:75
+1 lock held by systemd-journal/5156:
+2 locks held by syz-executor/9321:
+1 lock held by syz-executor/9340:
+ #0: ffff88801e5740e0 (&type->s_umount_key#58){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff88801e5740e0 (&type->s_umount_key#58){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff88801e5740e0 (&type->s_umount_key#58){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+2 locks held by kworker/1:4/10643:
+ #0: ffff888018872938 ((wq_completion)rcu_gp){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2605 [inline]
+ #0: ffff888018872938 ((wq_completion)rcu_gp){+.+.}-{0:0}, at: process_scheduled_works+0x867/0x1130 kernel/workqueue.c:2703
+ #1: ffffc90008a17d00 ((work_completion)(&rew->rew_work)){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2605 [inline]
+ #1: ffffc90008a17d00 ((work_completion)(&rew->rew_work)){+.+.}-{0:0}, at: process_scheduled_works+0x867/0x1130 kernel/workqueue.c:2703
+1 lock held by syz-executor/11874:
+ #0: ffff888040b8e0e0 (&type->s_umount_key#58){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff888040b8e0e0 (&type->s_umount_key#58){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff888040b8e0e0 (&type->s_umount_key#58){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by syz.5.54/12518:
+ #0: ffff888069dee0e0 (&type->s_umount_key#58){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff888069dee0e0 (&type->s_umount_key#58){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff888069dee0e0 (&type->s_umount_key#58){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by syz.1.134/15766:
+ #0: ffff88804db2a0e0 (&type->s_umount_key#58){++++}-{3:3}, at: __super_lock fs/super.c:56 [inline]
+ #0: ffff88804db2a0e0 (&type->s_umount_key#58){++++}-{3:3}, at: __super_lock_excl fs/super.c:71 [inline]
+ #0: ffff88804db2a0e0 (&type->s_umount_key#58){++++}-{3:3}, at: deactivate_super+0x96/0xd0 fs/super.c:513
+1 lock held by systemd-udevd/20954:
+5 locks held by kworker/u4:4/24449:
+ #0: ffff888018873d38 ((wq_completion)netns){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2605 [inline]
+ #0: ffff888018873d38 ((wq_completion)netns){+.+.}-{0:0}, at: process_scheduled_works+0x867/0x1130 kernel/workqueue.c:2703
+ #1: ffffc90009e47d00 (net_cleanup_work){+.+.}-{0:0}, at: process_one_work kernel/workqueue.c:2605 [inline]
+ #1: ffffc90009e47d00 (net_cleanup_work){+.+.}-{0:0}, at: process_scheduled_works+0x867/0x1130 kernel/workqueue.c:2703
+ #2: ffffffff8ed98490 (pernet_ops_rwsem){++++}-{3:3}, at: cleanup_net+0xf0/0xc60 net/core/net_namespace.c:576
+ #3: ffffffff8eda4e08 (rtnl_mutex){+.+.}-{3:3}, at: default_device_exit_batch+0xcf/0x660 net/core/dev.c:11478
+ #4: ffffffff8db33a38 (rcu_state.exp_mutex){+.+.}-{3:3}, at: exp_funnel_lock kernel/rcu/tree_exp.h:293 [inline]
+ #4: ffffffff8db33a38 (rcu_state.exp_mutex){+.+.}-{3:3}, at: synchronize_rcu_expedited+0x39e/0x890 kernel/rcu/tree_exp.h:992
+1 lock held by syz.5.1318/24813:
+ #0: ffff888069dee0e0 (&type->s_umount_key#58){++++}-{3:3}, at: __super_lock fs/super.c:58 [inline]
+ #0: ffff888069dee0e0 (&type->s_umount_key#58){++++}-{3:3}, at: super_lock+0x18a/0x3c0 fs/super.c:117
+1 lock held by syz-executor/26999:
+ #0: ffffffff8eda4e08 (rtnl_mutex){+.+.}-{3:3}, at: rtnl_lock net/core/rtnetlink.c:78 [inline]
+ #0: ffffffff8eda4e08 (rtnl_mutex){+.+.}-{3:3}, at: rtnetlink_rcv_msg+0x84c/0x1060 net/core/rtnetlink.c:6439
+1 lock held by syz-executor/27080:
+ #0: ffffffff8eda4e08 (rtnl_mutex){+.+.}-{3:3}, at: rtnl_lock net/core/rtnetlink.c:78 [inline]
+ #0: ffffffff8eda4e08 (rtnl_mutex){+.+.}-{3:3}, at: rtnetlink_rcv_msg+0x84c/0x1060 net/core/rtnetlink.c:6439
+1 lock held by syz.1.1557/27607:
+1 lock held by syz.1.1562/27759:
+
+=============================================
+
+NMI backtrace for cpu 0
+CPU: 0 PID: 33 Comm: khungtaskd Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 lib/dump_stack.c:106
+ nmi_cpu_backtrace+0x47c/0x4b0 lib/nmi_backtrace.c:113
+ nmi_trigger_cpumask_backtrace+0x181/0x300 lib/nmi_backtrace.c:62
+ trigger_all_cpu_backtrace include/linux/nmi.h:160 [inline]
+ check_hung_uninterruptible_tasks kernel/hung_task.c:222 [inline]
+ watchdog+0xe28/0xe70 kernel/hung_task.c:379
+ kthread+0x2cd/0x360 kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:304
+ </TASK>
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 PID: 13 Comm: kworker/u4:1 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: bat_events batadv_nc_worker
+RIP: 0010:__lock_acquire+0x2cf/0x2050 kernel/locking/lockdep.c:5069
+Code: 4e 8b 31 c0 e8 62 ae e6 ff 0f 0b e9 9e 13 00 00 83 fa 31 0f 83 d2 1a 00 00 48 8d 3c 92 48 8b 5c 24 20 4c 8d bc fb e8 0a 00 00 <4c> 89 f8 48 c1 e8 03 48 89 44 24 40 8a 04 30 84 c0 48 89 7c 24 08
+RSP: 0018:ffffc900003ef918 EFLAGS: 00000087
+RAX: 00000000000007a0 RBX: ffff888019ab8000 RCX: ffff888019ab8000
+RDX: 0000000000000002 RSI: dffffc0000000000 RDI: 000000000000000a
+RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+R10: dffffc0000000000 R11: fffffbfff1e51bce R12: 0000000000000020
+R13: ffffffff8db2e020 R14: 00000000000407a0 R15: ffff888019ab8b38
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f9c00a096a0 CR3: 000000007c326000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <NMI>
+ </NMI>
+ <TASK>
+ lock_acquire+0x1a9/0x400 kernel/locking/lockdep.c:5753
+ rcu_lock_acquire include/linux/rcupdate.h:303 [inline]
+ rcu_read_lock include/linux/rcupdate.h:749 [inline]
+ batadv_nc_purge_orig_hash net/batman-adv/network-coding.c:408 [inline]
+ batadv_nc_worker+0xdb/0x630 net/batman-adv/network-coding.c:719
+ process_one_work kernel/workqueue.c:2630 [inline]
+ process_scheduled_works+0x8c5/0x1130 kernel/workqueue.c:2703
+ worker_thread+0xa7a/0x1040 kernel/workqueue.c:2784
+ kthread+0x2cd/0x360 kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:304
+ </TASK>

@@ -1,0 +1,83 @@
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 0 P4D 0 
+Oops: 0002 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 70367 Comm: kworker/1:6 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events l2cap_info_timeout
+RIP: 0010:__skb_insert home/jiakai/62_66_amd_0904/linux66/linux/include/linux/skbuff.h:2203 [inline]
+RIP: 0010:__skb_queue_before home/jiakai/62_66_amd_0904/linux66/linux/include/linux/skbuff.h:2309 [inline]
+RIP: 0010:__skb_queue_tail home/jiakai/62_66_amd_0904/linux66/linux/include/linux/skbuff.h:2342 [inline]
+RIP: 0010:skb_queue_tail+0x35/0x50 home/jiakai/62_66_amd_0904/linux66/linux/net/core/skbuff.c:3812
+Code: 48 89 fb 4c 8d 63 14 e8 29 d4 2d fd 4c 89 e7 e8 61 ed d0 00 4c 89 e7 48 89 c6 48 8b 43 08 48 89 5d 00 48 89 45 08 48 89 6b 08 <48> 89 28 8b 43 10 83 c0 01 89 43 10 5b 5d 41 5c e9 86 ed d0 00 66
+RSP: 0018:ffffc90002bc7c60 EFLAGS: 00010046
+RAX: 0000000000000000 RBX: ffff8880231c6620 RCX: 0000000000000000
+RDX: 0000000000000001 RSI: 0000000000000293 RDI: ffff8880231c6634
+RBP: ffff888058e27700 R08: 0000000000000003 R09: 000000000000ffff
+R10: 0000000000000004 R11: ffffffff8484879c R12: ffff8880231c6634
+R13: ffff8880231c6620 R14: ffff8880231c6600 R15: ffff88801707a3c0
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 000000001211e000 CR4: 0000000000752ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ hci_queue_acl home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/hci_core.c:3196 [inline]
+ hci_send_acl+0x1cf/0x1e0 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/hci_core.c:3235
+ l2cap_send_cmd+0x232/0x290 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:977
+ l2cap_send_conn_req+0xab/0xd0 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1286
+ l2cap_start_connection home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1514 [inline]
+ l2cap_start_connection+0x6c/0x150 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1506
+ l2cap_conn_start+0x3b2/0x500 home/jiakai/62_66_amd_0904/linux66/linux/net/bluetooth/l2cap_core.c:1661
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2630
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2703 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+---[ end trace 0000000000000000 ]---
+RIP: 0010:__skb_insert home/jiakai/62_66_amd_0904/linux66/linux/include/linux/skbuff.h:2203 [inline]
+RIP: 0010:__skb_queue_before home/jiakai/62_66_amd_0904/linux66/linux/include/linux/skbuff.h:2309 [inline]
+RIP: 0010:__skb_queue_tail home/jiakai/62_66_amd_0904/linux66/linux/include/linux/skbuff.h:2342 [inline]
+RIP: 0010:skb_queue_tail+0x35/0x50 home/jiakai/62_66_amd_0904/linux66/linux/net/core/skbuff.c:3812
+Code: 48 89 fb 4c 8d 63 14 e8 29 d4 2d fd 4c 89 e7 e8 61 ed d0 00 4c 89 e7 48 89 c6 48 8b 43 08 48 89 5d 00 48 89 45 08 48 89 6b 08 <48> 89 28 8b 43 10 83 c0 01 89 43 10 5b 5d 41 5c e9 86 ed d0 00 66
+RSP: 0018:ffffc90002bc7c60 EFLAGS: 00010046
+RAX: 0000000000000000 RBX: ffff8880231c6620 RCX: 0000000000000000
+RDX: 0000000000000001 RSI: 0000000000000293 RDI: ffff8880231c6634
+RBP: ffff888058e27700 R08: 0000000000000003 R09: 000000000000ffff
+R10: 0000000000000004 R11: ffffffff8484879c R12: ffff8880231c6634
+R13: ffff8880231c6620 R14: ffff8880231c6600 R15: ffff88801707a3c0
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 000000001211e000 CR4: 0000000000752ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+----------------
+Code disassembly (best guess):
+   0:	48 89 fb             	mov    %rdi,%rbx
+   3:	4c 8d 63 14          	lea    0x14(%rbx),%r12
+   7:	e8 29 d4 2d fd       	call   0xfd2dd435
+   c:	4c 89 e7             	mov    %r12,%rdi
+   f:	e8 61 ed d0 00       	call   0xd0ed75
+  14:	4c 89 e7             	mov    %r12,%rdi
+  17:	48 89 c6             	mov    %rax,%rsi
+  1a:	48 8b 43 08          	mov    0x8(%rbx),%rax
+  1e:	48 89 5d 00          	mov    %rbx,0x0(%rbp)
+  22:	48 89 45 08          	mov    %rax,0x8(%rbp)
+  26:	48 89 6b 08          	mov    %rbp,0x8(%rbx)
+* 2a:	48 89 28             	mov    %rbp,(%rax) <-- trapping instruction
+  2d:	8b 43 10             	mov    0x10(%rbx),%eax
+  30:	83 c0 01             	add    $0x1,%eax
+  33:	89 43 10             	mov    %eax,0x10(%rbx)
+  36:	5b                   	pop    %rbx
+  37:	5d                   	pop    %rbp
+  38:	41 5c                	pop    %r12
+  3a:	e9 86 ed d0 00       	jmp    0xd0edc5
+  3f:	66                   	data16

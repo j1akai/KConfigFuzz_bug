@@ -1,0 +1,99 @@
+ocfs2: Readonly device (7,7) detected. Cluster services will not be used for this mount. Recovery will be skipped.
+ocfs2: Mounting device (7,7) on (node local, slot 65535) with ordered data mode.
+ocfs2: Unmounting device (7,7) on (node local)
+BUG: kernel NULL pointer dereference, address: 0000000000000008
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 2c6b1067 P4D 2c6b1067 PUD 0 
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 103316 Comm: syz.7.11236 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:ocfs2_clear_inode+0x279/0x910 home/jiakai/62_66_amd_0904/linux68/linux/fs/ocfs2/inode.c:1208
+Code: f8 fa ff ff 00 00 00 00 48 8b 44 24 38 65 48 2b 04 25 28 00 00 00 0f 85 63 04 00 00 48 8b 85 70 01 00 00 48 8d b3 80 02 00 00 <48> 8b 78 08 48 83 c4 40 5b 5d 41 5c 41 5d 41 5e 41 5f e9 70 ec 94
+RSP: 0018:ffffc90001b83cb0 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: ffff888031770d88 RCX: ffffc90023016000
+RDX: 0000000000080000 RSI: ffff888031771008 RDI: 0000000000000005
+RBP: ffff88804fcae000 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+R13: ffff888031770c90 R14: ffff888031770888 R15: 0000000000000000
+FS:  00007fd160092640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000008 CR3: 0000000034b78000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ evict+0x11b/0x290 home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:665
+ iput_final home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:1739 [inline]
+ iput home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:1765 [inline]
+ iput+0x2f4/0x470 home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:1751
+ __ocfs2_free_slot_info.part.0+0x19/0xb0 home/jiakai/62_66_amd_0904/linux68/linux/fs/ocfs2/slot_map.c:307
+ __ocfs2_free_slot_info home/jiakai/62_66_amd_0904/linux68/linux/fs/ocfs2/slot_map.c:304 [inline]
+ ocfs2_free_slot_info+0x2c/0x40 home/jiakai/62_66_amd_0904/linux68/linux/fs/ocfs2/slot_map.c:443
+ ocfs2_delete_osb+0x30/0xc0 home/jiakai/62_66_amd_0904/linux68/linux/fs/ocfs2/super.c:2498
+ ocfs2_dismount_volume+0x224/0x4a0 home/jiakai/62_66_amd_0904/linux68/linux/fs/ocfs2/super.c:1937
+ generic_shutdown_super+0x96/0x160 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:641
+ kill_block_super+0x1d/0x50 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:1675
+ deactivate_locked_super+0x4c/0x180 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:472
+ deactivate_super+0x72/0x80 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:505
+ cleanup_mnt+0x172/0x200 home/jiakai/62_66_amd_0904/linux68/linux/fs/namespace.c:1267
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0904/linux68/linux/include/linux/resume_user_mode.h:50 [inline]
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:108 [inline]
+ exit_to_user_mode_prepare home/jiakai/62_66_amd_0904/linux68/linux/include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x182/0x190 home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:212
+ do_syscall_64+0xc0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7fd15f1affde
+Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fd160091da8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+RAX: ffffffffffffffec RBX: 0000000000004504 RCX: 00007fd15f1affde
+RDX: 0000200000004500 RSI: 0000200000004540 RDI: 00007fd160091e00
+RBP: 00007fd160091e40 R08: 00007fd160091e40 R09: 0000000000000000
+R10: 0000000002008001 R11: 0000000000000246 R12: 0000200000004500
+R13: 0000200000004540 R14: 00007fd160091e00 R15: 0000200000000280
+ </TASK>
+Modules linked in:
+CR2: 0000000000000008
+---[ end trace 0000000000000000 ]---
+RIP: 0010:ocfs2_clear_inode+0x279/0x910 home/jiakai/62_66_amd_0904/linux68/linux/fs/ocfs2/inode.c:1208
+Code: f8 fa ff ff 00 00 00 00 48 8b 44 24 38 65 48 2b 04 25 28 00 00 00 0f 85 63 04 00 00 48 8b 85 70 01 00 00 48 8d b3 80 02 00 00 <48> 8b 78 08 48 83 c4 40 5b 5d 41 5c 41 5d 41 5e 41 5f e9 70 ec 94
+RSP: 0018:ffffc90001b83cb0 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: ffff888031770d88 RCX: ffffc90023016000
+RDX: 0000000000080000 RSI: ffff888031771008 RDI: 0000000000000005
+RBP: ffff88804fcae000 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+R13: ffff888031770c90 R14: ffff888031770888 R15: 0000000000000000
+FS:  00007fd160092640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000008 CR3: 0000000034b78000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess), 3 bytes skipped:
+   0:	ff 00                	incl   (%rax)
+   2:	00 00                	add    %al,(%rax)
+   4:	00 48 8b             	add    %cl,-0x75(%rax)
+   7:	44 24 38             	rex.R and $0x38,%al
+   a:	65 48 2b 04 25 28 00 	sub    %gs:0x28,%rax
+  11:	00 00
+  13:	0f 85 63 04 00 00    	jne    0x47c
+  19:	48 8b 85 70 01 00 00 	mov    0x170(%rbp),%rax
+  20:	48 8d b3 80 02 00 00 	lea    0x280(%rbx),%rsi
+* 27:	48 8b 78 08          	mov    0x8(%rax),%rdi <-- trapping instruction
+  2b:	48 83 c4 40          	add    $0x40,%rsp
+  2f:	5b                   	pop    %rbx
+  30:	5d                   	pop    %rbp
+  31:	41 5c                	pop    %r12
+  33:	41 5d                	pop    %r13
+  35:	41 5e                	pop    %r14
+  37:	41 5f                	pop    %r15
+  39:	e9                   	.byte 0xe9
+  3a:	70 ec                	jo     0x28
+  3c:	94                   	xchg   %eax,%esp
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

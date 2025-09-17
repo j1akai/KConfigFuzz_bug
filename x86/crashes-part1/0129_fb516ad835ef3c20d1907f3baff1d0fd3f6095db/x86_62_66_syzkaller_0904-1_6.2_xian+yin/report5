@@ -1,0 +1,73 @@
+BTRFS error (device loop0): failed to load root free space
+assertion failed: !tmp, in fs/btrfs/disk-io.c:1185
+------------[ cut here ]------------
+kernel BUG at fs/btrfs/messages.c:259!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 23225 Comm: syz.0.1527 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:btrfs_assertfail+0x2d/0x2f home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/messages.c:259
+Code: 00 41 55 41 89 d5 41 54 49 89 f4 55 48 89 fd e8 89 f1 8b fc 44 89 e9 4c 89 e2 48 89 ee 48 c7 c7 78 68 00 86 e8 e2 85 fa ff 90 <0f> 0b 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 66 0f 1f 00
+RSP: 0018:ffffc900015efaa8 EFLAGS: 00010286
+RAX: 0000000000000032 RBX: 0000000000000000 RCX: ffffc9000f4a1000
+RDX: 0000000000000000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffffffff85eb2637 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 6f69747265737361 R12: ffffffff85eb25b2
+R13: 00000000000004a1 R14: ffff88801f625060 R15: ffff88801f625068
+FS:  00007f394aff6640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f68a24592a0 CR3: 000000001bbc4000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ btrfs_global_root_insert.cold+0x2b/0x30 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/disk-io.c:1185
+ load_global_roots_objectid+0x24b/0x397 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/disk-io.c:2551
+ load_global_roots home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/disk-io.c:2585 [inline]
+ btrfs_read_roots home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/disk-io.c:2612 [inline]
+ init_tree_roots home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/disk-io.c:3035 [inline]
+ open_ctree+0xeb8/0x2020 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/disk-io.c:3731
+ btrfs_fill_super home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/super.c:1151 [inline]
+ btrfs_mount_root.cold+0x13/0xfa home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/super.c:1520
+ legacy_get_tree+0x2f/0xa0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/fs_context.c:610
+ vfs_get_tree+0x2f/0x110 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/super.c:1489
+ fc_mount home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:1149 [inline]
+ vfs_kern_mount.part.0+0xd5/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:1179
+ vfs_kern_mount+0x40/0x60 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:1166
+ btrfs_mount+0x1ab/0x590 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/super.c:1580
+ legacy_get_tree+0x2f/0xa0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/fs_context.c:610
+ vfs_get_tree+0x2f/0x110 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/super.c:1489
+ do_new_mount home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:3145 [inline]
+ path_mount+0xc2e/0x10c0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:3475
+ do_mount home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:3488 [inline]
+ __do_sys_mount home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:3697 [inline]
+ __se_sys_mount home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:3674 [inline]
+ __x64_sys_mount+0x196/0x1e0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/namespace.c:3674
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f394cdaffde
+Code: 48 c7 c0 ff ff ff ff eb aa e8 5e 20 00 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 f3 0f 1e fa 49 89 ca b8 a5 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f394aff5da8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+RAX: ffffffffffffffda RBX: 00000000000050ed RCX: 00007f394cdaffde
+RDX: 0000200000005100 RSI: 0000200000005140 RDI: 00007f394aff5e00
+RBP: 00007f394aff5e40 R08: 00007f394aff5e40 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000200000005100
+R13: 0000200000005140 R14: 00007f394aff5e00 R15: 0000200000000080
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:btrfs_assertfail+0x2d/0x2f home/jiakai/62_66_amd_0904/linux62/linux-all/fs/btrfs/messages.c:259
+Code: 00 41 55 41 89 d5 41 54 49 89 f4 55 48 89 fd e8 89 f1 8b fc 44 89 e9 4c 89 e2 48 89 ee 48 c7 c7 78 68 00 86 e8 e2 85 fa ff 90 <0f> 0b 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 66 0f 1f 00
+RSP: 0018:ffffc900015efaa8 EFLAGS: 00010286
+RAX: 0000000000000032 RBX: 0000000000000000 RCX: ffffc9000f4a1000
+RDX: 0000000000000000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffffffff85eb2637 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 6f69747265737361 R12: ffffffff85eb25b2
+R13: 00000000000004a1 R14: ffff88801f625060 R15: ffff88801f625068
+FS:  00007f394aff6640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f4b7c04b008 CR3: 000000001bbc4000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
