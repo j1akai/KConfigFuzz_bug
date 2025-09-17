@@ -1,0 +1,83 @@
+------------[ cut here ]------------
+no supported rates for sta (null) (0xffffffff, band 0) in rate_mask 0x0 with flags 0x0
+WARNING: CPU: 0 PID: 11 at net/mac80211/rate.c:384 __rate_control_send_low+0x662/0x890 net/mac80211/rate.c:379
+Modules linked in:
+CPU: 0 PID: 11 Comm: kworker/u4:0 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: bat_events batadv_nc_worker
+RIP: 0010:__rate_control_send_low+0x662/0x890 net/mac80211/rate.c:379
+Code: 24 10 0f 85 dd 01 00 00 8b 0b 48 c7 c7 a0 fb 9a 8c 48 8b 74 24 18 44 89 f2 44 8b 44 24 24 44 8b 4c 24 0c 31 c0 e8 4e 0e c5 f6 <0f> 0b 4d 89 fe e9 77 fe ff ff 89 d9 80 e1 07 80 c1 03 38 c1 0f 8c
+RSP: 0018:ffffc90000007718 EFLAGS: 00010246
+RAX: ba497cd92f3b8100 RBX: ffff888065f63478 RCX: ffff888019a9a4c0
+RDX: 0000000000000100 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: ffff888064b11a30 R08: ffffffff8153dc8c R09: 1ffff92000000e84
+R10: dffffc0000000000 R11: fffff52000000e85 R12: ffff888065f63480
+R13: dffffc0000000000 R14: 00000000ffffffff R15: ffff888064b11a28
+FS:  0000000000000000(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fe3ecfae708 CR3: 0000000065c84000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <IRQ>
+ rate_control_send_low+0x1a3/0x7a0 net/mac80211/rate.c:404
+ rate_control_get_rate+0x1fe/0x5d0 net/mac80211/rate.c:916
+ ieee80211_beacon_get_finish+0x4a0/0x7e0 net/mac80211/tx.c:5209
+ __ieee80211_beacon_get+0xf5c/0x1630
+ ieee80211_beacon_get_tim+0xb9/0x5d0 net/mac80211/tx.c:5548
+ ieee80211_beacon_get include/net/mac80211.h:5421 [inline]
+ mac80211_hwsim_beacon_tx+0x362/0x770 drivers/net/wireless/virtual/mac80211_hwsim.c:2260
+ __iterate_interfaces+0x231/0x4c0 net/mac80211/util.c:766
+ ieee80211_iterate_active_interfaces_atomic+0xd4/0x170 net/mac80211/util.c:802
+ mac80211_hwsim_beacon+0xc8/0x1d0 drivers/net/wireless/virtual/mac80211_hwsim.c:2290
+ __run_hrtimer kernel/time/hrtimer.c:1688 [inline]
+ __hrtimer_run_queues+0x50b/0xa60 kernel/time/hrtimer.c:1752
+ hrtimer_run_softirq+0x1a1/0x580 kernel/time/hrtimer.c:1769
+ __do_softirq+0x277/0x74e kernel/softirq.c:553
+ invoke_softirq kernel/softirq.c:427 [inline]
+ __irq_exit_rcu+0xee/0x1b0 kernel/softirq.c:632
+ irq_exit_rcu+0x5/0x20 kernel/softirq.c:644
+ sysvec_apic_timer_interrupt+0x91/0xb0 arch/x86/kernel/apic/apic.c:1074
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x16/0x20 arch/x86/include/asm/idtentry.h:645
+RIP: 0010:lock_acquire+0x220/0x400 kernel/locking/lockdep.c:5757
+Code: 23 00 74 08 4c 89 f7 e8 fe 5e 7d 00 f6 44 24 61 02 0f 85 76 01 00 00 41 f7 c7 00 02 00 00 74 01 fb 48 c7 44 24 40 0e 36 e0 45 <4b> c7 04 2c 00 00 00 00 43 c7 44 2c 09 00 00 00 00 43 c7 44 2c 11
+RSP: 0018:ffffc900003cfa00 EFLAGS: 00000206
+RAX: 0000000000000001 RBX: 1ffff92000079f4c RCX: ffff888019a9af80
+RDX: dffffc0000000000 RSI: ffffffff8b4e0c80 RDI: ffffffff8bae4e60
+RBP: ffffc900003cfb60 R08: ffffffff91cee387 R09: 1ffffffff239dc70
+R10: dffffc0000000000 R11: fffffbfff239dc71 R12: dffffc0000000000
+R13: 1ffff92000079f48 R14: ffffc900003cfa60 R15: 0000000000000246
+ rcu_lock_acquire include/linux/rcupdate.h:303 [inline]
+ rcu_read_lock include/linux/rcupdate.h:749 [inline]
+ batadv_nc_purge_orig_hash net/batman-adv/network-coding.c:408 [inline]
+ batadv_nc_worker+0xdb/0x630 net/batman-adv/network-coding.c:719
+ process_one_work kernel/workqueue.c:2630 [inline]
+ process_scheduled_works+0x8c5/0x1130 kernel/workqueue.c:2703
+ worker_thread+0xa7a/0x1040 kernel/workqueue.c:2784
+ kthread+0x2cd/0x360 kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:304
+ </TASK>
+----------------
+Code disassembly (best guess):
+   0:	23 00                	and    (%rax),%eax
+   2:	74 08                	je     0xc
+   4:	4c 89 f7             	mov    %r14,%rdi
+   7:	e8 fe 5e 7d 00       	call   0x7d5f0a
+   c:	f6 44 24 61 02       	testb  $0x2,0x61(%rsp)
+  11:	0f 85 76 01 00 00    	jne    0x18d
+  17:	41 f7 c7 00 02 00 00 	test   $0x200,%r15d
+  1e:	74 01                	je     0x21
+  20:	fb                   	sti
+  21:	48 c7 44 24 40 0e 36 	movq   $0x45e0360e,0x40(%rsp)
+  28:	e0 45
+* 2a:	4b c7 04 2c 00 00 00 	movq   $0x0,(%r12,%r13,1) <-- trapping instruction
+  31:	00
+  32:	43 c7 44 2c 09 00 00 	movl   $0x0,0x9(%r12,%r13,1)
+  39:	00 00
+  3b:	43                   	rex.XB
+  3c:	c7                   	.byte 0xc7
+  3d:	44 2c 11             	rex.R sub $0x11,%al

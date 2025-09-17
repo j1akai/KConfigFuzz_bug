@@ -1,0 +1,77 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 9219 at kernel/time/timer.c:1738 expire_timers kernel/time/timer.c:1738 [inline]
+WARNING: CPU: 1 PID: 9219 at kernel/time/timer.c:1738 __run_timers.part.0+0x3f2/0x430 kernel/time/timer.c:2022
+Modules linked in:
+CPU: 1 PID: 9219 Comm: systemd-udevd Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:expire_timers kernel/time/timer.c:1738 [inline]
+RIP: 0010:__run_timers.part.0+0x3f2/0x430 kernel/time/timer.c:2022
+Code: 1c 24 31 ff 89 de e8 1d 66 07 00 89 d8 83 e8 01 89 04 24 8b 44 24 0c 85 c0 0f 85 44 fe ff ff e9 c3 fd ff ff e8 df 6c 07 00 90 <0f> 0b 90 e9 79 fe ff ff e8 d1 6c 07 00 41 0f b6 6c 24 26 31 ff 89
+RSP: 0018:ffffc900003dcee8 EFLAGS: 00010046
+RAX: 0000000000000000 RBX: ffffc900003dcf18 RCX: 0000000000000100
+RDX: ffff88800ffb5f00 RSI: ffffffff81370c21 RDI: ffff88807ec1ce00
+RBP: ffff88801d97ae18 R08: 0000000000000004 R09: 0000000000000100
+R10: 0000000000000100 R11: 0000000000000000 R12: ffff88807ec1ce00
+R13: 0000000000000000 R14: 00000000ffffb640 R15: ffffc900003dcf18
+FS:  00007f18825c58c0(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f9305c229b0 CR3: 0000000012608000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <IRQ>
+ __run_timers kernel/time/timer.c:2000 [inline]
+ run_timer_softirq+0x41/0x90 kernel/time/timer.c:2035
+ __do_softirq+0xc7/0x2ad kernel/softirq.c:571
+ invoke_softirq kernel/softirq.c:445 [inline]
+ __irq_exit_rcu+0x8e/0xc0 kernel/softirq.c:650
+ sysvec_apic_timer_interrupt+0x78/0x90 arch/x86/kernel/apic/apic.c:1107
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 arch/x86/include/asm/idtentry.h:649
+RIP: 0010:__fdget_pos+0x31/0xb0 fs/file.c:1043
+Code: 89 fc 55 53 e8 60 67 d2 ff 44 89 e7 be 00 40 00 00 e8 43 e5 ff ff 31 ff 48 89 c3 49 89 c4 48 83 e3 fc 48 89 de e8 8f 60 d2 ff <48> 85 db 74 37 e8 35 67 d2 ff 8b 6b 44 31 ff 81 e5 00 80 00 00 89
+RSP: 0018:ffffc900190abee0 EFLAGS: 00000293
+RAX: 0000000000000000 RBX: ffff88802864e200 RCX: ffffffff816c11c1
+RDX: ffff88800ffb5f00 RSI: 0000000000000000 RDI: 0000000000000007
+RBP: 0000000000000010 R08: 0000000000000007 R09: 0000000000000000
+R10: ffff88802864e200 R11: 0000000000000000 R12: ffff88802864e200
+R13: 000055a2f00177c0 R14: 0000000000001001 R15: 0000000000000000
+ fdget_pos include/linux/file.h:73 [inline]
+ ksys_read+0x34/0x170 fs/read_write.c:604
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f188287804e
+Code: 0f 1f 40 00 48 8b 15 79 af 00 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb ba 0f 1f 00 64 8b 04 25 18 00 00 00 85 c0 75 14 0f 05 <48> 3d 00 f0 ff ff 77 5a c3 66 0f 1f 84 00 00 00 00 00 48 83 ec 28
+RSP: 002b:00007ffffb0f9e38 EFLAGS: 00000246 ORIG_RAX: 0000000000000000
+RAX: ffffffffffffffda RBX: 0000000000001001 RCX: 00007f188287804e
+RDX: 0000000000001001 RSI: 000055a2f00177c0 RDI: 0000000000000010
+RBP: 0000000000000010 R08: 000055a2f00177c0 R09: 00007f1882860be0
+R10: 0000000000000004 R11: 0000000000000246 R12: 000055a2f00177c0
+R13: 0000000000001000 R14: 0000000000000000 R15: 00007ffffb0f9e60
+ </TASK>
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	89 fc                	mov    %edi,%esp
+   2:	55                   	push   %rbp
+   3:	53                   	push   %rbx
+   4:	e8 60 67 d2 ff       	call   0xffd26769
+   9:	44 89 e7             	mov    %r12d,%edi
+   c:	be 00 40 00 00       	mov    $0x4000,%esi
+  11:	e8 43 e5 ff ff       	call   0xffffe559
+  16:	31 ff                	xor    %edi,%edi
+  18:	48 89 c3             	mov    %rax,%rbx
+  1b:	49 89 c4             	mov    %rax,%r12
+  1e:	48 83 e3 fc          	and    $0xfffffffffffffffc,%rbx
+  22:	48 89 de             	mov    %rbx,%rsi
+  25:	e8 8f 60 d2 ff       	call   0xffd260b9
+* 2a:	48 85 db             	test   %rbx,%rbx <-- trapping instruction
+  2d:	74 37                	je     0x66
+  2f:	e8 35 67 d2 ff       	call   0xffd26769
+  34:	8b 6b 44             	mov    0x44(%rbx),%ebp
+  37:	31 ff                	xor    %edi,%edi
+  39:	81 e5 00 80 00 00    	and    $0x8000,%ebp
+  3f:	89                   	.byte 0x89

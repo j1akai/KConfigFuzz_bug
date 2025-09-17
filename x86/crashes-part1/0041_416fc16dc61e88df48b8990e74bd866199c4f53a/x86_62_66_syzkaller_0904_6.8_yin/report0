@@ -1,0 +1,43 @@
+------------[ cut here ]------------
+no supported rates for sta (null) (0xffffffff, band 1) in rate_mask 0x0 with flags 0x0
+WARNING: CPU: 1 PID: 1046 at net/mac80211/rate.c:380 __rate_control_send_low+0x270/0x300 net/mac80211/rate.c:380
+Modules linked in:
+CPU: 1 PID: 1046 Comm: kworker/u6:4 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events_unbound cfg80211_wiphy_work
+RIP: 0010:__rate_control_send_low+0x270/0x300 net/mac80211/rate.c:380
+Code: 87 d4 00 00 00 e8 20 f6 88 fc 44 8b 44 24 1c 41 89 d9 44 89 e9 48 8b 74 24 10 44 89 e2 48 c7 c7 80 23 40 86 e8 71 23 71 fc 90 <0f> 0b 90 90 e9 05 ff ff ff e8 f2 f5 88 fc 48 8b 44 24 20 44 0f b6
+RSP: 0018:ffffc90004c2f9f0 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: ffffffff812b752a
+RDX: ffff888040a9c800 RSI: ffffffff812b7533 RDI: 0000000000000001
+RBP: ffff88805645a028 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 205d363430315420 R12: 00000000ffffffff
+R13: 0000000000000001 R14: ffff88805601a030 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f50b0f39000 CR3: 00000000082ba000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ rate_control_send_low+0x118/0x2b0 net/mac80211/rate.c:405
+ rate_control_get_rate+0x90/0x1c0 net/mac80211/rate.c:917
+ ieee80211_tx_h_rate_ctrl+0x45d/0x7c0 net/mac80211/tx.c:761
+ invoke_tx_handlers_late+0x6cc/0xd70 net/mac80211/tx.c:1846
+ ieee80211_tx+0x15a/0x1f0 net/mac80211/tx.c:1967
+ ieee80211_xmit+0x160/0x1b0 net/mac80211/tx.c:2060
+ __ieee80211_tx_skb_tid_band+0xdc/0x1d0 net/mac80211/tx.c:6076
+ ieee80211_tx_skb_tid_band net/mac80211/ieee80211_i.h:2230 [inline]
+ ieee80211_send_scan_probe_req net/mac80211/scan.c:641 [inline]
+ ieee80211_scan_state_send_probe+0x119/0x220 net/mac80211/scan.c:669
+ ieee80211_scan_work+0x1c2/0x8f0 net/mac80211/scan.c:1127
+ cfg80211_wiphy_work+0xfd/0x120 net/wireless/core.c:437
+ process_one_work+0x236/0x520 kernel/workqueue.c:2633
+ process_scheduled_works kernel/workqueue.c:2706 [inline]
+ worker_thread+0x312/0x580 kernel/workqueue.c:2787
+ kthread+0x107/0x140 kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 arch/x86/entry/entry_64.S:243
+ </TASK>
+---[ end trace 0000000000000000 ]---

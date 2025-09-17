@@ -1,0 +1,67 @@
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P190157
+	(detected by 1, t=10002 jiffies, g=241069, q=113206 ncpus=2)
+task:syz-executor    state:R  running task     stack:12216 pid:190157 ppid:1      flags:0x00004006
+Call Trace:
+ <IRQ>
+ sched_show_task home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:9027 [inline]
+ sched_show_task.cold+0xe2/0xfe home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:9001
+ rcu_print_detail_task_stall_rnp home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/rcu/tree_stall.h:255 [inline]
+ print_other_cpu_stall home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/rcu/tree_stall.h:599 [inline]
+ check_cpu_stall home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/rcu/tree_stall.h:761 [inline]
+ rcu_pending home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/rcu/tree.c:3858 [inline]
+ rcu_sched_clock_irq.cold+0x3ed/0x48d home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/rcu/tree.c:2343
+ update_process_times+0x8c/0xd0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/timer.c:2071
+ tick_sched_handle+0x7a/0xa0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/tick-sched.c:243
+ tick_sched_timer+0xa0/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/tick-sched.c:1480
+ __run_hrtimer home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/hrtimer.c:1685 [inline]
+ __hrtimer_run_queues+0x18c/0x430 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/hrtimer.c:1749
+ hrtimer_interrupt+0x13a/0x2b0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/hrtimer.c:1811
+ local_apic_timer_interrupt home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/kernel/apic/apic.c:1096 [inline]
+ __sysvec_apic_timer_interrupt+0x5b/0x110 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/kernel/apic/apic.c:1113
+ sysvec_apic_timer_interrupt+0x73/0x90 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/kernel/apic/apic.c:1107
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/idtentry.h:649
+RIP: 0010:xa_is_internal home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/xarray.h:171 [inline]
+RIP: 0010:xa_is_node home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/xarray.h:1242 [inline]
+RIP: 0010:xas_find_marked+0x1dc/0x5b0 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/xarray.c:1371
+Code: fc c6 44 24 13 00 41 83 fd 40 0f 84 17 01 00 00 e8 19 9a 93 fc 48 83 c5 04 4c 8b 33 4d 8b 6c ec 08 4d 85 ed 0f 84 d9 01 00 00 <e8> ff 99 93 fc 4c 89 ed bf 02 00 00 00 83 e5 03 48 89 ee e8 3c 93
+RSP: 0018:ffffc9000164f890 EFLAGS: 00000286
+RAX: 0000000000000000 RBX: ffffc9000164f8e0 RCX: 0000000000000000
+RDX: ffff88805bd8af80 RSI: ffffffff84aadee7 RDI: 0000000000000004
+RBP: 0000000000000008 R08: 0000000000000004 R09: 0000000000000004
+R10: 0000000000000004 R11: 0000000000040001 R12: ffff888010dcd240
+R13: ffff888022cd6000 R14: ffffffff8684f2c0 R15: ffffffffffffffff
+ xa_find+0x94/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/xarray.c:2022
+ devlinks_xa_find_get.constprop.0+0x39/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/devlink.c:306
+ devlinks_xa_find_get_first home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/devlink.c:334 [inline]
+ devlink_nl_cmd_port_get_dumpit+0x59/0x1f0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/core/devlink.c:1699
+ netlink_dump+0x217/0x440 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:2296
+ __netlink_dump_start+0x27e/0x470 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:2401
+ genl_family_rcv_msg_dumpit+0x15b/0x170 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:929
+ genl_family_rcv_msg home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:1045 [inline]
+ genl_rcv_msg+0x228/0x430 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:1065
+ netlink_rcv_skb+0x91/0x1e0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:2574
+ genl_rcv+0x28/0x40 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:1076
+ netlink_unicast_kernel home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:734
+ __sys_sendto+0x16c/0x220 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2120
+ __do_sys_sendto home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2132 [inline]
+ __se_sys_sendto home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2128 [inline]
+ __x64_sys_sendto+0x28/0x30 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2128
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f34f61b06f6
+Code: d2 02 00 44 8b 4c 24 2c 4c 8b 44 24 20 41 89 c4 44 8b 54 24 28 48 8b 54 24 18 b8 2c 00 00 00 48 8b 74 24 10 8b 7c 24 08 0f 05 <48> 3d 00 f0 ff ff 77 3a 44 89 e7 48 89 44 24 08 e8 95 d2 02 00 48
+RSP: 002b:00007ffd40003710 EFLAGS: 00000293 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 00007f34f6f24620 RCX: 00007f34f61b06f6
+RDX: 0000000000000034 RSI: 00007f34f6f24670 RDI: 0000000000000005
+RBP: 0000000000000001 R08: 00007ffd4000376c R09: 000000000000000c
+R10: 0000000000000000 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007f34f6f24670 R14: 0000000000000005 R15: 0000000000000000
+ </TASK>

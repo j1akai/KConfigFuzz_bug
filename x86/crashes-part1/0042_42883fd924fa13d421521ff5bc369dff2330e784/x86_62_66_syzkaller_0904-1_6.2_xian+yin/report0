@@ -1,0 +1,76 @@
+stack segment: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 114248 Comm: syz.2.11521 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:nfc_llcp_find_local home/jiakai/62_66_amd_0904/linux62/linux-all/net/nfc/llcp_core.c:287 [inline]
+RIP: 0010:nfc_llcp_unregister_device+0x39/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/net/nfc/llcp_core.c:1611
+Code: fc 48 8b 2d 89 13 f0 01 48 81 fd 70 27 8c 86 75 14 eb 77 e8 09 65 a2 fc 48 8b 6d 00 48 81 fd 70 27 8c 86 74 65 e8 f7 64 a2 fc <48> 3b 5d 10 75 e3 e8 ec 64 a2 fc 48 85 ed 74 50 e8 e2 64 a2 fc 48
+RSP: 0018:ffffc9000be1fe40 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff88802fdd2c00 RCX: 0000000000000000
+RDX: ffff888009a24740 RSI: ffffffff849c1409 RDI: ffff88802fdd2c00
+RBP: dead000000000100 R08: 0000000000000001 R09: ffffffff8154de00
+R10: ffff88804f640a70 R11: 0000000000000000 R12: ffff88805391b800
+R13: ffff888044082e78 R14: ffff8880231103e0 R15: ffff8880433df600
+FS:  00005555555ec500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fcfa71afff0 CR3: 000000001d862000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ nfc_unregister_device+0xa3/0xd0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/nfc/core.c:1179
+ virtual_ncidev_close+0x1d/0x40 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/nfc/virtual_ncidev.c:163
+ __fput+0x105/0x440 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/file_table.c:320
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/task_work.c:179
+ resume_user_mode_work home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:171 [inline]
+ exit_to_user_mode_prepare+0x11e/0x140 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f7476dae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fff4df9bc68 EFLAGS: 00000246 ORIG_RAX: 00000000000001b4
+RAX: 0000000000000000 RBX: 00007f7476ff7da0 RCX: 00007f7476dae16d
+RDX: 0000000000000000 RSI: 000000000000001e RDI: 0000000000000003
+RBP: 00007f7476ff7da0 R08: 0000000000000000 R09: 0000000000000000
+R10: 00007f7476ff7cb0 R11: 0000000000000246 R12: 000000000018129a
+R13: 00007f7476ff636c R14: 00007f7476ff7da0 R15: 00007fff4df9bd30
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:nfc_llcp_find_local home/jiakai/62_66_amd_0904/linux62/linux-all/net/nfc/llcp_core.c:287 [inline]
+RIP: 0010:nfc_llcp_unregister_device+0x39/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/net/nfc/llcp_core.c:1611
+Code: fc 48 8b 2d 89 13 f0 01 48 81 fd 70 27 8c 86 75 14 eb 77 e8 09 65 a2 fc 48 8b 6d 00 48 81 fd 70 27 8c 86 74 65 e8 f7 64 a2 fc <48> 3b 5d 10 75 e3 e8 ec 64 a2 fc 48 85 ed 74 50 e8 e2 64 a2 fc 48
+RSP: 0018:ffffc9000be1fe40 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff88802fdd2c00 RCX: 0000000000000000
+RDX: ffff888009a24740 RSI: ffffffff849c1409 RDI: ffff88802fdd2c00
+RBP: dead000000000100 R08: 0000000000000001 R09: ffffffff8154de00
+R10: ffff88804f640a70 R11: 0000000000000000 R12: ffff88805391b800
+R13: ffff888044082e78 R14: ffff8880231103e0 R15: ffff8880433df600
+FS:  00005555555ec500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f3f75bcf020 CR3: 000000001d862000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	fc                   	cld
+   1:	48 8b 2d 89 13 f0 01 	mov    0x1f01389(%rip),%rbp        # 0x1f01391
+   8:	48 81 fd 70 27 8c 86 	cmp    $0xffffffff868c2770,%rbp
+   f:	75 14                	jne    0x25
+  11:	eb 77                	jmp    0x8a
+  13:	e8 09 65 a2 fc       	call   0xfca26521
+  18:	48 8b 6d 00          	mov    0x0(%rbp),%rbp
+  1c:	48 81 fd 70 27 8c 86 	cmp    $0xffffffff868c2770,%rbp
+  23:	74 65                	je     0x8a
+  25:	e8 f7 64 a2 fc       	call   0xfca26521
+* 2a:	48 3b 5d 10          	cmp    0x10(%rbp),%rbx <-- trapping instruction
+  2e:	75 e3                	jne    0x13
+  30:	e8 ec 64 a2 fc       	call   0xfca26521
+  35:	48 85 ed             	test   %rbp,%rbp
+  38:	74 50                	je     0x8a
+  3a:	e8 e2 64 a2 fc       	call   0xfca26521
+  3f:	48                   	rex.W
