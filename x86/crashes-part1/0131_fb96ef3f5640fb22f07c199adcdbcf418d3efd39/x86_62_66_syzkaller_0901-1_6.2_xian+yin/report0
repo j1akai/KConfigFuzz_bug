@@ -1,0 +1,41 @@
+ODEBUG: free active (active state 0) object: ffff888026c39438 object type: timer_list hint: batadv_dat_purge+0x0/0x270
+WARNING: CPU: 1 PID: 9403 at lib/debugobjects.c:512 debug_print_object home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:509 [inline]
+WARNING: CPU: 1 PID: 9403 at lib/debugobjects.c:512 __debug_check_no_obj_freed home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:996 [inline]
+WARNING: CPU: 1 PID: 9403 at lib/debugobjects.c:512 debug_check_no_obj_freed+0x1ef/0x2d0 home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:1027
+Modules linked in:
+CPU: 1 PID: 9403 Comm: kworker/u4:3 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: netns cleanup_net
+RIP: 0010:debug_print_object home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:509 [inline]
+RIP: 0010:__debug_check_no_obj_freed home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:996 [inline]
+RIP: 0010:debug_check_no_obj_freed+0x1ef/0x2d0 home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:1027
+Code: 48 8b 14 c5 60 b2 39 85 4c 8b 45 18 4d 8b 0f 48 c7 c7 9f 5b e5 85 48 c7 c6 e6 75 dd 85 31 c0 41 52 e8 05 11 b9 fe 48 83 c4 08 <0f> 0b 83 05 94 7b 4e 04 01 4d 8b 5d 30 4d 85 db 74 18 48 89 df be
+RSP: 0018:ffffc90001d3fba0 EFLAGS: 00010296
+RAX: ad1aed6d249b4400 RBX: ffff888026c39438 RCX: ffff8880459d4600
+RDX: 0000000000000000 RSI: 0000000080000000 RDI: 0000000000000000
+RBP: ffff88801362cbb8 R08: ffffffff813691b4 R09: 0000000000000000
+R10: ffffffff84e1435b R11: ffffffff82eb5c70 R12: ffff888026c3a000
+R13: ffffffff8522ec00 R14: ffff888026c38000 R15: ffffffff8522ec00
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f1c0a3b9158 CR3: 0000000059e78000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ slab_free_hook home/jiakai/62_66_amd_0901/linux62/linux/mm/slub.c:1756 [inline]
+ slab_free_freelist_hook+0xf0/0x170 home/jiakai/62_66_amd_0901/linux62/linux/mm/slub.c:1807
+ slab_free home/jiakai/62_66_amd_0901/linux62/linux/mm/slub.c:3787 [inline]
+ __kmem_cache_free+0x64/0x100 home/jiakai/62_66_amd_0901/linux62/linux/mm/slub.c:3800
+ device_release+0x44/0xe0
+ kobject_cleanup+0xec/0x280 home/jiakai/62_66_amd_0901/linux62/linux/lib/kobject.c:673
+ netdev_run_todo+0x719/0x7a0 home/jiakai/62_66_amd_0901/linux62/linux/net/core/dev.c:10352
+ default_device_exit_batch+0x32a/0x370 home/jiakai/62_66_amd_0901/linux62/linux/net/core/dev.c:11341
+ ops_exit_list home/jiakai/62_66_amd_0901/linux62/linux/net/core/net_namespace.c:174 [inline]
+ cleanup_net+0x487/0x6d0 home/jiakai/62_66_amd_0901/linux62/linux/net/core/net_namespace.c:613
+ process_one_work+0x36b/0x5b0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2289
+ worker_thread+0x3a7/0x6d0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2436
+ kthread+0x12c/0x160 home/jiakai/62_66_amd_0901/linux62/linux/kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/entry/entry_64.S:308
+ </TASK>

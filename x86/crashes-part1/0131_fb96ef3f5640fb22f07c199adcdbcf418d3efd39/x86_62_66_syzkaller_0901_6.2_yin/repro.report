@@ -1,0 +1,42 @@
+------------[ cut here ]------------
+ODEBUG: free active (active state 0) object: ffff8880283754f8 object type: timer_list hint: batadv_dat_purge+0x0/0x4f0
+WARNING: CPU: 1 PID: 12 at lib/debugobjects.c:512 debug_print_object lib/debugobjects.c:509 [inline]
+WARNING: CPU: 1 PID: 12 at lib/debugobjects.c:512 __debug_check_no_obj_freed lib/debugobjects.c:996 [inline]
+WARNING: CPU: 1 PID: 12 at lib/debugobjects.c:512 debug_check_no_obj_freed+0x490/0x680 lib/debugobjects.c:1027
+Modules linked in:
+CPU: 1 PID: 12 Comm: kworker/u4:1 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: netns cleanup_net
+RIP: 0010:debug_print_object lib/debugobjects.c:509 [inline]
+RIP: 0010:__debug_check_no_obj_freed lib/debugobjects.c:996 [inline]
+RIP: 0010:debug_check_no_obj_freed+0x490/0x680 lib/debugobjects.c:1027
+Code: 8b 55 00 4c 8b 4d 00 48 c7 c7 e0 92 8c 8b 48 c7 c6 c0 8f 8c 8b 44 89 f1 49 89 d8 31 c0 ff 74 24 30 e8 a4 ff 08 fd 48 83 c4 08 <0f> 0b 48 ba 00 00 00 00 00 fc ff df 4c 8b 6c 24 38 ff 05 e5 b4 b6
+RSP: 0018:ffffc900003df7b8 EFLAGS: 00010286
+RAX: 74e573fe13e3ff00 RBX: ffff8880283754f8 RCX: ffff888018c8c880
+RDX: 0000000000000000 RSI: 0000000080000000 RDI: 0000000000000000
+RBP: ffffffff8b2ff380 R08: ffffffff816e975d R09: ffffed100fd84f5b
+R10: ffffed100fd84f5b R11: 1ffff1100fd84f5a R12: ffff88802639c2ec
+R13: ffffffff8b8c9378 R14: 0000000000000000 R15: ffff88802639c2f0
+FS:  0000000000000000(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b2ff63fff CR3: 000000000d68e000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ slab_free_hook mm/slub.c:1756 [inline]
+ slab_free_freelist_hook+0xcf/0x1a0 mm/slub.c:1807
+ slab_free mm/slub.c:3787 [inline]
+ __kmem_cache_free+0x71/0x110 mm/slub.c:3800
+ device_release+0x98/0x1c0
+ kobject_cleanup+0x1e1/0x420 lib/kobject.c:673
+ netdev_run_todo+0xf9c/0x1090 net/core/dev.c:10352
+ default_device_exit_batch+0x5ea/0x660 net/core/dev.c:11341
+ ops_exit_list net/core/net_namespace.c:174 [inline]
+ cleanup_net+0x80c/0xc60 net/core/net_namespace.c:613
+ process_one_work+0x877/0xdb0 kernel/workqueue.c:2289
+ worker_thread+0xb14/0x1330 kernel/workqueue.c:2436
+ kthread+0x26c/0x300 kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 arch/x86/entry/entry_64.S:308
+ </TASK>

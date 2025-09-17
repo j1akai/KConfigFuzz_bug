@@ -1,0 +1,65 @@
+list_del corruption. prev->next should be ffff88805ec89000, but was dead000000000100. (prev=ffff88805ec86c00)
+------------[ cut here ]------------
+kernel BUG at lib/list_debug.c:59!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 18116 Comm: syz.1.1096 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__list_del_entry_valid.cold+0x3a/0x75 lib/list_debug.c:59
+Code: 0f 0b 48 89 d1 48 c7 c7 18 ba 01 86 4c 89 c2 e8 8e 3f f9 ff 90 0f 0b 48 89 f2 48 89 fe 48 c7 c7 c8 b9 01 86 e8 79 3f f9 ff 90 <0f> 0b 48 89 fe 48 89 ca 48 c7 c7 90 b9 01 86 e8 64 3f f9 ff 90 0f
+RSP: 0018:ffffc900027ebe38 EFLAGS: 00010282
+RAX: 000000000000006d RBX: 0000000000000001 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff88805ec89000 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 6c65645f7473696c R12: ffff88805ec89018
+R13: ffff88800b0d1f28 R14: ffff88805dc9a2a0 R15: ffff8880096b0cc0
+FS:  00005555558a8500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b342f6ff8 CR3: 0000000079554000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ __list_del_entry include/linux/list.h:134 [inline]
+ list_del include/linux/list.h:148 [inline]
+ local_release net/nfc/llcp_core.c:172 [inline]
+ kref_put include/linux/kref.h:65 [inline]
+ nfc_llcp_local_put net/nfc/llcp_core.c:182 [inline]
+ nfc_llcp_local_put net/nfc/llcp_core.c:177 [inline]
+ nfc_llcp_unregister_device+0xaf/0x130 net/nfc/llcp_core.c:1620
+ nfc_unregister_device+0xa3/0xd0 net/nfc/core.c:1179
+ virtual_ncidev_close+0x1d/0x40 drivers/nfc/virtual_ncidev.c:163
+ __fput+0x105/0x440 fs/file_table.c:320
+ task_work_run+0x8f/0xe0 kernel/task_work.c:179
+ resume_user_mode_work include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop kernel/entry/common.c:171 [inline]
+ exit_to_user_mode_prepare+0x11e/0x140 kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f4ef7dae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fff029f6ea8 EFLAGS: 00000246 ORIG_RAX: 00000000000001b4
+RAX: 0000000000000000 RBX: 00007f4ef7ff7da0 RCX: 00007f4ef7dae16d
+RDX: 0000000000000000 RSI: 000000000000001e RDI: 0000000000000003
+RBP: 00007f4ef7ff7da0 R08: 0000000000000000 R09: 0000000000000000
+R10: 00007f4ef7ff7cb0 R11: 0000000000000246 R12: 0000000000032e25
+R13: 00007f4ef7ff609c R14: 00007f4ef7ff7da0 R15: 00007fff029f6f70
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:__list_del_entry_valid.cold+0x3a/0x75 lib/list_debug.c:59
+Code: 0f 0b 48 89 d1 48 c7 c7 18 ba 01 86 4c 89 c2 e8 8e 3f f9 ff 90 0f 0b 48 89 f2 48 89 fe 48 c7 c7 c8 b9 01 86 e8 79 3f f9 ff 90 <0f> 0b 48 89 fe 48 89 ca 48 c7 c7 90 b9 01 86 e8 64 3f f9 ff 90 0f
+RSP: 0018:ffffc900027ebe38 EFLAGS: 00010282
+RAX: 000000000000006d RBX: 0000000000000001 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff88805ec89000 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 6c65645f7473696c R12: ffff88805ec89018
+R13: ffff88800b0d1f28 R14: ffff88805dc9a2a0 R15: ffff8880096b0cc0
+FS:  00005555558a8500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fe1d0b020c0 CR3: 0000000079554000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000

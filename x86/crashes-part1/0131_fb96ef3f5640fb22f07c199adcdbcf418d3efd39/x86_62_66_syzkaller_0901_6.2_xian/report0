@@ -1,0 +1,106 @@
+------------[ cut here ]------------
+ODEBUG: free active (active state 0) object: ffff8880517914f8 object type: timer_list hint: batadv_dat_purge+0x0/0x4f0
+WARNING: CPU: 0 PID: 9937 at lib/debugobjects.c:512 debug_print_object home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:509 [inline]
+WARNING: CPU: 0 PID: 9937 at lib/debugobjects.c:512 __debug_check_no_obj_freed home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:996 [inline]
+WARNING: CPU: 0 PID: 9937 at lib/debugobjects.c:512 debug_check_no_obj_freed+0x490/0x680 home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:1027
+Modules linked in:
+CPU: 0 PID: 9937 Comm: kworker/u4:3 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: netns cleanup_net
+RIP: 0010:debug_print_object home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:509 [inline]
+RIP: 0010:__debug_check_no_obj_freed home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:996 [inline]
+RIP: 0010:debug_check_no_obj_freed+0x490/0x680 home/jiakai/62_66_amd_0901/linux62/linux/lib/debugobjects.c:1027
+Code: 8b 55 00 4c 8b 4d 00 48 c7 c7 e0 92 8c 8b 48 c7 c6 c0 8f 8c 8b 44 89 f1 49 89 d8 31 c0 ff 74 24 30 e8 a4 ff 08 fd 48 83 c4 08 <0f> 0b 48 ba 00 00 00 00 00 fc ff df 4c 8b 6c 24 38 ff 05 e5 b4 b6
+RSP: 0018:ffffc9001af8f7b8 EFLAGS: 00010286
+RAX: da05e9e33f08f700 RBX: ffff8880517914f8 RCX: ffff888067e34880
+RDX: 0000000000000000 RSI: 0000000080000000 RDI: 0000000000000000
+RBP: ffffffff8b2ff380 R08: ffffffff816e975d R09: ffffed10057c4f5b
+R10: ffffed10057c4f5b R11: 1ffff110057c4f5a R12: ffff888025eb719c
+R13: ffffffff8b8c9378 R14: 0000000000000000 R15: ffff888025eb71a0
+FS:  0000000000000000(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f16a16dd8b0 CR3: 000000006d1b9000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ slab_free_hook home/jiakai/62_66_amd_0901/linux62/linux/mm/slub.c:1756 [inline]
+ slab_free_freelist_hook+0xcf/0x1a0 home/jiakai/62_66_amd_0901/linux62/linux/mm/slub.c:1807
+ slab_free home/jiakai/62_66_amd_0901/linux62/linux/mm/slub.c:3787 [inline]
+ __kmem_cache_free+0x71/0x110 home/jiakai/62_66_amd_0901/linux62/linux/mm/slub.c:3800
+ device_release+0x98/0x1c0
+ kobject_cleanup+0x1e1/0x420 home/jiakai/62_66_amd_0901/linux62/linux/lib/kobject.c:673
+ netdev_run_todo+0xf9c/0x1090 home/jiakai/62_66_amd_0901/linux62/linux/net/core/dev.c:10352
+ default_device_exit_batch+0x5ea/0x660 home/jiakai/62_66_amd_0901/linux62/linux/net/core/dev.c:11341
+ ops_exit_list home/jiakai/62_66_amd_0901/linux62/linux/net/core/net_namespace.c:174 [inline]
+ cleanup_net+0x80c/0xc60 home/jiakai/62_66_amd_0901/linux62/linux/net/core/net_namespace.c:613
+ process_one_work+0x877/0xdb0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2289
+ worker_thread+0xb14/0x1330 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2436
+ kthread+0x26c/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/entry/entry_64.S:308
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+CR2: 00007f16a16dd8b0 CR3: 000000006d1b9000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ slab_free_freelist_hook+0xcf/0x1a0
+ __kmem_cache_free+0x71/0x110
+ device_release+0x98/0x1c0
+ kobject_cleanup+0x1e1/0x420
+ netdev_run_todo+0xf9c/0x1090
+ default_device_exit_batch+0x5ea/0x660
+ cleanup_net+0x80c/0xc60
+ process_one_work+0x877/0xdb0
+ worker_thread+0xb14/0x1330
+ kthread+0x26c/0x300
+ ret_from_fork+0x1f/0x30
+ </TASK>
+Kernel panic - not syncing: kernel: panic_on_warn set ...
+CPU: 0 PID: 9937 Comm: kworker/u4:3 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: netns cleanup_net
+Call Trace:
+ <TASK>
+ dump_stack_lvl+0x1e3/0x2d0
+ panic+0x302/0x760
+ __warn+0x284/0x2d0
+ report_bug+0x1b3/0x2d0
+ handle_bug+0x3d/0x70
+ exc_invalid_op+0x16/0x40
+ asm_exc_invalid_op+0x16/0x20
+RIP: 0010:debug_check_no_obj_freed+0x490/0x680
+Code: 8b 55 00 4c 8b 4d 00 48 c7 c7 e0 92 8c 8b 48 c7 c6 c0 8f 8c 8b 44 89 f1 49 89 d8 31 c0 ff 74 24 30 e8 a4 ff 08 fd 48 83 c4 08 <0f> 0b 48 ba 00 00 00 00 00 fc ff df 4c 8b 6c 24 38 ff 05 e5 b4 b6
+RSP: 0018:ffffc9001af8f7b8 EFLAGS: 00010286
+RAX: da05e9e33f08f700 RBX: ffff8880517914f8 RCX: ffff888067e34880
+RDX: 0000000000000000 RSI: 0000000080000000 RDI: 0000000000000000
+RBP: ffffffff8b2ff380 R08: ffffffff816e975d R09: ffffed10057c4f5b
+R10: ffffed10057c4f5b R11: 1ffff110057c4f5a R12: ffff888025eb719c
+R13: ffffffff8b8c9378 R14: 0000000000000000 R15: ffff888025eb71a0
+ slab_free_freelist_hook+0xcf/0x1a0
+ __kmem_cache_free+0x71/0x110
+ device_release+0x98/0x1c0
+ kobject_cleanup+0x1e1/0x420
+ netdev_run_todo+0xf9c/0x1090
+ default_device_exit_batch+0x5ea/0x660
+ cleanup_net+0x80c/0xc60
+ process_one_work+0x877/0xdb0
+ worker_thread+0xb14/0x1330
+ kthread+0x26c/0x300
+ ret_from_fork+0x1f/0x30
+ </TASK>
+Kernel Offset: disabled
+Rebooting in 86400 seconds..
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
