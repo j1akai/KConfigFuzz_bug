@@ -1,0 +1,57 @@
+------------[ cut here ]------------
+wlan1: Failed check-sdata-in-driver check, flags: 0x0
+WARNING: CPU: 1 PID: 41688 at net/mac80211/main.c:235 ieee80211_bss_info_change_notify+0x468/0x480 home/jiakai/62_66_amd_0904/linux62/linux-all/net/mac80211/main.c:235
+Modules linked in:
+CPU: 1 PID: 41688 Comm: syz.3.4934 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:ieee80211_bss_info_change_notify+0x468/0x480 home/jiakai/62_66_amd_0904/linux62/linux-all/net/mac80211/main.c:235
+Code: 9d 80 07 00 00 48 85 db 74 29 e8 a3 29 c7 fc 49 89 dd e8 9b 29 c7 fc 44 89 f2 4c 89 ee 48 c7 c7 40 04 17 86 e8 36 40 35 00 90 <0f> 0b 90 90 e9 31 fc ff ff e8 7a 29 c7 fc 49 81 c5 a0 07 00 00 eb
+RSP: 0018:ffffc9000d49b858 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: ffff88802deb0000 RCX: ffffc9000f52a000
+RDX: 0000000000080000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff8880080e88c0 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 46203a316e616c77 R12: 0000000000400000
+R13: ffff88802deb0000 R14: 0000000000000000 R15: 0000000000000000
+FS:  00007fabc7a6c640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f14dc2ff000 CR3: 00000000194f0000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ ieee80211_ocb_leave+0x111/0x170 home/jiakai/62_66_amd_0904/linux62/linux-all/net/mac80211/ocb.c:229
+ rdev_leave_ocb home/jiakai/62_66_amd_0904/linux62/linux-all/net/wireless/rdev-ops.h:393 [inline]
+ __cfg80211_leave_ocb+0x6f/0x200 home/jiakai/62_66_amd_0904/linux62/linux-all/net/wireless/ocb.c:71
+ cfg80211_leave_ocb+0x33/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/net/wireless/ocb.c:85
+ cfg80211_change_iface+0x41e/0x740 home/jiakai/62_66_amd_0904/linux62/linux-all/net/wireless/util.c:1071
+ nl80211_set_interface+0x36e/0x4b0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/wireless/nl80211.c:4169
+ genl_family_rcv_msg_doit.isra.0+0xf4/0x160 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:968
+ genl_family_rcv_msg home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:1048 [inline]
+ genl_rcv_msg+0x2e8/0x430 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:1065
+ netlink_rcv_skb+0x91/0x1e0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:2574
+ genl_rcv+0x28/0x40 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/genetlink.c:1076
+ netlink_unicast_kernel home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 home/jiakai/62_66_amd_0904/linux62/linux-all/net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:734
+ ____sys_sendmsg+0x3c0/0x490 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2479
+ ___sys_sendmsg+0xb4/0x120 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2533
+ __sys_sendmsg+0x8e/0x110 home/jiakai/62_66_amd_0904/linux62/linux-all/net/socket.c:2562
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7fabc6bae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fabc7a6bf98 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+RAX: ffffffffffffffda RBX: 00007fabc6df5fa0 RCX: 00007fabc6bae16d
+RDX: 0000000000000000 RSI: 0000200000000340 RDI: 0000000000000003
+RBP: 00007fabc6c480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fabc6df6038 R14: 00007fabc6df5fa0 R15: 00007fabc7a4c000
+ </TASK>
+---[ end trace 0000000000000000 ]---
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

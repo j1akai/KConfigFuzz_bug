@@ -1,0 +1,263 @@
+------------[ cut here ]------------
+wlan0: Failed check-sdata-in-driver check, flags: 0x0
+WARNING: CPU: 1 PID: 15427 at net/mac80211/main.c:235 ieee80211_bss_info_change_notify+0x468/0x480 net/mac80211/main.c:235
+Modules linked in:
+CPU: 1 PID: 15427 Comm: syz.0.663 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:ieee80211_bss_info_change_notify+0x468/0x480 net/mac80211/main.c:235
+Code: 9d 80 07 00 00 48 85 db 74 29 e8 a3 29 c7 fc 49 89 dd e8 9b 29 c7 fc 44 89 f2 4c 89 ee 48 c7 c7 40 04 17 86 e8 36 40 35 00 90 <0f> 0b 90 90 e9 31 fc ff ff e8 7a 29 c7 fc 49 81 c5 a0 07 00 00 eb
+RSP: 0018:ffffc9000cbf3830 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: ffff88805bd48000 RCX: 0000000000000000
+RDX: ffff88802784df00 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff88804b8908c0 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 46203a306e616c77 R12: 0000000000000a00
+R13: ffff88805bd48000 R14: 0000000000000000 R15: 0000000000000000
+FS:  00007f38affe7640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f6e7dbb9158 CR3: 00000000250a2000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ ieee80211_ibss_disconnect+0x17b/0x230 net/mac80211/ibss.c:723
+ ieee80211_ibss_leave+0x1d/0xd0 net/mac80211/ibss.c:1868
+ rdev_leave_ibss net/wireless/rdev-ops.h:557 [inline]
+ __cfg80211_leave_ibss+0x67/0x1e0 net/wireless/ibss.c:211
+ cfg80211_leave_ibss+0x39/0x60 net/wireless/ibss.c:229
+ cfg80211_change_iface+0x1d5/0x740 net/wireless/util.c:1058
+ nl80211_set_interface+0x36e/0x4b0 net/wireless/nl80211.c:4169
+ genl_family_rcv_msg_doit.isra.0+0xf4/0x160 net/netlink/genetlink.c:968
+ genl_family_rcv_msg net/netlink/genetlink.c:1048 [inline]
+ genl_rcv_msg+0x2e8/0x430 net/netlink/genetlink.c:1065
+ netlink_rcv_skb+0x91/0x1e0 net/netlink/af_netlink.c:2574
+ genl_rcv+0x28/0x40 net/netlink/genetlink.c:1076
+ netlink_unicast_kernel net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 net/socket.c:734
+ ____sys_sendmsg+0x3c0/0x490 net/socket.c:2479
+ ___sys_sendmsg+0xb4/0x120 net/socket.c:2533
+ __sys_sendmsg+0x8e/0x110 net/socket.c:2562
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f38af1ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f38affe6f98 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+RAX: ffffffffffffffda RBX: 00007f38af3f5fa0 RCX: 00007f38af1ae16d
+RDX: 0000000000000000 RSI: 00002000000000c0 RDI: 0000000000000003
+RBP: 00007f38affe7010 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000002
+R13: 00007f38af3f6038 R14: 00007f38af3f5fa0 R15: 00007f38affc7000
+ </TASK>
+---[ end trace 0000000000000000 ]---
+------------[ cut here ]------------
+wlan0: Failed check-sdata-in-driver check, flags: 0x0
+WARNING: CPU: 1 PID: 15427 at net/mac80211/driver-ops.h:1106 drv_leave_ibss+0x1da/0x200 net/mac80211/driver-ops.h:1106
+Modules linked in:
+CPU: 1 PID: 15427 Comm: syz.0.663 Tainted: G        W          6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:drv_leave_ibss+0x1da/0x200 net/mac80211/driver-ops.h:1106
+Code: 90 48 8b ab 80 07 00 00 48 85 ed 74 2c e8 2e ed c4 fc e8 29 ed c4 fc 44 89 ea 48 89 ee 48 c7 c7 40 04 17 86 e8 c4 03 33 00 90 <0f> 0b 90 90 5b 5d 41 5c 41 5d e9 07 ed c4 fc e8 02 ed c4 fc 48 8d
+RSP: 0018:ffffc9000cbf3848 EFLAGS: 00010286
+RAX: 0000000000000000 RBX: ffff88805bd489c0 RCX: 0000000000000000
+RDX: ffff88802784df00 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff88805bd48000 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 46203a306e616c77 R12: 0000000000000000
+R13: 0000000000000000 R14: ffff88805bd489d0 R15: 0000000000000000
+FS:  00007f38affe7640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007faa101f6050 CR3: 00000000250a2000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ ieee80211_ibss_disconnect+0x18d/0x230 net/mac80211/ibss.c:725
+ ieee80211_ibss_leave+0x1d/0xd0 net/mac80211/ibss.c:1868
+ rdev_leave_ibss net/wireless/rdev-ops.h:557 [inline]
+ __cfg80211_leave_ibss+0x67/0x1e0 net/wireless/ibss.c:211
+ cfg80211_leave_ibss+0x39/0x60 net/wireless/ibss.c:229
+ cfg80211_change_iface+0x1d5/0x740 net/wireless/util.c:1058
+ nl80211_set_interface+0x36e/0x4b0 net/wireless/nl80211.c:4169
+ genl_family_rcv_msg_doit.isra.0+0xf4/0x160 net/netlink/genetlink.c:968
+ genl_family_rcv_msg net/netlink/genetlink.c:1048 [inline]
+ genl_rcv_msg+0x2e8/0x430 net/netlink/genetlink.c:1065
+ netlink_rcv_skb+0x91/0x1e0 net/netlink/af_netlink.c:2574
+ genl_rcv+0x28/0x40 net/netlink/genetlink.c:1076
+ netlink_unicast_kernel net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 net/socket.c:734
+ ____sys_sendmsg+0x3c0/0x490 net/socket.c:2479
+ ___sys_sendmsg+0xb4/0x120 net/socket.c:2533
+ __sys_sendmsg+0x8e/0x110 net/socket.c:2562
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f38af1ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f38affe6f98 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+RAX: ffffffffffffffda RBX: 00007f38af3f5fa0 RCX: 00007f38af1ae16d
+RDX: 0000000000000000 RSI: 00002000000000c0 RDI: 0000000000000003
+RBP: 00007f38affe7010 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000002
+R13: 00007f38af3f6038 R14: 00007f38af3f5fa0 R15: 00007f38affc7000
+ </TASK>
+---[ end trace 0000000000000000 ]---
+FAULT_INJECTION: forcing a failure.
+name failslab, interval 1, probability 0, space 0, times 0
+CPU: 1 PID: 15427 Comm: syz.0.663 Tainted: G        W          6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x72/0x95 lib/dump_stack.c:106
+ fail_dump lib/fault-inject.c:52 [inline]
+ should_fail_ex.cold+0x32/0x37 lib/fault-inject.c:153
+ should_failslab+0x9/0x20 mm/slab_common.c:1463
+ slab_pre_alloc_hook mm/slab.h:722 [inline]
+ slab_alloc_node mm/slub.c:3434 [inline]
+ slab_alloc mm/slub.c:3460 [inline]
+ __kmem_cache_alloc_lru mm/slub.c:3467 [inline]
+ kmem_cache_alloc+0x4b/0x2e0 mm/slub.c:3476
+ kmem_cache_zalloc include/linux/slab.h:710 [inline]
+ __kernfs_new_node+0x69/0x2a0 fs/kernfs/dir.c:614
+ kernfs_new_node+0x60/0xa0 fs/kernfs/dir.c:676
+ kernfs_create_link+0x57/0x100 fs/kernfs/symlink.c:39
+ sysfs_do_create_link_sd+0x6d/0x110 fs/sysfs/symlink.c:44
+ sysfs_do_create_link fs/sysfs/symlink.c:80 [inline]
+ sysfs_create_link+0x48/0x80 fs/sysfs/symlink.c:92
+ __kmem_cache_alias+0x2e/0x80 mm/slub.c:5070
+ kmem_cache_create_usercopy+0x9c/0x2d0 mm/slab_common.c:330
+ kmem_cache_create+0x11/0x20 mm/slab_common.c:395
+ ieee80211s_init net/mac80211/mesh.c:27 [inline]
+ ieee80211_mesh_init_sdata+0x1d3/0x1e0 net/mac80211/mesh.c:1630
+ ieee80211_setup_sdata+0x33a/0x3f0 net/mac80211/iface.c:1760
+ ieee80211_if_change_type+0x1d2/0x600 net/mac80211/iface.c:1899
+ ieee80211_change_iface+0x37/0x220 net/mac80211/cfg.c:217
+ rdev_change_virtual_intf net/wireless/rdev-ops.h:74 [inline]
+ cfg80211_change_iface+0x2b1/0x740 net/wireless/util.c:1086
+ nl80211_set_interface+0x36e/0x4b0 net/wireless/nl80211.c:4169
+ genl_family_rcv_msg_doit.isra.0+0xf4/0x160 net/netlink/genetlink.c:968
+ genl_family_rcv_msg net/netlink/genetlink.c:1048 [inline]
+ genl_rcv_msg+0x2e8/0x430 net/netlink/genetlink.c:1065
+ netlink_rcv_skb+0x91/0x1e0 net/netlink/af_netlink.c:2574
+ genl_rcv+0x28/0x40 net/netlink/genetlink.c:1076
+ netlink_unicast_kernel net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 net/socket.c:734
+ ____sys_sendmsg+0x3c0/0x490 net/socket.c:2479
+ ___sys_sendmsg+0xb4/0x120 net/socket.c:2533
+ __sys_sendmsg+0x8e/0x110 net/socket.c:2562
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f38af1ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f38affe6f98 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+RAX: ffffffffffffffda RBX: 00007f38af3f5fa0 RCX: 00007f38af1ae16d
+RDX: 0000000000000000 RSI: 00002000000000c0 RDI: 0000000000000003
+RBP: 00007f38affe7010 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000002
+R13: 00007f38af3f6038 R14: 00007f38af3f5fa0 R15: 00007f38affc7000
+ </TASK>
+sysfs: cannot create duplicate filename '/kernel/slab/:0000040'
+CPU: 1 PID: 15427 Comm: syz.0.663 Tainted: G        W          6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x72/0x95 lib/dump_stack.c:106
+ sysfs_warn_dup.cold+0x1c/0x29 fs/sysfs/dir.c:30
+ sysfs_create_dir_ns+0x120/0x130 fs/sysfs/dir.c:63
+ create_dir lib/kobject.c:63 [inline]
+ kobject_add_internal+0x104/0x330 lib/kobject.c:223
+ kobject_add_varg lib/kobject.c:358 [inline]
+ kobject_init_and_add+0x97/0xd0 lib/kobject.c:441
+ sysfs_slab_add+0x10a/0x220 mm/slub.c:6147
+ __kmem_cache_create+0x3f3/0x560 mm/slub.c:5098
+ create_cache mm/slab_common.c:233 [inline]
+ kmem_cache_create_usercopy+0x16d/0x2d0 mm/slab_common.c:340
+ kmem_cache_create+0x11/0x20 mm/slab_common.c:395
+ ieee80211s_init net/mac80211/mesh.c:27 [inline]
+ ieee80211_mesh_init_sdata+0x1d3/0x1e0 net/mac80211/mesh.c:1630
+ ieee80211_setup_sdata+0x33a/0x3f0 net/mac80211/iface.c:1760
+ ieee80211_if_change_type+0x1d2/0x600 net/mac80211/iface.c:1899
+ ieee80211_change_iface+0x37/0x220 net/mac80211/cfg.c:217
+ rdev_change_virtual_intf net/wireless/rdev-ops.h:74 [inline]
+ cfg80211_change_iface+0x2b1/0x740 net/wireless/util.c:1086
+ nl80211_set_interface+0x36e/0x4b0 net/wireless/nl80211.c:4169
+ genl_family_rcv_msg_doit.isra.0+0xf4/0x160 net/netlink/genetlink.c:968
+ genl_family_rcv_msg net/netlink/genetlink.c:1048 [inline]
+ genl_rcv_msg+0x2e8/0x430 net/netlink/genetlink.c:1065
+ netlink_rcv_skb+0x91/0x1e0 net/netlink/af_netlink.c:2574
+ genl_rcv+0x28/0x40 net/netlink/genetlink.c:1076
+ netlink_unicast_kernel net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 net/socket.c:734
+ ____sys_sendmsg+0x3c0/0x490 net/socket.c:2479
+ ___sys_sendmsg+0xb4/0x120 net/socket.c:2533
+ __sys_sendmsg+0x8e/0x110 net/socket.c:2562
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f38af1ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f38affe6f98 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+RAX: ffffffffffffffda RBX: 00007f38af3f5fa0 RCX: 00007f38af1ae16d
+RDX: 0000000000000000 RSI: 00002000000000c0 RDI: 0000000000000003
+RBP: 00007f38affe7010 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000002
+R13: 00007f38af3f6038 R14: 00007f38af3f5fa0 R15: 00007f38affc7000
+ </TASK>
+kobject_add_internal failed for :0000040 with -EEXIST, don't try to register things with the same name in the same directory.
+kmem_cache_create_usercopy(mesh_rmc) failed with error -17
+CPU: 1 PID: 15427 Comm: syz.0.663 Tainted: G        W          6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x72/0x95 lib/dump_stack.c:106
+ kmem_cache_create_usercopy.cold+0x26/0x47 mm/slab_common.c:358
+ kmem_cache_create+0x11/0x20 mm/slab_common.c:395
+ ieee80211s_init net/mac80211/mesh.c:27 [inline]
+ ieee80211_mesh_init_sdata+0x1d3/0x1e0 net/mac80211/mesh.c:1630
+ ieee80211_setup_sdata+0x33a/0x3f0 net/mac80211/iface.c:1760
+ ieee80211_if_change_type+0x1d2/0x600 net/mac80211/iface.c:1899
+ ieee80211_change_iface+0x37/0x220 net/mac80211/cfg.c:217
+ rdev_change_virtual_intf net/wireless/rdev-ops.h:74 [inline]
+ cfg80211_change_iface+0x2b1/0x740 net/wireless/util.c:1086
+ nl80211_set_interface+0x36e/0x4b0 net/wireless/nl80211.c:4169
+ genl_family_rcv_msg_doit.isra.0+0xf4/0x160 net/netlink/genetlink.c:968
+ genl_family_rcv_msg net/netlink/genetlink.c:1048 [inline]
+ genl_rcv_msg+0x2e8/0x430 net/netlink/genetlink.c:1065
+ netlink_rcv_skb+0x91/0x1e0 net/netlink/af_netlink.c:2574
+ genl_rcv+0x28/0x40 net/netlink/genetlink.c:1076
+ netlink_unicast_kernel net/netlink/af_netlink.c:1339 [inline]
+ netlink_unicast+0x3a7/0x500 net/netlink/af_netlink.c:1365
+ netlink_sendmsg+0x39c/0x720 net/netlink/af_netlink.c:1942
+ sock_sendmsg_nosec net/socket.c:714 [inline]
+ sock_sendmsg+0xd6/0xe0 net/socket.c:734
+ ____sys_sendmsg+0x3c0/0x490 net/socket.c:2479
+ ___sys_sendmsg+0xb4/0x120 net/socket.c:2533
+ __sys_sendmsg+0x8e/0x110 net/socket.c:2562
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f38af1ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f38affe6f98 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+RAX: ffffffffffffffda RBX: 00007f38af3f5fa0 RCX: 00007f38af1ae16d
+RDX: 0000000000000000 RSI: 00002000000000c0 RDI: 0000000000000003
+RBP: 00007f38affe7010 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000002
+R13: 00007f38af3f6038 R14: 00007f38af3f5fa0 R15: 00007f38affc7000
+ </TASK>

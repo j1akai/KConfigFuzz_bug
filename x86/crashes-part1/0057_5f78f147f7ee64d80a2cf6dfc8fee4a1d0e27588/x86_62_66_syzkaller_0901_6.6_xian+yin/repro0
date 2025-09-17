@@ -1,0 +1,980 @@
+Extracting prog: 31m38.142680647s
+Minimizing prog: 4h42m4.580788522s
+Simplifying prog options: 17m6.809992683s
+Extracting C: 7m38.449919528s
+Simplifying C: 0s
+
+
+extracting reproducer from 28 programs
+testing a last program of every proc
+single: executing 8 programs separately with timeout 6m0s
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_MAP$PAGES-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_DESTROY$ioas-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_DESTROY$stdev-ioctl$IOMMU_TEST_OP_CREATE_ACCESS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_TEST_OP_ACCESS_PAGES-ioctl$IOMMU_TEST_OP_DESTROY_ACCESS_PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, &(0x7f0000000180)={0x20, r1, 0x2, 0x0, &(0x7f00000001c0)=[{0x0, 0x1}, {0x3, 0x5}]})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f0000000380)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480), 0x0, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1})
+ioctl$IOMMU_DESTROY$stdev(r0, 0x3b80, &(0x7f0000000940)={0x8})
+ioctl$IOMMU_TEST_OP_CREATE_ACCESS(r0, 0x3ba0, &(0x7f0000000980)={0x48, 0x5, r1, 0x0, <r3=>0x0, 0x1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000a00)={0x28, 0x7, r1, 0x0, &(0x7f00000a0000)='LLLLLLLLLLLLLLLLLLLLL', 0x15})
+ioctl$IOMMU_TEST_OP_ACCESS_PAGES(r0, 0x3ba0, &(0x7f0000000a40)={0x48, 0x7, r3, 0x0, 0x0, <r4=>0x0, 0x0, 0x1000})
+ioctl$IOMMU_TEST_OP_DESTROY_ACCESS_PAGES(r0, 0x3ba0, &(0x7f0000000b80)={0x48, 0x6, r3, 0x0, r4})
+
+program did not crash
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_ACTIVATE_TARGET
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x24}}, 0x0)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-write$nci-read$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c' not found
+
+program crashed: INFO: task hung in nfc_targets_found
+single: successfully extracted reproducer
+found reproducer with 17 syscalls
+minimizing guilty program
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-write$nci-read$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-write$nci-read$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c' not found
+
+program crashed: INFO: task hung in nfc_urelease_event_work
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c' not found
+
+program crashed: INFO: task hung in nfc_targets_found
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-write$nci-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/time/timer.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/time/timer.c' not found
+
+program crashed: WARNING in call_timer_fn
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), 0xffffffffffffffff)
+sendmsg$NFC_CMD_DEV_UP(0xffffffffffffffff, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+r1 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r2 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r1)
+sendmsg$NFC_CMD_DEV_UP(r1, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r1, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+ioctl$IOCTL_GET_NCIDEV_IDX(0xffffffffffffffff, 0x0, &(0x7f00000000c0)=<r0=>0x0)
+r1 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r2 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r1)
+sendmsg$NFC_CMD_DEV_UP(r1, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r0}]}, 0x1c}}, 0x0)
+read$nci(0xffffffffffffffff, &(0x7f0000000200)=""/100, 0x64)
+write$nci(0xffffffffffffffff, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(0xffffffffffffffff, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(0xffffffffffffffff, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r1, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r0}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(0xffffffffffffffff, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(0xffffffffffffffff, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(0xffffffffffffffff, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(0xffffffffffffffff, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, 0x0, 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, 0x0)
+r1 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r2 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r1)
+sendmsg$NFC_CMD_DEV_UP(r1, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r1, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r2, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(0x0, r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, 0x0, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, 0x0}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={0x0}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, 0x0, 0x0)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, 0x0}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={0x0}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, 0x0, 0x0)
+
+program did not crash
+extracting C reproducer
+testing compiled C program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+program crashed: no output from test machine
+a never seen crash title: no output from test machine, ignore
+simplifying guilty program options
+testing program (duration=6m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:1 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+validation run: crashed=false
+reproducer is too unreliable: 0.00
+reproducing took 7h3m56.036721364s

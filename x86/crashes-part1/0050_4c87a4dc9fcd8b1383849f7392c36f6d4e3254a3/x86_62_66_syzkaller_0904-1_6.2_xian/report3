@@ -1,0 +1,180 @@
+------------[ cut here ]------------
+kernel BUG at mm/memory.c:2181!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 27963 Comm: syz.3.1981 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:vmf_insert_pfn_prot+0x18c/0x2f0 home/jiakai/62_66_amd_0904/linux62/linux-all/mm/memory.c:2181
+Code: 0b e8 98 31 e6 ff 4d 89 ee bf 20 00 00 00 41 83 e6 28 4c 89 f6 e8 d4 2a e6 ff 49 83 fe 20 0f 85 02 ff ff ff e8 75 31 e6 ff 90 <0f> 0b 49 bd ff ff ff ff ff ff 0f 00 e8 63 31 e6 ff 49 21 dd 48 89
+RSP: 0018:ffffc90001f53a80 EFLAGS: 00010212
+RAX: 000000000000011a RBX: 000000000000a8ad RCX: ffffc9000d801000
+RDX: 0000000000080000 RSI: ffffffff8158478b RDI: 0000000000000007
+RBP: 0000200000002000 R08: 0000000000000007 R09: 0000000000000020
+R10: 0000000000000020 R11: 0000000000000000 R12: ffff88804bd85320
+R13: 000000000c040475 R14: 0000000000000020 R15: ffff888040970158
+FS:  00007fb1d19e1640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000200000002b80 CR3: 0000000061c8c000 CR4: 0000000000752ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ drm_gem_shmem_fault+0x9f/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/gpu/drm/drm_gem_shmem_helper.c:562
+ __do_fault+0x49/0x190 home/jiakai/62_66_amd_0904/linux62/linux-all/mm/memory.c:4166
+ do_read_fault home/jiakai/62_66_amd_0904/linux62/linux-all/mm/memory.c:4517 [inline]
+ do_fault home/jiakai/62_66_amd_0904/linux62/linux-all/mm/memory.c:4646 [inline]
+ handle_pte_fault home/jiakai/62_66_amd_0904/linux62/linux-all/mm/memory.c:4934 [inline]
+ __handle_mm_fault+0x18f4/0x2650 home/jiakai/62_66_amd_0904/linux62/linux-all/mm/memory.c:5076
+ handle_mm_fault+0x228/0x5a0 home/jiakai/62_66_amd_0904/linux62/linux-all/mm/memory.c:5222
+ do_user_addr_fault home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/mm/fault.c:1428 [inline]
+ handle_page_fault home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/mm/fault.c:1519 [inline]
+ exc_page_fault+0x38e/0xe50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/mm/fault.c:1575
+ asm_exc_page_fault+0x26/0x30 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/idtentry.h:570
+RIP: 0010:copy_user_short_string+0xa/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/lib/copy_user_64.S:232
+Code: cc cc cc 89 d0 0f 01 ca c3 cc cc cc cc 01 ca eb df 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 89 d1 83 e2 07 c1 e9 03 74 12 <4c> 8b 06 4c 89 07 48 8d 76 08 48 8d 7f 08 ff c9 75 ee 21 d2 74 10
+RSP: 0018:ffffc90001f53d70 EFLAGS: 00050202
+RAX: 000000000000009c RBX: ffffc90001f53e68 RCX: 0000000000000001
+RDX: 0000000000000003 RSI: 0000200000002b80 RDI: ffff88805bf55208
+RBP: 000000000000000b R08: 0000000000000006 R09: 0000200000002b80
+R10: 00007fffffffeff5 R11: 0000000000040001 R12: 000000000000000b
+R13: 0000200000002b80 R14: 0000200000002b80 R15: 00007fffffffeff5
+ copy_user_generic home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/uaccess_64.h:37 [inline]
+ raw_copy_from_user home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/uaccess_64.h:52 [inline]
+ copyin home/jiakai/62_66_amd_0904/linux62/linux-all/lib/iov_iter.c:183 [inline]
+ copyin home/jiakai/62_66_amd_0904/linux62/linux-all/lib/iov_iter.c:175 [inline]
+ _copy_from_iter+0xfd/0x8b0 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/iov_iter.c:634
+ copy_from_iter home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/uio.h:187 [inline]
+ copy_from_iter_full home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/uio.h:194 [inline]
+ vhci_get_user home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/bluetooth/hci_vhci.c:395 [inline]
+ vhci_write+0xad/0x240 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/bluetooth/hci_vhci.c:511
+ call_write_iter home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/fs.h:2189 [inline]
+ new_sync_write home/jiakai/62_66_amd_0904/linux62/linux-all/fs/read_write.c:491 [inline]
+ vfs_write+0x412/0x530 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/read_write.c:584
+ ksys_write+0xa1/0x170 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/read_write.c:637
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7fb1d0bacbdf
+Code: 89 54 24 18 48 89 74 24 10 89 7c 24 08 e8 69 0d 03 00 48 8b 54 24 18 48 8b 74 24 10 41 89 c0 8b 7c 24 08 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 31 44 89 c7 48 89 44 24 08 e8 ac 0d 03 00 48
+RSP: 002b:00007fb1d19e0f60 EFLAGS: 00000293 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007fb1d0df5fa0 RCX: 00007fb1d0bacbdf
+RDX: 000000000000000b RSI: 0000200000002b80 RDI: 00000000000000ca
+RBP: 00007fb1d0c480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000200000002b80 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007fb1d0df6038 R14: 00007fb1d0df5fa0 R15: 00007fb1d19c1000
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:vmf_insert_pfn_prot+0x18c/0x2f0 home/jiakai/62_66_amd_0904/linux62/linux-all/mm/memory.c:2181
+Code: 0b e8 98 31 e6 ff 4d 89 ee bf 20 00 00 00 41 83 e6 28 4c 89 f6 e8 d4 2a e6 ff 49 83 fe 20 0f 85 02 ff ff ff e8 75 31 e6 ff 90 <0f> 0b 49 bd ff ff ff ff ff ff 0f 00 e8 63 31 e6 ff 49 21 dd 48 89
+RSP: 0018:ffffc90001f53a80 EFLAGS: 00010212
+RAX: 000000000000011a RBX: 000000000000a8ad RCX: ffffc9000d801000
+RDX: 0000000000080000 RSI: ffffffff8158478b RDI: 0000000000000007
+RBP: 0000200000002000 R08: 0000000000000007 R09: 0000000000000020
+R10: 0000000000000020 R11: 0000000000000000 R12: ffff88804bd85320
+R13: 000000000c040475 R14: 0000000000000020 R15: ffff888040970158
+FS:  00007fb1d19e1640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f86e9970298 CR3: 0000000061c8c000 CR4: 0000000000752ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	cc                   	int3
+   1:	cc                   	int3
+   2:	cc                   	int3
+   3:	89 d0                	mov    %edx,%eax
+   5:	0f 01 ca             	clac
+   8:	c3                   	ret
+   9:	cc                   	int3
+   a:	cc                   	int3
+   b:	cc                   	int3
+   c:	cc                   	int3
+   d:	01 ca                	add    %ecx,%edx
+   f:	eb df                	jmp    0xfffffff0
+  11:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+  18:	00 00 00 00
+  1c:	0f 1f 40 00          	nopl   0x0(%rax)
+  20:	89 d1                	mov    %edx,%ecx
+  22:	83 e2 07             	and    $0x7,%edx
+  25:	c1 e9 03             	shr    $0x3,%ecx
+  28:	74 12                	je     0x3c
+* 2a:	4c 8b 06             	mov    (%rsi),%r8 <-- trapping instruction
+  2d:	4c 89 07             	mov    %r8,(%rdi)
+  30:	48 8d 76 08          	lea    0x8(%rsi),%rsi
+  34:	48 8d 7f 08          	lea    0x8(%rdi),%rdi
+  38:	ff c9                	dec    %ecx
+  3a:	75 ee                	jne    0x2a
+  3c:	21 d2                	and    %edx,%edx
+  3e:	74 10                	je     0x50
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 27963 Comm: syz.3.1981 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:vmf_insert_pfn_prot+0x18c/0x2f0
+Code: 0b e8 98 31 e6 ff 4d 89 ee bf 20 00 00 00 41 83 e6 28 4c 89 f6 e8 d4 2a e6 ff 49 83 fe 20 0f 85 02 ff ff ff e8 75 31 e6 ff 90 <0f> 0b 49 bd ff ff ff ff ff ff 0f 00 e8 63 31 e6 ff 49 21 dd 48 89
+RSP: 0018:ffffc90001f53a80 EFLAGS: 00010212
+RAX: 000000000000011a RBX: 000000000000a8ad RCX: ffffc9000d801000
+RDX: 0000000000080000 RSI: ffffffff8158478b RDI: 0000000000000007
+RBP: 0000200000002000 R08: 0000000000000007 R09: 0000000000000020
+R10: 0000000000000020 R11: 0000000000000000 R12: ffff88804bd85320
+R13: 000000000c040475 R14: 0000000000000020 R15: ffff888040970158
+FS:  00007fb1d19e1640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000200000002b80 CR3: 0000000061c8c000 CR4: 0000000000752ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ drm_gem_shmem_fault+0x9f/0xe0
+ __do_fault+0x49/0x190
+ __handle_mm_fault+0x18f4/0x2650
+ handle_mm_fault+0x228/0x5a0
+ exc_page_fault+0x38e/0xe50
+ asm_exc_page_fault+0x26/0x30
+RIP: 0010:copy_user_short_string+0xa/0x50
+Code: cc cc cc 89 d0 0f 01 ca c3 cc cc cc cc 01 ca eb df 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 89 d1 83 e2 07 c1 e9 03 74 12 <4c> 8b 06 4c 89 07 48 8d 76 08 48 8d 7f 08 ff c9 75 ee 21 d2 74 10
+RSP: 0018:ffffc90001f53d70 EFLAGS: 00050202
+RAX: 000000000000009c RBX: ffffc90001f53e68 RCX: 0000000000000001
+RDX: 0000000000000003 RSI: 0000200000002b80 RDI: ffff88805bf55208
+RBP: 000000000000000b R08: 0000000000000006 R09: 0000200000002b80
+R10: 00007fffffffeff5 R11: 0000000000040001 R12: 000000000000000b
+R13: 0000200000002b80 R14: 0000200000002b80 R15: 00007fffffffeff5
+ _copy_from_iter+0xfd/0x8b0
+ vhci_write+0xad/0x240
+ vfs_write+0x412/0x530
+ ksys_write+0xa1/0x170
+ do_syscall_64+0x3d/0xc0
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7fb1d0bacbdf
+Code: 89 54 24 18 48 89 74 24 10 89 7c 24 08 e8 69 0d 03 00 48 8b 54 24 18 48 8b 74 24 10 41 89 c0 8b 7c 24 08 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 31 44 89 c7 48 89 44 24 08 e8 ac 0d 03 00 48
+RSP: 002b:00007fb1d19e0f60 EFLAGS: 00000293 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007fb1d0df5fa0 RCX: 00007fb1d0bacbdf
+RDX: 000000000000000b RSI: 0000200000002b80 RDI: 00000000000000ca
+RBP: 00007fb1d0c480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000200000002b80 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007fb1d0df6038 R14: 00007fb1d0df5fa0 R15: 00007fb1d19c1000
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:vmf_insert_pfn_prot+0x18c/0x2f0
+Code: 0b e8 98 31 e6 ff 4d 89 ee bf 20 00 00 00 41 83 e6 28 4c 89 f6 e8 d4 2a e6 ff 49 83 fe 20 0f 85 02 ff ff ff e8 75 31 e6 ff 90 <0f> 0b 49 bd ff ff ff ff ff ff 0f 00 e8 63 31 e6 ff 49 21 dd 48 89
+RSP: 0018:ffffc90001f53a80 EFLAGS: 00010212
+RAX: 000000000000011a RBX: 000000000000a8ad RCX: ffffc9000d801000
+RDX: 0000000000080000 RSI: ffffffff8158478b RDI: 0000000000000007
+RBP: 0000200000002000 R08: 0000000000000007 R09: 0000000000000020
+R10: 0000000000000020 R11: 0000000000000000 R12: ffff88804bd85320
+R13: 000000000c040475 R14: 0000000000000020 R15: ffff888040970158
+FS:  00007fb1d19e1640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f86e9970298 CR3: 0000000061c8c000 CR4: 0000000000752ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

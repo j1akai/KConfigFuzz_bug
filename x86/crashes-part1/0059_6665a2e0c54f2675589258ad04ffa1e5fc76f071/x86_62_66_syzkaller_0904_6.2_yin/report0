@@ -1,0 +1,36 @@
+kmalloc-8                 78KB        100KB
+kmem_cache_node           38KB         40KB
+kmem_cache                76KB         76KB
+Out of memory and no killable processes...
+Kernel panic - not syncing: System is deadlocked on memory
+CPU: 1 PID: 22014 Comm: kworker/u6:5 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events_unbound call_usermodehelper_exec_work
+Call Trace:
+ <TASK>
+ __dump_stack -all/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x72/0x95 -all/lib/dump_stack.c:106
+ panic+0x197/0x429 -all/kernel/panic.c:318
+ out_of_memory.cold+0x94/0xcd -all/mm/oom_kill.c:1171
+ __alloc_pages_may_oom -all/mm/page_alloc.c:4450 [inline]
+ __alloc_pages_slowpath -all/mm/page_alloc.c:5226 [inline]
+ __alloc_pages+0xea7/0x1020 -all/mm/page_alloc.c:5562
+ __alloc_pages_bulk+0x433/0x6f0 -all/mm/page_alloc.c:5497
+ alloc_pages_bulk_array_mempolicy+0xdd/0x2c0 -all/mm/mempolicy.c:2382
+ vm_area_alloc_pages -all/mm/vmalloc.c:2961 [inline]
+ __vmalloc_area_node -all/mm/vmalloc.c:3057 [inline]
+ __vmalloc_node_range+0x379/0xc90 -all/mm/vmalloc.c:3227
+ alloc_thread_stack_node -all/kernel/fork.c:311 [inline]
+ dup_task_struct -all/kernel/fork.c:987 [inline]
+ copy_process+0xd2b/0x2560 -all/kernel/fork.c:2097
+ kernel_clone+0xf7/0x610 -all/kernel/fork.c:2681
+ user_mode_thread+0x6b/0xa0 -all/kernel/fork.c:2757
+ call_usermodehelper_exec_work -all/kernel/umh.c:175 [inline]
+ call_usermodehelper_exec_work+0xc8/0x120 -all/kernel/umh.c:161
+ process_one_work+0x2c1/0x600 -all/kernel/workqueue.c:2289
+ worker_thread+0x5d/0x5c0 -all/kernel/workqueue.c:2436
+ kthread+0xfc/0x130 -all/kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 -all/arch/x86/entry/entry_64.S:308
+ </TASK>
+Kernel Offset: disabled
+Rebooting in 86400 seconds..

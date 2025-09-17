@@ -1,0 +1,34 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 51397 at net/bluetooth/hci_conn.c:625 hci_conn_timeout+0x44/0xb0 home/jiakai/62_66_amd_0904/linux68/linux/net/bluetooth/hci_conn.c:625
+Modules linked in:
+CPU: 0 PID: 51397 Comm: kworker/u7:0 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: hci2 hci_conn_timeout
+RIP: 0010:hci_conn_timeout+0x44/0xb0 home/jiakai/62_66_amd_0904/linux68/linux/net/bluetooth/hci_conn.c:625
+Code: e8 81 d9 b7 fc 85 db 78 1b e8 78 e0 b7 fc 31 ff 89 de e8 6f d9 b7 fc 85 db 74 12 5b 5d 41 5c e9 62 e0 b7 fc e8 5d e0 b7 fc 90 <0f> 0b 90 e8 54 e0 b7 fc 0f b6 9d 31 fd ff ff bf 01 00 00 00 4c 8d
+RSP: 0018:ffffc90001647e40 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 00000000ffffffff RCX: ffffffff848b664f
+RDX: ffff888019d46000 RSI: ffffffff848b6673 RDI: 0000000000000005
+RBP: ffff88804320ab08 R08: 0000000000000005 R09: 0000000000000000
+R10: 00000000ffffffff R11: 0000000000000005 R12: ffff888044ccea00
+R13: ffff88800a514400 R14: 00000000000000e0 R15: 0000000000000001
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f9d67fee000 CR3: 000000007ba82000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2633
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2706 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux68/linux/kernel/workqueue.c:2787
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+---[ end trace 0000000000000000 ]---
+Bluetooth: hci2: command 0x0406 tx timeout
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
