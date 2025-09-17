@@ -1,0 +1,731 @@
+Extracting prog: 32m27.828962014s
+Minimizing prog: 3h51m24.592282996s
+Simplifying prog options: 0s
+Extracting C: 7m18.372137836s
+Simplifying C: 49m17.932491654s
+
+
+extracting reproducer from 28 programs
+testing a last program of every proc
+single: executing 8 programs separately with timeout 6m0s
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_ALLOW_IOVAS
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, &(0x7f0000000180)={0x18, r1, 0x0, 0x0, &(0x7f00000001c0)})
+
+program did not crash
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0))
+r1 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r1)
+sendmsg$NFC_CMD_DEV_UP(r1, 0x0, 0x0)
+read$nci(r0, 0x0, 0x0)
+
+program did not crash
+testing program (duration=6m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-read$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_ACTIVATE_TARGET
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, 0x0}, 0x0)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c' not found
+
+program crashed: INFO: task hung in nci_stop_poll
+single: successfully extracted reproducer
+found reproducer with 18 syscalls
+minimizing guilty program
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-read$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c' not found
+
+program crashed: INFO: task hung in nfc_urelease_event_work
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-read$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-read$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-read$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c' not found
+
+program crashed: INFO: task hung in nfc_urelease_event_work
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-read$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c' not found
+
+program crashed: INFO: task hung in nfc_targets_found
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-write$nci-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-read$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c' not found
+
+program crashed: INFO: task hung in nfc_urelease_event_work
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-read$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-sendmsg$NFC_CMD_DEV_UP-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/kernel/sched/core.c' not found
+
+program crashed: INFO: task hung in nci_stop_poll
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-syz_genetlink_get_family_id$nfc-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-syz_init_net_socket$nl_generic-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-ioctl$IOCTL_GET_NCIDEV_IDX-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+write$nci(0xffffffffffffffff, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(0xffffffffffffffff, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(0xffffffffffffffff, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(0xffffffffffffffff, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(0xffffffffffffffff, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(0xffffffffffffffff, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(0xffffffffffffffff, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, 0x0, 0x2, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+program did not crash
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, 0x0, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1}}, 0x9)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+extracting C reproducer
+testing compiled C program (duration=6m22.137674904s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+simplifying C reproducer
+testing compiled C program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing compiled C program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+program crashed: no output from test machine
+a never seen crash title: no output from test machine, ignore
+testing compiled C program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:true Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing compiled C program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing compiled C program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing compiled C program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing compiled C program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+testing program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+validation run: crashed=true
+testing program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+validation run: crashed=true
+testing program (duration=6m22.137674904s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$nci-write$nci-write$nci-write$nci-sendmsg$NFC_CMD_START_POLL-write$nci-write$nci-write$nci-write$nci
+detailed listing:
+executing program 0:
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+sendmsg$NFC_CMD_START_POLL(0xffffffffffffffff, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+write$nci(r0, 0x0, 0x0)
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c' not found
+
+program crashed: BUG: MAX_LOCKDEP_KEYS too low!
+validation run: crashed=true
+reproducing took 5h44m36.254340212s
+repro crashed as (corrupted=false):
+BUG: MAX_LOCKDEP_KEYS too low!
+turning off the locking correctness validator.
+CPU: 0 PID: 45778 Comm: syz.1.3879 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:106
+ register_lock_class+0x813/0x9b0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:1321
+ __lock_acquire+0xdb/0x2050 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5013
+ lock_acquire+0x1a9/0x400 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5753
+ __flush_workqueue+0x199/0x16c0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:3143
+ nci_close_device+0x157/0x5f0 home/jiakai/62_66_amd_0901/linux66/linux/net/nfc/nci/core.c:567
+ nci_unregister_device+0x3c/0x250 home/jiakai/62_66_amd_0901/linux66/linux/net/nfc/nci/core.c:1297
+ virtual_ncidev_close+0x55/0x90 home/jiakai/62_66_amd_0901/linux66/linux/drivers/nfc/virtual_ncidev.c:163
+ __fput+0x405/0x940 home/jiakai/62_66_amd_0901/linux66/linux/fs/file_table.c:384
+ task_work_run+0x243/0x300 home/jiakai/62_66_amd_0901/linux66/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0901/linux66/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop+0x134/0x160 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:171
+ exit_to_user_mode_prepare+0xad/0x110 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x2e/0x70 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:296
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7feed69ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fff3e6e9fd8 EFLAGS: 00000246 ORIG_RAX: 00000000000001b4
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007feed69ae16d
+RDX: 0000000000000000 RSI: 000000000000001e RDI: 0000000000000003
+RBP: 00007fff3e6ea078 R08: 0000001b31a200d7 R09: 0000000000000000
+R10: 0000001b31e20000 R11: 0000000000000246 R12: ffffffffffffffff
+R13: 00007feed6bf5fac R14: 00007feed6bf5fa0 R15: 0000000000000000
+ </TASK>
+
+final repro crashed as (corrupted=false):
+BUG: MAX_LOCKDEP_KEYS too low!
+turning off the locking correctness validator.
+CPU: 0 PID: 45778 Comm: syz.1.3879 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:106
+ register_lock_class+0x813/0x9b0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:1321
+ __lock_acquire+0xdb/0x2050 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5013
+ lock_acquire+0x1a9/0x400 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5753
+ __flush_workqueue+0x199/0x16c0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:3143
+ nci_close_device+0x157/0x5f0 home/jiakai/62_66_amd_0901/linux66/linux/net/nfc/nci/core.c:567
+ nci_unregister_device+0x3c/0x250 home/jiakai/62_66_amd_0901/linux66/linux/net/nfc/nci/core.c:1297
+ virtual_ncidev_close+0x55/0x90 home/jiakai/62_66_amd_0901/linux66/linux/drivers/nfc/virtual_ncidev.c:163
+ __fput+0x405/0x940 home/jiakai/62_66_amd_0901/linux66/linux/fs/file_table.c:384
+ task_work_run+0x243/0x300 home/jiakai/62_66_amd_0901/linux66/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0901/linux66/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop+0x134/0x160 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:171
+ exit_to_user_mode_prepare+0xad/0x110 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x2e/0x70 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:296
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7feed69ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fff3e6e9fd8 EFLAGS: 00000246 ORIG_RAX: 00000000000001b4
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007feed69ae16d
+RDX: 0000000000000000 RSI: 000000000000001e RDI: 0000000000000003
+RBP: 00007fff3e6ea078 R08: 0000001b31a200d7 R09: 0000000000000000
+R10: 0000001b31e20000 R11: 0000000000000246 R12: ffffffffffffffff
+R13: 00007feed6bf5fac R14: 00007feed6bf5fa0 R15: 0000000000000000
+ </TASK>
+

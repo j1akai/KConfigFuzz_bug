@@ -1,0 +1,32 @@
+BUG: MAX_LOCKDEP_KEYS too low!
+turning off the locking correctness validator.
+CPU: 0 PID: 45778 Comm: syz.1.3879 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x1e3/0x2d0 home/jiakai/62_66_amd_0901/linux66/linux/lib/dump_stack.c:106
+ register_lock_class+0x813/0x9b0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:1321
+ __lock_acquire+0xdb/0x2050 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5013
+ lock_acquire+0x1a9/0x400 home/jiakai/62_66_amd_0901/linux66/linux/kernel/locking/lockdep.c:5753
+ __flush_workqueue+0x199/0x16c0 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:3143
+ nci_close_device+0x157/0x5f0 home/jiakai/62_66_amd_0901/linux66/linux/net/nfc/nci/core.c:567
+ nci_unregister_device+0x3c/0x250 home/jiakai/62_66_amd_0901/linux66/linux/net/nfc/nci/core.c:1297
+ virtual_ncidev_close+0x55/0x90 home/jiakai/62_66_amd_0901/linux66/linux/drivers/nfc/virtual_ncidev.c:163
+ __fput+0x405/0x940 home/jiakai/62_66_amd_0901/linux66/linux/fs/file_table.c:384
+ task_work_run+0x243/0x300 home/jiakai/62_66_amd_0901/linux66/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0901/linux66/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop+0x134/0x160 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:171
+ exit_to_user_mode_prepare+0xad/0x110 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x2e/0x70 home/jiakai/62_66_amd_0901/linux66/linux/kernel/entry/common.c:296
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7feed69ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fff3e6e9fd8 EFLAGS: 00000246 ORIG_RAX: 00000000000001b4
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007feed69ae16d
+RDX: 0000000000000000 RSI: 000000000000001e RDI: 0000000000000003
+RBP: 00007fff3e6ea078 R08: 0000001b31a200d7 R09: 0000000000000000
+R10: 0000001b31e20000 R11: 0000000000000246 R12: ffffffffffffffff
+R13: 00007feed6bf5fac R14: 00007feed6bf5fa0 R15: 0000000000000000
+ </TASK>

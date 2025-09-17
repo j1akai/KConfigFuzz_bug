@@ -1,0 +1,125 @@
+fuse: Bad value for 'fd'
+loop9: detected capacity change from 0 to 1024
+------------[ cut here ]------------
+kernel BUG at fs/hfsplus/xattr.c:175!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 85598 Comm: syz.9.9231 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:hfsplus_create_attributes_file home/jiakai/62_66_amd_0904/linux68/linux/fs/hfsplus/xattr.c:175 [inline]
+RIP: 0010:__hfsplus_setxattr+0xed0/0x1030 home/jiakai/62_66_amd_0904/linux68/linux/fs/hfsplus/xattr.c:331
+Code: fe ff ff e8 d2 3d a8 ff 49 8d 5c 24 ff e9 60 fe ff ff e8 c3 3d a8 ff 4c 89 e7 e8 2b 1a be ff e9 7f fe ff ff e8 b1 3d a8 ff 90 <0f> 0b e8 a9 3d a8 ff 48 c7 c7 40 1a 23 86 e8 0d 84 9b ff 8b 5c 24
+RSP: 0018:ffffc9000263f8a0 EFLAGS: 00010216
+RAX: 000000000000218c RBX: ffff888024de6200 RCX: ffffc9000ed71000
+RDX: 0000000000080000 RSI: ffffffff819b091f RDI: 0000000000000007
+RBP: ffff8880278e6e08 R08: 0000000000000007 R09: ffff888052440000
+R10: 0000000000010000 R11: 0000000000000000 R12: 0000000000000000
+R13: ffff88804fc20800 R14: ffff888051e94400 R15: ffffc9000263f8f8
+FS:  00007f11a9b5e640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 000000001f300000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ hfsplus_setxattr+0xaf/0xf0 home/jiakai/62_66_amd_0904/linux68/linux/fs/hfsplus/xattr.c:434
+ __vfs_setxattr+0x103/0x140 home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:201
+ __vfs_setxattr_noperm+0xa9/0x310 home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:235
+ __vfs_setxattr_locked+0x15f/0x190 home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:296
+ vfs_setxattr+0xc7/0x220 home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:322
+ do_setxattr+0xb5/0xc0 home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:630
+ setxattr+0xc1/0xe0 home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:653
+ path_setxattr+0xf0/0x140 home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:672
+ __do_sys_lsetxattr home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:695 [inline]
+ __se_sys_lsetxattr home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:691 [inline]
+ __x64_sys_lsetxattr+0x29/0x40 home/jiakai/62_66_amd_0904/linux68/linux/fs/xattr.c:691
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0xb0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f11a8dae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f11a9b5df98 EFLAGS: 00000246 ORIG_RAX: 00000000000000bd
+RAX: ffffffffffffffda RBX: 00007f11a8ff5fa0 RCX: 00007f11a8dae16d
+RDX: 0000200000000240 RSI: 0000200000000140 RDI: 0000200000000100
+RBP: 00007f11a8e480f0 R08: 0000000000000002 R09: 0000000000000000
+R10: 0000000000000108 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f11a8ff6038 R14: 00007f11a8ff5fa0 R15: 00007f11a9b3e000
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:hfsplus_create_attributes_file home/jiakai/62_66_amd_0904/linux68/linux/fs/hfsplus/xattr.c:175 [inline]
+RIP: 0010:__hfsplus_setxattr+0xed0/0x1030 home/jiakai/62_66_amd_0904/linux68/linux/fs/hfsplus/xattr.c:331
+Code: fe ff ff e8 d2 3d a8 ff 49 8d 5c 24 ff e9 60 fe ff ff e8 c3 3d a8 ff 4c 89 e7 e8 2b 1a be ff e9 7f fe ff ff e8 b1 3d a8 ff 90 <0f> 0b e8 a9 3d a8 ff 48 c7 c7 40 1a 23 86 e8 0d 84 9b ff 8b 5c 24
+RSP: 0018:ffffc9000263f8a0 EFLAGS: 00010216
+RAX: 000000000000218c RBX: ffff888024de6200 RCX: ffffc9000ed71000
+RDX: 0000000000080000 RSI: ffffffff819b091f RDI: 0000000000000007
+RBP: ffff8880278e6e08 R08: 0000000000000007 R09: ffff888052440000
+R10: 0000000000010000 R11: 0000000000000000 R12: 0000000000000000
+R13: ffff88804fc20800 R14: ffff888051e94400 R15: ffffc9000263f8f8
+FS:  00007f11a9b5e640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f7842fbb938 CR3: 000000001f300000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 85598 Comm: syz.9.9231 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__hfsplus_setxattr+0xed0/0x1030
+Code: fe ff ff e8 d2 3d a8 ff 49 8d 5c 24 ff e9 60 fe ff ff e8 c3 3d a8 ff 4c 89 e7 e8 2b 1a be ff e9 7f fe ff ff e8 b1 3d a8 ff 90 <0f> 0b e8 a9 3d a8 ff 48 c7 c7 40 1a 23 86 e8 0d 84 9b ff 8b 5c 24
+RSP: 0018:ffffc9000263f8a0 EFLAGS: 00010216
+RAX: 000000000000218c RBX: ffff888024de6200 RCX: ffffc9000ed71000
+RDX: 0000000000080000 RSI: ffffffff819b091f RDI: 0000000000000007
+RBP: ffff8880278e6e08 R08: 0000000000000007 R09: ffff888052440000
+R10: 0000000000010000 R11: 0000000000000000 R12: 0000000000000000
+R13: ffff88804fc20800 R14: ffff888051e94400 R15: ffffc9000263f8f8
+FS:  00007f11a9b5e640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 000000001f300000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ hfsplus_setxattr+0xaf/0xf0
+ __vfs_setxattr+0x103/0x140
+ __vfs_setxattr_noperm+0xa9/0x310
+ __vfs_setxattr_locked+0x15f/0x190
+ vfs_setxattr+0xc7/0x220
+ do_setxattr+0xb5/0xc0
+ setxattr+0xc1/0xe0
+ path_setxattr+0xf0/0x140
+ __x64_sys_lsetxattr+0x29/0x40
+ do_syscall_64+0xb0/0x1e0
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f11a8dae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f11a9b5df98 EFLAGS: 00000246 ORIG_RAX: 00000000000000bd
+RAX: ffffffffffffffda RBX: 00007f11a8ff5fa0 RCX: 00007f11a8dae16d
+RDX: 0000200000000240 RSI: 0000200000000140 RDI: 0000200000000100
+RBP: 00007f11a8e480f0 R08: 0000000000000002 R09: 0000000000000000
+R10: 0000000000000108 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f11a8ff6038 R14: 00007f11a8ff5fa0 R15: 00007f11a9b3e000
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:__hfsplus_setxattr+0xed0/0x1030
+Code: fe ff ff e8 d2 3d a8 ff 49 8d 5c 24 ff e9 60 fe ff ff e8 c3 3d a8 ff 4c 89 e7 e8 2b 1a be ff e9 7f fe ff ff e8 b1 3d a8 ff 90 <0f> 0b e8 a9 3d a8 ff 48 c7 c7 40 1a 23 86 e8 0d 84 9b ff 8b 5c 24
+RSP: 0018:ffffc9000263f8a0 EFLAGS: 00010216
+RAX: 000000000000218c RBX: ffff888024de6200 RCX: ffffc9000ed71000
+RDX: 0000000000080000 RSI: ffffffff819b091f RDI: 0000000000000007
+RBP: ffff8880278e6e08 R08: 0000000000000007 R09: ffff888052440000
+R10: 0000000000010000 R11: 0000000000000000 R12: 0000000000000000
+R13: ffff88804fc20800 R14: ffff888051e94400 R15: ffffc9000263f8f8
+FS:  00007f11a9b5e640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f7842fbb938 CR3: 000000001f300000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

@@ -1,0 +1,78 @@
+BUG: unable to handle page fault for address: 0000000000412dd9
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 0 P4D 0 
+Oops: 0002 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 12713 Comm: kworker/u4:5 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: bat_events batadv_dat_purge
+RIP: 0010:__pv_queued_spin_lock_slowpath+0x244/0x380 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/locking/qspinlock.c:474
+Code: ff ff 83 e0 03 c1 ea 12 4c 8d 6b 14 41 be 01 00 00 00 48 c1 e0 05 4c 8d a0 80 db 02 00 8d 42 ff 48 98 4c 03 24 c5 00 a9 18 86 <49> 89 1c 24 b8 00 80 00 00 eb 15 84 c0 75 0a 41 0f b6 54 24 14 84
+RSP: 0018:ffffc9000f2bbdd8 EFLAGS: 00010202
+RAX: 0000000000001659 RBX: ffff88807ec2db80 RCX: 0000000000000001
+RDX: 000000000000165a RSI: 0000000000000000 RDI: ffff88804891eff4
+RBP: ffff88804891eff4 R08: 0000000000000004 R09: 00000000000003fd
+R10: 0000000000000400 R11: 000000000000000b R12: 0000000000412dd9
+R13: ffff88807ec2db94 R14: 0000000000000001 R15: 0000000000080000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000412dd9 CR3: 000000000b628000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ pv_queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/paravirt.h:591 [inline]
+ queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/qspinlock.h:51 [inline]
+ queued_spin_lock home/jiakai/62_66_amd_0904/linux62/linux-all/include/asm-generic/qspinlock.h:114 [inline]
+ do_raw_spin_lock home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/spinlock.h:186 [inline]
+ __raw_spin_lock_bh home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/spinlock_api_smp.h:127 [inline]
+ _raw_spin_lock_bh+0x32/0x40 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/locking/spinlock.c:178
+ spin_lock_bh home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/spinlock.h:355 [inline]
+ __batadv_dat_purge.part.0+0x70/0x1f0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/batman-adv/distributed-arp-table.c:175
+ __batadv_dat_purge home/jiakai/62_66_amd_0904/linux62/linux-all/net/batman-adv/distributed-arp-table.c:168 [inline]
+ batadv_dat_purge+0x33/0xa0 home/jiakai/62_66_amd_0904/linux62/linux-all/net/batman-adv/distributed-arp-table.c:206
+ process_one_work+0x2c1/0x600 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2289
+ worker_thread+0x5d/0x5c0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2436
+ kthread+0xfc/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/entry_64.S:308
+ </TASK>
+Modules linked in:
+CR2: 0000000000412dd9
+---[ end trace 0000000000000000 ]---
+RIP: 0010:__pv_queued_spin_lock_slowpath+0x244/0x380 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/locking/qspinlock.c:474
+Code: ff ff 83 e0 03 c1 ea 12 4c 8d 6b 14 41 be 01 00 00 00 48 c1 e0 05 4c 8d a0 80 db 02 00 8d 42 ff 48 98 4c 03 24 c5 00 a9 18 86 <49> 89 1c 24 b8 00 80 00 00 eb 15 84 c0 75 0a 41 0f b6 54 24 14 84
+RSP: 0018:ffffc9000f2bbdd8 EFLAGS: 00010202
+RAX: 0000000000001659 RBX: ffff88807ec2db80 RCX: 0000000000000001
+RDX: 000000000000165a RSI: 0000000000000000 RDI: ffff88804891eff4
+RBP: ffff88804891eff4 R08: 0000000000000004 R09: 00000000000003fd
+R10: 0000000000000400 R11: 000000000000000b R12: 0000000000412dd9
+R13: ffff88807ec2db94 R14: 0000000000000001 R15: 0000000000080000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000412dd9 CR3: 000000000b628000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+----------------
+Code disassembly (best guess), 1 bytes skipped:
+   0:	ff 83 e0 03 c1 ea    	incl   -0x153efc20(%rbx)
+   6:	12 4c 8d 6b          	adc    0x6b(%rbp,%rcx,4),%cl
+   a:	14 41                	adc    $0x41,%al
+   c:	be 01 00 00 00       	mov    $0x1,%esi
+  11:	48 c1 e0 05          	shl    $0x5,%rax
+  15:	4c 8d a0 80 db 02 00 	lea    0x2db80(%rax),%r12
+  1c:	8d 42 ff             	lea    -0x1(%rdx),%eax
+  1f:	48 98                	cltq
+  21:	4c 03 24 c5 00 a9 18 	add    -0x79e75700(,%rax,8),%r12
+  28:	86
+* 29:	49 89 1c 24          	mov    %rbx,(%r12) <-- trapping instruction
+  2d:	b8 00 80 00 00       	mov    $0x8000,%eax
+  32:	eb 15                	jmp    0x49
+  34:	84 c0                	test   %al,%al
+  36:	75 0a                	jne    0x42
+  38:	41 0f b6 54 24 14    	movzbl 0x14(%r12),%edx
+  3e:	84                   	.byte 0x84
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

@@ -1,0 +1,37 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 115 at fs/jfs/jfs_dmap.c:2873 dbAdjTree+0x145/0x150 home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_dmap.c:2873
+Modules linked in:
+CPU: 1 PID: 115 Comm: jfsCommit Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:dbAdjTree+0x145/0x150 home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_dmap.c:2873
+Code: 44 24 07 e8 ad 79 68 ff 0f b6 44 24 07 38 d8 75 84 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e 41 5f e9 b1 81 68 ff e8 ac 81 68 ff 90 <0f> 0b 90 eb e2 66 0f 1f 44 00 00 90 90 90 90 90 90 90 90 90 90 90
+RSP: 0000:ffffc9000161fc40 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000155 RCX: ffffffff81dac42a
+RDX: ffff88800aef1800 RSI: ffffffff81dac524 RDI: 0000000000000004
+RBP: 000000000a050001 R08: 0000000000000004 R09: 0000000000000155
+R10: 000000000a050001 R11: 0000000000000000 R12: ffff88801af7b010
+R13: 0000000000000005 R14: ffff88801af7b010 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f1bf6113000 CR3: 0000000028116000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ dbJoin+0x14d/0x170 home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_dmap.c:2841
+ dbFreeBits+0x105/0x450 home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_dmap.c:2338
+ dbFreeDmap+0x34/0x110 home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_dmap.c:2087
+ dbFree+0x100/0x2a0 home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_dmap.c:409
+ txFreeMap+0x315/0x5f0 home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_txnmgr.c:2534
+ txUpdateMap+0x1c6/0x5b0 home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_txnmgr.c:2330
+ txLazyCommit home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_txnmgr.c:2664 [inline]
+ jfs_lazycommit+0x2be/0x4d0 home/jiakai/62_66_amd_0904/linux68/linux/fs/jfs/jfs_txnmgr.c:2733
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux68/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/entry_64.S:243
+ </TASK>
+---[ end trace 0000000000000000 ]---
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
