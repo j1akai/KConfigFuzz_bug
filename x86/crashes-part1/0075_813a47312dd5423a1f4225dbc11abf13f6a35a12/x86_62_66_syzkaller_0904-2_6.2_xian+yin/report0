@@ -1,0 +1,66 @@
+F2FS-fs (loop5) : inject invalid blkaddr in f2fs_is_valid_blkaddr of verify_blkaddr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/f2fs.h:3449 [inline]
+F2FS-fs (loop5) : inject invalid blkaddr in f2fs_is_valid_blkaddr of verify_fio_blkaddr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/segment.h:716 [inline]
+F2FS-fs (loop5) : inject invalid blkaddr in f2fs_is_valid_blkaddr of f2fs_submit_page_write+0x1db/0x7d0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/data.c:984
+F2FS-fs (loop5): invalid blkaddr: 10326, type: 7, run fsck to fix.
+------------[ cut here ]------------
+kernel BUG at fs/f2fs/f2fs.h:3452!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 9 Comm: kworker/u5:0 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: writeback wb_workfn (flush-7:5)
+RIP: 0010:verify_blkaddr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/f2fs.h:3452 [inline]
+RIP: 0010:verify_blkaddr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/f2fs.h:3446 [inline]
+RIP: 0010:verify_fio_blkaddr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/segment.h:716 [inline]
+RIP: 0010:f2fs_submit_page_write+0x7c7/0x7d0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/data.c:984
+Code: 28 eb 00 86 e8 bb 29 93 02 90 0f 0b 41 89 cd e8 4f cb 1e ff 44 89 e1 44 89 ea 48 89 ef 48 c7 c6 28 eb 00 86 e8 9b 29 93 02 90 <0f> 0b 0f 1f 80 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90
+RSP: 0018:ffffc90000367698 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff88804c847000 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 203a726464613246 R12: 0000000000000007
+R13: 0000000000002856 R14: ffff88804f6cfd18 R15: ffffc90000367878
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000200000005000 CR3: 0000000062e60000 CR4: 0000000000750ef0
+DR0: 0000000000000006 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000ffff0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ do_write_page+0x6f/0x210 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/segment.c:3393
+ f2fs_outplace_write_data+0x9e/0xf0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/segment.c:3452
+ f2fs_do_write_data_page+0x91d/0x1000 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/data.c:2745
+ f2fs_write_single_data_page+0xa06/0xcf0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/data.c:2863
+ f2fs_write_cache_pages+0x4e0/0x1010 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/data.c:3115
+ __f2fs_write_data_pages home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/data.c:3265 [inline]
+ f2fs_write_data_pages+0x576/0x5c0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/data.c:3292
+ do_writepages+0xfe/0x260 home/jiakai/62_66_amd_0904/linux62/linux-all/mm/page-writeback.c:2581
+ __writeback_single_inode+0x69/0x5a0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/fs-writeback.c:1598
+ writeback_sb_inodes+0x2db/0x720 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/fs-writeback.c:1889
+ wb_writeback+0xf1/0x460 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/fs-writeback.c:2063
+ wb_do_writeback home/jiakai/62_66_amd_0904/linux62/linux-all/fs/fs-writeback.c:2206 [inline]
+ wb_workfn+0x105/0x6c0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/fs-writeback.c:2246
+ process_one_work+0x2c1/0x600 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2289
+ worker_thread+0x5d/0x5c0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2436
+ kthread+0xfc/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/entry_64.S:308
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:verify_blkaddr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/f2fs.h:3452 [inline]
+RIP: 0010:verify_blkaddr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/f2fs.h:3446 [inline]
+RIP: 0010:verify_fio_blkaddr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/segment.h:716 [inline]
+RIP: 0010:f2fs_submit_page_write+0x7c7/0x7d0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/f2fs/data.c:984
+Code: 28 eb 00 86 e8 bb 29 93 02 90 0f 0b 41 89 cd e8 4f cb 1e ff 44 89 e1 44 89 ea 48 89 ef 48 c7 c6 28 eb 00 86 e8 9b 29 93 02 90 <0f> 0b 0f 1f 80 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90
+RSP: 0018:ffffc90000367698 EFLAGS: 00010282
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff8132d790 RDI: 0000000000000001
+RBP: ffff88804c847000 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 203a726464613246 R12: 0000000000000007
+R13: 0000000000002856 R14: ffff88804f6cfd18 R15: ffffc90000367878
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fcda46fb000 CR3: 0000000062e60000 CR4: 0000000000750ef0
+DR0: 0000000000000006 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000ffff0ff0 DR7: 0000000000000400
+PKRU: 55555554

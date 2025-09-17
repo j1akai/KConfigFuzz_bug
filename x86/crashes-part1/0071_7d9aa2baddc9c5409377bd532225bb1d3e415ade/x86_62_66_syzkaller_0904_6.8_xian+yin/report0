@@ -1,0 +1,148 @@
+BUG: scheduling while atomic: syz.6.7181/65850/0x00000002
+Modules linked in:
+
+CPU: 1 PID: 65850 Comm: syz.6.7181 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0904/linux68/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x72/0xa0 home/jiakai/62_66_amd_0904/linux68/linux/lib/dump_stack.c:106
+ __schedule_bug+0x4d/0x60 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:5943
+ schedule_debug home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:5970 [inline]
+ __schedule+0x102a/0x14e0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6620
+ __schedule_loop home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6802 [inline]
+ schedule+0x2d/0xd0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6817
+ schedule_timeout+0x1c2/0x1d0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/time/timer.c:2159
+ ___down_common home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/semaphore.c:225 [inline]
+ __down_common+0x119/0x210 home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/semaphore.c:246
+ down+0x42/0x60 home/jiakai/62_66_amd_0904/linux68/linux/kernel/locking/semaphore.c:63
+ console_lock+0x38/0x90 home/jiakai/62_66_amd_0904/linux68/linux/kernel/printk/printk.c:2640
+ do_con_write+0x8a/0x1010 home/jiakai/62_66_amd_0904/linux68/linux/drivers/tty/vt/vt.c:2862
+ con_write+0x23/0xa0 home/jiakai/62_66_amd_0904/linux68/linux/drivers/tty/vt/vt.c:3251
+ gsmld_write+0xb0/0xd0 home/jiakai/62_66_amd_0904/linux68/linux/drivers/tty/n_gsm.c:3724
+ iterate_tty_write home/jiakai/62_66_amd_0904/linux68/linux/drivers/tty/tty_io.c:1021 [inline]
+ file_tty_write.constprop.0+0x206/0x480 home/jiakai/62_66_amd_0904/linux68/linux/drivers/tty/tty_io.c:1096
+ call_write_iter home/jiakai/62_66_amd_0904/linux68/linux/include/linux/fs.h:2087 [inline]
+ new_sync_write home/jiakai/62_66_amd_0904/linux68/linux/fs/read_write.c:497 [inline]
+ vfs_write+0x545/0x680 home/jiakai/62_66_amd_0904/linux68/linux/fs/read_write.c:590
+ ksys_write+0xa1/0x170 home/jiakai/62_66_amd_0904/linux68/linux/fs/read_write.c:643
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0xb0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f16df5ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f16e03b8f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007f16df7f5fa0 RCX: 00007f16df5ae16d
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000003
+RBP: 00007f16df6480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f16df7f6038 R14: 00007f16df7f5fa0 R15: 00007f16e0399000
+ </TASK>
+BUG: scheduling while atomic: syz.6.7181/65850/0x00000000
+Modules linked in:
+CPU: 1 PID: 65850 Comm: syz.6.7181 Tainted: G        W          6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0904/linux68/linux/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x72/0xa0 home/jiakai/62_66_amd_0904/linux68/linux/lib/dump_stack.c:106
+ __schedule_bug+0x4d/0x60 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:5943
+ schedule_debug home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:5970 [inline]
+ __schedule+0x102a/0x14e0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6620
+ __schedule_loop home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6802 [inline]
+ schedule+0x2d/0xd0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6817
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:96 [inline]
+ exit_to_user_mode_prepare home/jiakai/62_66_amd_0904/linux68/linux/include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x84/0x190 home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:212
+ do_syscall_64+0xc0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f16df5ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f16e03b8f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: 0000000000000000 RBX: 00007f16df7f5fa0 RCX: 00007f16df5ae16d
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000003
+RBP: 00007f16df6480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f16df7f6038 R14: 00007f16df7f5fa0 R15: 00007f16e0399000
+ </TASK>
+BUG: kernel NULL pointer dereference, address: 0000000000000098
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 5eb15067 P4D 5eb15067 PUD 0 
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 65850 Comm: syz.6.7181 Tainted: G        W          6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:is_same_group home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/fair.c:418 [inline]
+RIP: 0010:pick_next_task_fair+0x245/0x490 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/fair.c:8448
+Code: 8b bd 18 01 00 00 4d 8d a5 80 00 00 00 4d 85 f6 75 2c eb 33 48 8b bd 98 00 00 00 48 89 ee e8 52 87 ff ff 48 8b ad 90 00 00 00 <4c> 8b b5 98 00 00 00 49 8b bc 24 98 00 00 00 4d 85 f6 74 09 4c 39
+RSP: 0018:ffffc9000214be18 EFLAGS: 00010006
+RAX: 0000004167009b02 RBX: ffff88807ec2e440 RCX: 0000000000000009
+RDX: ffff888049a50e00 RSI: 0000000000007000 RDI: 0000000000000098
+RBP: 0000000000000000 R08: 000000000000007c R09: ffff888049a51800
+R10: 0000000000000239 R11: 0000000001439bdb R12: 0000000000000000
+R13: 0000000000000000 R14: 0000000000000000 R15: ffff88800bf59800
+FS:  00007f16e03b9640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000098 CR3: 000000006243e000 CR4: 0000000000752ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ __pick_next_task home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6021 [inline]
+ pick_next_task home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6111 [inline]
+ __schedule+0x194/0x14e0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6691
+ __schedule_loop home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6802 [inline]
+ schedule+0x2d/0xd0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/core.c:6817
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:96 [inline]
+ exit_to_user_mode_prepare home/jiakai/62_66_amd_0904/linux68/linux/include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x84/0x190 home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:212
+ do_syscall_64+0xc0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f16df5ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f16e03b8f98 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: 0000000000000000 RBX: 00007f16df7f5fa0 RCX: 00007f16df5ae16d
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000003
+RBP: 00007f16df6480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f16df7f6038 R14: 00007f16df7f5fa0 R15: 00007f16e0399000
+ </TASK>
+Modules linked in:
+CR2: 0000000000000098
+---[ end trace 0000000000000000 ]---
+RIP: 0010:is_same_group home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/fair.c:418 [inline]
+RIP: 0010:pick_next_task_fair+0x245/0x490 home/jiakai/62_66_amd_0904/linux68/linux/kernel/sched/fair.c:8448
+Code: 8b bd 18 01 00 00 4d 8d a5 80 00 00 00 4d 85 f6 75 2c eb 33 48 8b bd 98 00 00 00 48 89 ee e8 52 87 ff ff 48 8b ad 90 00 00 00 <4c> 8b b5 98 00 00 00 49 8b bc 24 98 00 00 00 4d 85 f6 74 09 4c 39
+RSP: 0018:ffffc9000214be18 EFLAGS: 00010006
+RAX: 0000004167009b02 RBX: ffff88807ec2e440 RCX: 0000000000000009
+RDX: ffff888049a50e00 RSI: 0000000000007000 RDI: 0000000000000098
+RBP: 0000000000000000 R08: 000000000000007c R09: ffff888049a51800
+R10: 0000000000000239 R11: 0000000001439bdb R12: 0000000000000000
+R13: 0000000000000000 R14: 0000000000000000 R15: ffff88800bf59800
+FS:  00007f16e03b9640(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000098 CR3: 000000006243e000 CR4: 0000000000752ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	8b bd 18 01 00 00    	mov    0x118(%rbp),%edi
+   6:	4d 8d a5 80 00 00 00 	lea    0x80(%r13),%r12
+   d:	4d 85 f6             	test   %r14,%r14
+  10:	75 2c                	jne    0x3e
+  12:	eb 33                	jmp    0x47
+  14:	48 8b bd 98 00 00 00 	mov    0x98(%rbp),%rdi
+  1b:	48 89 ee             	mov    %rbp,%rsi
+  1e:	e8 52 87 ff ff       	call   0xffff8775
+  23:	48 8b ad 90 00 00 00 	mov    0x90(%rbp),%rbp
+* 2a:	4c 8b b5 98 00 00 00 	mov    0x98(%rbp),%r14 <-- trapping instruction
+  31:	49 8b bc 24 98 00 00 	mov    0x98(%r12),%rdi
+  38:	00
+  39:	4d 85 f6             	test   %r14,%r14
+  3c:	74 09                	je     0x47
+  3e:	4c                   	rex.WR
+  3f:	39                   	.byte 0x39

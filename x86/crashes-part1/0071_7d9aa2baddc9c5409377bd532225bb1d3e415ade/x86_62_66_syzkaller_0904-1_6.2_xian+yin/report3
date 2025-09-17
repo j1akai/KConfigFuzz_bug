@@ -1,0 +1,72 @@
+BUG: scheduling while atomic: agetty/59921/0x00000002
+Modules linked in:
+CPU: 1 PID: 59921 Comm: agetty Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack home/jiakai/62_66_amd_0904/linux62/linux-all/lib/dump_stack.c:88 [inline]
+ dump_stack_lvl+0x72/0x95 home/jiakai/62_66_amd_0904/linux62/linux-all/lib/dump_stack.c:106
+ __schedule_bug.cold+0x3e/0x4a home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5841
+ schedule_debug home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5868 [inline]
+ __schedule+0xf4b/0x1370 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6503
+ schedule+0x59/0xd0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6685
+ schedule_timeout+0x191/0x1d0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/timer.c:2143
+ ___down_common home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/locking/semaphore.c:225 [inline]
+ __down_common+0x119/0x210 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/locking/semaphore.c:246
+ down+0x42/0x60 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/locking/semaphore.c:63
+ console_lock+0x1b/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/printk/printk.c:2658
+ do_con_write+0x8a/0xfc0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/tty/vt/vt.c:2908
+ con_write+0x25/0x40 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/tty/vt/vt.c:3295
+ gsmld_write+0xb0/0xd0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/tty/n_gsm.c:3413
+ do_tty_write home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/tty/tty_io.c:1018 [inline]
+ file_tty_write.constprop.0+0x227/0x450 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/tty/tty_io.c:1089
+ call_write_iter home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/fs.h:2189 [inline]
+ new_sync_write home/jiakai/62_66_amd_0904/linux62/linux-all/fs/read_write.c:491 [inline]
+ vfs_write+0x412/0x530 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/read_write.c:584
+ ksys_write+0xa1/0x170 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/read_write.c:637
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7fc342657513
+Code: 8b 15 81 29 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 64 8b 04 25 18 00 00 00 85 c0 75 14 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 55 c3 0f 1f 40 00 48 83 ec 28 48 89 54 24 18
+RSP: 002b:00007ffc2f615118 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007ffc2f6153a0 RCX: 00007fc342657513
+RDX: 0000000000000002 RSI: 0000559a39b892ad RDI: 0000000000000001
+RBP: 00007fc342741580 R08: 0000000000000000 R09: 00007fc34273abe0
+R10: 00007fc342582bc2 R11: 0000000000000246 R12: 00007ffc2f615400
+R13: 00007ffc2f615790 R14: 0000559a39b892ad R15: 0000000000000002
+ </TASK>
+BUG: scheduling while atomic: agetty/59921/0x00000000
+Modules linked in:
+CPU: 1 PID: 59921 Comm: agetty Tainted: G        W          6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 59921 at kernel/sched/sched.h:2226 put_prev_task home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/sched.h:2226 [inline]
+WARNING: CPU: 1 PID: 59921 at kernel/sched/sched.h:2226 put_prev_task_balance home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5898 [inline]
+WARNING: CPU: 1 PID: 59921 at kernel/sched/sched.h:2226 __pick_next_task home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5933 [inline]
+WARNING: CPU: 1 PID: 59921 at kernel/sched/sched.h:2226 pick_next_task home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5994 [inline]
+WARNING: CPU: 1 PID: 59921 at kernel/sched/sched.h:2226 __schedule+0x12be/0x1370 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6573
+Modules linked in:
+CPU: 1 PID: 59921 Comm: agetty Tainted: G        W          6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:put_prev_task home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/sched.h:2226 [inline]
+RIP: 0010:put_prev_task_balance home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5898 [inline]
+RIP: 0010:__pick_next_task home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5933 [inline]
+RIP: 0010:pick_next_task home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:5994 [inline]
+RIP: 0010:__schedule+0x12be/0x1370 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/core.c:6573
+Code: 00 00 00 00 00 00 48 8b 43 08 48 89 da 48 8b 1b 4c 89 e7 48 c7 02 00 00 00 00 ff d0 0f 1f 00 48 85 db 75 e2 e9 00 fd ff ff 90 <0f> 0b 90 e9 80 fb ff ff 48 81 fe 00 21 18 86 0f 84 9c f4 ff ff bf
+RSP: 0018:ffffc90001d7fc40 EFLAGS: 00010002
+RAX: 0000000000000001 RBX: ffffffff86182370 RCX: ffff888043d2df00
+RDX: 0000000000000005 RSI: ffffc90001d7fc90 RDI: ffff88803ec2cdc0
+RBP: ffffc90001d7fce8 R08: 0000000000100000 R09: ffff888049cb0e00
+R10: 0000000000000000 R11: 686373203a475542 R12: ffff88803ec2cdc0
+R13: ffff888043d2df00 R14: ffffc90001d7fc90 R15: 0000000000000001
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fbe18039020 CR3: 0000000010c64000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+---[ end trace 0000000000000000 ]---

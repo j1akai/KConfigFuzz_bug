@@ -1,0 +1,52 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 79678 at fs/udf/truncate.c:204 udf_truncate_extents+0x486/0x4b0 home/jiakai/62_66_amd_0904/linux68/linux/fs/udf/truncate.c:204
+Modules linked in:
+CPU: 0 PID: 79678 Comm: syz.1.8461 Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:udf_truncate_extents+0x486/0x4b0 home/jiakai/62_66_amd_0904/linux68/linux/fs/udf/truncate.c:204
+Code: b0 00 00 00 eb aa e8 19 58 6a ff 44 89 bd 74 ff ff ff be 07 00 00 00 48 89 ef e8 55 32 9d ff e9 b9 fe ff ff e8 fb 57 6a ff 90 <0f> 0b 90 e9 ef fe ff ff e8 ed 57 6a ff 90 0f 0b e8 b5 9d 16 03 e8
+RSP: 0000:ffffc90007f77728 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000318 RCX: ffffffff81d8edc4
+RDX: ffff888013720000 RSI: ffffffff81d8eed5 RDI: 0000000000000007
+RBP: ffff8880156b8720 R08: 0000000000000007 R09: 0000000000000000
+R10: 0000000000000318 R11: 0000000000000001 R12: ffff888052eb2800
+R13: 00000000ffffffff R14: 0000000000000010 R15: 0000000000000400
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00000000fffff6c0 CR3: 0000000076a24000 CR4: 0000000000752ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ udf_write_failed.isra.0+0xcf/0xf0 home/jiakai/62_66_amd_0904/linux68/linux/fs/udf/inode.c:178
+ udf_write_begin+0x1af/0x1f0 home/jiakai/62_66_amd_0904/linux68/linux/fs/udf/inode.c:264
+ generic_perform_write+0x10b/0x2d0 home/jiakai/62_66_amd_0904/linux68/linux/mm/filemap.c:3930
+ __generic_file_write_iter+0x12c/0x140 home/jiakai/62_66_amd_0904/linux68/linux/mm/filemap.c:4025
+ udf_file_write_iter+0x11c/0x310 home/jiakai/62_66_amd_0904/linux68/linux/fs/udf/file.c:111
+ __kernel_write_iter+0x20e/0x450 home/jiakai/62_66_amd_0904/linux68/linux/fs/read_write.c:523
+ __kernel_write+0x6e/0xa0 home/jiakai/62_66_amd_0904/linux68/linux/fs/read_write.c:543
+ __dump_emit home/jiakai/62_66_amd_0904/linux68/linux/fs/coredump.c:813 [inline]
+ dump_emit+0x101/0x140 home/jiakai/62_66_amd_0904/linux68/linux/fs/coredump.c:850
+ elf_core_dump+0xd86/0x1460 home/jiakai/62_66_amd_0904/linux68/linux/fs/binfmt_elf.c:2056
+ do_coredump+0x1a14/0x1fa0 home/jiakai/62_66_amd_0904/linux68/linux/fs/coredump.c:764
+ get_signal+0xea9/0x1090 home/jiakai/62_66_amd_0904/linux68/linux/kernel/signal.c:2879
+ arch_do_signal_or_restart+0x30/0x480 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/kernel/signal.c:310
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:105 [inline]
+ exit_to_user_mode_prepare home/jiakai/62_66_amd_0904/linux68/linux/include/linux/entry-common.h:328 [inline]
+ irqentry_exit_to_user_mode+0xdf/0x150 home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:225
+ exc_page_fault+0x4df/0xd30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/mm/fault.c:1557
+ asm_exc_page_fault+0x26/0x30 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/include/asm/idtentry.h:570
+RIP: 0033:0x7f0b639ae175
+Code: 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 48 3d 01 f0 ff ff 73 01 <c3> 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 84
+RSP: 002b:00000000ffffffd0 EFLAGS: 00010217
+RAX: 0000000000000000 RBX: 00007f0b63bf5fa0 RCX: 00007f0b639ae16d
+RDX: 0000000000000000 RSI: 00000000ffffffd0 RDI: 00000000000c0211
+RBP: 00007f0b63a480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000206 R12: 0000000000000000
+R13: 00007f0b63bf6038 R14: 00007f0b63bf5fa0 R15: 00007f0b648ea000
+ </TASK>
+---[ end trace 0000000000000000 ]---
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

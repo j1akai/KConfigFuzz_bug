@@ -1,0 +1,68 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 47 at net/wireless/chan.c:546 cfg80211_chandef_dfs_required+0x197/0x1d0 home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/chan.c:546
+Modules linked in:
+CPU: 1 PID: 47 Comm: kworker/1:1 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events_power_efficient reg_check_chans_work
+RIP: 0010:cfg80211_chandef_dfs_required+0x197/0x1d0 home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/chan.c:546
+Code: 8b 4d 08 41 bc 01 00 00 00 49 d3 e4 e9 f1 fe ff ff e8 1d f0 9a fc 8b 4d 08 49 d3 e6 4d 89 f4 e9 de fe ff ff e8 0a f0 9a fc 90 <0f> 0b 90 41 bc ea ff ff ff e9 ca fe ff ff 41 89 dc e9 c2 fe ff ff
+RSP: 0018:ffffc900004abd50 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000001 RCX: 0000000000000000
+RDX: ffff8880401e6000 RSI: ffffffff84a7acd6 RDI: 0000000000000001
+RBP: ffffc900004abe00 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000017 R12: 0000000000000000
+R13: ffff8880160503c0 R14: 0000000000000001 R15: ffff88801a970a50
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fd42d5ca0ec CR3: 00000000126a6000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000600
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ _cfg80211_reg_can_beacon.constprop.0+0x2e/0x2c0 home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/chan.c:1349
+ reg_wdev_chan_valid home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/reg.c:2417 [inline]
+ reg_leave_invalid_chans home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/reg.c:2452 [inline]
+ reg_check_chans_work+0x407/0x770 home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/reg.c:2465
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2630
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2703 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+---[ end trace 0000000000000000 ]---
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 47 at net/wireless/chan.c:1054 cfg80211_chandef_usable+0x743/0x8c0 home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/chan.c:1054
+Modules linked in:
+CPU: 1 PID: 47 Comm: kworker/1:1 Tainted: G        W          6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events_power_efficient reg_check_chans_work
+RIP: 0010:cfg80211_chandef_usable+0x743/0x8c0 home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/chan.c:1054
+Code: 41 bf 50 00 00 00 41 80 ce c0 e9 b5 f9 ff ff e8 43 f3 9a fc e9 8e fe ff ff 41 bf 08 00 00 00 e9 90 f9 ff ff e8 2e f3 9a fc 90 <0f> 0b 90 e9 e5 fa ff ff e8 20 f3 9a fc 90 0f 0b 90 e9 d4 fa ff ff
+RSP: 0018:ffffc900004abd30 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffffc900004abe00 RCX: 0000000000000000
+RDX: ffff8880401e6000 RSI: ffffffff84a7a9b2 RDI: 0000000000000001
+RBP: 000000000000000b R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000017 R12: ffff8880160503c0
+R13: 0000000000000000 R14: 0000000000000001 R15: ffff88801a970a50
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fd42d5ca0ec CR3: 00000000126a6000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000600
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ _cfg80211_reg_can_beacon.constprop.0+0x5a/0x2c0 home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/chan.c:1355
+ reg_wdev_chan_valid home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/reg.c:2417 [inline]
+ reg_leave_invalid_chans home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/reg.c:2452 [inline]
+ reg_check_chans_work+0x407/0x770 home/jiakai/62_66_amd_0904/linux66/linux/net/wireless/reg.c:2465
+ process_one_work+0x236/0x520 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2630
+ process_scheduled_works home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2703 [inline]
+ worker_thread+0x312/0x580 home/jiakai/62_66_amd_0904/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x107/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x45/0x60 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
+---[ end trace 0000000000000000 ]---

@@ -1,0 +1,59 @@
+plfxlc 8-1:8.150: request_firmware failed (-2)
+plfxlc 8-1:8.150: FPGA download failed (-2)
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 20490 at drivers/net/wireless/purelifi/plfxlc/mac.c:106 plfxlc_mac_release+0x7c/0xa0
+Modules linked in:
+CPU: 1 PID: 20490 Comm: kworker/1:0 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: usb_hub_wq hub_event
+RIP: 0010:plfxlc_mac_release+0x7c/0xa0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/net/wireless/purelifi/plfxlc/mac.c:106
+Code: ff ff e8 77 89 8f 04 89 c3 31 ff 89 c6 e8 ec 63 09 fb 85 db 74 0f e8 c3 5f 09 fb eb 05 e8 bc 5f 09 fb 5b 5d c3 e8 b4 5f 09 fb <0f> 0b eb f4 48 c7 c1 2c 13 29 8f 80 e1 07 80 c1 03 38 c1 7c a1 48
+RSP: 0018:ffffc900051ee948 EFLAGS: 00010246
+RAX: ffffffff8684ec3c RBX: 0000000000000000 RCX: 0000000000100000
+RDX: ffffc9001ac5f000 RSI: 00000000000fffff RDI: 0000000000100000
+RBP: 0000000000000001 R08: ffffffff8684ec24 R09: 1ffff1100d1abcd2
+R10: dffffc0000000000 R11: ffffed100d1abcd3 R12: ffff888068d58e20
+R13: 00000000fffffffe R14: 1ffff92000a3dd38 R15: dffffc0000000000
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007ffa478774e0 CR3: 0000000046049000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ probe+0x2bf/0x940 home/jiakai/62_66_amd_0901/linux66/linux/drivers/net/wireless/purelifi/plfxlc/usb.c:691
+ usb_probe_interface+0x66e/0xb60 home/jiakai/62_66_amd_0901/linux66/linux/drivers/usb/core/driver.c:396
+ call_driver_probe+0x96/0x250
+ really_probe+0x24b/0x9a0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:658
+ __driver_probe_device+0x199/0x3d0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:800
+ driver_probe_device+0x50/0x240 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:830
+ __device_attach_driver+0x272/0x3c0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:958
+ bus_for_each_drv+0x28d/0x320 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/bus.c:457
+ __device_attach+0x340/0x530 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:1030
+ bus_probe_device+0x1af/0x2a0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/bus.c:532
+ device_add+0x959/0xd30 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/core.c:3624
+ usb_set_configuration+0x1a9f/0x2120 home/jiakai/62_66_amd_0901/linux66/linux/drivers/usb/core/message.c:2207
+ usb_generic_driver_probe+0x83/0x140 home/jiakai/62_66_amd_0901/linux66/linux/drivers/usb/core/generic.c:238
+ usb_probe_device+0x131/0x260 home/jiakai/62_66_amd_0901/linux66/linux/drivers/usb/core/driver.c:293
+ call_driver_probe+0x96/0x250
+ really_probe+0x24b/0x9a0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:658
+ __driver_probe_device+0x199/0x3d0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:800
+ driver_probe_device+0x50/0x240 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:830
+ __device_attach_driver+0x272/0x3c0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:958
+ bus_for_each_drv+0x28d/0x320 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/bus.c:457
+ __device_attach+0x340/0x530 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/dd.c:1030
+ bus_probe_device+0x1af/0x2a0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/bus.c:532
+ device_add+0x959/0xd30 home/jiakai/62_66_amd_0901/linux66/linux/drivers/base/core.c:3624
+ usb_new_device+0xbc2/0x18b0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/usb/core/hub.c:2597
+ hub_port_connect+0xe6a/0x2130 home/jiakai/62_66_amd_0901/linux66/linux/drivers/usb/core/hub.c:5459
+ hub_port_connect_change+0x53d/0x8e0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/usb/core/hub.c:5599
+ port_event+0xecf/0x13b0 home/jiakai/62_66_amd_0901/linux66/linux/drivers/usb/core/hub.c:5759
+ hub_event+0x5c1/0xd50 home/jiakai/62_66_amd_0901/linux66/linux/drivers/usb/core/hub.c:5841
+ process_one_work home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2630 [inline]
+ process_scheduled_works+0x8c5/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2703
+ worker_thread+0xa7a/0x1040 home/jiakai/62_66_amd_0901/linux66/linux/kernel/workqueue.c:2784
+ kthread+0x2cd/0x360 home/jiakai/62_66_amd_0901/linux66/linux/kernel/kthread.c:388
+ ret_from_fork+0x44/0x70 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x11/0x20 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/entry_64.S:304
+ </TASK>
