@@ -1,0 +1,53 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 63362 at fs/btrfs/space-info.h:198 btrfs_space_info_update_bytes_may_use home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/space-info.h:198 [inline]
+WARNING: CPU: 0 PID: 63362 at fs/btrfs/space-info.h:198 btrfs_space_info_update_bytes_may_use+0x1c9/0x1e0 home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/space-info.h:198
+Modules linked in:
+CPU: 0 PID: 63362 Comm: syz-executor Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:btrfs_space_info_update_bytes_may_use home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/space-info.h:198 [inline]
+RIP: 0010:btrfs_space_info_update_bytes_may_use+0x1c9/0x1e0 home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/space-info.h:198
+Code: e9 7b fe ff ff e8 c7 4c 24 ff 49 89 dd 4c 89 e6 49 f7 dd 4c 89 ef e8 06 45 24 ff 4d 39 e5 0f 86 83 fe ff ff e8 a8 4c 24 ff 90 <0f> 0b 90 31 db e9 7b fe ff ff 66 66 2e 0f 1f 84 00 00 00 00 00 66
+RSP: 0018:ffffc9000b7e3c98 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffffffffffea0000 RCX: 0000000000000000
+RDX: ffff888053514800 RSI: ffffffff821e5038 RDI: 0000000000000006
+RBP: ffff888054bee800 R08: 0000000000000006 R09: 0000000000160000
+R10: 000000000015f000 R11: 0000000000000001 R12: 000000000015f000
+R13: 0000000000160000 R14: 0000000000000000 R15: ffff888054bee800
+FS:  000055555633d500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007efd173c4000 CR3: 000000006908e000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ btrfs_space_info_free_bytes_may_use home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/space-info.h:230 [inline]
+ block_rsv_release_bytes home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/block-rsv.c:154 [inline]
+ btrfs_block_rsv_release+0x32d/0x3b0 home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/block-rsv.c:293
+ btrfs_release_global_block_rsv+0x26/0x190 home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/block-rsv.c:443
+ btrfs_free_block_groups+0x5f7/0x7a0 home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/block-group.c:4380
+ close_ctree+0x291/0x6e0 home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/disk-io.c:4413
+ generic_shutdown_super+0x9e/0x160 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:693
+ kill_anon_super+0x1e/0xd0 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:1292
+ btrfs_kill_super+0x1e/0x30 home/jiakai/62_66_amd_0904/linux66/linux/fs/btrfs/super.c:2144
+ deactivate_locked_super+0x4c/0x180 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:481
+ deactivate_super+0x72/0x80 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:514
+ cleanup_mnt+0x172/0x200 home/jiakai/62_66_amd_0904/linux66/linux/fs/namespace.c:1254
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0904/linux66/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:171 [inline]
+ exit_to_user_mode_prepare+0x123/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+RIP: 0033:0x7ff57d9afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffda5e80238 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007ff57d9afb8b
+RDX: 00007ff57d84fd10 RSI: 0000000000000009 RDI: 00007ffda5e802f0
+RBP: 00007ffda5e802f0 R08: 0000000000000000 R09: 00007ffda5e800c0
+R10: 00005555563506f3 R11: 0000000000000246 R12: 00007ff57da47cae
+R13: 00007ffda5e813c0 R14: 0000555556350600 R15: 000000000011ee9a
+ </TASK>
+---[ end trace 0000000000000000 ]---

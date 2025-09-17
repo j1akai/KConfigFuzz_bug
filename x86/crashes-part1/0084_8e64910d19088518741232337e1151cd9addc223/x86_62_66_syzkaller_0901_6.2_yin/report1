@@ -1,0 +1,56 @@
+sierra_net 3-1:1.7 wwan0: register 'sierra_net' at usb-dummy_hcd.2-1, Sierra Wireless USB-to-WWAN Modem, b2:df:59:42:01:07
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 764 at drivers/net/usb/usbnet.c:258 usbnet_status_start+0xf9/0x1c0 drivers/net/usb/usbnet.c:269
+Modules linked in:
+CPU: 0 PID: 764 Comm: kworker/0:2 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: usb_hub_wq hub_event
+RIP: 0010:usbnet_status_start+0xf9/0x1c0 drivers/net/usb/usbnet.c:258
+Code: 8b 3e 8b 74 24 04 e8 c6 c8 19 00 89 c5 66 90 48 8b 7c 24 08 e8 f8 12 64 04 89 e8 48 83 c4 10 5b 41 5c 41 5d 41 5e 41 5f 5d c3 <0f> 0b 42 80 7c 25 00 00 74 08 4c 89 f7 e8 e5 5b 5d fb 49 83 3e 00
+RSP: 0018:ffffc9000340eac8 EFLAGS: 00010246
+RAX: ffffffff8680a552 RBX: 0000000000000cc0 RCX: 0000000000100000
+RDX: ffffc90019561000 RSI: 00000000000112f3 RDI: 00000000000112f4
+RBP: 1ffff1100bec01fe R08: ffffffff8681f0a5 R09: ffffed100bec0008
+R10: ffffed100bec0008 R11: 1ffff1100bec0007 R12: dffffc0000000000
+R13: 0000000000000000 R14: ffff88805f600ff0 R15: ffff88805f600c80
+FS:  0000000000000000(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f014e1b9158 CR3: 000000001eefb000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ sierra_net_probe+0x66/0xa0 drivers/net/usb/sierra_net.c:929
+ usb_probe_interface+0x66e/0xb60 drivers/usb/core/driver.c:396
+ call_driver_probe+0x96/0x250
+ really_probe+0x24c/0x9f0 drivers/base/dd.c:639
+ __driver_probe_device+0x1f4/0x3f0 drivers/base/dd.c:778
+ driver_probe_device+0x50/0x240 drivers/base/dd.c:808
+ __device_attach_driver+0x272/0x3c0 drivers/base/dd.c:936
+ bus_for_each_drv+0x18a/0x210 drivers/base/bus.c:427
+ __device_attach+0x372/0x5a0 drivers/base/dd.c:1008
+ bus_probe_device+0xb8/0x1f0 drivers/base/bus.c:487
+ device_add+0xb22/0xf80 drivers/base/core.c:3479
+ usb_set_configuration+0x1abd/0x2110 drivers/usb/core/message.c:2171
+ usb_generic_driver_probe+0x83/0x140 drivers/usb/core/generic.c:238
+ usb_probe_device+0x131/0x260 drivers/usb/core/driver.c:293
+ call_driver_probe+0x96/0x250
+ really_probe+0x24c/0x9f0 drivers/base/dd.c:639
+ __driver_probe_device+0x1f4/0x3f0 drivers/base/dd.c:778
+ driver_probe_device+0x50/0x240 drivers/base/dd.c:808
+ __device_attach_driver+0x272/0x3c0 drivers/base/dd.c:936
+ bus_for_each_drv+0x18a/0x210 drivers/base/bus.c:427
+ __device_attach+0x372/0x5a0 drivers/base/dd.c:1008
+ bus_probe_device+0xb8/0x1f0 drivers/base/bus.c:487
+ device_add+0xb22/0xf80 drivers/base/core.c:3479
+ usb_new_device+0xbc2/0x18b0 drivers/usb/core/hub.c:2576
+ hub_port_connect+0x114d/0x24f0 drivers/usb/core/hub.c:5408
+ hub_port_connect_change+0x662/0xc00 drivers/usb/core/hub.c:5552
+ port_event+0xecf/0x13b0 drivers/usb/core/hub.c:5712
+ hub_event+0x5c1/0xd50 drivers/usb/core/hub.c:5794
+ process_one_work+0x877/0xdb0 kernel/workqueue.c:2289
+ worker_thread+0xb14/0x1330 kernel/workqueue.c:2436
+ kthread+0x26c/0x300 kernel/kthread.c:376
+ ret_from_fork+0x1f/0x30 arch/x86/entry/entry_64.S:308
+ </TASK>

@@ -1,0 +1,43 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 10525 at mm/page_alloc.c:4402 __alloc_pages+0x30a/0x560 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:4402
+Modules linked in:
+CPU: 0 PID: 10525 Comm: syz.0.17 Not tainted 6.6.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__alloc_pages+0x30a/0x560 home/jiakai/62_66_amd_0901/linux66/linux/mm/page_alloc.c:4402
+Code: 5c 24 04 0f 85 f3 00 00 00 44 89 e1 81 e1 7f ff ff ff a9 00 00 04 00 41 0f 44 cc 41 89 cc e9 e3 00 00 00 c6 05 81 67 35 0d 01 <0f> 0b 83 fb 0a 0f 86 c8 fd ff ff 31 db 48 c7 44 24 20 0e 36 e0 45
+RSP: 0018:ffffc900053bf9c0 EFLAGS: 00010246
+RAX: ffffc900053bfa20 RBX: 0000000000000019 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffffc900053bfa48
+RBP: ffffc900053bfad8 R08: ffffffff8881fed0 R09: 0000000000000000
+R10: ffffc900053bfa20 R11: fffff52000a77fc8 R12: 0000000000040dc0
+R13: 1ffff92000a77f40 R14: dffffc0000000000 R15: 1ffff92000a77f3c
+FS:  00005555573ab500(0000) GS:ffff88802be00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b2e263fff CR3: 0000000065468000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 00000000
+Call Trace:
+ <TASK>
+ __alloc_pages_node home/jiakai/62_66_amd_0901/linux66/linux/include/linux/gfp.h:237 [inline]
+ alloc_pages_node home/jiakai/62_66_amd_0901/linux66/linux/include/linux/gfp.h:260 [inline]
+ __kmalloc_large_node+0x95/0x1f0 home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1167
+ __do_kmalloc_node home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1014 [inline]
+ __kmalloc+0xfe/0x190 home/jiakai/62_66_amd_0901/linux66/linux/mm/slab_common.c:1039
+ kcalloc home/jiakai/62_66_amd_0901/linux66/linux/include/linux/slab.h:667 [inline]
+ comedi_unlocked_ioctl+0xa3a/0x1130 home/jiakai/62_66_amd_0901/linux66/linux/drivers/comedi/comedi_fops.c:2242
+ vfs_ioctl home/jiakai/62_66_amd_0901/linux66/linux/fs/ioctl.c:51 [inline]
+ __do_sys_ioctl home/jiakai/62_66_amd_0901/linux66/linux/fs/ioctl.c:871 [inline]
+ __se_sys_ioctl+0xfe/0x170 home/jiakai/62_66_amd_0901/linux66/linux/fs/ioctl.c:857
+ do_syscall_x64 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x2b/0x50 home/jiakai/62_66_amd_0901/linux66/linux/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7fa8d89ae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007ffc511d0098 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007fa8d8bf5fa0 RCX: 00007fa8d89ae16d
+RDX: 0000200000000080 RSI: 000000008010640b RDI: 0000000000000003
+RBP: 00007fa8d8a480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fa8d8bf5fac R14: 00007fa8d8bf5fa0 R15: 0000000000000000
+ </TASK>

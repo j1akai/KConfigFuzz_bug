@@ -1,0 +1,46 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 129474 at kernel/workqueue.c:1438 __queue_work+0x5a2/0x6d0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:1438
+Modules linked in:
+CPU: 1 PID: 129474 Comm: syz.4.15935 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__queue_work+0x5a2/0x6d0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:1438
+Code: db 75 21 e8 40 8c 12 00 31 ff 65 48 8b 2c 25 40 c6 02 00 8b 5d 2c 83 e3 20 89 de e8 48 85 12 00 85 db 75 2e e8 1f 8c 12 00 90 <0f> 0b 90 e9 2f fd ff ff e8 11 8c 12 00 90 0f 0b 90 e9 0e fd ff ff
+RSP: 0018:ffffc9000c9abd70 EFLAGS: 00010012
+RAX: 00000000000000b7 RBX: 0000000000000000 RCX: ffffc90019003000
+RDX: 0000000000080000 RSI: ffffffff812bece1 RDI: 0000000000000005
+RBP: ffff8880221d0000 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000040001 R12: ffff8880571f0948
+R13: ffff888051d03800 R14: 0000000000000008 R15: ffff88800fbeae00
+FS:  00007f1fa1d22640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b34d23ffc CR3: 0000000021b2c000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ queue_work_on+0x84/0x90 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:1545
+ queue_work home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/workqueue.h:503 [inline]
+ hci_recv_frame+0xca/0x120 home/jiakai/62_66_amd_0904/linux62/linux-all/net/bluetooth/hci_core.c:2889
+ vhci_get_user home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/bluetooth/hci_vhci.c:415 [inline]
+ vhci_write+0x1d8/0x240 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/bluetooth/hci_vhci.c:511
+ call_write_iter home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/fs.h:2189 [inline]
+ new_sync_write home/jiakai/62_66_amd_0904/linux62/linux-all/fs/read_write.c:491 [inline]
+ vfs_write+0x412/0x530 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/read_write.c:584
+ ksys_write+0xa1/0x170 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/read_write.c:637
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f1fa0dacbdf
+Code: 89 54 24 18 48 89 74 24 10 89 7c 24 08 e8 69 0d 03 00 48 8b 54 24 18 48 8b 74 24 10 41 89 c0 8b 7c 24 08 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 31 44 89 c7 48 89 44 24 08 e8 ac 0d 03 00 48
+RSP: 002b:00007f1fa1d21f60 EFLAGS: 00000293 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007f1fa0ff5fa0 RCX: 00007f1fa0dacbdf
+RDX: 0000000000000024 RSI: 0000200000003500 RDI: 00000000000000ca
+RBP: 00007f1fa0e480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000200000003500 R11: 0000000000000293 R12: 0000000000000000
+R13: 00007f1fa0ff6038 R14: 00007f1fa0ff5fa0 R15: 00007f1fa1d02000
+ </TASK>
+---[ end trace 0000000000000000 ]---
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

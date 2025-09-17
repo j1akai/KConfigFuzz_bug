@@ -1,0 +1,88 @@
+EXT4-fs (loop7): unmounting filesystem 00000000-0000-0000-0000-000000000000.
+BUG: unable to handle page fault for address: 000000000002db80
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 11d20067 P4D 11d20067 PUD 0 
+Oops: 0002 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 65688 Comm: syz-executor Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__pv_queued_spin_lock_slowpath+0x244/0x380 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/locking/qspinlock.c:474
+Code: ff ff 83 e0 03 c1 ea 12 4c 8d 6b 14 41 be 01 00 00 00 48 c1 e0 05 4c 8d a0 80 db 02 00 8d 42 ff 48 98 4c 03 24 c5 00 a9 18 86 <49> 89 1c 24 b8 00 80 00 00 eb 15 84 c0 75 0a 41 0f b6 54 24 14 84
+RSP: 0018:ffffc900017afc60 EFLAGS: 00010202
+RAX: 0000000000001010 RBX: ffff88803ec2db80 RCX: 0000000000000001
+RDX: 0000000000001011 RSI: 0000000000000000 RDI: ffff88804897e0c8
+RBP: ffff88804897e0c8 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000040001 R12: 000000000002db80
+R13: ffff88803ec2db94 R14: 0000000000000001 R15: 0000000000040000
+FS:  000055555699f500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000000002db80 CR3: 0000000011e48000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ pv_queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/paravirt.h:591 [inline]
+ queued_spin_lock_slowpath home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/qspinlock.h:51 [inline]
+ queued_spin_lock home/jiakai/62_66_amd_0904/linux62/linux-all/include/asm-generic/qspinlock.h:114 [inline]
+ do_raw_spin_lock home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/spinlock.h:186 [inline]
+ __raw_spin_lock home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/spinlock_api_smp.h:134 [inline]
+ _raw_spin_lock+0x2e/0x40 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/locking/spinlock.c:154
+ spin_lock home/jiakai/62_66_amd_0904/linux62/linux-all/include/linux/spinlock.h:350 [inline]
+ ocfs2_is_hard_readonly home/jiakai/62_66_amd_0904/linux62/linux-all/fs/ocfs2/ocfs2.h:623 [inline]
+ ocfs2_inode_lock_full_nested+0x57/0xcd0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/ocfs2/dlmglue.c:2443
+ ocfs2_inode_revalidate+0xa9/0x250 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/ocfs2/inode.c:1271
+ ocfs2_getattr+0x42/0x170 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/ocfs2/file.c:1313
+ vfs_getattr_nosec+0x13e/0x180 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/stat.c:127
+ vfs_getattr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/stat.c:164 [inline]
+ vfs_statx+0x138/0x270 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/stat.c:236
+ vfs_fstatat+0x90/0xb0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/stat.c:270
+ __do_sys_newfstatat+0x43/0xb0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/stat.c:440
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7fd6c6dac92e
+Code: 48 89 f2 b9 00 01 00 00 48 89 fe bf 9c ff ff ff e9 07 00 00 00 0f 1f 80 00 00 00 00 f3 0f 1e fa 41 89 ca b8 06 01 00 00 0f 05 <3d> 00 f0 ff ff 77 0b 31 c0 c3 0f 1f 84 00 00 00 00 00 48 c7 c2 a8
+RSP: 002b:00007ffda8f089e8 EFLAGS: 00000286 ORIG_RAX: 0000000000000106
+RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007fd6c6dac92e
+RDX: 00007ffda8f08a10 RSI: 00007ffda8f08aa0 RDI: 00000000ffffff9c
+RBP: 00007ffda8f08aa0 R08: 0000000000000000 R09: 00007ffda8f08870
+R10: 0000000000000100 R11: 0000000000000286 R12: 00007fd6c6e47cae
+R13: 00007ffda8f09ba0 R14: 00005555569ba640 R15: 000000000008899b
+ </TASK>
+Modules linked in:
+CR2: 000000000002db80
+---[ end trace 0000000000000000 ]---
+RIP: 0010:__pv_queued_spin_lock_slowpath+0x244/0x380 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/locking/qspinlock.c:474
+Code: ff ff 83 e0 03 c1 ea 12 4c 8d 6b 14 41 be 01 00 00 00 48 c1 e0 05 4c 8d a0 80 db 02 00 8d 42 ff 48 98 4c 03 24 c5 00 a9 18 86 <49> 89 1c 24 b8 00 80 00 00 eb 15 84 c0 75 0a 41 0f b6 54 24 14 84
+RSP: 0018:ffffc900017afc60 EFLAGS: 00010202
+RAX: 0000000000001010 RBX: ffff88803ec2db80 RCX: 0000000000000001
+RDX: 0000000000001011 RSI: 0000000000000000 RDI: ffff88804897e0c8
+RBP: ffff88804897e0c8 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000040001 R12: 000000000002db80
+R13: ffff88803ec2db94 R14: 0000000000000001 R15: 0000000000040000
+FS:  000055555699f500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000000002db80 CR3: 0000000011e48000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess), 1 bytes skipped:
+   0:	ff 83 e0 03 c1 ea    	incl   -0x153efc20(%rbx)
+   6:	12 4c 8d 6b          	adc    0x6b(%rbp,%rcx,4),%cl
+   a:	14 41                	adc    $0x41,%al
+   c:	be 01 00 00 00       	mov    $0x1,%esi
+  11:	48 c1 e0 05          	shl    $0x5,%rax
+  15:	4c 8d a0 80 db 02 00 	lea    0x2db80(%rax),%r12
+  1c:	8d 42 ff             	lea    -0x1(%rdx),%eax
+  1f:	48 98                	cltq
+  21:	4c 03 24 c5 00 a9 18 	add    -0x79e75700(,%rax,8),%r12
+  28:	86
+* 29:	49 89 1c 24          	mov    %rbx,(%r12) <-- trapping instruction
+  2d:	b8 00 80 00 00       	mov    $0x8000,%eax
+  32:	eb 15                	jmp    0x49
+  34:	84 c0                	test   %al,%al
+  36:	75 0a                	jne    0x42
+  38:	41 0f b6 54 24 14    	movzbl 0x14(%r12),%edx
+  3e:	84                   	.byte 0x84

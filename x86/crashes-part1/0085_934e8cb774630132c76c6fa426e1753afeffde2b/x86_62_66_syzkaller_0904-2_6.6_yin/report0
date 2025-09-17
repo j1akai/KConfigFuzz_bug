@@ -1,0 +1,128 @@
+BUG: unable to handle page fault for address: 0000000100000013
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 562c9067 P4D 562c9067 PUD 0 
+Oops: 0002 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 35282 Comm: syz.6.3253 Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:arch_atomic_try_cmpxchg home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/include/asm/atomic.h:115 [inline]
+RIP: 0010:raw_atomic_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux66/linux/include/linux/atomic/atomic-arch-fallback.h:2151 [inline]
+RIP: 0010:atomic_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux66/linux/include/linux/atomic/atomic-instrumented.h:1296 [inline]
+RIP: 0010:queued_spin_lock home/jiakai/62_66_amd_0904/linux66/linux/include/asm-generic/qspinlock.h:111 [inline]
+RIP: 0010:do_raw_spin_lock home/jiakai/62_66_amd_0904/linux66/linux/include/linux/spinlock.h:187 [inline]
+RIP: 0010:__raw_spin_lock_bh home/jiakai/62_66_amd_0904/linux66/linux/include/linux/spinlock_api_smp.h:127 [inline]
+RIP: 0010:_raw_spin_lock_bh+0x16/0x40 home/jiakai/62_66_amd_0904/linux66/linux/kernel/locking/spinlock.c:178
+Code: 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 65 81 05 99 1b 1d 7b 01 02 00 00 31 c0 ba 01 00 00 00 <f0> 0f b1 17 75 05 c3 cc cc cc cc 48 83 3d 97 22 81 01 00 74 0d 89
+RSP: 0018:ffffc900041ff8e0 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: 00000000ffffffff RCX: 0000000000000000
+RDX: 0000000000000001 RSI: ffffffff8464bcf9 RDI: 0000000100000013
+RBP: ffff888049133840 R08: 0000000000000005 R09: 0000000000000100
+R10: 0000000000000002 R11: 0000000000000000 R12: 0000000000000000
+R13: 0000000100000013 R14: 0000000000000000 R15: ffffffff8463c9f0
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000100000013 CR3: 000000001c61c000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ spin_lock_bh home/jiakai/62_66_amd_0904/linux66/linux/include/linux/spinlock.h:356 [inline]
+ __fib6_clean_all+0x65/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/ip6_fib.c:2265
+ rt6_sync_down_dev home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:4892 [inline]
+ rt6_disable_ip+0x567/0x5f0 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/route.c:4897
+ addrconf_ifdown.isra.0+0xa0/0xc30 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3792
+ addrconf_notify+0x82/0xc80 home/jiakai/62_66_amd_0904/linux66/linux/net/ipv6/addrconf.c:3715
+ notifier_call_chain+0x89/0x190 home/jiakai/62_66_amd_0904/linux66/linux/kernel/notifier.c:93
+ call_netdevice_notifiers_info+0x7c/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:1995
+ call_netdevice_notifiers_extack home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2033 [inline]
+ call_netdevice_notifiers home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:2047 [inline]
+ dev_close_many+0x13c/0x1c0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:1588
+ unregister_netdevice_many_notify+0x1ef/0xc00 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:10940
+ unregister_netdevice_many home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:11023 [inline]
+ unregister_netdevice_queue+0x13c/0x1a0 home/jiakai/62_66_amd_0904/linux66/linux/net/core/dev.c:10903
+ unregister_netdevice home/jiakai/62_66_amd_0904/linux66/linux/include/linux/netdevice.h:3106 [inline]
+ __tun_detach+0x78e/0x800 home/jiakai/62_66_amd_0904/linux66/linux/drivers/net/tun.c:684
+ tun_detach home/jiakai/62_66_amd_0904/linux66/linux/drivers/net/tun.c:700 [inline]
+ tun_chr_close+0x45/0x110 home/jiakai/62_66_amd_0904/linux66/linux/drivers/net/tun.c:3499
+ __fput+0x1d8/0x4c0 home/jiakai/62_66_amd_0904/linux66/linux/fs/file_table.c:384
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/task_work.c:180
+ exit_task_work home/jiakai/62_66_amd_0904/linux66/linux/include/linux/task_work.h:38 [inline]
+ do_exit+0x4da/0x1180 home/jiakai/62_66_amd_0904/linux66/linux/kernel/exit.c:874
+ do_group_exit+0x4f/0xd0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/exit.c:1024
+ get_signal+0x108d/0x1090 home/jiakai/62_66_amd_0904/linux66/linux/kernel/signal.c:2892
+ arch_do_signal_or_restart+0x30/0x480 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/kernel/signal.c:309
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:168 [inline]
+ exit_to_user_mode_prepare+0xd9/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+RIP: 0033:0x7f58d19ee468
+Code: Unable to access opcode bytes at 0x7f58d19ee43e.
+RSP: 002b:00007f58d28b6e90 EFLAGS: 00000293 ORIG_RAX: 00000000000000e6
+RAX: fffffffffffffdfc RBX: 00007f58d1bf5f01 RCX: 00007f58d19ee468
+RDX: 00007f58d28b6f20 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 00007f58d1a480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000293 R12: 00007f58d28b6f20
+R13: 0000000000000000 R14: 0000000000000000 R15: 00007f58d2897000
+ </TASK>
+Modules linked in:
+CR2: 0000000100000013
+---[ end trace 0000000000000000 ]---
+RIP: 0010:arch_atomic_try_cmpxchg home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/include/asm/atomic.h:115 [inline]
+RIP: 0010:raw_atomic_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux66/linux/include/linux/atomic/atomic-arch-fallback.h:2151 [inline]
+RIP: 0010:atomic_try_cmpxchg_acquire home/jiakai/62_66_amd_0904/linux66/linux/include/linux/atomic/atomic-instrumented.h:1296 [inline]
+RIP: 0010:queued_spin_lock home/jiakai/62_66_amd_0904/linux66/linux/include/asm-generic/qspinlock.h:111 [inline]
+RIP: 0010:do_raw_spin_lock home/jiakai/62_66_amd_0904/linux66/linux/include/linux/spinlock.h:187 [inline]
+RIP: 0010:__raw_spin_lock_bh home/jiakai/62_66_amd_0904/linux66/linux/include/linux/spinlock_api_smp.h:127 [inline]
+RIP: 0010:_raw_spin_lock_bh+0x16/0x40 home/jiakai/62_66_amd_0904/linux66/linux/kernel/locking/spinlock.c:178
+Code: 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 65 81 05 99 1b 1d 7b 01 02 00 00 31 c0 ba 01 00 00 00 <f0> 0f b1 17 75 05 c3 cc cc cc cc 48 83 3d 97 22 81 01 00 74 0d 89
+RSP: 0018:ffffc900041ff8e0 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: 00000000ffffffff RCX: 0000000000000000
+RDX: 0000000000000001 RSI: ffffffff8464bcf9 RDI: 0000000100000013
+RBP: ffff888049133840 R08: 0000000000000005 R09: 0000000000000100
+R10: 0000000000000002 R11: 0000000000000000 R12: 0000000000000000
+R13: 0000000100000013 R14: 0000000000000000 R15: ffffffff8463c9f0
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000100000013 CR3: 000000001c61c000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	00 00                	add    %al,(%rax)
+   2:	00 00                	add    %al,(%rax)
+   4:	90                   	nop
+   5:	90                   	nop
+   6:	90                   	nop
+   7:	90                   	nop
+   8:	90                   	nop
+   9:	90                   	nop
+   a:	90                   	nop
+   b:	90                   	nop
+   c:	90                   	nop
+   d:	90                   	nop
+   e:	90                   	nop
+   f:	90                   	nop
+  10:	90                   	nop
+  11:	90                   	nop
+  12:	90                   	nop
+  13:	90                   	nop
+  14:	f3 0f 1e fa          	endbr64
+  18:	65 81 05 99 1b 1d 7b 	addl   $0x201,%gs:0x7b1d1b99(%rip)        # 0x7b1d1bbc
+  1f:	01 02 00 00
+  23:	31 c0                	xor    %eax,%eax
+  25:	ba 01 00 00 00       	mov    $0x1,%edx
+* 2a:	f0 0f b1 17          	lock cmpxchg %edx,(%rdi) <-- trapping instruction
+  2e:	75 05                	jne    0x35
+  30:	c3                   	ret
+  31:	cc                   	int3
+  32:	cc                   	int3
+  33:	cc                   	int3
+  34:	cc                   	int3
+  35:	48 83 3d 97 22 81 01 	cmpq   $0x0,0x1812297(%rip)        # 0x18122d4
+  3c:	00
+  3d:	74 0d                	je     0x4c
+  3f:	89                   	.byte 0x89

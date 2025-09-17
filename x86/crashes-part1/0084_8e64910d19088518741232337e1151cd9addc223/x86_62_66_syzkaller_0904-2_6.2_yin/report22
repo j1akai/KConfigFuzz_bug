@@ -1,0 +1,63 @@
+sierra_net 1-1:1.7 wwan0: register 'sierra_net' at usb-dummy_hcd.0-1, Sierra Wireless USB-to-WWAN Modem, ca:0b:dd:1f:02:07
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 21 at drivers/net/usb/usbnet.c:258 usbnet_status_start+0x99/0xb0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/net/usb/usbnet.c:258
+Modules linked in:
+CPU: 1 PID: 21 Comm: kworker/1:0 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: usb_hub_wq hub_event
+RIP: 0010:usbnet_status_start+0x99/0xb0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/net/usb/usbnet.c:258
+Code: 41 5c 41 5d 41 5e c3 cc cc cc cc e8 a1 c0 26 fe 48 8b bb a0 01 00 00 44 89 e6 e8 72 72 09 00 41 89 c5 eb c5 e8 88 c0 26 fe 90 <0f> 0b 90 45 31 ed eb c4 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40
+RSP: 0000:ffffc900003cf7b0 EFLAGS: 00010212
+RAX: 000000000001d1ba RBX: ffff88805f8339c0 RCX: ffffc9000c86d000
+RDX: 0000000000100000 RSI: ffffffff8317b878 RDI: ffff88805f8339c0
+RBP: ffff88805f8339c0 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 6e5f617272656973 R12: 0000000000000cc0
+R13: ffff8880583208a8 R14: ffff888055450800 R15: ffff888058320800
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f93d4245000 CR3: 0000000012552000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ sierra_net_probe home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/net/usb/sierra_net.c:929 [inline]
+ sierra_net_probe+0x59/0x90 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/net/usb/sierra_net.c:921
+ usb_probe_interface+0x17e/0x380 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/usb/core/driver.c:396
+ call_driver_probe home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:560 [inline]
+ really_probe+0x133/0x3a0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:639
+ __driver_probe_device+0xbf/0x140 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:778
+ driver_probe_device+0x2a/0x120 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:808
+ __device_attach_driver+0x102/0x150 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:936
+ bus_for_each_drv+0xbb/0x110 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/bus.c:427
+ __device_attach+0x105/0x2d0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:1008
+ bus_probe_device+0xcd/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/bus.c:487
+ device_add+0x64d/0xdd0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/core.c:3479
+ usb_set_configuration+0x8d8/0xb50 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/usb/core/message.c:2171
+ usb_generic_driver_probe+0x94/0xd0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/usb/core/generic.c:238
+ usb_probe_device+0x63/0x150 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/usb/core/driver.c:293
+ call_driver_probe home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:560 [inline]
+ really_probe+0x133/0x3a0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:639
+ __driver_probe_device+0xbf/0x140 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:778
+ driver_probe_device+0x2a/0x120 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:808
+ __device_attach_driver+0x102/0x150 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:936
+ bus_for_each_drv+0xbb/0x110 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/bus.c:427
+ __device_attach+0x105/0x2d0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/dd.c:1008
+ bus_probe_device+0xcd/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/bus.c:487
+ device_add+0x64d/0xdd0 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/base/core.c:3479
+ usb_new_device.cold+0x10f/0x58e home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/usb/core/hub.c:2576
+ hub_port_connect home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/usb/core/hub.c:5408 [inline]
+ hub_port_connect_change home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/usb/core/hub.c:5552 [inline]
+ port_event home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/usb/core/hub.c:5712 [inline]
+ hub_event+0x16bb/0x2300 home/jiakai/62_66_amd_0904/linux62/linux-all/drivers/usb/core/hub.c:5794
+ process_one_work+0x2c1/0x600 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2289
+ worker_thread+0x5d/0x5c0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:2436
+ kthread+0xfc/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/entry_64.S:308
+ </TASK>
+---[ end trace 0000000000000000 ]---
+sierra_net 1-1:1.7 wwan0: Submit SYNC failed -71
+sierra_net 1-1:1.7 wwan0: Send SYNC failed, status -71
+usb 1-1: USB disconnect, device number 63
+sierra_net 1-1:1.7 wwan0: unregister 'sierra_net' usb-dummy_hcd.0-1, Sierra Wireless USB-to-WWAN Modem
+sierra_net 1-1:1.7 wwan0 (unregistered): usb_control_msg failed, status -19
