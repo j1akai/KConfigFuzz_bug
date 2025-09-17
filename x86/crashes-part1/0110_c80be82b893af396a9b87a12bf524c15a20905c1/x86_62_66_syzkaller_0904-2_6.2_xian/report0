@@ -1,0 +1,36 @@
+NILFS (loop3): segctord starting. Construction interval = 5 seconds, CP frequency < 30 seconds
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 10922 at fs/nilfs2/btree.c:2282 nilfs_btree_assign+0x3fa/0x4f0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/btree.c:2282
+Modules linked in:
+CPU: 0 PID: 10922 Comm: segctord Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:nilfs_btree_assign+0x3fa/0x4f0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/btree.c:2282
+Code: 49 89 c4 e9 d9 fc ff ff e8 e3 49 55 ff 44 89 e6 bf fe ff ff ff e8 f6 42 55 ff 41 83 fc fe 0f 85 0e fe ff ff e8 c7 49 55 ff 90 <0f> 0b 90 e9 00 fe ff ff e8 b9 49 55 ff 49 89 df 48 c7 44 24 18 18
+RSP: 0018:ffffc900020ffc88 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff8880094b1b98 RCX: 0000000000000000
+RDX: ffff888043ca17c0 RSI: ffffffff81e92f39 RDI: 0000000000000005
+RBP: ffff888023768000 R08: 0000000000000005 R09: 00000000fffffffe
+R10: 00000000fffffffe R11: 0000000000040001 R12: 00000000fffffffe
+R13: 0000000000000000 R14: ffffc900020ffdd8 R15: 0000000000000001
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000559496f6c5a0 CR3: 000000004bcd6000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ nilfs_bmap_assign+0x3f/0xb0 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/bmap.c:382
+ nilfs_segctor_update_payload_blocknr home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:1595 [inline]
+ nilfs_segctor_assign home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:1629 [inline]
+ nilfs_segctor_do_construct+0x9c3/0x3760 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:2056
+ nilfs_segctor_construct+0x383/0x480 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:2379
+ nilfs_segctor_thread_construct home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:2487 [inline]
+ nilfs_segctor_thread+0x145/0x640 home/jiakai/62_66_amd_0904/linux62/linux-all/fs/nilfs2/segment.c:2570
+ kthread+0xfc/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/kthread.c:376
+ ret_from_fork+0x29/0x50 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/entry/entry_64.S:308
+ </TASK>
+---[ end trace 0000000000000000 ]---
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

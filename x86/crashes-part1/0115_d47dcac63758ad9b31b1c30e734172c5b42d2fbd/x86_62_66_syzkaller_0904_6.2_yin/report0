@@ -1,0 +1,47 @@
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000002
+R13: 00007f521fff6038 R14: 00007f521fff5fa0 R15: 00007f5220c7b000
+ </TASK>
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 24041 at net/ipv6/ip6_fib.c:1506 fib6_add+0x18d1/0x1a20 -all/net/ipv6/ip6_fib.c:1506
+Modules linked in:
+CPU: 1 PID: 24041 Comm: syz.7.1329 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:fib6_add+0x18d1/0x1a20 -all/net/ipv6/ip6_fib.c:1506
+Code: e9 3d fa ff ff e8 0f 57 0a fd be 02 00 00 00 4c 89 e7 e8 c2 7d 15 fe e9 80 f3 ff ff e8 f8 56 0a fd 90 0f 0b e8 f0 56 0a fd 90 <0f> 0b 90 49 8b 9e 98 07 00 00 e9 17 fa ff ff e8 db 56 0a fd 48 8b
+RSP: 0018:ffffc90004bc3b30 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: ffff8880219bc740 RSI: ffffffff84342210 RDI: 0000000000000003
+RBP: ffffc90004bc3bf0 R08: 0000000000000003 R09: 0000000000000000
+R10: 0000000000000000 R11: 3e4b5341542f3c20 R12: 00000000ffffffff
+R13: ffff8880225c7680 R14: ffff88800f9adb40 R15: 0000000000000000
+FS:  00007f5220c9b640(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f5220c9afc8 CR3: 000000001526c000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ __ip6_ins_rt -all/net/ipv6/route.c:1302 [inline]
+ ip6_route_add+0x71/0x120 -all/net/ipv6/route.c:3847
+ ipv6_route_ioctl+0x1cb/0x240 -all/net/ipv6/route.c:4467
+ inet6_ioctl+0x16f/0x190 -all/net/ipv6/af_inet6.c:579
+ sock_do_ioctl+0x49/0x170 -all/net/socket.c:1172
+ sock_ioctl+0x151/0x450 -all/net/socket.c:1289
+ vfs_ioctl -all/fs/ioctl.c:51 [inline]
+ __do_sys_ioctl -all/fs/ioctl.c:870 [inline]
+ __se_sys_ioctl -all/fs/ioctl.c:856 [inline]
+ __x64_sys_ioctl+0x104/0x150 -all/fs/ioctl.c:856
+ do_syscall_x64 -all/arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x3d/0xc0 -all/arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x73/0xdd
+RIP: 0033:0x7f521fdae16d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f5220c9af98 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f521fff5fa0 RCX: 00007f521fdae16d
+RDX: 0000200000000200 RSI: 000000000000890b RDI: 0000000000000003
+RBP: 00007f5220c9b010 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000002
+R13: 00007f521fff6038 R14: 00007f521fff5fa0 R15: 00007f5220c7b000
+ </TASK>
+---[ end trace 0000000000000000 ]---

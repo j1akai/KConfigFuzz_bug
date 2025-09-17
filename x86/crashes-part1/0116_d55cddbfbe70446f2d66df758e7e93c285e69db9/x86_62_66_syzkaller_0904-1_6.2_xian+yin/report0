@@ -1,0 +1,97 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 0 at kernel/workqueue.c:635 set_work_data home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:635 [inline]
+WARNING: CPU: 0 PID: 0 at kernel/workqueue.c:635 set_work_pwq home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:642 [inline]
+WARNING: CPU: 0 PID: 0 at kernel/workqueue.c:635 insert_work+0x119/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:1361
+Modules linked in:
+CPU: 0 PID: 0 Comm: swapper/0 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:set_work_data home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:635 [inline]
+RIP: 0010:set_work_pwq home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:642 [inline]
+RIP: 0010:insert_work+0x119/0x130 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:1361
+Code: 48 8b 5b 40 48 85 db 74 c9 e8 33 93 12 00 48 8b 7b 40 e8 9a b2 02 00 eb b9 e8 23 93 12 00 90 0f 0b 90 eb 8d e8 18 93 12 00 90 <0f> 0b 90 e9 23 ff ff ff 66 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40
+RSP: 0018:ffffc90000003e20 EFLAGS: 00010046
+RAX: 0000000000000000 RBX: 0000000000000005 RCX: 0000000000000100
+RDX: ffffffff86434a00 RSI: ffffffff812be5e8 RDI: 0000000000000001
+RBP: ffff888013f20df8 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: ffffc90000000282 R12: ffff888049371600
+R13: ffff88800906c028 R14: 0000000000000000 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000110c2be5f7 CR3: 0000000077efe000 CR4: 0000000000750ef0
+PKRU: 55555554
+Call Trace:
+ <IRQ>
+ __queue_work+0x2c6/0x6d0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/workqueue.c:1517
+ call_timer_fn+0x33/0x200 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/timer.c:1700
+ expire_timers home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/timer.c:1746 [inline]
+ __run_timers.part.0+0x26b/0x430 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/timer.c:2022
+ __run_timers home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/timer.c:2000 [inline]
+ run_timer_softirq+0x41/0x90 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/time/timer.c:2035
+ __do_softirq+0xc7/0x2ad home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/softirq.c:571
+ invoke_softirq home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/softirq.c:445 [inline]
+ __irq_exit_rcu+0x8e/0xc0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/softirq.c:650
+ sysvec_apic_timer_interrupt+0x78/0x90 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/kernel/apic/apic.c:1107
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/include/asm/idtentry.h:649
+RIP: 0010:default_idle+0xf/0x20 home/jiakai/62_66_amd_0904/linux62/linux-all/arch/x86/kernel/process.c:731
+Code: e8 56 9c fe ff cc cc cc cc cc cc 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 66 90 0f 00 2d 53 d3 33 00 fb f4 <c3> cc cc cc cc 66 66 2e 0f 1f 84 00 00 00 00 00 90 90 90 90 90 90
+RSP: 0018:ffffffff86403e98 EFLAGS: 00000252
+RAX: ffffffff84ce8050 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: 0000000000000001 RDI: 00000000002514bc
+RBP: ffffffff86434a00 R08: 0000000000000007 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+R13: 0000000000000000 R14: ffffffff86434130 R15: 0000000000000000
+ default_idle_call+0x32/0xe0 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/idle.c:109
+ cpuidle_idle_call home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/idle.c:191 [inline]
+ do_idle+0x1e5/0x250 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/idle.c:303
+ cpu_startup_entry+0x18/0x20 home/jiakai/62_66_amd_0904/linux62/linux-all/kernel/sched/idle.c:400
+ rest_init+0xc3/0xd0 home/jiakai/62_66_amd_0904/linux62/linux-all/init/main.c:732
+ arch_call_rest_init+0xe/0x27 home/jiakai/62_66_amd_0904/linux62/linux-all/init/main.c:894
+ start_kernel+0x92f/0x95a home/jiakai/62_66_amd_0904/linux62/linux-all/init/main.c:1148
+ secondary_startup_64_no_verify+0xe0/0xeb
+ </TASK>
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	e8 56 9c fe ff       	call   0xfffe9c5b
+   5:	cc                   	int3
+   6:	cc                   	int3
+   7:	cc                   	int3
+   8:	cc                   	int3
+   9:	cc                   	int3
+   a:	cc                   	int3
+   b:	90                   	nop
+   c:	90                   	nop
+   d:	90                   	nop
+   e:	90                   	nop
+   f:	90                   	nop
+  10:	90                   	nop
+  11:	90                   	nop
+  12:	90                   	nop
+  13:	90                   	nop
+  14:	90                   	nop
+  15:	90                   	nop
+  16:	90                   	nop
+  17:	90                   	nop
+  18:	90                   	nop
+  19:	90                   	nop
+  1a:	90                   	nop
+  1b:	f3 0f 1e fa          	endbr64
+  1f:	66 90                	xchg   %ax,%ax
+  21:	0f 00 2d 53 d3 33 00 	verw   0x33d353(%rip)        # 0x33d37b
+  28:	fb                   	sti
+  29:	f4                   	hlt
+* 2a:	c3                   	ret <-- trapping instruction
+  2b:	cc                   	int3
+  2c:	cc                   	int3
+  2d:	cc                   	int3
+  2e:	cc                   	int3
+  2f:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+  36:	00 00 00 00
+  3a:	90                   	nop
+  3b:	90                   	nop
+  3c:	90                   	nop
+  3d:	90                   	nop
+  3e:	90                   	nop
+  3f:	90                   	nop

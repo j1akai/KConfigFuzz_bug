@@ -1,0 +1,95 @@
+BUG: kernel NULL pointer dereference, address: 000000000000002c
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 4fa8f067 P4D 4fa8f067 PUD 0 
+Oops: 0002 [#1] PREEMPT SMP NOPTI
+CPU: 1 PID: 48390 Comm: syz-executor Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:gfs2_remove_from_journal+0x14f/0x2c0 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/meta_io.c:348
+Code: 10 e8 05 9f 1b ff 4c 89 75 18 44 89 ee bf 01 00 00 00 4c 89 75 20 e8 f0 97 1b ff 41 83 fd 01 0f 84 62 01 00 00 e8 e1 9e 1b ff <41> 83 47 2c 01 e8 d7 9e 1b ff f0 41 80 4f 18 02 48 85 db 0f 84 20
+RSP: 0000:ffffc9000587fa48 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff88804970dd00 RCX: ffffffff8227a7e0
+RDX: ffff888048130000 RSI: ffffffff8227a7ef RDI: 0000000000000005
+RBP: ffff8880483e0c80 R08: 0000000000000005 R09: 0000000000000001
+R10: 0000000000000000 R11: 0000000000000001 R12: ffff888054a95000
+R13: 0000000000000000 R14: ffff8880483e0c98 R15: 0000000000000000
+FS:  00005555557f6500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000000000002c CR3: 0000000054f7e000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ gfs2_discard home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/aops.c:621 [inline]
+ gfs2_invalidate_folio+0x1e5/0x320 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/aops.c:655
+ folio_invalidate home/jiakai/62_66_amd_0904/linux68/linux/mm/truncate.c:158 [inline]
+ truncate_cleanup_folio+0xb2/0x130 home/jiakai/62_66_amd_0904/linux68/linux/mm/truncate.c:178
+ truncate_inode_pages_range+0x176/0x700 home/jiakai/62_66_amd_0904/linux68/linux/mm/truncate.c:358
+ gfs2_evict_inode+0x3e7/0x910 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/super.c:1508
+ evict+0x11b/0x290 home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:665
+ iput_final home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:1739 [inline]
+ iput home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:1765 [inline]
+ iput+0x2f4/0x470 home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:1751
+ gfs2_put_super+0x11e/0x340 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/super.c:625
+ generic_shutdown_super+0x96/0x160 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:641
+ kill_block_super+0x1d/0x50 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:1675
+ gfs2_kill_sb+0x1c6/0x1f0 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/ops_fstype.c:1804
+ deactivate_locked_super+0x4c/0x180 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:472
+ deactivate_super+0x72/0x80 home/jiakai/62_66_amd_0904/linux68/linux/fs/super.c:505
+ cleanup_mnt+0x172/0x200 home/jiakai/62_66_amd_0904/linux68/linux/fs/namespace.c:1267
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux68/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0904/linux68/linux/include/linux/resume_user_mode.h:50 [inline]
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:108 [inline]
+ exit_to_user_mode_prepare home/jiakai/62_66_amd_0904/linux68/linux/include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:201 [inline]
+ syscall_exit_to_user_mode+0x182/0x190 home/jiakai/62_66_amd_0904/linux68/linux/kernel/entry/common.c:212
+ do_syscall_64+0xc0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:89
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7f0b38bafb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffdcf546bf8 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007f0b38bafb8b
+RDX: 00007f0b38a4fd10 RSI: 0000000000000009 RDI: 00007ffdcf546cb0
+RBP: 00007ffdcf546cb0 R08: 0000000000000000 R09: 00007ffdcf546a80
+R10: 0000555555809713 R11: 0000000000000246 R12: 00007f0b38c47cae
+R13: 00007ffdcf547d80 R14: 0000555555809600 R15: 00000000001044a3
+ </TASK>
+Modules linked in:
+CR2: 000000000000002c
+---[ end trace 0000000000000000 ]---
+RIP: 0010:gfs2_remove_from_journal+0x14f/0x2c0 home/jiakai/62_66_amd_0904/linux68/linux/fs/gfs2/meta_io.c:348
+Code: 10 e8 05 9f 1b ff 4c 89 75 18 44 89 ee bf 01 00 00 00 4c 89 75 20 e8 f0 97 1b ff 41 83 fd 01 0f 84 62 01 00 00 e8 e1 9e 1b ff <41> 83 47 2c 01 e8 d7 9e 1b ff f0 41 80 4f 18 02 48 85 db 0f 84 20
+RSP: 0000:ffffc9000587fa48 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff88804970dd00 RCX: ffffffff8227a7e0
+RDX: ffff888048130000 RSI: ffffffff8227a7ef RDI: 0000000000000005
+RBP: ffff8880483e0c80 R08: 0000000000000005 R09: 0000000000000001
+R10: 0000000000000000 R11: 0000000000000001 R12: ffff888054a95000
+R13: 0000000000000000 R14: ffff8880483e0c98 R15: 0000000000000000
+FS:  00005555557f6500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000000000002c CR3: 0000000054f7e000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+----------------
+Code disassembly (best guess):
+   0:	10 e8                	adc    %ch,%al
+   2:	05 9f 1b ff 4c       	add    $0x4cff1b9f,%eax
+   7:	89 75 18             	mov    %esi,0x18(%rbp)
+   a:	44 89 ee             	mov    %r13d,%esi
+   d:	bf 01 00 00 00       	mov    $0x1,%edi
+  12:	4c 89 75 20          	mov    %r14,0x20(%rbp)
+  16:	e8 f0 97 1b ff       	call   0xff1b980b
+  1b:	41 83 fd 01          	cmp    $0x1,%r13d
+  1f:	0f 84 62 01 00 00    	je     0x187
+  25:	e8 e1 9e 1b ff       	call   0xff1b9f0b
+* 2a:	41 83 47 2c 01       	addl   $0x1,0x2c(%r15) <-- trapping instruction
+  2f:	e8 d7 9e 1b ff       	call   0xff1b9f0b
+  34:	f0 41 80 4f 18 02    	lock orb $0x2,0x18(%r15)
+  3a:	48 85 db             	test   %rbx,%rbx
+  3d:	0f                   	.byte 0xf
+  3e:	84 20                	test   %ah,(%rax)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

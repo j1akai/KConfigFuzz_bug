@@ -1,0 +1,46 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 53692 at fs/inode.c:331 drop_nlink+0x5c/0x70 home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:331
+Modules linked in:
+CPU: 1 PID: 53692 Comm: syz-executor Not tainted 6.8.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:drop_nlink+0x5c/0x70 home/jiakai/62_66_amd_0904/linux68/linux/fs/inode.c:331
+Code: e8 69 e1 cf ff 45 85 e4 75 11 e8 5f e8 cf ff 48 8b 43 28 f0 48 ff 80 30 04 00 00 5b 5d 41 5c e9 4a e8 cf ff e8 45 e8 cf ff 90 <0f> 0b 90 c7 43 48 ff ff ff ff 5b 5d 41 5c e9 31 e8 cf ff 90 90 90
+RSP: 0018:ffffc90000673d68 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: ffff88804ad90000 RCX: ffffffff81735e4c
+RDX: ffff888047ce4800 RSI: ffffffff81735e8b RDI: 0000000000000005
+RBP: 0000000000000000 R08: 0000000000000005 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff88804ad91e30
+R13: ffff88801c2b8000 R14: ffff88804ad902a8 R15: ffffea00019c0e40
+FS:  0000555556675500(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fffc8764fd8 CR3: 0000000066602000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ f2fs_i_links_write home/jiakai/62_66_amd_0904/linux68/linux/fs/f2fs/f2fs.h:3063 [inline]
+ f2fs_drop_nlink+0x69/0x1c0 home/jiakai/62_66_amd_0904/linux68/linux/fs/f2fs/dir.c:863
+ f2fs_delete_entry+0x211/0x9a0 home/jiakai/62_66_amd_0904/linux68/linux/fs/f2fs/dir.c:926
+ f2fs_unlink+0x1ec/0x4b0 home/jiakai/62_66_amd_0904/linux68/linux/fs/f2fs/namei.c:640
+ vfs_unlink+0x1ec/0x450 home/jiakai/62_66_amd_0904/linux68/linux/fs/namei.c:4338
+ do_unlinkat+0x3a0/0x440 home/jiakai/62_66_amd_0904/linux68/linux/fs/namei.c:4402
+ __do_sys_unlink home/jiakai/62_66_amd_0904/linux68/linux/fs/namei.c:4450 [inline]
+ __se_sys_unlink home/jiakai/62_66_amd_0904/linux68/linux/fs/namei.c:4448 [inline]
+ __x64_sys_unlink+0x63/0x90 home/jiakai/62_66_amd_0904/linux68/linux/fs/namei.c:4448
+ do_syscall_x64 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:52 [inline]
+ do_syscall_64+0xb0/0x1e0 home/jiakai/62_66_amd_0904/linux68/linux/arch/x86/entry/common.c:83
+ entry_SYSCALL_64_after_hwframe+0x6f/0x77
+RIP: 0033:0x7fabb1bad6ab
+Code: 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa b8 57 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007ffdcd9a14b8 EFLAGS: 00000206 ORIG_RAX: 0000000000000057
+RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007fabb1bad6ab
+RDX: 00007ffdcd9a14e0 RSI: 00007ffdcd9a1570 RDI: 00007ffdcd9a1570
+RBP: 00007ffdcd9a1570 R08: 0000000000000000 R09: 00007ffdcd9a1340
+R10: 0000000000000100 R11: 0000000000000206 R12: 00007fabb1c47cae
+R13: 00007ffdcd9a2670 R14: 0000555556690640 R15: 0000555556688673
+ </TASK>
+---[ end trace 0000000000000000 ]---
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

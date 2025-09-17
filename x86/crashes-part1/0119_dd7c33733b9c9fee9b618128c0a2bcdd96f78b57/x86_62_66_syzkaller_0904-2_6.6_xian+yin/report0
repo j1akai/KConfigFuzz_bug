@@ -1,0 +1,60 @@
+ocfs2: Unmounting device (7,5) on (node local)
+VFS: Busy inodes after unmount of loop5 (ocfs2)
+------------[ cut here ]------------
+kernel BUG at fs/super.c:695!
+invalid opcode: 0000 [#1] PREEMPT SMP NOPTI
+CPU: 0 PID: 77528 Comm: syz-executor Not tainted 6.6.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:generic_shutdown_super+0x15d/0x160 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:695
+Code: ff 4c 8b a3 f8 00 00 00 eb c9 e8 4e 21 d4 ff 48 8b 43 28 48 8d b3 b0 03 00 00 48 c7 c7 d8 0d 1e 86 48 8b 10 e8 84 9d c7 ff 90 <0f> 0b 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e
+RSP: 0018:ffffc900020ffe30 EFLAGS: 00010246
+RAX: 000000000000002f RBX: ffff888046886800 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff81367302 RDI: 0000000000000001
+RBP: ffffffff82038f20 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 2079737542203a53 R12: ffffffff853a7bc0
+R13: ffff88804d1e8dc0 R14: 0000000000000000 R15: 0000000000000000
+FS:  0000555556edf500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fc9f6f91db0 CR3: 000000002f6b4000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ kill_block_super+0x1e/0x50 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:1646
+ deactivate_locked_super+0x4c/0x180 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:481
+ deactivate_super+0x72/0x80 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:514
+ cleanup_mnt+0x172/0x200 home/jiakai/62_66_amd_0904/linux66/linux/fs/namespace.c:1254
+ task_work_run+0x8f/0xe0 home/jiakai/62_66_amd_0904/linux66/linux/kernel/task_work.c:180
+ resume_user_mode_work home/jiakai/62_66_amd_0904/linux66/linux/include/linux/resume_user_mode.h:49 [inline]
+ exit_to_user_mode_loop home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:171 [inline]
+ exit_to_user_mode_prepare+0x123/0x140 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:204
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x22/0x50 home/jiakai/62_66_amd_0904/linux66/linux/kernel/entry/common.c:296
+ do_syscall_64+0x4e/0xc0 home/jiakai/62_66_amd_0904/linux66/linux/arch/x86/entry/common.c:86
+ entry_SYSCALL_64_after_hwframe+0x6f/0xd9
+RIP: 0033:0x7f74413afb8b
+Code: a8 ff ff ff f7 d8 64 89 01 48 83 c8 ff c3 90 f3 0f 1e fa 31 f6 e9 05 00 00 00 0f 1f 44 00 00 f3 0f 1e fa b8 a6 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 05 c3 0f 1f 40 00 48 c7 c2 a8 ff ff ff f7 d8
+RSP: 002b:00007ffc641be658 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007f74413afb8b
+RDX: 00007f744124fd10 RSI: 0000000000000009 RDI: 00007ffc641be710
+RBP: 00007ffc641be710 R08: 0000000000000000 R09: 00007ffc641be4e0
+R10: 0000555556ef26f3 R11: 0000000000000246 R12: 00007f7441447cae
+R13: 00007ffc641bf7e0 R14: 0000555556ef2600 R15: 000000000015c135
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:generic_shutdown_super+0x15d/0x160 home/jiakai/62_66_amd_0904/linux66/linux/fs/super.c:695
+Code: ff 4c 8b a3 f8 00 00 00 eb c9 e8 4e 21 d4 ff 48 8b 43 28 48 8d b3 b0 03 00 00 48 c7 c7 d8 0d 1e 86 48 8b 10 e8 84 9d c7 ff 90 <0f> 0b 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e
+RSP: 0018:ffffc900020ffe30 EFLAGS: 00010246
+RAX: 000000000000002f RBX: ffff888046886800 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffffffff81367302 RDI: 0000000000000001
+RBP: ffffffff82038f20 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000000 R11: 2079737542203a53 R12: ffffffff853a7bc0
+R13: ffff88804d1e8dc0 R14: 0000000000000000 R15: 0000000000000000
+FS:  0000555556edf500(0000) GS:ffff88803ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fc9f6f91db0 CR3: 000000002f6b4000 CR4: 0000000000750ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000

@@ -1,0 +1,162 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 26186 at kernel/workqueue.c:1438 __queue_work+0xd10/0xd60 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:1438
+Modules linked in:
+CPU: 1 PID: 26186 Comm: syz.5.754 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__queue_work+0xd10/0xd60 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:1438
+Code: 00 e9 fb fc ff ff e8 bf ef 31 00 89 de 48 c7 c7 c0 7e 7d 8d e8 91 fa 2c 03 e9 4b fc ff ff e8 a7 ef 31 00 eb 05 e8 a0 ef 31 00 <0f> 0b 48 83 c4 58 5b 41 5c 41 5d 41 5e 41 5f 5d c3 e8 8a ef 31 00
+RSP: 0018:ffffc900004c8b10 EFLAGS: 00010046
+RAX: ffffffff81597b79 RBX: 00000000000b0012 RCX: ffff88802760a440
+RDX: 0000000000000100 RSI: 0000000000000100 RDI: 0000000000000000
+RBP: ffff8880668d0b30 R08: ffffffff815a06ee R09: fffffbfff1dfffde
+R10: fffffbfff1dfffde R11: 1ffffffff1dfffdd R12: ffff88804fcf3800
+R13: dffffc0000000000 R14: 0000000000000008 R15: ffff88804fcf39c0
+FS:  0000000000000000(0000) GS:ffff88807ec00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007ffed4786d08 CR3: 000000000d68e000 CR4: 0000000000750ee0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 80000000
+Call Trace:
+ <IRQ>
+ call_timer_fn+0xf5/0x210 home/jiakai/62_66_amd_0901/linux62/linux/kernel/time/timer.c:1700
+ expire_timers home/jiakai/62_66_amd_0901/linux62/linux/kernel/time/timer.c:1746 [inline]
+ __run_timers+0x7a2/0x990 home/jiakai/62_66_amd_0901/linux62/linux/kernel/time/timer.c:2022
+ run_timer_softirq+0x63/0xf0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/time/timer.c:2035
+ __do_softirq+0x277/0x75b home/jiakai/62_66_amd_0901/linux62/linux/kernel/softirq.c:571
+ __irq_exit_rcu+0xec/0x170 home/jiakai/62_66_amd_0901/linux62/linux/kernel/softirq.c:650
+ irq_exit_rcu+0x5/0x20 home/jiakai/62_66_amd_0901/linux62/linux/kernel/softirq.c:662
+ sysvec_apic_timer_interrupt+0x91/0xb0 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/kernel/apic/apic.c:1107
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x16/0x20 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/include/asm/idtentry.h:649
+RIP: 0010:lock_acquire+0x21e/0x400 home/jiakai/62_66_amd_0901/linux62/linux/kernel/locking/lockdep.c:5672
+Code: 23 00 74 08 4c 89 f7 e8 f0 7b 73 00 f6 44 24 61 02 0f 85 76 01 00 00 41 f7 c7 00 02 00 00 74 01 fb 48 c7 44 24 40 0e 36 e0 45 <4b> c7 04 2c 00 00 00 00 43 c7 44 2c 09 00 00 00 00 43 c7 44 2c 11
+RSP: 0018:ffffc900020ff520 EFLAGS: 00000206
+RAX: 0000000000000001 RBX: 1ffff9200041feb0 RCX: ffff88802760ae70
+RDX: dffffc0000000000 RSI: ffffffff8b2dae60 RDI: ffffffff8b8c8880
+RBP: ffffc900020ff668 R08: dffffc0000000000 R09: fffffbfff2844904
+R10: fffffbfff2844904 R11: 1ffffffff2844903 R12: dffffc0000000000
+R13: 1ffff9200041feac R14: ffffc900020ff580 R15: 0000000000000246
+ __flush_workqueue+0x18c/0x16a0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2809
+ drain_workqueue+0xc3/0x3a0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/workqueue.c:2974
+ hci_dev_close_sync+0x446/0xd70 home/jiakai/62_66_amd_0901/linux62/linux/net/bluetooth/hci_sync.c:4835
+ hci_dev_do_close home/jiakai/62_66_amd_0901/linux62/linux/net/bluetooth/hci_core.c:554 [inline]
+ hci_unregister_dev+0x1bc/0x460 home/jiakai/62_66_amd_0901/linux62/linux/net/bluetooth/hci_core.c:2702
+ vhci_release+0x7f/0xd0 home/jiakai/62_66_amd_0901/linux62/linux/drivers/bluetooth/hci_vhci.c:568
+ __fput+0x3ba/0x880 home/jiakai/62_66_amd_0901/linux62/linux/fs/file_table.c:320
+ task_work_run+0x243/0x300 home/jiakai/62_66_amd_0901/linux62/linux/kernel/task_work.c:179
+ exit_task_work home/jiakai/62_66_amd_0901/linux62/linux/include/linux/task_work.h:38 [inline]
+ do_exit+0x63c/0x2140 home/jiakai/62_66_amd_0901/linux62/linux/kernel/exit.c:867
+ do_group_exit+0x1fd/0x2b0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/exit.c:1012
+ get_signal+0x16ed/0x17b0 home/jiakai/62_66_amd_0901/linux62/linux/kernel/signal.c:2859
+ arch_do_signal_or_restart+0x8d/0x5d0 home/jiakai/62_66_amd_0901/linux62/linux/arch/x86/kernel/signal.c:306
+ exit_to_user_mode_loop+0x74/0x160 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:168
+ exit_to_user_mode_prepare+0xad/0x110 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:203
+ __syscall_exit_to_user_mode_work home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:285 [inline]
+ syscall_exit_to_user_mode+0x2e/0x60 home/jiakai/62_66_amd_0901/linux62/linux/kernel/entry/common.c:296
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7fc97f1ee468
+Code: Unable to access opcode bytes at 0x7fc97f1ee43e.
+RSP: 002b:00007fc9800cce90 EFLAGS: 00000293 ORIG_RAX: 00000000000000e6
+RAX: fffffffffffffdfc RBX: 00007fc97f3f5f01 RCX: 00007fc97f1ee468
+RDX: 00007fc9800ccf20 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 00007fc97f2480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000293 R12: 00007fc9800ccf20
+R13: 0000000000000000 R14: 0000000000000000 R15: 00007fc9800ad000
+ </TASK>
+----------------
+Code disassembly (best guess):
+   0:	23 00                	and    (%rax),%eax
+   2:	74 08                	je     0xc
+   4:	4c 89 f7             	mov    %r14,%rdi
+   7:	e8 f0 7b 73 00       	call   0x737bfc
+   c:	f6 44 24 61 02       	testb  $0x2,0x61(%rsp)
+  11:	0f 85 76 01 00 00    	jne    0x18d
+  17:	41 f7 c7 00 02 00 00 	test   $0x200,%r15d
+  1e:	74 01                	je     0x21
+  20:	fb                   	sti
+  21:	48 c7 44 24 40 0e 36 	movq   $0x45e0360e,0x40(%rsp)
+  28:	e0 45
+* 2a:	4b c7 04 2c 00 00 00 	movq   $0x0,(%r12,%r13,1) <-- trapping instruction
+  31:	00
+  32:	43 c7 44 2c 09 00 00 	movl   $0x0,0x9(%r12,%r13,1)
+  39:	00 00
+  3b:	43                   	rex.XB
+  3c:	c7                   	.byte 0xc7
+  3d:	44 2c 11             	rex.R sub $0x11,%al
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+RDX: 00007fc9800ccf20 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 00007fc97f2480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000293 R12: 00007fc9800ccf20
+R13: 0000000000000000 R14: 0000000000000000 R15: 00007fc9800ad000
+ </TASK>
+Kernel panic - not syncing: kernel: panic_on_warn set ...
+CPU: 1 PID: 26186 Comm: syz.5.754 Not tainted 6.2.0 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <IRQ>
+ dump_stack_lvl+0x1e3/0x2d0
+ panic+0x302/0x760
+ __warn+0x284/0x2d0
+ report_bug+0x1b3/0x2d0
+ handle_bug+0x3d/0x70
+ exc_invalid_op+0x16/0x40
+ asm_exc_invalid_op+0x16/0x20
+RIP: 0010:__queue_work+0xd10/0xd60
+Code: 00 e9 fb fc ff ff e8 bf ef 31 00 89 de 48 c7 c7 c0 7e 7d 8d e8 91 fa 2c 03 e9 4b fc ff ff e8 a7 ef 31 00 eb 05 e8 a0 ef 31 00 <0f> 0b 48 83 c4 58 5b 41 5c 41 5d 41 5e 41 5f 5d c3 e8 8a ef 31 00
+RSP: 0018:ffffc900004c8b10 EFLAGS: 00010046
+RAX: ffffffff81597b79 RBX: 00000000000b0012 RCX: ffff88802760a440
+RDX: 0000000000000100 RSI: 0000000000000100 RDI: 0000000000000000
+RBP: ffff8880668d0b30 R08: ffffffff815a06ee R09: fffffbfff1dfffde
+R10: fffffbfff1dfffde R11: 1ffffffff1dfffdd R12: ffff88804fcf3800
+R13: dffffc0000000000 R14: 0000000000000008 R15: ffff88804fcf39c0
+ call_timer_fn+0xf5/0x210
+ __run_timers+0x7a2/0x990
+ run_timer_softirq+0x63/0xf0
+ __do_softirq+0x277/0x75b
+ __irq_exit_rcu+0xec/0x170
+ irq_exit_rcu+0x5/0x20
+ sysvec_apic_timer_interrupt+0x91/0xb0
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x16/0x20
+RIP: 0010:lock_acquire+0x21e/0x400
+Code: 23 00 74 08 4c 89 f7 e8 f0 7b 73 00 f6 44 24 61 02 0f 85 76 01 00 00 41 f7 c7 00 02 00 00 74 01 fb 48 c7 44 24 40 0e 36 e0 45 <4b> c7 04 2c 00 00 00 00 43 c7 44 2c 09 00 00 00 00 43 c7 44 2c 11
+RSP: 0018:ffffc900020ff520 EFLAGS: 00000206
+RAX: 0000000000000001 RBX: 1ffff9200041feb0 RCX: ffff88802760ae70
+RDX: dffffc0000000000 RSI: ffffffff8b2dae60 RDI: ffffffff8b8c8880
+RBP: ffffc900020ff668 R08: dffffc0000000000 R09: fffffbfff2844904
+R10: fffffbfff2844904 R11: 1ffffffff2844903 R12: dffffc0000000000
+R13: 1ffff9200041feac R14: ffffc900020ff580 R15: 0000000000000246
+ __flush_workqueue+0x18c/0x16a0
+ drain_workqueue+0xc3/0x3a0
+ hci_dev_close_sync+0x446/0xd70
+ hci_unregister_dev+0x1bc/0x460
+ vhci_release+0x7f/0xd0
+ __fput+0x3ba/0x880
+ task_work_run+0x243/0x300
+ do_exit+0x63c/0x2140
+ do_group_exit+0x1fd/0x2b0
+ get_signal+0x16ed/0x17b0
+ arch_do_signal_or_restart+0x8d/0x5d0
+ exit_to_user_mode_loop+0x74/0x160
+ exit_to_user_mode_prepare+0xad/0x110
+ syscall_exit_to_user_mode+0x2e/0x60
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7fc97f1ee468
+Code: Unable to access opcode bytes at 0x7fc97f1ee43e.
+RSP: 002b:00007fc9800cce90 EFLAGS: 00000293 ORIG_RAX: 00000000000000e6
+RAX: fffffffffffffdfc RBX: 00007fc97f3f5f01 RCX: 00007fc97f1ee468
+RDX: 00007fc9800ccf20 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: 00007fc97f2480f0 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000293 R12: 00007fc9800ccf20
+R13: 0000000000000000 R14: 0000000000000000 R15: 00007fc9800ad000
+ </TASK>
+Kernel Offset: disabled
+Rebooting in 86400 seconds..
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
