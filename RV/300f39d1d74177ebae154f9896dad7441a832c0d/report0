@@ -1,0 +1,55 @@
+WARNING: CPU: 0 PID: 5170 at lib/debugobjects.c:612 debug_print_object+0x172/0x378 lib/debugobjects.c:612
+Modules linked in:
+CPU: 0 UID: 0 PID: 5170 Comm: kworker/0:5 Not tainted 6.16.0-dirty #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: usb_hub_wq hub_event
+epc : debug_print_object+0x172/0x378 lib/debugobjects.c:612
+ ra : debug_print_object+0x172/0x378 lib/debugobjects.c:612
+epc : ffffffff817ac8e2 ra : ffffffff817ac8e2 sp : ff2000000ff76f30
+ gp : ffffffff89cc9100 tp : ff60000012b1b480 t0 : 00000000000000c8
+ t1 : ff60000012b1b480 t2 : ffffffff8683e55c s0 : ff2000000ff76f70
+ s1 : ff6000001bb5c000 a0 : ff60000012b1b488 a1 : 0000000000000000
+ a2 : ffffffff80141f8a a3 : 0000000000100000 a4 : 0000000000000000
+ a5 : 0000000000000000 a6 : 0000000000000000 a7 : ff60000012b1bf98
+ s2 : ffffffff86830fa0 s3 : ff6000001bb5e000 s4 : ff6000003e8483b8
+ s5 : 0000000000000003 s6 : dead000000000100 s7 : 0000000000000006
+ s8 : ff2000000ff77080 s9 : ff6000001bb5d000 s10: dfffffff00000000
+ s11: 0000000000000003 t3 : ffffffff89e46090 t4 : ffebffff0e1ec410
+ t5 : ffebffff0e1ec411 t6 : 0000000000001fff
+status: 0000000000000120 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff817ac8e2>] debug_print_object+0x172/0x378 lib/debugobjects.c:612
+[<ffffffff817b1946>] __debug_check_no_obj_freed lib/debugobjects.c:1099 [inline]
+[<ffffffff817b1946>] debug_check_no_obj_freed+0x3b6/0x53c lib/debugobjects.c:1129
+[<ffffffff80a70800>] slab_free_hook mm/slub.c:2312 [inline]
+[<ffffffff80a70800>] slab_free mm/slub.c:4643 [inline]
+[<ffffffff80a70800>] kfree+0x2c4/0x5a4 mm/slub.c:4842
+[<ffffffff80a73330>] kvfree+0x28/0x34 mm/slub.c:5058
+[<ffffffff8513fd5c>] netdev_release+0x84/0xb0 net/core/net-sysfs.c:2231
+[<ffffffff82b30490>] device_release+0x94/0x228 drivers/base/core.c:2568
+[<ffffffff8615eefa>] kobject_cleanup lib/kobject.c:689 [inline]
+[<ffffffff8615eefa>] kobject_release lib/kobject.c:720 [inline]
+[<ffffffff8615eefa>] kref_put include/linux/kref.h:65 [inline]
+[<ffffffff8615eefa>] kobject_put+0x20e/0x500 lib/kobject.c:737
+[<ffffffff82b30cec>] put_device+0x28/0x3c drivers/base/core.c:3800
+[<ffffffff85020ce8>] free_netdev+0x598/0x7d8 net/core/dev.c:11900
+[<ffffffff83606b98>] usbnet_disconnect+0x200/0x3f0 drivers/net/usb/usbnet.c:1663
+[<ffffffff8376413a>] usb_unbind_interface+0x18a/0x7e8 drivers/usb/core/driver.c:458
+[<ffffffff82b473c0>] device_remove drivers/base/dd.c:569 [inline]
+[<ffffffff82b473c0>] device_remove+0x11c/0x16c drivers/base/dd.c:561
+[<ffffffff82b4aa60>] __device_release_driver drivers/base/dd.c:1272 [inline]
+[<ffffffff82b4aa60>] device_release_driver_internal+0x3b0/0x538 drivers/base/dd.c:1295
+[<ffffffff82b4ac08>] device_release_driver+0x20/0x28 drivers/base/dd.c:1318
+[<ffffffff82b4589a>] bus_remove_device+0x1fe/0x3f4 drivers/base/bus.c:579
+[<ffffffff82b35dde>] device_del+0x312/0x880 drivers/base/core.c:3881
+[<ffffffff8375c9c2>] usb_disable_device+0x2da/0x6d0 drivers/usb/core/message.c:1418
+[<ffffffff83739578>] usb_disconnect+0x27c/0x878 drivers/usb/core/hub.c:2344
+[<ffffffff83740978>] hub_port_connect drivers/usb/core/hub.c:5406 [inline]
+[<ffffffff83740978>] hub_port_connect_change drivers/usb/core/hub.c:5706 [inline]
+[<ffffffff83740978>] port_event drivers/usb/core/hub.c:5870 [inline]
+[<ffffffff83740978>] hub_event+0x193c/0x46e8 drivers/usb/core/hub.c:5952
+[<ffffffff801c0560>] process_one_work+0x930/0x1db0 kernel/workqueue.c:3238
+[<ffffffff801c1f1a>] process_scheduled_works kernel/workqueue.c:3321 [inline]
+[<ffffffff801c1f1a>] worker_thread+0x53a/0xcac kernel/workqueue.c:3402
+[<ffffffff801e1450>] kthread+0x37c/0x7a0 kernel/kthread.c:464
+[<ffffffff800698a0>] ret_from_fork_kernel+0x28/0xb30 arch/riscv/kernel/process.c:214
+[<ffffffff8620dc9a>] ret_from_fork_kernel_asm+0x16/0x18 arch/riscv/kernel/entry.S:327
