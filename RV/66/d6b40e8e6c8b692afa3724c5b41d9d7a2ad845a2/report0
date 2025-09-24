@@ -1,0 +1,79 @@
+=============================
+[ BUG: Invalid wait context ]
+6.6.0 #1 Not tainted
+-----------------------------
+syz-executor/5999 is trying to lock:
+ff600000ffdefb58 (&zone->lock){..-.}-{3:3}, at: rmqueue_bulk mm/page_alloc.c:2130 [inline]
+ff600000ffdefb58 (&zone->lock){..-.}-{3:3}, at: __rmqueue_pcplist+0x274/0x1084 mm/page_alloc.c:2698
+other info that might help us debug this:
+context-{2:2}
+4 locks held by syz-executor/5999:
+ #0: ff600000891b6410 (sb_writers#5){.+.+}-{0:0}, at: __sb_start_write include/linux/fs.h:1571 [inline]
+ #0: ff600000891b6410 (sb_writers#5){.+.+}-{0:0}, at: sb_start_write include/linux/fs.h:1646 [inline]
+ #0: ff600000891b6410 (sb_writers#5){.+.+}-{0:0}, at: mnt_want_write+0x3c/0xaa fs/namespace.c:403
+ #1: ff6000008a149058 (&type->i_mutex_dir_key#5/1){+.+.}-{4:4}, at: inode_lock_nested include/linux/fs.h:837 [inline]
+ #1: ff6000008a149058 (&type->i_mutex_dir_key#5/1){+.+.}-{4:4}, at: filename_create+0x1ae/0x49e fs/namei.c:3890
+ #2: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested kernel/sched/core.c:558 [inline]
+ #2: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock kernel/sched/sched.h:1372 [inline]
+ #2: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: rq_lock kernel/sched/sched.h:1681 [inline]
+ #2: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c kernel/sched/core.c:5652
+ #3: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: spin_trylock include/linux/spinlock.h:361 [inline]
+ #3: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: rmqueue_pcplist mm/page_alloc.c:2727 [inline]
+ #3: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: rmqueue mm/page_alloc.c:2777 [inline]
+ #3: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: get_page_from_freelist+0xa96/0x3116 mm/page_alloc.c:3167
+stack backtrace:
+CPU: 0 PID: 5999 Comm: syz-executor Not tainted 6.6.0 #1
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff8000dc50>] dump_backtrace+0x32/0x3c arch/riscv/kernel/stacktrace.c:121
+[<ffffffff85aeb8b6>] show_stack+0x34/0x40 arch/riscv/kernel/stacktrace.c:127
+[<ffffffff85b4131c>] __dump_stack lib/dump_stack.c:88 [inline]
+[<ffffffff85b4131c>] dump_stack_lvl+0xe2/0x14c lib/dump_stack.c:106
+[<ffffffff85b413a2>] dump_stack+0x1c/0x24 lib/dump_stack.c:113
+[<ffffffff8023e890>] print_lock_invalid_wait_context kernel/locking/lockdep.c:4750 [inline]
+[<ffffffff8023e890>] check_wait_context kernel/locking/lockdep.c:4820 [inline]
+[<ffffffff8023e890>] __lock_acquire+0x6de2/0x6f34 kernel/locking/lockdep.c:5086
+[<ffffffff8023ed30>] lock_acquire kernel/locking/lockdep.c:5753 [inline]
+[<ffffffff8023ed30>] lock_acquire+0x34e/0xd20 kernel/locking/lockdep.c:5718
+[<ffffffff85b651a6>] __raw_spin_lock_irqsave include/linux/spinlock_api_smp.h:110 [inline]
+[<ffffffff85b651a6>] _raw_spin_lock_irqsave+0x3e/0x62 kernel/locking/spinlock.c:162
+[<ffffffff80869476>] rmqueue_bulk mm/page_alloc.c:2130 [inline]
+[<ffffffff80869476>] __rmqueue_pcplist+0x274/0x1084 mm/page_alloc.c:2698
+[<ffffffff8086df7e>] rmqueue_pcplist mm/page_alloc.c:2740 [inline]
+[<ffffffff8086df7e>] rmqueue mm/page_alloc.c:2777 [inline]
+[<ffffffff8086df7e>] get_page_from_freelist+0xb10/0x3116 mm/page_alloc.c:3167
+[<ffffffff808719ea>] __alloc_pages+0x1d6/0x243a mm/page_alloc.c:4426
+[<ffffffff808e2270>] alloc_pages+0x2ae/0x45c mm/mempolicy.c:2299
+[<ffffffff816da494>] __stack_depot_save+0x434/0x602 lib/stackdepot.c:410
+[<ffffffff809145b2>] kasan_save_stack+0x50/0x62 mm/kasan/common.c:46
+[<ffffffff80916ad0>] __kasan_record_aux_stack+0xe4/0x146 mm/kasan/generic.c:492
+[<ffffffff80916ee4>] kasan_record_aux_stack+0xe/0x16 mm/kasan/generic.c:497
+[<ffffffff80130ba8>] task_work_add+0x9c/0x276 kernel/task_work.c:48
+[<ffffffff8018607e>] task_tick_mm_cid+0xd0/0x186 kernel/sched/core.c:12023
+[<ffffffff801863ca>] scheduler_tick+0x296/0x89c kernel/sched/core.c:5662
+[<ffffffff80318c14>] update_process_times+0x1be/0x25e kernel/time/timer.c:2076
+[<ffffffff8034eec8>] tick_sched_handle+0x78/0x152 kernel/time/tick-sched.c:254
+[<ffffffff8034fa5c>] tick_sched_timer+0xc0/0x1c6 kernel/time/tick-sched.c:1492
+[<ffffffff8031bab8>] __run_hrtimer kernel/time/hrtimer.c:1688 [inline]
+[<ffffffff8031bab8>] __hrtimer_run_queues+0x1f4/0xbbe kernel/time/hrtimer.c:1752
+[<ffffffff8031eeae>] hrtimer_interrupt+0x2c4/0x79c kernel/time/hrtimer.c:1814
+[<ffffffff84192570>] riscv_timer_interrupt+0x7a/0xcc drivers/clocksource/timer-riscv.c:123
+[<ffffffff8027c4da>] handle_percpu_devid_irq+0x284/0x59e kernel/irq/chip.c:942
+[<ffffffff80265bd4>] generic_handle_irq_desc include/linux/irqdesc.h:161 [inline]
+[<ffffffff80265bd4>] handle_irq_desc kernel/irq/irqdesc.c:672 [inline]
+[<ffffffff80265bd4>] generic_handle_domain_irq+0x76/0xaa kernel/irq/irqdesc.c:728
+[<ffffffff816e7b9e>] riscv_intc_irq+0x6e/0xa2 drivers/irqchip/irq-riscv-intc.c:30
+[<ffffffff85b424e4>] handle_riscv_irq+0x2e/0x4c arch/riscv/kernel/traps.c:355
+[<ffffffff85b42ba2>] do_irq+0x92/0xb4 arch/riscv/kernel/traps.c:391
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 arch/riscv/kernel/entry.S:102
+[<ffffffff82dc4c26>] virtnet_receive drivers/net/virtio_net.c:2066 [inline]
+[<ffffffff82dc4c26>] virtnet_poll+0x276/0x131e drivers/net/virtio_net.c:2148
+[<ffffffff849935e4>] __napi_poll.constprop.0+0xa4/0x79c net/core/dev.c:6556
+[<ffffffff84994506>] napi_poll net/core/dev.c:6623 [inline]
+[<ffffffff84994506>] net_rx_action+0x82a/0xc92 net/core/dev.c:6756
+[<ffffffff85b66a5c>] __do_softirq+0x410/0x102e kernel/softirq.c:553
+[<ffffffff800c8790>] invoke_softirq kernel/softirq.c:427 [inline]
+[<ffffffff800c8790>] __irq_exit_rcu+0x16a/0x436 kernel/softirq.c:632
+[<ffffffff800c8dee>] irq_exit_rcu+0xc/0x114 kernel/softirq.c:644
+[<ffffffff85b424f6>] handle_riscv_irq+0x40/0x4c arch/riscv/kernel/traps.c:357
+[<ffffffff85b42b7a>] do_irq+0x6a/0xb4 arch/riscv/kernel/traps.c:367
