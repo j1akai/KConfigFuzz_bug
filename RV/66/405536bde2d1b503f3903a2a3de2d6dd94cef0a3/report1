@@ -1,0 +1,51 @@
+UDPLite6: UDP-Lite is deprecated and scheduled to be removed in 2025, please contact the netdev mailing list
+Unable to handle kernel paging request at virtual address ff1bffffff010003
+Oops [#1]
+Modules linked in:
+CPU: 0 PID: 5048 Comm: syz.4.5 Not tainted 6.6.0 #1
+Hardware name: riscv-virtio,qemu (DT)
+epc : __raw_writeb arch/riscv/include/asm/mmio.h:21 [inline]
+epc : _outb include/asm-generic/io.h:584 [inline]
+epc : subdev_8255_io+0x25c/0x2ea drivers/comedi/drivers/comedi_8255.c:45
+ ra : _outb include/asm-generic/io.h:584 [inline]
+ ra : subdev_8255_io+0x24c/0x2ea drivers/comedi/drivers/comedi_8255.c:45
+epc : ffffffff84412ee6 ra : ffffffff84412ed6 sp : ff2000000364b7a0
+ gp : ffffffff890652c0 tp : ff6000008c0f4c80 t0 : ff6000008c0f5730
+ t1 : 00000000000f0000 t2 : 0000000000000002 s0 : ff2000000364b7f0
+ s1 : ffffffffff010003 a0 : 0000000000f00000 a1 : 00000000000f0000
+ a2 : 0000000000000000 a3 : 0000000000080000 a4 : 0040000000000000
+ a5 : ff1bffffff010003 a6 : 0000000000000003 a7 : 0000000000000000
+ s2 : 0004000000000000 s3 : 000000000000009b s4 : 0000000000000000
+ s5 : ff60000000000000 s6 : 0000000000000120 s7 : 0000000000010000
+ s8 : ff2000000364ba00 s9 : ffebffff11a28f38 s10: 1fec000011a28f37
+ s11: 0000000000000000 t3 : 0000000000f00000 t4 : 0000000000014d9f
+ t5 : 1fec00001181eaf6 t6 : 0000000000000000
+status: 0000000000000120 badaddr: ff1bffffff010003 cause: 000000000000000f
+[<ffffffff84412ee6>] _outb include/asm-generic/io.h:584 [inline]
+[<ffffffff84412ee6>] subdev_8255_io+0x25c/0x2ea drivers/comedi/drivers/comedi_8255.c:45
+[<ffffffff84413084>] subdev_8255_do_config.isra.0+0x110/0x138 drivers/comedi/drivers/comedi_8255.c:111
+[<ffffffff84413696>] __subdev_8255_init drivers/comedi/drivers/comedi_8255.c:171 [inline]
+[<ffffffff84413696>] subdev_8255_init+0x1cc/0x26e drivers/comedi/drivers/comedi_8255.c:207
+[<ffffffff84413aca>] dev_8255_attach drivers/comedi/drivers/8255.c:83 [inline]
+[<ffffffff84413aca>] dev_8255_attach+0x22e/0x37c drivers/comedi/drivers/8255.c:46
+[<ffffffff843cd946>] comedi_device_attach+0x34e/0x7e6 drivers/comedi/drivers.c:995
+[<ffffffff843bb1b0>] do_devconfig_ioctl+0x1a2/0x51e drivers/comedi/comedi_fops.c:855
+[<ffffffff843c3132>] comedi_unlocked_ioctl+0x338/0x2c0a drivers/comedi/comedi_fops.c:2136
+[<ffffffff80a3abb0>] vfs_ioctl fs/ioctl.c:51 [inline]
+[<ffffffff80a3abb0>] __do_sys_ioctl fs/ioctl.c:871 [inline]
+[<ffffffff80a3abb0>] __se_sys_ioctl fs/ioctl.c:857 [inline]
+[<ffffffff80a3abb0>] __riscv_sys_ioctl+0x180/0x1e6 fs/ioctl.c:857
+[<ffffffff8000c6ba>] syscall_handler+0x96/0x126 arch/riscv/include/asm/syscall.h:90
+[<ffffffff85b42ab8>] do_trap_ecall_u+0x8c/0x8e arch/riscv/kernel/traps.c:320
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 arch/riscv/kernel/entry.S:102
+Code: 80e7 b280 3703 fb84 07b3 009a 97d6 87b3 4127 8f99 (8023) 0137 
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	b28080e7          	jalr	-1240(ra)
+   4:	fb843703          	.4byte	0xfb843703
+   8:	009a07b3          	add	a5,s4,s1
+   c:	97d6                	add	a5,a5,s5
+   e:	412787b3          	sub	a5,a5,s2
+  12:	8f99                	sub	a5,a5,a4
+* 14:	01378023          	sb	s3,0(a5) <-- trapping instruction

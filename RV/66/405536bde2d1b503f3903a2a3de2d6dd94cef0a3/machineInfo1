@@ -1,0 +1,24 @@
+QEMU emulator version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.27)
+qemu-system-riscv64 ["-m" "4096" "-smp" "2" "-chardev" "socket,id=SOCKSYZ,server=on,wait=off,host=localhost,port=43682" "-mon" "chardev=SOCKSYZ,mode=control" "-display" "none" "-serial" "stdio" "-no-reboot" "-name" "VM-0" "-device" "virtio-rng-pci" "-machine" "virt" "-device" "virtio-net-pci,netdev=net0" "-netdev" "user,id=net0,restrict=on,hostfwd=tcp:127.0.0.1:54337-:22" "-device" "virtio-blk-device,drive=hd0" "-drive" "file=/home/rv/images-repo/rootfs-kconfigfuzz.ext2,if=none,format=raw,id=hd0" "-snapshot" "-kernel" "/home/rv/linux-repo/linux-66-kconfigfuzz/arch/riscv/boot/Image" "-append" "root=/dev/vda console=ttyS0 "]
+
+[CPU Info]
+processor           : 0, 1
+hart                : 0, 1
+isa                 : rv64imafdc_zicntr_zicsr_zifencei_zihpm
+mmu                 : sv57
+mvendorid           : 0x0
+marchid             : 0x0
+mimpid              : 0x0
+
+--------------------------------------------------------------------------------
+
+[KVM]
+/sys/module/kvm:
+	halt_poll_ns_grow_start: 10000
+	halt_poll_ns_grow: 2
+	halt_poll_ns_shrink: 0
+	halt_poll_ns: 500000
+
+
+--------------------------------------------------------------------------------
+
