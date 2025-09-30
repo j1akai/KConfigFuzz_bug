@@ -1,0 +1,27 @@
+Kernel panic - not syncing: corrupted stack end detected inside scheduler
+CPU: 0 PID: 16 Comm: ksoftirqd/0 Not tainted 6.6.0 #1
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff8000dc50>] dump_backtrace+0x32/0x3c arch/riscv/kernel/stacktrace.c:121
+[<ffffffff85aeb8b6>] show_stack+0x34/0x40 arch/riscv/kernel/stacktrace.c:127
+[<ffffffff85b4131c>] __dump_stack lib/dump_stack.c:88 [inline]
+[<ffffffff85b4131c>] dump_stack_lvl+0xe2/0x14c lib/dump_stack.c:106
+[<ffffffff85b413a2>] dump_stack+0x1c/0x24 lib/dump_stack.c:113
+[<ffffffff85aec3ae>] panic+0x334/0x78e kernel/panic.c:340
+[<ffffffff85b4e992>] schedule_debug kernel/sched/core.c:5937 [inline]
+[<ffffffff85b4e992>] __schedule+0x326c/0x32c2 kernel/sched/core.c:6589
+[<ffffffff85b4f018>] preempt_schedule_notrace+0xa8/0x35c kernel/sched/core.c:6957
+[<ffffffff85b4330c>] lockdep_enabled kernel/locking/lockdep.c:119 [inline]
+[<ffffffff85b4330c>] lock_is_held_type+0x72/0x1f4 kernel/locking/lockdep.c:5817
+[<ffffffff8015fcf6>] lock_is_held include/linux/lockdep.h:288 [inline]
+[<ffffffff8015fcf6>] __might_resched+0x47a/0x608 kernel/sched/core.c:10149
+[<ffffffff800c8b36>] run_ksoftirqd kernel/softirq.c:923 [inline]
+[<ffffffff800c8b36>] run_ksoftirqd+0xda/0x15e kernel/softirq.c:913
+[<ffffffff8014bb1e>] smpboot_thread_fn+0x5f2/0xb00 kernel/smpboot.c:164
+[<ffffffff8013b748>] kthread+0x274/0x384 kernel/kthread.c:388
+[<ffffffff80007042>] ret_from_fork+0xe/0x20 arch/riscv/kernel/entry.S:264
+SMP: stopping secondary CPUs
+Rebooting in 86400 seconds..
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

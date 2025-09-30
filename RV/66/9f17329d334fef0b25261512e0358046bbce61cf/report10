@@ -1,26 +1,22 @@
-hrtimer: interrupt took 1648800 ns
+hrtimer: interrupt took 20129400 ns
 =============================
 [ BUG: Invalid wait context ]
 6.6.0 #1 Not tainted
 -----------------------------
-syz.0.1/3100 is trying to lock:
+syz.1.9/5054 is trying to lock:
 ffffffff903aa398 (&port_lock_key){-.-.}-{3:3}, at: serial8250_console_write+0x526/0xe4c drivers/tty/serial/8250/8250_port.c:3411
 other info that might help us debug this:
 context-{2:2}
-5 locks held by syz.0.1/3100:
- #0: ff600000902b7010 (&mm->mmap_lock){++++}-{4:4}, at: mmap_read_trylock include/linux/mmap_lock.h:165 [inline]
- #0: ff600000902b7010 (&mm->mmap_lock){++++}-{4:4}, at: get_mmap_lock_carefully mm/memory.c:5314 [inline]
- #0: ff600000902b7010 (&mm->mmap_lock){++++}-{4:4}, at: lock_mm_and_find_vma+0x38/0x568 mm/memory.c:5374
- #1: ff600000913f8508 (sb_pagefaults){.+.+}-{0:0}, at: __sb_start_write include/linux/fs.h:1571 [inline]
- #1: ff600000913f8508 (sb_pagefaults){.+.+}-{0:0}, at: sb_start_pagefault include/linux/fs.h:1675 [inline]
- #1: ff600000913f8508 (sb_pagefaults){.+.+}-{0:0}, at: ext4_page_mkwrite+0x1ce/0x10ec fs/ext4/inode.c:6073
- #2: ffffffff878d5600 (console_lock){+.+.}-{0:0}, at: console_trylock_spinning kernel/printk/printk.c:1927 [inline]
- #2: ffffffff878d5600 (console_lock){+.+.}-{0:0}, at: vprintk_emit+0x174/0x672 kernel/printk/printk.c:2306
- #3: ffffffff878d5710 (console_srcu){....}-{0:0}, at: console_flush_all+0xea/0xe04 kernel/printk/printk.c:2947
- #4: ffffffff878d58c0 (console_owner){-...}-{0:0}, at: console_emit_next_record kernel/printk/printk.c:2903 [inline]
- #4: ffffffff878d58c0 (console_owner){-...}-{0:0}, at: console_flush_all+0x47a/0xe04 kernel/printk/printk.c:2966
+4 locks held by syz.1.9/5054:
+ #0: ff6000009039d690 (&mm->mmap_lock){++++}-{4:4}, at: mmap_read_lock include/linux/mmap_lock.h:146 [inline]
+ #0: ff6000009039d690 (&mm->mmap_lock){++++}-{4:4}, at: exit_mmap+0x136/0xab0 mm/mmap.c:3215
+ #1: ffffffff878d5600 (console_lock){+.+.}-{0:0}, at: console_trylock_spinning kernel/printk/printk.c:1927 [inline]
+ #1: ffffffff878d5600 (console_lock){+.+.}-{0:0}, at: vprintk_emit+0x174/0x672 kernel/printk/printk.c:2306
+ #2: ffffffff878d5710 (console_srcu){....}-{0:0}, at: console_flush_all+0xea/0xe04 kernel/printk/printk.c:2947
+ #3: ffffffff878d58c0 (console_owner){-.-.}-{0:0}, at: console_emit_next_record kernel/printk/printk.c:2903 [inline]
+ #3: ffffffff878d58c0 (console_owner){-.-.}-{0:0}, at: console_flush_all+0x47a/0xe04 kernel/printk/printk.c:2966
 stack backtrace:
-CPU: 1 PID: 3100 Comm: syz.0.1 Not tainted 6.6.0 #1
+CPU: 0 PID: 5054 Comm: syz.1.9 Not tainted 6.6.0 #1
 Hardware name: riscv-virtio,qemu (DT)
 Call Trace:
 [<ffffffff8000dc50>] dump_backtrace+0x32/0x3c arch/riscv/kernel/stacktrace.c:121

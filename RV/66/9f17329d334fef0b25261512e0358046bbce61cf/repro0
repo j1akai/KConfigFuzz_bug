@@ -1,0 +1,774 @@
+Extracting prog: 4m14.675952709s
+Minimizing prog: 2h8m10.56494088s
+Simplifying prog options: 13m29.887703854s
+Extracting C: 4m45.225338168s
+Simplifying C: 0s
+
+
+extracting reproducer from 43 programs
+first checking the prog from the crash report
+single: executing 1 programs separately with timeout 45s
+testing program (duration=45s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-openat$dir-unlinkat-unlinkat-mknodat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+r0 = landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(r0, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000002c0)='./file2\x00', 0x1, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000400)='./file7\x00', 0x21c0, 0x103)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+single: successfully extracted reproducer
+found reproducer with 17 syscalls
+minimizing guilty program
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+r0 = landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(r0, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000002c0)='./file2\x00', 0x1, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-openat$dir-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+r0 = landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(r0, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000002c0)='./file2\x00', 0x1, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-openat$dir-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+r0 = landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(r0, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000002c0)='./file2\x00', 0x1, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+r0 = landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(r0, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000002c0)='./file2\x00', 0x1, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+r0 = landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(r0, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000002c0)='./file2\x00', 0x1, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+r0 = landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(r0, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+r0 = landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(r0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-prctl$PR_SET_NO_NEW_PRIVS-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-landlock_create_ruleset-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+r0 = landlock_create_ruleset(&(0x7f0000000240)={0x1fff}, 0x18, 0x0)
+landlock_restrict_self(r0, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-mknodat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000180)='./file5\x00', 0x61c0, 0x700)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000100)='./file3\x00', 0xc1c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, 0x0, 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000080)='./file1\x00', 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, &(0x7f00000000c0)='./file2\x00', 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, 0x0, 0x11c0, 0x0)
+symlinkat(&(0x7f00000001c0)='./file2\x00', 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program crashed: WARNING: locking bug in serial8250_console_write
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, &(0x7f0000000280)='./file2\x00', 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, 0x0, 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, 0x0, 0x200)
+unlinkat(0xffffffffffffff9c, &(0x7f00000003c0)='./file2\x00', 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+extracting C reproducer
+testing compiled C program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+program did not crash
+simplifying guilty program options
+testing program (duration=51.522993117s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:false RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:false Cgroups:false BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+validation run: crashed=true
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=51.522993117s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): mknodat-mkdirat-mknodat-mknodat-symlinkat-prctl$PR_SET_NO_NEW_PRIVS-landlock_restrict_self-execveat-openat$dir-openat$dir-unlinkat-unlinkat
+detailed listing:
+executing program 0:
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+mkdirat(0xffffffffffffff9c, 0x0, 0x1c0)
+mknodat(0xffffffffffffff9c, 0x0, 0x81c0, 0x0)
+mknodat(0xffffffffffffff9c, &(0x7f0000000140)='./file4\x00', 0x11c0, 0x0)
+symlinkat(0x0, 0xffffffffffffff9c, &(0x7f0000000200)='./file6\x00')
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+landlock_restrict_self(0xffffffffffffffff, 0x0)
+execveat(0xffffffffffffff9c, 0x0, 0x0, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file2\x00', 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000340)='./file1\x00', 0x0, 0x0)
+unlinkat(0xffffffffffffff9c, &(0x7f0000000380)='./file1\x00', 0x200)
+unlinkat(0xffffffffffffff9c, 0x0, 0x0)
+
+program did not crash
+validation run: crashed=false
+reproducer is too unreliable: 0.10
+reproducing took 3h17m14.341793063s

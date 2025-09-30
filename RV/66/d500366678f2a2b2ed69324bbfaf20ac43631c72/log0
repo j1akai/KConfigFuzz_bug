@@ -1,0 +1,466 @@
+last executing test programs:
+
+6.508718251s ago: executing program 3 (id=4):
+mkdirat(0xffffffffffffff9c, &(0x7f0000002040)='./file0\x00', 0x0)
+r0 = openat$fuse(0xffffffffffffff9c, &(0x7f0000002080), 0x2, 0x0)
+mount$fuse(0x0, &(0x7f00000020c0)='./file0\x00', &(0x7f0000002100), 0x0, &(0x7f0000002140)={{'fd', 0x3d, r0}, 0x2c, {'rootmode', 0x3d, 0x4000}})
+write$FUSE_INIT(r0, &(0x7f0000004200)={0x50, 0xffffffffffffffda, 0x0, {0x7, 0x2b, 0x0, 0x0, 0x0, 0x0, 0x1}}, 0x50)
+r1 = socket$nl_netfilter(0x10, 0x3, 0xc)
+syz_mount_image$fuse(&(0x7f0000000000), &(0x7f0000000040)='./file0\x00', 0x1202080, &(0x7f00000015c0)=ANY=[], 0x0, 0x0, 0x0)
+sendmsg$NFT_MSG_GETFLOWTABLE(r1, &(0x7f0000000180)={0x0, 0x0, &(0x7f0000000140)={&(0x7f00000001c0)=ANY=[@ANYBLOB="14000000170a05e1e2507b00000000000000e302000005000000000000004a7938c8debb7609920afcbde5f3b3d3d17752adcf0b824ce10298497eb27d182cab55cc1cca75e79d02a5dae104bff4df9bc31fb73a805071a7f16bfe5f9850f32d2535b636c89cdea2cdbfda647be5d2ff63fba88975987aeabe5d0bc121309fea641653962c26670f0ce6c5998f99a4097d7ed96bc6b4c89f61aaca82bdea89dd6a52d34b0e5bb66f712c1163740956a092ccab8a02542f7c10e386402da892aba96ccb8831efb463a2458dc7b64c3203608a3d74def1c01f830b33663d8eb075551f83bc510ff710dc96b7be76f8f0c8e8635ab29c531d2b3066e4b8275948c218a68a58611e60098dfb7a934f9d22c600"/284], 0x14}}, 0x20000000)
+
+2.368698274s ago: executing program 3 (id=6):
+r0 = getpid()
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+read(r1, &(0x7f0000000080)=""/1, 0x1)
+write$cgroup_pid(r1, &(0x7f00000000c0)=r0, 0x12)
+close(r1)
+openat(0xffffffffffffff9c, &(0x7f0000000100)='./cgroup/pids.max\x00', 0x2, 0x0)
+openat(0xffffffffffffff9c, &(0x7f0000000140)='./cgroup.cpu/cgroup.procs\x00', 0x2, 0x0)
+openat(0xffffffffffffff9c, &(0x7f0000000180)='./cgroup.cpu/cpuset.cpus\x00', 0x2, 0x0)
+r2 = openat(0xffffffffffffff9c, &(0x7f00000001c0)='./cgroup.net/cgroup.procs\x00', 0x2, 0x0)
+openat(0xffffffffffffff9c, &(0x7f0000000200)='./cgroup.net/devices.allow\x00', 0x1, 0x0)
+r3 = openat$fuse(0xffffffffffffff9c, &(0x7f0000002000), 0x2, 0x0)
+r4 = getuid()
+r5 = getgid()
+syz_mount_image$fuse(&(0x7f0000000380), &(0x7f0000002080)='./file0\x00', 0x0, &(0x7f00000020c0)={{'fd', 0x3d, r3}, 0x2c, {'rootmode', 0x3d, 0x4000}, 0x2c, {'user_id', 0x3d, r4}, 0x2c, {'group_id', 0x3d, r5}}, 0x0, 0x0, &(0x7f00000007c0)="deca6d9c61108fc6568d8ea352558d0e62b01c51e56d5317369a8bd09fcdea8ea89e44978e0a18dcf3e142258749180e066f7a5cdd704d752198ef91ba0c88f25788ee8b6451ddc53204ccf6e0b07db21d5f2f4f0e1cfb52f47600547943c6c7d7ef62c586bb21aca20ef154de0ef556fd41004d503c457bd160bdb0af8ece97192c921c42af484debb169762c03ddd25e228e1bd574717801df1a60997372e55d8cf8b0b3089edd1cb9d147af1dfd9b97c065d6a6bf84fb2f3597173469befba9fea4d2a9fb4df9580e17a9aa01f8bf58f6eccdaefa3376d3087c72b1b20581758eb448ae830727db0d734d471b9f7898265002d9e4a27da66b7704f55f66ae43a19e37397d31afcd031896f49d8458df662206e2")
+syz_fuse_handle_req(r3, &(0x7f0000002180), 0x2000, &(0x7f0000004180)={&(0x7f0000004240)={0x50}, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0})
+syz_fuse_handle_req(r3, &(0x7f00000042c0), 0x2000, &(0x7f00000062c0)={0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, &(0x7f0000006380)={0x20}, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0})
+r6 = openat$fuse(0xffffffffffffff9c, &(0x7f0000002080), 0x2, 0x0)
+mount$fuse(0x0, &(0x7f00000020c0)='./file0\x00', &(0x7f0000002100), 0x0, &(0x7f0000002140)={{'fd', 0x3d, r6}, 0x2c, {'rootmode', 0x3d, 0x4000}})
+read$FUSE(r2, &(0x7f00000021c0)={0x2020}, 0x2020)
+r7 = syz_usb_connect$lan78xx(0x0, 0x3f, &(0x7f0000000280)={{0x12, 0x1, 0x200, 0xff, 0xff, 0xff, 0x40, 0x424, 0x7850, 0x0, 0x1, 0x2, 0x3, 0x1, [{{0x9, 0x2, 0x2d}}]}}, 0x0)
+syz_usb_control_io$lan78xx(r7, 0x0, &(0x7f00000003c0)={0x34, &(0x7f0000000140)={0x20, 0x11}, 0x0, 0x0, 0x0, 0x0, 0x0})
+syz_usb_control_io$lan78xx(r7, 0x0, &(0x7f0000000780)={0x34, &(0x7f0000000240)={0x40, 0x18, 0x2f, "9632a367a7a7e06bfc032a8e0b388c1f715989c8bc0b9b9ee436f86263b13485155067c960651ed095f5175264eba6"}, 0x0, 0x0, 0x0, 0x0, 0x0})
+syz_usb_control_io$lan78xx(r7, 0x0, 0x0)
+syz_usb_control_io$lan78xx(r7, 0x0, &(0x7f0000000f00)={0x34, &(0x7f0000000cc0)={0x40, 0x10}, 0x0, 0x0, 0x0, 0x0, 0x0})
+syz_usb_control_io$lan78xx(r7, 0x0, &(0x7f0000001700)={0x34, &(0x7f0000001500)=ANY=[@ANYBLOB], 0x0, 0x0, 0x0, 0x0, 0x0})
+syz_usb_control_io$lan78xx(r7, 0x0, 0x0)
+syz_usb_control_io$lan78xx(r7, 0x0, 0x0)
+syz_usb_control_io$lan78xx(r7, 0x0, &(0x7f0000002180)={0x34, &(0x7f0000000400)=ANY=[], 0x0, 0x0, 0x0, 0x0, 0x0})
+syz_usb_control_io$lan78xx(r7, 0x0, &(0x7f00000006c0)={0x34, &(0x7f0000000500)={0x0, 0x7}, 0x0, 0x0, 0x0, 0x0, 0x0})
+
+2.306202821s ago: executing program 0 (id=1):
+r0 = syz_create_resource$binfmt(&(0x7f0000000040)='./file1\x00')
+execveat$binfmt(0xffffffffffffff9c, r0, &(0x7f0000000080), &(0x7f00000000c0), 0x0)
+r1 = openat$binfmt(0xffffffffffffff9c, r0, 0x42, 0x1ff)
+close(r1)
+execveat$binfmt(0xffffffffffffff9c, r0, &(0x7f0000000100), &(0x7f0000000140), 0x0)
+r2 = openat$binfmt(0xffffffffffffff9c, r0, 0x2, 0x0)
+write(r2, &(0x7f0000000180)="01010101", 0x4)
+close(r2)
+execveat$binfmt(0xffffffffffffff9c, r0, &(0x7f00000001c0), &(0x7f0000000200), 0x0)
+execveat$binfmt(0xffffffffffffff9c, r0, &(0x7f0000000280), &(0x7f00000002c0), 0x0)
+
+0s ago: executing program 1 (id=2):
+mknodat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x21c0, 0x103)
+landlock_create_ruleset(&(0x7f0000000080)={0x8000}, 0x18, 0x0)
+prctl$PR_SET_NO_NEW_PRIVS(0x26, 0x1)
+r0 = syz_create_resource$binfmt(&(0x7f0000000040)='./file1\x00')
+execveat$binfmt(0xffffffffffffff9c, r0, &(0x7f0000000080), &(0x7f00000000c0), 0x0)
+r1 = openat$binfmt(0xffffffffffffff9c, r0, 0x42, 0x1ff)
+close(r1)
+execveat$binfmt(0xffffffffffffff9c, r0, &(0x7f0000000100), &(0x7f0000000140), 0x0)
+r2 = openat$binfmt(0xffffffffffffff9c, r0, 0x2, 0x0)
+write(r2, &(0x7f0000000180)="01010101", 0x4)
+execveat$binfmt(0xffffffffffffff9c, r0, &(0x7f0000000280), &(0x7f00000002c0), 0x0)
+
+kernel console output (not intermixed with test programs):
+
+Warning: Permanently added '[localhost]:48516' (ED25519) to the list of known hosts.
+buildroot login: [  163.400502][ T2951] cgroup: Unknown subsys name 'net'
+[  163.770937][ T2951] cgroup: Unknown subsys name 'rlimit'
+Setting up swapspace version 1, size = 127995904 bytes
+[  191.619335][ T2951] Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k 
+[  238.984787][ T2962] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  239.066134][ T2962] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  240.176857][ T2961] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  240.316272][ T2961] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  243.385812][ T2969] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  243.436914][ T2963] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  243.504546][ T2968] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  243.831089][ T2969] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  244.097969][ T2963] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  244.150710][ T2968] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  244.442422][ T2967] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  247.209970][ T2967] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  253.348427][ T2962] hsr_slave_0: entered promiscuous mode
+[  253.378420][ T2962] hsr_slave_1: entered promiscuous mode
+[  254.183495][ T2961] hsr_slave_0: entered promiscuous mode
+[  254.224083][ T2961] hsr_slave_1: entered promiscuous mode
+[  254.251103][ T2961] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  254.255129][ T2961] Cannot create hsr debugfs directory
+[  256.837233][ T2969] hsr_slave_0: entered promiscuous mode
+[  256.848384][ T2969] hsr_slave_1: entered promiscuous mode
+[  256.887658][ T2969] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  256.891685][ T2969] Cannot create hsr debugfs directory
+[  257.083502][ T2963] hsr_slave_0: entered promiscuous mode
+[  257.105490][ T2963] hsr_slave_1: entered promiscuous mode
+[  257.123244][ T2963] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  257.125983][ T2963] Cannot create hsr debugfs directory
+[  257.506919][ T2968] hsr_slave_0: entered promiscuous mode
+[  257.532822][ T2968] hsr_slave_1: entered promiscuous mode
+[  257.546574][ T2968] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  257.547982][ T2968] Cannot create hsr debugfs directory
+[  259.926875][ T2967] hsr_slave_0: entered promiscuous mode
+[  259.944952][ T2967] hsr_slave_1: entered promiscuous mode
+[  259.955213][ T2967] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[  259.956627][ T2967] Cannot create hsr debugfs directory
+[  265.922091][ T2962] netdevsim netdevsim3 netdevsim0: renamed from eth0
+[  266.311159][ T2962] netdevsim netdevsim3 netdevsim1: renamed from eth1
+[  266.353035][ T2962] netdevsim netdevsim3 netdevsim2: renamed from eth2
+[  266.481019][ T2962] netdevsim netdevsim3 netdevsim3: renamed from eth3
+[  267.430575][ T2969] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[  267.507620][ T2969] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[  267.571415][ T2969] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[  267.686442][ T2969] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[  268.495544][ T2963] netdevsim netdevsim1 netdevsim0: renamed from eth0
+[  268.566571][ T2963] netdevsim netdevsim1 netdevsim1: renamed from eth1
+[  268.655594][ T2963] netdevsim netdevsim1 netdevsim2: renamed from eth2
+[  268.754951][ T2963] netdevsim netdevsim1 netdevsim3: renamed from eth3
+[  269.810071][ T2961] netdevsim netdevsim4 netdevsim0: renamed from eth0
+[  269.887600][ T2961] netdevsim netdevsim4 netdevsim1: renamed from eth1
+[  269.977597][ T2961] netdevsim netdevsim4 netdevsim2: renamed from eth2
+[  270.102612][ T2961] netdevsim netdevsim4 netdevsim3: renamed from eth3
+[  271.370064][ T2968] netdevsim netdevsim5 netdevsim0: renamed from eth0
+[  271.526361][ T2968] netdevsim netdevsim5 netdevsim1: renamed from eth1
+[  271.636794][ T2968] netdevsim netdevsim5 netdevsim2: renamed from eth2
+[  271.785058][ T2968] netdevsim netdevsim5 netdevsim3: renamed from eth3
+[  273.193653][ T2967] netdevsim netdevsim2 netdevsim0: renamed from eth0
+[  273.295999][ T2967] netdevsim netdevsim2 netdevsim1: renamed from eth1
+[  273.613471][ T2967] netdevsim netdevsim2 netdevsim2: renamed from eth2
+[  273.710839][ T2967] netdevsim netdevsim2 netdevsim3: renamed from eth3
+[  276.675439][ T2962] 8021q: adding VLAN 0 to HW filter on device bond0
+[  277.993433][ T2969] 8021q: adding VLAN 0 to HW filter on device bond0
+[  280.333144][ T2963] 8021q: adding VLAN 0 to HW filter on device bond0
+[  281.213614][ T2961] 8021q: adding VLAN 0 to HW filter on device bond0
+[  284.062115][ T2968] 8021q: adding VLAN 0 to HW filter on device bond0
+[  285.327201][ T2967] 8021q: adding VLAN 0 to HW filter on device bond0
+[  313.280890][ T2962] veth0_vlan: entered promiscuous mode
+[  313.725071][ T2962] veth1_vlan: entered promiscuous mode
+[  315.837191][ T2962] veth0_macvtap: entered promiscuous mode
+[  316.131503][ T2969] veth0_vlan: entered promiscuous mode
+[  316.267329][ T2962] veth1_macvtap: entered promiscuous mode
+[  316.683797][ T2969] veth1_vlan: entered promiscuous mode
+[  317.767619][ T2963] veth0_vlan: entered promiscuous mode
+[  318.462172][ T2962] netdevsim netdevsim3 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  318.464859][ T2962] netdevsim netdevsim3 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  318.466313][ T2962] netdevsim netdevsim3 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  318.467907][ T2962] netdevsim netdevsim3 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  318.816959][ T2963] veth1_vlan: entered promiscuous mode
+[  319.655407][ T2969] veth0_macvtap: entered promiscuous mode
+[  320.154215][ T2969] veth1_macvtap: entered promiscuous mode
+[  321.979443][ T2967] veth0_vlan: entered promiscuous mode
+[  322.331580][ T2963] veth0_macvtap: entered promiscuous mode
+[  322.701652][ T2967] veth1_vlan: entered promiscuous mode
+[  322.936526][ T2963] veth1_macvtap: entered promiscuous mode
+[  323.065633][ T2969] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  323.081744][ T2969] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  323.084939][ T2969] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  323.087773][ T2969] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  324.911535][ T2961] veth0_vlan: entered promiscuous mode
+[  325.542101][ T2967] veth0_macvtap: entered promiscuous mode
+[  325.803131][ T2963] netdevsim netdevsim1 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  325.806561][ T2963] netdevsim netdevsim1 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  325.813948][ T2963] netdevsim netdevsim1 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  325.817201][ T2963] netdevsim netdevsim1 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  326.036880][ T2967] veth1_macvtap: entered promiscuous mode
+[  326.237217][ T2961] veth1_vlan: entered promiscuous mode
+[  328.849402][ T2968] veth0_vlan: entered promiscuous mode
+[  328.914403][ T5025] process 'syz.0.1' launched './file1' with NULL argv: empty string added
+[  328.955565][ T2967] netdevsim netdevsim2 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  328.957338][ T2967] netdevsim netdevsim2 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  328.995810][ T2967] netdevsim netdevsim2 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  328.997550][ T2967] netdevsim netdevsim2 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  330.093202][ T2961] veth0_macvtap: entered promiscuous mode
+[  330.256535][ T2968] veth1_vlan: entered promiscuous mode
+[  330.451409][ T2961] veth1_macvtap: entered promiscuous mode
+[  331.831345][ T5024] UDC core: USB Raw Gadget: couldn't find an available UDC or it's busy
+[  331.850961][ T5024] misc raw-gadget: fail, usb_gadget_register_driver returned -16
+[  332.744481][ T2968] veth0_macvtap: entered promiscuous mode
+[  333.457670][ T2968] veth1_macvtap: entered promiscuous mode
+[  333.725644][ T2961] netdevsim netdevsim4 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  333.743627][ T2961] netdevsim netdevsim4 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  333.747119][ T2961] netdevsim netdevsim4 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  333.790231][ T2961] netdevsim netdevsim4 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  334.059470][    C0] Insufficient stack space to handle exception!
+[  334.062359][    C0] 
+[  334.062532][    C0] ======================================================
+[  334.062611][    C0] WARNING: possible circular locking dependency detected
+[  334.062803][    C0] 6.6.0 #1 Not tainted
+[  334.063147][    C0] ------------------------------------------------------
+[  334.063245][    C0] syz-executor/2961 is trying to acquire lock:
+[  334.063460][    C0] ffffffff878d58c0 (console_owner){-.-.}-{0:0}, at: console_flush_all+0x47a/0xe04
+[  334.065786][    C0] 
+[  334.065786][    C0] but task is already holding lock:
+[  334.065877][    C0] ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c
+[  334.066619][    C0] 
+[  334.066619][    C0] which lock already depends on the new lock.
+[  334.066619][    C0] 
+[  334.066700][    C0] 
+[  334.066700][    C0] the existing dependency chain (in reverse order) is:
+[  334.066813][    C0] 
+[  334.066813][    C0] -> #4 (&rq->__lock){-.-.}-{2:2}:
+[  334.067306][    C0]        lock_acquire+0x34e/0xd20
+[  334.067720][    C0]        _raw_spin_lock_nested+0x3a/0x4e
+[  334.068040][    C0]        raw_spin_rq_lock_nested+0x24/0x34
+[  334.068285][    C0]        task_fork_fair+0xc2/0x248
+[  334.068506][    C0]        sched_cgroup_fork+0x30a/0x454
+[  334.068759][    C0]        copy_process+0x4c72/0x75ca
+[  334.069069][    C0]        kernel_clone+0x116/0xb30
+[  334.069377][    C0]        user_mode_thread+0xf0/0x11c
+[  334.069682][    C0]        rest_init+0x32/0x2f0
+[  334.069930][    C0]        arch_post_acpi_subsys_init+0x0/0x30
+[  334.070302][    C0]        start_kernel+0x7e2/0x826
+[  334.070724][    C0] 
+[  334.070724][    C0] -> #3 (&p->pi_lock){-.-.}-{2:2}:
+[  334.071114][    C0]        lock_acquire+0x34e/0xd20
+[  334.071385][    C0]        _raw_spin_lock_irqsave+0x3e/0x62
+[  334.071669][    C0]        try_to_wake_up+0xa6/0x128e
+[  334.071948][    C0]        default_wake_function+0x2e/0x5c
+[  334.072235][    C0]        woken_wake_function+0x36/0x68
+[  334.072470][    C0]        __wake_up_common+0x112/0x4a2
+[  334.072719][    C0]        __wake_up_common_lock+0xce/0x134
+[  334.072972][    C0]        __wake_up+0x10/0x18
+[  334.073209][    C0]        tty_wakeup+0x62/0x10e
+[  334.073479][    C0]        tty_port_default_wakeup+0x32/0x4a
+[  334.073699][    C0]        tty_port_tty_wakeup+0x4e/0x74
+[  334.073901][    C0]        uart_write_wakeup+0x40/0x5e
+[  334.074240][    C0]        serial8250_tx_chars+0x7d8/0xe38
+[  334.074574][    C0]        serial8250_handle_irq+0x55a/0xaa4
+[  334.074850][    C0]        serial8250_default_handle_irq+0x88/0x1cc
+[  334.075135][    C0]        serial8250_interrupt+0xdc/0x1f0
+[  334.075367][    C0]        __handle_irq_event_percpu+0x230/0x82a
+[  334.075637][    C0]        handle_irq_event+0xa2/0x1d2
+[  334.075891][    C0]        handle_fasteoi_irq+0x2f6/0xc42
+[  334.076202][    C0]        generic_handle_domain_irq+0x76/0xaa
+[  334.076464][    C0]        plic_handle_irq+0x174/0x38a
+[  334.076722][    C0]        generic_handle_domain_irq+0x76/0xaa
+[  334.076977][    C0]        riscv_intc_irq+0x6e/0xa2
+[  334.077212][    C0]        handle_riscv_irq+0x2e/0x4c
+[  334.077521][    C0]        do_irq+0x6a/0xb4
+[  334.077874][    C0] 
+[  334.077874][    C0] -> #2 (&tty->write_wait){-.-.}-{3:3}:
+[  334.078333][    C0]        lock_acquire+0x34e/0xd20
+[  334.078622][    C0]        _raw_spin_lock_irqsave+0x3e/0x62
+[  334.078909][    C0]        __wake_up_common_lock+0xba/0x134
+[  334.079164][    C0]        __wake_up+0x10/0x18
+[  334.079413][    C0]        tty_wakeup+0x62/0x10e
+[  334.079649][    C0]        tty_port_default_wakeup+0x32/0x4a
+[  334.079870][    C0]        tty_port_tty_wakeup+0x4e/0x74
+[  334.080073][    C0]        uart_write_wakeup+0x40/0x5e
+[  334.080374][    C0]        serial8250_tx_chars+0x7d8/0xe38
+[  334.080656][    C0]        serial8250_handle_irq+0x55a/0xaa4
+[  334.080933][    C0]        serial8250_default_handle_irq+0x88/0x1cc
+[  334.081219][    C0]        serial8250_interrupt+0xdc/0x1f0
+[  334.081450][    C0]        __handle_irq_event_percpu+0x230/0x82a
+[  334.081716][    C0]        handle_irq_event+0xa2/0x1d2
+[  334.081969][    C0]        handle_fasteoi_irq+0x2f6/0xc42
+[  334.082352][    C0]        generic_handle_domain_irq+0x76/0xaa
+[  334.082615][    C0]        plic_handle_irq+0x174/0x38a
+[  334.082856][    C0]        generic_handle_domain_irq+0x76/0xaa
+[  334.083112][    C0]        riscv_intc_irq+0x6e/0xa2
+[  334.083349][    C0]        handle_riscv_irq+0x2e/0x4c
+[  334.083647][    C0]        do_irq+0x6a/0xb4
+[  334.083932][    C0] 
+[  334.083932][    C0] -> #1 (&port_lock_key){-.-.}-{3:3}:
+[  334.084327][    C0]        lock_acquire+0x34e/0xd20
+[  334.084579][    C0]        _raw_spin_lock_irqsave+0x3e/0x62
+[  334.084862][    C0]        serial8250_console_write+0x526/0xe4c
+[  334.085146][    C0]        univ8250_console_write+0x66/0x9c
+[  334.085380][    C0]        console_flush_all+0x4fa/0xe04
+[  334.085596][    C0]        console_unlock+0x12c/0x270
+[  334.085815][    C0]        vprintk_emit+0x192/0x672
+[  334.086034][    C0]        vprintk_default+0x2a/0x32
+[  334.086322][    C0]        vprintk+0x1d4/0x258
+[  334.086547][    C0]        _printk+0x9a/0xc0
+[  334.086781][    C0]        register_console+0x75e/0xd88
+[  334.086998][    C0]        serial_core_register_port+0x1950/0x19fa
+[  334.087219][    C0]        serial_ctrl_register_port+0x24/0x2c
+[  334.087447][    C0]        uart_add_one_port+0x24/0x2c
+[  334.087662][    C0]        serial8250_register_8250_port+0x10d0/0x1cfa
+[  334.087907][    C0]        of_platform_serial_probe+0x730/0xd44
+[  334.088132][    C0]        platform_probe+0xf4/0x1de
+[  334.088358][    C0]        really_probe+0x226/0xbd4
+[  334.088637][    C0]        __driver_probe_device+0x1b4/0x44a
+[  334.088923][    C0]        driver_probe_device+0x5e/0x1ba
+[  334.089207][    C0]        __driver_attach+0x1f8/0x524
+[  334.089492][    C0]        bus_for_each_dev+0x124/0x1ba
+[  334.089761][    C0]        driver_attach+0x40/0x56
+[  334.090029][    C0]        bus_add_driver+0x29c/0x594
+[  334.090364][    C0]        driver_register+0x1a8/0x3c8
+[  334.090661][    C0]        __platform_driver_register+0x60/0x82
+[  334.090872][    C0]        of_platform_serial_driver_init+0x22/0x2a
+[  334.091124][    C0]        do_one_initcall+0x180/0x894
+[  334.091340][    C0]        kernel_init_freeable+0x6c6/0x766
+[  334.091648][    C0]        kernel_init+0x26/0x224
+[  334.091850][    C0]        ret_from_fork+0xe/0x20
+[  334.092071][    C0] 
+[  334.092071][    C0] -> #0 (console_owner){-.-.}-{0:0}:
+[  334.092456][    C0]        check_noncircular+0x2b2/0x396
+[  334.092709][    C0]        __lock_acquire+0x2b1c/0x6f34
+[  334.092954][    C0]        lock_acquire+0x34e/0xd20
+[  334.093193][    C0]        console_flush_all+0x4d4/0xe04
+[  334.093416][    C0]        console_unlock+0x12c/0x270
+[  334.093626][    C0]        vprintk_emit+0x192/0x672
+[  334.093842][    C0]        vprintk_default+0x2a/0x32
+[  334.094063][    C0]        vprintk+0x1d4/0x258
+[  334.094350][    C0]        _printk+0x9a/0xc0
+[  334.094583][    C0]        handle_bad_stack+0xa0/0x128
+[  334.094830][    C0]        __alloc_pages+0x154/0x243a
+[  334.095191][    C0] 
+[  334.095191][    C0] other info that might help us debug this:
+[  334.095191][    C0] 
+[  334.095374][    C0] Chain exists of:
+[  334.095374][    C0]   console_owner --> &p->pi_lock --> &rq->__lock
+[  334.095374][    C0] 
+[  334.095827][    C0]  Possible unsafe locking scenario:
+[  334.095827][    C0] 
+[  334.095889][    C0]        CPU0                    CPU1
+[  334.095946][    C0]        ----                    ----
+[  334.096006][    C0]   lock(&rq->__lock);
+[  334.096174][    C0]                                lock(&p->pi_lock);
+[  334.096361][    C0]                                lock(&rq->__lock);
+[  334.096578][    C0]   lock(console_owner);
+[  334.096755][    C0] 
+[  334.096755][    C0]  *** DEADLOCK ***
+[  334.096755][    C0] 
+[  334.096861][    C0] 13 locks held by syz-executor/2961:
+[  334.097034][    C0]  #0: ffffffff88c68f48 (rtnl_mutex){+.+.}-{4:4}, at: rtnetlink_rcv_msg+0x3ca/0xd32
+[  334.098616][    C0]  #1: ffffffff88d9dbd0 ((inetaddr_chain).rwsem){++++}-{4:4}, at: blocking_notifier_call_chain+0x52/0x98
+[  334.099462][    C0]  #2: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: netif_receive_skb_list_internal+0x32e/0xbb0
+[  334.100734][    C0]  #3: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: ip_local_deliver_finish+0x1c2/0x4fe
+[  334.101367][    C0]  #4: ff60000089749930 (slock-AF_INET/1){+.-.}-{3:3}, at: tcp_v4_rcv+0x2f5c/0x39b6
+[  334.102023][    C0]  #5: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: __ip_queue_xmit+0x4a/0x1cb0
+[  334.102759][    C0]  #6: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: ip_finish_output2+0x43c/0x2d12
+[  334.103393][    C0]  #7: ffffffff879c5d60 (rcu_read_lock_bh){....}-{1:3}, at: __dev_queue_xmit+0x22c/0x420e
+[  334.103977][    C0]  #8: ff600000893d2258 (dev->qdisc_tx_busylock ?: &qdisc_tx_busylock){+...}-{3:3}, at: __dev_queue_xmit+0x1284/0x420e
+[  334.104592][    C0]  #9: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: skb_mac_gso_segment+0x15a/0x604
+[  334.105173][    C0]  #10: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c
+[  334.105849][    C0]  #11: ffffffff878d5600 (console_lock){+.+.}-{0:0}, at: vprintk_emit+0x174/0x672
+[  334.106533][    C0]  #12: ffffffff878d5710 (console_srcu){....}-{0:0}, at: console_flush_all+0xea/0xe04
+[  334.107182][    C0] 
+[  334.107182][    C0] stack backtrace:
+[  334.108746][    C0] CPU: 0 PID: 2961 Comm: syz-executor Not tainted 6.6.0 #1
+[  334.109110][    C0] Hardware name: riscv-virtio,qemu (DT)
+[  334.109463][    C0] Call Trace:
+[  334.109614][    C0] [<ffffffff8000dc50>] dump_backtrace+0x32/0x3c
+[  334.109961][    C0] [<ffffffff85aeb8b6>] show_stack+0x34/0x40
+[  334.110227][    C0] [<ffffffff85b4131c>] dump_stack_lvl+0xe2/0x14c
+[  334.110603][    C0] [<ffffffff85b413a2>] dump_stack+0x1c/0x24
+[  334.110936][    C0] [<ffffffff80231926>] print_circular_bug+0x70c/0x79a
+[  334.111219][    C0] [<ffffffff80231c66>] check_noncircular+0x2b2/0x396
+[  334.111509][    C0] [<ffffffff8023a5ca>] __lock_acquire+0x2b1c/0x6f34
+[  334.111791][    C0] [<ffffffff8023ed30>] lock_acquire+0x34e/0xd20
+[  334.112068][    C0] [<ffffffff80258da2>] console_flush_all+0x4d4/0xe04
+[  334.112328][    C0] [<ffffffff802597fe>] console_unlock+0x12c/0x270
+[  334.112574][    C0] [<ffffffff8025d694>] vprintk_emit+0x192/0x672
+[  334.112828][    C0] [<ffffffff8025db9e>] vprintk_default+0x2a/0x32
+[  334.113086][    C0] [<ffffffff8025f24a>] vprintk+0x1d4/0x258
+[  334.113352][    C0] [<ffffffff85af0106>] _printk+0x9a/0xc0
+[  334.113615][    C0] [<ffffffff8000d6ee>] handle_bad_stack+0xa0/0x128
+[  334.113898][    C0] [<ffffffff80871968>] __alloc_pages+0x154/0x243a
+[  334.229293][    C0] Task stack:     [0xff20000000360000..0xff20000000364000]
+[  334.230340][    C0] Overflow stack: [0xff600000fdcea4f0..0xff600000fdceb4f0]
+[  334.231332][    C0] CPU: 0 PID: 2961 Comm: syz-executor Not tainted 6.6.0 #1
+[  334.232354][    C0] Hardware name: riscv-virtio,qemu (DT)
+[  334.233166][    C0] epc : prepare_alloc_pages.constprop.0+0x18/0x4de
+[  334.234395][    C0]  ra : __alloc_pages+0x154/0x243a
+[  334.235495][    C0] epc : ffffffff8086c978 ra : ffffffff80871968 sp : ff1fffffffffff60
+[  334.236557][    C0]  gp : ffffffff890652c0 tp : ff6000008c764c80 t0 : ffffffff80871814
+[  334.237597][    C0]  t1 : 0000000000000000 t2 : ffffffff87243240 s0 : ff200000000002a0
+[  334.239969][    C0]  s1 : 0000000000000000 a0 : 0000000000002000 a1 : 0000000000000002
+[  334.241008][    C0]  a2 : 0000000000000000 a3 : 0000000000000000 a4 : ff20000000000150
+[  334.242018][    C0]  a5 : ff20000000000110 a6 : ff20000000000100 a7 : 0000000000000000
+[  334.243054][    C0]  s2 : ff6000008c764c80 s3 : ffffffff87b59300 s4 : ff20000000000220
+[  334.244057][    C0]  s5 : 0000000000000002 s6 : 0000000000000004 s7 : ffffffff902439a0
+[  334.245049][    C0]  s8 : 1fe400000000001c s9 : ffffffff808e2270 s10: ffffffff902439a0
+[  334.246059][    C0]  s11: ff600000ffdef600 t3 : 0000000000f00000 t4 : fffffffff204f204
+[  334.247077][    C0]  t5 : fffffffff1f1f1f1 t6 : fffffffff2000000
+[  334.247977][    C0] status: 0000000000000100 badaddr: ff1fffffffffffd8 cause: 000000000000000f
+[  334.249695][    C0] Kernel panic - not syncing: Kernel stack overflow
+[  334.250873][    C0] CPU: 0 PID: 2961 Comm: syz-executor Not tainted 6.6.0 #1
+[  334.251868][    C0] Hardware name: riscv-virtio,qemu (DT)
+[  334.252596][    C0] Call Trace:
+[  334.253182][    C0] [<ffffffff8000dc50>] dump_backtrace+0x32/0x3c
+[  334.254354][    C0] [<ffffffff85aeb8b6>] show_stack+0x34/0x40
+[  334.255331][    C0] [<ffffffff85b4131c>] dump_stack_lvl+0xe2/0x14c
+[  334.256381][    C0] [<ffffffff85b413a2>] dump_stack+0x1c/0x24
+[  334.257395][    C0] [<ffffffff85aec3ae>] panic+0x334/0x78e
+[  334.258462][    C0] [<ffffffff8000d738>] handle_bad_stack+0xea/0x128
+[  334.259521][    C0] [<ffffffff80871968>] __alloc_pages+0x154/0x243a
+[  334.260985][    C0] SMP: stopping secondary CPUs
+[  334.262879][    C0] Rebooting in 86400 seconds..
+
+VM DIAGNOSIS:
+07:42:06  Registers:
+info registers vcpu 0
+ pc       ffffffff80258d34
+ mhartid  0000000000000000
+ mstatus  0000000a00000180
+ mip      00000000000000a0
+ mie      000000000000020a
+ mideleg  0000000000000222
+ medeleg  000000000000b109
+ mtvec    0000000080000520
+ stvec    ffffffff80006e1c
+ mepc     ffffffff804049f6
+ sepc     ffffffff8086c978
+ mcause   8000000000000007
+ scause   000000000000000f
+ mtval    0000000000000000
+ stval    ff1fffffffffffd8
+ mscratch 000000008001a000
+ sscratch ff6000008c764c80
+ satp     a00910000012e0cf
+ x0/zero  0000000000000000 x1/ra    ffffffff80258d30 x2/sp    ff600000fdceaf80 x3/gp    ffffffff890652c0
+ x4/tp    ff6000008c764c80 x5/t0    7220202020202020 x6/t1    00000000000f0000 x7/t2    6972202020202020
+ x8/s0    ff600000fdceb0e0 x9/s1    ff600000fdceb060 x10/a0   0000000000f00000 x11/a1   00000000000f0000
+ x12/a2   0000000000010000 x13/a3   0000000000000100 x14/a4   0000000000000000 x15/a5   ff6000008c764c80
+ x16/a6   0000000000000100 x17/a7   0000000000010000 x18/s2   0000000000000001 x19/s3   0000000000000100
+ x20/s4   0000000000000000 x21/s5   1ffffffff108ae83 x22/s6   ffffffff884573c0 x23/s7   0000000000000000
+ x24/s8   1ffffffff108ae7a x25/s9   ff600000fdceb130 x26/s10  1ffffffff108ae84 x27/s11  ffffffff88457418
+ x28/t3   0000000000f00000 x29/t4   fffffffef203e91c x30/t5   fffffffef203e91f x31/t6   ffffffff901f48f7
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000
+info registers vcpu 1
+ pc       ffffffff80248e12
+ mhartid  0000000000000001
+ mstatus  0000000a000000a2
+ mip      0000000000000000
+ mie      00000000000002aa
+ mideleg  0000000000000222
+ medeleg  000000000000b109
+ mtvec    0000000080000520
+ stvec    ffffffff80006e1c
+ mepc     ffffffff80017912
+ sepc     ffffffff80248e12
+ mcause   0000000000000009
+ scause   8000000000000005
+ mtval    0000000000000000
+ stval    0000000000000000
+ mscratch 0000000080018000
+ sscratch 0000000000000000
+ satp     a0210000001117a0
+ x0/zero  0000000000000000 x1/ra    ffffffff80248db6 x2/sp    ff2000000000bbe0 x3/gp    ffffffff890652c0
+ x4/tp    ff6000008ea1e600 x5/t0    ff6000008ea1f0b0 x6/t1    ffebffff112e9323 x7/t2    ffffffffffffffff
+ x8/s0    ff2000000000bc40 x9/s1    ff60000089749918 x10/a0   0000000000000001 x11/a1   1fec0000112e9323
+ x12/a2   0000000000000003 x13/a3   ffebffff112e9323 x14/a4   000000000000263a x15/a5   ffffffffffffffff
+ x16/a6   ffebffff112e9324 x17/a7   ff6000008974991b x18/s2   ff60000089749928 x19/s3   1fec0000112e9325
+ x20/s4   0000000000000000 x21/s5   ff60000089749920 x22/s6   1fec0000112e9324 x23/s7   ff6000008ea1edff
+ x24/s8   0000000000000200 x25/s9   ffebffff1fba1da9 x26/s10  0000000000000001 x27/s11  ff600000fdd0ed10
+ x28/t3   ff2000000000b8c0 x29/t4   ffebffff112e9323 x30/t5   ffebffff112e9324 x31/t6   0000000000000001
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000

@@ -1,0 +1,133 @@
+buildroot login: [  170.597209][    C0] 
+[  170.598465][    C0] =============================
+[  170.599250][    C0] [ BUG: Invalid wait context ]
+[  170.600091][    C0] 6.6.0 #1 Not tainted
+[  170.601058][    C0] -----------------------------
+[  170.601789][    C0] scp/2948 is trying to lock:
+[  170.602652][    C0] ff600000ffdefb58 (&zone->lock){-.-.}-{3:3}, at: get_page_from_freelist+0x44e/0x3116
+[  170.609094][    C0] other info that might help us debug this:
+[  170.610797][    C0] context-{2:2}
+[  170.611993][    C0] 5 locks held by scp/2948:
+[  170.613361][    C0]  #0: ff60000090b42410 (sb_writers#4){.+.+}-{0:0}, at: vfs_write+0x24a/0x966
+[  170.616686][    C0]  #1: ff600000938067b0 (&sb->s_type->i_mutex_key#8){++++}-{4:4}, at: ext4_buffered_write_iter+0xa6/0x37a
+[  170.620359][    C0]  #2: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: get_page_from_freelist+0xa96/0x3116
+[  170.623653][    C0]  #3: ff6000008727e4d8 (_xmit_ETHER#2){+.-.}-{3:3}, at: virtnet_poll_tx+0x1e6/0x5b4
+[  170.626969][    C0]  #4: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c
+[  170.630159][    C0] stack backtrace:
+[  170.632679][    C0] CPU: 0 PID: 2948 Comm: scp Not tainted 6.6.0 #1
+[  170.634579][    C0] Hardware name: riscv-virtio,qemu (DT)
+[  170.636404][    C0] Call Trace:
+[  170.637729][    C0] [<ffffffff8000dc50>] dump_backtrace+0x32/0x3c
+[  170.639839][    C0] [<ffffffff85aeb8b6>] show_stack+0x34/0x40
+[  170.641897][    C0] [<ffffffff85b4131c>] dump_stack_lvl+0xe2/0x14c
+[  170.645225][    C0] [<ffffffff85b413a2>] dump_stack+0x1c/0x24
+[  170.647335][    C0] [<ffffffff8023e890>] __lock_acquire+0x6de2/0x6f34
+[  170.649545][    C0] [<ffffffff8023ed30>] lock_acquire+0x34e/0xd20
+[  170.651417][    C0] [<ffffffff85b651a6>] _raw_spin_lock_irqsave+0x3e/0x62
+[  170.653446][    C0] [<ffffffff8086d8bc>] get_page_from_freelist+0x44e/0x3116
+[  170.655541][    C0] [<ffffffff808719ea>] __alloc_pages+0x1d6/0x243a
+[  170.657455][    C0] [<ffffffff808e2270>] alloc_pages+0x2ae/0x45c
+[  170.659296][    C0] [<ffffffff816da494>] __stack_depot_save+0x434/0x602
+[  170.661200][    C0] [<ffffffff809145b2>] kasan_save_stack+0x50/0x62
+[  170.663102][    C0] [<ffffffff80916ad0>] __kasan_record_aux_stack+0xe4/0x146
+[  170.665140][    C0] [<ffffffff80916ee4>] kasan_record_aux_stack+0xe/0x16
+[  170.667134][    C0] [<ffffffff80130ba8>] task_work_add+0x9c/0x276
+[  170.668998][    C0] [<ffffffff8018607e>] task_tick_mm_cid+0xd0/0x186
+[  170.670927][    C0] [<ffffffff801863ca>] scheduler_tick+0x296/0x89c
+[  170.672819][    C0] [<ffffffff80318c14>] update_process_times+0x1be/0x25e
+[  170.674841][    C0] [<ffffffff8034eec8>] tick_sched_handle+0x78/0x152
+[  170.676699][    C0] [<ffffffff8034fa5c>] tick_sched_timer+0xc0/0x1c6
+[  170.678546][    C0] [<ffffffff8031bab8>] __hrtimer_run_queues+0x1f4/0xbbe
+[  170.680515][    C0] [<ffffffff8031eeae>] hrtimer_interrupt+0x2c4/0x79c
+[  170.682463][    C0] [<ffffffff84192570>] riscv_timer_interrupt+0x7a/0xcc
+[  170.684408][    C0] [<ffffffff8027c4da>] handle_percpu_devid_irq+0x284/0x59e
+[  170.686385][    C0] [<ffffffff80265bd4>] generic_handle_domain_irq+0x76/0xaa
+[  170.688399][    C0] [<ffffffff816e7b9e>] riscv_intc_irq+0x6e/0xa2
+[  170.690217][    C0] [<ffffffff85b424e4>] handle_riscv_irq+0x2e/0x4c
+[  170.692207][    C0] [<ffffffff85b42ba2>] do_irq+0x92/0xb4
+[  170.693934][    C0] [<ffffffff80006ef8>] ret_from_exception+0x0/0x64
+[  170.695827][    C0] [<ffffffff8491aa32>] skb_release_data+0x15c/0x6d6
+[  170.697741][    C0] [<ffffffff8493603a>] napi_consume_skb+0x1d0/0x2c8
+[  170.699691][    C0] [<ffffffff82da470e>] free_old_xmit_skbs+0xf6/0x39c
+[  170.701562][    C0] [<ffffffff82dac504>] virtnet_poll_tx+0x236/0x5b4
+[  170.703470][    C0] [<ffffffff849935e4>] __napi_poll.constprop.0+0xa4/0x79c
+[  170.705447][    C0] [<ffffffff84994506>] net_rx_action+0x82a/0xc92
+[  170.707259][    C0] [<ffffffff85b66a5c>] __do_softirq+0x410/0x102e
+[  170.709127][    C0] [<ffffffff800c8790>] __irq_exit_rcu+0x16a/0x436
+[  170.711036][    C0] [<ffffffff800c8dee>] irq_exit_rcu+0xc/0x114
+[  170.712852][    C0] [<ffffffff85b424f6>] handle_riscv_irq+0x40/0x4c
+[  170.714817][    C0] [<ffffffff85b42b7a>] do_irq+0x6a/0xb4
+Warning: Permanently added '[localhost]:60851' (ED25519) to the list of known hosts.
+
+VM DIAGNOSIS:
+09:22:16  Registers:
+info registers vcpu 0
+ pc       ffffffff85018544
+ mhartid  0000000000000000
+ mstatus  0000000a000000a2
+ mip      0000000000000280
+ mie      00000000000002aa
+ mideleg  0000000000000222
+ medeleg  000000000000b109
+ mtvec    0000000080000520
+ stvec    ffffffff80006e1c
+ mepc     ffffffff80017ca0
+ sepc     ffffffff80017f6a
+ mcause   0000000000000009
+ scause   8000000000000005
+ mtval    0000000000000000
+ stval    0000000000000000
+ mscratch 000000008001a000
+ sscratch 0000000000000000
+ satp     a008d0000010ce24
+ x0/zero  0000000000000000 x1/ra    ffffffff85018544 x2/sp    ff20000000002f30 x3/gp    ffffffff890652c0
+ x4/tp    ffffffff87841b40 x5/t0    ffffffff8023e9e2 x6/t1    00000000000f0000 x7/t2    ffffffff87223478
+ x8/s0    ff200000000031c0 x9/s1    ff60000094472dc0 x10/a0   0000000000f00000 x11/a1   00000000000f0000
+ x12/a2   0000000000000000 x13/a3   0000000000000100 x14/a4   0000000000000000 x15/a5   ffffffff87841b40
+ x16/a6   0000000000000100 x17/a7   0000000000000000 x18/s2   0000000000000016 x19/s3   ff60000092dd6401
+ x20/s4   ffffffff90422200 x21/s5   ffffffff90402200 x22/s6   ff6000008d15c450 x23/s7   ff60000092dd6400
+ x24/s8   ffffffff90402200 x25/s9   ff20000000003140 x26/s10  0000000000000000 x27/s11  ff6000008d15c464
+ x28/t3   0000000000f00000 x29/t4   ffffffff90402800 x30/t5   fffffffff1f1f1f1 x31/t6   fffffffff3000000
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000
+info registers vcpu 1
+ pc       000000008000052c
+ mhartid  0000000000000001
+ mstatus  0000000a00000820
+ mip      0000000000000080
+ mie      00000000000002aa
+ mideleg  0000000000000222
+ medeleg  000000000000b109
+ mtvec    0000000080000520
+ stvec    ffffffff80006e1c
+ mepc     ffffffff80248e12
+ sepc     ffffffff801c4ca8
+ mcause   8000000000000007
+ scause   8000000000000001
+ mtval    0000000000000000
+ stval    0000000000000000
+ mscratch ff6000008cdd3300
+ sscratch 0000000000000000
+ satp     a008a00000109612
+ x0/zero  0000000000000000 x1/ra    ffffffff80248db6 x2/sp    ff200000045eb670 x3/gp    ffffffff890652c0
+ x4/tp    0000000080018000 x5/t0    0000000a00000820 x6/t1    ffebffff12702008 x7/t2    ffffffff87223478
+ x8/s0    ff200000045eb6d0 x9/s1    ff60000093810040 x10/a0   0000000000000001 x11/a1   1fec000012702008
+ x12/a2   0000000000000003 x13/a3   ffebffff12702008 x14/a4   0000000000000054 x15/a5   0000000000000000
+ x16/a6   ffebffff12702009 x17/a7   ff60000093810043 x18/s2   ff60000093810050 x19/s3   1fec00001270200a
+ x20/s4   0000000000000000 x21/s5   ff60000093810048 x22/s6   1fec000012702009 x23/s7   ff200000045eb9f8
+ x24/s8   0000000000000000 x25/s9   0000000000000010 x26/s10  1fe40000008bd708 x27/s11  0000000000000001
+ x28/t3   ffffffff89156600 x29/t4   ffebffff12702008 x30/t5   ffebffff12702009 x31/t6   fffffffff3000000
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000

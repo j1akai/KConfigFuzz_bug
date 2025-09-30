@@ -1,0 +1,90 @@
+WARNING: CPU: 1 PID: 5597 at kernel/locking/lockdep.c:232 hlock_class kernel/locking/lockdep.c:232 [inline]
+WARNING: CPU: 1 PID: 5597 at kernel/locking/lockdep.c:232 hlock_class kernel/locking/lockdep.c:221 [inline]
+WARNING: CPU: 1 PID: 5597 at kernel/locking/lockdep.c:232 check_wait_context kernel/locking/lockdep.c:4772 [inline]
+WARNING: CPU: 1 PID: 5597 at kernel/locking/lockdep.c:232 __lock_acquire+0x16e8/0x6f34 kernel/locking/lockdep.c:5086
+Modules linked in:
+CPU: 1 PID: 5597 Comm: syz.0.183 Not tainted 6.6.0 #1
+Hardware name: riscv-virtio,qemu (DT)
+epc : hlock_class kernel/locking/lockdep.c:232 [inline]
+epc : hlock_class kernel/locking/lockdep.c:221 [inline]
+epc : check_wait_context kernel/locking/lockdep.c:4772 [inline]
+epc : __lock_acquire+0x16e8/0x6f34 kernel/locking/lockdep.c:5086
+ ra : hlock_class kernel/locking/lockdep.c:232 [inline]
+ ra : hlock_class kernel/locking/lockdep.c:221 [inline]
+ ra : check_wait_context kernel/locking/lockdep.c:4772 [inline]
+ ra : __lock_acquire+0x16e8/0x6f34 kernel/locking/lockdep.c:5086
+epc : ffffffff80239196 ra : ffffffff80239196 sp : ff2000000122b4c0
+ gp : ffffffff890652c0 tp : ff6000008d599980 t0 : ffffffff8023e9e2
+ t1 : 00000000000c6620 t2 : ffffffff87223478 s0 : ff2000000122b680
+ s1 : ffffffff8919bec0 a0 : 0000000000f00000 a1 : 00000000000f0000
+ a2 : 0000000000000000 a3 : 0000000000000002 a4 : 0000000000000000
+ a5 : 0000000000000000 a6 : 0000000000006332 a7 : 0000000000400000
+ s2 : ffffffff8c82c4c0 s3 : ff6000008d59a4b8 s4 : ffffffff902439a0
+ s5 : ffffffff8909c260 s6 : 0000000000000000 s7 : ff6000008d59a424
+ s8 : 1fec000011ab3487 s9 : 0000000000000004 s10: ffffffff89158a40
+ s11: 1fec000011ab349b t3 : 0000000000f00000 t4 : ffebffff1fba176a
+ t5 : ffebffff1fba176b t6 : ff2000000122b078
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff80239196>] hlock_class kernel/locking/lockdep.c:232 [inline]
+[<ffffffff80239196>] hlock_class kernel/locking/lockdep.c:221 [inline]
+[<ffffffff80239196>] check_wait_context kernel/locking/lockdep.c:4772 [inline]
+[<ffffffff80239196>] __lock_acquire+0x16e8/0x6f34 kernel/locking/lockdep.c:5086
+[<ffffffff8023ed30>] lock_acquire kernel/locking/lockdep.c:5753 [inline]
+[<ffffffff8023ed30>] lock_acquire+0x34e/0xd20 kernel/locking/lockdep.c:5718
+[<ffffffff80115d0a>] __flush_workqueue+0x120/0xe44 kernel/workqueue.c:3143
+[<ffffffff8593db06>] nci_close_device.isra.0+0xb4/0x316 net/nfc/nci/core.c:567
+[<ffffffff8593e032>] nci_dev_down+0x32/0x48 net/nfc/nci/core.c:639
+[<ffffffff8591abae>] nfc_dev_down+0x16c/0x2d2 net/nfc/core.c:161
+[<ffffffff8591ad54>] nfc_rfkill_set_block+0x40/0xee net/nfc/core.c:179
+[<ffffffff85846154>] rfkill_set_block+0x1cc/0x4a8 net/rfkill/core.c:346
+[<ffffffff858482aa>] rfkill_fop_write+0x2b4/0x556 net/rfkill/core.c:1305
+[<ffffffff809eba56>] vfs_write+0x2a2/0x966 fs/read_write.c:582
+[<ffffffff809ec62c>] ksys_write+0x1f6/0x27c fs/read_write.c:637
+[<ffffffff809ec71e>] __do_sys_write fs/read_write.c:649 [inline]
+[<ffffffff809ec71e>] __se_sys_write fs/read_write.c:646 [inline]
+[<ffffffff809ec71e>] __riscv_sys_write+0x6c/0xa0 fs/read_write.c:646
+[<ffffffff8000c6ba>] syscall_handler+0x96/0x126 arch/riscv/include/asm/syscall.h:90
+[<ffffffff85b42ab8>] do_trap_ecall_u+0x8c/0x8e arch/riscv/kernel/traps.c:320
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 arch/riscv/kernel/entry.S:102
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+[<ffffffff809ec62c>] ksys_write+0x1f6/0x27c
+[<ffffffff809ec71e>] __riscv_sys_write+0x6c/0xa0
+[<ffffffff8000c6ba>] syscall_handler+0x96/0x126
+[<ffffffff85b42ab8>] do_trap_ecall_u+0x8c/0x8e
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64
+Kernel panic - not syncing: kernel: panic_on_warn set ...
+CPU: 1 PID: 5597 Comm: syz.0.183 Not tainted 6.6.0 #1
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff8000dc50>] dump_backtrace+0x32/0x3c
+[<ffffffff85aeb8b6>] show_stack+0x34/0x40
+[<ffffffff85b4131c>] dump_stack_lvl+0xe2/0x14c
+[<ffffffff85b413a2>] dump_stack+0x1c/0x24
+[<ffffffff85aec3ae>] panic+0x334/0x78e
+[<ffffffff800acd0e>] check_panic_on_warn+0xc0/0xe4
+[<ffffffff800ad264>] __warn+0x23a/0x3aa
+[<ffffffff85a5e562>] report_bug+0x2e6/0x55a
+[<ffffffff8000d186>] handle_break+0x136/0x302
+[<ffffffff85b42a18>] do_trap_break+0x46/0x5a
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64
+[<ffffffff80239196>] __lock_acquire+0x16e8/0x6f34
+[<ffffffff8023ed30>] lock_acquire+0x34e/0xd20
+[<ffffffff80115d0a>] __flush_workqueue+0x120/0xe44
+[<ffffffff8593db06>] nci_close_device.isra.0+0xb4/0x316
+[<ffffffff8593e032>] nci_dev_down+0x32/0x48
+[<ffffffff8591abae>] nfc_dev_down+0x16c/0x2d2
+[<ffffffff8591ad54>] nfc_rfkill_set_block+0x40/0xee
+[<ffffffff85846154>] rfkill_set_block+0x1cc/0x4a8
+[<ffffffff858482aa>] rfkill_fop_write+0x2b4/0x556
+[<ffffffff809eba56>] vfs_write+0x2a2/0x966
+[<ffffffff809ec62c>] ksys_write+0x1f6/0x27c
+[<ffffffff809ec71e>] __riscv_sys_write+0x6c/0xa0
+[<ffffffff8000c6ba>] syscall_handler+0x96/0x126
+[<ffffffff85b42ab8>] do_trap_ecall_u+0x8c/0x8e
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64
+SMP: stopping secondary CPUs
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

@@ -1,0 +1,279 @@
+Insufficient stack space to handle exception!
+======================================================
+WARNING: possible circular locking dependency detected
+6.6.0 #1 Not tainted
+------------------------------------------------------
+syz-executor/2961 is trying to acquire lock:
+ffffffff878d58c0 (console_owner){-.-.}-{0:0}, at: console_emit_next_record kernel/printk/printk.c:2903 [inline]
+ffffffff878d58c0 (console_owner){-.-.}-{0:0}, at: console_flush_all+0x47a/0xe04 kernel/printk/printk.c:2966
+
+but task is already holding lock:
+ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested kernel/sched/core.c:558 [inline]
+ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock kernel/sched/sched.h:1372 [inline]
+ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: rq_lock kernel/sched/sched.h:1681 [inline]
+ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c kernel/sched/core.c:5652
+
+which lock already depends on the new lock.
+
+
+the existing dependency chain (in reverse order) is:
+
+-> #4 (&rq->__lock){-.-.}-{2:2}:
+       lock_acquire kernel/locking/lockdep.c:5753 [inline]
+       lock_acquire+0x34e/0xd20 kernel/locking/lockdep.c:5718
+       _raw_spin_lock_nested+0x3a/0x4e kernel/locking/spinlock.c:378
+       raw_spin_rq_lock_nested+0x24/0x34 kernel/sched/core.c:558
+       raw_spin_rq_lock kernel/sched/sched.h:1372 [inline]
+       rq_lock kernel/sched/sched.h:1681 [inline]
+       task_fork_fair+0xc2/0x248 kernel/sched/fair.c:12417
+       sched_cgroup_fork+0x30a/0x454 kernel/sched/core.c:4816
+       copy_process+0x4c72/0x75ca kernel/fork.c:2609
+       kernel_clone+0x116/0xb30 kernel/fork.c:2909
+       user_mode_thread+0xf0/0x11c kernel/fork.c:2987
+       rest_init+0x32/0x2f0 init/main.c:691
+       arch_post_acpi_subsys_init+0x0/0x30 init/main.c:823
+       start_kernel+0x7e2/0x826 init/main.c:1068
+
+-> #3 (&p->pi_lock){-.-.}-{2:2}:
+       lock_acquire kernel/locking/lockdep.c:5753 [inline]
+       lock_acquire+0x34e/0xd20 kernel/locking/lockdep.c:5718
+       __raw_spin_lock_irqsave include/linux/spinlock_api_smp.h:110 [inline]
+       _raw_spin_lock_irqsave+0x3e/0x62 kernel/locking/spinlock.c:162
+       class_raw_spinlock_irqsave_constructor include/linux/spinlock.h:518 [inline]
+       try_to_wake_up+0xa6/0x128e kernel/sched/core.c:4230
+       default_wake_function+0x2e/0x5c kernel/sched/core.c:7019
+       woken_wake_function+0x36/0x68 kernel/sched/wait.c:484
+       __wake_up_common+0x112/0x4a2 kernel/sched/wait.c:107
+       __wake_up_common_lock+0xce/0x134 kernel/sched/wait.c:138
+       __wake_up+0x10/0x18 kernel/sched/wait.c:160
+       tty_wakeup+0x62/0x10e drivers/tty/tty_io.c:527
+       tty_port_default_wakeup+0x32/0x4a drivers/tty/tty_port.c:69
+       tty_port_tty_wakeup+0x4e/0x74 drivers/tty/tty_port.c:433
+       uart_write_wakeup+0x40/0x5e drivers/tty/serial/serial_core.c:120
+       serial8250_tx_chars+0x7d8/0xe38 drivers/tty/serial/8250/8250_port.c:1843
+       serial8250_handle_irq+0x55a/0xaa4 drivers/tty/serial/8250/8250_port.c:1950
+       serial8250_default_handle_irq+0x88/0x1cc drivers/tty/serial/8250/8250_port.c:1970
+       serial8250_interrupt+0xdc/0x1f0 drivers/tty/serial/8250/8250_core.c:127
+       __handle_irq_event_percpu+0x230/0x82a kernel/irq/handle.c:158
+       handle_irq_event_percpu kernel/irq/handle.c:193 [inline]
+       handle_irq_event+0xa2/0x1d2 kernel/irq/handle.c:210
+       handle_fasteoi_irq+0x2f6/0xc42 kernel/irq/chip.c:720
+       generic_handle_irq_desc include/linux/irqdesc.h:161 [inline]
+       handle_irq_desc kernel/irq/irqdesc.c:672 [inline]
+       generic_handle_domain_irq+0x76/0xaa kernel/irq/irqdesc.c:728
+       plic_handle_irq+0x174/0x38a drivers/irqchip/irq-sifive-plic.c:371
+       generic_handle_irq_desc include/linux/irqdesc.h:161 [inline]
+       handle_irq_desc kernel/irq/irqdesc.c:672 [inline]
+       generic_handle_domain_irq+0x76/0xaa kernel/irq/irqdesc.c:728
+       riscv_intc_irq+0x6e/0xa2 drivers/irqchip/irq-riscv-intc.c:30
+       handle_riscv_irq+0x2e/0x4c arch/riscv/kernel/traps.c:355
+       do_irq+0x6a/0xb4 arch/riscv/kernel/traps.c:367
+
+-> #2 (&tty->write_wait){-.-.}-{3:3}:
+       lock_acquire kernel/locking/lockdep.c:5753 [inline]
+       lock_acquire+0x34e/0xd20 kernel/locking/lockdep.c:5718
+       __raw_spin_lock_irqsave include/linux/spinlock_api_smp.h:110 [inline]
+       _raw_spin_lock_irqsave+0x3e/0x62 kernel/locking/spinlock.c:162
+       __wake_up_common_lock+0xba/0x134 kernel/sched/wait.c:137
+       __wake_up+0x10/0x18 kernel/sched/wait.c:160
+       tty_wakeup+0x62/0x10e drivers/tty/tty_io.c:527
+       tty_port_default_wakeup+0x32/0x4a drivers/tty/tty_port.c:69
+       tty_port_tty_wakeup+0x4e/0x74 drivers/tty/tty_port.c:433
+       uart_write_wakeup+0x40/0x5e drivers/tty/serial/serial_core.c:120
+       serial8250_tx_chars+0x7d8/0xe38 drivers/tty/serial/8250/8250_port.c:1843
+       serial8250_handle_irq+0x55a/0xaa4 drivers/tty/serial/8250/8250_port.c:1950
+       serial8250_default_handle_irq+0x88/0x1cc drivers/tty/serial/8250/8250_port.c:1970
+       serial8250_interrupt+0xdc/0x1f0 drivers/tty/serial/8250/8250_core.c:127
+       __handle_irq_event_percpu+0x230/0x82a kernel/irq/handle.c:158
+       handle_irq_event_percpu kernel/irq/handle.c:193 [inline]
+       handle_irq_event+0xa2/0x1d2 kernel/irq/handle.c:210
+       handle_fasteoi_irq+0x2f6/0xc42 kernel/irq/chip.c:720
+       generic_handle_irq_desc include/linux/irqdesc.h:161 [inline]
+       handle_irq_desc kernel/irq/irqdesc.c:672 [inline]
+       generic_handle_domain_irq+0x76/0xaa kernel/irq/irqdesc.c:728
+       plic_handle_irq+0x174/0x38a drivers/irqchip/irq-sifive-plic.c:371
+       generic_handle_irq_desc include/linux/irqdesc.h:161 [inline]
+       handle_irq_desc kernel/irq/irqdesc.c:672 [inline]
+       generic_handle_domain_irq+0x76/0xaa kernel/irq/irqdesc.c:728
+       riscv_intc_irq+0x6e/0xa2 drivers/irqchip/irq-riscv-intc.c:30
+       handle_riscv_irq+0x2e/0x4c arch/riscv/kernel/traps.c:355
+       do_irq+0x6a/0xb4 arch/riscv/kernel/traps.c:367
+
+-> #1 (&port_lock_key){-.-.}-{3:3}:
+       lock_acquire kernel/locking/lockdep.c:5753 [inline]
+       lock_acquire+0x34e/0xd20 kernel/locking/lockdep.c:5718
+       __raw_spin_lock_irqsave include/linux/spinlock_api_smp.h:110 [inline]
+       _raw_spin_lock_irqsave+0x3e/0x62 kernel/locking/spinlock.c:162
+       serial8250_console_write+0x526/0xe4c drivers/tty/serial/8250/8250_port.c:3411
+       univ8250_console_write+0x66/0x9c drivers/tty/serial/8250/8250_core.c:600
+       console_emit_next_record kernel/printk/printk.c:2910 [inline]
+       console_flush_all+0x4fa/0xe04 kernel/printk/printk.c:2966
+       console_unlock+0x12c/0x270 kernel/printk/printk.c:3035
+       vprintk_emit+0x192/0x672 kernel/printk/printk.c:2307
+       vprintk_default+0x2a/0x32 kernel/printk/printk.c:2322
+       vprintk+0x1d4/0x258 kernel/printk/printk_safe.c:45
+       _printk+0x9a/0xc0 kernel/printk/printk.c:2332
+       register_console+0x75e/0xd88 kernel/printk/printk.c:3524
+       uart_configure_port drivers/tty/serial/serial_core.c:2605 [inline]
+       serial_core_add_one_port drivers/tty/serial/serial_core.c:3132 [inline]
+       serial_core_register_port+0x1950/0x19fa drivers/tty/serial/serial_core.c:3360
+       serial_ctrl_register_port+0x24/0x2c drivers/tty/serial/serial_ctrl.c:41
+       uart_add_one_port+0x24/0x2c drivers/tty/serial/serial_port.c:75
+       serial8250_register_8250_port+0x10d0/0x1cfa drivers/tty/serial/8250/8250_core.c:1139
+       of_platform_serial_probe+0x730/0xd44 drivers/tty/serial/8250/8250_of.c:244
+       platform_probe+0xf4/0x1de drivers/base/platform.c:1404
+       call_driver_probe drivers/base/dd.c:579 [inline]
+       really_probe+0x226/0xbd4 drivers/base/dd.c:658
+       __driver_probe_device+0x1b4/0x44a drivers/base/dd.c:800
+       driver_probe_device+0x5e/0x1ba drivers/base/dd.c:830
+       __driver_attach+0x1f8/0x524 drivers/base/dd.c:1216
+       bus_for_each_dev+0x124/0x1ba drivers/base/bus.c:368
+       driver_attach+0x40/0x56 drivers/base/dd.c:1233
+       bus_add_driver+0x29c/0x594 drivers/base/bus.c:673
+       driver_register+0x1a8/0x3c8 drivers/base/driver.c:246
+       __platform_driver_register+0x60/0x82 drivers/base/platform.c:867
+       of_platform_serial_driver_init+0x22/0x2a drivers/tty/serial/8250/8250_of.c:355
+       do_one_initcall+0x180/0x894 init/main.c:1232
+       do_initcall_level init/main.c:1294 [inline]
+       do_initcalls init/main.c:1310 [inline]
+       do_basic_setup init/main.c:1329 [inline]
+       kernel_init_freeable+0x6c6/0x766 init/main.c:1547
+       kernel_init+0x26/0x224 init/main.c:1437
+       ret_from_fork+0xe/0x20 arch/riscv/kernel/entry.S:264
+
+-> #0 (console_owner){-.-.}-{0:0}:
+       check_noncircular+0x2b2/0x396 kernel/locking/lockdep.c:2187
+       check_prev_add kernel/locking/lockdep.c:3134 [inline]
+       check_prevs_add kernel/locking/lockdep.c:3253 [inline]
+       validate_chain kernel/locking/lockdep.c:3868 [inline]
+       __lock_acquire+0x2b1c/0x6f34 kernel/locking/lockdep.c:5136
+       lock_acquire kernel/locking/lockdep.c:5753 [inline]
+       lock_acquire+0x34e/0xd20 kernel/locking/lockdep.c:5718
+       console_lock_spinning_enable kernel/printk/printk.c:1858 [inline]
+       console_emit_next_record kernel/printk/printk.c:2904 [inline]
+       console_flush_all+0x4d4/0xe04 kernel/printk/printk.c:2966
+       console_unlock+0x12c/0x270 kernel/printk/printk.c:3035
+       vprintk_emit+0x192/0x672 kernel/printk/printk.c:2307
+       vprintk_default+0x2a/0x32 kernel/printk/printk.c:2322
+       vprintk+0x1d4/0x258 kernel/printk/printk_safe.c:45
+       _printk+0x9a/0xc0 kernel/printk/printk.c:2332
+       handle_bad_stack+0xa0/0x128 arch/riscv/kernel/traps.c:457
+       __alloc_pages+0x154/0x243a mm/page_alloc.c:4415
+
+other info that might help us debug this:
+
+Chain exists of:
+  console_owner --> &p->pi_lock --> &rq->__lock
+
+ Possible unsafe locking scenario:
+
+       CPU0                    CPU1
+       ----                    ----
+  lock(&rq->__lock);
+                               lock(&p->pi_lock);
+                               lock(&rq->__lock);
+  lock(console_owner);
+
+ *** DEADLOCK ***
+
+13 locks held by syz-executor/2961:
+ #0: ffffffff88c68f48 (rtnl_mutex){+.+.}-{4:4}, at: rtnl_lock net/core/rtnetlink.c:78 [inline]
+ #0: ffffffff88c68f48 (rtnl_mutex){+.+.}-{4:4}, at: rtnetlink_rcv_msg+0x3ca/0xd32 net/core/rtnetlink.c:6439
+ #1: ffffffff88d9dbd0 ((inetaddr_chain).rwsem){++++}-{4:4}, at: blocking_notifier_call_chain kernel/notifier.c:387 [inline]
+ #1: ffffffff88d9dbd0 ((inetaddr_chain).rwsem){++++}-{4:4}, at: blocking_notifier_call_chain+0x52/0x98 kernel/notifier.c:376
+ #2: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: INIT_LIST_HEAD include/linux/list.h:38 [inline]
+ #2: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: list_splice_init include/linux/list.h:573 [inline]
+ #2: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: netif_receive_skb_list_internal+0x32e/0xbb0 net/core/dev.c:5769
+ #3: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: __skb_pull include/linux/skbuff.h:2652 [inline]
+ #3: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: ip_local_deliver_finish+0x1c2/0x4fe net/ipv4/ip_input.c:230
+ #4: ff60000089749930 (slock-AF_INET/1){+.-.}-{3:3}, at: tcp_v4_rcv+0x2f5c/0x39b6 net/ipv4/tcp_ipv4.c:2147
+ #5: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: read_pnet include/net/net_namespace.h:385 [inline]
+ #5: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: sock_net include/net/sock.h:651 [inline]
+ #5: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: __ip_queue_xmit+0x4a/0x1cb0 net/ipv4/ip_output.c:458
+ #6: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: lwtunnel_xmit_redirect include/net/lwtunnel.h:98 [inline]
+ #6: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: ip_finish_output2+0x43c/0x2d12 net/ipv4/ip_output.c:219
+ #7: ffffffff879c5d60 (rcu_read_lock_bh){....}-{1:3}, at: __dev_queue_xmit+0x22c/0x420e net/core/dev.c:4288
+ #8: ff600000893d2258 (dev->qdisc_tx_busylock ?: &qdisc_tx_busylock){+...}-{3:3}, at: spin_trylock include/linux/spinlock.h:361 [inline]
+ #8: ff600000893d2258 (dev->qdisc_tx_busylock ?: &qdisc_tx_busylock){+...}-{3:3}, at: qdisc_run_begin include/net/sch_generic.h:194 [inline]
+ #8: ff600000893d2258 (dev->qdisc_tx_busylock ?: &qdisc_tx_busylock){+...}-{3:3}, at: qdisc_run_begin include/net/sch_generic.h:191 [inline]
+ #8: ff600000893d2258 (dev->qdisc_tx_busylock ?: &qdisc_tx_busylock){+...}-{3:3}, at: __dev_xmit_skb net/core/dev.c:3787 [inline]
+ #8: ff600000893d2258 (dev->qdisc_tx_busylock ?: &qdisc_tx_busylock){+...}-{3:3}, at: __dev_queue_xmit+0x1284/0x420e net/core/dev.c:4335
+ #9: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: __skb_pull include/linux/skbuff.h:2652 [inline]
+ #9: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: skb_mac_gso_segment+0x15a/0x604 net/core/gso.c:48
+ #10: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested kernel/sched/core.c:558 [inline]
+ #10: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock kernel/sched/sched.h:1372 [inline]
+ #10: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: rq_lock kernel/sched/sched.h:1681 [inline]
+ #10: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c kernel/sched/core.c:5652
+ #11: ffffffff878d5600 (console_lock){+.+.}-{0:0}, at: console_trylock_spinning kernel/printk/printk.c:1927 [inline]
+ #11: ffffffff878d5600 (console_lock){+.+.}-{0:0}, at: vprintk_emit+0x174/0x672 kernel/printk/printk.c:2306
+ #12: ffffffff878d5710 (console_srcu){....}-{0:0}, at: console_flush_all+0xea/0xe04 kernel/printk/printk.c:2947
+
+stack backtrace:
+CPU: 0 PID: 2961 Comm: syz-executor Not tainted 6.6.0 #1
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff8000dc50>] dump_backtrace+0x32/0x3c arch/riscv/kernel/stacktrace.c:121
+[<ffffffff85aeb8b6>] show_stack+0x34/0x40 arch/riscv/kernel/stacktrace.c:127
+[<ffffffff85b4131c>] __dump_stack lib/dump_stack.c:88 [inline]
+[<ffffffff85b4131c>] dump_stack_lvl+0xe2/0x14c lib/dump_stack.c:106
+[<ffffffff85b413a2>] dump_stack+0x1c/0x24 lib/dump_stack.c:113
+[<ffffffff80231926>] print_circular_bug+0x70c/0x79a kernel/locking/lockdep.c:2060
+[<ffffffff80231c66>] check_noncircular+0x2b2/0x396 kernel/locking/lockdep.c:2187
+[<ffffffff8023a5ca>] check_prev_add kernel/locking/lockdep.c:3134 [inline]
+[<ffffffff8023a5ca>] check_prevs_add kernel/locking/lockdep.c:3253 [inline]
+[<ffffffff8023a5ca>] validate_chain kernel/locking/lockdep.c:3868 [inline]
+[<ffffffff8023a5ca>] __lock_acquire+0x2b1c/0x6f34 kernel/locking/lockdep.c:5136
+[<ffffffff8023ed30>] lock_acquire kernel/locking/lockdep.c:5753 [inline]
+[<ffffffff8023ed30>] lock_acquire+0x34e/0xd20 kernel/locking/lockdep.c:5718
+[<ffffffff80258da2>] console_lock_spinning_enable kernel/printk/printk.c:1858 [inline]
+[<ffffffff80258da2>] console_emit_next_record kernel/printk/printk.c:2904 [inline]
+[<ffffffff80258da2>] console_flush_all+0x4d4/0xe04 kernel/printk/printk.c:2966
+[<ffffffff802597fe>] console_unlock+0x12c/0x270 kernel/printk/printk.c:3035
+[<ffffffff8025d694>] vprintk_emit+0x192/0x672 kernel/printk/printk.c:2307
+[<ffffffff8025db9e>] vprintk_default+0x2a/0x32 kernel/printk/printk.c:2322
+[<ffffffff8025f24a>] vprintk+0x1d4/0x258 kernel/printk/printk_safe.c:45
+[<ffffffff85af0106>] _printk+0x9a/0xc0 kernel/printk/printk.c:2332
+[<ffffffff8000d6ee>] handle_bad_stack+0xa0/0x128 arch/riscv/kernel/traps.c:457
+[<ffffffff80871968>] __alloc_pages+0x154/0x243a mm/page_alloc.c:4415
+Task stack:     [0xff20000000360000..0xff20000000364000]
+Overflow stack: [0xff600000fdcea4f0..0xff600000fdceb4f0]
+CPU: 0 PID: 2961 Comm: syz-executor Not tainted 6.6.0 #1
+Hardware name: riscv-virtio,qemu (DT)
+epc : prepare_alloc_pages.constprop.0+0x18/0x4de mm/page_alloc.c:4175
+ ra : __alloc_pages+0x154/0x243a mm/page_alloc.c:4415
+epc : ffffffff8086c978 ra : ffffffff80871968 sp : ff1fffffffffff60
+ gp : ffffffff890652c0 tp : ff6000008c764c80 t0 : ffffffff80871814
+ t1 : 0000000000000000 t2 : ffffffff87243240 s0 : ff200000000002a0
+ s1 : 0000000000000000 a0 : 0000000000002000 a1 : 0000000000000002
+ a2 : 0000000000000000 a3 : 0000000000000000 a4 : ff20000000000150
+ a5 : ff20000000000110 a6 : ff20000000000100 a7 : 0000000000000000
+ s2 : ff6000008c764c80 s3 : ffffffff87b59300 s4 : ff20000000000220
+ s5 : 0000000000000002 s6 : 0000000000000004 s7 : ffffffff902439a0
+ s8 : 1fe400000000001c s9 : ffffffff808e2270 s10: ffffffff902439a0
+ s11: ff600000ffdef600 t3 : 0000000000f00000 t4 : fffffffff204f204
+ t5 : fffffffff1f1f1f1 t6 : fffffffff2000000
+status: 0000000000000100 badaddr: ff1fffffffffffd8 cause: 000000000000000f
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+ s5 : 0000000000000002 s6 : 0000000000000004 s7 : ffffffff902439a0
+ s8 : 1fe400000000001c s9 : ffffffff808e2270 s10: ffffffff902439a0
+ s11: ff600000ffdef600 t3 : 0000000000f00000 t4 : fffffffff204f204
+ t5 : fffffffff1f1f1f1 t6 : fffffffff2000000
+status: 0000000000000100 badaddr: ff1fffffffffffd8 cause: 000000000000000f
+Kernel panic - not syncing: Kernel stack overflow
+CPU: 0 PID: 2961 Comm: syz-executor Not tainted 6.6.0 #1
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff8000dc50>] dump_backtrace+0x32/0x3c
+[<ffffffff85aeb8b6>] show_stack+0x34/0x40
+[<ffffffff85b4131c>] dump_stack_lvl+0xe2/0x14c
+[<ffffffff85b413a2>] dump_stack+0x1c/0x24
+[<ffffffff85aec3ae>] panic+0x334/0x78e
+[<ffffffff8000d738>] handle_bad_stack+0xea/0x128
+[<ffffffff80871968>] __alloc_pages+0x154/0x243a
+SMP: stopping secondary CPUs
+Rebooting in 86400 seconds..
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

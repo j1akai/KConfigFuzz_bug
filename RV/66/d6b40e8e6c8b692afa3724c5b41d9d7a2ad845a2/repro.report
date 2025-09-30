@@ -2,25 +2,29 @@
 [ BUG: Invalid wait context ]
 6.6.0 #1 Not tainted
 -----------------------------
-syz-executor/2968 is trying to lock:
-ff600000ffdefb58 (&zone->lock){..-.}-{3:3}, at: rmqueue_bulk mm/page_alloc.c:2130 [inline]
-ff600000ffdefb58 (&zone->lock){..-.}-{3:3}, at: __rmqueue_pcplist+0x274/0x1084 mm/page_alloc.c:2698
+scp/2947 is trying to lock:
+ff600000ffdefb58 (&zone->lock){-.-.}-{3:3}, at: rmqueue_bulk mm/page_alloc.c:2130 [inline]
+ff600000ffdefb58 (&zone->lock){-.-.}-{3:3}, at: __rmqueue_pcplist+0x274/0x1084 mm/page_alloc.c:2698
 other info that might help us debug this:
 context-{2:2}
-3 locks held by syz-executor/2968:
- #0: ff6000008c3540d8 (_xmit_ETHER#2){+.-.}-{3:3}, at: spin_lock include/linux/spinlock.h:351 [inline]
- #0: ff6000008c3540d8 (_xmit_ETHER#2){+.-.}-{3:3}, at: __netif_tx_lock include/linux/netdevice.h:4352 [inline]
- #0: ff6000008c3540d8 (_xmit_ETHER#2){+.-.}-{3:3}, at: virtnet_poll_tx+0x1e6/0x5b4 drivers/net/virtio_net.c:2247
- #1: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested kernel/sched/core.c:558 [inline]
- #1: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock kernel/sched/sched.h:1372 [inline]
- #1: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: rq_lock kernel/sched/sched.h:1681 [inline]
- #1: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c kernel/sched/core.c:5652
- #2: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: spin_trylock include/linux/spinlock.h:361 [inline]
- #2: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: rmqueue_pcplist mm/page_alloc.c:2727 [inline]
- #2: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: rmqueue mm/page_alloc.c:2777 [inline]
- #2: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: get_page_from_freelist+0xa96/0x3116 mm/page_alloc.c:3167
+7 locks held by scp/2947:
+ #0: ff60000091a1a410 (sb_writers#4){.+.+}-{0:0}, at: vfs_write+0x24a/0x966 fs/read_write.c:580
+ #1: ff6000008bb7ddb8 (&sb->s_type->i_mutex_key#8){++++}-{4:4}, at: inode_lock include/linux/fs.h:802 [inline]
+ #1: ff6000008bb7ddb8 (&sb->s_type->i_mutex_key#8){++++}-{4:4}, at: ext4_buffered_write_iter+0xa6/0x37a fs/ext4/file.c:294
+ #2: ffffffff87b63c88 (remove_cache_srcu){.+.+}-{0:0}, at: kasan_quarantine_reduce+0x34/0x1e6 mm/kasan/quarantine.c:294
+ #3: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: page_ext_get+0x0/0x424 include/linux/mmzone.h:1843
+ #4: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: gro_list_prepare net/core/gro.c:366 [inline]
+ #4: ffffffff879c5d00 (rcu_read_lock){....}-{1:3}, at: dev_gro_receive+0xcb0/0x252e net/core/gro.c:451
+ #5: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested kernel/sched/core.c:558 [inline]
+ #5: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock kernel/sched/sched.h:1372 [inline]
+ #5: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: rq_lock kernel/sched/sched.h:1681 [inline]
+ #5: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c kernel/sched/core.c:5652
+ #6: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: spin_trylock include/linux/spinlock.h:361 [inline]
+ #6: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: rmqueue_pcplist mm/page_alloc.c:2727 [inline]
+ #6: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: rmqueue mm/page_alloc.c:2777 [inline]
+ #6: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: get_page_from_freelist+0xa96/0x3116 mm/page_alloc.c:3167
 stack backtrace:
-CPU: 0 PID: 2968 Comm: syz-executor Not tainted 6.6.0 #1
+CPU: 0 PID: 2947 Comm: scp Not tainted 6.6.0 #1
 Hardware name: riscv-virtio,qemu (DT)
 Call Trace:
 [<ffffffff8000dc50>] dump_backtrace+0x32/0x3c arch/riscv/kernel/stacktrace.c:121
@@ -64,10 +68,12 @@ Call Trace:
 [<ffffffff85b424e4>] handle_riscv_irq+0x2e/0x4c arch/riscv/kernel/traps.c:355
 [<ffffffff85b42ba2>] do_irq+0x92/0xb4 arch/riscv/kernel/traps.c:391
 [<ffffffff80006ef8>] ret_from_exception+0x0/0x64 arch/riscv/kernel/entry.S:102
-[<ffffffff809147de>] __kasan_poison_object_data+0x0/0x2c mm/kasan/common.c:139
-[<ffffffff84935fe6>] napi_consume_skb+0x17c/0x2c8 net/core/skbuff.c:1362
-[<ffffffff82da470e>] free_old_xmit_skbs+0xf6/0x39c drivers/net/virtio_net.c:761
-[<ffffffff82dac504>] virtnet_poll_tx+0x236/0x5b4 drivers/net/virtio_net.c:2249
+[<ffffffff85091cf6>] inet_gro_receive+0x184/0xf9a net/ipv4/af_inet.c:1495
+[<ffffffff84a6311a>] dev_gro_receive+0x10ea/0x252e net/core/gro.c:490
+[<ffffffff84a647b6>] napi_gro_receive+0x258/0xd7e net/core/gro.c:609
+[<ffffffff82dbe392>] receive_buf+0x11b2/0x77d0 drivers/net/virtio_net.c:1802
+[<ffffffff82dc5202>] virtnet_receive drivers/net/virtio_net.c:2076 [inline]
+[<ffffffff82dc5202>] virtnet_poll+0x852/0x131e drivers/net/virtio_net.c:2148
 [<ffffffff849935e4>] __napi_poll.constprop.0+0xa4/0x79c net/core/dev.c:6556
 [<ffffffff84994506>] napi_poll net/core/dev.c:6623 [inline]
 [<ffffffff84994506>] net_rx_action+0x82a/0xc92 net/core/dev.c:6756
@@ -77,11 +83,4 @@ Call Trace:
 [<ffffffff800c8dee>] irq_exit_rcu+0xc/0x114 kernel/softirq.c:644
 [<ffffffff85b424f6>] handle_riscv_irq+0x40/0x4c arch/riscv/kernel/traps.c:357
 [<ffffffff85b42b7a>] do_irq+0x6a/0xb4 arch/riscv/kernel/traps.c:367
-
-<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
-
-SYZFAIL: failed to recv rpc
-fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
-
-<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
-
+hrtimer: interrupt took 71688100 ns

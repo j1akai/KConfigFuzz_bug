@@ -2,26 +2,29 @@
 [ BUG: Invalid wait context ]
 6.6.0 #1 Not tainted
 -----------------------------
-scp/2947 is trying to lock:
-ff600000ffdefb58 (&zone->lock){..-.}-{3:3}, at: rmqueue_buddy home/rv/linux-repo/linux-66-kconfigfuzz/mm/page_alloc.c:2643 [inline]
-ff600000ffdefb58 (&zone->lock){..-.}-{3:3}, at: rmqueue home/rv/linux-repo/linux-66-kconfigfuzz/mm/page_alloc.c:2783 [inline]
-ff600000ffdefb58 (&zone->lock){..-.}-{3:3}, at: get_page_from_freelist+0x44e/0x3116 home/rv/linux-repo/linux-66-kconfigfuzz/mm/page_alloc.c:3167
+scp/2948 is trying to lock:
+ff600000ffdefb58 (&zone->lock){-.-.}-{3:3}, at: rmqueue_buddy home/rv/linux-repo/linux-66-kconfigfuzz/mm/page_alloc.c:2643 [inline]
+ff600000ffdefb58 (&zone->lock){-.-.}-{3:3}, at: rmqueue home/rv/linux-repo/linux-66-kconfigfuzz/mm/page_alloc.c:2783 [inline]
+ff600000ffdefb58 (&zone->lock){-.-.}-{3:3}, at: get_page_from_freelist+0x44e/0x3116 home/rv/linux-repo/linux-66-kconfigfuzz/mm/page_alloc.c:3167
 other info that might help us debug this:
 context-{2:2}
-4 locks held by scp/2947:
- #0: ff60000091594410 (sb_writers#4){.+.+}-{0:0}, at: vfs_write+0x24a/0x966 home/rv/linux-repo/linux-66-kconfigfuzz/fs/read_write.c:580
- #1: ff6000008bb1e7b0 (&sb->s_type->i_mutex_key#8){++++}-{4:4}, at: inode_lock home/rv/linux-repo/linux-66-kconfigfuzz/include/linux/fs.h:802 [inline]
- #1: ff6000008bb1e7b0 (&sb->s_type->i_mutex_key#8){++++}-{4:4}, at: ext4_buffered_write_iter+0xa6/0x37a home/rv/linux-repo/linux-66-kconfigfuzz/fs/ext4/file.c:294
+5 locks held by scp/2948:
+ #0: ff60000090b42410 (sb_writers#4){.+.+}-{0:0}, at: vfs_write+0x24a/0x966 home/rv/linux-repo/linux-66-kconfigfuzz/fs/read_write.c:580
+ #1: ff600000938067b0 (&sb->s_type->i_mutex_key#8){++++}-{4:4}, at: inode_lock home/rv/linux-repo/linux-66-kconfigfuzz/include/linux/fs.h:802 [inline]
+ #1: ff600000938067b0 (&sb->s_type->i_mutex_key#8){++++}-{4:4}, at: ext4_buffered_write_iter+0xa6/0x37a home/rv/linux-repo/linux-66-kconfigfuzz/fs/ext4/file.c:294
  #2: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: spin_trylock home/rv/linux-repo/linux-66-kconfigfuzz/include/linux/spinlock.h:361 [inline]
  #2: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: rmqueue_pcplist home/rv/linux-repo/linux-66-kconfigfuzz/mm/page_alloc.c:2727 [inline]
  #2: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: rmqueue home/rv/linux-repo/linux-66-kconfigfuzz/mm/page_alloc.c:2777 [inline]
  #2: ff600000fdd041d8 (&pcp->lock){+.+.}-{3:3}, at: get_page_from_freelist+0xa96/0x3116 home/rv/linux-repo/linux-66-kconfigfuzz/mm/page_alloc.c:3167
- #3: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested home/rv/linux-repo/linux-66-kconfigfuzz/kernel/sched/core.c:558 [inline]
- #3: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock home/rv/linux-repo/linux-66-kconfigfuzz/kernel/sched/sched.h:1372 [inline]
- #3: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: rq_lock home/rv/linux-repo/linux-66-kconfigfuzz/kernel/sched/sched.h:1681 [inline]
- #3: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c home/rv/linux-repo/linux-66-kconfigfuzz/kernel/sched/core.c:5652
+ #3: ff6000008727e4d8 (_xmit_ETHER#2){+.-.}-{3:3}, at: spin_lock home/rv/linux-repo/linux-66-kconfigfuzz/include/linux/spinlock.h:351 [inline]
+ #3: ff6000008727e4d8 (_xmit_ETHER#2){+.-.}-{3:3}, at: __netif_tx_lock home/rv/linux-repo/linux-66-kconfigfuzz/include/linux/netdevice.h:4352 [inline]
+ #3: ff6000008727e4d8 (_xmit_ETHER#2){+.-.}-{3:3}, at: virtnet_poll_tx+0x1e6/0x5b4 home/rv/linux-repo/linux-66-kconfigfuzz/drivers/net/virtio_net.c:2247
+ #4: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock_nested home/rv/linux-repo/linux-66-kconfigfuzz/kernel/sched/core.c:558 [inline]
+ #4: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: raw_spin_rq_lock home/rv/linux-repo/linux-66-kconfigfuzz/kernel/sched/sched.h:1372 [inline]
+ #4: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: rq_lock home/rv/linux-repo/linux-66-kconfigfuzz/kernel/sched/sched.h:1681 [inline]
+ #4: ff600000fdcfee18 (&rq->__lock){-.-.}-{2:2}, at: scheduler_tick+0x10a/0x89c home/rv/linux-repo/linux-66-kconfigfuzz/kernel/sched/core.c:5652
 stack backtrace:
-CPU: 0 PID: 2947 Comm: scp Not tainted 6.6.0 #1
+CPU: 0 PID: 2948 Comm: scp Not tainted 6.6.0 #1
 Hardware name: riscv-virtio,qemu (DT)
 Call Trace:
 [<ffffffff8000dc50>] dump_backtrace+0x32/0x3c home/rv/linux-repo/linux-66-kconfigfuzz/arch/riscv/kernel/stacktrace.c:121
@@ -63,14 +66,13 @@ Call Trace:
 [<ffffffff85b424e4>] handle_riscv_irq+0x2e/0x4c home/rv/linux-repo/linux-66-kconfigfuzz/arch/riscv/kernel/traps.c:355
 [<ffffffff85b42ba2>] do_irq+0x92/0xb4 home/rv/linux-repo/linux-66-kconfigfuzz/arch/riscv/kernel/traps.c:391
 [<ffffffff80006ef8>] ret_from_exception+0x0/0x64 home/rv/linux-repo/linux-66-kconfigfuzz/arch/riscv/kernel/entry.S:102
-[<ffffffff85b44d88>] check_preemption_disabled+0xa/0xd8 home/rv/linux-repo/linux-66-kconfigfuzz/lib/smp_processor_id.c:16
-[<ffffffff84906b14>] napi_skb_cache_put+0x28/0x230 home/rv/linux-repo/linux-66-kconfigfuzz/net/core/skbuff.c:1304
-[<ffffffff849361c8>] __napi_kfree_skb+0x5a/0x70 home/rv/linux-repo/linux-66-kconfigfuzz/net/core/skbuff.c:1324
-[<ffffffff84a64fd8>] napi_skb_finish home/rv/linux-repo/linux-66-kconfigfuzz/net/core/gro.c:588 [inline]
-[<ffffffff84a64fd8>] napi_gro_receive+0xa7a/0xd7e home/rv/linux-repo/linux-66-kconfigfuzz/net/core/gro.c:609
-[<ffffffff82dbe392>] receive_buf+0x11b2/0x77d0 home/rv/linux-repo/linux-66-kconfigfuzz/drivers/net/virtio_net.c:1802
-[<ffffffff82dc5202>] virtnet_receive home/rv/linux-repo/linux-66-kconfigfuzz/drivers/net/virtio_net.c:2076 [inline]
-[<ffffffff82dc5202>] virtnet_poll+0x852/0x131e home/rv/linux-repo/linux-66-kconfigfuzz/drivers/net/virtio_net.c:2148
+[<ffffffff8491aa32>] skb_zcopy home/rv/linux-repo/linux-66-kconfigfuzz/include/linux/skbuff.h:1670 [inline]
+[<ffffffff8491aa32>] skb_release_data+0x15c/0x6d6 home/rv/linux-repo/linux-66-kconfigfuzz/net/core/skbuff.c:972
+[<ffffffff8493603a>] skb_release_all home/rv/linux-repo/linux-66-kconfigfuzz/net/core/skbuff.c:1053 [inline]
+[<ffffffff8493603a>] __kfree_skb home/rv/linux-repo/linux-66-kconfigfuzz/net/core/skbuff.c:1067 [inline]
+[<ffffffff8493603a>] napi_consume_skb+0x1d0/0x2c8 home/rv/linux-repo/linux-66-kconfigfuzz/net/core/skbuff.c:1357
+[<ffffffff82da470e>] free_old_xmit_skbs+0xf6/0x39c home/rv/linux-repo/linux-66-kconfigfuzz/drivers/net/virtio_net.c:761
+[<ffffffff82dac504>] virtnet_poll_tx+0x236/0x5b4 home/rv/linux-repo/linux-66-kconfigfuzz/drivers/net/virtio_net.c:2249
 [<ffffffff849935e4>] __napi_poll.constprop.0+0xa4/0x79c home/rv/linux-repo/linux-66-kconfigfuzz/net/core/dev.c:6556
 [<ffffffff84994506>] napi_poll home/rv/linux-repo/linux-66-kconfigfuzz/net/core/dev.c:6623 [inline]
 [<ffffffff84994506>] net_rx_action+0x82a/0xc92 home/rv/linux-repo/linux-66-kconfigfuzz/net/core/dev.c:6756

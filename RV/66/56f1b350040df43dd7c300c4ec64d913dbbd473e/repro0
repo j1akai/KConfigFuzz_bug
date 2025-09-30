@@ -1,0 +1,325 @@
+Extracting prog: 21m34.214648448s
+Minimizing prog: 35m53.911535075s
+Simplifying prog options: 16m23.775466256s
+Extracting C: 4m21.700733469s
+Simplifying C: 0s
+
+
+extracting reproducer from 36 programs
+testing a last program of every proc
+single: executing 6 programs separately with timeout 45s
+testing program (duration=45s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$ttyprintk-ioctl$TCFLSH
+detailed listing:
+executing program 0:
+r0 = openat$ttyprintk(0xffffffffffffff9c, &(0x7f0000000080), 0x100, 0x0)
+ioctl$TCFLSH(r0, 0x540b, 0x2)
+
+program did not crash
+testing program (duration=45s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$ptmx-ioctl$TCSBRK-socket$inet_udp-bind$inet-ioctl$TCSBRK-userfaultfd-ioctl$UFFDIO_UNREGISTER
+detailed listing:
+executing program 0:
+r0 = openat$ptmx(0xffffffffffffff9c, &(0x7f0000000000), 0x800, 0x0)
+ioctl$TCSBRK(r0, 0x5409, 0x8)
+r1 = socket$inet_udp(0x2, 0x2, 0x0)
+bind$inet(r1, &(0x7f0000000040)={0x2, 0x9, @multicast2}, 0x10)
+ioctl$TCSBRK(r0, 0x5409, 0x8000)
+r2 = userfaultfd(0x80000)
+ioctl$UFFDIO_UNREGISTER(r2, 0x8010aa01, &(0x7f0000000080)={&(0x7f0000ffc000/0x1000)=nil, 0x1000})
+
+program did not crash
+testing program (duration=45s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): socket$inet_tcp-bind$inet-bind$inet
+detailed listing:
+executing program 0:
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+bind$inet(r0, &(0x7f0000000080)={0x2, 0x4e23, @multicast2}, 0x10)
+bind$inet(r0, 0x0, 0x0)
+
+program did not crash
+testing program (duration=45s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): socket$nl_netfilter-sendmsg$NFT_MSG_GETSETELEM
+detailed listing:
+executing program 0:
+r0 = socket$nl_netfilter(0x10, 0x3, 0xc)
+sendmsg$NFT_MSG_GETSETELEM(r0, &(0x7f0000005b40)={0x0, 0x0, &(0x7f0000005b00)={0x0}, 0x1, 0x0, 0x0, 0x2}, 0x80)
+
+program did not crash
+testing program (duration=45s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+single: successfully extracted reproducer
+found reproducer with 7 syscalls
+minimizing guilty program
+testing program (duration=45.511106475s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+
+program did not crash
+testing program (duration=45.511106475s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+testing program (duration=45.511106475s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(0xffffffffffffffff, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+testing program (duration=45.511106475s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+testing program (duration=45.511106475s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+testing program (duration=45.511106475s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(0xffffffffffffffff, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(0xffffffffffffffff, 0xf504, 0x0)
+r0 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$KDSETMODE(0xffffffffffffffff, 0x4b3a, 0x0)
+
+program did not crash
+testing program (duration=45.511106475s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, 0x0, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+testing program (duration=45.511106475s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, 0x0, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+extracting C reproducer
+testing compiled C program (duration=45.511106475s, {Threaded:true Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+program did not crash
+simplifying guilty program options
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+extracting C reproducer
+testing compiled C program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+program did not crash
+testing program (duration=45.511106475s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:false Cgroups:false BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program crashed: WARNING: locking bug in get_page_from_freelist
+a never seen crash title: WARNING: locking bug in get_page_from_freelist, ignore
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program crashed: WARNING: locking bug in get_page_from_freelist
+validation run: crashed=true
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+validation run: crashed=false
+testing program (duration=45.511106475s, {Threaded:false Repeat:true RepeatTimes:0 Procs:6 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$TIOCGPTPEER-bind$inet-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-bpf$BPF_LINK_CREATE-ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE-ioctl$KDSETMODE
+detailed listing:
+executing program 0:
+r0 = ioctl$TIOCGPTPEER(0xffffffffffffffff, 0x5441, 0x3)
+bind$inet(0xffffffffffffffff, &(0x7f0000000000)={0x2, 0x4e22, @dev={0xac, 0x14, 0x14, 0x22}}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r0, 0xf504, 0x0)
+r1 = bpf$BPF_LINK_CREATE(0x1c, &(0x7f0000000040)={0xffffffffffffffff, 0xffffffffffffffff, 0x16, 0x0, @void}, 0x10)
+ioctl$F2FS_IOC_RELEASE_VOLATILE_WRITE(r1, 0xf504, 0x0)
+ioctl$KDSETMODE(r0, 0x4b3a, 0x0)
+
+program did not crash
+validation run: crashed=false
+reproducer is too unreliable: 0.10
+reproducing took 2h1m48.978658994s
