@@ -1,0 +1,93 @@
+audit: type=1326 audit(7037829158.871:140): auid=4294967295 uid=0 gid=0 ses=4294967295 pid=12693 comm="syz.1.9723" exe="/syz-executor" sig=31 arch=c00000f3 syscall=98 compat=0 ip=0xd7c1e code=0x0
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 12713 at kernel/events/core.c:4004 ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+Modules linked in:
+CPU: 0 UID: 0 PID: 12713 Comm: syz.9.9728 Not tainted 6.12.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+epc : ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+ ra : ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+epc : ffffffff805581ec ra : ffffffff805581ec sp : ff20000000a27430
+ gp : ffffffff83cdd720 tp : ff6000008c39b100 t0 : 0000000000000000
+ t1 : ffebffff121a74c0 t2 : ffffffff82c04c00 s0 : ff20000000a27550
+ s1 : ff60000090d3a600 a0 : ff600000da7d1a20 a1 : 0000000000000000
+ a2 : 0000000000000002 a3 : ffffffff805581ec a4 : 0000000040000000
+ a5 : ff6000008c39c100 a6 : ffebffff121a74c1 a7 : ff60000090d3a603
+ s2 : 0000000000000000 s3 : 0000000000000002 s4 : ff20000000a274e0
+ s5 : 1fe4000000144e90 s6 : ff600000da7d1940 s7 : 0000000000000007
+ s8 : 0000000000000007 s9 : 0000000000000007 s10: ff60000090d3a638
+ s11: ff600000da7de554 t3 : 000edcd8ccf8e9a8 t4 : ffebffff121a74c0
+ t5 : ffebffff121a74c1 t6 : 0000000000040000
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff805581ec>] ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+[<ffffffff805588a8>] perf_event_sched_in+0x3c/0x7a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2748
+[<ffffffff8055a95a>] perf_event_context_sched_in home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4068 [inline]
+[<ffffffff8055a95a>] __perf_event_task_sched_in+0x4fc/0xd4a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4097
+[<ffffffff800fd386>] perf_event_task_sched_in home/rv/linux-repo/linux612/linux-rich/include/linux/perf_event.h:1496 [inline]
+[<ffffffff800fd386>] finish_task_switch.isra.0+0x3d4/0x834 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5197
+[<ffffffff826283d8>] context_switch home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5331 [inline]
+[<ffffffff826283d8>] __schedule+0xc22/0x29a8 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6693
+[<ffffffff8262a1b6>] __schedule_loop home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6770 [inline]
+[<ffffffff8262a1b6>] schedule+0x58/0x2ac home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6785
+[<ffffffff80289244>] futex_wait_queue+0x1fe/0x2f2 home/rv/linux-repo/linux612/linux-rich/kernel/futex/waitwake.c:370
+[<ffffffff8028a006>] __futex_wait+0x16e/0x23e home/rv/linux-repo/linux612/linux-rich/kernel/futex/waitwake.c:669
+[<ffffffff8028a1d4>] futex_wait+0xfe/0x2c8 home/rv/linux-repo/linux612/linux-rich/kernel/futex/waitwake.c:697
+[<ffffffff8027f7c6>] do_futex+0x152/0x232 home/rv/linux-repo/linux612/linux-rich/kernel/futex/syscalls.c:102
+[<ffffffff8027fa2e>] __do_sys_futex home/rv/linux-repo/linux612/linux-rich/kernel/futex/syscalls.c:179 [inline]
+[<ffffffff8027fa2e>] __se_sys_futex home/rv/linux-repo/linux612/linux-rich/kernel/futex/syscalls.c:160 [inline]
+[<ffffffff8027fa2e>] __riscv_sys_futex+0x188/0x340 home/rv/linux-repo/linux612/linux-rich/kernel/futex/syscalls.c:160
+[<ffffffff8000d880>] syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff82621340>] do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+---[ end trace 0000000000000000 ]---
+Unable to handle kernel paging request at virtual address dfffffff00000005
+Oops [#1]
+Modules linked in:
+CPU: 0 UID: 0 PID: 12713 Comm: syz.9.9728 Tainted: G        W          6.12.0-dirty #1
+Tainted: [W]=WARN
+Hardware name: riscv-virtio,qemu (DT)
+epc : perf_ctx_sched_task_cb+0x36/0x19a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3566
+ ra : perf_ctx_sched_task_cb+0x24/0x19a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3566
+epc : ffffffff80532352 ra : ffffffff80532340 sp : ff20000000a27530
+ gp : ffffffff83cdd720 tp : ff6000008c39b100 t0 : 0000000000000000
+ t1 : ffebffff121a74c0 t2 : ffffffff82c04c00 s0 : ff20000000a27580
+ s1 : 0000000000000000 a0 : 0000000000000000 a1 : 0000000000000001
+ a2 : 0000000000000002 a3 : ffffffff80532340 a4 : 0000000000000005
+ a5 : dfffffff00000005 a6 : ffebffff121a74c1 a7 : ff60000090d3a603
+ s2 : ff600000da7d1940 s3 : ff60000090d3a600 s4 : ff60000090d3a618
+ s5 : ff60000090d3a628 s6 : 0000000000000028 s7 : 0000000000000001
+ s8 : dfffffff00000000 s9 : 1fe4000000144ebc s10: ff60000090d3a638
+ s11: ff600000da7de554 t3 : 000edcd8ccf8e9a8 t4 : ffebffff121a74c0
+ t5 : ffebffff121a74c1 t6 : 0000000000040000
+status: 0000000000000100 badaddr: dfffffff00000005 cause: 000000000000000d
+[<ffffffff80532352>] perf_ctx_sched_task_cb+0x36/0x19a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3566
+[<ffffffff8055a97a>] perf_event_context_sched_in home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4070 [inline]
+[<ffffffff8055a97a>] __perf_event_task_sched_in+0x51c/0xd4a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4097
+[<ffffffff800fd386>] perf_event_task_sched_in home/rv/linux-repo/linux612/linux-rich/include/linux/perf_event.h:1496 [inline]
+[<ffffffff800fd386>] finish_task_switch.isra.0+0x3d4/0x834 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5197
+[<ffffffff826283d8>] context_switch home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5331 [inline]
+[<ffffffff826283d8>] __schedule+0xc22/0x29a8 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6693
+[<ffffffff8262a1b6>] __schedule_loop home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6770 [inline]
+[<ffffffff8262a1b6>] schedule+0x58/0x2ac home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6785
+[<ffffffff80289244>] futex_wait_queue+0x1fe/0x2f2 home/rv/linux-repo/linux612/linux-rich/kernel/futex/waitwake.c:370
+[<ffffffff8028a006>] __futex_wait+0x16e/0x23e home/rv/linux-repo/linux612/linux-rich/kernel/futex/waitwake.c:669
+[<ffffffff8028a1d4>] futex_wait+0xfe/0x2c8 home/rv/linux-repo/linux612/linux-rich/kernel/futex/waitwake.c:697
+[<ffffffff8027f7c6>] do_futex+0x152/0x232 home/rv/linux-repo/linux612/linux-rich/kernel/futex/syscalls.c:102
+[<ffffffff8027fa2e>] __do_sys_futex home/rv/linux-repo/linux612/linux-rich/kernel/futex/syscalls.c:179 [inline]
+[<ffffffff8027fa2e>] __se_sys_futex home/rv/linux-repo/linux612/linux-rich/kernel/futex/syscalls.c:160 [inline]
+[<ffffffff8027fa2e>] __riscv_sys_futex+0x188/0x340 home/rv/linux-repo/linux612/linux-rich/kernel/futex/syscalls.c:160
+[<ffffffff8000d880>] syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff82621340>] do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+Code: bd00 07b7 e000 8b13 0284 17fd 5713 003b 1782 97ba (c783) 0007 
+---[ end trace 0000000000000000 ]---
+note: syz.9.9728[12713] exited with irqs disabled
+----------------
+Code disassembly (best guess):
+   0:	bd00                	fsd	fs0,56(a0)
+   2:	e00007b7          	lui	a5,0xe0000
+   6:	02848b13          	addi	s6,s1,40
+   a:	17fd                	addi	a5,a5,-1 # 0xffffffffdfffffff
+   c:	003b5713          	srli	a4,s6,0x3
+  10:	1782                	slli	a5,a5,0x20
+  12:	97ba                	add	a5,a5,a4
+* 14:	0007c783          	lbu	a5,0(a5) <-- trapping instruction

@@ -1,0 +1,150 @@
+loop2: detected capacity change from 0 to 512
+bond0 (unregistering): Released all slaves
+loop2: detected capacity change from 0 to 2048
+tmpfs: Bad value for 'nr_blocks'
+==================================================================
+BUG: KASAN: slab-use-after-free in geneve_destroy_tunnels drivers/net/geneve.c:1913 [inline]
+BUG: KASAN: slab-use-after-free in geneve_exit_batch_rtnl+0x284/0x2dc drivers/net/geneve.c:1928
+Read of size 8 at addr ff60000096156990 by task kworker/u8:1/56
+
+CPU: 1 UID: 0 PID: 56 Comm: kworker/u8:1 Not tainted 6.12.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: netns cleanup_net
+Call Trace:
+[<ffffffff8000ebe8>] dump_backtrace+0x2e/0x3c arch/riscv/kernel/stacktrace.c:130
+[<ffffffff825fc438>] show_stack+0x34/0x40 arch/riscv/kernel/stacktrace.c:136
+[<ffffffff82620c00>] __dump_stack lib/dump_stack.c:94 [inline]
+[<ffffffff82620c00>] dump_stack_lvl+0x82/0xa2 lib/dump_stack.c:120
+[<ffffffff82605558>] print_address_description mm/kasan/report.c:377 [inline]
+[<ffffffff82605558>] print_report+0x232/0x558 mm/kasan/report.c:488
+[<ffffffff8073b9a0>] kasan_report+0xdc/0x10c mm/kasan/report.c:601
+[<ffffffff8073d69a>] __asan_report_load8_noabort+0x12/0x1a mm/kasan/report_generic.c:381
+[<ffffffff8197b4fa>] geneve_destroy_tunnels drivers/net/geneve.c:1913 [inline]
+[<ffffffff8197b4fa>] geneve_exit_batch_rtnl+0x284/0x2dc drivers/net/geneve.c:1928
+[<ffffffff81eb695a>] cleanup_net+0x458/0xa0a net/core/net_namespace.c:619
+[<ffffffff800b9760>] process_one_work+0x65a/0xfd2 kernel/workqueue.c:3229
+[<ffffffff800bc9b8>] process_scheduled_works kernel/workqueue.c:3310 [inline]
+[<ffffffff800bc9b8>] worker_thread+0x88c/0x1388 kernel/workqueue.c:3391
+[<ffffffff800d60b0>] kthread+0x1f0/0x2a6 kernel/kthread.c:389
+[<ffffffff8264004e>] ret_from_fork+0xe/0x18 arch/riscv/kernel/entry.S:326
+
+Allocated by task 12362:
+ stack_trace_save+0xa0/0xd2 kernel/stacktrace.c:122
+ kasan_save_stack+0x3e/0x6a mm/kasan/common.c:47
+ kasan_save_track+0x16/0x28 mm/kasan/common.c:68
+ kasan_save_alloc_info+0x30/0x3e mm/kasan/generic.c:565
+ poison_kmalloc_redzone mm/kasan/common.c:377 [inline]
+ __kasan_kmalloc+0x8c/0x8e mm/kasan/common.c:394
+ kasan_kmalloc include/linux/kasan.h:257 [inline]
+ __do_kmalloc_node mm/slub.c:4264 [inline]
+ __kmalloc_node_noprof+0x184/0x3a0 mm/slub.c:4270
+ __kvmalloc_node_noprof+0xa4/0x1e0 mm/util.c:658
+ seq_buf_alloc fs/seq_file.c:38 [inline]
+ traverse.part.0.constprop.0+0x28a/0x482 fs/seq_file.c:102
+ traverse fs/seq_file.c:98 [inline]
+ seq_read_iter+0x6fc/0xd62 fs/seq_file.c:195
+ seq_read+0x274/0x31a fs/seq_file.c:162
+ do_loop_readv_writev fs/read_write.c:854 [inline]
+ do_loop_readv_writev fs/read_write.c:842 [inline]
+ vfs_readv+0x4b0/0x656 fs/read_write.c:1027
+ do_preadv fs/read_write.c:1142 [inline]
+ __do_sys_preadv fs/read_write.c:1192 [inline]
+ __se_sys_preadv fs/read_write.c:1187 [inline]
+ __riscv_sys_preadv+0x1c4/0x1f2 fs/read_write.c:1187
+ syscall_handler+0x80/0x100 arch/riscv/include/asm/syscall.h:90
+ do_trap_ecall_u+0x122/0x13c arch/riscv/kernel/traps.c:331
+ _new_vmalloc_restore_context_a0+0xc2/0xce
+
+Freed by task 12356:
+ stack_trace_save+0xa0/0xd2 kernel/stacktrace.c:122
+ kasan_save_stack+0x3e/0x6a mm/kasan/common.c:47
+ kasan_save_track+0x16/0x28 mm/kasan/common.c:68
+ kasan_save_free_info+0x40/0x5c mm/kasan/generic.c:579
+ poison_slab_object mm/kasan/common.c:247 [inline]
+ __kasan_slab_free+0x36/0x4a mm/kasan/common.c:264
+ kasan_slab_free include/linux/kasan.h:230 [inline]
+ slab_free_hook mm/slub.c:2342 [inline]
+ slab_free mm/slub.c:4579 [inline]
+ kfree+0xd0/0x364 mm/slub.c:4727
+ kvfree+0x4a/0x5c mm/util.c:701
+ seq_release fs/seq_file.c:355 [inline]
+ seq_release_private+0xa2/0xf2 fs/seq_file.c:626
+ __fput+0x2e8/0x8ac fs/file_table.c:431
+ ____fput+0x1c/0x26 fs/file_table.c:459
+ task_work_run+0x264/0x3a0 kernel/task_work.c:239
+ resume_user_mode_work include/linux/resume_user_mode.h:50 [inline]
+ exit_to_user_mode_loop kernel/entry/common.c:114 [inline]
+ exit_to_user_mode_prepare include/linux/entry-common.h:328 [inline]
+ __syscall_exit_to_user_mode_work kernel/entry/common.c:207 [inline]
+ syscall_exit_to_user_mode+0x162/0x164 kernel/entry/common.c:218
+ do_trap_ecall_u+0x64/0x13c arch/riscv/kernel/traps.c:345
+ _new_vmalloc_restore_context_a0+0xc2/0xce
+
+The buggy address belongs to the object at ff60000096156000
+ which belongs to the cache kmalloc-cg-4k of size 4096
+The buggy address is located 2448 bytes inside of
+ freed 4096-byte region [ff60000096156000, ff60000096157000)
+
+The buggy address belongs to the physical page:
+page: refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x116150
+head: order:3 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+flags: 0x4000000000000040(head|zone=1)
+page_type: f5(slab)
+raw: 4000000000000040 ff6000008000d3c0 ff1c000002171600 dead000000000002
+raw: 0000000000000000 0000000000040004 00000001f5000000 0000000000000000
+head: 4000000000000040 ff6000008000d3c0 ff1c000002171600 dead000000000002
+head: 0000000000000000 0000000000040004 00000001f5000000 0000000000000000
+head: 4000000000000003 ff1c000002585401 ffffffffffffffff 0000000000000000
+head: 0000000000000008 0000000000000000 00000000ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ff60000096156880: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+ ff60000096156900: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+>ff60000096156980: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+                         ^
+ ff60000096156a00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+ ff60000096156a80: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+==================================================================
+------------[ cut here ]------------
+kernel BUG at net/core/dev.c:11375!
+Kernel BUG [#1]
+Modules linked in:
+CPU: 1 UID: 0 PID: 56 Comm: kworker/u8:1 Tainted: G    B              6.12.0-dirty #1
+Tainted: [B]=BAD_PAGE
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: netns cleanup_net
+epc : unregister_netdevice_many_notify+0x26a/0x1af4 net/core/dev.c:11375
+ ra : unregister_netdevice_many_notify+0x26a/0x1af4 net/core/dev.c:11375
+epc : ffffffff81efeb94 ra : ffffffff81efeb94 sp : ff200000008e78e0
+ gp : ffffffff83cdd720 tp : ff60000083e855c0 t0 : ff200000008e7594
+ t1 : fffffffef077c148 t2 : 676e696c62617369 s0 : ff200000008e7af0
+ s1 : dfffffff00000000 a0 : 0000000000000000 a1 : 0000000000000001
+ a2 : 0000000000000002 a3 : ffffffff81efeb94 a4 : 0000000000000000
+ a5 : ff60000083e865c0 a6 : fffffffef077c149 a7 : ffffffff83be0a47
+ s2 : ff60000096156000 s3 : ff200000008e7ba0 s4 : 0000000000000004
+ s5 : 0000000000000001 s6 : ff200000008e7a80 s7 : 1fe400000011cf74
+ s8 : ff200000008e79d0 s9 : dead000000000122 s10: dead000000000100
+ s11: ff200000008e7a20 t3 : ffffffff83d4038f t4 : fffffffef077c148
+ t5 : fffffffef077c149 t6 : ff200000008e7358
+status: 0000000000000120 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff81efeb94>] unregister_netdevice_many_notify+0x26a/0x1af4 net/core/dev.c:11375
+[<ffffffff81f0043c>] unregister_netdevice_many+0x1e/0x28 net/core/dev.c:11469
+[<ffffffff81eb6990>] cleanup_net+0x48e/0xa0a net/core/net_namespace.c:621
+[<ffffffff800b9760>] process_one_work+0x65a/0xfd2 kernel/workqueue.c:3229
+[<ffffffff800bc9b8>] process_scheduled_works kernel/workqueue.c:3310 [inline]
+[<ffffffff800bc9b8>] worker_thread+0x88c/0x1388 kernel/workqueue.c:3391
+[<ffffffff800d60b0>] kthread+0x1f0/0x2a6 kernel/kthread.c:389
+[<ffffffff8264004e>] ret_from_fork+0xe/0x18 arch/riscv/kernel/entry.S:326
+Code: 00ca 3023 19a9 3423 1999 bf3d 8097 fe40 80e7 37c0 (9002) 3903 
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	00ca                	slli	ra,ra,0x12
+   2:	19a93023          	.4byte	0x19a93023
+   6:	19993423          	.4byte	0x19993423
+   a:	bf3d                	j	0xffffffffffffff48
+   c:	fe408097          	auipc	ra,0xfe408
+  10:	37c080e7          	jalr	892(ra) # 0xfffffffffe408388
+* 14:	9002                	ebreak <-- trapping instruction
+  16:	03 39             	地址 0x0000000000000016 越界。

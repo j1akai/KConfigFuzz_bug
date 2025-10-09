@@ -1,0 +1,233 @@
+EXT4-fs (loop7): mounted filesystem 00000000-0000-0000-0000-000000000000 r/w without journal. Quota mode: disabled.
+EXT4-fs (loop7): unmounting filesystem 00000000-0000-0000-0000-000000000000.
+bond0 (unregistering): Released all slaves
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 7113 at kernel/events/core.c:2862 __perf_install_in_context+0x168/0x9aa home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2862
+Modules linked in:
+CPU: 0 UID: 0 PID: 7113 Comm: syz.8.790 Not tainted 6.12.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+epc : __perf_install_in_context+0x168/0x9aa home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2862
+ ra : __perf_install_in_context+0x168/0x9aa home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2862
+epc : ffffffff80559b46 ra : ffffffff80559b46 sp : ff20000002047940
+ gp : ffffffff83cdd720 tp : ff600000961be200 t0 : ff60000098afdeb8
+ t1 : ffebffff1302b780 t2 : ffffffff82c04c00 s0 : ff200000020479d0
+ s1 : ff6000009539ba20 a0 : 0000000000000001 a1 : 0000000000000004
+ a2 : 0000000000080000 a3 : ffffffff80559b46 a4 : ff20000001615068
+ a5 : 0000000000002068 a6 : ffebffff1302b781 a7 : ff6000009815bc03
+ s2 : ff600000da7d1940 s3 : ff6000009815bc00 s4 : ffffffff83d6e4a0
+ s5 : ff600000961be200 s6 : 1fec000012a73789 s7 : ff60000085c65600
+ s8 : ff6000009539bc48 s9 : ff600000da7d1a20 s10: ff600000961be200
+ s11: ff6000009539bac8 t3 : fffffffffffffffe t4 : ffebffff1302b780
+ t5 : ffebffff1302b781 t6 : ff600000806bb344
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff80559b46>] __perf_install_in_context+0x168/0x9aa home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2862
+[<ffffffff805361ea>] remote_function home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:92 [inline]
+[<ffffffff805361ea>] remote_function+0x120/0x198 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:72
+[<ffffffff8028dba8>] csd_do_func home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:134 [inline]
+[<ffffffff8028dba8>] generic_exec_single+0x168/0x42e home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:433
+[<ffffffff8028e112>] smp_call_function_single+0x2a4/0x3d2 home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:676
+[<ffffffff8054f8b2>] task_function_call home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:120 [inline]
+[<ffffffff8054f8b2>] perf_install_in_context+0x282/0xb78 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2985
+[<ffffffff80564a24>] __do_sys_perf_event_open+0xc82/0x1c06 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:13005
+[<ffffffff80571ec0>] __se_sys_perf_event_open home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:12657 [inline]
+[<ffffffff80571ec0>] __riscv_sys_perf_event_open+0xa6/0x114 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:12657
+[<ffffffff8000d880>] syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff82621340>] do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+---[ end trace 0000000000000000 ]---
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 7113 at kernel/events/core.c:2736 task_ctx_sched_out+0xda/0xfc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2736
+Modules linked in:
+CPU: 0 UID: 0 PID: 7113 Comm: syz.8.790 Tainted: G        W          6.12.0-dirty #1
+Tainted: [W]=WARN
+Hardware name: riscv-virtio,qemu (DT)
+epc : task_ctx_sched_out+0xda/0xfc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2736
+ ra : task_ctx_sched_out+0xda/0xfc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2736
+epc : ffffffff8054dfbe ra : ffffffff8054dfbe sp : ff20000002047870
+ gp : ffffffff83cdd720 tp : ff600000961be200 t0 : ff60000098afdeb8
+ t1 : ffebffff1302b780 t2 : ffffffff82c04c00 s0 : ff200000020478b0
+ s1 : ff6000009815bc00 a0 : ff600000da7d1a20 a1 : ff60000084e58400
+ a2 : 0000000000080000 a3 : ffffffff8054dfbe a4 : ff200000016151a8
+ a5 : 00000000000021a8 a6 : ffebffff1302b781 a7 : ff6000009815bc03
+ s2 : ff60000084e58400 s3 : 0000000000000001 s4 : ff60000085c65600
+ s5 : ffffffff83d6e4a0 s6 : 0000000000000000 s7 : ff6000009815bc28
+ s8 : ff600000da7d1940 s9 : ffffffff83d6e4a0 s10: 1fec00001b4fa32d
+ s11: ff60000084e58400 t3 : fffffffffffffffe t4 : ffebffff1302b780
+ t5 : ffebffff1302b781 t6 : ff600000806bb344
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff8054dfbe>] task_ctx_sched_out+0xda/0xfc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2736
+[<ffffffff80558bc0>] ctx_resched+0x2da/0x75a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2792
+[<ffffffff80559e78>] __perf_install_in_context+0x49a/0x9aa home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2882
+[<ffffffff805361ea>] remote_function home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:92 [inline]
+[<ffffffff805361ea>] remote_function+0x120/0x198 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:72
+[<ffffffff8028dba8>] csd_do_func home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:134 [inline]
+[<ffffffff8028dba8>] generic_exec_single+0x168/0x42e home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:433
+[<ffffffff8028e112>] smp_call_function_single+0x2a4/0x3d2 home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:676
+[<ffffffff8054f8b2>] task_function_call home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:120 [inline]
+[<ffffffff8054f8b2>] perf_install_in_context+0x282/0xb78 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2985
+[<ffffffff80564a24>] __do_sys_perf_event_open+0xc82/0x1c06 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:13005
+[<ffffffff80571ec0>] __se_sys_perf_event_open home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:12657 [inline]
+[<ffffffff80571ec0>] __riscv_sys_perf_event_open+0xa6/0x114 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:12657
+[<ffffffff8000d880>] syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff82621340>] do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+---[ end trace 0000000000000000 ]---
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 7113 at kernel/events/core.c:3813 __link_epc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3813 [inline]
+WARNING: CPU: 0 PID: 7113 at kernel/events/core.c:3813 visit_groups_merge.constprop.0.isra.0+0x44c/0xe38 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3869
+Modules linked in:
+CPU: 0 UID: 0 PID: 7113 Comm: syz.8.790 Tainted: G        W          6.12.0-dirty #1
+Tainted: [W]=WARN
+Hardware name: riscv-virtio,qemu (DT)
+epc : __link_epc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3813 [inline]
+epc : visit_groups_merge.constprop.0.isra.0+0x44c/0xe38 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3869
+ ra : __link_epc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3813 [inline]
+ ra : visit_groups_merge.constprop.0.isra.0+0x44c/0xe38 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3869
+epc : ffffffff805567f0 ra : ffffffff805567f0 sp : ff20000002047630
+ gp : ffffffff83cdd720 tp : ff600000961be200 t0 : ff60000098afdeb8
+ t1 : ffebffff1302b780 t2 : ffffffff82c04c00 s0 : ff20000002047760
+ s1 : ff20000002047680 a0 : ffffffff83d6e4a0 a1 : 0000000000000000
+ a2 : 0000000000080000 a3 : ffffffff805567f0 a4 : ff20000001615420
+ a5 : 0000000000002420 a6 : ffffffff805563a4 a7 : 1fe4000000408ecc
+ s2 : ff60000093c4c600 s3 : ff600000da7df4e0 s4 : 0000000000000001
+ s5 : ff600000da7df558 s6 : 1fec00001b4fbeab s7 : ff60000084e58400
+ s8 : ff200000020477c0 s9 : 0000000000000001 s10: ff60000093c4cf00
+ s11: ff6000009815bc00 t3 : fffffffffffffffe t4 : ffebffff1302b780
+ t5 : ffebffff1302b781 t6 : ff600000806bb344
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff805567f0>] __link_epc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3813 [inline]
+[<ffffffff805567f0>] visit_groups_merge.constprop.0.isra.0+0x44c/0xe38 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3869
+[<ffffffff8055842e>] pmu_groups_sched_in home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3958 [inline]
+[<ffffffff8055842e>] __pmu_ctx_sched_in home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3970 [inline]
+[<ffffffff8055842e>] ctx_sched_in+0x45c/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4021
+[<ffffffff805588bc>] perf_event_sched_in home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2751 [inline]
+[<ffffffff805588bc>] perf_event_sched_in+0x50/0x7a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2742
+[<ffffffff80558bf2>] ctx_resched+0x30c/0x75a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2807
+[<ffffffff80559e78>] __perf_install_in_context+0x49a/0x9aa home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2882
+[<ffffffff805361ea>] remote_function home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:92 [inline]
+[<ffffffff805361ea>] remote_function+0x120/0x198 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:72
+[<ffffffff8028dba8>] csd_do_func home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:134 [inline]
+[<ffffffff8028dba8>] generic_exec_single+0x168/0x42e home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:433
+[<ffffffff8028e112>] smp_call_function_single+0x2a4/0x3d2 home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:676
+[<ffffffff8054f8b2>] task_function_call home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:120 [inline]
+[<ffffffff8054f8b2>] perf_install_in_context+0x282/0xb78 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2985
+[<ffffffff80564a24>] __do_sys_perf_event_open+0xc82/0x1c06 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:13005
+[<ffffffff80571ec0>] __se_sys_perf_event_open home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:12657 [inline]
+[<ffffffff80571ec0>] __riscv_sys_perf_event_open+0xa6/0x114 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:12657
+[<ffffffff8000d880>] syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff82621340>] do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+---[ end trace 0000000000000000 ]---
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 7102 at kernel/events/core.c:4004 ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+Modules linked in:
+CPU: 1 UID: 0 PID: 7102 Comm: syz.7.789 Tainted: G        W          6.12.0-dirty #1
+Tainted: [W]=WARN
+Hardware name: riscv-virtio,qemu (DT)
+epc : ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+ ra : ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+epc : ffffffff805581ec ra : ffffffff805581ec sp : ff20000001606f00
+ gp : ffffffff83cdd720 tp : ff60000090cce200 t0 : 0000000000000000
+ t1 : ffebffff10b8cac0 t2 : ff600000da7e6018 s0 : ff20000001607020
+ s1 : ff60000085c65600 a0 : ff600000da7f0a20 a1 : 0000000000000000
+ a2 : 0000000000000002 a3 : ffffffff805581ec a4 : 0000000040000002
+ a5 : ff60000090ccf200 a6 : ffebffff10b8cac1 a7 : ff60000085c65603
+ s2 : 0000000000000000 s3 : 0000000000000002 s4 : ff20000001606fa0
+ s5 : 1fe40000002c0de8 s6 : ff600000da7f0940 s7 : 0000000000000007
+ s8 : 0000000000000007 s9 : 0000000000000007 s10: ff60000085c65638
+ s11: ff600000da7fd554 t3 : 0000000100037e9a t4 : ffebffff10b8cac0
+ t5 : ffebffff10b8cac1 t6 : ffffffff836e66b8
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff805581ec>] ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+[<ffffffff805588a8>] perf_event_sched_in+0x3c/0x7a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2748
+[<ffffffff8055a95a>] perf_event_context_sched_in home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4068 [inline]
+[<ffffffff8055a95a>] __perf_event_task_sched_in+0x4fc/0xd4a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4097
+[<ffffffff800fd386>] perf_event_task_sched_in home/rv/linux-repo/linux612/linux-rich/include/linux/perf_event.h:1496 [inline]
+[<ffffffff800fd386>] finish_task_switch.isra.0+0x3d4/0x834 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5197
+[<ffffffff826283d8>] context_switch home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5331 [inline]
+[<ffffffff826283d8>] __schedule+0xc22/0x29a8 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6693
+[<ffffffff8262a1b6>] __schedule_loop home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6770 [inline]
+[<ffffffff8262a1b6>] schedule+0x58/0x2ac home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6785
+[<ffffffff8263babc>] schedule_timeout+0x2c6/0x37e home/rv/linux-repo/linux612/linux-rich/kernel/time/timer.c:2591
+[<ffffffff8262b888>] do_wait_for_common home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:95 [inline]
+[<ffffffff8262b888>] __wait_for_common+0x450/0x6e6 home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:116
+[<ffffffff8262bc00>] wait_for_common home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:127 [inline]
+[<ffffffff8262bc00>] wait_for_completion_state+0x1a/0x32 home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:264
+[<ffffffff800abc66>] call_usermodehelper_exec+0x364/0x45a home/rv/linux-repo/linux612/linux-rich/kernel/umh.c:442
+[<ffffffff80225e4e>] call_modprobe home/rv/linux-repo/linux612/linux-rich/kernel/module/kmod.c:103 [inline]
+[<ffffffff80225e4e>] __request_module+0x2c4/0x426 home/rv/linux-repo/linux612/linux-rich/kernel/module/kmod.c:173
+[<ffffffff81f9dbf6>] dev_load+0xaa/0xae home/rv/linux-repo/linux612/linux-rich/net/core/dev_ioctl.c:643
+[<ffffffff8220ebbc>] devinet_ioctl+0x11c/0x162c home/rv/linux-repo/linux612/linux-rich/net/ipv4/devinet.c:1075
+[<ffffffff82214b16>] inet_ioctl+0x242/0x348 home/rv/linux-repo/linux612/linux-rich/net/ipv4/af_inet.c:1003
+[<ffffffff81e5365c>] sock_do_ioctl+0xf8/0x1ec home/rv/linux-repo/linux612/linux-rich/net/socket.c:1227
+[<ffffffff81e5681e>] sock_ioctl+0x258/0x53c home/rv/linux-repo/linux612/linux-rich/net/socket.c:1346
+[<ffffffff807bda3a>] vfs_ioctl home/rv/linux-repo/linux612/linux-rich/fs/ioctl.c:51 [inline]
+[<ffffffff807bda3a>] __do_sys_ioctl home/rv/linux-repo/linux612/linux-rich/fs/ioctl.c:907 [inline]
+[<ffffffff807bda3a>] __se_sys_ioctl home/rv/linux-repo/linux612/linux-rich/fs/ioctl.c:893 [inline]
+[<ffffffff807bda3a>] __riscv_sys_ioctl+0x14c/0x18e home/rv/linux-repo/linux612/linux-rich/fs/ioctl.c:893
+[<ffffffff8000d880>] syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff82621340>] do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+---[ end trace 0000000000000000 ]---
+Unable to handle kernel paging request at virtual address dfffffff00000005
+Oops [#1]
+Modules linked in:
+CPU: 1 UID: 0 PID: 7102 Comm: syz.7.789 Tainted: G        W          6.12.0-dirty #1
+Tainted: [W]=WARN
+Hardware name: riscv-virtio,qemu (DT)
+epc : perf_ctx_sched_task_cb+0x36/0x19a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3566
+ ra : perf_ctx_sched_task_cb+0x24/0x19a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3566
+epc : ffffffff80532352 ra : ffffffff80532340 sp : ff20000001607000
+ gp : ffffffff83cdd720 tp : ff60000090cce200 t0 : 0000000000000000
+ t1 : ffebffff10b8cac0 t2 : ff600000da7e6018 s0 : ff20000001607050
+ s1 : 0000000000000000 a0 : 0000000000000000 a1 : 0000000000000001
+ a2 : 0000000000000002 a3 : ffffffff80532340 a4 : 0000000000000005
+ a5 : dfffffff00000005 a6 : ffebffff10b8cac1 a7 : ff60000085c65603
+ s2 : ff600000da7f0940 s3 : ff60000085c65600 s4 : ff60000085c65618
+ s5 : ff60000085c65628 s6 : 0000000000000028 s7 : 0000000000000001
+ s8 : dfffffff00000000 s9 : 1fe40000002c0e14 s10: ff60000085c65638
+ s11: ff600000da7fd554 t3 : 0000000100037e9a t4 : ffebffff10b8cac0
+ t5 : ffebffff10b8cac1 t6 : ffffffff836e66b8
+status: 0000000000000100 badaddr: dfffffff00000005 cause: 000000000000000d
+[<ffffffff80532352>] perf_ctx_sched_task_cb+0x36/0x19a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3566
+[<ffffffff8055a97a>] perf_event_context_sched_in home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4070 [inline]
+[<ffffffff8055a97a>] __perf_event_task_sched_in+0x51c/0xd4a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4097
+[<ffffffff800fd386>] perf_event_task_sched_in home/rv/linux-repo/linux612/linux-rich/include/linux/perf_event.h:1496 [inline]
+[<ffffffff800fd386>] finish_task_switch.isra.0+0x3d4/0x834 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5197
+[<ffffffff826283d8>] context_switch home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5331 [inline]
+[<ffffffff826283d8>] __schedule+0xc22/0x29a8 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6693
+[<ffffffff8262a1b6>] __schedule_loop home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6770 [inline]
+[<ffffffff8262a1b6>] schedule+0x58/0x2ac home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6785
+[<ffffffff8263babc>] schedule_timeout+0x2c6/0x37e home/rv/linux-repo/linux612/linux-rich/kernel/time/timer.c:2591
+[<ffffffff8262b888>] do_wait_for_common home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:95 [inline]
+[<ffffffff8262b888>] __wait_for_common+0x450/0x6e6 home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:116
+[<ffffffff8262bc00>] wait_for_common home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:127 [inline]
+[<ffffffff8262bc00>] wait_for_completion_state+0x1a/0x32 home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:264
+[<ffffffff800abc66>] call_usermodehelper_exec+0x364/0x45a home/rv/linux-repo/linux612/linux-rich/kernel/umh.c:442
+[<ffffffff80225e4e>] call_modprobe home/rv/linux-repo/linux612/linux-rich/kernel/module/kmod.c:103 [inline]
+[<ffffffff80225e4e>] __request_module+0x2c4/0x426 home/rv/linux-repo/linux612/linux-rich/kernel/module/kmod.c:173
+[<ffffffff81f9dbf6>] dev_load+0xaa/0xae home/rv/linux-repo/linux612/linux-rich/net/core/dev_ioctl.c:643
+[<ffffffff8220ebbc>] devinet_ioctl+0x11c/0x162c home/rv/linux-repo/linux612/linux-rich/net/ipv4/devinet.c:1075
+[<ffffffff82214b16>] inet_ioctl+0x242/0x348 home/rv/linux-repo/linux612/linux-rich/net/ipv4/af_inet.c:1003
+[<ffffffff81e5365c>] sock_do_ioctl+0xf8/0x1ec home/rv/linux-repo/linux612/linux-rich/net/socket.c:1227
+[<ffffffff81e5681e>] sock_ioctl+0x258/0x53c home/rv/linux-repo/linux612/linux-rich/net/socket.c:1346
+[<ffffffff807bda3a>] vfs_ioctl home/rv/linux-repo/linux612/linux-rich/fs/ioctl.c:51 [inline]
+[<ffffffff807bda3a>] __do_sys_ioctl home/rv/linux-repo/linux612/linux-rich/fs/ioctl.c:907 [inline]
+[<ffffffff807bda3a>] __se_sys_ioctl home/rv/linux-repo/linux612/linux-rich/fs/ioctl.c:893 [inline]
+[<ffffffff807bda3a>] __riscv_sys_ioctl+0x14c/0x18e home/rv/linux-repo/linux612/linux-rich/fs/ioctl.c:893
+[<ffffffff8000d880>] syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff82621340>] do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+Code: bd00 07b7 e000 8b13 0284 17fd 5713 003b 1782 97ba (c783) 0007 
+---[ end trace 0000000000000000 ]---
+note: syz.7.789[7102] exited with irqs disabled
+----------------
+Code disassembly (best guess):
+   0:	bd00                	fsd	fs0,56(a0)
+   2:	e00007b7          	lui	a5,0xe0000
+   6:	02848b13          	addi	s6,s1,40
+   a:	17fd                	addi	a5,a5,-1 # 0xffffffffdfffffff
+   c:	003b5713          	srli	a4,s6,0x3
+  10:	1782                	slli	a5,a5,0x20
+  12:	97ba                	add	a5,a5,a4
+* 14:	0007c783          	lbu	a5,0(a5) <-- trapping instruction

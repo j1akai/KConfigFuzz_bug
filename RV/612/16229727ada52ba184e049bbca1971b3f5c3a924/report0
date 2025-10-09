@@ -1,0 +1,85 @@
+audit: type=1326 audit(2000010283.979:55): auid=4294967295 uid=0 gid=0 ses=4294967295 pid=24294 comm="syz.9.4630" exe="/syz-executor" sig=31 arch=c00000f3 syscall=98 compat=0 ip=0xd7c1e code=0x0
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 24382 at kernel/events/core.c:286 event_function+0x1d8/0x23c home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:286
+Modules linked in:
+CPU: 0 UID: 0 PID: 24382 Comm: syz.8.4656 Not tainted 6.12.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+epc : event_function+0x1d8/0x23c home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:286
+ ra : event_function+0x1d8/0x23c home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:286
+epc : ffffffff80542b64 ra : ffffffff80542b64 sp : ff20000000007d60
+ gp : ffffffff83cdd720 tp : ff600000989f0000 t0 : ff20000000000000
+ t1 : ffebffff1b4fa328 t2 : 0000000000000000 s0 : ff20000000007da0
+ s1 : ff600000da7d1940 a0 : ff60000096e5ce70 a1 : 0000000000000004
+ a2 : 0000000000000001 a3 : ffffffff80542b64 a4 : 0000000000000000
+ a5 : ff600000989f0000 a6 : ffebffff1b4fa329 a7 : ff600000da7d1943
+ s2 : ff20000001767a00 s3 : ff60000096e5ce00 s4 : ff60000095fd1d10
+ s5 : 0000000000000000 s6 : ff600000989f0000 s7 : ffffffff82a38000
+ s8 : ffffffff805360ca s9 : 0000000000000000 s10: ff600000989f4980
+ s11: 0000000000000010 t3 : 1ffffffff06d9b4f t4 : ffebffff1b4fa328
+ t5 : ffebffff1b4fa329 t6 : ff600000a1f60000
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff80542b64>] event_function+0x1d8/0x23c home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:286
+[<ffffffff805361ea>] remote_function home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:92 [inline]
+[<ffffffff805361ea>] remote_function+0x120/0x198 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:72
+[<ffffffff8028cb7a>] csd_do_func home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:134 [inline]
+[<ffffffff8028cb7a>] __flush_smp_call_function_queue+0x1f8/0xc1e home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:540
+[<ffffffff8028d5b2>] generic_smp_call_function_single_interrupt+0x12/0x1a home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:457
+[<ffffffff80017720>] handle_IPI+0x108/0x1a8 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/smp.c:128
+[<ffffffff801b1938>] handle_percpu_devid_irq+0x27e/0x580 home/rv/linux-repo/linux612/linux-rich/kernel/irq/chip.c:942
+[<ffffffff8019bb08>] generic_handle_irq_desc home/rv/linux-repo/linux612/linux-rich/include/linux/irqdesc.h:173 [inline]
+[<ffffffff8019bb08>] handle_irq_desc home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:692 [inline]
+[<ffffffff8019bb08>] generic_handle_domain_irq+0x84/0xb2 home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:748
+[<ffffffff801c685a>] ipi_mux_process+0x128/0x210 home/rv/linux-repo/linux612/linux-rich/kernel/irq/ipi-mux.c:141
+[<ffffffff8001dda6>] sbi_ipi_handle+0x72/0x1a4 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/sbi-ipi.c:28
+[<ffffffff8019bb08>] generic_handle_irq_desc home/rv/linux-repo/linux612/linux-rich/include/linux/irqdesc.h:173 [inline]
+[<ffffffff8019bb08>] handle_irq_desc home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:692 [inline]
+[<ffffffff8019bb08>] generic_handle_domain_irq+0x84/0xb2 home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:748
+[<ffffffff81246036>] riscv_intc_irq+0x48/0xa4 home/rv/linux-repo/linux612/linux-rich/drivers/irqchip/irq-riscv-intc.c:33
+[<ffffffff82620c8a>] handle_riscv_irq+0x2e/0x4c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:376
+[<ffffffff8264008a>] call_on_irq_stack+0x32/0x40 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/entry.S:355
+---[ end trace 0000000000000000 ]---
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 24382 at kernel/events/core.c:2461 __perf_remove_from_context+0x9b2/0xb98 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2461
+Modules linked in:
+CPU: 0 UID: 0 PID: 24382 Comm: syz.8.4656 Tainted: G        W          6.12.0-dirty #1
+Tainted: [W]=WARN
+Hardware name: riscv-virtio,qemu (DT)
+epc : __perf_remove_from_context+0x9b2/0xb98 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2461
+ ra : __perf_remove_from_context+0x9b2/0xb98 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2461
+epc : ffffffff805619d8 ra : ffffffff805619d8 sp : ff20000000007cd0
+ gp : ffffffff83cdd720 tp : ff600000989f0000 t0 : ff20000000000000
+ t1 : ffebffff12bfa3e2 t2 : 0000000000000000 s0 : ff20000000007d60
+ s1 : ff600000da7d1a20 a0 : ff60000096e5ce88 a1 : ff60000096e5ce48
+ a2 : 0000000000000001 a3 : ffffffff805619d8 a4 : 0000000000000000
+ a5 : ff600000989f0000 a6 : ffebffff12bfa3e3 a7 : ff60000095fd1f17
+ s2 : ff60000096e5ce00 s3 : 1fec00001b4fa344 s4 : ff6000008096fe00
+ s5 : ffffffff83d6e4a0 s6 : 1fec000012dcb9ce s7 : ffffffff82a38000
+ s8 : 1fec00001b4fbeab s9 : 0000000000000000 s10: ff600000989f4980
+ s11: 0000000000000000 t3 : 1ffffffff06d9b4f t4 : ffebffff12bfa3e2
+ t5 : ffebffff12bfa3e3 t6 : ff600000a1f60000
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff805619d8>] __perf_remove_from_context+0x9b2/0xb98 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2461
+[<ffffffff80542b10>] event_function+0x184/0x23c home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:291
+[<ffffffff805361ea>] remote_function home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:92 [inline]
+[<ffffffff805361ea>] remote_function+0x120/0x198 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:72
+[<ffffffff8028cb7a>] csd_do_func home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:134 [inline]
+[<ffffffff8028cb7a>] __flush_smp_call_function_queue+0x1f8/0xc1e home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:540
+[<ffffffff8028d5b2>] generic_smp_call_function_single_interrupt+0x12/0x1a home/rv/linux-repo/linux612/linux-rich/kernel/smp.c:457
+[<ffffffff80017720>] handle_IPI+0x108/0x1a8 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/smp.c:128
+[<ffffffff801b1938>] handle_percpu_devid_irq+0x27e/0x580 home/rv/linux-repo/linux612/linux-rich/kernel/irq/chip.c:942
+[<ffffffff8019bb08>] generic_handle_irq_desc home/rv/linux-repo/linux612/linux-rich/include/linux/irqdesc.h:173 [inline]
+[<ffffffff8019bb08>] handle_irq_desc home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:692 [inline]
+[<ffffffff8019bb08>] generic_handle_domain_irq+0x84/0xb2 home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:748
+[<ffffffff801c685a>] ipi_mux_process+0x128/0x210 home/rv/linux-repo/linux612/linux-rich/kernel/irq/ipi-mux.c:141
+[<ffffffff8001dda6>] sbi_ipi_handle+0x72/0x1a4 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/sbi-ipi.c:28
+[<ffffffff8019bb08>] generic_handle_irq_desc home/rv/linux-repo/linux612/linux-rich/include/linux/irqdesc.h:173 [inline]
+[<ffffffff8019bb08>] handle_irq_desc home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:692 [inline]
+[<ffffffff8019bb08>] generic_handle_domain_irq+0x84/0xb2 home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:748
+[<ffffffff81246036>] riscv_intc_irq+0x48/0xa4 home/rv/linux-repo/linux612/linux-rich/drivers/irqchip/irq-riscv-intc.c:33
+[<ffffffff82620c8a>] handle_riscv_irq+0x2e/0x4c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:376
+[<ffffffff8264008a>] call_on_irq_stack+0x32/0x40 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/entry.S:355
+---[ end trace 0000000000000000 ]---
+bond0 (unregistering): Released all slaves
+bond0 (unregistering): Released all slaves
+bond0 (unregistering): Released all slaves
+bond0 (unregistering): Released all slaves
