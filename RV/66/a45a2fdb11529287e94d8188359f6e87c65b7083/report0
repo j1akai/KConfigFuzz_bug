@@ -1,0 +1,30 @@
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 82 at kernel/fork.c:2357 copy_process+0x1022/0x70a0 kernel/fork.c:2357
+Modules linked in:
+CPU: 0 PID: 82 Comm: kworker/u5:4 Not tainted 6.6.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: events_unbound call_usermodehelper_exec_work
+epc : copy_process+0x1022/0x70a0 kernel/fork.c:2357
+ ra : copy_process+0x1022/0x70a0 kernel/fork.c:2357
+epc : ffffffff800a8df2 ra : ffffffff800a8df2 sp : ff200000003d36a0
+ gp : ffffffff892480c0 tp : ff600000866a1980 t0 : ff200000003d34a0
+ t1 : 00000000000f0000 t2 : ffffffffdc88a185 s0 : ff200000003d38d0
+ s1 : ff6000008ed49980 a0 : 0000000000000005 a1 : 00000000000f0000
+ a2 : ffffffff800a8df2 a3 : 0000000000000002 a4 : ff600000866a2980
+ a5 : 0000000000000000 a6 : 0000000000000003 a7 : 0000000000000000
+ s2 : 0000000000000004 s3 : ff6000008ed499c4 s4 : ff200000003d3a8c
+ s5 : 0000000000000000 s6 : 0000000000000000 s7 : 0000000000000000
+ s8 : ff200000003d3860 s9 : ff200000003d3a60 s10: 0000000000808100
+ s11: 1fe400000007a6f4 t3 : 0000000000000003 t4 : ffebffff11da9338
+ t5 : ffebffff11da9339 t6 : 000000006fc7ede8
+status: 0000000000000120 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff800a8df2>] copy_process+0x1022/0x70a0 kernel/fork.c:2357
+[<ffffffff800af09c>] kernel_clone+0x11e/0xade kernel/fork.c:2909
+[<ffffffff800b00fa>] user_mode_thread+0xea/0x11a kernel/fork.c:2987
+[<ffffffff80111fcc>] call_usermodehelper_exec_work kernel/umh.c:172 [inline]
+[<ffffffff80111fcc>] call_usermodehelper_exec_work+0xd4/0x1ac kernel/umh.c:158
+[<ffffffff8011f4f2>] process_one_work+0x7d8/0x17ba kernel/workqueue.c:2630
+[<ffffffff80120fb0>] process_scheduled_works kernel/workqueue.c:2703 [inline]
+[<ffffffff80120fb0>] worker_thread+0xadc/0x10f8 kernel/workqueue.c:2784
+[<ffffffff801405c0>] kthread+0x28c/0x3a6 kernel/kthread.c:388
+[<ffffffff80007042>] ret_from_fork+0xe/0x20 arch/riscv/kernel/entry.S:264

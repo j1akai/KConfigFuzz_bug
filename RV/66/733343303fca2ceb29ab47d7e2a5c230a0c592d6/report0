@@ -1,0 +1,47 @@
+vkms_vblank_simulate: vblank timer overrun
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 6910 at drivers/gpu/drm/vkms/vkms_crtc.c:103 vkms_get_vblank_timestamp+0x1c6/0x22e home/rv/linux-repo/linux-rich/drivers/gpu/drm/vkms/vkms_crtc.c:103
+Modules linked in:
+CPU: 1 PID: 6910 Comm: syz.2.1049 Not tainted 6.6.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+epc : vkms_get_vblank_timestamp+0x1c6/0x22e home/rv/linux-repo/linux-rich/drivers/gpu/drm/vkms/vkms_crtc.c:103
+ ra : vkms_get_vblank_timestamp+0x1c6/0x22e home/rv/linux-repo/linux-rich/drivers/gpu/drm/vkms/vkms_crtc.c:103
+epc : ffffffff8215f7f0 ra : ffffffff8215f7f0 sp : ff200000201dae20
+ gp : ffffffff892480c0 tp : ff6000008bc23300 t0 : ff200000201daee0
+ t1 : 00000000000f0000 t2 : 0000000000000000 s0 : ff200000201dae50
+ s1 : ff200000201dafe0 a0 : 0000000000000006 a1 : 00000000000f0000
+ a2 : ffffffff8215f7f0 a3 : ff20000003d00d40 a4 : 0000000000080000
+ a5 : 0000000000033d40 a6 : 0000000000000003 a7 : 0000000000000000
+ s2 : ff6000008a56c000 s3 : 00000259843f9b2c s4 : 00000259843f9b2c
+ s5 : ff200000201daec0 s6 : 0000000000000000 s7 : 0000000000004e20
+ s8 : 0000000000000000 s9 : 0000000000000878 s10: 0000000000000000
+ s11: 0000000000000001 t3 : ffffffff8022b760 t4 : ffe3ffff0403b5b8
+ t5 : ffe3ffff0403b5b9 t6 : ff6000008cd5a4e8
+status: 0000000000000120 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff8215f7f0>] vkms_get_vblank_timestamp+0x1c6/0x22e home/rv/linux-repo/linux-rich/drivers/gpu/drm/vkms/vkms_crtc.c:103
+[<ffffffff81c30934>] drm_crtc_get_last_vbltimestamp+0xfe/0x1a2 home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_vblank.c:877
+[<ffffffff81c30b32>] drm_crtc_next_vblank_start+0x15a/0x29e home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_vblank.c:1012
+[<ffffffff81c6bf5e>] set_fence_deadline home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_atomic_helper.c:1555 [inline]
+[<ffffffff81c6bf5e>] drm_atomic_helper_wait_for_fences+0x1ea/0x7a4 home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_atomic_helper.c:1602
+[<ffffffff81c6ef12>] drm_atomic_helper_commit+0x1ba/0x34e home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_atomic_helper.c:2031
+[<ffffffff81b91bee>] drm_atomic_commit+0x1de/0x298 home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_atomic.c:1513
+[<ffffffff81ba7982>] drm_client_modeset_commit_atomic+0x658/0x78a home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_client_modeset.c:1051
+[<ffffffff81ba7d76>] drm_client_modeset_commit_locked+0x134/0x4f0 home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_client_modeset.c:1154
+[<ffffffff81c92624>] pan_display_atomic home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_fb_helper.c:1370 [inline]
+[<ffffffff81c92624>] drm_fb_helper_pan_display+0x254/0x896 home/rv/linux-repo/linux-rich/drivers/gpu/drm/drm_fb_helper.c:1430
+[<ffffffff81820e78>] fb_pan_display+0x3e2/0x6e4 home/rv/linux-repo/linux-rich/drivers/video/fbdev/core/fbmem.c:731
+[<ffffffff81848e4c>] bit_update_start+0x42/0x1a6 home/rv/linux-repo/linux-rich/drivers/video/fbdev/core/bitblit.c:390
+[<ffffffff8183d4fe>] fbcon_switch+0xaa0/0x11a2 home/rv/linux-repo/linux-rich/drivers/video/fbdev/core/fbcon.c:2168
+[<ffffffff81a93272>] redraw_screen+0x29c/0x6da home/rv/linux-repo/linux-rich/drivers/tty/vt/vt.c:969
+[<ffffffff81845a18>] fbcon_blank+0x4c4/0xbb4 home/rv/linux-repo/linux-rich/drivers/video/fbdev/core/fbcon.c:2232
+[<ffffffff81a949ae>] do_unblank_screen+0x24c/0x476 home/rv/linux-repo/linux-rich/drivers/tty/vt/vt.c:4377
+[<ffffffff81847748>] fbcon_fb_blanked+0x1d4/0x1fe home/rv/linux-repo/linux-rich/drivers/video/fbdev/core/fbcon.c:3048
+[<ffffffff81831b44>] do_fb_ioctl+0x660/0x714 home/rv/linux-repo/linux-rich/drivers/video/fbdev/core/fb_chrdev.c:147
+[<ffffffff81831cd0>] fb_ioctl+0xd8/0x136 home/rv/linux-repo/linux-rich/drivers/video/fbdev/core/fb_chrdev.c:169
+[<ffffffff80a23220>] vfs_ioctl home/rv/linux-repo/linux-rich/fs/ioctl.c:51 [inline]
+[<ffffffff80a23220>] __do_sys_ioctl home/rv/linux-repo/linux-rich/fs/ioctl.c:871 [inline]
+[<ffffffff80a23220>] __se_sys_ioctl home/rv/linux-repo/linux-rich/fs/ioctl.c:857 [inline]
+[<ffffffff80a23220>] __riscv_sys_ioctl+0x186/0x1ea home/rv/linux-repo/linux-rich/fs/ioctl.c:857
+[<ffffffff8000d99c>] syscall_handler+0x94/0x118 home/rv/linux-repo/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff85cdfeba>] do_trap_ecall_u+0x9c/0x9e home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:320
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:102
