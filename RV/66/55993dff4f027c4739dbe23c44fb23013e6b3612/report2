@@ -1,0 +1,180 @@
+INFO: task kworker/1:3:4699 blocked for more than 430 seconds.
+      Not tainted 6.6.0-dirty #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:kworker/1:3     state:D stack:0     pid:4699  ppid:2      flags:0x00000000
+Workqueue: events rfkill_global_led_trigger_worker
+Call Trace:
+[<ffffffff85ce994c>] context_switch home/rv/linux-repo/linux-rich/kernel/sched/core.c:5382 [inline]
+[<ffffffff85ce994c>] __schedule+0xdb2/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6695
+[<ffffffff85cec1da>] schedule+0x102/0x1fe home/rv/linux-repo/linux-rich/kernel/sched/core.c:6771
+[<ffffffff85cece34>] schedule_preempt_disabled+0x16/0x28 home/rv/linux-repo/linux-rich/kernel/sched/core.c:6830
+[<ffffffff85cf0186>] __mutex_lock_common home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:679 [inline]
+[<ffffffff85cf0186>] __mutex_lock+0x86a/0x1022 home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:747
+[<ffffffff85cf0952>] mutex_lock_nested+0x14/0x1c home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:799
+[<ffffffff859d59c6>] rfkill_global_led_trigger_worker+0x2c/0x17a home/rv/linux-repo/linux-rich/net/rfkill/core.c:182
+[<ffffffff8011f4f2>] process_one_work+0x7d8/0x17ba home/rv/linux-repo/linux-rich/kernel/workqueue.c:2630
+[<ffffffff80120fb0>] process_scheduled_works home/rv/linux-repo/linux-rich/kernel/workqueue.c:2703 [inline]
+[<ffffffff80120fb0>] worker_thread+0xadc/0x10f8 home/rv/linux-repo/linux-rich/kernel/workqueue.c:2784
+[<ffffffff801405c0>] kthread+0x28c/0x3a6 home/rv/linux-repo/linux-rich/kernel/kthread.c:388
+[<ffffffff80007042>] ret_from_fork+0xe/0x20 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:264
+INFO: task syz.1.429:5858 blocked for more than 430 seconds.
+      Not tainted 6.6.0-dirty #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.1.429       state:D stack:0     pid:5858  ppid:2959   flags:0x00000006
+Call Trace:
+[<ffffffff85ce994c>] context_switch home/rv/linux-repo/linux-rich/kernel/sched/core.c:5382 [inline]
+[<ffffffff85ce994c>] __schedule+0xdb2/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6695
+[<ffffffff85cec1da>] schedule+0x102/0x1fe home/rv/linux-repo/linux-rich/kernel/sched/core.c:6771
+[<ffffffff85cece34>] schedule_preempt_disabled+0x16/0x28 home/rv/linux-repo/linux-rich/kernel/sched/core.c:6830
+[<ffffffff85cf0186>] __mutex_lock_common home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:679 [inline]
+[<ffffffff85cf0186>] __mutex_lock+0x86a/0x1022 home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:747
+[<ffffffff85cf0952>] mutex_lock_nested+0x14/0x1c home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:799
+[<ffffffff859d799c>] rfkill_unregister+0xe6/0x2a0 home/rv/linux-repo/linux-rich/net/rfkill/core.c:1149
+[<ffffffff85aad268>] nfc_unregister_device+0x9e/0x322 home/rv/linux-repo/linux-rich/net/nfc/core.c:1167
+[<ffffffff85ad27d2>] nci_unregister_device+0x1d4/0x286 home/rv/linux-repo/linux-rich/net/nfc/nci/core.c:1308
+[<ffffffff82819286>] virtual_ncidev_close+0x50/0xb0 home/rv/linux-repo/linux-rich/drivers/nfc/virtual_ncidev.c:163
+[<ffffffff809d951e>] __fput+0x37a/0x8fa home/rv/linux-repo/linux-rich/fs/file_table.c:384
+[<ffffffff809d9b38>] ____fput+0x1a/0x24 home/rv/linux-repo/linux-rich/fs/file_table.c:412
+[<ffffffff80136032>] task_work_run+0x16a/0x25e home/rv/linux-repo/linux-rich/kernel/task_work.c:180
+[<ffffffff802d3746>] resume_user_mode_work home/rv/linux-repo/linux-rich/include/linux/resume_user_mode.h:49 [inline]
+[<ffffffff802d3746>] exit_to_user_mode_loop home/rv/linux-repo/linux-rich/kernel/entry/common.c:171 [inline]
+[<ffffffff802d3746>] exit_to_user_mode_prepare+0x272/0x286 home/rv/linux-repo/linux-rich/kernel/entry/common.c:204
+[<ffffffff85ce0c30>] __syscall_exit_to_user_mode_work home/rv/linux-repo/linux-rich/kernel/entry/common.c:285 [inline]
+[<ffffffff85ce0c30>] syscall_exit_to_user_mode+0x2e/0x66 home/rv/linux-repo/linux-rich/kernel/entry/common.c:296
+[<ffffffff85cdfe70>] do_trap_ecall_u+0x52/0x9e home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:324
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:102
+INFO: task syz.3.430:5868 blocked for more than 430 seconds.
+      Not tainted 6.6.0-dirty #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.3.430       state:D stack:0     pid:5868  ppid:2957   flags:0x00000004
+Call Trace:
+[<ffffffff85ce994c>] context_switch home/rv/linux-repo/linux-rich/kernel/sched/core.c:5382 [inline]
+[<ffffffff85ce994c>] __schedule+0xdb2/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6695
+[<ffffffff85cec1da>] schedule+0x102/0x1fe home/rv/linux-repo/linux-rich/kernel/sched/core.c:6771
+[<ffffffff85cece34>] schedule_preempt_disabled+0x16/0x28 home/rv/linux-repo/linux-rich/kernel/sched/core.c:6830
+[<ffffffff85cf0186>] __mutex_lock_common home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:679 [inline]
+[<ffffffff85cf0186>] __mutex_lock+0x86a/0x1022 home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:747
+[<ffffffff85cf0952>] mutex_lock_nested+0x14/0x1c home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:799
+[<ffffffff85aaeda8>] device_lock home/rv/linux-repo/linux-rich/include/linux/device.h:992 [inline]
+[<ffffffff85aaeda8>] nfc_dev_down+0x3a/0x29a home/rv/linux-repo/linux-rich/net/nfc/core.c:143
+[<ffffffff85aaf04c>] nfc_rfkill_set_block+0x44/0xf0 home/rv/linux-repo/linux-rich/net/nfc/core.c:179
+[<ffffffff859d850a>] rfkill_set_block+0x1cc/0x500 home/rv/linux-repo/linux-rich/net/rfkill/core.c:346
+[<ffffffff859d9720>] rfkill_fop_write+0x2bc/0x548 home/rv/linux-repo/linux-rich/net/rfkill/core.c:1305
+[<ffffffff809d37e2>] vfs_write+0x30e/0x88a home/rv/linux-repo/linux-rich/fs/read_write.c:582
+[<ffffffff809d4258>] ksys_write+0x1f6/0x270 home/rv/linux-repo/linux-rich/fs/read_write.c:637
+[<ffffffff809d4340>] __do_sys_write home/rv/linux-repo/linux-rich/fs/read_write.c:649 [inline]
+[<ffffffff809d4340>] __se_sys_write home/rv/linux-repo/linux-rich/fs/read_write.c:646 [inline]
+[<ffffffff809d4340>] __riscv_sys_write+0x6e/0x94 home/rv/linux-repo/linux-rich/fs/read_write.c:646
+[<ffffffff8000d99c>] syscall_handler+0x94/0x118 home/rv/linux-repo/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff85cdfeba>] do_trap_ecall_u+0x9c/0x9e home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:320
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:102
+INFO: task syz.2.432:5875 blocked for more than 430 seconds.
+      Not tainted 6.6.0-dirty #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.2.432       state:D stack:0     pid:5875  ppid:2958   flags:0x00000004
+Call Trace:
+[<ffffffff85ce994c>] context_switch home/rv/linux-repo/linux-rich/kernel/sched/core.c:5382 [inline]
+[<ffffffff85ce994c>] __schedule+0xdb2/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6695
+[<ffffffff85cec1da>] schedule+0x102/0x1fe home/rv/linux-repo/linux-rich/kernel/sched/core.c:6771
+[<ffffffff85cece34>] schedule_preempt_disabled+0x16/0x28 home/rv/linux-repo/linux-rich/kernel/sched/core.c:6830
+[<ffffffff85cf0186>] __mutex_lock_common home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:679 [inline]
+[<ffffffff85cf0186>] __mutex_lock+0x86a/0x1022 home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:747
+[<ffffffff85cf0952>] mutex_lock_nested+0x14/0x1c home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:799
+[<ffffffff81b12904>] misc_open+0x6e/0x47a home/rv/linux-repo/linux-rich/drivers/char/misc.c:129
+[<ffffffff809e490c>] chrdev_open+0x254/0x658 home/rv/linux-repo/linux-rich/fs/char_dev.c:414
+[<ffffffff809c5434>] do_dentry_open+0x7d8/0x1250 home/rv/linux-repo/linux-rich/fs/open.c:929
+[<ffffffff809caaa0>] vfs_open+0xe0/0x10a home/rv/linux-repo/linux-rich/fs/open.c:1063
+[<ffffffff80a145a0>] do_open home/rv/linux-repo/linux-rich/fs/namei.c:3640 [inline]
+[<ffffffff80a145a0>] path_openat+0x1842/0x2730 home/rv/linux-repo/linux-rich/fs/namei.c:3797
+[<ffffffff80a16bf0>] do_filp_open+0x172/0x348 home/rv/linux-repo/linux-rich/fs/namei.c:3824
+[<ffffffff809cb380>] do_sys_openat2+0x174/0x1ca home/rv/linux-repo/linux-rich/fs/open.c:1422
+[<ffffffff809cbd2c>] do_sys_open home/rv/linux-repo/linux-rich/fs/open.c:1437 [inline]
+[<ffffffff809cbd2c>] __do_sys_openat home/rv/linux-repo/linux-rich/fs/open.c:1453 [inline]
+[<ffffffff809cbd2c>] __se_sys_openat home/rv/linux-repo/linux-rich/fs/open.c:1448 [inline]
+[<ffffffff809cbd2c>] __riscv_sys_openat+0x178/0x1fe home/rv/linux-repo/linux-rich/fs/open.c:1448
+[<ffffffff8000d99c>] syscall_handler+0x94/0x118 home/rv/linux-repo/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff85cdfeba>] do_trap_ecall_u+0x9c/0x9e home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:320
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:102
+INFO: task syz.2.432:5877 blocked for more than 430 seconds.
+      Not tainted 6.6.0-dirty #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.2.432       state:D stack:0     pid:5877  ppid:2958   flags:0x00000004
+Call Trace:
+[<ffffffff85ce994c>] context_switch home/rv/linux-repo/linux-rich/kernel/sched/core.c:5382 [inline]
+[<ffffffff85ce994c>] __schedule+0xdb2/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6695
+[<ffffffff85cec1da>] schedule+0x102/0x1fe home/rv/linux-repo/linux-rich/kernel/sched/core.c:6771
+[<ffffffff85cece34>] schedule_preempt_disabled+0x16/0x28 home/rv/linux-repo/linux-rich/kernel/sched/core.c:6830
+[<ffffffff85cf0186>] __mutex_lock_common home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:679 [inline]
+[<ffffffff85cf0186>] __mutex_lock+0x86a/0x1022 home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:747
+[<ffffffff85cf0952>] mutex_lock_nested+0x14/0x1c home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:799
+[<ffffffff81b12904>] misc_open+0x6e/0x47a home/rv/linux-repo/linux-rich/drivers/char/misc.c:129
+[<ffffffff809e490c>] chrdev_open+0x254/0x658 home/rv/linux-repo/linux-rich/fs/char_dev.c:414
+[<ffffffff809c5434>] do_dentry_open+0x7d8/0x1250 home/rv/linux-repo/linux-rich/fs/open.c:929
+[<ffffffff809caaa0>] vfs_open+0xe0/0x10a home/rv/linux-repo/linux-rich/fs/open.c:1063
+[<ffffffff80a145a0>] do_open home/rv/linux-repo/linux-rich/fs/namei.c:3640 [inline]
+[<ffffffff80a145a0>] path_openat+0x1842/0x2730 home/rv/linux-repo/linux-rich/fs/namei.c:3797
+[<ffffffff80a16bf0>] do_filp_open+0x172/0x348 home/rv/linux-repo/linux-rich/fs/namei.c:3824
+[<ffffffff809cb380>] do_sys_openat2+0x174/0x1ca home/rv/linux-repo/linux-rich/fs/open.c:1422
+[<ffffffff809cbd2c>] do_sys_open home/rv/linux-repo/linux-rich/fs/open.c:1437 [inline]
+[<ffffffff809cbd2c>] __do_sys_openat home/rv/linux-repo/linux-rich/fs/open.c:1453 [inline]
+[<ffffffff809cbd2c>] __se_sys_openat home/rv/linux-repo/linux-rich/fs/open.c:1448 [inline]
+[<ffffffff809cbd2c>] __riscv_sys_openat+0x178/0x1fe home/rv/linux-repo/linux-rich/fs/open.c:1448
+[<ffffffff8000d99c>] syscall_handler+0x94/0x118 home/rv/linux-repo/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff85cdfeba>] do_trap_ecall_u+0x9c/0x9e home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:320
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:102
+INFO: task syz.0.431:5874 blocked for more than 430 seconds.
+      Not tainted 6.6.0-dirty #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.0.431       state:D stack:0     pid:5874  ppid:2972   flags:0x00000004
+Call Trace:
+[<ffffffff85ce994c>] context_switch home/rv/linux-repo/linux-rich/kernel/sched/core.c:5382 [inline]
+[<ffffffff85ce994c>] __schedule+0xdb2/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6695
+[<ffffffff85cec1da>] schedule+0x102/0x1fe home/rv/linux-repo/linux-rich/kernel/sched/core.c:6771
+[<ffffffff85cece34>] schedule_preempt_disabled+0x16/0x28 home/rv/linux-repo/linux-rich/kernel/sched/core.c:6830
+[<ffffffff85cf0186>] __mutex_lock_common home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:679 [inline]
+[<ffffffff85cf0186>] __mutex_lock+0x86a/0x1022 home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:747
+[<ffffffff85cf0952>] mutex_lock_nested+0x14/0x1c home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:799
+[<ffffffff859da08e>] rfkill_fop_open+0x13c/0x6de home/rv/linux-repo/linux-rich/net/rfkill/core.c:1182
+[<ffffffff81b12c22>] misc_open+0x38c/0x47a home/rv/linux-repo/linux-rich/drivers/char/misc.c:165
+[<ffffffff809e490c>] chrdev_open+0x254/0x658 home/rv/linux-repo/linux-rich/fs/char_dev.c:414
+[<ffffffff809c5434>] do_dentry_open+0x7d8/0x1250 home/rv/linux-repo/linux-rich/fs/open.c:929
+[<ffffffff809caaa0>] vfs_open+0xe0/0x10a home/rv/linux-repo/linux-rich/fs/open.c:1063
+[<ffffffff80a145a0>] do_open home/rv/linux-repo/linux-rich/fs/namei.c:3640 [inline]
+[<ffffffff80a145a0>] path_openat+0x1842/0x2730 home/rv/linux-repo/linux-rich/fs/namei.c:3797
+[<ffffffff80a16bf0>] do_filp_open+0x172/0x348 home/rv/linux-repo/linux-rich/fs/namei.c:3824
+[<ffffffff809cb380>] do_sys_openat2+0x174/0x1ca home/rv/linux-repo/linux-rich/fs/open.c:1422
+[<ffffffff809cbd2c>] do_sys_open home/rv/linux-repo/linux-rich/fs/open.c:1437 [inline]
+[<ffffffff809cbd2c>] __do_sys_openat home/rv/linux-repo/linux-rich/fs/open.c:1453 [inline]
+[<ffffffff809cbd2c>] __se_sys_openat home/rv/linux-repo/linux-rich/fs/open.c:1448 [inline]
+[<ffffffff809cbd2c>] __riscv_sys_openat+0x178/0x1fe home/rv/linux-repo/linux-rich/fs/open.c:1448
+[<ffffffff8000d99c>] syscall_handler+0x94/0x118 home/rv/linux-repo/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff85cdfeba>] do_trap_ecall_u+0x9c/0x9e home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:320
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:102
+INFO: task syz.0.431:5876 blocked for more than 431 seconds.
+      Not tainted 6.6.0-dirty #1
+"echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+task:syz.0.431       state:D stack:0     pid:5876  ppid:2972   flags:0x00000006
+Call Trace:
+[<ffffffff85ce994c>] context_switch home/rv/linux-repo/linux-rich/kernel/sched/core.c:5382 [inline]
+[<ffffffff85ce994c>] __schedule+0xdb2/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6695
+[<ffffffff85cec1da>] schedule+0x102/0x1fe home/rv/linux-repo/linux-rich/kernel/sched/core.c:6771
+[<ffffffff85cece34>] schedule_preempt_disabled+0x16/0x28 home/rv/linux-repo/linux-rich/kernel/sched/core.c:6830
+[<ffffffff85cf0186>] __mutex_lock_common home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:679 [inline]
+[<ffffffff85cf0186>] __mutex_lock+0x86a/0x1022 home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:747
+[<ffffffff85cf0952>] mutex_lock_nested+0x14/0x1c home/rv/linux-repo/linux-rich/kernel/locking/mutex.c:799
+[<ffffffff81b12904>] misc_open+0x6e/0x47a home/rv/linux-repo/linux-rich/drivers/char/misc.c:129
+[<ffffffff809e490c>] chrdev_open+0x254/0x658 home/rv/linux-repo/linux-rich/fs/char_dev.c:414
+[<ffffffff809c5434>] do_dentry_open+0x7d8/0x1250 home/rv/linux-repo/linux-rich/fs/open.c:929
+[<ffffffff809caaa0>] vfs_open+0xe0/0x10a home/rv/linux-repo/linux-rich/fs/open.c:1063
+[<ffffffff80a145a0>] do_open home/rv/linux-repo/linux-rich/fs/namei.c:3640 [inline]
+[<ffffffff80a145a0>] path_openat+0x1842/0x2730 home/rv/linux-repo/linux-rich/fs/namei.c:3797
+[<ffffffff80a16bf0>] do_filp_open+0x172/0x348 home/rv/linux-repo/linux-rich/fs/namei.c:3824
+[<ffffffff809cb380>] do_sys_openat2+0x174/0x1ca home/rv/linux-repo/linux-rich/fs/open.c:1422
+[<ffffffff809cbd2c>] do_sys_open home/rv/linux-repo/linux-rich/fs/open.c:1437 [inline]
+[<ffffffff809cbd2c>] __do_sys_openat home/rv/linux-repo/linux-rich/fs/open.c:1453 [inline]
+[<ffffffff809cbd2c>] __se_sys_openat home/rv/linux-repo/linux-rich/fs/open.c:1448 [inline]
+[<ffffffff809cbd2c>] __riscv_sys_openat+0x178/0x1fe home/rv/linux-repo/linux-rich/fs/open.c:1448
+[<ffffffff8000d99c>] syscall_handler+0x94/0x118 home/rv/linux-repo/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff85cdfeba>] do_trap_ecall_u+0x9c/0x9e home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:320
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:102
+INFO: lockdep is turned off.

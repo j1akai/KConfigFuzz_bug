@@ -1,0 +1,60 @@
+Kernel panic - not syncing: corrupted stack end detected inside scheduler
+CPU: 0 PID: 5341 Comm: syz.3.301 Not tainted 6.6.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff8000ef9e>] dump_backtrace+0x2e/0x3c home/rv/linux-repo/linux-rich/arch/riscv/kernel/stacktrace.c:121
+[<ffffffff85c86bcc>] show_stack+0x34/0x40 home/rv/linux-repo/linux-rich/arch/riscv/kernel/stacktrace.c:127
+[<ffffffff85cde59a>] __dump_stack home/rv/linux-repo/linux-rich/lib/dump_stack.c:88 [inline]
+[<ffffffff85cde59a>] dump_stack_lvl+0xe8/0x154 home/rv/linux-repo/linux-rich/lib/dump_stack.c:106
+[<ffffffff85cde622>] dump_stack+0x1c/0x24 home/rv/linux-repo/linux-rich/lib/dump_stack.c:113
+[<ffffffff85c87772>] panic+0x358/0x7ce home/rv/linux-repo/linux-rich/kernel/panic.c:340
+[<ffffffff85cec0ce>] schedule_debug home/rv/linux-repo/linux-rich/kernel/sched/core.c:5937 [inline]
+[<ffffffff85cec0ce>] __schedule+0x3534/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6589
+[<ffffffff85cec50e>] preempt_schedule_common home/rv/linux-repo/linux-rich/kernel/sched/core.c:6864 [inline]
+[<ffffffff85cec50e>] preempt_schedule+0xd2/0x1cc home/rv/linux-repo/linux-rich/kernel/sched/core.c:6888
+[<ffffffff800cd516>] __local_bh_enable_ip+0x440/0x608 home/rv/linux-repo/linux-rich/kernel/softirq.c:388
+[<ffffffff84aade8a>] local_bh_enable home/rv/linux-repo/linux-rich/include/linux/bottom_half.h:33 [inline]
+[<ffffffff84aade8a>] rcu_read_unlock_bh home/rv/linux-repo/linux-rich/include/linux/rcupdate.h:819 [inline]
+[<ffffffff84aade8a>] __dev_queue_xmit+0xa96/0x44e2 home/rv/linux-repo/linux-rich/net/core/dev.c:4396
+[<ffffffff84ad5e60>] dev_queue_xmit home/rv/linux-repo/linux-rich/include/linux/netdevice.h:3082 [inline]
+[<ffffffff84ad5e60>] neigh_connected_output+0x3b6/0x534 home/rv/linux-repo/linux-rich/net/core/neighbour.c:1585
+[<ffffffff8545c224>] neigh_output home/rv/linux-repo/linux-rich/include/net/neighbour.h:542 [inline]
+[<ffffffff8545c224>] ip6_finish_output2+0x55c/0x241c home/rv/linux-repo/linux-rich/net/ipv6/ip6_output.c:135
+[<ffffffff85463db0>] ip6_fragment+0x121a/0x36fc home/rv/linux-repo/linux-rich/net/ipv6/ip6_output.c:1007
+[<ffffffff85466d62>] __ip6_finish_output home/rv/linux-repo/linux-rich/net/ipv6/ip6_output.c:194 [inline]
+[<ffffffff85466d62>] ip6_finish_output+0xad0/0x13c6 home/rv/linux-repo/linux-rich/net/ipv6/ip6_output.c:207
+[<ffffffff85467864>] NF_HOOK_COND home/rv/linux-repo/linux-rich/include/linux/netfilter.h:293 [inline]
+[<ffffffff85467864>] ip6_output+0x20c/0xa10 home/rv/linux-repo/linux-rich/net/ipv6/ip6_output.c:228
+[<ffffffff85457d34>] dst_output home/rv/linux-repo/linux-rich/include/net/dst.h:458 [inline]
+[<ffffffff85457d34>] NF_HOOK home/rv/linux-repo/linux-rich/include/linux/netfilter.h:304 [inline]
+[<ffffffff85457d34>] NF_HOOK home/rv/linux-repo/linux-rich/include/linux/netfilter.h:298 [inline]
+[<ffffffff85457d34>] ip6_xmit+0xf8e/0x25e8 home/rv/linux-repo/linux-rich/net/ipv6/ip6_output.c:344
+[<ffffffff858d9262>] sctp_v6_xmit+0xbf8/0x121a home/rv/linux-repo/linux-rich/net/sctp/ipv6.c:250
+[<ffffffff858a5106>] sctp_packet_transmit+0x2064/0x2cf0 home/rv/linux-repo/linux-rich/net/sctp/output.c:653
+[<ffffffff858563b2>] sctp_packet_singleton+0x192/0x346 home/rv/linux-repo/linux-rich/net/sctp/outqueue.c:783
+[<ffffffff8585878a>] sctp_outq_flush_ctrl home/rv/linux-repo/linux-rich/net/sctp/outqueue.c:914 [inline]
+[<ffffffff8585878a>] sctp_outq_flush+0x5d2/0x30d0 home/rv/linux-repo/linux-rich/net/sctp/outqueue.c:1212
+[<ffffffff8585fc42>] sctp_outq_uncork+0x76/0x8e home/rv/linux-repo/linux-rich/net/sctp/outqueue.c:764
+[<ffffffff85819b68>] sctp_cmd_interpreter home/rv/linux-repo/linux-rich/net/sctp/sm_sideeffect.c:1818 [inline]
+[<ffffffff85819b68>] sctp_side_effects home/rv/linux-repo/linux-rich/net/sctp/sm_sideeffect.c:1198 [inline]
+[<ffffffff85819b68>] sctp_do_sm+0x39d4/0x53cc home/rv/linux-repo/linux-rich/net/sctp/sm_sideeffect.c:1169
+[<ffffffff8589fc8c>] sctp_primitive_ASSOCIATE+0x88/0xb4 home/rv/linux-repo/linux-rich/net/sctp/primitive.c:73
+[<ffffffff8587ab9e>] sctp_sendmsg_to_asoc+0x912/0x1850 home/rv/linux-repo/linux-rich/net/sctp/socket.c:1840
+[<ffffffff8588cb68>] sctp_sendmsg+0xd10/0x1c06 home/rv/linux-repo/linux-rich/net/sctp/socket.c:2030
+[<ffffffff851f752c>] inet_sendmsg+0x9c/0xda home/rv/linux-repo/linux-rich/net/ipv4/af_inet.c:846
+[<ffffffff849ffe6c>] sock_sendmsg_nosec home/rv/linux-repo/linux-rich/net/socket.c:730 [inline]
+[<ffffffff849ffe6c>] __sock_sendmsg+0xcc/0x162 home/rv/linux-repo/linux-rich/net/socket.c:745
+[<ffffffff84a006e6>] ____sys_sendmsg+0x274/0x79c home/rv/linux-repo/linux-rich/net/socket.c:2558
+[<ffffffff84a09c76>] ___sys_sendmsg+0x144/0x1e6 home/rv/linux-repo/linux-rich/net/socket.c:2612
+[<ffffffff84a0a28e>] __sys_sendmmsg+0x224/0x66c home/rv/linux-repo/linux-rich/net/socket.c:2698
+[<ffffffff84a0a762>] __do_sys_sendmmsg home/rv/linux-repo/linux-rich/net/socket.c:2727 [inline]
+[<ffffffff84a0a762>] __se_sys_sendmmsg home/rv/linux-repo/linux-rich/net/socket.c:2724 [inline]
+[<ffffffff84a0a762>] __riscv_sys_sendmmsg+0x8c/0xd8 home/rv/linux-repo/linux-rich/net/socket.c:2724
+[<ffffffff8000d99c>] syscall_handler+0x94/0x118 home/rv/linux-repo/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff85cdfeba>] do_trap_ecall_u+0x9c/0x9e home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:320
+[<ffffffff80006ef8>] ret_from_exception+0x0/0x64 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:102
+SMP: stopping secondary CPUs
+Rebooting in 86400 seconds..
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

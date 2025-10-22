@@ -1,0 +1,19 @@
+ s11: ffffffff89337640 t3 : ffffffff8022b760 t4 : ffe3ffff00000014
+ t5 : ffe3ffff00000015 t6 : 1fe40000000000a0
+status: 0000000000000120 badaddr: ff1fffffffffffc0 cause: 000000000000000f
+Kernel panic - not syncing: Kernel stack overflow
+CPU: 0 PID: 18 Comm: migration/0 Not tainted 6.6.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Stopper: 0x0 <- 0x0
+Call Trace:
+[<ffffffff8000ef9e>] dump_backtrace+0x2e/0x3c home/rv/linux-repo/linux-rich/arch/riscv/kernel/stacktrace.c:121
+[<ffffffff85c86bcc>] show_stack+0x34/0x40 home/rv/linux-repo/linux-rich/arch/riscv/kernel/stacktrace.c:127
+[<ffffffff85cde59a>] __dump_stack home/rv/linux-repo/linux-rich/lib/dump_stack.c:88 [inline]
+[<ffffffff85cde59a>] dump_stack_lvl+0xe8/0x154 home/rv/linux-repo/linux-rich/lib/dump_stack.c:106
+[<ffffffff85cde622>] dump_stack+0x1c/0x24 home/rv/linux-repo/linux-rich/lib/dump_stack.c:113
+[<ffffffff85c87772>] panic+0x358/0x7ce home/rv/linux-repo/linux-rich/kernel/panic.c:340
+[<ffffffff8000eab8>] handle_bad_stack+0xf0/0x118 home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:464
+[<ffffffff8022bbc8>] trace_lock_acquire home/rv/linux-repo/linux-rich/include/trace/events/lock.h:24 [inline]
+[<ffffffff8022bbc8>] lock_acquire+0x468/0xa80 home/rv/linux-repo/linux-rich/kernel/locking/lockdep.c:5724
+SMP: stopping secondary CPUs
+Rebooting in 86400 seconds..

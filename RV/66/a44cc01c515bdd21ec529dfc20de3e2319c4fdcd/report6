@@ -1,0 +1,18 @@
+ s11: ff60000082e40000 t3 : 0000000000000004 t4 : 1fec0000105c8154
+ t5 : 0000000000000002 t6 : 1fec0000105c8184
+status: 0000000000000100 badaddr: ff1fffffffffff80 cause: 000000000000000f
+Kernel panic - not syncing: Kernel stack overflow
+CPU: 0 PID: 16 Comm: ksoftirqd/0 Not tainted 6.6.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff8000ef9e>] dump_backtrace+0x2e/0x3c home/rv/linux-repo/linux-rich/arch/riscv/kernel/stacktrace.c:121
+[<ffffffff85c86bcc>] show_stack+0x34/0x40 home/rv/linux-repo/linux-rich/arch/riscv/kernel/stacktrace.c:127
+[<ffffffff85cde59a>] __dump_stack home/rv/linux-repo/linux-rich/lib/dump_stack.c:88 [inline]
+[<ffffffff85cde59a>] dump_stack_lvl+0xe8/0x154 home/rv/linux-repo/linux-rich/lib/dump_stack.c:106
+[<ffffffff85cde622>] dump_stack+0x1c/0x24 home/rv/linux-repo/linux-rich/lib/dump_stack.c:113
+[<ffffffff85c87772>] panic+0x358/0x7ce home/rv/linux-repo/linux-rich/kernel/panic.c:340
+[<ffffffff8000eab8>] handle_bad_stack+0xf0/0x118 home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:464
+[<ffffffff80223128>] mark_usage home/rv/linux-repo/linux-rich/kernel/locking/lockdep.c:4563 [inline]
+[<ffffffff80223128>] __lock_acquire+0x1c8a/0x82c0 home/rv/linux-repo/linux-rich/kernel/locking/lockdep.c:5090
+SMP: stopping secondary CPUs
+Rebooting in 86400 seconds..

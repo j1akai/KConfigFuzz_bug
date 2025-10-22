@@ -1,0 +1,42 @@
+Unable to handle kernel paging request at virtual address 00000000000f0001
+Oops [#1]
+Modules linked in:
+CPU: 0 PID: 8 Comm: kworker/0:0 Not tainted 6.6.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: events kfree_rcu_monitor
+epc : kmem_cache_free_bulk.part.0+0x394/0x838 home/rv/linux-repo/linux-rich/mm/slub.c:3930
+ ra : slab_free home/rv/linux-repo/linux-rich/mm/slub.c:3809 [inline]
+ ra : kmem_cache_free_bulk.part.0+0x268/0x838 home/rv/linux-repo/linux-rich/mm/slub.c:3927
+epc : ffffffff808f993a ra : ffffffff808f980e sp : ff2000000004b8a0
+ gp : ffffffff892480c0 tp : ff60000082a6b300 t0 : ff2000000004b770
+ t1 : 00000000000f0000 t2 : ff60000082a6bdc0 s0 : ff2000000004b9b0
+ s1 : 0000000000000000 a0 : 0000000000000000 a1 : 0000000000000000
+ a2 : 0000000000000000 a3 : ffffffff81475bfe a4 : 0000000000000001
+ a5 : 0000000000000000 a6 : 0000000000000003 a7 : 0000000000000000
+ s2 : 0004000000000000 s3 : 0000000000000002 s4 : 0000000000000000
+ s5 : 0004000000000000 s6 : ffffffff875945b0 s7 : ff1c0000043af000
+ s8 : ffffffff89248d90 s9 : 0040000000000000 s10: 0000000000000001
+ s11: ff6000008ebc2000 t3 : 0000000000000004 t4 : fffffffef209d33a
+ t5 : fffffffef209d33b t6 : 1fec00001054d7cb
+status: 0000000000000120 badaddr: 00000000000f0001 cause: 000000000000000d
+[<ffffffff808f993a>] kmem_cache_free_bulk.part.0+0x394/0x838 home/rv/linux-repo/linux-rich/mm/slub.c:3929
+[<ffffffff808f9dec>] kmem_cache_free_bulk+0xe/0x18 home/rv/linux-repo/linux-rich/mm/slub.c:3916
+[<ffffffff802a0304>] kfree_bulk home/rv/linux-repo/linux-rich/include/linux/slab.h:516 [inline]
+[<ffffffff802a0304>] kvfree_rcu_bulk+0x33c/0x424 home/rv/linux-repo/linux-rich/kernel/rcu/tree.c:2962
+[<ffffffff802aa846>] kvfree_rcu_drain_ready home/rv/linux-repo/linux-rich/kernel/rcu/tree.c:3136 [inline]
+[<ffffffff802aa846>] kfree_rcu_monitor+0x3a2/0x1168 home/rv/linux-repo/linux-rich/kernel/rcu/tree.c:3154
+[<ffffffff8011f4f2>] process_one_work+0x7d8/0x17ba home/rv/linux-repo/linux-rich/kernel/workqueue.c:2630
+[<ffffffff80120fb0>] process_scheduled_works home/rv/linux-repo/linux-rich/kernel/workqueue.c:2703 [inline]
+[<ffffffff80120fb0>] worker_thread+0xadc/0x10f8 home/rv/linux-repo/linux-rich/kernel/workqueue.c:2784
+[<ffffffff801405c0>] kthread+0x28c/0x3a6 home/rv/linux-repo/linux-rich/kernel/kthread.c:388
+[<ffffffff80007042>] ret_from_fork+0xe/0x20 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:264
+Code: 3423 f3b4 3023 f2f4 2483 f384 93e3 ea0b 91e3 cc04 (3703) 0013 
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	f3b43423          	.4byte	0xf3b43423
+   4:	f2f43023          	.4byte	0xf2f43023
+   8:	f3842483          	lw	s1,-200(s0)
+   c:	ea0b93e3          	bnez	s7,0xfffffffffffffeb2
+  10:	cc0491e3          	bnez	s1,0xfffffffffffffcd2
+* 14:	00133703          	.4byte	0x133703 <-- trapping instruction

@@ -1,0 +1,597 @@
+last executing test programs:
+
+3m35.118162705s ago: executing program 1 (id=7):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0xa, &(0x7f0000000040)={0xa, 0x6, 0x300, 0x6, 0x5d, 0x7, 0x40, 0x6}, 0xbd, &(0x7f0000000900)={0x5, 0xf, 0xbd, 0x5, [@ssp_cap={0x20, 0x10, 0xa, 0x31, 0x5, 0x8, 0xf000, 0x1, [0x3fcf, 0x30, 0xf, 0xc000, 0x30]}, @generic={0x59, 0x10, 0xa, "eb8e345aa4b2d23f1c1808cae454ce3516cca063a7f2a3626e2ef13b3986eda1cc44e7b5218b7bda81f4111ff5fd8032427f3e7cfe1077d564cca433646b8ba40db1e4545670648fc90885fe52db334b65166e127522"}, @ext_cap={0x7, 0x10, 0x2, 0x12, 0x0, 0xc, 0xd50e}, @ssp_cap={0x24, 0x10, 0xa, 0x7, 0x6, 0xe518, 0x0, 0x401, [0xff0000, 0x80c1cf, 0x0, 0xff0000, 0xff0030, 0x0]}, @ss_container_id={0x14, 0x10, 0x4, 0x1, "3bcbb8af37c58a34f76dd8ebd25acd22"}]}, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1, {0x1, "aa"}}}, 0xa)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x2c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_TARGET_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x2c}}, 0x0)
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+write$nci(r0, &(0x7f00000008c0)=@NCI_OP_CORE_CONN_CREATE_RSP={0x0, 0x0, 0x2, 0x4, 0x0, {0x0, 0x0, 0x0, 0x1}}, 0x7)
+
+3m0.066155689s ago: executing program 1 (id=12):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, 0x0, 0x0)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0x0, 0x0, 0xbd, &(0x7f0000000900)={0x5, 0xf, 0xbd, 0x5, [@ssp_cap={0x20, 0x10, 0xa, 0x31, 0x5, 0x8, 0xf000, 0x1, [0x3fcf, 0x30, 0xf, 0xc000, 0x30]}, @generic={0x59, 0x10, 0xa, "eb8e345aa4b2d23f1c1808cae454ce3516cca063a7f2a3626e2ef13b3986eda1cc44e7b5218b7bda81f4111ff5fd8032427f3e7cfe1077d564cca433646b8ba40db1e4545670648fc90885fe52db334b65166e127522"}, @ext_cap={0x7, 0x10, 0x2, 0x12, 0x0, 0xc, 0xd50e}, @ssp_cap={0x24, 0x10, 0xa, 0x7, 0x6, 0xe518, 0x0, 0x401, [0xff0000, 0x80c1cf, 0x0, 0xff0000, 0xff0030, 0x0]}, @ss_container_id={0x14, 0x10, 0x4, 0x1, "3bcbb8af37c58a34f76dd8ebd25acd22"}]}, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+
+2m57.797418467s ago: executing program 2 (id=13):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0xa, &(0x7f0000000040)={0xa, 0x6, 0x300, 0x6, 0x5d, 0x7, 0x40, 0x6}, 0xbd, &(0x7f0000000900)={0x5, 0xf, 0xbd, 0x5, [@ssp_cap={0x20, 0x10, 0xa, 0x31, 0x5, 0x8, 0xf000, 0x1, [0x3fcf, 0x30, 0xf, 0xc000, 0x30]}, @generic={0x59, 0x10, 0xa, "eb8e345aa4b2d23f1c1808cae454ce3516cca063a7f2a3626e2ef13b3986eda1cc44e7b5218b7bda81f4111ff5fd8032427f3e7cfe1077d564cca433646b8ba40db1e4545670648fc90885fe52db334b65166e127522"}, @ext_cap={0x7, 0x10, 0x2, 0x12, 0x0, 0xc, 0xd50e}, @ssp_cap={0x24, 0x10, 0xa, 0x7, 0x6, 0xe518, 0x0, 0x401, [0xff0000, 0x80c1cf, 0x0, 0xff0000, 0xff0030, 0x0]}, @ss_container_id={0x14, 0x10, 0x4, 0x1, "3bcbb8af37c58a34f76dd8ebd25acd22"}]}, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1, {0x1, "aa"}}}, 0xa)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x2c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_TARGET_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x2c}}, 0x0)
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+write$nci(r0, &(0x7f00000008c0)=@NCI_OP_CORE_CONN_CREATE_RSP={0x0, 0x0, 0x2, 0x4, 0x0, {0x0, 0x0, 0x0, 0x1}}, 0x7)
+
+2m46.21246981s ago: executing program 3 (id=14):
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, &(0x7f0000000100)={0x20, r0, 0x0, 0x0, 0x0})
+
+2m20.81473016s ago: executing program 2 (id=16):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+syz_usb_connect$printer(0x1, 0x2d, &(0x7f0000000000)={{0x12, 0x1, 0x201, 0x0, 0x0, 0x0, 0x40, 0x525, 0xa4a8, 0x40, 0x1, 0x2, 0x3, 0x1, [{{0x9, 0x2, 0x1b, 0x1, 0x1, 0x1, 0x20, 0x4, [{{0x9, 0x4, 0x0, 0x1, 0x2, 0x7, 0x1, 0x1, 0x0, "", {{{0x9, 0x5, 0x1, 0x2, 0x400, 0x3, 0x1f, 0x2}}}}}]}}]}}, 0x0)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1, {0x1, "aa"}}}, 0xa)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x2c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_TARGET_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x2c}}, 0x0)
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+write$nci(r0, &(0x7f00000008c0)=@NCI_OP_CORE_CONN_CREATE_RSP={0x0, 0x0, 0x2, 0x4, 0x0, {0x0, 0x0, 0x0, 0x1}}, 0x7)
+
+2m20.451334064s ago: executing program 1 (id=24):
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, &(0x7f0000000100)={0x20, r0, 0x0, 0x0, 0x0})
+
+2m14.86081363s ago: executing program 0 (id=17):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, 0x0, 0x0)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0x0, 0x0, 0xbd, &(0x7f0000000900)={0x5, 0xf, 0xbd, 0x5, [@ssp_cap={0x20, 0x10, 0xa, 0x31, 0x5, 0x8, 0xf000, 0x1, [0x3fcf, 0x30, 0xf, 0xc000, 0x30]}, @generic={0x59, 0x10, 0xa, "eb8e345aa4b2d23f1c1808cae454ce3516cca063a7f2a3626e2ef13b3986eda1cc44e7b5218b7bda81f4111ff5fd8032427f3e7cfe1077d564cca433646b8ba40db1e4545670648fc90885fe52db334b65166e127522"}, @ext_cap={0x7, 0x10, 0x2, 0x12, 0x0, 0xc, 0xd50e}, @ssp_cap={0x24, 0x10, 0xa, 0x7, 0x6, 0xe518, 0x0, 0x401, [0xff0000, 0x80c1cf, 0x0, 0xff0000, 0xff0030, 0x0]}, @ss_container_id={0x14, 0x10, 0x4, 0x1, "3bcbb8af37c58a34f76dd8ebd25acd22"}]}, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+
+1m50.129730944s ago: executing program 0 (id=18):
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES(r0, 0x3b87, &(0x7f0000000040)={0x18, 0x1, 0x1, 0x0, r1})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+1m50.129143014s ago: executing program 1 (id=19):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, 0x0, 0x0)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0x0, 0x0, 0x0, 0x0, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+
+1m49.990544065s ago: executing program 2 (id=20):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0xa, &(0x7f0000000040)={0xa, 0x6, 0x300, 0x6, 0x5d, 0x7, 0x40, 0x6}, 0xbd, &(0x7f0000000900)={0x5, 0xf, 0xbd, 0x5, [@ssp_cap={0x20, 0x10, 0xa, 0x31, 0x5, 0x8, 0xf000, 0x1, [0x3fcf, 0x30, 0xf, 0xc000, 0x30]}, @generic={0x59, 0x10, 0xa, "eb8e345aa4b2d23f1c1808cae454ce3516cca063a7f2a3626e2ef13b3986eda1cc44e7b5218b7bda81f4111ff5fd8032427f3e7cfe1077d564cca433646b8ba40db1e4545670648fc90885fe52db334b65166e127522"}, @ext_cap={0x7, 0x10, 0x2, 0x12, 0x0, 0xc, 0xd50e}, @ssp_cap={0x24, 0x10, 0xa, 0x7, 0x6, 0xe518, 0x0, 0x401, [0xff0000, 0x80c1cf, 0x0, 0xff0000, 0xff0030, 0x0]}, @ss_container_id={0x14, 0x10, 0x4, 0x1, "3bcbb8af37c58a34f76dd8ebd25acd22"}]}, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1, {0x1, "aa"}}}, 0xa)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x2c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_TARGET_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x2c}}, 0x0)
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+write$nci(r0, &(0x7f00000008c0)=@NCI_OP_CORE_CONN_CREATE_RSP={0x0, 0x0, 0x2, 0x4, 0x0, {0x0, 0x0, 0x0, 0x1}}, 0x7)
+
+1m49.989761535s ago: executing program 3 (id=21):
+r0 = openat$iommufd(0xffffffffffffff9c, 0x0, 0x0, 0x0)
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18})
+
+1m32.349130455s ago: executing program 3 (id=22):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+syz_usb_connect$printer(0x1, 0x2d, &(0x7f0000000000)={{0x12, 0x1, 0x201, 0x0, 0x0, 0x0, 0x40, 0x525, 0xa4a8, 0x40, 0x1, 0x2, 0x3, 0x1, [{{0x9, 0x2, 0x1b, 0x1, 0x1, 0x1, 0x20, 0x4, [{{0x9, 0x4, 0x0, 0x1, 0x2, 0x7, 0x1, 0x1, 0x0, "", {{{0x9, 0x5, 0x1, 0x2, 0x400, 0x3, 0x1f, 0x2}}}}}]}}]}}, 0x0)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1, {0x1, "aa"}}}, 0xa)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x2c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_TARGET_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x2c}}, 0x0)
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+write$nci(r0, &(0x7f00000008c0)=@NCI_OP_CORE_CONN_CREATE_RSP={0x0, 0x0, 0x2, 0x4, 0x0, {0x0, 0x0, 0x0, 0x1}}, 0x7)
+
+1m19.281714546s ago: executing program 0 (id=23):
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES(r0, 0x3b87, &(0x7f0000000040)={0x18, 0x1, 0x1, 0x0, r1})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+1m19.280981077s ago: executing program 2 (id=25):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, 0x0, 0x0)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0x0, 0x0, 0xbd, &(0x7f0000000900)={0x5, 0xf, 0xbd, 0x5, [@ssp_cap={0x20, 0x10, 0xa, 0x31, 0x5, 0x8, 0xf000, 0x1, [0x3fcf, 0x30, 0xf, 0xc000, 0x30]}, @generic={0x59, 0x10, 0xa, "eb8e345aa4b2d23f1c1808cae454ce3516cca063a7f2a3626e2ef13b3986eda1cc44e7b5218b7bda81f4111ff5fd8032427f3e7cfe1077d564cca433646b8ba40db1e4545670648fc90885fe52db334b65166e127522"}, @ext_cap={0x7, 0x10, 0x2, 0x12, 0x0, 0xc, 0xd50e}, @ssp_cap={0x24, 0x10, 0xa, 0x7, 0x6, 0xe518, 0x0, 0x401, [0xff0000, 0x80c1cf, 0x0, 0xff0000, 0xff0030, 0x0]}, @ss_container_id={0x14, 0x10, 0x4, 0x1, "3bcbb8af37c58a34f76dd8ebd25acd22"}]}, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+
+1m19.280133327s ago: executing program 1 (id=26):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0xa, &(0x7f0000000040)={0xa, 0x6, 0x300, 0x6, 0x5d, 0x7, 0x40, 0x6}, 0xbd, &(0x7f0000000900)={0x5, 0xf, 0xbd, 0x5, [@ssp_cap={0x20, 0x10, 0xa, 0x31, 0x5, 0x8, 0xf000, 0x1, [0x3fcf, 0x30, 0xf, 0xc000, 0x30]}, @generic={0x59, 0x10, 0xa, "eb8e345aa4b2d23f1c1808cae454ce3516cca063a7f2a3626e2ef13b3986eda1cc44e7b5218b7bda81f4111ff5fd8032427f3e7cfe1077d564cca433646b8ba40db1e4545670648fc90885fe52db334b65166e127522"}, @ext_cap={0x7, 0x10, 0x2, 0x12, 0x0, 0xc, 0xd50e}, @ssp_cap={0x24, 0x10, 0xa, 0x7, 0x6, 0xe518, 0x0, 0x401, [0xff0000, 0x80c1cf, 0x0, 0xff0000, 0xff0030, 0x0]}, @ss_container_id={0x14, 0x10, 0x4, 0x1, "3bcbb8af37c58a34f76dd8ebd25acd22"}]}, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1, {0x1, "aa"}}}, 0xa)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x2c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_TARGET_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x2c}}, 0x0)
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+write$nci(r0, &(0x7f00000008c0)=@NCI_OP_CORE_CONN_CREATE_RSP={0x0, 0x0, 0x2, 0x4, 0x0, {0x0, 0x0, 0x0, 0x1}}, 0x7)
+
+1m3.657368008s ago: executing program 0 (id=27):
+r0 = openat$iommufd(0xffffffffffffff9c, 0x0, 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x0, 0x0, 0x0})
+
+54.503659173s ago: executing program 2 (id=28):
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, &(0x7f0000000000)={0x18, r1, 0x0, 0x0, 0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES(r0, 0x3b87, &(0x7f0000000040)={0x18, 0x1, 0x1, 0x0, r1})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+54.502485183s ago: executing program 3 (id=29):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, 0x0, 0x0)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0x0, 0x0, 0xbd, &(0x7f0000000900)={0x5, 0xf, 0xbd, 0x5, [@ssp_cap={0x20, 0x10, 0xa, 0x31, 0x5, 0x8, 0xf000, 0x1, [0x3fcf, 0x30, 0xf, 0xc000, 0x30]}, @generic={0x59, 0x10, 0xa, "eb8e345aa4b2d23f1c1808cae454ce3516cca063a7f2a3626e2ef13b3986eda1cc44e7b5218b7bda81f4111ff5fd8032427f3e7cfe1077d564cca433646b8ba40db1e4545670648fc90885fe52db334b65166e127522"}, @ext_cap={0x7, 0x10, 0x2, 0x12, 0x0, 0xc, 0xd50e}, @ssp_cap={0x24, 0x10, 0xa, 0x7, 0x6, 0xe518, 0x0, 0x401, [0xff0000, 0x80c1cf, 0x0, 0xff0000, 0xff0030, 0x0]}, @ss_container_id={0x14, 0x10, 0x4, 0x1, "3bcbb8af37c58a34f76dd8ebd25acd22"}]}, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+
+34.47146162s ago: executing program 0 (id=30):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+read$nci(r0, &(0x7f0000000200)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+read$nci(r0, &(0x7f00000002c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000340)=@NCI_OP_CORE_INIT_RSP, 0x14)
+read$nci(r0, &(0x7f0000000380)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000400)=@NCI_OP_RF_DISCOVER_MAP_RSP, 0x4)
+sendmsg$NFC_CMD_START_POLL(r2, &(0x7f0000000440)={0x0, 0x0, &(0x7f0000000480)={&(0x7f00000004c0)={0x24, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0xffffffff}]}, 0x24}}, 0x0)
+read$nci(r0, &(0x7f0000000500)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000580)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+syz_usb_connect$printer(0x1, 0x2d, &(0x7f0000000000)={{0x12, 0x1, 0x201, 0x0, 0x0, 0x0, 0x40, 0x525, 0xa4a8, 0x40, 0x1, 0x2, 0x3, 0x1, [{{0x9, 0x2, 0x1b, 0x1, 0x1, 0x1, 0x20, 0x4, [{{0x9, 0x4, 0x0, 0x1, 0x2, 0x7, 0x1, 0x1, 0x0, "", {{{0x9, 0x5, 0x1, 0x2, 0x400, 0x3, 0x1f, 0x2}}}}}]}}]}}, 0x0)
+read$nci(r0, &(0x7f00000005c0)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000640)=@NCI_OP_CORE_SET_CONFIG_RSP, 0x5)
+read$nci(r0, &(0x7f0000000680)=""/100, 0x64)
+write$nci(r0, &(0x7f0000000700)=@NCI_OP_RF_DISCOVER_RSP, 0x4)
+write$nci(r0, &(0x7f0000000740)=@NCI_OP_RF_DISCOVER_NTF={0x1, 0x0, 0x3, 0x3, 0x0, @b={0x0, 0x1, 0x1, 0x1, {0x1, "aa"}}}, 0xa)
+sendmsg$NFC_CMD_ACTIVATE_TARGET(r2, &(0x7f0000000780)={0x0, 0x0, &(0x7f00000007c0)={&(0x7f0000000800)={0x2c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}, @NFC_ATTR_TARGET_INDEX={0x8}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x1}]}, 0x2c}}, 0x0)
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+write$nci(r0, &(0x7f00000008c0)=@NCI_OP_CORE_CONN_CREATE_RSP={0x0, 0x0, 0x2, 0x4, 0x0, {0x0, 0x0, 0x0, 0x1}}, 0x7)
+
+34.470767085s ago: executing program 1 (id=31):
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, &(0x7f0000000000)={0x18, r1, 0x0, 0x0, 0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES(r0, 0x3b87, &(0x7f0000000040)={0x18, 0x1, 0x1, 0x0, r1})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+34.273129795s ago: executing program 3 (id=32):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, 0x0, 0x0)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0x0, 0x0, 0x0, 0x0, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+
+1.09605ms ago: executing program 3 (id=33):
+r0 = openat$nci(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(r0, 0x0, &(0x7f00000000c0)=<r1=>0x0)
+r2 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r3 = syz_genetlink_get_family_id$nfc(&(0x7f0000000100), r2)
+sendmsg$NFC_CMD_DEV_UP(r2, &(0x7f0000000140)={0x0, 0x0, &(0x7f0000000180)={&(0x7f00000001c0)={0x1c, r3, 0x1, 0x123, 0x234, {}, [@NFC_ATTR_DEVICE_INDEX={0x8, 0x1, r1}]}, 0x1c}}, 0x0)
+write$nci(r0, &(0x7f0000000280)=@NCI_OP_CORE_RESET_RSP, 0x6)
+write$nci(r0, 0x0, 0x0)
+syz_usb_connect$printer(0x1, 0x0, 0x0, &(0x7f0000000a80)={0x0, 0x0, 0x0, 0x0, 0x3, [{0x4, &(0x7f00000009c0)=@lang_id={0x4}}, {0x4, &(0x7f0000000a00)=@lang_id={0x4, 0x3, 0x843}}, {0x39, &(0x7f0000000a40)=@string={0x39, 0x3, "181d642df1703b4a4ce80bb4898cb71f69f5bafa61adf206705e3aded242e73d67b04e57e602a8cc13d67d7ee6353cb44b707c4f3ddc33"}}]})
+read$nci(r0, &(0x7f0000000840)=""/100, 0x64)
+
+470.205µs ago: executing program 2 (id=34):
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, &(0x7f0000000000)={0x18, r1, 0x0, 0x0, 0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES(r0, 0x3b87, &(0x7f0000000040)={0x18, 0x1, 0x1, 0x0, r1})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+0s ago: executing program 0 (id=35):
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES(r0, 0x3b87, &(0x7f0000000040)={0x18, 0x1, 0x1, 0x0, r1})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+kernel console output (not intermixed with test programs):
+
+Warning: Permanently added '[localhost]:2858' (ED25519) to the list of known hosts.
+buildroot login: [  810.410101][ T2950] cgroup: Unknown subsys name 'net'
+[  819.416860][ T2950] cgroup: Unknown subsys name 'rlimit'
+Setting up swapspace version 1, size = 127995904 bytes
+[  940.597707][ T2950] Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k 
+[ 1162.458723][ T2961] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[ 1164.518531][ T2961] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[ 1165.008278][ T2960] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[ 1166.517085][ T2960] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[ 1176.277928][ T2964] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[ 1178.601267][ T2964] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[ 1178.901000][ T2965] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[ 1181.630058][ T2965] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[ 1220.836901][ T2961] hsr_slave_0: entered promiscuous mode
+[ 1221.552596][ T2961] hsr_slave_1: entered promiscuous mode
+[ 1230.060728][ T2960] hsr_slave_0: entered promiscuous mode
+[ 1230.638019][ T2960] hsr_slave_1: entered promiscuous mode
+[ 1230.675495][ T2960] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[ 1230.684772][ T2960] Cannot create hsr debugfs directory
+[ 1237.478779][ T2965] hsr_slave_0: entered promiscuous mode
+[ 1237.587925][ T2965] hsr_slave_1: entered promiscuous mode
+[ 1237.644626][ T2965] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[ 1237.649306][ T2965] Cannot create hsr debugfs directory
+[ 1240.235320][ T2964] hsr_slave_0: entered promiscuous mode
+[ 1242.820290][ T2964] hsr_slave_1: entered promiscuous mode
+[ 1243.526195][ T2964] debugfs: Directory 'hsr0' with parent 'hsr' already present!
+[ 1243.530883][ T2964] Cannot create hsr debugfs directory
+[ 1289.000015][ T2961] netdevsim netdevsim1 netdevsim0: renamed from eth0
+[ 1289.507751][ T2961] netdevsim netdevsim1 netdevsim1: renamed from eth1
+[ 1289.867992][ T2961] netdevsim netdevsim1 netdevsim2: renamed from eth2
+[ 1290.068124][ T2961] netdevsim netdevsim1 netdevsim3: renamed from eth3
+[ 1292.907130][ T2964] netdevsim netdevsim3 netdevsim0: renamed from eth0
+[ 1293.347654][ T2964] netdevsim netdevsim3 netdevsim1: renamed from eth1
+[ 1294.228046][ T2964] netdevsim netdevsim3 netdevsim2: renamed from eth2
+[ 1294.827286][ T2964] netdevsim netdevsim3 netdevsim3: renamed from eth3
+[ 1300.434640][ T2960] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[ 1302.050497][ T2960] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[ 1305.156298][ T2960] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[ 1306.529510][ T2960] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[ 1309.170521][ T2965] netdevsim netdevsim2 netdevsim0: renamed from eth0
+[ 1309.637938][ T2965] netdevsim netdevsim2 netdevsim1: renamed from eth1
+[ 1311.635339][ T2965] netdevsim netdevsim2 netdevsim2: renamed from eth2
+[ 1312.040506][ T2965] netdevsim netdevsim2 netdevsim3: renamed from eth3
+[ 1325.425405][ T2961] 8021q: adding VLAN 0 to HW filter on device bond0
+[ 1339.869800][ T2964] 8021q: adding VLAN 0 to HW filter on device bond0
+[ 1369.439361][ T2960] 8021q: adding VLAN 0 to HW filter on device bond0
+[ 1380.707095][ T2965] 8021q: adding VLAN 0 to HW filter on device bond0
+[ 1388.640937][ T2961] hsr0: Slave B (hsr_slave_1) is not up; please bring it up to get a fully working HSR network
+[ 1408.340262][ T2960] hsr0: Slave B (hsr_slave_1) is not up; please bring it up to get a fully working HSR network
+[ 1425.198930][ T2965] hsr0: Slave B (hsr_slave_1) is not up; please bring it up to get a fully working HSR network
+[ 1530.238104][ T2961] veth0_vlan: entered promiscuous mode
+[ 1532.600143][ T2964] veth0_vlan: entered promiscuous mode
+[ 1534.957145][ T2961] veth1_vlan: entered promiscuous mode
+[ 1537.341168][ T2964] veth1_vlan: entered promiscuous mode
+[ 1545.899511][ T2961] veth0_macvtap: entered promiscuous mode
+[ 1546.573501][ T2961] veth1_macvtap: entered promiscuous mode
+[ 1548.768018][ T2964] veth0_macvtap: entered promiscuous mode
+[ 1549.750092][ T2964] veth1_macvtap: entered promiscuous mode
+[ 1558.017391][ T2964] netdevsim netdevsim3 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1558.055933][ T2964] netdevsim netdevsim3 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1558.059808][ T2964] netdevsim netdevsim3 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1558.146605][ T2964] netdevsim netdevsim3 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1561.267588][ T2961] netdevsim netdevsim1 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1561.286984][ T2961] netdevsim netdevsim1 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1561.318776][ T2961] netdevsim netdevsim1 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1561.355525][ T2961] netdevsim netdevsim1 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1567.857801][ T2960] veth0_vlan: entered promiscuous mode
+[ 1571.778505][ T2960] veth1_vlan: entered promiscuous mode
+[ 1574.033571][ T2965] veth0_vlan: entered promiscuous mode
+[ 1576.966398][ T2965] veth1_vlan: entered promiscuous mode
+[ 1578.829926][ T2960] veth0_macvtap: entered promiscuous mode
+[ 1580.395112][ T2960] veth1_macvtap: entered promiscuous mode
+[ 1584.646378][ T2965] veth0_macvtap: entered promiscuous mode
+[ 1585.909479][ T2965] veth1_macvtap: entered promiscuous mode
+[ 1586.979296][ T2960] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1587.028170][ T2960] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1587.067373][ T2960] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1587.106344][ T2960] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1595.406516][ T2965] netdevsim netdevsim2 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1595.410166][ T2965] netdevsim netdevsim2 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1595.434190][ T2965] netdevsim netdevsim2 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1595.437647][ T2965] netdevsim netdevsim2 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[ 1597.147753][ T4337] iommufd_mock iommufd_mock1: Adding to iommu group 0
+[ 1641.299912][ T4373] iommufd_mock iommufd_mock1: Adding to iommu group 0
+[ 1647.898841][ T4377] iommufd_mock iommufd_mock1: Adding to iommu group 0
+[ 1671.333587][ T4397] iommufd_mock iommufd_mock1: Adding to iommu group 0
+[ 1706.046404][ T4433] iommufd_mock iommufd_mock1: Adding to iommu group 0
+[ 1763.088309][ T4476] iommufd_mock iommufd_mock1: Adding to iommu group 0
+[ 1811.585301][ T4532] workqueue: Failed to create a rescuer kthread for wq "nfc2_nci_cmd_wq": -EINTR
+[ 1823.586060][ T4536] iommufd_mock iommufd_mock1: Adding to iommu group 0
+[ 1843.040253][ T4546] workqueue: Failed to create a rescuer kthread for wq "nfc3_nci_tx_wq": -EINTR
+[ 1855.079749][    C0] Insufficient stack space to handle exception!
+[ 1855.096434][    C0] Task stack:     [0xff20000000098000..0xff2000000009c000]
+[ 1855.100475][    C0] Overflow stack: [0xff600000fdcae4f0..0xff600000fdcaf4f0]
+[ 1855.106185][    C0] CPU: 0 PID: 18 Comm: migration/0 Not tainted 6.6.0-dirty #1
+[ 1855.111956][    C0] Hardware name: riscv-virtio,qemu (DT)
+[ 1855.116820][    C0] Stopper: 0x0 <- 0x0
+[ 1855.126132][    C0] epc : rcu_is_watching+0xc/0x178
+[ 1855.133901][    C0]  ra : lock_acquire+0x468/0xa80
+[ 1855.138834][    C0] epc : ffffffff80290d84 ra : ffffffff8022bbc8 sp : ff1fffffffffffa0
+[ 1855.143547][    C0]  gp : ffffffff892480c0 tp : ff60000082e43300 t0 : 0000000000000100
+[ 1855.147846][    C0]  t1 : ffe3ffff00000004 t2 : ff2000000000050c s0 : ff20000000000130
+[ 1855.152179][    C0]  s1 : 1fe4000000000004 a0 : ff60000082e43308 a1 : 0000000000000000
+[ 1855.156495][    C0]  a2 : 0000000000000001 a3 : 1ffffffff1266ec8 a4 : 0000000000000000
+[ 1855.160503][    C0]  a5 : ffffffffdfffffff a6 : ffffffff80856db0 a7 : fffffffff3f3f3f3
+[ 1855.165251][    C0]  s2 : 0000000000000000 s3 : 0000000000000001 s4 : 0000000000000001
+[ 1855.169444][    C0]  s5 : ff600000fdcc8218 s6 : 0000000000000000 s7 : ffffffff80856db0
+[ 1855.174097][    C0]  s8 : 0000000000000000 s9 : ff200000000000c0 s10: ff60000082e43300
+[ 1855.178496][    C0]  s11: ffffffff89337640 t3 : ffffffff8022b760 t4 : ffe3ffff00000014
+[ 1855.182963][    C0]  t5 : ffe3ffff00000015 t6 : 1fe40000000000a0
+[ 1855.186931][    C0] status: 0000000000000120 badaddr: ff1fffffffffffc0 cause: 000000000000000f
+[ 1855.193066][    C0] Kernel panic - not syncing: Kernel stack overflow
+[ 1855.199154][    C0] CPU: 0 PID: 18 Comm: migration/0 Not tainted 6.6.0-dirty #1
+[ 1855.207032][    C0] Hardware name: riscv-virtio,qemu (DT)
+[ 1855.210533][    C0] Stopper: 0x0 <- 0x0
+[ 1855.214728][    C0] Call Trace:
+[ 1855.218013][    C0] [<ffffffff8000ef9e>] dump_backtrace+0x2e/0x3c
+[ 1855.223471][    C0] [<ffffffff85c86bcc>] show_stack+0x34/0x40
+[ 1855.230557][    C0] [<ffffffff85cde59a>] dump_stack_lvl+0xe8/0x154
+[ 1855.235663][    C0] [<ffffffff85cde622>] dump_stack+0x1c/0x24
+[ 1855.240410][    C0] [<ffffffff85c87772>] panic+0x358/0x7ce
+[ 1855.245094][    C0] [<ffffffff8000eab8>] handle_bad_stack+0xf0/0x118
+[ 1855.249926][    C0] [<ffffffff8022bbc8>] lock_acquire+0x468/0xa80
+[ 1855.257869][    C0] SMP: stopping secondary CPUs
+[ 1855.268002][    C0] Rebooting in 86400 seconds..
+
+VM DIAGNOSIS:
+07:22:45  Registers:
+info registers vcpu 0
+ pc       ffffffff85c62ffa
+ mhartid  0000000000000000
+ mstatus  0000000a000001a0
+ mip      00000000000000a0
+ mie      000000000000022a
+ mideleg  0000000000000222
+ medeleg  000000000000b109
+ mtvec    0000000080000520
+ stvec    ffffffff80006e1c
+ mepc     ffffffff8021ebc4
+ sepc     ffffffff80290d84
+ mcause   8000000000000003
+ scause   000000000000000f
+ mtval    0000000000000000
+ stval    ff1fffffffffffc0
+ mscratch 000000008001a000
+ sscratch ff60000082e43300
+ satp     a008c000001283e2
+ x0/zero  0000000000000000 x1/ra    ffffffff85c62ff2 x2/sp    ff600000fdcae640 x3/gp    ffffffff892480c0
+ x4/tp    ff60000082e43300 x5/t0    1fec0000105c87b7 x6/t1    00000000000f0000 x7/t2    ff60000082e43dc0
+ x8/s0    ff600000fdcae750 x9/s1    ff600000fdcae7c0 x10/a0   0000000000000001 x11/a1   000000000000002e
+ x12/a2   0000000000000063 x13/a3   ffffffff85c62ff2 x14/a4   ff60000082e43300 x15/a5   000000000000002e
+ x16/a6   0000000000000100 x17/a7   0000000000000000 x18/s2   ffffffff86242181 x19/s3   0000000000000063
+ x20/s4   ffffffff86242180 x21/s5   ff600000fdcae6e0 x22/s6   0000000000000063 x23/s7   1ffffffff0c48430
+ x24/s8   ffffffff86242180 x25/s9   ff600000fdcae7c7 x26/s10  1fec00001fb95cd0 x27/s11  0000000000000063
+ x28/t3   1fec00001fb95d10 x29/t4   ffebffff1fb95d44 x30/t5   ffebffff1fb95d45 x31/t6   ff600000fdcaeabe
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000
+info registers vcpu 1
+ pc       ffffffff80221a2a
+ mhartid  0000000000000001
+ mstatus  0000000a000001a0
+ mip      00000000000000a0
+ mie      000000000000020a
+ mideleg  0000000000000222
+ medeleg  000000000000b109
+ mtvec    0000000080000520
+ stvec    ffffffff80006e1c
+ mepc     ffffffff80019e50
+ sepc     ffffffff80019e50
+ mcause   8000000000000007
+ scause   8000000000000005
+ mtval    0000000000000000
+ stval    0000000000000000
+ mscratch 0000000080018000
+ sscratch 0000000000000000
+ satp     a008b000001283d7
+ x0/zero  0000000000000000 x1/ra    ffffffff8022bad2 x2/sp    ff2000000000b720 x3/gp    ffffffff892480c0
+ x4/tp    ff60000090460000 x5/t0    1fec00001208c157 x6/t1    0000000000000022 x7/t2    ff60000090460ac0
+ x8/s0    ff2000000000b8e0 x9/s1    ffffffff89339a80 x10/a0   ff60000090460ae0 x11/a1   0000000000000000
+ x12/a2   ffffffffffffffff x13/a3   0000000000006000 x14/a4   0000000000000001 x15/a5   0000000000004000
+ x16/a6   ffffffff8ca0d4c0 x17/a7   ffffffff8604f884 x18/s2   0000000000000001 x19/s3   00000000000c4022
+ x20/s4   ff60000090460ac0 x21/s5   ff60000090460ae8 x22/s6   ffffffff8927eb60 x23/s7   ffffffff8937cec0
+ x24/s8   ff60000090460aa4 x25/s9   0000000000000001 x26/s10  dfffffff00000000 x27/s11  ff60000090460000
+ x28/t3   0000000000000004 x29/t4   1fec00001208c154 x30/t5   0000000000000002 x31/t6   1fec00001208c161
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000

@@ -1,0 +1,800 @@
+failed to run ["ssh" "-p" "58394" "-F" "/dev/null" "-o" "UserKnownHostsFile=/dev/null" "-o" "IdentitiesOnly=yes" "-o" "BatchMode=yes" "-o" "StrictHostKeyChecking=no" "-o" "ConnectTimeout=10" "root@localhost" "pwd"]: exit status 255
+Connection timed out during banner exchange
+Connection to 127.0.0.1 port 58394 timed out
+
+OpenSBI v0.9
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name             : riscv-virtio,qemu
+Platform Features         : timer,mfdeleg
+Platform HART Count       : 2
+Firmware Base             : 0x80000000
+Firmware Size             : 108 KB
+Runtime SBI Version       : 0.2
+
+Domain0 Name              : root
+Domain0 Boot HART         : 1
+Domain0 HARTs             : 0*,1*
+Domain0 Region00          : 0x0000000080000000-0x000000008001ffff ()
+Domain0 Region01          : 0x0000000000000000-0xffffffffffffffff (R,W,X)
+Domain0 Next Address      : 0x0000000080200000
+Domain0 Next Arg1         : 0x00000000bf000000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+
+Boot HART ID              : 1
+Boot HART Domain          : root
+Boot HART ISA             : rv64imafdcsu
+Boot HART Features        : scounteren,mcounteren,time
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 4
+Boot HART PMP Address Bits: 54
+Boot HART MHPM Count      : 0
+Boot HART MHPM Count      : 0
+Boot HART MIDELEG         : 0x0000000000000222
+Boot HART MEDELEG         : 0x000000000000b109
+[    0.000000][    T0] Linux version 6.6.0-dirty (rv@userid-07) (riscv64-unknown-linux-gnu-gcc () 12.2.0, GNU ld (GNU Binutils) 2.40.0.20230214) #1 SMP PREEMPT Thu Sep 25 20:18:37 CST 2025
+[    0.000000][    T0] Machine model: riscv-virtio,qemu
+[    0.000000][    T0] SBI specification v0.2 detected
+[    0.000000][    T0] SBI implementation ID=0x1 Version=0x9
+[    0.000000][    T0] SBI TIME extension detected
+[    0.000000][    T0] SBI IPI extension detected
+[    0.000000][    T0] SBI RFENCE extension detected
+[    0.000000][    T0] **********************************************************
+[    0.000000][    T0] **   NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE   **
+[    0.000000][    T0] **                                                      **
+[    0.000000][    T0] ** This system shows unhashed kernel memory addresses   **
+[    0.000000][    T0] ** via the console, logs, and other interfaces. This    **
+[    0.000000][    T0] ** might reduce the security of your system.            **
+[    0.000000][    T0] **                                                      **
+[    0.000000][    T0] ** If you see this message and you are not debugging    **
+[    0.000000][    T0] ** the kernel, report this immediately to your system   **
+[    0.000000][    T0] ** administrator!                                       **
+[    0.000000][    T0] **                                                      **
+[    0.000000][    T0] **   NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE   **
+[    0.000000][    T0] **********************************************************
+[    0.000000][    T0] efi: UEFI not found.
+[    0.000000][    T0] OF: reserved mem: 0x0000000080000000..0x000000008001ffff (128 KiB) map non-reusable mmode_resv0@80000000
+[    0.000000][    T0] cma: Reserved 410 MiB at 0x00000000e6600000 on node -1
+[    0.000000][    T0] NUMA: No NUMA configuration found
+[    0.000000][    T0] NUMA: Faking a node at [mem 0x0000000080000000-0x000000017fffffff]
+[    0.000000][    T0] NUMA: NODE_DATA [mem 0x17fdeef80-0x17fdf0fff]
+[    0.000000][    T0] Zone ranges:
+[    0.000000][    T0]   DMA32    [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000][    T0]   Normal   [mem 0x0000000100000000-0x000000017fffffff]
+[    0.000000][    T0] Movable zone start for each node
+[    0.000000][    T0] Early memory node ranges
+[    0.000000][    T0]   node   0: [mem 0x0000000080000000-0x000000017fffffff]
+[    0.000000][    T0] Initmem setup node 0 [mem 0x0000000080000000-0x000000017fffffff]
+[    0.000000][    T0] SBI HSM extension detected
+[    0.000000][    T0] Falling back to deprecated "riscv,isa"
+[    0.000000][    T0] riscv: base ISA extensions acdfim
+[    0.000000][    T0] riscv: ELF capabilities acdfim
+[    0.000000][    T0] percpu: cpu 0 has no node -1 or node-local memory
+[    0.000000][    T0] percpu: Embedded 32 pages/cpu s91848 r8192 d31032 u131072
+[    0.000000][    T0] Kernel command line: root=/dev/vda console=ttyS0  earlyprintk=serial net.ifnames=0 sysctl.kernel.hung_task_all_cpu_backtrace=1 ima_policy=tcb nf-conntrack-ftp.ports=20000 nf-conntrack-tftp.ports=20000 nf-conntrack-sip.ports=20000 nf-conntrack-irc.ports=20000 nf-conntrack-sane.ports=20000 binder.debug_mask=0 rcupdate.rcu_expedited=1 rcupdate.rcu_cpu_stall_cputime=1 no_hash_pointers page_owner=on sysctl.vm.nr_hugepages=4 sysctl.vm.nr_overcommit_hugepages=4 secretmem.enable=1 sysctl.max_rcu_stall_to_panic=1 msr.allow_writes=off coredump_filter=0xffff smp.csd_lock_timeout=300000 watchdog_thresh=165 workqueue.watchdog_thresh=420 sysctl.net.core.netdev_unregister_timeout_secs=420 dummy_hcd.num=2 max_loop=2 nbds_max=2 comedi.comedi_num_legacy_minors=4 panic_on_warn=1
+[    0.000000][    T0] Unknown kernel command line parameters "earlyprintk=serial nbds_max=2", will be passed to user space.
+[    0.000000][    T0] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000][    T0] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000][    T0] Fallback order for Node 0: 0 
+[    0.000000][    T0] Built 1 zonelists, mobility grouping on.  Total pages: 1032192
+[    0.000000][    T0] Policy zone: Normal
+[    0.000000][    T0] mem auto-init: stack:all(zero), heap alloc:on, heap free:off
+[    0.000000][    T0] stackdepot: allocating hash table via alloc_large_system_hash
+[    0.000000][    T0] stackdepot hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000][    T0] software IO TLB: area num 2.
+[    0.000000][    T0] software IO TLB: mapped [mem 0x00000000e2600000-0x00000000e6600000] (64MB)
+[    0.000000][    T0] Virtual kernel memory layout:
+[    0.000000][    T0]       fixmap : 0xff1bfffffea00000 - 0xff1bffffff000000   (6144 kB)
+[    0.000000][    T0]       pci io : 0xff1bffffff000000 - 0xff1c000000000000   (  16 MB)
+[    0.000000][    T0]      vmemmap : 0xff1c000000000000 - 0xff20000000000000   (1024 TB)
+[    0.000000][    T0]      vmalloc : 0xff20000000000000 - 0xff60000000000000   (16384 TB)
+[    0.000000][    T0]      modules : 0xffffffff10628000 - 0xffffffff80000000   (1785 MB)
+[    0.000000][    T0]       lowmem : 0xff60000000000000 - 0xff60000100000000   (4096 MB)
+[    0.000000][    T0]        kasan : 0xffdf000000000000 - 0xffffffff00000000   (8447 TB)
+[    0.000000][    T0]       kernel : 0xffffffff80000000 - 0xffffffffffffffff   (2047 MB)
+[    0.000000][    T0] Memory: 2764288K/4194304K available (95234K kernel code, 29500K rwdata, 22528K rodata, 2459K init, 117703K bss, 1010176K reserved, 419840K cma-reserved)
+[    0.000000][    T0] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000][    T0] allocated 75497472 bytes of page_ext
+[    0.000000][    T0] Node 0, zone    DMA32: page owner found early allocated 0 pages
+[    0.000000][    T0] Node 0, zone   Normal: page owner found early allocated 18527 pages
+[    0.000000][    T0] trace event string verifier disabled
+[    0.000000][    T0] Running RCU self tests
+[    0.000000][    T0] Running RCU synchronous self tests
+[    0.000000][    T0] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000][    T0] rcu: 	RCU lockdep checking is enabled.
+[    0.000000][    T0] rcu: 	RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=2.
+[    0.000000][    T0] rcu: 	RCU callback double-/use-after-free debug is enabled.
+[    0.000000][    T0] rcu: 	RCU debug extended QS entry/exit.
+[    0.000000][    T0] 	All grace periods are expedited (rcu_expedited).
+[    0.000000][    T0] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000][    T0] 	Tracing variant of Tasks RCU enabled.
+[    0.000000][    T0] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.000000][    T0] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000][    T0] Running RCU synchronous self tests
+[    0.000000][    T0] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000][    T0] riscv-intc: 64 local interrupts mapped
+[    0.000000][    T0] plic: plic@c000000: mapped 53 interrupts with 2 handlers for 4 contexts.
+[    0.000000][    T0] riscv: providing IPIs using SBI IPI extension
+[    0.000000][    T0] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000][    T0] clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x24e6a1710, max_idle_ns: 440795202120 ns
+[    0.000572][    T0] sched_clock: 64 bits at 10MHz, resolution 100ns, wraps every 4398046511100ns
+[    0.052069][    T0] kfence: initialized - using 2097152 bytes for 255 objects at 0xff600000ffe00000-0xff60000100000000
+[    0.154326][    T0] Console: colour dummy device 80x25
+[    0.163397][    T0] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.163900][    T0] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.164380][    T0] ... MAX_LOCK_DEPTH:          48
+[    0.164770][    T0] ... MAX_LOCKDEP_KEYS:        8192
+[    0.165148][    T0] ... CLASSHASH_SIZE:          4096
+[    0.165548][    T0] ... MAX_LOCKDEP_ENTRIES:     1048576
+[    0.165930][    T0] ... MAX_LOCKDEP_CHAINS:      1048576
+[    0.166320][    T0] ... CHAINHASH_SIZE:          524288
+[    0.166702][    T0]  memory used by lock dependency info: 106689 kB
+[    0.167105][    T0]  memory used for stack traces: 8320 kB
+[    0.167512][    T0]  per task-struct memory footprint: 1920 bytes
+[    0.187529][    T0] Calibrating delay loop (skipped), value calculated using timer frequency.. 20.00 BogoMIPS (lpj=100000)
+[    0.189529][    T0] pid_max: default: 32768 minimum: 301
+[    0.214217][    T0] LSM: initializing lsm=lockdown,capability,landlock,yama,safesetid,tomoyo,apparmor,bpf,integrity
+[    0.224391][    T0] landlock: Up and running.
+[    0.224842][    T0] Yama: becoming mindful.
+[    0.234834][    T0] TOMOYO Linux initialized
+[    0.268767][    T0] AppArmor: AppArmor initialized
+[    0.270520][    T0] LSM support for eBPF active
+[    0.295531][    T0] Mount-cache hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    0.297198][    T0] Mountpoint-cache hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    0.571304][    T0] Running RCU synchronous self tests
+[    0.572400][    T0] Running RCU synchronous self tests
+[    1.010080][    T1] RCU Tasks: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1.
+[    1.024719][    T1] RCU Tasks Trace: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1.
+[    1.040670][    T1] Running RCU-tasks wait API self tests
+[    1.100571][    T1] riscv: ELF compat mode unsupported
+[    1.107030][    T1] ASID allocator using 16 bits (65536 entries)
+[    1.130803][   T15] Callback from call_rcu_tasks_trace() invoked.
+[    1.151680][    T1] rcu: Hierarchical SRCU implementation.
+[    1.152294][    T1] rcu: 	Max phase no-delay instances is 1000.
+[    1.368238][    T1] EFI services will not be available.
+[    1.430165][    T1] smp: Bringing up secondary CPUs ...
+[    1.494390][   T14] Callback from call_rcu_tasks() invoked.
+[    1.625919][    T0] cpu1: Ratio of byte access time to unaligned word access is 8.45, unaligned accesses are fast
+[    1.725527][    T1] smp: Brought up 1 node, 2 CPUs
+[    2.102742][    T1] devtmpfs: initialized
+[    3.555011][    T1] Running RCU synchronous self tests
+[    3.557375][    T1] Running RCU synchronous self tests
+[    3.565115][    T1] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    3.568605][    T1] futex hash table entries: 512 (order: 4, 65536 bytes, linear)
+[    7.541889][    T1] pinctrl core: initialized pinctrl subsystem
+[    7.770070][    T1] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    8.136458][    T1] DMA: preallocated 512 KiB GFP_KERNEL pool for atomic allocations
+[    8.163782][    T1] DMA: preallocated 512 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    8.172185][    T1] audit: initializing netlink subsys (disabled)
+[    8.215157][   T33] audit: type=2000 audit(7.140:1): state=initialized audit_enabled=0 res=1
+[    8.361379][    T1] thermal_sys: Registered thermal governor 'step_wise'
+[    8.371094][    T1] cpuidle: using governor menu
+[    8.558763][    T1] cpu0: Ratio of byte access time to unaligned word access is 11.85, unaligned accesses are fast
+[    9.647108][    T1] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    9.648537][    T1] HugeTLB: 16380 KiB vmemmap can be freed for a 1.00 GiB page
+[    9.649582][    T1] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    9.650292][    T1] HugeTLB: 28 KiB vmemmap can be freed for a 2.00 MiB page
+[   10.423167][    T1] raid6: int64x8  gen()    51 MB/s
+[   10.609083][    T1] raid6: int64x4  gen()    56 MB/s
+[   10.793106][    T1] raid6: int64x2  gen()    33 MB/s
+[   10.978621][    T1] raid6: int64x1  gen()    17 MB/s
+[   10.979666][    T1] raid6: using algorithm int64x4 gen() 56 MB/s
+[   11.163892][    T1] raid6: .... xor() 21 MB/s, rmw enabled
+[   11.164931][    T1] raid6: using intx1 recovery algorithm
+[   11.219235][    T1] ACPI: Interpreter disabled.
+[   11.300590][    T1] iommu: Default domain type: Translated
+[   11.301508][    T1] iommu: DMA domain TLB invalidation policy: strict mode
+[   11.490466][    T1] SCSI subsystem initialized
+[   11.595321][    T1] usbcore: registered new interface driver usbfs
+[   11.605480][    T1] usbcore: registered new interface driver hub
+[   11.613646][    T1] usbcore: registered new device driver usb
+[   11.845163][    T1] EDAC MC: Ver: 3.0.0
+[   12.078843][    T1] Advanced Linux Sound Architecture Driver Initialized.
+[   12.349229][    T1] NetLabel: Initializing
+[   12.350804][    T1] NetLabel:  domain hash size = 128
+[   12.351364][    T1] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[   12.373959][    T1] NetLabel:  unlabeled traffic allowed by default
+[   12.455908][    T1] nfc: nfc_init: NFC Core ver 0.1
+[   12.467772][    T1] NET: Registered PF_NFC protocol family
+[   12.474140][    T1] mctp: management component transport protocol core
+[   12.474700][    T1] NET: Registered PF_MCTP protocol family
+[   12.507893][    T1] vgaarb: loaded
+[   12.636763][    T1] clocksource: Switched to clocksource riscv_clocksource
+[   12.831147][    T1] VFS: Disk quotas dquot_6.6.0
+[   12.839004][    T1] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[   12.954742][    T1] TOMOYO: 2.6.0
+[   12.956018][    T1] Mandatory Access Control activated.
+[   13.077929][    T1] AppArmor: AppArmor Filesystem Enabled
+[   13.095683][    T1] pnp: PnP ACPI: disabled
+[   14.919127][    T1] NET: Registered PF_INET protocol family
+[   14.945806][    T1] IP idents hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[   15.269549][    T1] tcp_listen_portaddr_hash hash table entries: 2048 (order: 5, 147456 bytes, linear)
+[   15.278164][    T1] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[   15.283668][    T1] TCP established hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[   15.407280][    T1] TCP bind hash table entries: 32768 (order: 10, 4718592 bytes, vmalloc hugepage)
+[   15.543744][    T1] TCP: Hash tables configured (established 32768 bind 32768)
+[   15.606468][    T1] MPTCP token hash table entries: 4096 (order: 6, 360448 bytes, linear)
+[   15.643590][    T1] UDP hash table entries: 2048 (order: 6, 327680 bytes, linear)
+[   15.670301][    T1] UDP-Lite hash table entries: 2048 (order: 6, 327680 bytes, linear)
+[   15.721498][    T1] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[   15.729885][    T1] NET: Registered PF_XDP protocol family
+[   15.734317][    T1] PCI: CLS 0 bytes, default 64
+[   15.994460][    T1] kvm [1]: hypervisor extension not available
+[   17.265331][    T1] Initialise system trusted keyrings
+[   17.377750][    T1] workingset: timestamp_bits=44 max_order=20 bucket_order=0
+[   17.655346][    T1] DLM installed
+[   18.007643][    T1] fuse: init (API version 7.39)
+[   19.154896][    T1] NET: Registered PF_ALG protocol family
+[   19.168310][    T1] xor: measuring software checksum speed
+[   19.261229][    T1]    8regs           :   108 MB/sec
+[   19.379759][    T1]    8regs_prefetch  :    87 MB/sec
+[   19.503393][    T1]    32regs          :    82 MB/sec
+[   19.619472][    T1]    32regs_prefetch :    87 MB/sec
+[   19.620473][    T1] xor: using function: 8regs (108 MB/sec)
+[   19.626748][    T1] async_tx: api initialized (async)
+[   19.629192][    T1] Key type asymmetric registered
+[   19.631151][    T1] Asymmetric key parser 'x509' registered
+[   19.635609][    T1] Asymmetric key parser 'pkcs8' registered
+[   19.636356][    T1] Key type pkcs7_test registered
+[   19.654301][    T1] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 241)
+[   19.701911][    T1] io scheduler mq-deadline registered
+[   19.715425][    T1] io scheduler kyber registered
+[   19.721207][    T1] io scheduler bfq registered
+[   20.772075][    T1] pci-host-generic 30000000.pci: host bridge /soc/pci@30000000 ranges:
+[   20.802120][    T1] pci-host-generic 30000000.pci:       IO 0x0003000000..0x000300ffff -> 0x0000000000
+[   20.865147][    T1] pci-host-generic 30000000.pci:      MEM 0x0040000000..0x007fffffff -> 0x0040000000
+[   20.867983][    T1] pci-host-generic 30000000.pci:      MEM 0x0400000000..0x07ffffffff -> 0x0400000000
+[   20.894897][    T1] pci-host-generic 30000000.pci: Memory resource size exceeds max for 32 bits
+[   24.045936][    T1] pci-host-generic 30000000.pci: ECAM at [mem 0x30000000-0x3fffffff] for [bus 00-ff]
+[   24.117088][    T1] pci-host-generic 30000000.pci: PCI host bridge to bus 0000:00
+[   24.121017][    T1] pci_bus 0000:00: root bus resource [bus 00-ff]
+[   24.124116][    T1] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[   24.126514][    T1] pci_bus 0000:00: root bus resource [mem 0x40000000-0x7fffffff]
+[   24.128098][    T1] pci_bus 0000:00: root bus resource [mem 0x400000000-0x7ffffffff]
+[   24.157324][    T1] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000
+[   24.279458][    T1] pci 0000:00:01.0: [1af4:1005] type 00 class 0x00ff00
+[   24.286357][    T1] pci 0000:00:01.0: reg 0x10: [io  0x0000-0x001f]
+[   24.288691][    T1] pci 0000:00:01.0: reg 0x20: [mem 0x00000000-0x00003fff 64bit pref]
+[   24.360370][    T1] pci 0000:00:02.0: [1af4:1000] type 00 class 0x020000
+[   24.362118][    T1] pci 0000:00:02.0: reg 0x10: [io  0x0000-0x001f]
+[   24.369426][    T1] pci 0000:00:02.0: reg 0x14: [mem 0x00000000-0x00000fff]
+[   24.371133][    T1] pci 0000:00:02.0: reg 0x20: [mem 0x00000000-0x00003fff 64bit pref]
+[   24.375615][    T1] pci 0000:00:02.0: reg 0x30: [mem 0x00000000-0x0007ffff pref]
+[   24.494835][    T1] pci 0000:00:02.0: BAR 6: assigned [mem 0x40000000-0x4007ffff pref]
+[   24.498302][    T1] pci 0000:00:01.0: BAR 4: assigned [mem 0x400000000-0x400003fff 64bit pref]
+[   24.500834][    T1] pci 0000:00:02.0: BAR 4: assigned [mem 0x400004000-0x400007fff 64bit pref]
+[   24.510589][    T1] pci 0000:00:02.0: BAR 1: assigned [mem 0x40080000-0x40080fff]
+[   24.512197][    T1] pci 0000:00:01.0: BAR 0: assigned [io  0x0020-0x003f]
+[   24.515559][    T1] pci 0000:00:02.0: BAR 0: assigned [io  0x0040-0x005f]
+[   26.064462][    T1] virtio-pci 0000:00:01.0: enabling device (0000 -> 0003)
+[   26.187027][    T1] virtio-pci 0000:00:02.0: enabling device (0000 -> 0003)
+[   50.732157][    C1] hrtimer: interrupt took 89117500 ns
+[   54.297076][    T1] N_HDLC line discipline registered with maxframe=4096
+[   54.301183][    T1] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[   56.058432][    T1] printk: console [ttyS0] disabled
+[   56.306337][    T1] 10000000.uart: ttyS0 at MMIO 0x10000000 (irq = 14, base_baud = 230400) is a 16550A
+[   56.368988][    T1] printk: console [ttyS0] enabled
+[   62.048396][    T1] random: crng init done
+[   62.228318][    T1] usbcore: registered new interface driver xillyusb
+[   62.960451][    T1] [drm] radeon kernel modesetting enabled.
+[   63.637515][    T1] [drm] Initialized vgem 1.0.0 20120112 for vgem on minor 0
+[   64.525464][    T1] [drm] Initialized vkms 1.0.0 20180514 for vkms on minor 1
+[   68.389542][    T1] Console: switching to colour frame buffer device 128x48
+[   68.957071][    T1] platform vkms: [drm] fb0: vkmsdrmfb frame buffer device
+[   68.995784][    T1] usbcore: registered new interface driver udl
+[   69.638355][    T1] usbcore: registered new interface driver gm12u320
+[   69.697115][    T1] usbcore: registered new interface driver gud
+[   73.700458][    T1] brd: module loaded
+[   74.289690][    T1] loop: module loaded
+[   80.244994][    T1] virtio_blk virtio0: 1/0/0 default/read/poll queues
+[   80.480182][    T1] virtio_blk virtio0: [vda] 4194304 512-byte logical blocks (2.15 GB/2.00 GiB)
+[   81.387299][    T1] zram: Added device: zram0
+[   81.935479][    T1] null_blk: disk nullb0 created
+[   81.937795][    T1] null_blk: module loaded
+[   81.958635][    T1] usbcore: registered new interface driver rtsx_usb
+[   82.135897][    T1] usbcore: registered new interface driver viperboard
+[   82.220117][    T1] usbcore: registered new interface driver dln2
+[   82.288872][    T1] usbcore: registered new interface driver pn533_usb
+[   82.642108][    T1] nfcsim 0.2 initialized
+[   82.729443][    T1] usbcore: registered new interface driver port100
+[   82.770329][    T1] usbcore: registered new interface driver nfcmrvl
+[   83.314551][    T1] Loading iSCSI transport class v2.0-870.
+[   84.057165][    T1] st: Version 20160209, fixed bufsize 32768, s/g segs 256
+[   85.377052][    T1] Rounding down aligned max_sectors from 4294967295 to 4294967288
+[   85.436350][    T1] db_root: cannot open: /etc/target
+[   85.546641][    T1] slram: not enough parameters.
+[   85.881506][    T1] ftl_cs: FTL header not found.
+[   88.147684][    T1] wireguard: WireGuard 1.0.0 loaded. See www.wireguard.com for information.
+[   88.151699][    T1] wireguard: Copyright (C) 2015-2019 Jason A. Donenfeld <Jason@zx2c4.com>. All Rights Reserved.
+[   88.170389][    T1] eql: Equalizer2002: Simon Janes (simon@ncm.com) and David S. Miller (davem@redhat.com)
+[   88.878490][    T1] MACsec IEEE 802.1AE
+[   91.926741][    T1] usbcore: registered new interface driver mvusb_mdio
+[   91.929721][    T1] tun: Universal TUN/TAP device driver, 1.6
+[   92.428431][    T1] vcan: Virtual CAN interface driver
+[   92.430823][    T1] vxcan: Virtual CAN Tunnel driver
+[   92.434071][    T1] slcan: serial line CAN interface driver
+[   92.436396][    T1] CAN device driver interface
+[   92.446113][    T1] usbcore: registered new interface driver usb_8dev
+[   92.486589][    T1] usbcore: registered new interface driver ems_usb
+[   92.536226][    T1] usbcore: registered new interface driver esd_usb
+[   92.587753][    T1] usbcore: registered new interface driver etas_es58x
+[   92.610292][    T1] usbcore: registered new interface driver f81604
+[   92.678121][    T1] usbcore: registered new interface driver gs_usb
+[   92.727422][    T1] usbcore: registered new interface driver kvaser_usb
+[   92.766244][    T1] usbcore: registered new interface driver mcba_usb
+[   92.805980][    T1] usbcore: registered new interface driver peak_usb
+[   92.839785][    T1] usbcore: registered new interface driver ucan
+[   92.896550][    T1] e100: Intel(R) PRO/100 Network Driver
+[   92.899238][    T1] e100: Copyright(c) 1999-2006 Intel Corporation
+[   92.958194][    T1] e1000e: Intel(R) PRO/1000 Network Driver
+[   92.961383][    T1] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[   93.119037][    T1] VMware vmxnet3 virtual NIC driver - version 1.7.0.0-k-NAPI
+[   93.158891][    T1] usbcore: registered new interface driver catc
+[   93.197752][    T1] usbcore: registered new interface driver kaweth
+[   93.200921][    T1] pegasus: Pegasus/Pegasus II USB Ethernet driver
+[   93.257846][    T1] usbcore: registered new interface driver pegasus
+[   93.287085][    T1] usbcore: registered new interface driver rtl8150
+[   93.325758][    T1] usbcore: registered new device driver r8152-cfgselector
+[   93.358386][    T1] usbcore: registered new interface driver r8152
+[   93.361354][    T1] hso: drivers/net/usb/hso.c: Option Wireless
+[   93.406677][    T1] usbcore: registered new interface driver hso
+[   93.447440][    T1] usbcore: registered new interface driver lan78xx
+[   93.490026][    T1] usbcore: registered new interface driver asix
+[   93.524309][    T1] usbcore: registered new interface driver ax88179_178a
+[   93.554826][    T1] usbcore: registered new interface driver cdc_ether
+[   93.586737][    T1] usbcore: registered new interface driver cdc_eem
+[   93.647877][    T1] usbcore: registered new interface driver dm9601
+[   93.685093][    T1] usbcore: registered new interface driver sr9700
+[   93.728736][    T1] usbcore: registered new interface driver CoreChips
+[   93.776945][    T1] usbcore: registered new interface driver smsc75xx
+[   93.817595][    T1] usbcore: registered new interface driver smsc95xx
+[   93.877605][    T1] usbcore: registered new interface driver gl620a
+[   93.937213][    T1] usbcore: registered new interface driver net1080
+[   93.967315][    T1] usbcore: registered new interface driver plusb
+[   94.008175][    T1] usbcore: registered new interface driver rndis_host
+[   94.046805][    T1] usbcore: registered new interface driver cdc_subset
+[   94.098616][    T1] usbcore: registered new interface driver zaurus
+[   94.131661][    T1] usbcore: registered new interface driver MOSCHIP usb-ethernet driver
+[   94.196865][    T1] usbcore: registered new interface driver int51x1
+[   94.236528][    T1] usbcore: registered new interface driver kalmia
+[   94.275716][    T1] usbcore: registered new interface driver ipheth
+[   94.298459][    T1] usbcore: registered new interface driver sierra_net
+[   94.360690][    T1] usbcore: registered new interface driver cx82310_eth
+[   94.459698][    T1] usbcore: registered new interface driver cdc_ncm
+[   94.529531][    T1] usbcore: registered new interface driver huawei_cdc_ncm
+[   94.588782][    T1] usbcore: registered new interface driver lg-vl600
+[   94.638529][    T1] usbcore: registered new interface driver qmi_wwan
+[   94.681978][    T1] usbcore: registered new interface driver cdc_mbim
+[   94.724848][    T1] usbcore: registered new interface driver ch9200
+[   94.775162][    T1] usbcore: registered new interface driver aqc111
+[   94.810700][    T1] usbcore: registered new interface driver r8153_ecm
+[   95.459798][    T1] aoe: AoE v85 initialised.
+[   96.651112][    T1] SPI driver max3421-hcd has no spi_device_id for maxim,max3421
+[   96.796369][    T1] usbcore: registered new interface driver cdc_acm
+[   96.798733][    T1] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[   96.840383][    T1] usbcore: registered new interface driver usblp
+[   96.887108][    T1] usbcore: registered new interface driver cdc_wdm
+[   96.947227][    T1] usbcore: registered new interface driver usbtmc
+[   97.060187][    T1] usbcore: registered new interface driver uas
+[   97.086860][    T1] usbcore: registered new interface driver usb-storage
+[   97.131492][    T1] usbcore: registered new interface driver ums-alauda
+[   97.174840][    T1] usbcore: registered new interface driver ums-cypress
+[   97.197456][    T1] usbcore: registered new interface driver ums-datafab
+[   97.244866][    T1] usbcore: registered new interface driver ums_eneub6250
+[   97.284716][    T1] usbcore: registered new interface driver ums-freecom
+[   97.336693][    T1] usbcore: registered new interface driver ums-isd200
+[   97.405754][    T1] usbcore: registered new interface driver ums-jumpshot
+[   97.498577][    T1] usbcore: registered new interface driver ums-karma
+[   97.550198][    T1] usbcore: registered new interface driver ums-onetouch
+[   97.614836][    T1] usbcore: registered new interface driver ums-realtek
+[   97.654766][    T1] usbcore: registered new interface driver ums-sddr09
+[   97.687005][    T1] usbcore: registered new interface driver ums-sddr55
+[   97.724704][    T1] usbcore: registered new interface driver ums-usbat
+[   97.807844][    T1] usbcore: registered new interface driver mdc800
+[   97.810219][    T1] mdc800: v0.7.5 (30/10/2000):USB Driver for Mustek MDC800 Digital Camera
+[   97.871537][    T1] usbcore: registered new interface driver microtekX6
+[   97.985555][    T1] usbcore: registered new interface driver usbserial_generic
+[   98.036340][    T1] usbserial: USB Serial support registered for generic
+[   98.072045][    T1] usbcore: registered new interface driver aircable
+[   98.124696][    T1] usbserial: USB Serial support registered for aircable
+[   98.157752][    T1] usbcore: registered new interface driver ark3116
+[   98.205907][    T1] usbserial: USB Serial support registered for ark3116
+[   98.235066][    T1] usbcore: registered new interface driver belkin_sa
+[   98.278645][    T1] usbserial: USB Serial support registered for Belkin / Peracom / GoHubs USB Serial Adapter
+[   98.334571][    T1] usbcore: registered new interface driver ch341
+[   98.370429][    T1] usbserial: USB Serial support registered for ch341-uart
+[   98.436937][    T1] usbcore: registered new interface driver cp210x
+[   98.526508][    T1] usbserial: USB Serial support registered for cp210x
+[   98.558374][    T1] usbcore: registered new interface driver cyberjack
+[   98.584776][    T1] usbserial: USB Serial support registered for Reiner SCT Cyberjack USB card reader
+[   98.611895][    T1] usbcore: registered new interface driver cypress_m8
+[   98.655889][    T1] usbserial: USB Serial support registered for DeLorme Earthmate USB
+[   98.696322][    T1] usbserial: USB Serial support registered for HID->COM RS232 Adapter
+[   98.739356][    T1] usbserial: USB Serial support registered for Nokia CA-42 V2 Adapter
+[   98.785025][    T1] usbcore: registered new interface driver usb_debug
+[   98.825814][    T1] usbserial: USB Serial support registered for debug
+[   98.875430][    T1] usbserial: USB Serial support registered for xhci_dbc
+[   98.916357][    T1] usbcore: registered new interface driver digi_acceleport
+[   98.955349][    T1] usbserial: USB Serial support registered for Digi 2 port USB adapter
+[   98.998227][    T1] usbserial: USB Serial support registered for Digi 4 port USB adapter
+[   99.095344][    T1] usbcore: registered new interface driver io_edgeport
+[   99.166214][    T1] usbserial: USB Serial support registered for Edgeport 2 port adapter
+[   99.184986][    T1] usbserial: USB Serial support registered for Edgeport 4 port adapter
+[   99.230820][    T1] usbserial: USB Serial support registered for Edgeport 8 port adapter
+[   99.275166][    T1] usbserial: USB Serial support registered for EPiC device
+[   99.301975][    T1] usbcore: registered new interface driver io_ti
+[   99.335359][    T1] usbserial: USB Serial support registered for Edgeport TI 1 port adapter
+[   99.367327][    T1] usbserial: USB Serial support registered for Edgeport TI 2 port adapter
+[   99.405347][    T1] usbcore: registered new interface driver empeg
+[   99.438006][    T1] usbserial: USB Serial support registered for empeg
+[   99.461753][    T1] usbcore: registered new interface driver f81534a_ctrl
+[   99.508589][    T1] usbcore: registered new interface driver f81232
+[   99.526834][    T1] usbserial: USB Serial support registered for f81232
+[   99.554863][    T1] usbserial: USB Serial support registered for f81534a
+[   99.585872][    T1] usbcore: registered new interface driver f81534
+[   99.619010][    T1] usbserial: USB Serial support registered for Fintek F81532/F81534
+[   99.655709][    T1] usbcore: registered new interface driver ftdi_sio
+[   99.705498][    T1] usbserial: USB Serial support registered for FTDI USB Serial Device
+[   99.737606][    T1] usbcore: registered new interface driver garmin_gps
+[   99.776914][    T1] usbserial: USB Serial support registered for Garmin GPS usb/tty
+[   99.807104][    T1] usbcore: registered new interface driver ipaq
+[   99.846568][    T1] usbserial: USB Serial support registered for PocketPC PDA
+[   99.888439][    T1] usbcore: registered new interface driver ipw
+[   99.926458][    T1] usbserial: USB Serial support registered for IPWireless converter
+[   99.955558][    T1] usbcore: registered new interface driver ir_usb
+[  100.015307][    T1] usbserial: USB Serial support registered for IR Dongle
+[  100.047754][    T1] usbcore: registered new interface driver iuu_phoenix
+[  100.074919][    T1] usbserial: USB Serial support registered for iuu_phoenix
+[  100.115510][    T1] usbcore: registered new interface driver keyspan
+[  100.149309][    T1] usbserial: USB Serial support registered for Keyspan - (without firmware)
+[  100.195461][    T1] usbserial: USB Serial support registered for Keyspan 1 port adapter
+[  100.236727][    T1] usbserial: USB Serial support registered for Keyspan 2 port adapter
+[  100.276235][    T1] usbserial: USB Serial support registered for Keyspan 4 port adapter
+[  100.325014][    T1] usbcore: registered new interface driver keyspan_pda
+[  100.368392][    T1] usbserial: USB Serial support registered for Keyspan PDA
+[  100.425428][    T1] usbserial: USB Serial support registered for Keyspan PDA - (prerenumeration)
+[  100.464287][    T1] usbcore: registered new interface driver kl5kusb105
+[  100.491571][    T1] usbserial: USB Serial support registered for KL5KUSB105D / PalmConnect
+[  100.530590][    T1] usbcore: registered new interface driver kobil_sct
+[  100.575042][    T1] usbserial: USB Serial support registered for KOBIL USB smart card terminal
+[  100.608330][    T1] usbcore: registered new interface driver mct_u232
+[  100.645345][    T1] usbserial: USB Serial support registered for MCT U232
+[  100.685000][    T1] usbcore: registered new interface driver metro_usb
+[  100.692034][    T1] usbserial: USB Serial support registered for Metrologic USB to Serial
+[  100.756236][    T1] usbcore: registered new interface driver mos7720
+[  100.794335][    T1] usbserial: USB Serial support registered for Moschip 2 port adapter
+[  100.821760][    T1] usbcore: registered new interface driver mos7840
+[  100.845020][    T1] usbserial: USB Serial support registered for Moschip 7840/7820 USB Serial Driver
+[  100.868358][    T1] usbcore: registered new interface driver mxuport
+[  100.901905][    T1] usbserial: USB Serial support registered for MOXA UPort
+[  100.949372][    T1] usbcore: registered new interface driver navman
+[  101.008444][    T1] usbserial: USB Serial support registered for navman
+[  101.060297][    T1] usbcore: registered new interface driver omninet
+[  101.104419][    T1] usbserial: USB Serial support registered for ZyXEL - omni.net usb
+[  101.137505][    T1] usbcore: registered new interface driver opticon
+[  101.159841][    T1] usbserial: USB Serial support registered for opticon
+[  101.221068][    T1] usbcore: registered new interface driver option
+[  101.287044][    T1] usbserial: USB Serial support registered for GSM modem (1-port)
+[  101.358840][    T1] usbcore: registered new interface driver oti6858
+[  101.406239][    T1] usbserial: USB Serial support registered for oti6858
+[  101.438129][    T1] usbcore: registered new interface driver pl2303
+[  101.466508][    T1] usbserial: USB Serial support registered for pl2303
+[  101.526001][    T1] usbcore: registered new interface driver qcaux
+[  101.575789][    T1] usbserial: USB Serial support registered for qcaux
+[  101.588520][    T1] usbcore: registered new interface driver qcserial
+[  101.628857][    T1] usbserial: USB Serial support registered for Qualcomm USB modem
+[  101.664848][    T1] usbcore: registered new interface driver quatech2
+[  101.691371][    T1] usbserial: USB Serial support registered for Quatech 2nd gen USB to Serial Driver
+[  101.733912][    T1] usbcore: registered new interface driver safe_serial
+[  101.764740][    T1] usbserial: USB Serial support registered for safe_serial
+[  101.814727][    T1] usbcore: registered new interface driver sierra
+[  101.835151][    T1] usbserial: USB Serial support registered for Sierra USB modem
+[  101.889888][    T1] usbcore: registered new interface driver usb_serial_simple
+[  101.935910][    T1] usbserial: USB Serial support registered for carelink
+[  101.966388][    T1] usbserial: USB Serial support registered for flashloader
+[  101.996189][    T1] usbserial: USB Serial support registered for funsoft
+[  102.046903][    T1] usbserial: USB Serial support registered for google
+[  102.080391][    T1] usbserial: USB Serial support registered for hp4x
+[  102.114167][    T1] usbserial: USB Serial support registered for kaufmann
+[  102.154795][    T1] usbserial: USB Serial support registered for libtransistor
+[  102.184498][    T1] usbserial: USB Serial support registered for moto_modem
+[  102.224725][    T1] usbserial: USB Serial support registered for motorola_tetra
+[  102.265092][    T1] usbserial: USB Serial support registered for nokia
+[  102.296311][    T1] usbserial: USB Serial support registered for novatel_gps
+[  102.350641][    T1] usbserial: USB Serial support registered for siemens_mpi
+[  102.398454][    T1] usbserial: USB Serial support registered for suunto
+[  102.446793][    T1] usbserial: USB Serial support registered for vivopay
+[  102.466996][    T1] usbserial: USB Serial support registered for zio
+[  102.498869][    T1] usbcore: registered new interface driver spcp8x5
+[  102.554922][    T1] usbserial: USB Serial support registered for SPCP8x5
+[  102.583949][    T1] usbcore: registered new interface driver ssu100
+[  102.615162][    T1] usbserial: USB Serial support registered for Quatech SSU-100 USB to Serial Driver
+[  102.639906][    T1] usbcore: registered new interface driver symbolserial
+[  102.685096][    T1] usbserial: USB Serial support registered for symbol
+[  102.730076][    T1] usbcore: registered new interface driver ti_usb_3410_5052
+[  102.779980][    T1] usbserial: USB Serial support registered for TI USB 3410 1 port adapter
+[  102.834748][    T1] usbserial: USB Serial support registered for TI USB 5052 2 port adapter
+[  102.864714][    T1] usbcore: registered new interface driver upd78f0730
+[  102.901499][    T1] usbserial: USB Serial support registered for upd78f0730
+[  102.964169][    T1] usbcore: registered new interface driver visor
+[  103.004004][    T1] usbserial: USB Serial support registered for Handspring Visor / Palm OS
+[  103.051367][    T1] usbserial: USB Serial support registered for Sony Clie 5.0
+[  103.123599][    T1] usbserial: USB Serial support registered for Sony Clie 3.5
+[  103.175781][    T1] usbcore: registered new interface driver wishbone_serial
+[  103.202021][    T1] usbserial: USB Serial support registered for wishbone_serial
+[  103.261318][    T1] usbcore: registered new interface driver whiteheat
+[  103.317236][    T1] usbserial: USB Serial support registered for Connect Tech - WhiteHEAT - (prerenumeration)
+[  103.375498][    T1] usbserial: USB Serial support registered for Connect Tech - WhiteHEAT
+[  103.442070][    T1] usbcore: registered new interface driver xr_serial
+[  103.461984][    T1] usbserial: USB Serial support registered for xr_serial
+[  103.507565][    T1] usbcore: registered new interface driver xsens_mt
+[  103.554517][    T1] usbserial: USB Serial support registered for xsens_mt
+[  103.588563][    T1] usbcore: registered new interface driver adutux
+[  103.636145][    T1] usbcore: registered new interface driver appledisplay
+[  103.685938][    T1] usbcore: registered new interface driver cypress_cy7c63
+[  103.748788][    T1] usbcore: registered new interface driver cytherm
+[  103.788870][    T1] usbcore: registered new interface driver emi26 - firmware loader
+[  103.845555][    T1] usbcore: registered new interface driver emi62 - firmware loader
+[  103.906312][    T1] usbcore: registered new device driver apple-mfi-fastcharge
+[  103.941512][    T1] usbcore: registered new interface driver idmouse
+[  104.018148][    T1] usbcore: registered new interface driver iowarrior
+[  104.046051][    T1] usbcore: registered new interface driver isight_firmware
+[  104.085495][    T1] usbcore: registered new interface driver usblcd
+[  104.117789][    T1] usbcore: registered new interface driver ldusb
+[  104.161652][    T1] usbcore: registered new interface driver legousbtower
+[  104.205580][    T1] usbcore: registered new interface driver usbtest
+[  104.245724][    T1] usbcore: registered new interface driver usb_ehset_test
+[  104.274217][    T1] usbcore: registered new interface driver trancevibrator
+[  104.305732][    T1] usbcore: registered new interface driver uss720
+[  104.308105][    T1] uss720: USB Parport Cable driver for Cables using the Lucent Technologies USS720 Chip
+[  104.310278][    T1] uss720: NOTE: this is a special purpose driver to allow nonstandard
+[  104.324036][    T1] uss720: protocols (eg. bitbang) over USS720 usb to parallel cables
+[  104.326540][    T1] uss720: If you just want to connect to a printer, use usblp instead
+[  104.340533][    T1] usbcore: registered new interface driver usbsevseg
+[  104.378501][    T1] usbcore: registered new interface driver yurex
+[  104.527561][    T1] usbcore: registered new interface driver chaoskey
+[  104.586132][    T1] usbcore: registered new interface driver sisusb
+[  104.627732][    T1] usbcore: registered new interface driver lvs
+[  104.997514][    T1] dummy_hcd dummy_hcd.0: USB Host+Gadget Emulator, driver 02 May 2005
+[  105.006807][    T1] dummy_hcd dummy_hcd.0: Dummy host controller
+[  105.106462][    T1] dummy_hcd dummy_hcd.0: new USB bus registered, assigned bus number 1
+[  105.306958][    T1] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 6.06
+[  105.316865][    T1] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[  105.321395][    T1] usb usb1: Product: Dummy host controller
+[  105.327320][    T1] usb usb1: Manufacturer: Linux 6.6.0-dirty dummy_hcd
+[  105.331482][    T1] usb usb1: SerialNumber: dummy_hcd.0
+[  105.688347][    T1] hub 1-0:1.0: USB hub found
+[  105.727409][    T1] hub 1-0:1.0: 1 port detected
+[  106.084692][    T1] dummy_hcd dummy_hcd.1: USB Host+Gadget Emulator, driver 02 May 2005
+[  106.088178][    T1] dummy_hcd dummy_hcd.1: Dummy host controller
+[  106.149463][    T1] dummy_hcd dummy_hcd.1: new USB bus registered, assigned bus number 2
+[  106.200732][    T1] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 6.06
+[  106.207084][    T1] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[  106.209658][    T1] usb usb2: Product: Dummy host controller
+[  106.211636][    T1] usb usb2: Manufacturer: Linux 6.6.0-dirty dummy_hcd
+[  106.215446][    T1] usb usb2: SerialNumber: dummy_hcd.1
+[  106.355745][    T1] hub 2-0:1.0: USB hub found
+[  106.367485][    T1] hub 2-0:1.0: 1 port detected
+[  107.305820][    T1] SPI driver max3420-udc has no spi_device_id for maxim,max3421-udc
+[  107.447921][    T1] gadgetfs: USB Gadget filesystem, version 24 Aug 2004
+[  108.430205][    T1] mousedev: PS/2 mouse device common for all mice
+[  108.557822][    T1] usbcore: registered new interface driver appletouch
+[  108.607322][    T1] usbcore: registered new interface driver bcm5974
+[  108.688486][    T1] usbcore: registered new interface driver synaptics_usb
+[  108.718675][    T1] usbcore: registered new interface driver iforce
+[  108.741396][    T1] usbcore: registered new interface driver pxrc
+[  108.769147][    T1] usbcore: registered new interface driver xpad
+[  108.821694][    T1] usbcore: registered new interface driver usb_acecad
+[  108.846779][    T1] usbcore: registered new interface driver aiptek
+[  108.887066][    T1] usbcore: registered new interface driver hanwang
+[  108.938113][    T1] usbcore: registered new interface driver kbtab
+[  108.976172][    T1] usbcore: registered new interface driver pegasus_notetaker
+[  109.006496][    T1] usbcore: registered new interface driver usbtouchscreen
+[  109.076766][    T1] usbcore: registered new interface driver ati_remote2
+[  109.079976][    T1] cm109: Keymap for Komunikate KIP1000 phone loaded
+[  109.110662][    T1] usbcore: registered new interface driver cm109
+[  109.119518][    T1] cm109: CM109 phone driver: 20080805 (C) Alfred E. Heggestad
+[  109.157331][    T1] usbcore: registered new interface driver ims_pcu
+[  109.186238][    T1] usbcore: registered new interface driver keyspan_remote
+[  109.207180][    T1] usbcore: registered new interface driver powermate
+[  109.291796][    T1] usbcore: registered new interface driver yealink
+[  109.750210][    T1] goldfish_rtc 101000.rtc: registered as rtc0
+[  109.854835][    T1] i2c_dev: i2c /dev entries driver
+[  109.947695][    T1] usbcore: registered new interface driver i2c-diolan-u2c
+[  110.027393][    T1] usbcore: registered new interface driver i2c-cp2615
+[  110.068764][    T1] usbcore: registered new interface driver RobotFuzz Open Source InterFace, OSIF
+[  110.127822][    T1] usbcore: registered new interface driver i2c-tiny-usb
+[  110.284752][    T1] usbcore: registered new interface driver igorplugusb
+[  110.324815][    T1] usbcore: registered new interface driver iguanair
+[  110.347878][    T1] usbcore: registered new interface driver imon
+[  110.416957][    T1] usbcore: registered new interface driver imon_raw
+[  110.464575][    T1] usbcore: registered new interface driver mceusb
+[  110.488453][    T1] usbcore: registered new interface driver redrat3
+[  110.521472][    T1] usbcore: registered new interface driver streamzap
+[  110.550882][    T1] usbcore: registered new interface driver ir_toy
+[  110.579073][    T1] usbcore: registered new interface driver ttusbir
+[  110.626673][    T1] usbcore: registered new interface driver ati_remote
+[  110.657212][    T1] usbcore: registered new interface driver xbox_remote
+[  111.095244][    T1] Driver 'corsair-psu' was unable to register with bus_type 'hid' because the bus was not initialized.
+[  111.161886][    T1] usbcore: registered new interface driver pcwd_usb
+[  111.431104][    T1] device-mapper: core: CONFIG_IMA_DISABLE_HTABLE is disabled. Duplicate IMA measurements will not be recorded in the IMA log.
+[  111.441324][    T1] device-mapper: uevent: version 1.0.3
+[  111.506749][    T1] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: dm-devel@redhat.com
+[  111.581674][    T1] device-mapper: multipath round-robin: version 1.2.0 loaded
+[  111.588702][    T1] device-mapper: multipath queue-length: version 0.2.0 loaded
+[  111.591175][    T1] device-mapper: multipath service-time: version 0.3.0 loaded
+[  111.686598][    T1] cpuidle-riscv-sbi: HSM suspend not available
+[  111.784295][    T1] sdhci: Secure Digital Host Controller Interface driver
+[  111.786790][    T1] sdhci: Copyright(c) Pierre Ossman
+[  111.814969][    T1] Synopsys Designware Multimedia Card Interface Driver
+[  111.886442][    T1] VUB300 Driver rom wait states = 1C irqpoll timeout = 0400
+[  112.006358][    T1] usbcore: registered new interface driver vub300
+[  112.026407][    T1] usbcore: registered new interface driver ushc
+[  112.085044][    T1] sdhci-pltfm: SDHCI platform and OF driver helper
+[  112.722053][    T1] iscsi: registered transport (iser)
+[  112.875554][    T1] SoftiWARP attached
+[  113.044620][    T1] hid: raw HID events driver (C) Jiri Kosina
+[  118.209639][    T1] usbcore: registered new interface driver usbhid
+[  118.212179][    T1] usbhid: USB HID core driver
+[  118.536834][    T1] usbcore: registered new interface driver es2_ap_driver
+[  118.539893][    T1] comedi: version 0.7.76 - http://www.comedi.org
+[  118.968553][    T1] comedi comedi4: comedi_test: 1000000 microvolt, 100000 microsecond waveform attached
+[  119.780785][    T1] comedi comedi4: driver 'comedi_test' has successfully auto-configured 'comedi_test'.
+[  119.988150][    T1] usbcore: registered new interface driver dt9812
+[  120.038543][    T1] usbcore: registered new interface driver ni6501
+[  120.096785][    T1] usbcore: registered new interface driver usbdux
+[  120.126171][    T1] usbcore: registered new interface driver usbduxfast
+[  120.181816][    T1] usbcore: registered new interface driver usbduxsigma
+[  120.226890][    T1] usbcore: registered new interface driver vmk80xx
+[  120.265294][    T1] greybus: registered new driver hid
+[  120.325132][    T1] greybus: registered new driver gbphy
+[  120.347626][    T1] gb_gbphy: registered new driver usb
+[  120.959196][    T1] gnss: GNSS driver registered with major 498
+[  121.016789][    T1] usbcore: registered new interface driver gnss-usb
+[  121.051684][    T1] usbcore: registered new interface driver hdm_usb
+[  125.695528][    T1] usbcore: registered new interface driver snd-usb-audio
+[  125.785497][    T1] usbcore: registered new interface driver snd-ua101
+[  125.988081][    T1] usbcore: registered new interface driver snd-usb-caiaq
+[  126.175733][    T1] usbcore: registered new interface driver snd-usb-6fire
+[  126.239149][    T1] usbcore: registered new interface driver snd-usb-hiface
+[  126.418863][    T1] usbcore: registered new interface driver snd-bcd2000
+[  126.601022][    T1] usbcore: registered new interface driver snd_usb_pod
+[  126.758361][    T1] usbcore: registered new interface driver snd_usb_podhd
+[  126.900603][    T1] usbcore: registered new interface driver snd_usb_toneport
+[  127.081863][    T1] usbcore: registered new interface driver snd_usb_variax
+[  127.757422][    T1] drop_monitor: Initializing network drop monitor service
+[  127.817735][    T1] NET: Registered PF_LLC protocol family
+[  127.843698][    T1] GACT probability on
+[  127.849482][    T1] Mirror/redirect action on
+[  127.867326][    T1] Simple TC action Loaded
+[  128.138659][    T1] netem: version 1.3
+[  128.148421][    T1] u32 classifier
+[  128.150014][    T1]     Performance counters on
+[  128.151461][    T1]     input device check on
+[  128.155612][    T1]     Actions configured
+[  128.316924][    T1] nf_conntrack_irc: failed to register helpers
+[  128.327346][    T1] nf_conntrack_sane: failed to register helpers
+[  128.534118][    T1] nf_conntrack_sip: failed to register helpers
+[  128.853838][    T1] xt_time: kernel timezone is -0000
+[  128.863730][    T1] ipip: IPv4 and MPLS over IPv4 tunneling driver
+[  129.041673][    T1] gre: GRE over IPv4 demultiplexor driver
+[  129.054145][    T1] ip_gre: GRE over IPv4 tunneling driver
+[  129.881118][    T1] IPv4 over IPsec tunneling driver
+[  130.348186][    T1] Initializing XFRM netlink socket
+[  130.386290][    T1] IPsec XFRM device driver
+[  130.435108][    T1] NET: Registered PF_INET6 protocol family
+[  131.379970][    T1] Segment Routing with IPv6
+[  131.382094][    T1] RPL Segment Routing with IPv6
+[  131.398224][    T1] In-situ OAM (IOAM) with IPv6
+[  131.430051][    T1] mip6: Mobile IPv6
+[  131.768507][    T1] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[  132.325915][    T1] ip6_gre: GRE over IPv6 tunneling driver
+[  132.585306][    T1] NET: Registered PF_PACKET protocol family
+[  132.590591][    T1] NET: Registered PF_KEY protocol family
+[  132.661387][    T1] can: controller area network core
+[  132.678241][    T1] NET: Registered PF_CAN protocol family
+[  132.680731][    T1] can: raw protocol
+[  132.689052][    T1] can: broadcast manager protocol
+[  132.694617][    T1] can: netlink gateway - max_hops=1
+[  132.700103][    T1] can: SAE J1939
+[  132.704100][    T1] can: isotp protocol (max_pdu_size 8300)
+[  132.757799][    T1] NET: Registered PF_KCM protocol family
+[  132.795394][    T1] l2tp_core: L2TP core driver, V2.0
+[  132.797526][    T1] l2tp_ip: L2TP IP encapsulation support (L2TPv3)
+[  132.801687][    T1] l2tp_netlink: L2TP netlink interface
+[  132.815887][    T1] l2tp_eth: L2TP ethernet pseudowire support (L2TPv3)
+[  132.818158][    T1] l2tp_ip6: L2TP IP encapsulation support for IPv6 (L2TPv3)
+[  132.824375][    T1] 8021q: 802.1Q VLAN Support v1.8
+[  132.845430][    T1] sctp: Hash tables configured (bind 32/56)
+[  132.931128][    T1] NET: Registered PF_RDS protocol family
+[  132.965984][    T1] Registered RDS/infiniband transport
+[  133.076171][    T1] Registered RDS/tcp transport
+[  133.111167][    T1] NET: Registered PF_SMC protocol family
+[  133.128678][    T1] 9pnet: Installing 9P2000 support
+[  133.150118][    T1] Key type dns_resolver registered
+[  133.168363][    T1] Key type ceph registered
+[  133.197319][    T1] libceph: loaded (mon/osd proto 15/24)
+[  133.241822][    T1] NET: Registered PF_VSOCK protocol family
+[  175.165941][    T1] registered taskstats version 1
+[  175.198545][    T1] Loading compiled-in X.509 certificates
+[  177.627102][    T1] Loaded X.509 cert 'Build time autogenerated kernel key: e62d623ad01083ecc26fc9edbc20604e8b005648'
+[  178.658654][    T1] zswap: loaded using pool 842/zsmalloc
+[  186.161568][    T1] debug_vm_pgtable: [debug_vm_pgtable         ]: Validating architecture page table helpers
+[  186.300681][    T1] Key type .fscrypt registered
+[  186.305599][    T1] Key type fscrypt-provisioning registered
+[  186.358727][    T1] Key type big_key registered
+[  186.511182][    T1] Key type encrypted registered
+[  186.516410][    T1] AppArmor: AppArmor sha1 policy hashing enabled
+[  186.528020][    T1] ima: No TPM chip found, activating TPM-bypass!
+[  186.531880][    T1] Loading compiled-in module X.509 certificates
+[  188.807199][    T1] Loaded X.509 cert 'Build time autogenerated kernel key: e62d623ad01083ecc26fc9edbc20604e8b005648'
+[  188.810992][    T1] ima: Allocated hash algorithm: sha256
+[  188.841397][    T1] ima: No architecture policies found
+[  188.863901][    T1] evm: Initialising EVM extended attributes:
+[  188.866044][    T1] evm: security.selinux (disabled)
+[  188.867913][    T1] evm: security.SMACK64 (disabled)
+[  188.869503][    T1] evm: security.SMACK64EXEC (disabled)
+[  188.871076][    T1] evm: security.SMACK64TRANSMUTE (disabled)
+[  188.874090][    T1] evm: security.SMACK64MMAP (disabled)
+[  188.875841][    T1] evm: security.apparmor
+[  188.877302][    T1] evm: security.ima
+[  188.878645][    T1] evm: security.capability
+[  188.880130][    T1] evm: HMAC attrs: 0x1
+[  189.045957][    T1] printk: console [netcon0] enabled
+[  189.049433][    T1] netconsole: network logging started
+[  189.078176][    T1] gtp: GTP module loaded (pdp ctx size 104 bytes)
+[  189.290348][    T1] rdma_rxe: loaded
+[  189.360633][    T1] Legacy PMU implementation is available
+[  189.478887][    T1] clk: Disabling unused clocks
+[  189.537274][    T1] ALSA device list:
+[  189.539699][    T1]   #0: Dummy 1
+[  189.541859][    T1]   #1: Loopback 1
+[  189.545535][    T1]   #2: Virtual MIDI Card 1
+[  189.745734][    T1] md: Skipping autodetection of RAID arrays. (raid=autodetect will force)
+[  192.296161][    T1] EXT4-fs (vda): orphan cleanup on readonly fs
+[  192.476826][    T1] EXT4-fs (vda): mounted filesystem c8e151d8-1530-4398-bace-ef5517d5a4e2 ro with ordered data mode. Quota mode: none.
+[  192.493565][    T1] VFS: Mounted root (ext4 filesystem) readonly on device 253:0.
+[  192.570737][    T1] devtmpfs: mounted
+[  193.739803][    T1] Freeing unused kernel image (initmem) memory: 2456K
+[  194.021746][    T1] Failed to set sysctl parameter 'max_rcu_stall_to_panic=1': parameter not found
+[  194.067198][    T1] Run /sbin/init as init process
+[  195.372782][    T1] Insufficient stack space to handle exception!
+[  195.375204][    T1] Task stack:     [0xff20000000010000..0xff20000000014000]
+[  195.377436][    T1] Overflow stack: [0xff600000fdcae4f0..0xff600000fdcaf4f0]
+[  195.380207][    T1] CPU: 0 PID: 1 Comm: init Not tainted 6.6.0-dirty #1
+[  195.383605][    T1] Hardware name: riscv-virtio,qemu (DT)
+[  195.386437][    T1] epc : __bfs+0x4a/0x586
+[  195.393666][    T1]  ra : check_irq_usage+0x1d2/0x13f4
+[  195.396485][    T1] epc : ffffffff802187d4 ra : ffffffff8021d876 sp : ff2000000000ffc0
+[  195.398875][    T1]  gp : ffffffff892480c0 tp : ff60000082a50000 t0 : 1fec00001054a157
+[  195.401284][    T1]  t1 : 86b4a5c5b763464e t2 : ff60000082a50ac0 s0 : ff20000000010070
+[  195.404000][    T1]  s1 : ffffffff89339a80 a0 : ff200000000101a0 a1 : ff20000000010120
+[  195.406406][    T1]  a2 : ffffffff80217354 a3 : ffffffff80214a1a a4 : 0000000000000000
+[  195.408775][    T1]  a5 : 0000000000000030 a6 : 0000000000000000 a7 : 0000000000000004
+[  195.411134][    T1]  s2 : ff200000000101a0 s3 : 1fe4000000002020 s4 : ffffffff8ca0e500
+[  195.413959][    T1]  s5 : ff60000082a50b80 s6 : ffffffff8937cec0 s7 : 1fec00001054a170
+[  195.416461][    T1]  s8 : ffffffff8937cec0 s9 : 0000000000000014 s10: ff60000082a50b60
+[  195.418830][    T1]  s11: ff20000000010280 t3 : 0000000000000004 t4 : fffffffef1267228
+[  195.421155][    T1]  t5 : ffffffff893473c0 t6 : 1fec00001054a175
+[  195.423518][    T1] status: 0000000000000100 badaddr: ff2000000000ffe8 cause: 000000000000000f
+[  195.426962][    T1] Kernel panic - not syncing: Kernel stack overflow
+[  195.430201][    T1] CPU: 0 PID: 1 Comm: init Not tainted 6.6.0-dirty #1
+[  195.432870][    T1] Hardware name: riscv-virtio,qemu (DT)
+[  195.435053][    T1] Call Trace:
+[  195.436830][    T1] [<ffffffff8000ef9e>] dump_backtrace+0x2e/0x3c
+[  195.439772][    T1] [<ffffffff85c86bcc>] show_stack+0x34/0x40
+[  195.442524][    T1] [<ffffffff85cde59a>] dump_stack_lvl+0xe8/0x154
+[  195.445064][    T1] [<ffffffff85cde622>] dump_stack+0x1c/0x24
+[  195.447604][    T1] [<ffffffff85c87772>] panic+0x358/0x7ce
+[  195.449833][    T1] [<ffffffff8000eab8>] handle_bad_stack+0xf0/0x118
+[  195.452426][    T1] [<ffffffff8021d876>] check_irq_usage+0x1d2/0x13f4
+[  195.456621][    T1] SMP: stopping secondary CPUs
+[  195.461947][    T1] Rebooting in 86400 seconds..

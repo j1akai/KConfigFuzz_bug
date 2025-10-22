@@ -1,0 +1,48 @@
+watchdog: BUG: soft lockup - CPU#0 stuck for 430s! [kworker/0:2:4720]
+Modules linked in:
+irq event stamp: 0
+hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+hardirqs last disabled at (0): [<ffffffff800a9e62>] copy_process+0x2092/0x70a0 home/rv/linux-repo/linux-rich/kernel/fork.c:2442
+softirqs last  enabled at (0): [<ffffffff800a9ea6>] copy_process+0x20d6/0x70a0 home/rv/linux-repo/linux-rich/kernel/fork.c:2446
+softirqs last disabled at (0): [<0000000000000000>] 0x0
+CPU: 0 PID: 4720 Comm: kworker/0:2 Not tainted 6.6.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: events nsim_dev_trap_report_work
+epc : arch_static_branch home/rv/linux-repo/linux-rich/arch/riscv/include/asm/jump_label.h:20 [inline]
+epc : kfence_alloc home/rv/linux-repo/linux-rich/include/linux/kfence.h:121 [inline]
+epc : slab_alloc_node home/rv/linux-repo/linux-rich/mm/slub.c:3464 [inline]
+epc : kmem_cache_alloc_node+0xa2/0x348 home/rv/linux-repo/linux-rich/mm/slub.c:3523
+ ra : slab_pre_alloc_hook home/rv/linux-repo/linux-rich/mm/slab.h:711 [inline]
+ ra : slab_alloc_node home/rv/linux-repo/linux-rich/mm/slub.c:3460 [inline]
+ ra : kmem_cache_alloc_node+0x68/0x348 home/rv/linux-repo/linux-rich/mm/slub.c:3523
+epc : ffffffff808f793c ra : ffffffff808f7902 sp : ff20000000003730
+ gp : ffffffff892480c0 tp : ff6000008c0d8000 t0 : ff600000fdcb2ae0
+ t1 : 00000000000f0000 t2 : 0000000000000030 s0 : ff200000000037d0
+ s1 : ff60000084262640 a0 : 0000000000000000 a1 : 00000000000000f0
+ a2 : 0000000000f00000 a3 : 0000000000000000 a4 : 0000000000000100
+ a5 : 0000000000000000 a6 : ffffffff808f78e8 a7 : 0000000000000000
+ s2 : 0000000000020820 s3 : 0000000000020820 s4 : ffffffff892615a0
+ s5 : ffffffffffffffff s6 : ffffffff84a2df22 s7 : 0000000000000000
+ s8 : 00000000000000f0 s9 : 0000000000000002 s10: ffffffff8625ba00
+ s11: ff600000fdcb0900 t3 : ffffffff8022b760 t4 : ffebffff1fb96120
+ t5 : ffebffff1fb96121 t6 : ff600000fdcb2ee8
+status: 0000000000000120 badaddr: 0000000000000000 cause: 8000000000000005
+[<ffffffff808f793c>] slab_alloc_node home/rv/linux-repo/linux-rich/mm/slub.c:3461 [inline]
+[<ffffffff808f793c>] kmem_cache_alloc_node+0xa2/0x348 home/rv/linux-repo/linux-rich/mm/slub.c:3523
+[<ffffffff84a2df22>] __alloc_skb+0x2fe/0x3e8 home/rv/linux-repo/linux-rich/net/core/skbuff.c:640
+[<ffffffff84a34648>] __netdev_alloc_skb+0x72/0x462 home/rv/linux-repo/linux-rich/net/core/skbuff.c:714
+[<ffffffff85b269d4>] netdev_alloc_skb home/rv/linux-repo/linux-rich/include/linux/skbuff.h:3225 [inline]
+[<ffffffff85b269d4>] dev_alloc_skb home/rv/linux-repo/linux-rich/include/linux/skbuff.h:3238 [inline]
+[<ffffffff85b269d4>] hsr_init_skb+0x11a/0x48c home/rv/linux-repo/linux-rich/net/hsr/hsr_device.c:249
+[<ffffffff85b273e4>] send_hsr_supervision_frame+0xa8/0x8d6 home/rv/linux-repo/linux-rich/net/hsr/hsr_device.c:292
+[<ffffffff85b26e68>] hsr_announce+0x122/0x3b6 home/rv/linux-repo/linux-rich/net/hsr/hsr_device.c:382
+[<ffffffff802fca4e>] call_timer_fn+0x1d2/0x810 home/rv/linux-repo/linux-rich/kernel/time/timer.c:1700
+[<ffffffff802fd8c4>] expire_timers home/rv/linux-repo/linux-rich/kernel/time/timer.c:1751 [inline]
+[<ffffffff802fd8c4>] __run_timers+0x838/0xb48 home/rv/linux-repo/linux-rich/kernel/time/timer.c:2022
+[<ffffffff802fdc30>] run_timer_softirq+0x5c/0xea home/rv/linux-repo/linux-rich/kernel/time/timer.c:2035
+[<ffffffff85d01c50>] __do_softirq+0x498/0x1156 home/rv/linux-repo/linux-rich/kernel/softirq.c:553
+[<ffffffff800cd878>] invoke_softirq home/rv/linux-repo/linux-rich/kernel/softirq.c:427 [inline]
+[<ffffffff800cd878>] __irq_exit_rcu+0x19a/0x384 home/rv/linux-repo/linux-rich/kernel/softirq.c:632
+[<ffffffff800cddc8>] irq_exit_rcu+0x10/0xf8 home/rv/linux-repo/linux-rich/kernel/softirq.c:644
+[<ffffffff85cdf8ba>] handle_riscv_irq+0x40/0x4c home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:357
+[<ffffffff85cdff74>] do_irq+0x62/0xa6 home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:367

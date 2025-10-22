@@ -1,0 +1,61 @@
+rcu: INFO: rcu_preempt self-detected stall on CPU
+rcu: 	0-...!: (30455 ticks this GP) idle=540c/1/0x4000000000000000 softirq=92871/92871 fqs=2
+rcu: 	(t=30501 jiffies g=187957 q=6 ncpus=2)
+rcu: rcu_preempt kthread starved for 30498 jiffies! g187957 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=1
+rcu: 	Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
+rcu: RCU grace-period kthread stack dump:
+task:rcu_preempt     state:R  running task     stack:0     pid:17    ppid:2      flags:0x00000000
+Call Trace:
+[<ffffffff85ce994c>] context_switch home/rv/linux-repo/linux-rich/kernel/sched/core.c:5382 [inline]
+[<ffffffff85ce994c>] __schedule+0xdb2/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6695
+[<ffffffff85cec1da>] schedule+0x102/0x1fe home/rv/linux-repo/linux-rich/kernel/sched/core.c:6771
+[<ffffffff85cfedb4>] schedule_timeout+0x150/0x296 home/rv/linux-repo/linux-rich/kernel/time/timer.c:2167
+[<ffffffff8029e82a>] rcu_gp_fqs_loop+0x4fa/0xa58 home/rv/linux-repo/linux-rich/kernel/rcu/tree.c:1613
+[<ffffffff802ae454>] rcu_gp_kthread+0x1f0/0x2b0 home/rv/linux-repo/linux-rich/kernel/rcu/tree.c:1812
+[<ffffffff801405c0>] kthread+0x28c/0x3a6 home/rv/linux-repo/linux-rich/kernel/kthread.c:388
+[<ffffffff80007042>] ret_from_fork+0xe/0x20 home/rv/linux-repo/linux-rich/arch/riscv/kernel/entry.S:264
+rcu: Stack dump where RCU GP kthread last ran:
+Task dump for CPU 1:
+task:kworker/1:6     state:R  running task     stack:0     pid:6332  ppid:2      flags:0x00000008
+Workqueue: events nsim_dev_trap_report_work
+Call Trace:
+[<ffffffff85ce994c>] context_switch home/rv/linux-repo/linux-rich/kernel/sched/core.c:5382 [inline]
+[<ffffffff85ce994c>] __schedule+0xdb2/0x353e home/rv/linux-repo/linux-rich/kernel/sched/core.c:6695
+CPU: 0 PID: 6403 Comm: kworker/0:1 Not tainted 6.6.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: events nsim_dev_trap_report_work
+epc : arch_static_branch home/rv/linux-repo/linux-rich/arch/riscv/include/asm/jump_label.h:20 [inline]
+epc : kfence_alloc home/rv/linux-repo/linux-rich/include/linux/kfence.h:121 [inline]
+epc : slab_alloc_node home/rv/linux-repo/linux-rich/mm/slub.c:3464 [inline]
+epc : kmem_cache_alloc_node+0xa2/0x348 home/rv/linux-repo/linux-rich/mm/slub.c:3523
+ ra : slab_pre_alloc_hook home/rv/linux-repo/linux-rich/mm/slab.h:711 [inline]
+ ra : slab_alloc_node home/rv/linux-repo/linux-rich/mm/slub.c:3460 [inline]
+ ra : kmem_cache_alloc_node+0x68/0x348 home/rv/linux-repo/linux-rich/mm/slub.c:3523
+epc : ffffffff808f793c ra : ffffffff808f7902 sp : ff200000000038a0
+ gp : ffffffff892480c0 tp : ff6000008d928000 t0 : ff600000fdcb2ae0
+ t1 : 00000000000f0000 t2 : 000000007845ea61 s0 : ff20000000003940
+ s1 : ff6000008426a640 a0 : 0000000000000000 a1 : 00000000000000f0
+ a2 : 0000000000f00000 a3 : 0000000000000000 a4 : 0000000000000100
+ a5 : 0000000000000000 a6 : ffffffff808f78e8 a7 : 0000000000000000
+ s2 : 0000000000000820 s3 : 0000000000000820 s4 : ffffffff892615a0
+ s5 : ffffffffffffffff s6 : ffffffff84a2df22 s7 : 0000000000000000
+ s8 : 00000000000000f0 s9 : 0000000000000000 s10: ffffffff8625ba00
+ s11: ff600000fdcb0900 t3 : ffffffff8022b760 t4 : ffebffff1fb96120
+ t5 : ffebffff1fb96121 t6 : ff600000fdcb2ee8
+status: 0000000000000120 badaddr: 0000000000000000 cause: 8000000000000005
+[<ffffffff808f793c>] slab_alloc_node home/rv/linux-repo/linux-rich/mm/slub.c:3461 [inline]
+[<ffffffff808f793c>] kmem_cache_alloc_node+0xa2/0x348 home/rv/linux-repo/linux-rich/mm/slub.c:3523
+[<ffffffff84a2df22>] __alloc_skb+0x2fe/0x3e8 home/rv/linux-repo/linux-rich/net/core/skbuff.c:640
+[<ffffffff82d5315e>] alloc_skb home/rv/linux-repo/linux-rich/include/linux/skbuff.h:1286 [inline]
+[<ffffffff82d5315e>] wg_packet_send_keepalive+0x82/0x2b4 home/rv/linux-repo/linux-rich/drivers/net/wireguard/send.c:226
+[<ffffffff82d4b852>] wg_expired_send_persistent_keepalive+0x66/0x84 home/rv/linux-repo/linux-rich/drivers/net/wireguard/timers.c:141
+[<ffffffff802fca4e>] call_timer_fn+0x1d2/0x810 home/rv/linux-repo/linux-rich/kernel/time/timer.c:1700
+[<ffffffff802fd8c4>] expire_timers home/rv/linux-repo/linux-rich/kernel/time/timer.c:1751 [inline]
+[<ffffffff802fd8c4>] __run_timers+0x838/0xb48 home/rv/linux-repo/linux-rich/kernel/time/timer.c:2022
+[<ffffffff802fdc30>] run_timer_softirq+0x5c/0xea home/rv/linux-repo/linux-rich/kernel/time/timer.c:2035
+[<ffffffff85d01c50>] __do_softirq+0x498/0x1156 home/rv/linux-repo/linux-rich/kernel/softirq.c:553
+[<ffffffff800cd878>] invoke_softirq home/rv/linux-repo/linux-rich/kernel/softirq.c:427 [inline]
+[<ffffffff800cd878>] __irq_exit_rcu+0x19a/0x384 home/rv/linux-repo/linux-rich/kernel/softirq.c:632
+[<ffffffff800cddc8>] irq_exit_rcu+0x10/0xf8 home/rv/linux-repo/linux-rich/kernel/softirq.c:644
+[<ffffffff85cdf8ba>] handle_riscv_irq+0x40/0x4c home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:357
+[<ffffffff85cdff74>] do_irq+0x62/0xa6 home/rv/linux-repo/linux-rich/arch/riscv/kernel/traps.c:367

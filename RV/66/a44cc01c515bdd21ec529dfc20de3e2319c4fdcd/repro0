@@ -1,0 +1,918 @@
+Extracting prog: 46m59.932909427s
+Minimizing prog: 9h42m5.286227275s
+Simplifying prog options: 0s
+Extracting C: 15m11.497978202s
+Simplifying C: 2h4m16.62350392s
+
+
+extracting reproducer from 24 programs
+testing a last program of every proc
+single: executing 4 programs separately with timeout 45s
+testing program (duration=45s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_DESTROY$ioas-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES(r0, 0x3b87, &(0x7f0000000040)={0x18, 0x1, 0x1, 0x0, r1})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+single: successfully extracted reproducer
+found reproducer with 19 syscalls
+minimizing guilty program
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_DESTROY$ioas-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES(r0, 0x3b87, &(0x7f0000000040)={0x18, 0x1, 0x1, 0x0, r1})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_DESTROY$ioas-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_HUGE_PAGES(r0, 0x3b87, &(0x7f0000000040)={0x18, 0x1, 0x1, 0x0, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_DESTROY$ioas-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c' not found
+
+program crashed: WARNING: locking bug in serial8250_console_write
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_DESTROY$ioas-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_DESTROY$ioas-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000540)={0x8, r2})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000500)={0x18, r2, 0x3, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in get_page_from_freelist
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in get_page_from_freelist
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000440)={0x28, 0x7, r1, 0x0, &(0x7f0000000480)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c' not found
+
+program crashed: WARNING: locking bug in serial8250_console_write
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f00000003c0)={0x18, r1})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, 0x0, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_ALLOW_IOVAS-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_ALLOW_IOVAS(r0, 0x3b82, 0x0)
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, r1, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r1, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18, r1})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r1, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, r1, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r2=>0x0})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r2, r1, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18, r1})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r1})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r1, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$iommufd-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+ioctl$IOMMU_IOAS_IOVA_RANGES(r0, 0x3b84, &(0x7f0000000100)={0x20, 0x0, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000200)={0x28, 0x7, 0x0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000280)={0x18})
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, 0x0, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(r0, 0x3b86, &(0x7f0000000340)={0x18, 0x0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(r0, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, 0x0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, &(0x7f0000000580)={0x18})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(r0, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(r0, 0x3ba0, &(0x7f0000000740)={0x48})
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, 0x0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, &(0x7f0000000100)={0x20, r0, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000280)={0x18, r0})
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c' not found
+
+program crashed: WARNING: locking bug in serial8250_console_write
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, 0x0)
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, &(0x7f0000000100)={0x20, 0x0, 0x2, 0x0, &(0x7f0000000140)=[{}, {}]})
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, 0x0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000280)={0x18})
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, 0x0, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, 0x0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r0, 0x0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, 0x0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000280)={0x18, r0})
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, 0x0)
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000280)={0x18, r0})
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000280)={0x18, r0})
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240), 0x0, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000280)={0x18, r0})
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, &(0x7f0000000300)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c' not found
+
+program crashed: WARNING: locking bug in serial8250_console_write
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, 0x0)
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, 0x0)
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, 0x0, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, 0x0)
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, &(0x7f00000005c0)={0x18, 0x0, 0x1, 0x0, 0x0, 0x43f})
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c' not found
+
+program crashed: WARNING: locking bug in serial8250_console_write
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, 0x0)
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, 0x0)
+
+program did not crash
+extracting C reproducer
+testing compiled C program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c' not found
+
+program crashed: WARNING: locking bug in serial8250_console_write
+simplifying C reproducer
+testing compiled C program (duration=48.801187833s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+program did not crash
+testing compiled C program (duration=48.801187833s, {Threaded:true Repeat:false RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:false Cgroups:false BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+program did not crash
+testing compiled C program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:true VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+program did not crash
+testing compiled C program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in get_page_from_freelist
+testing compiled C program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/drivers/tty/serial/8250/8250_port.c' not found
+
+program crashed: WARNING: locking bug in serial8250_console_write
+testing compiled C program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in __rmqueue_pcplist
+testing compiled C program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+program did not crash
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+validation run: crashed=false
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+validation run: crashed=false
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+validation run: crashed=false
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+validation run: crashed=false
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+failed to symbolize report: failed to run ["scripts/get_maintainer.pl" "--git-min-percent=15" "-f" "home/rv/linux-repo/linux-rich/mm/kasan/common.c"]: exit status 2
+scripts/get_maintainer.pl: file 'home/rv/linux-repo/linux-rich/mm/kasan/common.c' not found
+
+program crashed: WARNING: locking bug in get_page_from_freelist
+validation run: crashed=true
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+validation run: crashed=false
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+validation run: crashed=false
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+validation run: crashed=false
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+validation run: crashed=false
+testing program (duration=48.801187833s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_IOVA_RANGES-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_IOAS_MAP-ioctl$IOMMU_IOAS_UNMAP-ioctl$IOMMU_IOAS_ALLOC-ioctl$IOMMU_IOAS_COPY-ioctl$IOMMU_IOAS_UNMAP$ALL-ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE-ioctl$IOMMU_TEST_OP_MOCK_DOMAIN-ioctl$IOMMU_IOAS_MAP$PAGES
+detailed listing:
+executing program 0:
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r0=>0x0})
+ioctl$IOMMU_IOAS_IOVA_RANGES(0xffffffffffffffff, 0x3b84, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f0000000200)={0x28, 0x7, r0, 0x0, &(0x7f0000000240)='LLLLLLLLLLLLLLLLLLLLLLLLLLLL', 0x1c, 0x1c})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP(0xffffffffffffffff, 0x3b85, &(0x7f00000002c0)={0x28, 0x7, r0, 0x0, 0x0, 0x0, 0x2})
+ioctl$IOMMU_IOAS_UNMAP(0xffffffffffffffff, 0x3b86, &(0x7f0000000340)={0x18, r0, 0x2, 0x1c})
+ioctl$IOMMU_IOAS_ALLOC(0xffffffffffffffff, 0x3b81, &(0x7f0000000400)={0xc, 0x0, <r1=>0x0})
+ioctl$IOMMU_IOAS_COPY(0xffffffffffffffff, 0x3b83, &(0x7f00000004c0)={0x28, 0x7, r1, r0, 0x1c, 0x3, 0x2})
+ioctl$IOMMU_IOAS_UNMAP$ALL(0xffffffffffffffff, 0x3b86, &(0x7f0000000580)={0x18, r0})
+ioctl$IOMMU_OPTION$IOMMU_OPTION_RLIMIT_MODE(0xffffffffffffffff, 0x3b87, 0x0)
+ioctl$IOMMU_TEST_OP_MOCK_DOMAIN(0xffffffffffffffff, 0x3ba0, &(0x7f0000000740)={0x48, 0x2, r0})
+ioctl$IOMMU_IOAS_MAP$PAGES(0xffffffffffffffff, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r0, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+
+program did not crash
+validation run: crashed=false
+reproducer is too unreliable: 0.10
+reproducing took 15h26m23.659217578s
