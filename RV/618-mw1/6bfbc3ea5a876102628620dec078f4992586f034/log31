@@ -1,0 +1,2408 @@
+last executing test programs:
+
+47.897423871s ago: executing program 3 (id=3038):
+clock_nanosleep(0xfcfdffff, 0x0, &(0x7f0000000180)={0x0, 0x989680}, 0x0)
+timer_create(0x3, 0x0, &(0x7f00000012c0))
+
+46.578169179s ago: executing program 2 (id=3039):
+r0 = syz_open_dev$audion(&(0x7f0000000000), 0x51, 0x0)
+ioctl$sock_SIOCGIFINDEX_80211(r0, 0x8933, 0x0)
+r1 = syz_open_procfs(0xffffffffffffffff, &(0x7f0000000000)='stat\x00')
+close(r1)
+r2 = syz_open_dev$dri(&(0x7f0000000000), 0x1, 0x40001)
+ioctl$SNAPSHOT_ATOMIC_RESTORE(r1, 0x3304)
+ioctl$DRM_IOCTL_MODE_GETRESOURCES(r2, 0xc04064a0, &(0x7f0000000180)={0x0, &(0x7f00000000c0)=[<r3=>0x0], 0x0, 0x0, 0x0, 0x1})
+ioctl$DRM_IOCTL_MODE_SETCRTC(r1, 0xc06864a2, &(0x7f00000003c0)={0x0, 0x0, r3, 0x0, 0x2, 0x9, 0x3, 0x0, {0xa367, 0xf15d, 0x20, 0x4fe, 0x203, 0x18ef, 0x3, 0x7, 0xffff, 0x4101, 0xe, 0x9, 0xa81, 0x8, "46b9d017f7979ee83cc2137ab1628bae7e54450e90efdf52e916afcf7647a574"}})
+
+42.956726658s ago: executing program 3 (id=3043):
+setsockopt$inet6_tcp_TCP_REPAIR(0xffffffffffffffff, 0x6, 0x13, &(0x7f0000000200), 0x4)
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000280)='./cgroup\x00', 0x0, 0x0)
+r1 = socket$inet_udplite(0x2, 0x2, 0x88)
+r2 = socket$inet6_udp(0xa, 0x2, 0x0)
+setxattr(&(0x7f0000000080)='./cgroup\x00', &(0x7f0000000100)=@known='trusted.overlay.upper\x00', &(0x7f0000000140)='\\//\x00', 0x4, 0x2)
+socket$inet(0x2, 0x5, 0x9)
+sendmsg$inet(r2, &(0x7f0000000740)={&(0x7f0000000000)={0x2, 0x4e20, @remote}, 0x10, 0x0, 0x0, &(0x7f0000000540)=ANY=[@ANYBLOB="11000000000000000000000000ab00000000000000140000000000000000000000070000009404000000000000000000"], 0x30}, 0x10)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x4040, 0x10)
+r3 = inotify_init1(0x80000)
+inotify_add_watch(r3, &(0x7f0000000040)='./file0\x00', 0x800)
+openat2$dir(0xffffffffffffff9c, &(0x7f0000000180)='./file0\x00', &(0x7f00000001c0)={0x189200}, 0x18)
+keyctl$session_to_parent(0x12)
+ioctl$sock_ifreq(r1, 0x8913, &(0x7f0000000180)={'veth0_vlan\x00', @ifru_settings={0x7, 0x7fff, @fr=0x0}})
+symlinkat(&(0x7f00000000c0)='./cgroup\x00', r0, &(0x7f0000000300)='./cgroup\x00')
+
+39.119388519s ago: executing program 1 (id=3046):
+r0 = socket$packet(0x11, 0x3, 0x300)
+r1 = eventfd2(0x8, 0x800)
+io_setup(0x1, &(0x7f0000000340)=<r2=>0x0)
+io_submit(r2, 0x2, &(0x7f0000000a00)=[&(0x7f0000000440)={0x0, 0x0, 0x0, 0x0, 0x2a, r1, 0x0, 0x0, 0xa7b2, 0x0, 0x1, r1}, 0x0])
+r3 = socket$inet6_mptcp(0xa, 0x1, 0x106)
+ioctl$ifreq_SIOCGIFINDEX_batadv_hard(r3, 0x8933, &(0x7f0000000700)={'batadv_slave_1\x00', <r4=>0x0})
+write$cgroup_subtree(r3, &(0x7f00000001c0)={[{0x2d, 'blkio'}]}, 0x7)
+bind$packet(r0, &(0x7f0000000000)={0x11, 0x7, r4, 0x1, 0x1, 0x6, @local}, 0x14)
+r5 = socket$igmp(0x2, 0x3, 0x2)
+setsockopt$MRT_ADD_VIF(r5, 0x0, 0xca, &(0x7f0000000180)={0x0, 0x0, 0x10, 0x5, @vifc_lcl_ifindex=r4, @private=0xa010100}, 0x10)
+r6 = socket$inet6_mptcp(0xa, 0x1, 0x106)
+r7 = socket$l2tp6(0xa, 0x2, 0x73)
+sendmsg$inet6(r7, &(0x7f0000001d00)={&(0x7f0000001780)={0xa, 0x4e22, 0x8, @private1={0xfc, 0x1, '\x00', 0x1}, 0x80000000}, 0x1c, 0x0}, 0x4)
+getsockopt$inet6_mptcp_buf(r6, 0x11c, 0x4, 0x0, &(0x7f0000000240))
+bind$packet(r0, &(0x7f0000000040)={0x11, 0x7, r4, 0x1, 0x7, 0x6, @random="f60131a7bcba"}, 0x14)
+r8 = openat$mixer(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
+ioctl$BTRFS_IOC_QGROUP_CREATE(r8, 0x4010942a, &(0x7f0000000100)={0x1, 0x5})
+r9 = socket$inet_mptcp(0x2, 0x1, 0x106)
+ioctl$sock_inet_SIOCSIFFLAGS(r9, 0x8914, &(0x7f0000000000)={'geneve0\x00'})
+ioctl$sock_inet_SIOCSIFFLAGS(r9, 0x8914, &(0x7f0000000040)={'batadv_slave_1\x00', 0x800})
+
+38.412409168s ago: executing program 2 (id=3047):
+r0 = syz_init_net_socket$llc(0x1a, 0x2, 0x0)
+r1 = socket$nl_route(0x10, 0x3, 0x0)
+write(0xffffffffffffffff, &(0x7f0000000340)="4284b79e9f8c", 0x6)
+sendmsg$nl_route(r1, &(0x7f00000001c0)={0x0, 0x0, &(0x7f0000000180)={&(0x7f0000000100)=ANY=[@ANYBLOB="140000005200c12ebe349c2a2f53df250a"], 0x14}, 0x1, 0x0, 0x0, 0x24010184}, 0x400c0)
+ppoll(&(0x7f0000000240)=[{r0, 0x300}], 0x1, 0x0, 0x0, 0x0)
+r2 = socket$inet6_mptcp(0xa, 0x1, 0x106)
+connect$inet6(r2, &(0x7f0000000140)={0xa, 0x4e22, 0xf, @dev={0xfe, 0x80, '\x00', 0xe}, 0x1}, 0x1c)
+write(r2, 0x0, 0x0)
+r3 = syz_open_dev$ndb(&(0x7f0000000040), 0x0, 0x400000)
+ioctl$BLKBSZSET(r3, 0x40081271, &(0x7f0000000080)=0x3)
+r4 = socket$igmp(0x2, 0x3, 0x2)
+recvfrom$inet(r4, 0x0, 0x0, 0x2000, 0x0, 0x0)
+r5 = socket$packet(0x11, 0x2, 0x300)
+ioctl$AUTOFS_DEV_IOCTL_FAIL(r3, 0xc0189377, &(0x7f0000000380)={{0x1, 0x1, 0x18, <r6=>r5, {0x6, 0x3}}, './file0\x00'})
+ioctl$ifreq_SIOCGIFINDEX_vcan(r0, 0x8933, &(0x7f00000003c0)={'vxcan1\x00', <r7=>0x0})
+bind$can_j1939(r6, &(0x7f0000000400)={0x1d, r7, 0x2, {0x0, 0x1, 0x3}, 0xfd}, 0x18)
+ioctl$sock_netdev_private(r1, 0x89fc, &(0x7f0000000280)="1336e97f431d116558376abe98a6177bcf89bfb32effbfb312fa46af0e95c81ed6e48b57a9a80f8d557ce45146792bdb08545cde9bc28feb6db2a9776e8f495b96f75470f1487a7039a05a084e9701179eed6512bea67e1561893812fb0b45dfd61e317ebf75fc01dff8f7097a293aeb411b466b73ae848cf028d2ace9105ebf58ffa3ef0bc4517991efd3d91c099265d017e7b1dfd4d184")
+fcntl$setlease(r5, 0x400, 0x2)
+r8 = socket$igmp6(0xa, 0x3, 0x2)
+ioctl$sock_inet_SIOCSIFFLAGS(r8, 0x8914, 0x0)
+ioctl$sock_inet_SIOCSIFFLAGS(r8, 0x8914, &(0x7f00000000c0)={'ipvlan1\x00', 0x100})
+pipe2$watch_queue(&(0x7f00000000c0)={0xffffffffffffffff, <r9=>0xffffffffffffffff}, 0x80)
+ioctl$TUNSETSNDBUF(r9, 0x400454d4, &(0x7f0000000200)=0x99bbbd4a)
+openat$full(0xffffffffffffff9c, &(0x7f0000000000), 0x448001, 0x0)
+listen(r0, 0x3)
+
+36.072395733s ago: executing program 5 (id=3048):
+write(0xffffffffffffffff, &(0x7f0000000000)="aa1c98c1add67e6cfd4c0ee4157eb8f6b38ab38779cf453a9a2b6f6b97c241cc03fb9f62189c7b9b2d154a9ef05edd3a1ee6bfd5e1f58b93ab25b3b109da031238d5f986cfe02f43353583d4b7797673ed43a0abbd7e0eae5241f0de302b12430538483441bcabaad1d1ff400a6833036e363b3bcfde3ce08ad1ca7a11b79d", 0x7f)
+ioctl$sock_ipv6_tunnel_SIOCGETTUNNEL(0xffffffffffffffff, 0x89f0, &(0x7f0000000100)={'ip6tnl0\x00', &(0x7f0000000080)={'ip6_vti0\x00', <r0=>0x0, 0x29, 0x9, 0xc, 0x8, 0x0, @local, @private0={0xfc, 0x0, '\x00', 0x1}, 0x7, 0x728, 0x200000, 0x6}})
+r1 = syz_socket_connect_nvme_tcp()
+recvfrom$inet_nvme(r1, &(0x7f0000000140)=""/218, 0xda, 0x2000, 0x0, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(0xffffffffffffffff, 0x0, &(0x7f00000002c0)=<r2=>0x0)
+recvfrom$inet_nvme(r1, &(0x7f0000000240)=""/86, 0x56, 0x12040, &(0x7f0000000300)=@nfc_llcp={0x27, r2, 0x0, 0x4, 0x3, 0x3, "0cae63a42ed54efee19b4d7bb823d0319cae01672294347de857783ac485e19e34247b9fd849706bea18a580fd8eaf58b07298d8d7dff844a5062e49142182", 0xf}, 0x80)
+r3 = bpf$BPF_MAP_GET_FD_BY_ID(0xe, &(0x7f0000000380)={0x0, 0x7fffffff}, 0xc)
+r4 = bpf$PROG_LOAD_XDP(0x5, &(0x7f0000000780)={0x6, 0x13, &(0x7f0000000500)=@ringbuf={{0x18, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0xbb2}, {}, {}, [@ringbuf_query], {{}, {}, {0x85, 0x0, 0x0, 0x84}}}, &(0x7f00000005c0)='GPL\x00', 0x6, 0xb0, &(0x7f0000000600)=""/176, 0x41000, 0x0, '\x00', 0x0, 0x25, 0xffffffffffffffff, 0x8, &(0x7f00000006c0)={0xa, 0x2}, 0x8, 0x10, &(0x7f0000000700)={0x1, 0xf, 0x800, 0xb98}, 0x10, 0x0, 0x0, 0x0, &(0x7f0000000740)=[0xffffffffffffffff, 0x1, 0x1, r1, 0xffffffffffffffff, 0x1, 0xffffffffffffffff, 0x1, 0x1], 0x0, 0x10, 0x9}, 0x94) (fail_nth: 14)
+bpf$BPF_PROG_WITH_BTFID_LOAD(0x5, &(0x7f0000000880)=@bpf_ext={0x1c, 0x13, &(0x7f00000003c0)=@raw=[@snprintf={{}, {}, {0x7, 0x0, 0xb, 0x8, 0x0, 0x0, 0x2}, {}, {}, {}, {}, {}, {}, {0x18, 0x3, 0x2, 0x0, r3}}, @cb_func={0x18, 0x3, 0x4, 0x0, 0xfffffffffffffffe}, @kfunc={0x85, 0x0, 0x2, 0x0, 0x5}, @call={0x85, 0x0, 0x0, 0xaf}, @ldst={0x3, 0x0, 0x1, 0x6, 0x0, 0x6, 0xffffffffffffffff}, @generic={0x4, 0x1, 0x3, 0x0, 0xffffffff}], &(0x7f0000000480)='GPL\x00', 0xffff8001, 0x0, 0x0, 0x41000, 0x1, '\x00', r0, 0x0, 0xffffffffffffffff, 0x8, 0x0, 0x0, 0x10, &(0x7f00000004c0)={0x1, 0xd, 0x400, 0xf22d}, 0x10, 0x2b94b, r4, 0x2, 0x0, &(0x7f0000000840)=[{0x2, 0x5, 0x3, 0x3}, {0x0, 0x2, 0x6, 0x8}], 0x10, 0x3b418915}, 0x94)
+
+35.864467638s ago: executing program 3 (id=3049):
+r0 = socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$inet_udp_int(r0, 0x11, 0xb, &(0x7f0000000300), 0x4)
+rseq(&(0x7f0000000380), 0x20, 0x0, 0x0)
+r1 = syz_create_resource$binfmt(&(0x7f0000000040)='./file1\x00')
+openat$binfmt(0xffffffffffffff9c, r1, 0x42, 0x1ff)
+openat$vcsa(0xffffffffffffff9c, &(0x7f0000000000), 0x280800, 0x0)
+close(0xffffffffffffffff)
+pipe2(&(0x7f0000000000)={0xffffffffffffffff, <r2=>0xffffffffffffffff}, 0x880)
+r3 = openat$tcp_congestion(0xffffffffffffff9c, &(0x7f0000000040), 0x1, 0x0)
+tee(r3, r2, 0x3, 0x8)
+execveat$binfmt(0xffffffffffffff9c, r1, 0x0, 0x0, 0x0)
+
+35.787305451s ago: executing program 4 (id=3050):
+r0 = openat$vnet(0xffffffffffffff9c, &(0x7f00000000c0), 0x2, 0x0)
+r1 = openat$apparmor_task_current(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+r2 = bpf$MAP_CREATE(0x0, &(0x7f00000001c0)=@bloom_filter={0x1e, 0x10001, 0x7fff, 0x9, 0x20, 0x1, 0x5, '\x00', 0x0, 0xffffffffffffffff, 0x2, 0x1, 0x2, 0x1}, 0x50)
+bpf$BPF_PROG_QUERY(0x10, &(0x7f0000000180)={@map=r2, 0x9, 0x1, 0x200, &(0x7f0000000040)=[0x0, 0x0], 0x2, 0x0, &(0x7f0000000080)=[0x0, 0x0, 0x0, 0x0], &(0x7f0000000100)=[0x0, 0x0, 0x0, 0x0], &(0x7f0000000140)=[0x0, 0x0, 0x0, 0x0, 0x0]}, 0x40)
+read(r1, 0x0, 0x0)
+lseek(r0, 0x3, 0x0)
+cachestat(r1, &(0x7f0000000240)={0x365, 0x3}, &(0x7f0000000280), 0x0)
+
+33.928869706s ago: executing program 0 (id=3051):
+r0 = openat$comedi(0xffffffffffffff9c, &(0x7f00000001c0)='/dev/comedi4\x00', 0x600, 0x0)
+ioctl$COMEDI_INSN(r0, 0x8028640c, &(0x7f0000000300)={0xc000002, 0x0, 0x0, 0x0, 0x6}) (fail_nth: 4)
+
+30.306201452s ago: executing program 1 (id=3052):
+syz_io_uring_setup(0x7bbf, &(0x7f0000000000)={0x0, 0xf34, 0x10, 0x3, 0x155}, &(0x7f0000000080), &(0x7f00000000c0))
+
+30.036245597s ago: executing program 4 (id=3053):
+r0 = openat$comedi(0xffffffffffffff9c, &(0x7f00000001c0)='/dev/comedi4\x00', 0x600, 0x0)
+ioctl$COMEDI_INSN(r0, 0x8028640c, &(0x7f0000000300)={0xc000002, 0xf00, 0x0, 0x0, 0x6})
+
+29.523829838s ago: executing program 5 (id=3054):
+r0 = syz_open_dev$ndb(&(0x7f0000000180), 0x0, 0x40000)
+r1 = openat$comedi(0xffffffffffffff9c, &(0x7f00000001c0)='/dev/comedi4\x00', 0x301e40, 0x0)
+r2 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000000), 0xe300f0bda2188743, 0x0)
+ioctl$IOMMU_HWPT_ALLOC$NONE(0xffffffffffffffff, 0x3b89, &(0x7f00000000c0)={0x28, 0x2, 0x0, 0x0, <r3=>0x0, 0x0, 0x0, 0x69, &(0x7f0000000040)="99ced8ff96eb797016c651ab9f0d6d86a1820c151311aa4ebf7e30094872181c000e0be95e61c8b4422596a4f2270bfe0159641e20cf0d978b0abb481cc67ee5a951ff139944f3110556b57fa02c3f09682c883e549ec851e9c6e137886a1d95dc5ac53b4549f50962"})
+ioctl$COMEDI_CMDTEST(r1, 0x8050640a, &(0x7f0000000240)={0x5, 0x20, 0x4, 0x100, 0x0, 0x1, 0x100, 0x7, 0x100, 0x1, 0x80, 0x9, &(0x7f0000000200)=[0x0, 0x2], 0x2, &(0x7f0000001340)="f76cff20b54f536d96969006fa89c188c83178470178a11a98339f87811925015f8f594dab36c92e56ae5e2b7e7ef95c9b2cce07c86ad063dc258e42dfc9323957436ca8727362f838620c39f2db0407e1a90439e1a95737e104cb6ddf1f6c844b9c5706dc34fa1cc7951553e89460008880b0a9c8311d9e23163ab140f17ee6c04e3e8bd80ff046b8ab4422c0997c219add6d1275d7781d451daecbb02d0c6c02ee48fe4e27b06f235a072bcc18fa367efb16bf852e34703df9b558d0bfeefe2b648b1adf153ac12f127bb0b34b354feef6b9b6852acf0f14799778fcce582e55883e524634c85ed7796534b7d31956d8b201df30273133bfba", 0xfa})
+close(r0)
+ioctl$IOMMU_TEST_OP_MD_CHECK_MAP(r2, 0x3ba0, &(0x7f0000000100)={0x48, 0x3, r3, 0x0, 0x2, 0x1000, &(0x7f0000000340)="29e4c8ec85e8d93b8c69bbe988ce94984d7e546b037263865af1047d5d45b1583c87249681f5e0a3ec07cac7b26bba93a8475e65a37a9f7e02146d2651507b5814e3a29bc25ac678d48bf56afd78af048567975f478445aa1eb80a21b7619505612547401eecb1de69616215931af9603ac701888bf7500948d732bee9015b3461db23404ee5af924aeb26c702d14c3c9c79b8640efed1f798257310ae0c7505c4355909872fa748ea64f4fc7a07452cf6592a4028cfc382b413c61cd0889163b8ac05237b44cdfd3e3f89e2585ceb401f68d00f2a87bba15b6af76bb824d555e42ccf0d882bdced7a4e7e652747966c849c72b2899894f9daf206f202041c81a3965bf5741b6d50a56d854ea0328b8ea76496e9818ca2267a9845b34b8d75f25211e7bbc250027708dae07d8ed80009876f1a0beeab1941b2b9061923cf180b73d43bab5db696e262cc9392b4f4d894dfe8e3cad06ae0faec158e50dad7a197a833e2521b0060f0ffedb419167b14762f12927c81de790993f8ed872abf831cdd17851a151b82b5fc997d2a4d2ead58be211d2508bedda67f67cf2e5da60020dad1c370f0f4e28d918de2d5c7f5fe2e512fcab6eaaaa4e89c21231fba6e370574f2c0dbdebab081b3498976e2d33bd604122aa950a64bad425589fca4b2713559544ba8d1eb0ad6462b0b0cd521bda32ee3c3bb86f942a33e26ed8cd3aee9187899b0845dd7571229e43b790b1e052a8c8cf4bcbd295e92e6495fad5a9e34e4f3c58466f61917ade1c2b50c313037c7f166aa2bafd455592d887a0dbc98412c92c6c4b9d34094e023e9427036b8ac72d1ae1984a16718587b3b43cb3fdfd10179a8d469b3aaa56c63a7fe171e6e6fee16fc9ee5c47e87bae1046a115ec8d351fe54a81372628265105ec0a0f2e4532c633b7d2995b49a85c969c0cf7ac886c23b60bddf80cf37b13175d1cda60cab858771310af4359f01469baf9a375dfb5f53996fe9a29b890d49fe37b73ab3ce72cc757b4cd22ec4f859e50872773e079db22852798eff399699691c8bcdf0ef0dae11b95aa6a2e2a3fcba3bb9194a2682d888ec4aea2e412c073222689318dae072a2d9d853215a0c26f0010b019c82bdd792af6f018b269dd2702cb80a45df534dc4d4afeeb1bb7318d92d6d3107861bf4c17332568bc1d0a7aceea2555205c5c905794d5167396fd329dc4475523a4f092da38ea00eb7bec5018ae3fdca6e7966109156f556d12005a95b49a49460c200fdb86135c7f68f95c281f9ea5ed25bc0185f97bf8ca3341f1677e36f0af0c6019fe7dae02c96fc515dfc74c4525d66aa1f2b8d4960c923c6c0c6aca447a453b969c44c0b55259eeefab5c5154bd32b71e515f1c71ca51d0637856176bdd0ac895290906754e3c192d60f55a02596c5becf4e5b376ca6b9fd68977932ce11c9df7181a94f89307430de8f03af177978b1a33ed6f48e16dd4e2b51dcd7cb1e4ed2337eb79303a20d55af66e3df3d7387cf013b00164d3869f25b6dd06b7b7b38a7996da69af888029e23e5038eefaab4ffb87cfa2b982f00f69538c1503e6b7d5e7989d725a97a63540ea3e7637b7dc7dcfde960b7fea09e0825afe58231ae623eeb7687700d03b3e2bab68d7adc5c5229aa2867358b20241810cf3d922b8a642284d233d8546cc61e6287ae9c1c7dc2741b238842f984123894283b549554d70e7e89de38efcd2dcac5d7e41a1436ba50584f88cb921007a2590c138ee99cd17f1af988534a81b57bc7d77846c9ea34e8067c254501d9ad2b52a68a1e27e7d2267bafce2a6f1dd72ecf353d86dd54983b107c76deee8a7710df78c760aa76cc11218de1727d9c5fdc86e28c90a63eeac44e7f50e657fcfbf35d22dd22e7da25af227bca004fe3d1d20ee73bc15a89294a60f313497d9b84bcdadcfe4eb571833ceb0266286dc5373319feccda2b1fde203852dcf87fb5a153551aa484e63854598c6deaebde9b730e34deb92b6285fc26139a64392b811b8c1027e79401f751139ddd7ef3f75bc7d006b3259097f054699cd2249a11c43ff0fba6fd00d76c86ef18a9c397fab74a13c3782606c30ebae79fd47f34090fd2d7250f7c797bd636b708b98550c222a5c92452f67160445deadfb1b914f67ea1ccf2ab47823790ebd3d0e15c51dcfe2b0a27c76adc7b8d91f25109f92ff492e498f47bda852b310e02ff5d87cc048c7972c5a58e1333d5e8b1271255fd179ba39762e859496052c73d54dee6a5c9198ed203b3c302b8ac98f5fd7db337a608e03969881a09d324689bcc0a429d7af1cc634cdd8b15c72d22267bc2f7f53e4a146285f5d598f87af1119ef0e5df9b8d0b50b939f9e1f76d0856958c843723478dce7b054935a69a2d9593ba355dc22d203e7214b6d63eb5f7099098091723f7525c09c70463fb144fcdf273f7cd1575184d93e30a787d9e4884d97961c23899bf6fc2a8fa58b5254da65e27448c38bdf28d8db38a58d6ce00e0df70ef1070e73ab69961e422fcc567e2bc12890d81bd9d0354a04763fffa0406f7592355d6ee37bf33631b0031539b107c2f42e9fd225caa70d996eebce581665288291adc0b2fd27ed83377b0045503abaf659f7ecc166a6eda2e2334953bceb97a24e87f7744e1788dd2eaea8bd214a4cca822547e37af6fa70ef75e6c60781842e93028f202acdb133d368c933e43b45c3475929e279a4511867bd6e33e3f90efd63ddc96806973975be0bc1d1d2bd15f8cd41bf4199cb6b6c7a4bed0e58e89a703b3f946eafa1b70626b48c1f2e20cf7c076dd5a2a6b5ad6a12f82da35881fce6c7682b6c86d673867f0b1d2f7d4f1c3643f5daba7f44e7cd35cdeb14c6140c361700e544902b575478b5027e29dbe5e64e66c38b74169bef17c13512e04b4e0ad9bd1c1ae98aa51a11fcf86e91db0baf01e0d2002fa375969df0fec3a3be5fb644bf8d0f982b9ec5311c5f29d8920d7d8ec3d82d55325754a94bc0def34b564c45c1e20990815b65d66b31f680baf16cc00e7aa816ba8e36a4d777c7e231e9efc9cb439172b2a492d39296c6e5fd6a00feebda164c7516a27710b7545655609594c1035358a829e5be7ce9e20931e7794a0566a69841c369a148d54121ba8859632ddfb2e8324d0c09bc9276bb198cb457ea5c6a936d7a6862a986ae86ea503edffc1f1bdaf61306e9aa974ecd47805ae07048d0782a6611a5f5eba288c6076fb8886eb7a23fa97b27af70b47e01b7620239e2e92bb166c4c854147317235c77687ddbe94c1086d22ed90631e2177abadc310ea0f427bb4ca1fbd180ac296117c28b7cd90c5a332b21f055c9298632a889d08eb5d8635434529e0c5d37dfa0fe849d378396eb50a98475924efab473e71451abc23eda95d1a5d60b8265f64d36ba2ef1e69b4cfc4e39ba1138cfa536087f9be11e38705c138e91faad2c0e8ffbaebf9ec74e3a085e1d7766078f015bba8d819269fa465b1c28f7c096cd90d436013179a4ce212ee20849f6069b7e750a7ebb114ab9e2b32c81e07299f84f382fb6d70a772854a15dd13bed7ae9ccada797f9ee88b02c0e7ac457de8b47cc34e438a9d84f67b190242d67c7be5faeced4a167da08730dac23c714adc99d0881f291a6a8828ae2c79d79446342a3d6af63d53e10729ef97aa9da5c8c6eb3eefe4223079d958777ae3a57bf1b4ecfb86fb51dad35fc1de42778f90d051bdd25bc49a96f152ed13fb7ccf9551c26391dc5ef554818bb9a22ca686ab988828a48cf4da4307c854cd3f4b7ce9e349d5d71a54f179c3f119a10e39a4f287db4e71f5b8ac80c9b8949d7458d2fddcbd34f398c1ebf76ecf409958eb1a9ee565952e55d918c7f8b22fb55ac21775afe5141cf0d94347bd9806f4c57c3c98001e848755e3ed5b25c840d6e8586cf18b758975240270b90fd46ec4ef7186e889033d04a524268ab4d3730da11bce7be39d7bd3f457ee99f5070913b1b316cf2b8f968d7f83202712ac24ab019b5d0698b68d329bcd9ecee013bfff55b3a370fe2ea2cf4157f6fe459fb78a200644461ab49a63449eeb26bd815bffd8954204351a414c728284d8c54e82bc76f4f1869b1732d9497ce838c4840d047f480210dd8335995952e6d312164cc1104f93170eb7a9a0503ab7eb2e160ad082096a3901ed0c6ce9977da94653b7bdd3c058a94f1a74b29b7d56b56b263ec9e1b982b3c3b03a2e03800abf6fa73ef5a4f13374c2d511dc6cc71f32831ca0d912741f772ed64579f05b7c3366274dd5b9a918ddab8c18d7e7dcddab6d094f459720428c9b5e367275deee6aa684b80f4ad149fc4902f452bf4efd3fb05478d8bf63aa4a844f778916546a063441e91b02d238b62f94467ede276fd13cbe4a4fdec9ba642f383a81b4973b0e755298091432c66148accb6ca9bad694e7d0a17771cc4bc12fcf315db2872989abb4fc75011a6cbf7f1b152e39bc9902784d7e5d7eb3653b6335e7baf9729652c1ec323a7d56dc494407c19f8f96a6c8db3b05e36cadf45cddf9f69984736a31c4868d85b428855ceeeee993673a7151080832f934625129fb0decd07636144707583a3a46b04fd4762742168df9d48b4a284a6a9c2a9cccfcea799dd1470a26fbd8e9e0248f5e03c103ad5fcde2d53f2580c95b0f5d9ca0b9fafe0e90945da66401a7c39d6a1e1e49cf51ce3361d65d39e61e11fa646f2e61df304a2cd815f5f2e009d29ad6d95a30996c67635a9c289f3a36ae983e6a38d4b31c9c62cb8295997c9432a74bbb45dab9ad5e8424504ae3e417887b9a1a506585b07091d0458b685bde439340482e5faba225b4a1201f90b5c7ae2917ea974f16a894b259e4acae9df880f8dcb9fef1f16883879740766680eb87ed21c7da78e6d702f68695eb6792c626eab1f40e10785d3a376f9a27b32085651bf72cbb76303b5b16eb12379f8bc4a9ee26e9ed412de6354c5f6fd8cc155db98249c02c57abc09b6973cce7a196ea5bba3042ab83a58acad78832393d06a96cea8fc960f0ce6f96f74b8b1b93dc3d9d1c6806ebba2dac9a8ce649c8cda2cb887d201de2ce84fe544f3d20450477dcc2022dd9310373bb9d114b0a981293b91c47ba4d073075125cc3df8d0350ec10f058b01c16c5ed8b04793f77f09ee9c12c53ead757a3112b233d738ef7ce9bf36159c49764525ad770be8e10f5e0e0339da63e8bcc7ed634b97a1fa754607ad0c98061ce192c969587bb222b206af9ecd749b340e9362c721d1bc2a6b6c9fe8900b9b4820f87435381bdcd1a7dbc080a38f3357324dd41d50fc161f946dcaf95868087b7abd68b5f7418afed8b841ee8435d54614c2329e7e0a8e3b230c4fe4fda0f5e920433184b5032103ba723a77a5708ae8c1fa5793e0f3d41baf7bfca8b5d9470ebb84eda61d7d1689c9323c6d672006e9101f8a7fe23d1a02e502107dd1238ccf49309119b8b4d24c96a6e4fe278ed9ef9d51c7d108ce41c720671fb73deaca6bd0e0bded5e03f981fb28419481f4df450d610c4fb1c98d6e5dbf146ad5f9671082127f4e05e8413d0c8deecaceec6c8f3f94382a40348d48403d6eab3ce748098bb66ea3e98141748468f97296808eb99a2cd4932f7523eb7c59cff2b942205f81ba3e48af7426c0d899ae086059bd404e89438b4e451025882d99b4c9d793b63d2cf80668ab0e2808afba35ebe9e6a1e06c27f2011cefc5c9c287c9ee11f1652533d8bac6e77e85a18b0b0863dfbd7390beb0a1b42d6c8fba33ae9cd6409fdbd9c9702b3"})
+write(r0, &(0x7f00000002c0)="b19653650ec82422339c4d157517747c8b04d1c259de920a6eb3a046d093a60659879a98549eb27bbfd5756afb11238a75e6821ca5209c5cbec1f0871b83900d", 0x40)
+ioctl$COMEDI_INSN(r1, 0x8028640c, &(0x7f0000000300)={0xc000002, 0x0, 0x0, 0x0, 0x6})
+
+24.636574546s ago: executing program 4 (id=3055):
+clock_nanosleep(0xfcfdffff, 0x0, &(0x7f0000000180)={0x0, 0x989680}, 0x0)
+timer_create(0x3, 0x0, &(0x7f00000012c0))
+
+24.482381779s ago: executing program 0 (id=3067):
+r0 = socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$sock_int(r0, 0x1, 0x3c, &(0x7f0000000140)=0x1, 0x4)
+
+24.379663494s ago: executing program 2 (id=3056):
+r0 = socket$inet6_icmp_raw(0xa, 0x3, 0x3a)
+socket$inet6_icmp_raw(0xa, 0x3, 0x3a)
+setsockopt$inet6_IPV6_XFRM_POLICY(r0, 0x29, 0x23, &(0x7f0000000480)={{{@in=@dev={0xac, 0x14, 0x14, 0x40}, @in=@local, 0x4e21, 0x2b2d, 0x4e24, 0x4, 0xa, 0x0, 0x80, 0x88}, {0x5, 0x1, 0x66, 0x1, 0x8, 0x81, 0xc, 0x3898b3bc}, {0x808, 0x2, 0x1, 0xfffffffffffffffa}, 0x103, 0x6e6bc0, 0x0, 0x0, 0x2}, {{@in=@dev={0xac, 0x14, 0x14, 0x43}, 0x4d4, 0x2b}, 0x2, @in6=@empty, 0x34ff, 0x1, 0x0, 0x5, 0x7, 0x80, 0xf2a1}}, 0xe8)
+r1 = openat$sndtimer(0xffffffffffffff9c, &(0x7f0000000000), 0x400)
+ioctl$SNDRV_TIMER_IOCTL_SELECT(r1, 0x40345410, &(0x7f0000000200)={{0x0, 0x3, 0x9, 0x3, 0x8e}})
+ioctl$SNDRV_TIMER_IOCTL_SELECT(r1, 0x40345410, 0x0)
+r2 = socket$igmp(0x2, 0x3, 0x2)
+sendmsg$inet(r2, &(0x7f0000000740)={&(0x7f0000000200)={0x2, 0x4e20, @empty}, 0x10, 0x0, 0x0, &(0x7f00000004c0)=[@ip_retopts={{0x10}}], 0x10}, 0x4008090)
+r3 = openat$ubi_ctrl(0xffffffffffffff9c, &(0x7f00000000c0), 0x111102, 0x0)
+setsockopt$inet_udp_encap(r3, 0x11, 0x64, &(0x7f0000000100), 0x4)
+sendto$inet(r2, &(0x7f0000000000)="2c71df4f92ac4dd7b96b7761255b66e163182157694a5b9dfd5cfe39aa78b95d5072631b3df6808ab6b5b3fdf007eabf7c412ae5ecbcf5db79740d6b5ab4ae59d1099112f53806a2ecb184f50198b7ea90c484bfae70ba1554674a9a8d3ac7d77c977d858402463b8ea1cccd4d2faf65a78f14e17711e1aeee38ec0f4d587b58631c2ba44b116c60d6dba2e6525ce3d4eedb7220e5983ed4e3ad0ffbe5ea97dd906ddee25cc43937aa59593bca1f253dbf3dc46fd750ef582d71", 0xba, 0x20000800, 0x0, 0x0)
+
+24.286776716s ago: executing program 3 (id=3057):
+r0 = socket$nl_rdma(0x10, 0x3, 0x14)
+getsockopt$MRT6(0xffffffffffffffff, 0x29, 0xcf, &(0x7f0000000000), &(0x7f0000000040)=0x4)
+r1 = socket$inet(0x2, 0x1, 0xd)
+accept4$inet(r1, &(0x7f0000000000)={0x2, 0x0, @multicast2}, &(0x7f0000000040)=0x10, 0x800)
+r2 = openat$sndtimer(0xffffffffffffff9c, &(0x7f0000000080), 0x2)
+ioctl$SNDRV_TIMER_IOCTL_SELECT(r2, 0x40345410, &(0x7f00000000c0)={{0x2, 0x2, 0x0, 0x1, 0x5}})
+sendmsg$RDMA_NLDEV_CMD_STAT_DEL(r0, &(0x7f00000000c0)={0x0, 0x0, &(0x7f0000000080)={&(0x7f0000000100)=ANY=[@ANYBLOB="302b00001214010029bd7000fbdbdf25080003000000000008004f000400000008004b00130000000800012002000000b2853c9d6193c39648e3d04bd8f99a7a0760ba9dc8393d70e4043137227e05c10fbcc7d90c30fcdb26e17dc86bb3aef8715e87ddc0392aaa7e92c581d78f6a4ab00b5bc2bd2644a535ef330f9a6e59e266a9a96c3d1ab20f4b09afe60b15b55d62149ab25b69413a3e14223db8fed490639c2f6c9ebf9fe1692d2cc60f77260a0a64af9888ea17c0287227662da2ef88df31b8039c5e0dcdc9cf657d990377b03124bb01c8cb102fcc1aeba20ba4629ae858d8b105632ba86cd48bcb7bb9a943b55327208d370abd1e16ec1d16c9248f9683d804d28e9957c64e1425fcc2d56dc9afca99f7e70539657be1968e542d54ab1557f1ffedee75137b6134196f79c17031fe94da47b6adc1bfae13279261be7e5fd704828cab478b73a8e8f9926c9e1d1aae69212df71b6d1a91b28c23f30f7e9f750c0fdd546f004c68e208fdfa512aa342bfb73971bd28d8234a4ab16a77761b6c50a19fd81f56e08b857ce04652ba07b46fe2e49a6056ce637e2215a8d84891ceb81343c4568fbf3cb639f70c6feff7640b25c0652a69b5d07a8906fc2fe410400d9ac06239532d2e33"], 0x30}, 0x1, 0x0, 0x0, 0x8000}, 0x0)
+
+23.951509083s ago: executing program 1 (id=3058):
+r0 = syz_create_resource$binfmt(&(0x7f0000000040)='./file1\x00')
+r1 = openat$binfmt(0xffffffffffffff9c, r0, 0x42, 0x1ff)
+close(r1)
+execveat$binfmt(0xffffffffffffff9c, r0, 0x0, 0x0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', &(0x7f00000000c0), 0x0, 0x0)
+mount$tmpfs(0x0, &(0x7f0000000300)='./file1\x00', 0x0, 0x40000, 0x0)
+mount$tmpfs(0x0, &(0x7f0000000000)='./file0\x00', 0x0, 0x900cb2, 0x0) (fail_nth: 11)
+
+23.313157803s ago: executing program 5 (id=3059):
+r0 = socket$kcm(0x29, 0x5, 0x0)
+r1 = add_key$fscrypt_v1(&(0x7f0000000040), &(0x7f0000000080)={'fscrypt:', @desc4}, &(0x7f00000000c0)={0x0, "45226d4ededdb6f8e3f1b173ae2cdfc54dfd8f3db73614db259276d0bb8289e3304a7b7032c7246dc456e4d3fb7da7473696b09fb72e4df8343ecf85363a317d", 0x2f}, 0x48, 0xfffffffffffffffc)
+keyctl$invalidate(0x15, r1)
+ppoll(&(0x7f0000000000)=[{r0, 0xa006}], 0x1, 0x0, 0x0, 0x0)
+io_setup(0x8, &(0x7f0000000200))
+r2 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000040), 0x20800)
+ioctl$SNDRV_SEQ_IOCTL_DELETE_PORT(r2, 0x40a85321, &(0x7f0000000080)={{0x3, 0x9}, 'port1\x00', 0xc7, 0x1810, 0x9, 0x200, 0x4, 0xe, 0x73be, 0x0, 0x3})
+
+19.174952679s ago: executing program 0 (id=3060):
+mmap$IORING_OFF_CQ_RING(&(0x7f0000c00000/0x400000)=nil, 0x400000, 0x2000004, 0x31, 0xffffffffffffffff, 0x8000000)
+r0 = syz_create_resource$binfmt(&(0x7f0000000040)='./file1\x00')
+r1 = openat$binfmt(0xffffffffffffff9c, r0, 0x42, 0x1ff)
+close(r1)
+execveat$binfmt(0xffffffffffffff9c, r0, 0x0, 0x0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+r2 = openat$audio(0xffffffffffffff9c, &(0x7f0000000040), 0x109000, 0x0)
+ioctl$SNDCTL_DSP_SUBDIVIDE(r2, 0xc0045009, &(0x7f0000000080))
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', &(0x7f00000000c0), 0x0, 0x0)
+r3 = socket$unix(0x1, 0x2, 0x0)
+setsockopt$sock_int(r3, 0x1, 0x2e, &(0x7f0000000000)=0xfffff769, 0x4)
+mount$tmpfs(0x0, &(0x7f0000000100)='./file0\x00', 0x0, 0x150422, 0x0)
+mount$tmpfs(0x0, &(0x7f0000000000)='./file0\x00', 0x0, 0x900cb2, 0x0)
+
+18.585047408s ago: executing program 4 (id=3061):
+write(0xffffffffffffffff, &(0x7f0000000000)="aa1c98c1add67e6cfd4c0ee4157eb8f6b38ab38779cf453a9a2b6f6b97c241cc03fb9f62189c7b9b2d154a9ef05edd3a1ee6bfd5e1f58b93ab25b3b109da031238d5f986cfe02f43353583d4b7797673ed43a0abbd7e0eae5241f0de302b12430538483441bcabaad1d1ff400a6833036e363b3bcfde3ce08ad1ca7a11b79d", 0x7f)
+ioctl$sock_ipv6_tunnel_SIOCGETTUNNEL(0xffffffffffffffff, 0x89f0, &(0x7f0000000100)={'ip6tnl0\x00', &(0x7f0000000080)={'ip6_vti0\x00', <r0=>0x0, 0x29, 0x9, 0xc, 0x8, 0x0, @local, @private0={0xfc, 0x0, '\x00', 0x1}, 0x7, 0x728, 0x200000, 0x6}})
+r1 = syz_socket_connect_nvme_tcp()
+recvfrom$inet_nvme(r1, &(0x7f0000000140)=""/218, 0xda, 0x2000, 0x0, 0x0)
+ioctl$IOCTL_GET_NCIDEV_IDX(0xffffffffffffffff, 0x0, &(0x7f00000002c0)=<r2=>0x0)
+recvfrom$inet_nvme(r1, &(0x7f0000000240)=""/86, 0x56, 0x12040, &(0x7f0000000300)=@nfc_llcp={0x27, r2, 0x0, 0x4, 0x3, 0x3, "0cae63a42ed54efee19b4d7bb823d0319cae01672294347de857783ac485e19e34247b9fd849706bea18a580fd8eaf58b07298d8d7dff844a5062e49142182", 0xf}, 0x80)
+r3 = bpf$BPF_MAP_GET_FD_BY_ID(0xe, &(0x7f0000000380)={0x0, 0x7fffffff}, 0xc)
+ioctl$ifreq_SIOCGIFINDEX_team(r1, 0x8933, &(0x7f0000000e00))
+timer_create(0x3, &(0x7f0000000600)={0x0, 0x40, 0x1, @thr={0x0, &(0x7f0000000500)}}, &(0x7f0000000640)=<r4=>0x0)
+timer_settime(r4, 0x1, &(0x7f00000006c0)={{}, {0x0, 0x3938700}}, 0x0)
+r5 = openat$ttynull(0xffffffffffffff9c, &(0x7f0000000940), 0x800, 0x0)
+r6 = accept4$inet6(0xffffffffffffffff, &(0x7f0000001200)={0xa, 0x0, 0x0, @mcast2}, &(0x7f0000001240)=0x1c, 0x0)
+r7 = socket$nl_generic(0x10, 0x3, 0x10)
+ppoll(&(0x7f0000001280)=[{r1, 0x1080}, {r5, 0x8101}, {r6, 0x8010}, {r5, 0xc064}, {r3, 0x2020}, {r7, 0x401}, {r3, 0x1400}, {r5, 0x2000}], 0x8, &(0x7f00000012c0), &(0x7f0000001300)={[0x7]}, 0x8)
+timer_settime(r4, 0x1, &(0x7f0000000c80)={{0x0, 0x989680}}, &(0x7f0000000cc0))
+r8 = bpf$PROG_LOAD_XDP(0x5, &(0x7f0000000780)={0x6, 0x13, &(0x7f0000000500)=@ringbuf={{0x18, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0xbb2}, {}, {}, [@ringbuf_query], {{}, {}, {0x85, 0x0, 0x0, 0x84}}}, &(0x7f00000005c0)='GPL\x00', 0x6, 0xb0, &(0x7f0000000600)=""/176, 0x41000, 0x0, '\x00', 0x0, 0x25, 0xffffffffffffffff, 0x8, &(0x7f00000006c0)={0xa, 0x2}, 0x8, 0x10, &(0x7f0000000700)={0x1, 0xf, 0x800, 0xb98}, 0x10, 0x0, 0x0, 0x0, &(0x7f0000000740)=[0xffffffffffffffff, 0x1, 0x1, r1, 0xffffffffffffffff, 0x1, 0xffffffffffffffff, 0x1, 0x1], 0x0, 0x10, 0x9}, 0x94)
+ioctl$DRM_IOCTL_PRIME_HANDLE_TO_FD(0xffffffffffffffff, 0xc00c642d, &(0x7f0000000e40)={0x0, 0x0, <r9=>0xffffffffffffffff})
+ioctl$DRM_IOCTL_MODE_GETRESOURCES(0xffffffffffffffff, 0xc04064a0, &(0x7f0000000f80)={&(0x7f0000000e80)=[0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0], &(0x7f0000000ec0)=[0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0], &(0x7f0000000f00)=[0x0, 0x0, 0x0, <r10=>0x0, 0x0], &(0x7f0000000f40)=[0x0, 0x0, 0x0], 0x7, 0x8, 0x5, 0x3})
+ioctl$DRM_IOCTL_MODE_GETENCODER(0xffffffffffffffff, 0xc01464a6, &(0x7f0000001000)={0x0, 0x0, <r11=>0x0})
+ioctl$DRM_IOCTL_MODE_GETRESOURCES(0xffffffffffffffff, 0xc04064a0, &(0x7f0000001140)={&(0x7f0000001040)=[<r12=>0x0, 0x0, 0x0, 0x0, 0x0, 0x0], &(0x7f0000001080)=[0x0, 0x0, 0x0], &(0x7f00000010c0)=[0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0], &(0x7f0000001100)=[0x0, 0x0, 0x0, 0x0], 0x6, 0x3, 0x8, 0x4})
+ioctl$DRM_IOCTL_MODE_SETCRTC(r9, 0xc06864a2, &(0x7f0000001180)={&(0x7f0000000fc0)=[r10, 0x0], 0x2, r11, r12, 0xaa, 0x8, 0x7fffffff, 0x2, {0x200, 0x39, 0x9, 0x7f, 0x8, 0x4e, 0x7, 0x6ca8, 0x4, 0x16, 0x100, 0x8, 0x4b92, 0x6, "ebabf91a6e795c81613117d665b96854fca207316bc748159f5365163f83830c"}})
+r13 = add_key$fscrypt_v1(&(0x7f00000009c0), &(0x7f0000000a00)={'fscrypt:', @desc4}, &(0x7f0000000a40)={0x0, "68eb475fc07b9c59b13a17588a8705d71ab3076a9a77125b8240095578156a62ea372a60b5cd1d6a38dffaa39b6ac8d18b3ec3495a7f1fd88cf2c17be1d74c8f", 0x28}, 0x48, 0xfffffffffffffffe)
+keyctl$KEYCTL_PKEY_VERIFY(0x1c, &(0x7f0000000ac0)={r13, 0xc7, 0xfa}, &(0x7f0000000b00)={'enc=', 'raw', ' hash=', {'streebog256-generic\x00'}}, &(0x7f0000000b80)="e37057290a61e28ebb97bae06c9c4675cc46b8cc66d0709528178fd1f90a2f267e78a4ee07298d16a282230fa891b922669a61114adf2bb308c3d76d7574cd859f5a406d56a5cffb3f921f876f1d376a1ce161763165de3709b0fc9607f33bc64603198b6ef515b35504f3392c1d0df4e058c2afe9d14a4761ac9205b1c29afe32b9349fe4bc9b685e50b53e1e1908a7966150cdd92bd89cc445c67c8b85b5967598d8ca04399ab60a5c563fddf125f212e545dedd0e9830788465653b42c73359f1827fb3f70d", &(0x7f0000000d00)="e44e7d2c10e2b5f6d617b6481eea05ae4bb70008e3edb3d128a72c6d3c9cf5d40a96bb596e320473a7ab0950523ca92c1cbdf84079e3de0f38641a00377ce1a778066214cb11da0691125ecec8f07e8f8c6a58b356e31cc41488e9f1a6f0092e56acabc91880ca04c93d83e00c3b2704780000ebb5fcc1409ed6e7d23434918065c5b6682bac1806ef2fe39bdd915228d1b6b06e752fdc47230fb8ba7329ec98ae416912f84dbe17b9d9ac3b4b99a7d7ef539183c5e24f537a0aacfc262363808b0037278910e3137d9972add5e530721fddf4d26a0c0bf6389e67fa508feec1a1bc812af408f4105312403364ad79729b174c9bf79691c46095")
+bpf$BPF_PROG_WITH_BTFID_LOAD(0x5, &(0x7f0000000880)=@bpf_ext={0x1c, 0x13, &(0x7f00000003c0)=@raw=[@snprintf={{}, {}, {0x7, 0x0, 0xb, 0x8, 0x0, 0x0, 0x2}, {}, {}, {}, {}, {}, {}, {0x18, 0x3, 0x2, 0x0, r3}}, @cb_func={0x18, 0x3, 0x4, 0x0, 0xfffffffffffffffe}, @kfunc={0x85, 0x0, 0x2, 0x0, 0x5}, @call={0x85, 0x0, 0x0, 0xaf}, @ldst={0x3, 0x0, 0x1, 0x6, 0x0, 0x6, 0xffffffffffffffff}, @generic={0x4, 0x1, 0x3, 0x0, 0xffffffff}], &(0x7f0000000480)='GPL\x00', 0xffff8001, 0x0, 0x0, 0x41000, 0x1, '\x00', r0, 0x0, 0xffffffffffffffff, 0x8, 0x0, 0x0, 0x10, &(0x7f00000004c0)={0x1, 0xd, 0x400, 0xf22d}, 0x10, 0x2b94b, r8, 0x2, 0x0, &(0x7f0000000840)=[{0x2, 0x5, 0x3, 0x3}, {0x0, 0x2, 0x6, 0x8}], 0x10, 0x3b418915}, 0x94)
+r14 = socket$inet_udp(0x2, 0x2, 0x0)
+ioctl$FIBMAP(r14, 0x1, &(0x7f0000000980)=0x800)
+
+17.249091331s ago: executing program 1 (id=3062):
+r0 = openat$iommufd(0xffffffffffffff9c, &(0x7f0000000080), 0x0, 0x0)
+r1 = openat$dlm_plock(0xffffffffffffff9c, &(0x7f0000000000), 0x8802, 0x0)
+fchdir(r1)
+mmap(&(0x7f0000ffc000/0x4000)=nil, 0x4000, 0x100000f, 0x10, r0, 0xd62f4000)
+r2 = openat$comedi(0xffffffffffffff9c, &(0x7f0000000000)='/dev/comedi4\x00', 0x200, 0x0)
+ioctl$COMEDI_CMD(r2, 0x80506409, &(0x7f0000000140)={0x1, 0x30000, 0x100, 0x6, 0x100, 0x8, 0x20, 0x3, 0x100, 0x0, 0x100, 0x4, &(0x7f0000000040)=[0x7abe82ff], 0x1, 0x0})
+ioctl$IOMMU_IOAS_ALLOC(r0, 0x3b81, &(0x7f00000000c0)={0xc, 0x0, <r3=>0x0})
+ioctl$IOMMU_IOAS_UNMAP$ALL(r0, 0x3b86, 0x0)
+ioctl$IOMMU_IOAS_MAP$PAGES(r0, 0x3b85, &(0x7f00000007c0)={0x28, 0x7, r3, 0x0, &(0x7f0000ffc000/0x1000)=nil, 0x1000, 0x1004000})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000000)={0x8, r3})
+openat$mice(0xffffffffffffff9c, &(0x7f00000000c0), 0x100)
+pselect6(0x40, &(0x7f00000000c0)={0x4, 0x534efdef, 0x5, 0x4, 0x9, 0x2}, &(0x7f0000000100)={0x9, 0xa4e, 0x6, 0x2, 0x8, 0x8000, 0x2, 0x8}, 0x0, 0x0, 0x0)
+ioctl$IOMMU_IOAS_MAP(r0, 0x3b85, &(0x7f0000000a00)={0x28, 0x7, r3, 0x0, &(0x7f00000a0000)='LLL', 0x3})
+ioctl$IOMMU_DESTROY$ioas(r0, 0x3b80, &(0x7f0000000d00)={0x8, r3})
+r4 = socket$rds(0x15, 0x5, 0x0)
+r5 = fcntl$dupfd(r4, 0x0, r4)
+bind$inet6(r5, &(0x7f0000000000)={0xa, 0x4e21, 0x6, @dev={0xfe, 0x80, '\x00', 0x3f}, 0x5}, 0x1c)
+ioctl$IOMMU_IOAS_MAP$PAGES(r5, 0x3b85, &(0x7f00000001c0)={0x28, 0x4, r3, 0x0, &(0x7f0000ffd000/0x1000)=nil, 0x1000, 0x10000})
+
+17.24819744s ago: executing program 5 (id=3063):
+mbind(&(0x7f0000ffb000/0x4000)=nil, 0x4000, 0x1, &(0x7f00000001c0)=0x7, 0x6, 0x1)
+syz_clone(0x11, 0x0, 0x0, 0x0, 0x0, 0x0)
+mlock(&(0x7f0000ffe000/0x1000)=nil, 0x1000)
+symlinkat(&(0x7f00000000c0)='./file0\x00', 0xffffffffffffff9c, &(0x7f0000000100)='./file0\x00')
+symlinkat(&(0x7f0000000000)='./file0/file0\x00', 0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00')
+lsetxattr(&(0x7f0000000140)='./file0/file0\x00', &(0x7f0000000180)=@known='security.selinux\x00', 0x0, 0x0, 0x2)
+openat$tun(0xffffffffffffff9c, &(0x7f0000000400), 0x46000, 0x0)
+
+17.203698797s ago: executing program 2 (id=3064):
+r0 = socket$packet(0x11, 0x3, 0x300)
+r1 = eventfd2(0x8, 0x800)
+io_setup(0x1, &(0x7f0000000340)=<r2=>0x0)
+io_submit(r2, 0x2, &(0x7f0000000a00)=[&(0x7f0000000440)={0x0, 0x0, 0x0, 0x0, 0x2a, r1, 0x0, 0x0, 0xa7b2, 0x0, 0x1, r1}, 0x0])
+r3 = socket$inet6_mptcp(0xa, 0x1, 0x106)
+ioctl$ifreq_SIOCGIFINDEX_batadv_hard(r3, 0x8933, &(0x7f0000000700)={'batadv_slave_1\x00', <r4=>0x0})
+write$cgroup_subtree(r3, &(0x7f00000001c0)={[{0x2d, 'blkio'}]}, 0x7)
+bind$packet(r0, &(0x7f0000000000)={0x11, 0x7, r4, 0x1, 0x1, 0x6, @local}, 0x14)
+r5 = socket$igmp(0x2, 0x3, 0x2)
+setsockopt$MRT_ADD_VIF(r5, 0x0, 0xca, &(0x7f0000000180)={0x0, 0x0, 0x10, 0x5, @vifc_lcl_ifindex=r4, @private=0xa010100}, 0x10)
+r6 = socket$inet6_mptcp(0xa, 0x1, 0x106)
+r7 = socket$l2tp6(0xa, 0x2, 0x73)
+sendmsg$inet6(r7, &(0x7f0000001d00)={&(0x7f0000001780)={0xa, 0x4e22, 0x8, @private1={0xfc, 0x1, '\x00', 0x1}, 0x80000000}, 0x1c, 0x0}, 0x4)
+getsockopt$inet6_mptcp_buf(r6, 0x11c, 0x4, 0x0, &(0x7f0000000240))
+bind$packet(r0, &(0x7f0000000040)={0x11, 0x7, r4, 0x1, 0x7, 0x6, @random="f60131a7bcba"}, 0x14)
+r8 = openat$mixer(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
+ioctl$BTRFS_IOC_QGROUP_CREATE(r8, 0x4010942a, &(0x7f0000000100)={0x1, 0x5})
+r9 = socket$inet_mptcp(0x2, 0x1, 0x106)
+ioctl$sock_inet_SIOCSIFFLAGS(r9, 0x8914, &(0x7f0000000000)={'geneve0\x00'})
+ioctl$sock_inet_SIOCSIFFLAGS(r9, 0x8914, &(0x7f0000000040)={'batadv_slave_1\x00', 0x800})
+
+15.907828333s ago: executing program 3 (id=3065):
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+getsockopt$inet_tcp_buf(r0, 0x6, 0x25, 0x0, &(0x7f00000002c0))
+syz_open_dev$usbmon(&(0x7f0000000000), 0x251f0215, 0x2000)
+
+12.310763587s ago: executing program 4 (id=3066):
+r0 = syz_init_net_socket$nl_generic(0x10, 0x3, 0x10)
+r1 = syz_genetlink_get_family_id$nfc(&(0x7f0000000380), r0)
+sendmsg$NFC_CMD_START_POLL(r0, &(0x7f0000000100)={0x0, 0x0, &(0x7f00000000c0)={&(0x7f0000000080)={0x2c, r1, 0x1, 0x70bd2d, 0x25dfdbfd, {}, [@NFC_ATTR_DEVICE_INDEX={0x8}, @NFC_ATTR_TM_PROTOCOLS={0x8, 0xe, 0x14}, @NFC_ATTR_PROTOCOLS={0x8, 0x3, 0x68}]}, 0x2c}, 0x1, 0x0, 0x0, 0x45055}, 0x4)
+r2 = syz_genetlink_get_family_id$ieee802154(&(0x7f0000000040), r0)
+ioctl$sock_SIOCGIFINDEX_802154(r0, 0x8933, &(0x7f0000000140)={'wpan0\x00', <r3=>0x0})
+ioctl$sock_SIOCGIFINDEX_802154(r0, 0x8933, &(0x7f0000000180)={'wpan3\x00', <r4=>0x0})
+r5 = openat$nullb(0xffffffffffffff9c, &(0x7f0000000780), 0x24001, 0x0)
+ioctl$BLKRRPART(r5, 0x125f, 0x0)
+ioctl$BLKRRPART(r5, 0x125f, 0x0)
+sendmsg$IEEE802154_LIST_IFACE(r0, &(0x7f0000000280)={&(0x7f0000000000)={0x10, 0x0, 0x0, 0x200}, 0xc, &(0x7f0000000240)={&(0x7f00000001c0)={0x6c, r2, 0x4, 0x70bd29, 0x25dfdbfd, {}, [@IEEE802154_ATTR_DEV_NAME={0xa, 0x1, 'wpan0\x00'}, @IEEE802154_ATTR_DEV_NAME={0xa, 0x1, 'wpan1\x00'}, @IEEE802154_ATTR_DEV_NAME={0xa, 0x1, 'wpan3\x00'}, @IEEE802154_ATTR_DEV_NAME={0xa, 0x1, 'wpan4\x00'}, @IEEE802154_ATTR_DEV_INDEX={0x8, 0x2, r3}, @IEEE802154_ATTR_DEV_NAME={0xa, 0x1, 'wpan1\x00'}, @IEEE802154_ATTR_DEV_NAME={0xa, 0x1, 'wpan0\x00'}, @IEEE802154_ATTR_DEV_INDEX={0x8, 0x2, r4}]}, 0x6c}, 0x1, 0x0, 0x0, 0x4004010}, 0x0)
+
+12.117927759s ago: executing program 0 (id=3079):
+r0 = socket$inet6_udplite(0xa, 0x2, 0x88)
+mkdirat(0xffffffffffffff9c, &(0x7f0000002040)='./file0\x00', 0x0)
+mount$cgroup2(0x0, &(0x7f0000000340)='./file0\x00', &(0x7f00000003c0), 0x200001, &(0x7f0000000400)={[{@memory_localevents}]})
+connect$inet6(r0, &(0x7f0000000000)={0xa, 0x4e22, 0x9, @local, 0x3}, 0x1c)
+sendmsg$inet6(r0, &(0x7f0000000100)={&(0x7f0000000040)={0xa, 0x4e24, 0x3dc7e46f, @private2, 0x5}, 0x1c, 0x0}, 0x0)
+bpf$OBJ_GET_MAP(0xfe0, 0x0, 0x0)
+r1 = socket$inet_icmp_raw(0x2, 0x3, 0x1)
+ioctl$sock_inet_SIOCDELRT(r1, 0x890c, &(0x7f00000000c0)={0x0, {0x2, 0x4e21, @local}, {0x2, 0x4e22, @rand_addr=0x64010101}, {0x2, 0x4e21, @multicast2}, 0x1c0, 0x0, 0x0, 0x0, 0xc1d2, 0x0, 0x9, 0x8, 0x5})
+r2 = openat$cuse(0xffffffffffffff9c, &(0x7f00000000c0), 0x2, 0x0)
+r3 = openat$audio1(0xffffffffffffff9c, &(0x7f0000000080), 0x400000, 0x0)
+r4 = getpgid(0x0)
+syz_pidfd_open(r4, 0x0)
+fcntl$lock(r3, 0x6, &(0x7f0000000140)={0x1, 0x3, 0x7, 0x0, r4})
+read$FUSE(r2, &(0x7f0000002200)={0x2020}, 0x300eab02aba3d29b)
+
+11.177715624s ago: executing program 3 (id=3068):
+r0 = syz_init_net_socket$llc(0x1a, 0x2, 0x0)
+r1 = socket$nl_route(0x10, 0x3, 0x0)
+write(0xffffffffffffffff, &(0x7f0000000340)="4284b79e9f8c", 0x6)
+sendmsg$nl_route(r1, &(0x7f00000001c0)={0x0, 0x0, &(0x7f0000000180)={&(0x7f0000000100)=ANY=[@ANYBLOB="140000005200c12ebe349c2a2f53df250a"], 0x14}, 0x1, 0x0, 0x0, 0x24010184}, 0x400c0)
+ppoll(&(0x7f0000000240)=[{r0, 0x300}], 0x1, 0x0, 0x0, 0x0)
+r2 = socket$inet6_mptcp(0xa, 0x1, 0x106)
+connect$inet6(r2, &(0x7f0000000140)={0xa, 0x4e22, 0xf, @dev={0xfe, 0x80, '\x00', 0xe}, 0x1}, 0x1c)
+write(r2, 0x0, 0x0)
+r3 = syz_open_dev$ndb(&(0x7f0000000040), 0x0, 0x400000)
+ioctl$BLKBSZSET(r3, 0x40081271, &(0x7f0000000080)=0x3)
+r4 = socket$igmp(0x2, 0x3, 0x2)
+recvfrom$inet(r4, 0x0, 0x0, 0x2000, 0x0, 0x0)
+r5 = socket$packet(0x11, 0x2, 0x300)
+ioctl$AUTOFS_DEV_IOCTL_FAIL(r3, 0xc0189377, &(0x7f0000000380)={{0x1, 0x1, 0x18, <r6=>r5, {0x6, 0x3}}, './file0\x00'})
+ioctl$ifreq_SIOCGIFINDEX_vcan(r0, 0x8933, &(0x7f00000003c0)={'vxcan1\x00', <r7=>0x0})
+bind$can_j1939(r6, &(0x7f0000000400)={0x1d, r7, 0x2, {0x0, 0x1, 0x3}, 0xfd}, 0x18)
+ioctl$sock_netdev_private(r1, 0x89fc, &(0x7f0000000280)="1336e97f431d116558376abe98a6177bcf89bfb32effbfb312fa46af0e95c81ed6e48b57a9a80f8d557ce45146792bdb08545cde9bc28feb6db2a9776e8f495b96f75470f1487a7039a05a084e9701179eed6512bea67e1561893812fb0b45dfd61e317ebf75fc01dff8f7097a293aeb411b466b73ae848cf028d2ace9105ebf58ffa3ef0bc4517991efd3d91c099265d017e7b1dfd4d184")
+fcntl$setlease(r5, 0x400, 0x2)
+r8 = socket$igmp6(0xa, 0x3, 0x2)
+ioctl$sock_inet_SIOCSIFFLAGS(r8, 0x8914, 0x0)
+ioctl$sock_inet_SIOCSIFFLAGS(r8, 0x8914, &(0x7f00000000c0)={'ipvlan1\x00', 0x100})
+pipe2$watch_queue(&(0x7f00000000c0)={0xffffffffffffffff, <r9=>0xffffffffffffffff}, 0x80)
+ioctl$TUNSETSNDBUF(r9, 0x400454d4, &(0x7f0000000200)=0x99bbbd4a)
+openat$full(0xffffffffffffff9c, &(0x7f0000000000), 0x448001, 0x0)
+listen(r0, 0x3)
+
+10.705646483s ago: executing program 1 (id=3069):
+r0 = socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$sock_int(r0, 0x1, 0x3c, &(0x7f0000000140)=0x1, 0x4) (fail_nth: 2)
+
+10.074995949s ago: executing program 2 (id=3070):
+r0 = socket$key(0xf, 0x3, 0x2)
+sendmsg$key(r0, &(0x7f0000000080)={0x0, 0x0, &(0x7f0000000040)={&(0x7f0000000000)={0x2, 0xf, 0x1, 0x9, 0x2, 0x0, 0x70bd2d, 0x25dfdbfb}, 0x10}}, 0x800)
+r1 = socket$nl_rdma(0x10, 0x3, 0x14)
+sendmsg$RDMA_NLDEV_CMD_GET(r1, &(0x7f0000000480)={0x0, 0x0, &(0x7f0000000440)={&(0x7f0000000380)={0x10, 0x1401, 0x1, 0x70bd28, 0x25dfdbfe}, 0x10}, 0x1, 0x0, 0x0, 0x40}, 0x40) (async)
+r2 = openat$fuse(0xffffffffffffff9c, &(0x7f0000002000), 0x2, 0x0)
+socket$inet_smc(0x2b, 0x1, 0x0) (async)
+syz_mount_image$fuse(&(0x7f0000002040), &(0x7f0000002080)='./file0\x00', 0x0, &(0x7f0000000040)=ANY=[@ANYBLOB='fd=', @ANYRESHEX=r2, @ANYBLOB=',rootmode=00000000000000000040000,user_id'], 0x0, 0x0, 0x0)
+
+8.204268969s ago: executing program 5 (id=3071):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000280)='./cgroup\x00', 0x0, 0x0)
+open_by_handle_at(r0, &(0x7f0000000080)=@ceph_nfs_snapfh={0x1c, 0xfe, {0x9, 0x1, 0x1, 0x6}}, 0x400000) (fail_nth: 6)
+
+6.018123065s ago: executing program 0 (id=3072):
+syz_open_dev$usbmon(&(0x7f0000000000), 0x251f0215, 0x2000) (fail_nth: 14)
+
+4.786289695s ago: executing program 1 (id=3073):
+r0 = socket$nl_generic(0x10, 0x3, 0x10)
+r1 = socket$netlink(0x10, 0x3, 0xa)
+r2 = syz_genetlink_get_family_id$nl80211(&(0x7f00000000c0), r1)
+setsockopt$netlink_NETLINK_LISTEN_ALL_NSID(r1, 0x10e, 0x8, &(0x7f0000000240)=0x4, 0x4)
+sendmsg$NL80211_CMD_STOP_SCHED_SCAN(r1, &(0x7f0000000180)={0x0, 0x0, &(0x7f0000000140)={&(0x7f0000000500)={0x34, r2, 0x2, 0x70bd2c, 0x25dfdbff, {{}, {@val={0x8}, @val={0xc, 0x99, {0x4, 0x33}}}}, [@NL80211_ATTR_COOKIE={0xc, 0x58, 0xa}]}, 0x34}, 0x1, 0x0, 0x0, 0x40}, 0x4000081)
+r3 = syz_create_resource$binfmt(&(0x7f0000000040)='./file1\x00')
+r4 = openat$binfmt(0xffffffffffffff9c, r3, 0x42, 0x1ff)
+close(r4)
+execveat$binfmt(0xffffffffffffff9c, r3, 0x0, 0x0, 0x0)
+mkdirat(0xffffffffffffff9c, &(0x7f0000000040)='./file0\x00', 0x1c0)
+mount$tmpfs(0x0, &(0x7f0000000080)='./file0\x00', &(0x7f00000000c0), 0x200440, 0x0)
+mount$tmpfs(0x0, &(0x7f0000000000)='./file0\x00', 0x0, 0x900cb2, 0x0)
+r5 = socket$inet_udp(0x2, 0x2, 0x0)
+r6 = socket$kcm(0x29, 0x5, 0x0)
+ioctl$sock_kcm_SIOCKCMCLONE(r6, 0x89e2, &(0x7f0000000140)={<r7=>0xffffffffffffffff})
+syz_genetlink_get_family_id$fou(&(0x7f0000000200), r7)
+sendmsg$NL80211_CMD_SET_MPATH(r7, &(0x7f00000001c0)={0x0, 0x0, &(0x7f0000000180)={0x0}, 0x1, 0x0, 0x0, 0x4}, 0x8015)
+ioctl$sock_SIOCGIFINDEX_80211(r5, 0x8933, &(0x7f0000000140)={'wlan1\x00', <r8=>0x0})
+r9 = socket$nl_generic(0x10, 0x3, 0x10)
+r10 = syz_genetlink_get_family_id$nl80211(&(0x7f0000000040), 0xffffffffffffffff)
+syz_genetlink_get_family_id$devlink(&(0x7f0000000340), r9)
+r11 = socket$nl_generic(0x10, 0x3, 0x10)
+r12 = syz_genetlink_get_family_id$devlink(&(0x7f0000000140), 0xffffffffffffffff)
+sendmsg$DEVLINK_CMD_RATE_SET(r11, &(0x7f0000000280)={0x0, 0x0, &(0x7f0000000240)={&(0x7f0000000180)={0x3c, r12, 0x1, 0x70bd29, 0x25dfdbff, {}, [@DEVLINK_ATTR_PORT_INDEX={0x8, 0x3, 0x3f}, @handle=@nsim={{0xe}, {0xf, 0x2, {'netdevsim', 0x0}}}]}, 0x3c}, 0x1, 0x0, 0x0, 0x4044020}, 0x8040)
+sendmsg$DEVLINK_CMD_PORT_GET(r9, &(0x7f00000004c0)={&(0x7f0000000400)={0x10, 0x0, 0x0, 0x80000}, 0xc, &(0x7f0000000480)={&(0x7f0000000440)={0x3c, r12, 0x20, 0x70bd28, 0x25dfdbfd, {}, [{{@nsim={{0xe}, {0xf, 0x2, {'netdevsim', 0x0}}}, {0x8, 0x3, 0x1}}}]}, 0x3c}, 0x1, 0x0, 0x0, 0x8000}, 0x80000)
+r13 = socket$inet6_tcp(0xa, 0x1, 0x0)
+setsockopt$inet6_buf(r13, 0x29, 0x22, 0x0, 0x0)
+sendmsg$NL80211_CMD_LEAVE_MESH(r9, &(0x7f0000000100)={&(0x7f0000000000)={0x10, 0x0, 0x0, 0x10}, 0xc, &(0x7f00000000c0)={&(0x7f0000000080)=ANY=[@ANYBLOB, @ANYRES16=r10, @ANYBLOB="04002bbd7000fcdbdf254500000008000300", @ANYRES32=r8, @ANYBLOB], 0x1c}, 0x1, 0x0, 0x0, 0x20000000}, 0x815)
+sendmsg$NL80211_CMD_DEL_PMKSA(r0, &(0x7f00000003c0)={&(0x7f00000002c0)={0x10, 0x0, 0x0, 0x40}, 0xc, &(0x7f0000000380)={&(0x7f0000000300)={0x80, r2, 0x800, 0x70bd26, 0x25dfdbfe, {{}, {@val={0x8, 0x3, r8}, @val={0xc, 0x99, {0x3, 0x29}}}}, [@NL80211_ATTR_FILS_CACHE_ID={0x6, 0xfd, 0x7}, @NL80211_ATTR_PMK_LIFETIME={0x8, 0x11f, 0x2}, @NL80211_ATTR_FILS_CACHE_ID={0x6, 0xfd, 0x100}, @NL80211_ATTR_SSID={0x1e, 0x34, @random="7fb98246d048977b61da92ee68899f43a90d3a9bc29324fc00eb"}, @NL80211_ATTR_PMK={0x14, 0xfe, "5affa7b50221c60fe3fd66b87c5508a6"}, @NL80211_ATTR_SSID={0xa, 0x34, @default_ap_ssid}]}, 0x80}, 0x1, 0x0, 0x0, 0x8080}, 0x4005)
+openat$pfkey(0xffffffffffffff9c, &(0x7f0000000040), 0x6a0040, 0x0)
+
+4.37855258s ago: executing program 2 (id=3074):
+r0 = socket$inet_udp(0x2, 0x2, 0x0)
+r1 = socket$igmp(0x2, 0x3, 0x2)
+setsockopt$MRT_FLUSH(r1, 0x0, 0xd4, 0x0, 0x0)
+r2 = syz_init_net_socket$nfc_llcp(0x27, 0x1, 0x1)
+bind$nfc_llcp(r2, &(0x7f0000000140)={0x27, 0x0, 0x1, 0x2, 0x4, 0x66, "87d1efab33d6ee04d91ea00c6d9d135a69fe5c0100000000000000b06f929cf4a2d61c3bc04130b7ad92209d00", 0xffffffffffffffed}, 0x60)
+r3 = syz_open_dev$dri(&(0x7f0000000040), 0x0, 0x149100)
+ioctl$DRM_IOCTL_MODE_MAP_DUMB(r3, 0xc01064b3, &(0x7f00000000c0))
+setsockopt$sock_int(r0, 0x1, 0x3c, &(0x7f0000000140)=0x1, 0x4)
+
+2.064308385s ago: executing program 5 (id=3075):
+r0 = socket$nl_xfrm(0x10, 0x3, 0x6)
+connect$netlink(r0, &(0x7f0000000180)=@kern={0x10, 0x0, 0x0, 0x200}, 0xc)
+sendmsg$nl_xfrm(r0, &(0x7f00000006c0)={0x0, 0x0, &(0x7f0000000680)={&(0x7f0000000380)=@allocspi={0xf8, 0x16, 0x1, 0x70bd29, 0x25dfdbfb, {{{@in=@private=0xa010101, @in=@broadcast, 0x4e22, 0x5, 0x4e24, 0x7, 0x2, 0x20, 0x60, 0x73}, {@in=@empty, 0x4d5, 0x33}, @in6=@dev={0xfe, 0x80, '\x00', 0x26}, {0x6, 0x5, 0x8000000000000000, 0x543, 0x5, 0x7, 0xfffffffffffffc01, 0xbc}, {0xf, 0x0, 0x4, 0xffffffff}, {0x7, 0x8, 0x6}, 0x70bd2d, 0x3500, 0x2, 0x1, 0x60, 0x2}, 0x3, 0xfffffffb}}, 0xf8}, 0x1, 0x0, 0x0, 0x8800}, 0x0) (fail_nth: 11)
+
+933.683481ms ago: executing program 4 (id=3076):
+sendmsg$nl_crypto(0xffffffffffffffff, &(0x7f0000000240)={&(0x7f0000000080)={0x10, 0x0, 0x0, 0x10}, 0xc, &(0x7f0000000200)={&(0x7f0000000100)=@getstat={0xe0, 0x15, 0x300, 0x70bd27, 0x25dfdbfd, {{'drbg_pr_sha512\x00'}, '\x00', '\x00', 0x3000, 0x200}, ["", "", "", "", "", "", "", ""]}, 0xe0}, 0x1, 0x0, 0x0, 0x4}, 0x10)
+pipe2$9p(&(0x7f0000000280)={<r0=>0xffffffffffffffff, <r1=>0xffffffffffffffff}, 0x0)
+r2 = syz_open_procfs(0x0, &(0x7f0000004280)='smaps_rollup\x00')
+r3 = socket$nl_rdma(0x10, 0x3, 0x14)
+write(r3, &(0x7f0000001080)="4b61d3", 0x3)
+read$proc_mixer(r2, &(0x7f0000004580)=""/65, 0x41)
+bpf$BPF_GET_PROG_INFO(0xf, &(0x7f0000000580)={r2, 0xe0, &(0x7f0000000480)={0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x4, &(0x7f00000002c0)=[0x0, 0x0, 0x0, 0x0], ""/16, 0x0, 0x0, 0x0, 0x0, 0x2, 0x3, &(0x7f0000000300)=[0x0, 0x0], &(0x7f0000000340)=[0x0, 0x0, 0x0], 0x0, 0x82, &(0x7f0000000380)=[{}, {}, {}, {}], 0x20, 0x10, &(0x7f00000003c0), &(0x7f0000000400), 0x8, 0xe, 0x8, 0x8, &(0x7f0000000440)}}, 0x10)
+vmsplice(r0, &(0x7f00000000c0)=[{&(0x7f0000000040)="f1", 0x1}], 0x1, 0x4)
+write$P9_RAUTH(r1, &(0x7f0000000000)={0x14, 0x67, 0x2, {0x20, 0x1, 0x1}}, 0x14)
+
+0s ago: executing program 0 (id=3077):
+r0 = socket$nl_generic(0x10, 0x3, 0x10)
+syz_genetlink_get_family_id$devlink(&(0x7f0000000040), r0)
+r1 = syz_genetlink_get_family_id$wireguard(&(0x7f0000000240), 0xffffffffffffffff)
+sendmsg$WG_CMD_SET_DEVICE(r0, &(0x7f00000008c0)={0x0, 0x0, &(0x7f0000000880)={&(0x7f0000000900)={0xa4, r1, 0x1, 0x70bd2b, 0x25dfdbfe, {}, [@WGDEVICE_A_PEERS={0x7c, 0x8, 0x0, 0x1, [{0x78, 0x0, 0x0, 0x1, [@WGPEER_A_ALLOWEDIPS={0x48, 0x9, 0x0, 0x1, [{0x28, 0x0, 0x0, 0x1, [@ipv6={{0x6}, {0x14, 0x2, @initdev={0xfe, 0x88, '\x00', 0x1, 0x0}}, {0x5}}]}, {0x1c, 0x0, 0x0, 0x1, [@ipv4={{0x6}, {0x8, 0x2, @private=0xa010101}, {0x5, 0x3, 0x3}}]}]}, @WGPEER_A_PUBLIC_KEY={0x24, 0x1, @neg}, @WGPEER_A_FLAGS={0x8, 0x3, 0x2}]}]}, @WGDEVICE_A_IFNAME={0x14, 0x2, 'wg2\x00'}]}, 0xa4}, 0x1, 0x0, 0x0, 0x48c8}, 0x8000)
+r2 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000300)='/proc/bus/input/devices\x00', 0x0, 0x0)
+syz_mount_image$fuse(0x0, &(0x7f0000002080)='./file0\x00', 0x0, 0x0, 0x0, 0x0, 0x0)
+mount$fuseblk(&(0x7f0000000000), &(0x7f0000000040)='./file0\x00', &(0x7f0000000080), 0x10, &(0x7f0000000100)={{'fd', 0x3d, r2}, 0x2c, {'rootmode', 0x3d, 0xa000}})
+ioctl$ifreq_SIOCGIFINDEX_batadv_mesh(r0, 0x8933, &(0x7f0000000000))
+openat$vhost_vsock(0xffffffffffffff9c, &(0x7f0000000080), 0x2, 0x0)
+recvmsg$can_j1939(r2, &(0x7f0000000480)={&(0x7f0000000180)=@nfc_llcp, 0x80, &(0x7f0000000400)=[{&(0x7f00000000c0)=""/5, 0x5}, {&(0x7f0000000200)=""/7, 0x7}, {&(0x7f0000000280)=""/84, 0x54}, {&(0x7f0000000340)=""/192, 0xc0}, {&(0x7f00000009c0)=""/4096, 0x1000}], 0x5}, 0x40)
+
+kernel console output (not intermixed with test programs):
+
+0060808>] dump_stack+0x1c/0x28
+[ 2751.631551][T11614] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 2751.631868][T11614] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 2751.632173][T11614] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 2751.632548][T11614] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 2751.632843][T11614] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 2751.633123][T11614] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 2751.633415][T11614] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 2751.633682][T11614] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 2751.633957][T11614] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 2751.634232][T11614] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 2751.634505][T11614] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 2751.634746][T11614] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 2755.980565][T11616] dvmrp1: entered allmulticast mode
+[ 2771.012174][T11671] tmpfs: Bad value for 'huge'
+[ 2778.757612][T11692] ecryptfs_validate_options: You must supply at least one valid auth tok signature as a mount parameter; see the eCryptfs README
+[ 2778.759411][T11692] Error validating options; rc = [-22]
+[ 2779.099902][T11693] FAULT_INJECTION: forcing a failure.
+[ 2779.099902][T11693] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 2779.101590][T11693] CPU: 0 UID: 0 PID: 11693 Comm: syz.5.2027 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 2779.101911][T11693] Hardware name: riscv-virtio,qemu (DT)
+[ 2779.102018][T11693] Call Trace:
+[ 2779.102123][T11693] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 2779.102529][T11693] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 2779.102789][T11693] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 2779.103118][T11693] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 2779.103431][T11693] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 2779.103720][T11693] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 2779.104050][T11693] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 2779.104346][T11693] [<ffffffff81791540>] _copy_from_user+0x38/0x3e8
+[ 2779.104579][T11693] [<ffffffff8091d3d2>] memdup_user+0x7e/0xe4
+[ 2779.104815][T11693] [<ffffffff8091d6ba>] strndup_user+0x7e/0xd0
+[ 2779.105041][T11693] [<ffffffff80cf5a80>] __riscv_sys_mount+0x130/0x768
+[ 2779.105349][T11693] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 2779.105623][T11693] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 2779.105866][T11693] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 2783.551603][T11715] ecryptfs_validate_options: You must supply at least one valid auth tok signature as a mount parameter; see the eCryptfs README
+[ 2783.655829][T11715] Error validating options; rc = [-22]
+[ 2784.312337][T11716] Device name cannot be null; rc = [-22]
+[ 2792.912158][T11742] FAULT_INJECTION: forcing a failure.
+[ 2792.912158][T11742] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 2792.945707][T11742] CPU: 0 UID: 0 PID: 11742 Comm: syz.0.2038 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 2792.946067][T11742] Hardware name: riscv-virtio,qemu (DT)
+[ 2792.946174][T11742] Call Trace:
+[ 2792.946280][T11742] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 2792.946636][T11742] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 2792.946907][T11742] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 2792.947234][T11742] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 2792.947548][T11742] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 2792.947868][T11742] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 2792.948177][T11742] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 2792.948464][T11742] [<ffffffff81791540>] _copy_from_user+0x38/0x3e8
+[ 2792.948696][T11742] [<ffffffff8091d3d2>] memdup_user+0x7e/0xe4
+[ 2792.948931][T11742] [<ffffffff8091d6ba>] strndup_user+0x7e/0xd0
+[ 2792.949158][T11742] [<ffffffff80cf5a80>] __riscv_sys_mount+0x130/0x768
+[ 2792.949465][T11742] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 2792.949745][T11742] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 2792.949981][T11742] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 2798.092390][T11756] Device name cannot be null; rc = [-22]
+[ 2815.075638][T11807] netlink: 8 bytes leftover after parsing attributes in process `syz.5.2057'.
+[ 2820.016095][T11820] FAULT_INJECTION: forcing a failure.
+[ 2820.016095][T11820] name failslab, interval 1, probability 0, space 0, times 0
+[ 2820.018585][T11820] CPU: 0 UID: 0 PID: 11820 Comm: syz.0.2062 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 2820.019141][T11820] Hardware name: riscv-virtio,qemu (DT)
+[ 2820.019319][T11820] Call Trace:
+[ 2820.019485][T11820] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 2820.020022][T11820] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 2820.020261][T11820] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 2820.020589][T11820] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 2820.020909][T11820] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 2820.021195][T11820] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 2820.021503][T11820] [<ffffffff80a9854c>] kmem_cache_alloc_node_noprof+0x288/0x464
+[ 2820.021828][T11820] [<ffffffff8503607c>] __alloc_skb+0x318/0x408
+[ 2820.022129][T11820] [<ffffffff8504a07c>] alloc_skb_with_frags+0xc0/0x824
+[ 2820.022442][T11820] [<ffffffff8500cbb4>] sock_alloc_send_pskb+0x6ac/0x7e8
+[ 2820.022781][T11820] [<ffffffff857078b4>] __ip_append_data+0x1908/0x3efc
+[ 2820.023085][T11820] [<ffffffff85718b2c>] ip_make_skb+0x210/0x274
+[ 2820.023360][T11820] [<ffffffff858346e8>] udp_sendmsg+0x16fc/0x2a38
+[ 2820.023670][T11820] [<ffffffff85ba759e>] udpv6_sendmsg+0x1162/0x324c
+[ 2820.024024][T11820] [<ffffffff85ac9f86>] inet6_sendmsg+0x9a/0xe0
+[ 2820.024343][T11820] [<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160
+[ 2820.024624][T11820] [<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c
+[ 2820.024909][T11820] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 2820.025194][T11820] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 2820.025496][T11820] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 2820.025809][T11820] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 2820.026141][T11820] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 2820.026377][T11820] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 2825.440297][T11833] FAULT_INJECTION: forcing a failure.
+[ 2825.440297][T11833] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 2825.441992][T11833] CPU: 0 UID: 0 PID: 11833 Comm: syz.1.2068 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 2825.442305][T11833] Hardware name: riscv-virtio,qemu (DT)
+[ 2825.442412][T11833] Call Trace:
+[ 2825.442569][T11833] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 2825.442944][T11833] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 2825.443211][T11833] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 2825.443539][T11833] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 2825.443879][T11833] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 2825.444247][T11833] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 2825.444523][T11833] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 2825.444820][T11833] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 2825.445050][T11833] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 2825.445322][T11833] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 2825.445610][T11833] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 2825.445884][T11833] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 2825.446150][T11833] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 2825.446426][T11833] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 2825.446704][T11833] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 2825.446940][T11833] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 2827.135503][T11845] dummy0: entered promiscuous mode
+[ 2828.527504][T11827] dummy0: left promiscuous mode
+[ 2829.543527][T11848] UDC core: USB Raw Gadget: couldn't find an available UDC or it's busy
+[ 2829.606038][T11848] misc raw-gadget: fail, usb_gadget_register_driver returned -16
+[ 2862.558298][T11947] FAULT_INJECTION: forcing a failure.
+[ 2862.558298][T11947] name failslab, interval 1, probability 0, space 0, times 0
+[ 2862.560304][T11947] CPU: 0 UID: 0 PID: 11947 Comm: syz.4.2100 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 2862.560707][T11947] Hardware name: riscv-virtio,qemu (DT)
+[ 2862.560826][T11947] Call Trace:
+[ 2862.560943][T11947] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 2862.561373][T11947] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 2862.561605][T11947] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 2862.561942][T11947] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 2862.562258][T11947] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 2862.562554][T11947] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 2862.562878][T11947] [<ffffffff80a9854c>] kmem_cache_alloc_node_noprof+0x288/0x464
+[ 2862.563241][T11947] [<ffffffff8503607c>] __alloc_skb+0x318/0x408
+[ 2862.563578][T11947] [<ffffffff8504a07c>] alloc_skb_with_frags+0xc0/0x824
+[ 2862.563934][T11947] [<ffffffff8500cbb4>] sock_alloc_send_pskb+0x6ac/0x7e8
+[ 2862.564195][T11947] [<ffffffff857078b4>] __ip_append_data+0x1908/0x3efc
+[ 2862.564467][T11947] [<ffffffff85718b2c>] ip_make_skb+0x210/0x274
+[ 2862.564731][T11947] [<ffffffff858346e8>] udp_sendmsg+0x16fc/0x2a38
+[ 2862.565042][T11947] [<ffffffff85ba759e>] udpv6_sendmsg+0x1162/0x324c
+[ 2862.565353][T11947] [<ffffffff85ac9f86>] inet6_sendmsg+0x9a/0xe0
+[ 2862.565661][T11947] [<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160
+[ 2862.565948][T11947] [<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c
+[ 2862.566250][T11947] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 2862.566536][T11947] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 2862.566843][T11947] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 2862.567151][T11947] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 2862.567429][T11947] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 2862.567668][T11947] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 2888.326549][T12011] FAULT_INJECTION: forcing a failure.
+[ 2888.326549][T12011] name failslab, interval 1, probability 0, space 0, times 0
+[ 2888.328394][T12011] CPU: 1 UID: 0 PID: 12011 Comm: syz.3.2121 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 2888.328730][T12011] Hardware name: riscv-virtio,qemu (DT)
+[ 2888.328837][T12011] Call Trace:
+[ 2888.328946][T12011] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 2888.329320][T12011] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 2888.329550][T12011] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 2888.329883][T12011] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 2888.330197][T12011] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 2888.330492][T12011] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 2888.330809][T12011] [<ffffffff80a98e0e>] kmem_cache_alloc_noprof+0x282/0x460
+[ 2888.331131][T12011] [<ffffffff809b7872>] __pmd_alloc+0xba/0xa00
+[ 2888.331427][T12011] [<ffffffff809c3d98>] __handle_mm_fault+0x8b4/0x5a6c
+[ 2888.331739][T12011] [<ffffffff809c91b8>] handle_mm_fault+0x268/0x8b8
+[ 2888.332100][T12011] [<ffffffff80099332>] handle_page_fault+0xbbe/0x1bdc
+[ 2888.332402][T12011] [<ffffffff862769da>] do_page_fault+0x1e/0x58
+[ 2888.332736][T12011] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 2888.333075][T12011] [<ffffffff801ab7ba>] __riscv_sys_getresgid+0x30e/0xc8c
+[ 2888.333311][T12011] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 2888.333583][T12011] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 2888.333817][T12011] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 2891.678888][   T34] audit: type=1326 audit(2890.980:12): auid=4294967295 uid=0 gid=0 ses=4294967295 subj=unconfined pid=12008 comm="syz.4.2124" exe="/syz-executor" sig=31 arch=c00000f3 syscall=98 compat=0 ip=0xd7c1e code=0x0
+[ 2899.156544][T12037] bond0: entered promiscuous mode
+[ 2899.157835][T12037] bond_slave_0: entered promiscuous mode
+[ 2899.160635][T12037] bond_slave_1: entered promiscuous mode
+[ 2907.550586][T12060] tmpfs: Unknown parameter 'ısrqulta_ipÎ+Á‚¥•»åV'
+[ 2911.241427][T10960] hid_parser_main: 94 callbacks suppressed
+[ 2911.241898][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.257675][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.259023][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.260132][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.261182][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.262224][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.326904][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.328318][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.329410][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.365606][T10960] hid-generic 09C5:0005:000B.0005: unknown main item tag 0x0
+[ 2911.491218][T10960] hid-generic 09C5:0005:000B.0005: hidraw0: <UNKNOWN> HID v0.0c Device [syz1] on syz1
+[ 2936.076704][T12131] netlink: 40 bytes leftover after parsing attributes in process `syz.0.2155'.
+[ 2955.435199][T12187] tmpfs: Cannot change global quota limit on remount
+[ 2955.440429][T12187] FAULT_INJECTION: forcing a failure.
+[ 2955.440429][T12187] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 2955.442064][T12187] CPU: 0 UID: 0 PID: 12187 Comm: syz.1.2176 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 2955.442366][T12187] Hardware name: riscv-virtio,qemu (DT)
+[ 2955.442472][T12187] Call Trace:
+[ 2955.442649][T12187] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 2955.443036][T12187] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 2955.443269][T12187] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 2955.443594][T12187] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 2955.443987][T12187] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 2955.444291][T12187] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 2955.444566][T12187] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 2955.444899][T12187] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 2955.445149][T12187] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 2955.445436][T12187] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 2955.445761][T12187] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 2955.446039][T12187] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 2955.446306][T12187] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 2955.446583][T12187] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 2955.446906][T12187] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 2955.447143][T12187] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 2981.032369][T12255] netlink: 20 bytes leftover after parsing attributes in process `syz.5.2200'.
+[ 2994.970720][T12299] fuse: Unknown parameter 'fowner>18446744073709551615'
+[ 3013.996978][T12346] FAULT_INJECTION: forcing a failure.
+[ 3013.996978][T12346] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3013.998673][T12346] CPU: 0 UID: 0 PID: 12346 Comm: syz.0.2229 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3013.998996][T12346] Hardware name: riscv-virtio,qemu (DT)
+[ 3013.999103][T12346] Call Trace:
+[ 3013.999208][T12346] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3013.999563][T12346] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3013.999830][T12346] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3014.000249][T12346] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3014.000570][T12346] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3014.000870][T12346] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3014.001147][T12346] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3014.001437][T12346] [<ffffffff81791540>] _copy_from_user+0x38/0x3e8
+[ 3014.001678][T12346] [<ffffffff84a67cd4>] comedi_unlocked_ioctl+0x598/0x2cbc
+[ 3014.002001][T12346] [<ffffffff80c9cf1e>] __riscv_sys_ioctl+0x17e/0x1e4
+[ 3014.002243][T12346] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3014.002585][T12346] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3014.002859][T12346] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3021.451953][T12367] FAULT_INJECTION: forcing a failure.
+[ 3021.451953][T12367] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3021.518559][T12367] CPU: 0 UID: 0 PID: 12367 Comm: syz.3.2236 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3021.519008][T12367] Hardware name: riscv-virtio,qemu (DT)
+[ 3021.519118][T12367] Call Trace:
+[ 3021.519225][T12367] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3021.519623][T12367] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3021.519885][T12367] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3021.520249][T12367] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3021.520564][T12367] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3021.520858][T12367] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3021.521131][T12367] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3021.521419][T12367] [<ffffffff81a6cae0>] strncpy_from_user+0x9c/0x984
+[ 3021.521747][T12367] [<ffffffff80c74d6e>] getname_flags.part.0+0x8a/0x4f8
+[ 3021.522037][T12367] [<ffffffff80c8c338>] user_path_at+0x98/0xfc
+[ 3021.522353][T12367] [<ffffffff80d93e72>] __riscv_sys_inotify_add_watch+0x1ee/0xe20
+[ 3021.522749][T12367] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3021.523055][T12367] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3021.523321][T12367] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3030.389557][T12386] FAULT_INJECTION: forcing a failure.
+[ 3030.389557][T12386] name fail_page_alloc, interval 1, probability 0, space 0, times 0
+[ 3030.392419][T12386] CPU: 1 UID: 0 PID: 12386 Comm: syz.1.2243 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3030.392803][T12386] Hardware name: riscv-virtio,qemu (DT)
+[ 3030.392910][T12386] Call Trace:
+[ 3030.393084][T12386] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3030.393456][T12386] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3030.393695][T12386] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3030.394022][T12386] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3030.394362][T12386] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3030.394690][T12386] [<ffffffff80b434e8>] should_fail_alloc_page+0x110/0x170
+[ 3030.395011][T12386] [<ffffffff80a591c4>] prepare_alloc_pages+0x368/0x4dc
+[ 3030.395296][T12386] [<ffffffff80a729c2>] __alloc_frozen_pages_noprof+0x14e/0x216c
+[ 3030.395618][T12386] [<ffffffff80b0b682>] alloc_pages_mpol+0x1ee/0x5a0
+[ 3030.395932][T12386] [<ffffffff80b0c618>] folio_alloc_mpol_noprof+0x3c/0x290
+[ 3030.396221][T12386] [<ffffffff80b0ce80>] vma_alloc_folio_noprof+0x168/0x29c
+[ 3030.396496][T12386] [<ffffffff809c60b0>] __handle_mm_fault+0x2bcc/0x5a6c
+[ 3030.396820][T12386] [<ffffffff809c91b8>] handle_mm_fault+0x268/0x8b8
+[ 3030.397126][T12386] [<ffffffff800991ba>] handle_page_fault+0xa46/0x1bdc
+[ 3030.397425][T12386] [<ffffffff862769da>] do_page_fault+0x1e/0x58
+[ 3030.397660][T12386] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3030.496944][T12386] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[ 3039.452040][T12420] FAULT_INJECTION: forcing a failure.
+[ 3039.452040][T12420] name failslab, interval 1, probability 0, space 0, times 0
+[ 3039.536416][T12420] CPU: 1 UID: 0 PID: 12420 Comm: syz.2.2252 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3039.536865][T12420] Hardware name: riscv-virtio,qemu (DT)
+[ 3039.536974][T12420] Call Trace:
+[ 3039.537080][T12420] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3039.537441][T12420] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3039.537681][T12420] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3039.538005][T12420] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3039.538320][T12420] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3039.538613][T12420] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3039.538921][T12420] [<ffffffff80a94cd8>] __kmalloc_cache_node_noprof+0x290/0x48c
+[ 3039.539231][T12420] [<ffffffff80a392cc>] __get_vm_area_node+0x120/0x48c
+[ 3039.539459][T12420] [<ffffffff80a3b3f6>] __vmalloc_node_range_noprof+0x22e/0x1054
+[ 3039.539736][T12420] [<ffffffff80a3c87c>] vzalloc_noprof+0xec/0x114
+[ 3039.540029][T12420] [<ffffffff806b2a96>] bpf_check+0x1ea/0xc910
+[ 3039.540309][T12420] [<ffffffff806114c6>] bpf_prog_load+0x11ee/0x1fe8
+[ 3039.540596][T12420] [<ffffffff80615596>] __sys_bpf+0xc56/0x487c
+[ 3039.540881][T12420] [<ffffffff80619f46>] __riscv_sys_bpf+0x6a/0xd4
+[ 3039.541169][T12420] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3039.541439][T12420] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3039.541677][T12420] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3039.542230][T12420] syz.2.2252: vmalloc error: size 264, vm_struct allocation failed, mode:0xdc0(GFP_KERNEL|__GFP_ZERO), nodemask=(null),cpuset=/,mems_allowed=0
+[ 3039.589516][T12420] CPU: 0 UID: 0 PID: 12420 Comm: syz.2.2252 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3039.589872][T12420] Hardware name: riscv-virtio,qemu (DT)
+[ 3039.589991][T12420] Call Trace:
+[ 3039.590105][T12420] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3039.590463][T12420] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3039.590704][T12420] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3039.591031][T12420] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3039.591345][T12420] [<ffffffff80a726ec>] warn_alloc+0x194/0x31c
+[ 3039.591648][T12420] [<ffffffff80a3bc94>] __vmalloc_node_range_noprof+0xacc/0x1054
+[ 3039.591950][T12420] [<ffffffff80a3c87c>] vzalloc_noprof+0xec/0x114
+[ 3039.592188][T12420] [<ffffffff806b2a96>] bpf_check+0x1ea/0xc910
+[ 3039.592451][T12420] [<ffffffff806114c6>] bpf_prog_load+0x11ee/0x1fe8
+[ 3039.592825][T12420] [<ffffffff80615596>] __sys_bpf+0xc56/0x487c
+[ 3039.593110][T12420] [<ffffffff80619f46>] __riscv_sys_bpf+0x6a/0xd4
+[ 3039.593403][T12420] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3039.593686][T12420] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3039.593922][T12420] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3039.715977][T12420] Mem-Info:
+[ 3039.717056][T12420] active_anon:2747 inactive_anon:0 isolated_anon:0
+[ 3039.717056][T12420]  active_file:32494 inactive_file:36455 isolated_file:0
+[ 3039.717056][T12420]  unevictable:1330 dirty:106 writeback:0
+[ 3039.717056][T12420]  slab_reclaimable:3483 slab_unreclaimable:50461
+[ 3039.717056][T12420]  mapped:35223 shmem:836 pagetables:991
+[ 3039.717056][T12420]  sec_pagetables:0 bounce:0
+[ 3039.717056][T12420]  kernel_misc_reclaimable:0
+[ 3039.717056][T12420]  free:538658 free_pcp:6676 free_cma:104704
+[ 3039.720464][T12420] Node 0 active_anon:10988kB inactive_anon:0kB active_file:129976kB inactive_file:145820kB unevictable:5320kB isolated(anon):0kB isolated(file):0kB mapped:140892kB dirty:424kB writeback:0kB shmem:3344kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB kernel_stack:7312kB pagetables:3964kB sec_pagetables:0kB all_unreclaimable? no Balloon:0kB
+[ 3039.791937][T12420] Node 0 DMA32 free:1747832kB boost:0kB min:24920kB low:31148kB high:37376kB reserved_highatomic:0KB free_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:2097152kB managed:1751592kB mlocked:0kB bounce:0kB free_pcp:2736kB local_pcp:0kB free_cma:418816kB
+[ 3039.805571][T12420] lowmem_reserve[]: 0 1379 1379
+[ 3039.807303][T12420] Node 0 Normal free:406800kB boost:0kB min:20132kB low:25164kB high:30196kB reserved_highatomic:0KB free_highatomic:0KB active_anon:10944kB inactive_anon:0kB active_file:129976kB inactive_file:145820kB unevictable:5320kB writepending:424kB present:2097152kB managed:1413072kB mlocked:2244kB bounce:0kB free_pcp:23800kB local_pcp:12240kB free_cma:0kB
+[ 3039.810187][T12420] lowmem_reserve[]: 0 0 0
+[ 3039.811832][T12420] Node 0 DMA32: 0*4kB 1*8kB (M) 1*16kB (M) 1*32kB (M) 1*64kB (M) 2*128kB (M) 2*256kB (M) 2*512kB (M) 3*1024kB (MC) 3*2048kB (M) 424*4096kB (MC) = 1747832kB
+[ 3040.146155][T12420] Node 0 Normal: 590*4kB (UM) 585*8kB (UM) 311*16kB (UM) 213*32kB (UM) 116*64kB (UM) 81*128kB (ME) 46*256kB (UM) 18*512kB (ME) 7*1024kB (UME) 1*2048kB (U) 83*4096kB (UM) = 406800kB
+[ 3040.245762][T12420] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[ 3040.247151][T12420] Node 0 hugepages_total=8 hugepages_free=8 hugepages_surp=4 hugepages_size=2048kB
+[ 3040.248273][T12420] 70283 total pagecache pages
+[ 3040.249015][T12420] 0 pages in swap cache
+[ 3040.249713][T12420] Free swap  = 124996kB
+[ 3040.250394][T12420] Total swap = 124996kB
+[ 3040.251101][T12420] 1048576 pages RAM
+[ 3040.251777][T12420] 0 pages HighMem/MovableOnly
+[ 3040.252547][T12420] 257410 pages reserved
+[ 3040.316007][T12420] 104960 pages cma reserved
+[ 3064.296966][T12494] UDC core: USB Raw Gadget: couldn't find an available UDC or it's busy
+[ 3064.427381][T12494] misc raw-gadget: fail, usb_gadget_register_driver returned -16
+[ 3065.211685][T12497] FAULT_INJECTION: forcing a failure.
+[ 3065.211685][T12497] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3065.245127][T12497] CPU: 1 UID: 0 PID: 12497 Comm: syz.4.2273 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3065.245558][T12497] Hardware name: riscv-virtio,qemu (DT)
+[ 3065.245678][T12497] Call Trace:
+[ 3065.245784][T12497] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3065.246149][T12497] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3065.246380][T12497] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3065.246712][T12497] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3065.247033][T12497] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3065.247311][T12497] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3065.247576][T12497] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3065.247916][T12497] [<ffffffff81791540>] _copy_from_user+0x38/0x3e8
+[ 3065.248168][T12497] [<ffffffff858a691a>] ip_rt_ioctl+0x4a6/0x14c8
+[ 3065.248497][T12497] [<ffffffff85876f00>] inet_ioctl+0x374/0x3b4
+[ 3065.248758][T12497] [<ffffffff84ff5b18>] sock_do_ioctl+0x100/0x250
+[ 3065.249044][T12497] [<ffffffff84ffcc64>] sock_ioctl+0x23c/0xc4c
+[ 3065.249323][T12497] [<ffffffff80c9cf1e>] __riscv_sys_ioctl+0x17e/0x1e4
+[ 3065.249557][T12497] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3065.249834][T12497] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3065.250064][T12497] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3076.099624][T12527] tmpfs: Bad value for 'size'
+[ 3078.037618][T12533] fuse: blksize only supported for fuseblk
+[ 3081.606942][T12541] tmpfs: Unknown parameter 'fsuuid'
+[ 3101.818715][T12600] FAULT_INJECTION: forcing a failure.
+[ 3101.818715][T12600] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3101.820689][T12600] CPU: 0 UID: 0 PID: 12600 Comm: syz.2.2305 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3101.821019][T12600] Hardware name: riscv-virtio,qemu (DT)
+[ 3101.821145][T12600] Call Trace:
+[ 3101.821252][T12600] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3101.821646][T12600] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3101.821894][T12600] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3101.822225][T12600] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3101.822627][T12600] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3101.822938][T12600] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3101.823215][T12600] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3101.823503][T12600] [<ffffffff81791540>] _copy_from_user+0x38/0x3e8
+[ 3101.823742][T12600] [<ffffffff81732766>] __riscv_sys_io_uring_register+0x436/0x2800
+[ 3101.824090][T12600] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3101.824367][T12600] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3101.824625][T12600] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3113.890520][T12638] Invalid ELF header type: 2 != 1
+[ 3131.410295][T12675] fuse: Bad value for 'user_id'
+[ 3131.411740][T12675] fuse: Bad value for 'user_id'
+[ 3131.487367][T12679] FAULT_INJECTION: forcing a failure.
+[ 3131.487367][T12679] name failslab, interval 1, probability 0, space 0, times 0
+[ 3131.518392][T12679] CPU: 1 UID: 0 PID: 12679 Comm: syz.0.2331 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3131.518896][T12679] Hardware name: riscv-virtio,qemu (DT)
+[ 3131.519013][T12679] Call Trace:
+[ 3131.519151][T12679] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3131.519581][T12679] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3131.519879][T12679] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3131.520244][T12679] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3131.520559][T12679] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3131.520893][T12679] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3131.521211][T12679] [<ffffffff80a968fc>] __kmalloc_node_track_caller_noprof+0x2b4/0x678
+[ 3131.521535][T12679] [<ffffffff8091d04e>] kstrdup+0x46/0xb0
+[ 3131.521780][T12679] [<ffffffff8091d13a>] kstrdup_const+0x82/0x88
+[ 3131.522003][T12679] [<ffffffff80cda476>] alloc_vfsmnt+0xfa/0x74c
+[ 3131.522269][T12679] [<ffffffff80ce0ef0>] clone_mnt+0x64/0xa7c
+[ 3131.522630][T12679] [<ffffffff80ceeda0>] __do_loopback+0x368/0x450
+[ 3131.522942][T12679] [<ffffffff80cf4b00>] path_mount+0x16e0/0x1b20
+[ 3131.523277][T12679] [<ffffffff80cf5ef8>] __riscv_sys_mount+0x5a8/0x768
+[ 3131.523595][T12679] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3131.523907][T12679] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3131.524169][T12679] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3141.051300][T12701] [U] ”…Ó
+[ 3145.710523][T12721] FAULT_INJECTION: forcing a failure.
+[ 3145.710523][T12721] name fail_page_alloc, interval 1, probability 0, space 0, times 0
+[ 3145.712308][T12721] CPU: 1 UID: 0 PID: 12721 Comm: syz.4.2343 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3145.712716][T12721] Hardware name: riscv-virtio,qemu (DT)
+[ 3145.712832][T12721] Call Trace:
+[ 3145.712939][T12721] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3145.713316][T12721] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3145.713548][T12721] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3145.713883][T12721] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3145.714200][T12721] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3145.714512][T12721] [<ffffffff80b434e8>] should_fail_alloc_page+0x110/0x170
+[ 3145.714851][T12721] [<ffffffff80a591c4>] prepare_alloc_pages+0x368/0x4dc
+[ 3145.715136][T12721] [<ffffffff80a729c2>] __alloc_frozen_pages_noprof+0x14e/0x216c
+[ 3145.715475][T12721] [<ffffffff80b0b682>] alloc_pages_mpol+0x1ee/0x5a0
+[ 3145.715751][T12721] [<ffffffff80b0c618>] folio_alloc_mpol_noprof+0x3c/0x290
+[ 3145.716109][T12721] [<ffffffff80b0ce80>] vma_alloc_folio_noprof+0x168/0x29c
+[ 3145.716401][T12721] [<ffffffff809c60b0>] __handle_mm_fault+0x2bcc/0x5a6c
+[ 3145.716769][T12721] [<ffffffff809c91b8>] handle_mm_fault+0x268/0x8b8
+[ 3145.717085][T12721] [<ffffffff80099332>] handle_page_fault+0xbbe/0x1bdc
+[ 3145.717388][T12721] [<ffffffff862769da>] do_page_fault+0x1e/0x58
+[ 3145.717635][T12721] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3145.717973][T12721] [<ffffffff86275b56>] fallback_scalar_usercopy_sum_enabled+0x52/0xcc
+[ 3145.718323][T12721] [<ffffffff80c5c168>] cp_statx+0x5b0/0x768
+[ 3145.718553][T12721] [<ffffffff80c5eae2>] do_statx+0x116/0x16c
+[ 3145.718794][T12721] [<ffffffff80c5efaa>] __riscv_sys_statx+0x11a/0x1d8
+[ 3145.719039][T12721] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3145.719311][T12721] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3145.719539][T12721] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3147.916490][T12726] veth1_macvtap: left promiscuous mode
+[ 3148.468188][T12725] snd_virmidi snd_virmidi.0: control 7:4095:0:syz0:6 is already present
+[ 3153.712117][T12741] FAULT_INJECTION: forcing a failure.
+[ 3153.712117][T12741] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3153.798884][T12741] CPU: 0 UID: 0 PID: 12741 Comm: syz.0.2349 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3153.799248][T12741] Hardware name: riscv-virtio,qemu (DT)
+[ 3153.799355][T12741] Call Trace:
+[ 3153.799461][T12741] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3153.799856][T12741] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3153.800119][T12741] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3153.800446][T12741] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3153.800769][T12741] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3153.801058][T12741] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3153.801333][T12741] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3153.801631][T12741] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 3153.801866][T12741] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 3153.802144][T12741] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 3153.802533][T12741] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 3153.802885][T12741] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 3153.803159][T12741] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 3153.803463][T12741] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3153.803748][T12741] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3153.804033][T12741] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3154.630476][T12740] tmpfs: Bad value for 'mpol'
+[ 3161.542353][T12767] FAULT_INJECTION: forcing a failure.
+[ 3161.542353][T12767] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3161.557859][T12767] CPU: 1 UID: 0 PID: 12767 Comm: syz.0.2357 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3161.558213][T12767] Hardware name: riscv-virtio,qemu (DT)
+[ 3161.558321][T12767] Call Trace:
+[ 3161.558427][T12767] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3161.558791][T12767] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3161.559022][T12767] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3161.559346][T12767] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3161.559667][T12767] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3161.560010][T12767] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3161.560290][T12767] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3161.560584][T12767] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 3161.560816][T12767] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 3161.561089][T12767] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 3161.561380][T12767] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 3161.561654][T12767] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 3161.561923][T12767] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 3161.562200][T12767] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3161.562473][T12767] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3161.562807][T12767] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3163.328827][T12772] FAULT_INJECTION: forcing a failure.
+[ 3163.328827][T12772] name failslab, interval 1, probability 0, space 0, times 0
+[ 3163.330575][T12772] CPU: 1 UID: 0 PID: 12772 Comm: syz.1.2358 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3163.330896][T12772] Hardware name: riscv-virtio,qemu (DT)
+[ 3163.331001][T12772] Call Trace:
+[ 3163.331106][T12772] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3163.331490][T12772] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3163.331728][T12772] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3163.332106][T12772] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3163.332422][T12772] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3163.332798][T12772] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3163.333109][T12772] [<ffffffff80a98e0e>] kmem_cache_alloc_noprof+0x282/0x460
+[ 3163.333429][T12772] [<ffffffff8013fbda>] copy_process+0x27ee/0x79e8
+[ 3163.333780][T12772] [<ffffffff80144ff8>] kernel_clone+0x120/0xdb0
+[ 3163.334096][T12772] [<ffffffff80145d98>] __do_sys_clone+0x110/0x148
+[ 3163.334413][T12772] [<ffffffff8014653e>] __riscv_sys_clone+0x9e/0x12c
+[ 3163.334774][T12772] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3163.335047][T12772] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3163.335282][T12772] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3165.542000][T12779] iommufd_mock iommufd_mock0: Adding to iommu group 0
+[ 3206.238206][T12906] veth0_macvtap: left promiscuous mode
+[ 3206.315016][T12906] macvtap0: entered promiscuous mode
+[ 3207.799943][T12906] veth0_macvtap: entered promiscuous mode
+[ 3209.826875][T12915] AppArmor: change_hat: Invalid input, NULL hat and NULL magic
+[ 3219.230780][T12925] ptrace attach of ""[12933] was attempted by "/syz-executor exec"[12925]
+[ 3231.681034][T12969] netlink: 8 bytes leftover after parsing attributes in process `syz.1.2416'.
+[ 3231.689088][T12973] netlink: 8 bytes leftover after parsing attributes in process `syz.1.2416'.
+[ 3231.717514][T12974] FAULT_INJECTION: forcing a failure.
+[ 3231.717514][T12974] name failslab, interval 1, probability 0, space 0, times 0
+[ 3231.719212][T12974] CPU: 1 UID: 0 PID: 12974 Comm: syz.3.2417 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3231.719534][T12974] Hardware name: riscv-virtio,qemu (DT)
+[ 3231.719640][T12974] Call Trace:
+[ 3231.719755][T12974] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3231.720144][T12974] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3231.720375][T12974] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3231.720703][T12974] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3231.721016][T12974] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3231.721302][T12974] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3231.721615][T12974] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3231.721910][T12974] [<ffffffff84d2497c>] snd_pcm_hw_param_near.constprop.0+0xc0/0x87c
+[ 3231.722178][T12974] [<ffffffff84d28834>] snd_pcm_oss_change_params_locked+0x17b4/0x3f84
+[ 3231.722427][T12974] [<ffffffff84d2b884>] snd_pcm_oss_get_active_substream+0x14c/0x1bc
+[ 3231.722766][T12974] [<ffffffff84d2be68>] snd_pcm_oss_set_channels+0x22c/0x374
+[ 3231.723062][T12974] [<ffffffff84d3166c>] snd_pcm_oss_ioctl+0x1dcc/0x52c0
+[ 3231.723316][T12974] [<ffffffff80c9cf1e>] __riscv_sys_ioctl+0x17e/0x1e4
+[ 3231.723558][T12974] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3231.723831][T12974] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3231.724103][T12974] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3235.438414][T12983] fuse: Bad value for 'group_id'
+[ 3235.439594][T12983] fuse: Bad value for 'group_id'
+[ 3245.068081][T13006] fuse: Unknown parameter 'ämode'
+[ 3248.557118][T13013] UDC core: USB Raw Gadget: couldn't find an available UDC or it's busy
+[ 3248.595946][T13013] misc raw-gadget: fail, usb_gadget_register_driver returned -16
+[ 3252.372362][T13023] FAULT_INJECTION: forcing a failure.
+[ 3252.372362][T13023] name failslab, interval 1, probability 0, space 0, times 0
+[ 3252.389686][T13023] CPU: 0 UID: 0 PID: 13023 Comm: syz.0.2431 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3252.390124][T13023] Hardware name: riscv-virtio,qemu (DT)
+[ 3252.390253][T13023] Call Trace:
+[ 3252.390368][T13023] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3252.390742][T13023] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3252.390974][T13023] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3252.391299][T13023] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3252.391620][T13023] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3252.391943][T13023] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3252.392270][T13023] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3252.392576][T13023] [<ffffffff80486472>] __riscv_sys_acct+0xd6/0x918
+[ 3252.392835][T13023] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3252.393108][T13023] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3252.393348][T13023] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3262.196345][T13057] FAULT_INJECTION: forcing a failure.
+[ 3262.196345][T13057] name fail_page_alloc, interval 1, probability 0, space 0, times 0
+[ 3262.198086][T13057] CPU: 0 UID: 0 PID: 13057 Comm: syz.5.2442 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3262.198402][T13057] Hardware name: riscv-virtio,qemu (DT)
+[ 3262.198509][T13057] Call Trace:
+[ 3262.198623][T13057] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3262.198976][T13057] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3262.199206][T13057] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3262.199535][T13057] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3262.199876][T13057] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3262.200197][T13057] [<ffffffff80b434e8>] should_fail_alloc_page+0x110/0x170
+[ 3262.200519][T13057] [<ffffffff80a591c4>] prepare_alloc_pages+0x368/0x4dc
+[ 3262.200797][T13057] [<ffffffff80a729c2>] __alloc_frozen_pages_noprof+0x14e/0x216c
+[ 3262.201112][T13057] [<ffffffff80a752bc>] alloc_pages_bulk_noprof+0x5b8/0x12ac
+[ 3262.201422][T13057] [<ffffffff80b3aa7e>] kasan_populate_vmalloc+0xe6/0x1fc
+[ 3262.201722][T13057] [<ffffffff80a2d632>] alloc_vmap_area+0x9fe/0x2e14
+[ 3262.202044][T13057] [<ffffffff80a3936a>] __get_vm_area_node+0x1be/0x48c
+[ 3262.202277][T13057] [<ffffffff80a3b3f6>] __vmalloc_node_range_noprof+0x22e/0x1054
+[ 3262.202584][T13057] [<ffffffff80a3c87c>] vzalloc_noprof+0xec/0x114
+[ 3262.202861][T13057] [<ffffffff81e66dfe>] n_tty_open+0x22/0x170
+[ 3262.203172][T13057] [<ffffffff81e7614a>] tty_ldisc_open+0x9e/0x10c
+[ 3262.203481][T13057] [<ffffffff81e77eac>] tty_ldisc_setup+0x40/0xf8
+[ 3262.203804][T13057] [<ffffffff81e62b7a>] tty_init_dev.part.0+0x1be/0x4b0
+[ 3262.204132][T13057] [<ffffffff81e62ece>] tty_init_dev+0x62/0x88
+[ 3262.204409][T13057] [<ffffffff81e84c34>] ptmx_open+0x124/0x33c
+[ 3262.204671][T13057] [<ffffffff80c5a846>] chrdev_open+0x22e/0x6c4
+[ 3262.204898][T13057] [<ffffffff80c34904>] do_dentry_open+0x7e0/0x1064
+[ 3262.205136][T13057] [<ffffffff80c3933a>] vfs_open+0xb6/0x3c8
+[ 3262.205448][T13057] [<ffffffff80c8e2f0>] path_openat+0x10f4/0x29d4
+[ 3262.205783][T13057] [<ffffffff80c8fd64>] do_filp_open+0x194/0x378
+[ 3262.206094][T13057] [<ffffffff80c3a27e>] do_sys_openat2+0x116/0x1c4
+[ 3262.206350][T13057] [<ffffffff80c3abba>] __riscv_sys_openat+0x13a/0x1f8
+[ 3262.206622][T13057] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3262.206917][T13057] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3262.207151][T13057] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3262.287768][T13057] syz.5.2442: vmalloc error: size 9128, vm_struct allocation failed, mode:0xdc0(GFP_KERNEL|__GFP_ZERO), nodemask=(null),cpuset=/,mems_allowed=0
+[ 3262.290791][T13057] CPU: 1 UID: 0 PID: 13057 Comm: syz.5.2442 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3262.291120][T13057] Hardware name: riscv-virtio,qemu (DT)
+[ 3262.291227][T13057] Call Trace:
+[ 3262.291328][T13057] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3262.291690][T13057] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3262.291968][T13057] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3262.292301][T13057] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3262.292734][T13057] [<ffffffff80a726ec>] warn_alloc+0x194/0x31c
+[ 3262.293053][T13057] [<ffffffff80a3bc94>] __vmalloc_node_range_noprof+0xacc/0x1054
+[ 3262.293302][T13057] [<ffffffff80a3c87c>] vzalloc_noprof+0xec/0x114
+[ 3262.293540][T13057] [<ffffffff81e66dfe>] n_tty_open+0x22/0x170
+[ 3262.293829][T13057] [<ffffffff81e7614a>] tty_ldisc_open+0x9e/0x10c
+[ 3262.294148][T13057] [<ffffffff81e77eac>] tty_ldisc_setup+0x40/0xf8
+[ 3262.294476][T13057] [<ffffffff81e62b7a>] tty_init_dev.part.0+0x1be/0x4b0
+[ 3262.294797][T13057] [<ffffffff81e62ece>] tty_init_dev+0x62/0x88
+[ 3262.295073][T13057] [<ffffffff81e84c34>] ptmx_open+0x124/0x33c
+[ 3262.295325][T13057] [<ffffffff80c5a846>] chrdev_open+0x22e/0x6c4
+[ 3262.295560][T13057] [<ffffffff80c34904>] do_dentry_open+0x7e0/0x1064
+[ 3262.295813][T13057] [<ffffffff80c3933a>] vfs_open+0xb6/0x3c8
+[ 3262.296095][T13057] [<ffffffff80c8e2f0>] path_openat+0x10f4/0x29d4
+[ 3262.296403][T13057] [<ffffffff80c8fd64>] do_filp_open+0x194/0x378
+[ 3262.296720][T13057] [<ffffffff80c3a27e>] do_sys_openat2+0x116/0x1c4
+[ 3262.296974][T13057] [<ffffffff80c3abba>] __riscv_sys_openat+0x13a/0x1f8
+[ 3262.297235][T13057] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3262.297507][T13057] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3262.297750][T13057] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3262.445423][T13057] Mem-Info:
+[ 3262.446471][T13057] active_anon:2773 inactive_anon:0 isolated_anon:0
+[ 3262.446471][T13057]  active_file:32476 inactive_file:37053 isolated_file:0
+[ 3262.446471][T13057]  unevictable:768 dirty:152 writeback:0
+[ 3262.446471][T13057]  slab_reclaimable:3515 slab_unreclaimable:50691
+[ 3262.446471][T13057]  mapped:35205 shmem:844 pagetables:1075
+[ 3262.446471][T13057]  sec_pagetables:0 bounce:0
+[ 3262.446471][T13057]  kernel_misc_reclaimable:0
+[ 3262.446471][T13057]  free:538835 free_pcp:6174 free_cma:104704
+[ 3262.484807][T13057] Node 0 active_anon:11092kB inactive_anon:0kB active_file:129904kB inactive_file:148212kB unevictable:3072kB isolated(anon):0kB isolated(file):0kB mapped:140820kB dirty:608kB writeback:0kB shmem:3376kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB kernel_stack:7328kB pagetables:4300kB sec_pagetables:0kB all_unreclaimable? no Balloon:0kB
+[ 3262.545943][T13057] Node 0 DMA32 free:1747832kB boost:0kB min:24920kB low:31148kB high:37376kB reserved_highatomic:0KB free_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:2097152kB managed:1751592kB mlocked:0kB bounce:0kB free_pcp:2736kB local_pcp:2736kB free_cma:418816kB
+[ 3262.549906][T13057] lowmem_reserve[]: 0 1379 1379
+[ 3262.551876][T13057] Node 0 Normal free:407760kB boost:0kB min:20132kB low:25164kB high:30196kB reserved_highatomic:0KB free_highatomic:0KB active_anon:11092kB inactive_anon:0kB active_file:129904kB inactive_file:148212kB unevictable:3072kB writepending:608kB present:2097152kB managed:1413072kB mlocked:0kB bounce:0kB free_pcp:21764kB local_pcp:12332kB free_cma:0kB
+[ 3262.647388][T13057] lowmem_reserve[]: 0 0 0
+[ 3262.716349][T13057] Node 0 DMA32: 0*4kB 1*8kB (M) 1*16kB (M) 1*32kB (M) 1*64kB (M) 2*128kB (M) 2*256kB (M) 2*512kB (M) 3*1024kB (MC) 3*2048kB (M) 424*4096kB (MC) = 1747832kB
+[ 3262.840059][T13057] Node 0 Normal: 330*4kB (UME) 481*8kB (UM) 292*16kB (UM) 267*32kB (UM) 124*64kB (UM) 84*128kB (ME) 46*256kB (UME) 19*512kB (M) 7*1024kB (UME) 1*2048kB (U) 83*4096kB (UM) = 407760kB
+[ 3262.996752][T13057] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[ 3262.998088][T13057] Node 0 hugepages_total=8 hugepages_free=8 hugepages_surp=4 hugepages_size=2048kB
+[ 3262.999222][T13057] 70373 total pagecache pages
+[ 3263.000072][T13057] 0 pages in swap cache
+[ 3263.000890][T13057] Free swap  = 124996kB
+[ 3263.001608][T13057] Total swap = 124996kB
+[ 3263.002393][T13057] 1048576 pages RAM
+[ 3263.134917][T13057] 0 pages HighMem/MovableOnly
+[ 3263.135934][T13057] 257410 pages reserved
+[ 3263.136791][T13057] 104960 pages cma reserved
+[ 3263.137696][T13057] ptm ptm0: ldisc open failed (-12), clearing slot 0
+[ 3268.547276][T13065] tmpfs: Unknown parameter 'hq:r'
+[ 3268.702124][T13071] FAULT_INJECTION: forcing a failure.
+[ 3268.702124][T13071] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3268.734409][T13071] CPU: 0 UID: 0 PID: 13071 Comm: syz.2.2449 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3268.734843][T13071] Hardware name: riscv-virtio,qemu (DT)
+[ 3268.734951][T13071] Call Trace:
+[ 3268.735057][T13071] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3268.735413][T13071] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3268.735657][T13071] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3268.736041][T13071] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3268.736362][T13071] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3268.736658][T13071] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3268.736948][T13071] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3268.737240][T13071] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 3268.737469][T13071] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 3268.737750][T13071] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 3268.738039][T13071] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 3268.738304][T13071] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 3268.738579][T13071] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 3268.738852][T13071] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3268.739124][T13071] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3268.739358][T13071] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3272.830855][T13075] binder: 13074:13075 ioctl c0046209 0 returned -22
+[ 3273.317165][   T34] audit: type=1400 audit(3272.560:13): apparmor="DENIED" operation="change_profile" class="file" info="label not found" error=-2 profile="unconfined" name="\$(({" pid=13074 comm="syz.4.2451"
+[ 3273.598485][T13075] Invalid ELF header type: 3 != 1
+[ 3285.331067][T13118] FAULT_INJECTION: forcing a failure.
+[ 3285.331067][T13118] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3285.364832][T13118] CPU: 0 UID: 0 PID: 13118 Comm: syz.1.2463 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3285.365258][T13118] Hardware name: riscv-virtio,qemu (DT)
+[ 3285.365365][T13118] Call Trace:
+[ 3285.365472][T13118] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3285.365845][T13118] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3285.366075][T13118] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3285.366400][T13118] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3285.366725][T13118] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3285.367012][T13118] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3285.367286][T13118] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3285.367581][T13118] [<ffffffff81791540>] _copy_from_user+0x38/0x3e8
+[ 3285.367840][T13118] [<ffffffff84ff6854>] ____sys_sendmsg+0x1c0/0x78c
+[ 3285.368183][T13118] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 3285.368468][T13118] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 3285.368775][T13118] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 3285.369083][T13118] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3285.369355][T13118] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3285.369596][T13118] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3294.269277][    C0] vxcan1: j1939_tp_rxtimer: 0xffffaf808b9c9800: rx timeout, send abort
+[ 3294.277049][    C0] vxcan1: j1939_xtp_rx_abort_one: 0xffffaf808b9c9800: 0x00000: (3) A timeout occurred and this is the connection abort to close the session.
+[ 3298.559792][T13158] FAULT_INJECTION: forcing a failure.
+[ 3298.559792][T13158] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3298.561528][T13158] CPU: 0 UID: 0 PID: 13158 Comm: syz.5.2477 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3298.561846][T13158] Hardware name: riscv-virtio,qemu (DT)
+[ 3298.561951][T13158] Call Trace:
+[ 3298.562055][T13158] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3298.562403][T13158] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3298.562731][T13158] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3298.563095][T13158] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3298.563428][T13158] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3298.563725][T13158] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3298.564031][T13158] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3298.564326][T13158] [<ffffffff81791540>] _copy_from_user+0x38/0x3e8
+[ 3298.564565][T13158] [<ffffffff84ffafac>] copy_msghdr_from_user+0xbc/0x490
+[ 3298.564867][T13158] [<ffffffff84ffb494>] ___sys_sendmsg+0x114/0x1e8
+[ 3298.565181][T13158] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 3298.565487][T13158] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 3298.565803][T13158] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3298.566077][T13158] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3298.566310][T13158] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3305.115954][    C1] vxcan1: j1939_tp_rxtimer: 0xffffaf80959ef800: rx timeout, send abort
+[ 3305.120991][    C1] vxcan1: j1939_xtp_rx_abort_one: 0xffffaf80959ef800: 0x00000: (3) A timeout occurred and this is the connection abort to close the session.
+[ 3306.401662][    C1] vxcan1: j1939_tp_rxtimer: 0xffffaf80959ee400: rx timeout, send abort
+[ 3306.407208][    C1] vxcan1: j1939_xtp_rx_abort_one: 0xffffaf80959ee400: 0x00000: (3) A timeout occurred and this is the connection abort to close the session.
+[ 3309.240363][T13180] FAULT_INJECTION: forcing a failure.
+[ 3309.240363][T13180] name failslab, interval 1, probability 0, space 0, times 0
+[ 3309.242050][T13180] CPU: 1 UID: 0 PID: 13180 Comm: syz.1.2486 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3309.242358][T13180] Hardware name: riscv-virtio,qemu (DT)
+[ 3309.242519][T13180] Call Trace:
+[ 3309.242661][T13180] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3309.243014][T13180] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3309.243244][T13180] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3309.243575][T13180] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3309.243920][T13180] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3309.244224][T13180] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3309.244533][T13180] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3309.244836][T13180] [<ffffffff80905832>] shmem_init_fs_context+0x4e/0x284
+[ 3309.245149][T13180] [<ffffffff80d587ca>] alloc_fs_context+0x552/0x884
+[ 3309.245485][T13180] [<ffffffff80d58b26>] fs_context_for_mount+0x2a/0x34
+[ 3309.245818][T13180] [<ffffffff80cf4286>] path_mount+0xe66/0x1b20
+[ 3309.246112][T13180] [<ffffffff80cf5ef8>] __riscv_sys_mount+0x5a8/0x768
+[ 3309.246411][T13180] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3309.246687][T13180] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3309.246921][T13180] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3323.798602][T13227] dvmrp1: left allmulticast mode
+[ 3324.121042][T13237] FAULT_INJECTION: forcing a failure.
+[ 3324.121042][T13237] name failslab, interval 1, probability 0, space 0, times 0
+[ 3324.129299][T13237] CPU: 1 UID: 0 PID: 13237 Comm: syz.1.2498 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3324.129689][T13237] Hardware name: riscv-virtio,qemu (DT)
+[ 3324.129838][T13237] Call Trace:
+[ 3324.129945][T13237] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3324.130327][T13237] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3324.130592][T13237] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3324.130921][T13237] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3324.131233][T13237] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3324.131528][T13237] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3324.131879][T13237] [<ffffffff80a98e0e>] kmem_cache_alloc_noprof+0x282/0x460
+[ 3324.132229][T13237] [<ffffffff80c4de46>] alloc_empty_file+0x76/0x1e8
+[ 3324.132611][T13237] [<ffffffff80c8d2da>] path_openat+0xde/0x29d4
+[ 3324.132930][T13237] [<ffffffff80c8fd64>] do_filp_open+0x194/0x378
+[ 3324.133287][T13237] [<ffffffff80c609a0>] do_open_execat+0x110/0x3dc
+[ 3324.133536][T13237] [<ffffffff80c61bba>] alloc_bprm+0x2a/0x6c0
+[ 3324.133786][T13237] [<ffffffff80c65846>] do_execveat_common.isra.0+0x1b6/0x5b4
+[ 3324.134058][T13237] [<ffffffff80c69c6a>] __riscv_sys_execve+0x86/0xc8
+[ 3324.134336][T13237] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3324.134641][T13237] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3324.134890][T13237] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3337.040345][T13278] FAULT_INJECTION: forcing a failure.
+[ 3337.040345][T13278] name failslab, interval 1, probability 0, space 0, times 0
+[ 3337.042624][T13278] CPU: 0 UID: 0 PID: 13278 Comm: syz.2.2509 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3337.042941][T13278] Hardware name: riscv-virtio,qemu (DT)
+[ 3337.043046][T13278] Call Trace:
+[ 3337.043149][T13278] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3337.043501][T13278] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3337.043748][T13278] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3337.044119][T13278] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3337.044437][T13278] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3337.044735][T13278] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3337.045047][T13278] [<ffffffff80a97f00>] __kmalloc_node_noprof+0x2b4/0x678
+[ 3337.045357][T13278] [<ffffffff80a3b50a>] __vmalloc_node_range_noprof+0x342/0x1054
+[ 3337.045610][T13278] [<ffffffff80a3c87c>] vzalloc_noprof+0xec/0x114
+[ 3337.045848][T13278] [<ffffffff806b2a96>] bpf_check+0x1ea/0xc910
+[ 3337.046139][T13278] [<ffffffff806114c6>] bpf_prog_load+0x11ee/0x1fe8
+[ 3337.046433][T13278] [<ffffffff80615596>] __sys_bpf+0xc56/0x487c
+[ 3337.046722][T13278] [<ffffffff80619f46>] __riscv_sys_bpf+0x6a/0xd4
+[ 3337.047013][T13278] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3337.047286][T13278] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3337.047588][T13278] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3337.157801][T13278] syz.2.2509: vmalloc error: size 4096, failed to allocated page array size 8, mode:0xdc2(GFP_KERNEL|__GFP_HIGHMEM|__GFP_ZERO), nodemask=(null),cpuset=/,mems_allowed=0
+[ 3337.177944][T13278] CPU: 0 UID: 0 PID: 13278 Comm: syz.2.2509 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3337.178373][T13278] Hardware name: riscv-virtio,qemu (DT)
+[ 3337.178481][T13278] Call Trace:
+[ 3337.178588][T13278] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3337.178960][T13278] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3337.179191][T13278] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3337.179516][T13278] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3337.180755][T13278] [<ffffffff80a726ec>] warn_alloc+0x194/0x31c
+[ 3337.181065][T13278] [<ffffffff80a3bf94>] __vmalloc_node_range_noprof+0xdcc/0x1054
+[ 3337.181316][T13278] [<ffffffff80a3c87c>] vzalloc_noprof+0xec/0x114
+[ 3337.181547][T13278] [<ffffffff806b2a96>] bpf_check+0x1ea/0xc910
+[ 3337.181817][T13278] [<ffffffff806114c6>] bpf_prog_load+0x11ee/0x1fe8
+[ 3337.182104][T13278] [<ffffffff80615596>] __sys_bpf+0xc56/0x487c
+[ 3337.182386][T13278] [<ffffffff80619f46>] __riscv_sys_bpf+0x6a/0xd4
+[ 3337.182770][T13278] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3337.183052][T13278] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3337.183292][T13278] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3337.338585][T13278] Mem-Info:
+[ 3337.351693][ T5028] hid_parser_main: 179 callbacks suppressed
+[ 3337.352212][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.356383][T13278] active_anon:2812 inactive_anon:0 isolated_anon:0
+[ 3337.356383][T13278]  active_file:32476 inactive_file:37081 isolated_file:0
+[ 3337.356383][T13278]  unevictable:768 dirty:112 writeback:0
+[ 3337.356383][T13278]  slab_reclaimable:3518 slab_unreclaimable:50385
+[ 3337.356383][T13278]  mapped:35280 shmem:849 pagetables:1070
+[ 3337.356383][T13278]  sec_pagetables:0 bounce:0
+[ 3337.356383][T13278]  kernel_misc_reclaimable:0
+[ 3337.356383][T13278]  free:539589 free_pcp:5590 free_cma:104704
+[ 3337.359797][T13278] Node 0 active_anon:11248kB inactive_anon:0kB active_file:129904kB inactive_file:148324kB unevictable:3072kB isolated(anon):0kB isolated(file):0kB mapped:141120kB dirty:448kB writeback:0kB shmem:3396kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB kernel_stack:7352kB pagetables:4280kB sec_pagetables:0kB all_unreclaimable? no Balloon:0kB
+[ 3337.398062][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.399463][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.400556][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.401586][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.426158][T13278] Node 0 DMA32 free:1747832kB boost:0kB min:24920kB low:31148kB high:37376kB reserved_highatomic:0KB free_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:2097152kB managed:1751592kB mlocked:0kB bounce:0kB free_pcp:2736kB local_pcp:0kB free_cma:418816kB
+[ 3337.441433][T13278] lowmem_reserve[]: 0 1379 1379
+[ 3337.445547][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.447457][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.448556][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.449833][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.450877][ T5028] hid-generic 09C5:0005:000B.0006: unknown main item tag 0x0
+[ 3337.515713][T13278] Node 0 Normal free:410524kB boost:0kB min:20132kB low:25164kB high:30196kB reserved_highatomic:0KB free_highatomic:0KB active_anon:11248kB inactive_anon:0kB active_file:129904kB inactive_file:148324kB unevictable:3072kB writepending:448kB present:2097152kB managed:1413072kB mlocked:0kB bounce:0kB free_pcp:19780kB local_pcp:8012kB free_cma:0kB
+[ 3337.518805][T13278] lowmem_reserve[]: 0 0 0
+[ 3337.520477][T13278] Node 0 DMA32: 0*4kB 1*8kB (M) 1*16kB (M) 1*32kB (M) 1*64kB (M) 2*128kB (M) 2*256kB (M) 2*512kB (M) 3*1024kB (MC) 3*2048kB (M) 424*4096kB (MC) 
+[ 3337.668104][ T5028] hid-generic 09C5:0005:000B.0006: hidraw0: <UNKNOWN> HID v0.0c Device [syz1] on syz1
+[ 3337.707867][T13274] RDS: rds_bind could not find a transport for ::ffff:172.30.0.4, load rds_tcp or rds_rdma?
+[ 3337.710572][T13278] = 1747832kB
+[ 3337.711581][T13278] Node 0 Normal: 457*4kB (UME) 505*8kB (UM) 279*16kB (UM) 318*32kB (UM) 132*64kB (UM) 85*128kB (UME) 46*256kB (UME) 19*512kB (M) 7*1024kB (UME) 1*2048kB (U) 83*4096kB (UM) = 410524kB
+[ 3337.769182][T13278] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[ 3337.770320][T13278] Node 0 hugepages_total=8 hugepages_free=8 hugepages_surp=4 hugepages_size=2048kB
+[ 3337.771380][T13278] 70408 total pagecache pages
+[ 3337.772135][T13278] 0 pages in swap cache
+[ 3337.826065][T13278] Free swap  = 124996kB
+[ 3337.827099][T13278] Total swap = 124996kB
+[ 3337.827884][T13278] 1048576 pages RAM
+[ 3337.828582][T13278] 0 pages HighMem/MovableOnly
+[ 3337.829298][T13278] 257410 pages reserved
+[ 3337.829987][T13278] 104960 pages cma reserved
+[ 3339.368117][T13292] fuse: Unknown parameter 'Fe'
+[ 3352.440906][T13319] FAULT_INJECTION: forcing a failure.
+[ 3352.440906][T13319] name failslab, interval 1, probability 0, space 0, times 0
+[ 3352.464779][T13319] CPU: 1 UID: 0 PID: 13319 Comm: syz.2.2522 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3352.465218][T13319] Hardware name: riscv-virtio,qemu (DT)
+[ 3352.465355][T13319] Call Trace:
+[ 3352.465473][T13319] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3352.465895][T13319] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3352.466126][T13319] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3352.466455][T13319] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3352.466775][T13319] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3352.467061][T13319] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3352.467373][T13319] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3352.467680][T13319] [<ffffffff80486472>] __riscv_sys_acct+0xd6/0x918
+[ 3352.467985][T13319] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3352.468266][T13319] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3352.468501][T13319] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3354.221992][T13333] input: l Ív/audio1 as /devices/virtual/input/input16
+[ 3366.670358][T13372] netdevsim netdevsim3: Direct firmware load for Æ failed with error -2
+[ 3366.694950][T13372] netdevsim netdevsim3: Falling back to sysfs fallback for: Æ
+[ 3370.259147][T13382] FAULT_INJECTION: forcing a failure.
+[ 3370.259147][T13382] name failslab, interval 1, probability 0, space 0, times 0
+[ 3370.260870][T13382] CPU: 0 UID: 0 PID: 13382 Comm: syz.4.2537 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3370.261195][T13382] Hardware name: riscv-virtio,qemu (DT)
+[ 3370.261311][T13382] Call Trace:
+[ 3370.261418][T13382] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3370.261803][T13382] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3370.262046][T13382] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3370.262378][T13382] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3370.262805][T13382] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3370.263161][T13382] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3370.263509][T13382] [<ffffffff80a98e0e>] kmem_cache_alloc_noprof+0x282/0x460
+[ 3370.263846][T13382] [<ffffffff85004930>] sk_prot_alloc+0x58/0x290
+[ 3370.264241][T13382] [<ffffffff85011120>] sk_alloc+0x34/0xdac
+[ 3370.264472][T13382] [<ffffffff85acc2aa>] inet6_create+0x3b2/0x1160
+[ 3370.264815][T13382] [<ffffffff84ff9758>] __sock_create+0x344/0x8d0
+[ 3370.265109][T13382] [<ffffffff84ff9dc6>] sock_create_kern+0x3e/0x48
+[ 3370.265401][T13382] [<ffffffff86161cb0>] mptcp_subflow_create_socket+0xe4/0xdbc
+[ 3370.265769][T13382] [<ffffffff861385da>] __mptcp_nmpc_sk+0x17e/0x7f0
+[ 3370.266048][T13382] [<ffffffff8618de82>] mptcp_setsockopt+0xd12/0x2a64
+[ 3370.266329][T13382] [<ffffffff85004284>] sock_common_setsockopt+0x90/0x104
+[ 3370.266660][T13382] [<ffffffff84ff38aa>] do_sock_setsockopt+0x1ca/0x3b0
+[ 3370.267007][T13382] [<ffffffff850016b8>] __sys_setsockopt+0x148/0x1ec
+[ 3370.267321][T13382] [<ffffffff85001800>] __riscv_sys_setsockopt+0xa4/0x130
+[ 3370.267637][T13382] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3370.267950][T13382] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3370.268214][T13382] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3390.402303][T13443] ttynull ttynull: ldisc open failed (-12), clearing slot 0
+[ 3407.680209][T13496] FAULT_INJECTION: forcing a failure.
+[ 3407.680209][T13496] name failslab, interval 1, probability 0, space 0, times 0
+[ 3407.681941][T13496] CPU: 1 UID: 0 PID: 13496 Comm: syz.4.2571 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3407.682257][T13496] Hardware name: riscv-virtio,qemu (DT)
+[ 3407.682363][T13496] Call Trace:
+[ 3407.682545][T13496] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3407.682939][T13496] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3407.683183][T13496] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3407.683511][T13496] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3407.683830][T13496] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3407.684160][T13496] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3407.684499][T13496] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3407.684803][T13496] [<ffffffff805ef40c>] bpf_prog_alloc_no_stats+0x124/0x514
+[ 3407.685149][T13496] [<ffffffff805ef830>] bpf_prog_alloc+0x34/0x268
+[ 3407.685465][T13496] [<ffffffff8517414e>] bpf_prog_create_from_user+0xaa/0x2c8
+[ 3407.685804][T13496] [<ffffffff80527be2>] seccomp_set_mode_filter+0x29e/0x21e8
+[ 3407.686059][T13496] [<ffffffff8052a1ca>] __riscv_sys_seccomp+0x106/0x578
+[ 3407.686318][T13496] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3407.686589][T13496] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3407.686840][T13496] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3414.245807][T13511] binder: BC_ATTEMPT_ACQUIRE not supported
+[ 3414.248969][T13511] binder: 13508:13511 ioctl c0306201 200000001b00 returned -22
+[ 3414.295717][   T34] audit: type=1400 audit(3413.620:14): apparmor="DENIED" operation="stack_onexec" class="file" info="label not found" error=-2 profile="unconfined" name="exec" pid=13508 comm="syz.2.2577"
+[ 3414.705812][T13511] binder: 13508:13511 ioctl 40286608 0 returned -22
+[ 3416.596624][T13519] tmpfs: Bad value for 'grpquota_block_hardlimit'
+[ 3427.999290][T13554] Invalid ELF header type: 3 != 1
+[ 3438.997583][T13578] tmpfs: Bad value for 'gid'
+[ 3438.998812][T13578] tmpfs: Bad value for 'gid'
+[ 3445.131425][T13605] FAULT_INJECTION: forcing a failure.
+[ 3445.131425][T13605] name failslab, interval 1, probability 0, space 0, times 0
+[ 3445.152236][T13605] CPU: 0 UID: 0 PID: 13605 Comm: syz.3.2603 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3445.152753][T13605] Hardware name: riscv-virtio,qemu (DT)
+[ 3445.152885][T13605] Call Trace:
+[ 3445.152993][T13605] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3445.153362][T13605] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3445.153601][T13605] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3445.153961][T13605] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3445.154288][T13605] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3445.154583][T13605] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3445.154906][T13605] [<ffffffff80a98e0e>] kmem_cache_alloc_noprof+0x282/0x460
+[ 3445.155228][T13605] [<ffffffff809b7872>] __pmd_alloc+0xba/0xa00
+[ 3445.155532][T13605] [<ffffffff809c3d98>] __handle_mm_fault+0x8b4/0x5a6c
+[ 3445.155883][T13605] [<ffffffff809c91b8>] handle_mm_fault+0x268/0x8b8
+[ 3445.156238][T13605] [<ffffffff80985756>] __get_user_pages+0x996/0x2c8c
+[ 3445.156485][T13605] [<ffffffff80987d90>] get_user_pages_remote+0x344/0xa60
+[ 3445.156742][T13605] [<ffffffff80c6234a>] get_arg_page+0xfa/0x2f0
+[ 3445.157010][T13605] [<ffffffff80c629e4>] copy_string_kernel+0x148/0x4c0
+[ 3445.157272][T13605] [<ffffffff80c65988>] do_execveat_common.isra.0+0x2f8/0x5b4
+[ 3445.157547][T13605] [<ffffffff80c69d6e>] __riscv_sys_execveat+0xc2/0x130
+[ 3445.157821][T13605] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3445.158101][T13605] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3445.158345][T13605] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3488.638159][T11630] hid_parser_main: 179 callbacks suppressed
+[ 3488.638645][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3488.640955][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3488.642096][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3488.715622][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3488.716975][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3488.718088][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3488.719153][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3488.720228][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3488.721272][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3488.722324][T11630] hid-generic 09C5:0005:000B.0007: unknown main item tag 0x0
+[ 3489.060888][T11630] hid-generic 09C5:0005:000B.0007: hidraw0: <UNKNOWN> HID v0.0c Device [syz1] on syz1
+[ 3495.225556][T13772] FAULT_INJECTION: forcing a failure.
+[ 3495.225556][T13772] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3495.227335][T13772] CPU: 1 UID: 0 PID: 13772 Comm: syz.4.2643 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3495.227671][T13772] Hardware name: riscv-virtio,qemu (DT)
+[ 3495.227802][T13772] Call Trace:
+[ 3495.227941][T13772] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3495.228304][T13772] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3495.228543][T13772] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3495.228917][T13772] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3495.229242][T13772] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3495.229535][T13772] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3495.229815][T13772] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3495.230113][T13772] [<ffffffff81791540>] _copy_from_user+0x38/0x3e8
+[ 3495.230357][T13772] [<ffffffff84ffadf2>] move_addr_to_kernel+0x6a/0x168
+[ 3495.230654][T13772] [<ffffffff84fff2ee>] __sys_bind+0x11e/0x274
+[ 3495.230949][T13772] [<ffffffff84fff4b0>] __riscv_sys_bind+0x6c/0xac
+[ 3495.231250][T13772] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3495.231522][T13772] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3495.231780][T13772] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3496.443731][T13776] netlink: 'syz.0.2646': attribute type 2 has an invalid length.
+[ 3496.445370][T13776] netlink: 'syz.0.2646': attribute type 1 has an invalid length.
+[ 3503.988901][T13794] tmpfs: Bad value for 'grpquota_block_hardlimit'
+[ 3509.264352][T13811] tmpfs: Unknown parameter 'appraise'
+[ 3512.518611][T13821] netlink: 2980 bytes leftover after parsing attributes in process `syz.3.2660'.
+[ 3522.110987][T13855] netlink: 11 bytes leftover after parsing attributes in process `syz.1.2680'.
+[ 3523.236914][T13862] netlink: 36 bytes leftover after parsing attributes in process `syz.3.2670'.
+[ 3523.238745][T13862] netlink: 36 bytes leftover after parsing attributes in process `syz.3.2670'.
+[ 3523.745049][T13865] FAULT_INJECTION: forcing a failure.
+[ 3523.745049][T13865] name failslab, interval 1, probability 0, space 0, times 0
+[ 3523.747888][T13865] CPU: 0 UID: 0 PID: 13865 Comm: syz.5.2669 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3523.748260][T13865] Hardware name: riscv-virtio,qemu (DT)
+[ 3523.748388][T13865] Call Trace:
+[ 3523.748495][T13865] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3523.748865][T13865] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3523.749113][T13865] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3523.749446][T13865] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3523.749768][T13865] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3523.750090][T13865] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3523.750413][T13865] [<ffffffff80a98e0e>] kmem_cache_alloc_noprof+0x282/0x460
+[ 3523.750735][T13865] [<ffffffff81341844>] security_inode_alloc+0x3c/0x2d0
+[ 3523.751069][T13865] [<ffffffff80cbea2e>] inode_init_always_gfp+0x99e/0xe38
+[ 3523.751390][T13865] [<ffffffff80ccab20>] alloc_inode+0x80/0x208
+[ 3523.751709][T13865] [<ffffffff80ccb1b0>] iget5_locked+0x310/0x3b4
+[ 3523.752095][T13865] [<ffffffff8129c2a2>] fuse_iget+0x1ca/0x840
+[ 3523.752361][T13865] [<ffffffff812784e6>] fuse_lookup_name+0x49e/0x740
+[ 3523.752666][T13865] [<ffffffff81278944>] fuse_lookup+0x1bc/0x4b4
+[ 3523.752956][T13865] [<ffffffff80c76f6a>] lookup_one_qstr_excl+0x1a6/0x218
+[ 3523.753259][T13865] [<ffffffff80c8a6de>] filename_create+0x1be/0x414
+[ 3523.753562][T13865] [<ffffffff80c90818>] do_mkdirat+0xa8/0x384
+[ 3523.754033][T13865] [<ffffffff80c90bee>] __riscv_sys_mkdirat+0xfa/0x170
+[ 3523.754416][T13865] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3523.754710][T13865] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3523.754964][T13865] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3524.557646][T13866] FAULT_INJECTION: forcing a failure.
+[ 3524.557646][T13866] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3524.629056][T13866] CPU: 1 UID: 0 PID: 13866 Comm: syz.0.2672 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3524.629500][T13866] Hardware name: riscv-virtio,qemu (DT)
+[ 3524.629608][T13866] Call Trace:
+[ 3524.629722][T13866] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3524.630104][T13866] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3524.630343][T13866] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3524.630674][T13866] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3524.631001][T13866] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3524.631297][T13866] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3524.631572][T13866] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3524.631928][T13866] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 3524.632190][T13866] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 3524.632535][T13866] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 3524.632866][T13866] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 3524.633154][T13866] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 3524.633422][T13866] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 3524.633704][T13866] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3524.633990][T13866] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3524.634232][T13866] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3534.572159][T13898] FAULT_INJECTION: forcing a failure.
+[ 3534.572159][T13898] name failslab, interval 1, probability 0, space 0, times 0
+[ 3534.667524][T13898] CPU: 1 UID: 0 PID: 13898 Comm: syz.0.2683 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3534.668064][T13898] Hardware name: riscv-virtio,qemu (DT)
+[ 3534.668186][T13898] Call Trace:
+[ 3534.668297][T13898] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3534.668679][T13898] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3534.668918][T13898] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3534.669282][T13898] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3534.669605][T13898] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3534.669901][T13898] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3534.670227][T13898] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3534.670563][T13898] [<ffffffff80905832>] shmem_init_fs_context+0x4e/0x284
+[ 3534.670893][T13898] [<ffffffff80d587ca>] alloc_fs_context+0x552/0x884
+[ 3534.671239][T13898] [<ffffffff80d58b26>] fs_context_for_mount+0x2a/0x34
+[ 3534.671572][T13898] [<ffffffff80cf4286>] path_mount+0xe66/0x1b20
+[ 3534.671928][T13898] [<ffffffff80cf5ef8>] __riscv_sys_mount+0x5a8/0x768
+[ 3534.672267][T13898] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3534.672549][T13898] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3534.672842][T13898] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3541.566597][T13916] binder_alloc: binder_alloc_mmap_handler: 13912 200000ffd000-200000ffe000 already mapped failed -16
+[ 3544.447659][T13920] FAULT_INJECTION: forcing a failure.
+[ 3544.447659][T13920] name failslab, interval 1, probability 0, space 0, times 0
+[ 3544.449485][T13920] CPU: 0 UID: 0 PID: 13920 Comm: syz.2.2691 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3544.449806][T13920] Hardware name: riscv-virtio,qemu (DT)
+[ 3544.449918][T13920] Call Trace:
+[ 3544.450031][T13920] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3544.450399][T13920] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3544.450640][T13920] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3544.450974][T13920] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3544.451305][T13920] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3544.451592][T13920] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3544.451962][T13920] [<ffffffff80a98bde>] kmem_cache_alloc_noprof+0x52/0x460
+[ 3544.452298][T13920] [<ffffffff8504414c>] skb_clone+0x16c/0x3a0
+[ 3544.452695][T13920] [<ffffffff85453c7a>] netlink_deliver_tap+0xade/0xd3c
+[ 3544.453004][T13920] [<ffffffff85460254>] netlink_unicast+0x670/0x7ec
+[ 3544.453281][T13920] [<ffffffff854616f0>] netlink_ack+0x574/0x998
+[ 3544.453545][T13920] [<ffffffff85461e36>] netlink_rcv_skb+0x322/0x3bc
+[ 3544.453821][T13920] [<ffffffff854e2e70>] nfnetlink_rcv+0x1a0/0x480
+[ 3544.454118][T13920] [<ffffffff854600fe>] netlink_unicast+0x51a/0x7ec
+[ 3544.454405][T13920] [<ffffffff85460bac>] netlink_sendmsg+0x7dc/0xdac
+[ 3544.454681][T13920] [<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160
+[ 3544.454968][T13920] [<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c
+[ 3544.455256][T13920] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 3544.455558][T13920] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 3544.455905][T13920] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 3544.456247][T13920] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3544.456521][T13920] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3544.456761][T13920] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3558.479009][T13951] tmpfs: Bad value for 'size'
+[ 3571.200786][T13987] FAULT_INJECTION: forcing a failure.
+[ 3571.200786][T13987] name failslab, interval 1, probability 0, space 0, times 0
+[ 3571.219578][T13987] CPU: 1 UID: 0 PID: 13987 Comm: syz.5.2717 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3571.220029][T13987] Hardware name: riscv-virtio,qemu (DT)
+[ 3571.220151][T13987] Call Trace:
+[ 3571.220260][T13987] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3571.220659][T13987] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3571.220895][T13987] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3571.221234][T13987] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3571.221553][T13987] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3571.221876][T13987] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3571.222204][T13987] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3571.222508][T13987] [<ffffffff804c18c6>] copy_cgroup_ns+0x1d6/0x648
+[ 3571.222889][T13987] [<ffffffff801ef7f2>] create_new_namespaces+0x2de/0x9c8
+[ 3571.223275][T13987] [<ffffffff801f0bc0>] unshare_nsproxy_namespaces+0xb8/0x1c8
+[ 3571.223636][T13987] [<ffffffff80146d06>] ksys_unshare+0x416/0xa40
+[ 3571.224012][T13987] [<ffffffff80147364>] __riscv_sys_unshare+0x34/0x48
+[ 3571.224357][T13987] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3571.224635][T13987] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3571.224891][T13987] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3581.346627][T14007] netlink: 8 bytes leftover after parsing attributes in process `syz.1.2722'.
+[ 3639.408006][T14142] FAULT_INJECTION: forcing a failure.
+[ 3639.408006][T14142] name fail_page_alloc, interval 1, probability 0, space 0, times 0
+[ 3639.425382][T14142] CPU: 0 UID: 0 PID: 14142 Comm: syz.3.2774 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3639.425913][T14142] Hardware name: riscv-virtio,qemu (DT)
+[ 3639.426035][T14142] Call Trace:
+[ 3639.426198][T14142] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3639.426595][T14142] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3639.426835][T14142] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3639.427182][T14142] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3639.427507][T14142] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3639.427822][T14142] [<ffffffff80b434e8>] should_fail_alloc_page+0x110/0x170
+[ 3639.428216][T14142] [<ffffffff80a591c4>] prepare_alloc_pages+0x368/0x4dc
+[ 3639.428507][T14142] [<ffffffff80a729c2>] __alloc_frozen_pages_noprof+0x14e/0x216c
+[ 3639.428836][T14142] [<ffffffff80b0b682>] alloc_pages_mpol+0x1ee/0x5a0
+[ 3639.429122][T14142] [<ffffffff80b0d10a>] alloc_frozen_pages_noprof+0x156/0x318
+[ 3639.429410][T14142] [<ffffffff80b0d2ee>] alloc_pages_noprof+0x22/0x210
+[ 3639.429685][T14142] [<ffffffff80a57212>] get_free_pages_noprof+0xe/0x160
+[ 3639.429962][T14142] [<ffffffff80b3a9dc>] kasan_populate_vmalloc+0x44/0x1fc
+[ 3639.430271][T14142] [<ffffffff80a2d632>] alloc_vmap_area+0x9fe/0x2e14
+[ 3639.430611][T14142] [<ffffffff80a3936a>] __get_vm_area_node+0x1be/0x48c
+[ 3639.430844][T14142] [<ffffffff80a3b3f6>] __vmalloc_node_range_noprof+0x22e/0x1054
+[ 3639.431102][T14142] [<ffffffff80a3c650>] __vmalloc_noprof+0xec/0x118
+[ 3639.431339][T14142] [<ffffffff805ef340>] bpf_prog_alloc_no_stats+0x58/0x514
+[ 3639.431673][T14142] [<ffffffff805ef830>] bpf_prog_alloc+0x34/0x268
+[ 3639.432056][T14142] [<ffffffff80610c18>] bpf_prog_load+0x940/0x1fe8
+[ 3639.432365][T14142] [<ffffffff80615596>] __sys_bpf+0xc56/0x487c
+[ 3639.432655][T14142] [<ffffffff80619f46>] __riscv_sys_bpf+0x6a/0xd4
+[ 3639.432946][T14142] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3639.433235][T14142] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3639.433491][T14142] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3639.568068][T14142] syz.3.2774: vmalloc error: size 4096, vm_struct allocation failed, mode:0x500dc0(GFP_USER|__GFP_ZERO|__GFP_ACCOUNT), nodemask=(null),cpuset=/,mems_allowed=0
+[ 3639.571760][T14142] CPU: 1 UID: 0 PID: 14142 Comm: syz.3.2774 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3639.572153][T14142] Hardware name: riscv-virtio,qemu (DT)
+[ 3639.572269][T14142] Call Trace:
+[ 3639.572371][T14142] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3639.572858][T14142] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3639.573128][T14142] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3639.573491][T14142] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3639.573815][T14142] [<ffffffff80a726ec>] warn_alloc+0x194/0x31c
+[ 3639.574127][T14142] [<ffffffff80a3bc94>] __vmalloc_node_range_noprof+0xacc/0x1054
+[ 3639.574382][T14142] [<ffffffff80a3c650>] __vmalloc_noprof+0xec/0x118
+[ 3639.574619][T14142] [<ffffffff805ef340>] bpf_prog_alloc_no_stats+0x58/0x514
+[ 3639.574949][T14142] [<ffffffff805ef830>] bpf_prog_alloc+0x34/0x268
+[ 3639.575271][T14142] [<ffffffff80610c18>] bpf_prog_load+0x940/0x1fe8
+[ 3639.575562][T14142] [<ffffffff80615596>] __sys_bpf+0xc56/0x487c
+[ 3639.575879][T14142] [<ffffffff80619f46>] __riscv_sys_bpf+0x6a/0xd4
+[ 3639.576223][T14142] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3639.576505][T14142] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3639.576747][T14142] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3639.754317][T14142] Mem-Info:
+[ 3639.755404][T14142] active_anon:7031 inactive_anon:0 isolated_anon:0
+[ 3639.755404][T14142]  active_file:32476 inactive_file:37189 isolated_file:0
+[ 3639.755404][T14142]  unevictable:768 dirty:25 writeback:0
+[ 3639.755404][T14142]  slab_reclaimable:3534 slab_unreclaimable:51073
+[ 3639.755404][T14142]  mapped:38705 shmem:5032 pagetables:1104
+[ 3639.755404][T14142]  sec_pagetables:0 bounce:0
+[ 3639.755404][T14142]  kernel_misc_reclaimable:0
+[ 3639.755404][T14142]  free:533685 free_pcp:4232 free_cma:104704
+[ 3639.759966][T14142] Node 0 active_anon:28124kB inactive_anon:0kB active_file:129904kB inactive_file:148756kB unevictable:3072kB isolated(anon):0kB isolated(file):0kB mapped:154820kB dirty:100kB writeback:0kB shmem:20128kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB kernel_stack:7408kB pagetables:4416kB sec_pagetables:0kB all_unreclaimable? no Balloon:0kB
+[ 3639.804965][T14142] Node 0 DMA32 free:1747832kB boost:0kB min:24920kB low:31148kB high:37376kB reserved_highatomic:0KB free_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:2097152kB managed:1751592kB mlocked:0kB bounce:0kB free_pcp:2736kB local_pcp:2736kB free_cma:418816kB
+[ 3639.811885][T14142] lowmem_reserve[]: 0 1379 1379
+[ 3639.855999][T14142] Node 0 Normal free:386908kB boost:0kB min:20132kB low:25164kB high:30196kB reserved_highatomic:0KB free_highatomic:0KB active_anon:28164kB inactive_anon:0kB active_file:129904kB inactive_file:148756kB unevictable:3072kB writepending:100kB present:2097152kB managed:1413072kB mlocked:0kB bounce:0kB free_pcp:14516kB local_pcp:7684kB free_cma:0kB
+[ 3639.899660][T14142] lowmem_reserve[]: 0 0 0
+[ 3639.906969][T14142] Node 0 DMA32: 0*4kB 1*8kB (M) 1*16kB (M) 1*32kB (M) 1*64kB (M) 2*128kB (M) 2*256kB (M) 2*512kB (M) 3*1024kB (MC) 3*2048kB (M) 424*4096kB (MC) = 1747832kB
+[ 3640.090351][T14142] Node 0 Normal: 385*4kB (UE) 19*8kB (UME) 4*16kB (UME) 28*32kB (UME) 76*64kB (UME) 88*128kB (ME) 44*256kB (M) 19*512kB (M) 7*1024kB (UME) 0*2048kB 83*4096kB (UM) = 386908kB
+[ 3640.194599][T14142] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[ 3640.196275][T14142] Node 0 hugepages_total=8 hugepages_free=8 hugepages_surp=4 hugepages_size=2048kB
+[ 3640.197556][T14142] 74728 total pagecache pages
+[ 3640.236688][T14142] 0 pages in swap cache
+[ 3640.237958][T14142] Free swap  = 124996kB
+[ 3640.238893][T14142] Total swap = 124996kB
+[ 3640.239819][T14142] 1048576 pages RAM
+[ 3640.240693][T14142] 0 pages HighMem/MovableOnly
+[ 3640.271578][T14142] 257410 pages reserved
+[ 3640.321168][T14142] 104960 pages cma reserved
+[ 3647.815491][T13706] usb 1-1: new full-speed USB device number 8 using dummy_hcd
+[ 3653.464601][T13706] usb 1-1: unable to read config index 0 descriptor/start: -32
+[ 3653.466293][T13706] usb 1-1: chopping to 0 config(s)
+[ 3653.467593][T13706] usb 1-1: can't read configurations, error -32
+[ 3653.705785][T13706] usb 1-1: new full-speed USB device number 9 using dummy_hcd
+[ 3654.044851][T13706] usb 1-1: device descriptor read/64, error -32
+[ 3654.206951][T13706] usb usb1-port1: attempt power cycle
+[ 3654.957182][T13706] usb 1-1: new full-speed USB device number 10 using dummy_hcd
+[ 3654.999924][T13706] usb 1-1: device descriptor read/8, error -32
+[ 3655.334829][T13706] usb 1-1: new full-speed USB device number 11 using dummy_hcd
+[ 3655.368817][T13706] usb 1-1: device descriptor read/8, error -32
+[ 3655.504971][T13706] usb usb1-port1: unable to enumerate USB device
+[ 3661.042345][T14201] FAULT_INJECTION: forcing a failure.
+[ 3661.042345][T14201] name fail_iommufd, interval 1, probability 0, space 0, times 1
+[ 3661.074892][T14201] CPU: 0 UID: 0 PID: 14201 Comm: syz.4.2788 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3661.075382][T14201] Hardware name: riscv-virtio,qemu (DT)
+[ 3661.075516][T14201] Call Trace:
+[ 3661.075641][T14201] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3661.076133][T14201] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3661.076384][T14201] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3661.076746][T14201] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3661.077077][T14201] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3661.077385][T14201] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3661.077668][T14201] [<ffffffff81fc2816>] iommufd_should_fail+0x22/0x2c
+[ 3661.078029][T14201] [<ffffffff81fa5e96>] iommufd_get_object+0x86/0x4cc
+[ 3661.078329][T14201] [<ffffffff81fa18b4>] iommufd_ioas_copy+0x24c/0x868
+[ 3661.078608][T14201] [<ffffffff81fa5a4e>] iommufd_fops_ioctl+0x476/0x838
+[ 3661.078900][T14201] [<ffffffff80c9cf1e>] __riscv_sys_ioctl+0x17e/0x1e4
+[ 3661.079168][T14201] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3661.079450][T14201] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3661.079694][T14201] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3663.459770][T14203] 8021q: VLANs not supported on ip_vti0
+[ 3697.160453][T14288] FAULT_INJECTION: forcing a failure.
+[ 3697.160453][T14288] name failslab, interval 1, probability 0, space 0, times 0
+[ 3697.204005][T14288] CPU: 1 UID: 0 PID: 14288 Comm: syz.0.2819 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3697.204502][T14288] Hardware name: riscv-virtio,qemu (DT)
+[ 3697.204617][T14288] Call Trace:
+[ 3697.204725][T14288] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3697.205100][T14288] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3697.205375][T14288] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3697.205708][T14288] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3697.206028][T14288] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3697.206351][T14288] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3697.206668][T14288] [<ffffffff80a98e0e>] kmem_cache_alloc_noprof+0x282/0x460
+[ 3697.206999][T14288] [<ffffffff8504414c>] skb_clone+0x16c/0x3a0
+[ 3697.207361][T14288] [<ffffffff85d3bc04>] pfkey_process+0xc4/0x7d8
+[ 3697.207710][T14288] [<ffffffff85d3c6e0>] pfkey_sendmsg+0x3c8/0x740
+[ 3697.208102][T14288] [<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160
+[ 3697.208430][T14288] [<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c
+[ 3697.208711][T14288] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 3697.209071][T14288] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 3697.209430][T14288] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 3697.209749][T14288] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3697.210029][T14288] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3697.210277][T14288] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3702.738274][T14308] FAULT_INJECTION: forcing a failure.
+[ 3702.738274][T14308] name failslab, interval 1, probability 0, space 0, times 0
+[ 3702.741125][T14308] CPU: 1 UID: 0 PID: 14308 Comm: syz.5.2836 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3702.741485][T14308] Hardware name: riscv-virtio,qemu (DT)
+[ 3702.741591][T14308] Call Trace:
+[ 3702.741713][T14308] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3702.742083][T14308] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3702.742321][T14308] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3702.742742][T14308] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3702.743081][T14308] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3702.743478][T14308] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3702.743800][T14308] [<ffffffff80a9854c>] kmem_cache_alloc_node_noprof+0x288/0x464
+[ 3702.744178][T14308] [<ffffffff8503607c>] __alloc_skb+0x318/0x408
+[ 3702.744484][T14308] [<ffffffff85457f2e>] netlink_dump+0x182/0x101c
+[ 3702.744769][T14308] [<ffffffff85459bfe>] __netlink_dump_start+0x5a2/0x844
+[ 3702.745044][T14308] [<ffffffff8511d8ca>] rtnetlink_rcv_msg+0xab6/0xd6c
+[ 3702.745370][T14308] [<ffffffff85461d1a>] netlink_rcv_skb+0x206/0x3bc
+[ 3702.745647][T14308] [<ffffffff8510ac8c>] rtnetlink_rcv+0x28/0x30
+[ 3702.745925][T14308] [<ffffffff854600fe>] netlink_unicast+0x51a/0x7ec
+[ 3702.746391][T14308] [<ffffffff85460bac>] netlink_sendmsg+0x7dc/0xdac
+[ 3702.746692][T14308] [<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160
+[ 3702.746984][T14308] [<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c
+[ 3702.747283][T14308] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 3702.747574][T14308] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 3702.747968][T14308] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 3702.748466][T14308] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3702.748752][T14308] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3702.748995][T14308] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3708.666443][T14316] netdevsim netdevsim5: Direct firmware load for /controlC# failed with error -2
+[ 3708.669349][T14316] netdevsim netdevsim5: Falling back to sysfs fallback for: /controlC#
+[ 3708.810856][T14320] FAULT_INJECTION: forcing a failure.
+[ 3708.810856][T14320] name failslab, interval 1, probability 0, space 0, times 0
+[ 3708.835953][T14320] CPU: 0 UID: 0 PID: 14320 Comm: syz.2.2830 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3708.836405][T14320] Hardware name: riscv-virtio,qemu (DT)
+[ 3708.836514][T14320] Call Trace:
+[ 3708.836628][T14320] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3708.836996][T14320] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3708.837246][T14320] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3708.837586][T14320] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3708.837910][T14320] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3708.838214][T14320] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3708.838532][T14320] [<ffffffff80a9743a>] __kmalloc_noprof+0x2ae/0x678
+[ 3708.838840][T14320] [<ffffffff81388850>] tomoyo_realpath_from_path+0xac/0x5ec
+[ 3708.839203][T14320] [<ffffffff8137d778>] tomoyo_path_number_perm+0x270/0x598
+[ 3708.839525][T14320] [<ffffffff8138a536>] tomoyo_file_ioctl+0x2a/0x34
+[ 3708.839781][T14320] [<ffffffff813337b6>] security_file_ioctl+0xee/0x250
+[ 3708.840113][T14320] [<ffffffff80c9ce50>] __riscv_sys_ioctl+0xb0/0x1e4
+[ 3708.840366][T14320] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3708.840649][T14320] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3708.840892][T14320] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3708.841357][T14320] ERROR: Out of memory at tomoyo_realpath_from_path.
+[ 3720.413908][T13897] hid_parser_main: 179 callbacks suppressed
+[ 3720.414401][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.416237][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.417344][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.418424][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.419491][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.420560][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.421633][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.464764][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.466477][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.467611][T13897] hid-generic 09C5:0005:000B.0008: unknown main item tag 0x0
+[ 3720.531928][T13897] hid-generic 09C5:0005:000B.0008: item fetching failed at offset 146/195
+[ 3720.578803][T13897] hid-generic 09C5:0005:000B.0008: probe with driver hid-generic failed with error -22
+[ 3722.125769][T14350] FAULT_INJECTION: forcing a failure.
+[ 3722.125769][T14350] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3722.127554][T14350] CPU: 1 UID: 0 PID: 14350 Comm: syz.2.2842 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3722.127957][T14350] Hardware name: riscv-virtio,qemu (DT)
+[ 3722.128078][T14350] Call Trace:
+[ 3722.128194][T14350] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3722.128578][T14350] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3722.128815][T14350] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3722.129145][T14350] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3722.129477][T14350] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3722.129764][T14350] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3722.130045][T14350] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3722.130349][T14350] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 3722.130591][T14350] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 3722.130875][T14350] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 3722.131181][T14350] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 3722.131465][T14350] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 3722.131740][T14350] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 3722.132087][T14350] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3722.132380][T14350] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3722.132619][T14350] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3732.471238][T14364] tmpfs: Bad value for 'size'
+[ 3732.568192][T14370] FAULT_INJECTION: forcing a failure.
+[ 3732.568192][T14370] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3732.569972][T14370] CPU: 1 UID: 0 PID: 14370 Comm: syz.0.2848 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3732.570325][T14370] Hardware name: riscv-virtio,qemu (DT)
+[ 3732.570433][T14370] Call Trace:
+[ 3732.570545][T14370] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3732.570914][T14370] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3732.571143][T14370] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3732.571494][T14370] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3732.571844][T14370] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3732.572186][T14370] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3732.572536][T14370] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3732.572833][T14370] [<ffffffff81775e78>] _copy_from_iter+0x1f0/0x1d5c
+[ 3732.573129][T14370] [<ffffffff85460b18>] netlink_sendmsg+0x748/0xdac
+[ 3732.573419][T14370] [<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160
+[ 3732.573711][T14370] [<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c
+[ 3732.573997][T14370] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 3732.574296][T14370] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 3732.574603][T14370] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 3732.574918][T14370] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3732.575259][T14370] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3732.575522][T14370] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3738.876106][   T34] audit: type=1326 audit(49126.167:15): auid=4294967295 uid=0 gid=0 ses=4294967295 subj=unconfined pid=14378 comm="syz.0.2852" exe="/syz-executor" sig=31 arch=c00000f3 syscall=98 compat=0 ip=0xd7c1e code=0x0
+[ 3743.047449][T14387] netlink: 788 bytes leftover after parsing attributes in process `syz.5.2855'.
+[ 3743.445834][T14384] dvmrp1: entered allmulticast mode
+[ 3748.191375][T14405] FAULT_INJECTION: forcing a failure.
+[ 3748.191375][T14405] name failslab, interval 1, probability 0, space 0, times 0
+[ 3748.245977][T14405] CPU: 0 UID: 0 PID: 14405 Comm: syz.5.2859 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3748.246565][T14405] Hardware name: riscv-virtio,qemu (DT)
+[ 3748.246717][T14405] Call Trace:
+[ 3748.246827][T14405] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3748.247216][T14405] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3748.247456][T14405] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3748.247826][T14405] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3748.248216][T14405] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3748.248524][T14405] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3748.248843][T14405] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3748.249166][T14405] [<ffffffff80905832>] shmem_init_fs_context+0x4e/0x284
+[ 3748.249558][T14405] [<ffffffff80d587ca>] alloc_fs_context+0x552/0x884
+[ 3748.249922][T14405] [<ffffffff80d58b26>] fs_context_for_mount+0x2a/0x34
+[ 3748.250265][T14405] [<ffffffff80cf4286>] path_mount+0xe66/0x1b20
+[ 3748.250585][T14405] [<ffffffff80cf5ef8>] __riscv_sys_mount+0x5a8/0x768
+[ 3748.250897][T14405] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3748.251187][T14405] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3748.251432][T14405] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3749.220627][T14408] FAULT_INJECTION: forcing a failure.
+[ 3749.220627][T14408] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3749.275035][T14408] CPU: 0 UID: 0 PID: 14408 Comm: syz.3.2860 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3749.275521][T14408] Hardware name: riscv-virtio,qemu (DT)
+[ 3749.275638][T14408] Call Trace:
+[ 3749.275751][T14408] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3749.276182][T14408] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3749.276427][T14408] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3749.276759][T14408] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3749.277080][T14408] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3749.277378][T14408] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3749.277660][T14408] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3749.277955][T14408] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 3749.278197][T14408] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 3749.278477][T14408] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 3749.278774][T14408] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 3749.279040][T14408] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 3749.279358][T14408] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 3749.279652][T14408] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3749.279991][T14408] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3749.280254][T14408] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3751.558813][T14409] Invalid ELF header type: 2 != 1
+[ 3751.611458][T14409] random: crng reseeded on system resumption
+[ 3767.318505][T14474] FAULT_INJECTION: forcing a failure.
+[ 3767.318505][T14474] name failslab, interval 1, probability 0, space 0, times 0
+[ 3767.325893][T14474] CPU: 1 UID: 0 PID: 14474 Comm: syz.3.2875 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3767.326382][T14474] Hardware name: riscv-virtio,qemu (DT)
+[ 3767.326502][T14474] Call Trace:
+[ 3767.326610][T14474] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3767.326984][T14474] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3767.327231][T14474] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3767.327595][T14474] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3767.327973][T14474] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3767.328285][T14474] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3767.328607][T14474] [<ffffffff80a9624e>] __kvmalloc_node_noprof+0x342/0x73c
+[ 3767.328924][T14474] [<ffffffff80cffe06>] seq_read_iter+0x6e6/0x1094
+[ 3767.329261][T14474] [<ffffffff80ed8966>] kernfs_fop_read_iter+0x37a/0x510
+[ 3767.329615][T14474] [<ffffffff80d3e3dc>] copy_splice_read+0x460/0xadc
+[ 3767.329893][T14474] [<ffffffff80d3ec00>] do_splice_read+0x1a8/0x298
+[ 3767.330164][T14474] [<ffffffff80d3efc6>] splice_direct_to_actor+0x256/0x8fc
+[ 3767.330454][T14474] [<ffffffff80d3fb28>] do_splice_direct+0x168/0x224
+[ 3767.330732][T14474] [<ffffffff80c426a0>] do_sendfile+0x994/0xcc8
+[ 3767.331002][T14474] [<ffffffff80c49212>] __riscv_sys_sendfile64+0x3ee/0x560
+[ 3767.331360][T14474] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3767.331666][T14474] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3767.331994][T14474] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3768.971485][T14468] [U] Åwî+Tó|êR¬Àﬁ´Düm(%ÁFÍµÕfD≈îÚ^uWÎ¢LÉÏHÔCﬂ∑$!◊,Áyd;méÄö“(⁄të+∞ZwXÀù'«+\Ù»õMﬁ"(´ÙVM¯ÁΩ˝©J0ã^¿eÉík•π›[Mä ‰j¡xcœó˜e}ç^œ∫º1ZYÌB¶"Ùù®`ÖÁ¶—‘-^Êjà/¿≠«,
+[ 3775.389635][T14492] erspan0: entered allmulticast mode
+[ 3792.547528][T14532] FAULT_INJECTION: forcing a failure.
+[ 3792.547528][T14532] name failslab, interval 1, probability 0, space 0, times 0
+[ 3792.549376][T14532] CPU: 0 UID: 0 PID: 14532 Comm: syz.0.2895 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3792.549728][T14532] Hardware name: riscv-virtio,qemu (DT)
+[ 3792.549835][T14532] Call Trace:
+[ 3792.549947][T14532] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3792.550347][T14532] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3792.550577][T14532] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3792.550909][T14532] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3792.551240][T14532] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3792.551541][T14532] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3792.551886][T14532] [<ffffffff80a9743a>] __kmalloc_noprof+0x2ae/0x678
+[ 3792.552243][T14532] [<ffffffff84cc6490>] snd_pcm_hw_refine+0x700/0x10d0
+[ 3792.552647][T14532] [<ffffffff84d24f8e>] snd_pcm_hw_param_near.constprop.0+0x6d2/0x87c
+[ 3792.552926][T14532] [<ffffffff84d28834>] snd_pcm_oss_change_params_locked+0x17b4/0x3f84
+[ 3792.553184][T14532] [<ffffffff84d2b0b8>] snd_pcm_oss_make_ready_locked+0xb4/0x120
+[ 3792.553505][T14532] [<ffffffff84d35d9e>] snd_pcm_oss_read+0x33a/0x638
+[ 3792.553753][T14532] [<ffffffff80c3f174>] vfs_readv+0x530/0x770
+[ 3792.554033][T14532] [<ffffffff80c3f4e8>] do_readv+0x134/0x338
+[ 3792.554306][T14532] [<ffffffff80c47a40>] __riscv_sys_readv+0x6c/0xac
+[ 3792.554617][T14532] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3792.554898][T14532] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3792.555165][T14532] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3800.389602][T14545] fuse: Bad value for 'fd'
+[ 3825.911483][T14601] FAULT_INJECTION: forcing a failure.
+[ 3825.911483][T14601] name failslab, interval 1, probability 0, space 0, times 0
+[ 3825.956686][T14601] CPU: 0 UID: 0 PID: 14601 Comm: syz.2.2920 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3825.957170][T14601] Hardware name: riscv-virtio,qemu (DT)
+[ 3825.957304][T14601] Call Trace:
+[ 3825.957426][T14601] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3825.957891][T14601] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3825.958137][T14601] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3825.958480][T14601] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3825.958801][T14601] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3825.959095][T14601] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3825.959423][T14601] [<ffffffff80a9854c>] kmem_cache_alloc_node_noprof+0x288/0x464
+[ 3825.959823][T14601] [<ffffffff8503607c>] __alloc_skb+0x318/0x408
+[ 3825.960212][T14601] [<ffffffff8545f35c>] netlink_alloc_large_skb+0x74/0x138
+[ 3825.960543][T14601] [<ffffffff854609c6>] netlink_sendmsg+0x5f6/0xdac
+[ 3825.960863][T14601] [<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160
+[ 3825.961182][T14601] [<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c
+[ 3825.961492][T14601] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 3825.961796][T14601] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 3825.962120][T14601] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 3825.962510][T14601] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3825.962824][T14601] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3825.963070][T14601] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3826.669435][T14605] netlink: 12 bytes leftover after parsing attributes in process `syz.0.2921'.
+[ 3832.710829][T14620] netlink: 12 bytes leftover after parsing attributes in process `syz.2.2924'.
+[ 3833.127036][T14624] FAULT_INJECTION: forcing a failure.
+[ 3833.127036][T14624] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3833.129479][T14624] CPU: 1 UID: 0 PID: 14624 Comm: syz.4.2926 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3833.129830][T14624] Hardware name: riscv-virtio,qemu (DT)
+[ 3833.129943][T14624] Call Trace:
+[ 3833.130068][T14624] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3833.130461][T14624] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3833.130698][T14624] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3833.131032][T14624] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3833.131362][T14624] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3833.131664][T14624] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3833.131999][T14624] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3833.132322][T14624] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 3833.132644][T14624] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 3833.132960][T14624] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 3833.133275][T14624] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 3833.133556][T14624] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 3833.133831][T14624] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 3833.134144][T14624] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3833.134423][T14624] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3833.134674][T14624] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3839.931756][   T34] audit: type=1400 audit(49227.257:16): apparmor="DENIED" operation="change_hat" class="file" info="unconfined can not change_hat" error=-1 profile="unconfined" pid=14633 comm="syz.0.2929"
+[ 3849.259798][T14662] fuse: Bad value for 'user_id'
+[ 3849.261073][T14662] fuse: Bad value for 'user_id'
+[ 3857.826045][T14683] hsr0: Slave B (hsr_slave_1) is not up; please bring it up to get a fully working HSR network
+[ 3886.851276][T14752] RDS: rds_bind could not find a transport for fe80::3f, load rds_tcp or rds_rdma?
+[ 3887.561034][T14747] can: request_module (can-proto-3) failed.
+[ 3900.404687][T14783] netlink: 16 bytes leftover after parsing attributes in process `syz.0.2983'.
+[ 3909.210346][T14806] team_slave_0: entered promiscuous mode
+[ 3909.386511][T13706] hid (null): unknown global tag 0xd
+[ 3909.854418][T13706] hid-generic 0007:00BF:000A.0009: unexpected long global item
+[ 3909.882068][T13706] hid-generic 0007:00BF:000A.0009: probe with driver hid-generic failed with error -22
+[ 3910.060695][T14804] team_slave_0: left promiscuous mode
+[ 3925.811109][T14846] FAULT_INJECTION: forcing a failure.
+[ 3925.811109][T14846] name failslab, interval 1, probability 0, space 0, times 0
+[ 3925.859804][T14846] CPU: 0 UID: 0 PID: 14846 Comm: syz.0.3003 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3925.860303][T14846] Hardware name: riscv-virtio,qemu (DT)
+[ 3925.860425][T14846] Call Trace:
+[ 3925.860544][T14846] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3925.860930][T14846] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3925.861162][T14846] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3925.861505][T14846] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3925.861826][T14846] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3925.862121][T14846] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3925.862446][T14846] [<ffffffff80a968fc>] __kmalloc_node_track_caller_noprof+0x2b4/0x678
+[ 3925.862900][T14846] [<ffffffff8091d04e>] kstrdup+0x46/0xb0
+[ 3925.863173][T14846] [<ffffffff84ca3e34>] snd_timer_instance_new+0x6c/0x2a8
+[ 3925.863483][T14846] [<ffffffff84d57e24>] snd_seq_timer_open+0x1ac/0x564
+[ 3925.863816][T14846] [<ffffffff84d4ff04>] queue_use+0x128/0x2d0
+[ 3925.864151][T14846] [<ffffffff84d509ac>] snd_seq_queue_alloc+0x288/0x514
+[ 3925.864466][T14846] [<ffffffff84d42c00>] snd_seq_ioctl_create_queue+0x98/0x2c0
+[ 3925.864747][T14846] [<ffffffff84d48010>] snd_seq_kernel_client_ctl+0x108/0x1e8
+[ 3925.865043][T14846] [<ffffffff84d5df02>] alloc_seq_queue+0xde/0x178
+[ 3925.865382][T14846] [<ffffffff84d5ea70>] snd_seq_oss_open+0x338/0x92c
+[ 3925.865614][T14846] [<ffffffff84d5da18>] odev_open+0x6c/0x98
+[ 3925.865928][T14846] [<ffffffff84c73ace>] soundcore_open+0x3ee/0x550
+[ 3925.866177][T14846] [<ffffffff80c5a846>] chrdev_open+0x22e/0x6c4
+[ 3925.866411][T14846] [<ffffffff80c34904>] do_dentry_open+0x7e0/0x1064
+[ 3925.866660][T14846] [<ffffffff80c3933a>] vfs_open+0xb6/0x3c8
+[ 3925.866913][T14846] [<ffffffff80c8e2f0>] path_openat+0x10f4/0x29d4
+[ 3925.867229][T14846] [<ffffffff80c8fd64>] do_filp_open+0x194/0x378
+[ 3925.867558][T14846] [<ffffffff80c3a27e>] do_sys_openat2+0x116/0x1c4
+[ 3925.867847][T14846] [<ffffffff80c3abba>] __riscv_sys_openat+0x13a/0x1f8
+[ 3925.868155][T14846] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3925.868446][T14846] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3925.868691][T14846] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3927.308536][T14847] netlink: 212 bytes leftover after parsing attributes in process `syz.5.3002'.
+[ 3930.096962][T14852] team_slave_0: entered promiscuous mode
+[ 3930.222179][T14852] team_slave_0: left promiscuous mode
+[ 3930.844864][T14854] ERROR: Out of memory at tomoyo_memory_ok.
+[ 3937.291717][T14871] FAULT_INJECTION: forcing a failure.
+[ 3937.291717][T14871] name failslab, interval 1, probability 0, space 0, times 0
+[ 3937.344180][T14871] CPU: 0 UID: 0 PID: 14871 Comm: syz.0.3012 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3937.344667][T14871] Hardware name: riscv-virtio,qemu (DT)
+[ 3937.344776][T14871] Call Trace:
+[ 3937.344891][T14871] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3937.345260][T14871] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3937.345511][T14871] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3937.345845][T14871] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3937.346166][T14871] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3937.346467][T14871] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3937.346785][T14871] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3937.347087][T14871] [<ffffffff825d5afc>] vkms_atomic_crtc_duplicate_state+0x78/0x1a4
+[ 3937.347435][T14871] [<ffffffff81fe90fc>] drm_atomic_get_crtc_state+0x164/0x414
+[ 3937.347808][T14871] [<ffffffff81fea908>] __drm_atomic_helper_set_config+0xb4/0xce8
+[ 3937.348202][T14871] [<ffffffff820ecdd2>] drm_atomic_helper_set_config+0x8a/0x180
+[ 3937.348544][T14871] [<ffffffff82017b80>] drm_mode_setcrtc+0xac4/0x1f94
+[ 3937.348861][T14871] [<ffffffff82051f5c>] drm_ioctl_kernel+0x1e0/0x374
+[ 3937.349176][T14871] [<ffffffff820525d2>] drm_ioctl+0x4e2/0xba0
+[ 3937.349482][T14871] [<ffffffff80c9cf1e>] __riscv_sys_ioctl+0x17e/0x1e4
+[ 3937.349724][T14871] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3937.350001][T14871] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3937.350241][T14871] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3941.306008][T14879] fuse: Unknown parameter 'rootmod'
+[ 3952.671379][T14909] FAULT_INJECTION: forcing a failure.
+[ 3952.671379][T14909] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 3952.716158][T14909] CPU: 1 UID: 0 PID: 14909 Comm: syz.5.3029 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3952.716669][T14909] Hardware name: riscv-virtio,qemu (DT)
+[ 3952.716788][T14909] Call Trace:
+[ 3952.716901][T14909] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3952.717287][T14909] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3952.717544][T14909] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3952.717875][T14909] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3952.718196][T14909] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3952.718507][T14909] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 3952.718789][T14909] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 3952.719082][T14909] [<ffffffff81791540>] _copy_from_user+0x38/0x3e8
+[ 3952.719322][T14909] [<ffffffff85b831ba>] ipv6_get_msfilter+0x126/0x350
+[ 3952.719714][T14909] [<ffffffff85b88934>] do_ipv6_getsockopt+0xe38/0x2ca4
+[ 3952.720067][T14909] [<ffffffff85b8a8e0>] ipv6_getsockopt+0x140/0x928
+[ 3952.720369][T14909] [<ffffffff85b9bd3a>] udpv6_getsockopt+0x6a/0xa8
+[ 3952.720684][T14909] [<ffffffff85003f9a>] sock_common_getsockopt+0x8a/0x11c
+[ 3952.721028][T14909] [<ffffffff84ff4838>] do_sock_getsockopt+0x34c/0x5f4
+[ 3952.721313][T14909] [<ffffffff85001968>] __sys_getsockopt+0xdc/0x178
+[ 3952.721641][T14909] [<ffffffff85001aa8>] __riscv_sys_getsockopt+0xa4/0x130
+[ 3952.721956][T14909] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3952.722235][T14909] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3952.722552][T14909] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3955.489063][T14912] ipvlan1: entered promiscuous mode
+[ 3956.824181][T14919] netlink: 88 bytes leftover after parsing attributes in process `syz.3.3030'.
+[ 3958.852468][T14932] FAULT_INJECTION: forcing a failure.
+[ 3958.852468][T14932] name failslab, interval 1, probability 0, space 0, times 0
+[ 3958.892036][T14932] CPU: 1 UID: 0 PID: 14932 Comm: syz.5.3033 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3958.892435][T14932] Hardware name: riscv-virtio,qemu (DT)
+[ 3958.892615][T14932] Call Trace:
+[ 3958.892727][T14932] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3958.893090][T14932] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3958.893331][T14932] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3958.893674][T14932] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3958.893995][T14932] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3958.898374][T14932] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3958.898702][T14932] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3958.899010][T14932] [<ffffffff825d5afc>] vkms_atomic_crtc_duplicate_state+0x78/0x1a4
+[ 3958.899321][T14932] [<ffffffff81fe90fc>] drm_atomic_get_crtc_state+0x164/0x414
+[ 3958.899671][T14932] [<ffffffff81fea908>] __drm_atomic_helper_set_config+0xb4/0xce8
+[ 3958.900057][T14932] [<ffffffff820ecdd2>] drm_atomic_helper_set_config+0x8a/0x180
+[ 3958.900387][T14932] [<ffffffff82017b80>] drm_mode_setcrtc+0xac4/0x1f94
+[ 3958.900701][T14932] [<ffffffff82051f5c>] drm_ioctl_kernel+0x1e0/0x374
+[ 3958.901017][T14932] [<ffffffff820525d2>] drm_ioctl+0x4e2/0xba0
+[ 3958.901318][T14932] [<ffffffff80c9cf1e>] __riscv_sys_ioctl+0x17e/0x1e4
+[ 3958.901570][T14932] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3958.901853][T14932] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3958.902093][T14932] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3960.632409][    C1] vkms_vblank_simulate: vblank timer overrun
+[ 3965.972026][T14946] tmpfs: Bad value for 'usrquota_inode_hardlimit'
+[ 3977.148580][T14974] FAULT_INJECTION: forcing a failure.
+[ 3977.148580][T14974] name failslab, interval 1, probability 0, space 0, times 0
+[ 3977.150493][T14974] CPU: 0 UID: 0 PID: 14974 Comm: syz.5.3048 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3977.150899][T14974] Hardware name: riscv-virtio,qemu (DT)
+[ 3977.151014][T14974] Call Trace:
+[ 3977.151125][T14974] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3977.151505][T14974] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3977.151760][T14974] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3977.152149][T14974] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3977.152545][T14974] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3977.152868][T14974] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3977.153210][T14974] [<ffffffff80a9854c>] kmem_cache_alloc_node_noprof+0x288/0x464
+[ 3977.153562][T14974] [<ffffffff80a2d318>] alloc_vmap_area+0x6e4/0x2e14
+[ 3977.153911][T14974] [<ffffffff80a3936a>] __get_vm_area_node+0x1be/0x48c
+[ 3977.154147][T14974] [<ffffffff80a3b3f6>] __vmalloc_node_range_noprof+0x22e/0x1054
+[ 3977.154407][T14974] [<ffffffff80a3c87c>] vzalloc_noprof+0xec/0x114
+[ 3977.154646][T14974] [<ffffffff806b2a96>] bpf_check+0x1ea/0xc910
+[ 3977.154929][T14974] [<ffffffff806114c6>] bpf_prog_load+0x11ee/0x1fe8
+[ 3977.155226][T14974] [<ffffffff80615596>] __sys_bpf+0xc56/0x487c
+[ 3977.155565][T14974] [<ffffffff80619f46>] __riscv_sys_bpf+0x6a/0xd4
+[ 3977.155914][T14974] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3977.156255][T14974] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3977.156508][T14974] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3977.290181][T14974] syz.5.3048: vmalloc error: size 1672, vm_struct allocation failed, mode:0xdc0(GFP_KERNEL|__GFP_ZERO), nodemask=(null),cpuset=/,mems_allowed=0
+[ 3977.325622][T14974] CPU: 1 UID: 0 PID: 14974 Comm: syz.5.3048 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3977.326108][T14974] Hardware name: riscv-virtio,qemu (DT)
+[ 3977.326218][T14974] Call Trace:
+[ 3977.326333][T14974] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3977.326714][T14974] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3977.326952][T14974] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3977.327277][T14974] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3977.327607][T14974] [<ffffffff80a726ec>] warn_alloc+0x194/0x31c
+[ 3977.327972][T14974] [<ffffffff80a3bc94>] __vmalloc_node_range_noprof+0xacc/0x1054
+[ 3977.328233][T14974] [<ffffffff80a3c87c>] vzalloc_noprof+0xec/0x114
+[ 3977.328479][T14974] [<ffffffff806b2a96>] bpf_check+0x1ea/0xc910
+[ 3977.328754][T14974] [<ffffffff806114c6>] bpf_prog_load+0x11ee/0x1fe8
+[ 3977.329092][T14974] [<ffffffff80615596>] __sys_bpf+0xc56/0x487c
+[ 3977.329395][T14974] [<ffffffff80619f46>] __riscv_sys_bpf+0x6a/0xd4
+[ 3977.329685][T14974] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3977.329962][T14974] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3977.330205][T14974] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3977.330653][T14974] Mem-Info:
+[ 3977.486382][T14974] active_anon:2941 inactive_anon:0 isolated_anon:0
+[ 3977.486382][T14974]  active_file:32473 inactive_file:37312 isolated_file:0
+[ 3977.486382][T14974]  unevictable:768 dirty:51 writeback:0
+[ 3977.486382][T14974]  slab_reclaimable:3582 slab_unreclaimable:51007
+[ 3977.486382][T14974]  mapped:35366 shmem:874 pagetables:1147
+[ 3977.486382][T14974]  sec_pagetables:0 bounce:0
+[ 3977.486382][T14974]  kernel_misc_reclaimable:0
+[ 3977.486382][T14974]  free:535466 free_pcp:6559 free_cma:104704
+[ 3977.490083][T14974] Node 0 active_anon:11764kB inactive_anon:0kB active_file:129892kB inactive_file:149248kB unevictable:3072kB isolated(anon):0kB isolated(file):0kB mapped:141464kB dirty:204kB writeback:0kB shmem:3496kB shmem_thp:0kB shmem_pmdmapped:0kB anon_thp:0kB kernel_stack:7504kB pagetables:4588kB sec_pagetables:0kB all_unreclaimable? no Balloon:0kB
+[ 3977.571744][T14974] Node 0 DMA32 free:1747832kB boost:0kB min:24920kB low:31148kB high:37376kB reserved_highatomic:0KB free_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:2097152kB managed:1751592kB mlocked:0kB bounce:0kB free_pcp:2736kB local_pcp:2736kB free_cma:418816kB
+[ 3977.689433][T14974] lowmem_reserve[]: 0 1379 1379
+[ 3977.690580][T14974] Node 0 Normal free:394032kB boost:0kB min:20132kB low:25164kB high:30196kB reserved_highatomic:0KB free_highatomic:0KB active_anon:11764kB inactive_anon:0kB active_file:129892kB inactive_file:149248kB unevictable:3072kB writepending:204kB present:2097152kB managed:1413072kB mlocked:0kB bounce:0kB free_pcp:23444kB local_pcp:11560kB free_cma:0kB
+[ 3977.691480][T14974] lowmem_reserve[]: 0 0 0
+[ 3977.692432][T14974] Node 0 DMA32: 0*4kB 1*8kB (M) 1*16kB (M) 1*32kB (M) 1*64kB (M) 2*128kB (M) 2*256kB (M) 2*512kB (M) 3*1024kB (MC) 3*2048kB (M) 424*4096kB (MC) = 1747832kB
+[ 3977.740675][T14974] Node 0 Normal: 1474*4kB (UM) 853*8kB (UME) 432*16kB (UME) 342*32kB (UME) 180*64kB (UME) 82*128kB (UM) 14*256kB (M) 2*512kB (UM) 1*1024kB (E) 4*2048kB (UM) 80*4096kB (UM) = 394096kB
+[ 3977.850925][T14974] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[ 3977.958038][T14974] Node 0 hugepages_total=8 hugepages_free=8 hugepages_surp=4 hugepages_size=2048kB
+[ 3977.959588][T14974] 70662 total pagecache pages
+[ 3977.960462][T14974] 0 pages in swap cache
+[ 3977.961179][T14974] Free swap  = 124996kB
+[ 3977.961903][T14974] Total swap = 124996kB
+[ 3978.014934][T14974] 1048576 pages RAM
+[ 3978.016150][T14974] 0 pages HighMem/MovableOnly
+[ 3978.017084][T14974] 257410 pages reserved
+[ 3978.017818][T14974] 104960 pages cma reserved
+[ 3979.687713][T14981] FAULT_INJECTION: forcing a failure.
+[ 3979.687713][T14981] name failslab, interval 1, probability 0, space 0, times 0
+[ 3979.689741][T14981] CPU: 1 UID: 0 PID: 14981 Comm: syz.0.3051 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3979.690085][T14981] Hardware name: riscv-virtio,qemu (DT)
+[ 3979.690197][T14981] Call Trace:
+[ 3979.690304][T14981] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3979.690692][T14981] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3979.690930][T14981] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3979.691320][T14981] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3979.691686][T14981] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3979.692116][T14981] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3979.692536][T14981] [<ffffffff80a9743a>] __kmalloc_noprof+0x2ae/0x678
+[ 3979.692876][T14981] [<ffffffff84a65656>] do_insn_ioctl+0xda/0x474
+[ 3979.693218][T14981] [<ffffffff84a67cfa>] comedi_unlocked_ioctl+0x5be/0x2cbc
+[ 3979.693531][T14981] [<ffffffff80c9cf1e>] __riscv_sys_ioctl+0x17e/0x1e4
+[ 3979.693777][T14981] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3979.694060][T14981] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3979.694303][T14981] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3980.668294][T14983] ipvlan1: entered promiscuous mode
+[ 3990.299345][T15004] FAULT_INJECTION: forcing a failure.
+[ 3990.299345][T15004] name failslab, interval 1, probability 0, space 0, times 0
+[ 3990.301789][T15004] CPU: 1 UID: 0 PID: 15004 Comm: syz.1.3058 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 3990.302324][T15004] Hardware name: riscv-virtio,qemu (DT)
+[ 3990.302573][T15004] Call Trace:
+[ 3990.302758][T15004] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 3990.303345][T15004] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 3990.303739][T15004] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 3990.304352][T15004] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 3990.304910][T15004] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 3990.305410][T15004] [<ffffffff80b43370>] should_failslab+0xac/0x114
+[ 3990.305856][T15004] [<ffffffff80a913ca>] __kmalloc_cache_noprof+0x296/0x47c
+[ 3990.306186][T15004] [<ffffffff80d582d8>] alloc_fs_context+0x60/0x884
+[ 3990.306706][T15004] [<ffffffff80d58b8c>] fs_context_for_reconfigure+0x5c/0x88
+[ 3990.307196][T15004] [<ffffffff80cf39b4>] path_mount+0x594/0x1b20
+[ 3990.307681][T15004] [<ffffffff80cf5ef8>] __riscv_sys_mount+0x5a8/0x768
+[ 3990.308247][T15004] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 3990.308722][T15004] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 3990.309099][T15004] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 3995.791398][T15017] comedi comedi4: bad chanlist[0]=0x7abe82ff chan=33535 range length=2
+[ 3997.317146][T15017] RDS: rds_bind could not find a transport for fe80::3f, load rds_tcp or rds_rdma?
+[ 4002.592474][T15037] FAULT_INJECTION: forcing a failure.
+[ 4002.592474][T15037] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[ 4002.609104][T15037] CPU: 1 UID: 0 PID: 15037 Comm: syz.1.3069 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 4002.609539][T15037] Hardware name: riscv-virtio,qemu (DT)
+[ 4002.609655][T15037] Call Trace:
+[ 4002.609763][T15037] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 4002.610163][T15037] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 4002.610408][T15037] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 4002.610740][T15037] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 4002.611058][T15037] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 4002.611363][T15037] [<ffffffff81a57cc6>] should_fail+0xe/0x18
+[ 4002.611650][T15037] [<ffffffff81a57cee>] should_fail_usercopy+0x1e/0x28
+[ 4002.612003][T15037] [<ffffffff81791c68>] _copy_to_user+0x38/0x3c0
+[ 4002.612252][T15037] [<ffffffff80d0bed2>] simple_read_from_buffer+0xd6/0x170
+[ 4002.612627][T15037] [<ffffffff80e98614>] proc_fail_nth_read+0x1b4/0x240
+[ 4002.612950][T15037] [<ffffffff80c43e06>] vfs_read+0x292/0xb98
+[ 4002.613221][T15037] [<ffffffff80c468b4>] ksys_read+0x128/0x24c
+[ 4002.613516][T15037] [<ffffffff80c46a44>] __riscv_sys_read+0x6c/0xac
+[ 4002.613800][T15037] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 4002.614079][T15037] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 4002.614324][T15037] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 4003.198545][T15038] fuse: Bad value for 'user_id'
+[ 4003.199938][T15038] fuse: Bad value for 'user_id'
+[ 4006.451577][T15044] ipvlan1: entered promiscuous mode
+[ 4007.626699][T15050] FAULT_INJECTION: forcing a failure.
+[ 4007.626699][T15050] name fail_page_alloc, interval 1, probability 0, space 0, times 0
+[ 4007.629527][T15050] CPU: 1 UID: 0 PID: 15050 Comm: syz.0.3072 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 4007.629874][T15050] Hardware name: riscv-virtio,qemu (DT)
+[ 4007.629988][T15050] Call Trace:
+[ 4007.630092][T15050] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 4007.630475][T15050] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 4007.630708][T15050] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 4007.631041][T15050] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 4007.631363][T15050] [<ffffffff81a57ca6>] should_fail_ex+0x94e/0x960
+[ 4007.631659][T15050] [<ffffffff80b434e8>] should_fail_alloc_page+0x110/0x170
+[ 4007.632054][T15050] [<ffffffff80a591c4>] prepare_alloc_pages+0x368/0x4dc
+[ 4007.632354][T15050] [<ffffffff80a729c2>] __alloc_frozen_pages_noprof+0x14e/0x216c
+[ 4007.632776][T15050] [<ffffffff80b0b682>] alloc_pages_mpol+0x1ee/0x5a0
+[ 4007.633072][T15050] [<ffffffff80b0d10a>] alloc_frozen_pages_noprof+0x156/0x318
+[ 4007.633364][T15050] [<ffffffff80b0d2ee>] alloc_pages_noprof+0x22/0x210
+[ 4007.633650][T15050] [<ffffffff80a57212>] get_free_pages_noprof+0xe/0x160
+[ 4007.633935][T15050] [<ffffffff80a57376>] get_zeroed_page_noprof+0x12/0x1c
+[ 4007.634216][T15050] [<ffffffff8395480e>] mon_alloc_buff+0x12a/0x2d4
+[ 4007.634578][T15050] [<ffffffff8395513c>] mon_bin_open+0x1f8/0x450
+[ 4007.634810][T15050] [<ffffffff80c5a846>] chrdev_open+0x22e/0x6c4
+[ 4007.635046][T15050] [<ffffffff80c34904>] do_dentry_open+0x7e0/0x1064
+[ 4007.635292][T15050] [<ffffffff80c3933a>] vfs_open+0xb6/0x3c8
+[ 4007.635550][T15050] [<ffffffff80c8e2f0>] path_openat+0x10f4/0x29d4
+[ 4007.635906][T15050] [<ffffffff80c8fd64>] do_filp_open+0x194/0x378
+[ 4007.636249][T15050] [<ffffffff80c3a27e>] do_sys_openat2+0x116/0x1c4
+[ 4007.636523][T15050] [<ffffffff80c3abba>] __riscv_sys_openat+0x13a/0x1f8
+[ 4007.636795][T15050] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 4007.637079][T15050] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 4007.637321][T15050] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 4010.588840][T15058] ==================================================================
+[ 4010.590666][T15058] BUG: KASAN: slab-use-after-free in xfrm_alloc_spi+0xe16/0x10f8
+[ 4010.591838][T15058] Read of size 4 at addr ffffaf80911c4944 by task syz.5.3075/15058
+[ 4010.592734][T15058] 
+[ 4010.593567][T15058] CPU: 1 UID: 0 PID: 15058 Comm: syz.5.3075 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 4010.593937][T15058] Hardware name: riscv-virtio,qemu (DT)
+[ 4010.594068][T15058] Call Trace:
+[ 4010.594218][T15058] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 4010.594562][T15058] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 4010.594804][T15058] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 4010.595137][T15058] [<ffffffff8000f2a2>] print_report+0x28a/0x5a8
+[ 4010.595462][T15058] [<ffffffff80b37ce4>] kasan_report+0xf8/0x210
+[ 4010.595733][T15058] [<ffffffff80b39cca>] __asan_report_load4_noabort+0x12/0x1c
+[ 4010.596150][T15058] [<ffffffff85a4129e>] xfrm_alloc_spi+0xe16/0x10f8
+[ 4010.596472][T15058] [<ffffffff85a9b3ce>] xfrm_alloc_userspi+0x526/0xc10
+[ 4010.596743][T15058] [<ffffffff85a883ea>] xfrm_user_rcv_msg+0x3d6/0x998
+[ 4010.596990][T15058] [<ffffffff85461d1a>] netlink_rcv_skb+0x206/0x3bc
+[ 4010.597285][T15058] [<ffffffff85a851be>] xfrm_netlink_rcv+0x7a/0xa4
+[ 4010.597522][T15058] [<ffffffff854600fe>] netlink_unicast+0x51a/0x7ec
+[ 4010.597841][T15058] [<ffffffff85460bac>] netlink_sendmsg+0x7dc/0xdac
+[ 4010.598224][T15058] [<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160
+[ 4010.598539][T15058] [<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c
+[ 4010.598834][T15058] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 4010.599148][T15058] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 4010.599494][T15058] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 4010.599814][T15058] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 4010.600158][T15058] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 4010.600433][T15058] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 4010.600839][T15058] 
+[ 4010.615019][T15058] Allocated by task 8793:
+[ 4010.615834][T15058]  stack_trace_save+0xa0/0xd4
+[ 4010.616791][T15058]  kasan_save_stack+0x3c/0x64
+[ 4010.617544][T15058]  kasan_save_track+0x14/0x28
+[ 4010.618275][T15058]  kasan_save_alloc_info+0x32/0x40
+[ 4010.619055][T15058]  __kasan_slab_alloc+0x6e/0x80
+[ 4010.619807][T15058]  kmem_cache_alloc_noprof+0x10c/0x460
+[ 4010.620731][T15058]  xfrm_state_alloc+0x2c/0x4bc
+[ 4010.621490][T15058]  __find_acq_core+0x94e/0x27ac
+[ 4010.622260][T15058]  xfrm_find_acq+0x7e/0x9c
+[ 4010.623016][T15058]  xfrm_alloc_userspi+0x4d2/0xc10
+[ 4010.623762][T15058]  xfrm_user_rcv_msg+0x3d6/0x998
+[ 4010.624529][T15058]  netlink_rcv_skb+0x206/0x3bc
+[ 4010.625284][T15058]  xfrm_netlink_rcv+0x7a/0xa4
+[ 4010.625985][T15058]  netlink_unicast+0x51a/0x7ec
+[ 4010.626713][T15058]  netlink_sendmsg+0x7dc/0xdac
+[ 4010.627625][T15058]  __sock_sendmsg+0xca/0x160
+[ 4010.628555][T15058]  ____sys_sendmsg+0x62e/0x78c
+[ 4010.629314][T15058]  ___sys_sendmsg+0x1a4/0x1e8
+[ 4010.630055][T15058]  __sys_sendmsg+0x192/0x238
+[ 4010.630846][T15058]  __riscv_sys_sendmsg+0x6e/0xb0
+[ 4010.631658][T15058]  syscall_handler+0x96/0x128
+[ 4010.632456][T15058]  do_trap_ecall_u+0x396/0x5d0
+[ 4010.633223][T15058]  handle_exception+0x146/0x152
+[ 4010.634110][T15058] 
+[ 4010.634561][T15058] Freed by task 7061:
+[ 4010.635126][T15058]  stack_trace_save+0xa0/0xd4
+[ 4010.636105][T15058]  kasan_save_stack+0x3c/0x64
+[ 4010.636892][T15058]  kasan_save_track+0x14/0x28
+[ 4010.637663][T15058]  kasan_save_free_info+0x40/0x60
+[ 4010.638458][T15058]  __kasan_slab_free+0x54/0x6c
+[ 4010.639214][T15058]  kmem_cache_free+0x23c/0x6fc
+[ 4010.640002][T15058]  xfrm_state_gc_task+0x4a6/0x6e8
+[ 4010.640818][T15058]  process_one_work+0x92a/0x1dac
+[ 4010.641617][T15058]  worker_thread+0x53a/0xcac
+[ 4010.642349][T15058]  kthread+0x37c/0x7a0
+[ 4010.643043][T15058]  ret_from_fork_kernel+0x28/0xb30
+[ 4010.643804][T15058]  ret_from_fork_kernel_asm+0x16/0x18
+[ 4010.644598][T15058] 
+[ 4010.645100][T15058] The buggy address belongs to the object at ffffaf80911c4880
+[ 4010.645100][T15058]  which belongs to the cache xfrm_state of size 928
+[ 4010.646369][T15058] The buggy address is located 196 bytes inside of
+[ 4010.646369][T15058]  freed 928-byte region [ffffaf80911c4880, ffffaf80911c4c20)
+[ 4010.647695][T15058] 
+[ 4010.648275][T15058] The buggy address belongs to the physical page:
+[ 4010.651021][T15058] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffffaf80911c4880 pfn:0x1111c4
+[ 4010.652405][T15058] head: order:2 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+[ 4010.653513][T15058] flags: 0x1ffe000000000040(head|node=0|zone=1|lastcpupid=0x7ff)
+[ 4010.654890][T15058] page_type: f5(slab)
+[ 4010.656165][T15058] raw: 1ffe000000000040 ffffaf80876f8280 dead000000000122 0000000000000000
+[ 4010.657149][T15058] raw: ffffaf80911c4880 00000000800f000d 00000000f5000000 0000000000000000
+[ 4010.658171][T15058] head: 1ffe000000000040 ffffaf80876f8280 dead000000000122 0000000000000000
+[ 4010.659366][T15058] head: ffffaf80911c4880 00000000800f000d 00000000f5000000 0000000000000000
+[ 4010.660366][T15058] head: 1ffe000000000002 ffff8d8002447101 00000000ffffffff 00000000ffffffff
+[ 4010.661296][T15058] head: ffffffffffffffff 0000000000000000 00000000ffffffff 0000000000000004
+[ 4010.670967][T15058] page dumped because: kasan: bad access detected
+[ 4010.672138][T15058] page_owner tracks the page as allocated
+[ 4010.673097][T15058] page last allocated via order 2, migratetype Unmovable, gfp_mask 0x52820(GFP_ATOMIC|__GFP_NOWARN|__GFP_NORETRY|__GFP_COMP), pid 8640, tgid 8638 (syz.1.1102), ts 1686307527500, free_ts 1681865373800
+[ 4010.674846][T15058]  __set_page_owner+0x94/0x4d4
+[ 4010.675658][T15058]  post_alloc_hook+0x106/0x1d8
+[ 4010.676475][T15058]  get_page_from_freelist+0x153e/0x3550
+[ 4010.677291][T15058]  __alloc_frozen_pages_noprof+0x204/0x216c
+[ 4010.678140][T15058]  alloc_pages_mpol+0x1ee/0x5a0
+[ 4010.678893][T15058]  alloc_frozen_pages_noprof+0x156/0x318
+[ 4010.679705][T15058]  new_slab+0x222/0x34c
+[ 4010.680488][T15058]  ___slab_alloc+0xc0c/0x1330
+[ 4010.681244][T15058]  __slab_alloc.isra.0+0x62/0xc0
+[ 4010.682152][T15058]  kmem_cache_alloc_noprof+0xcc/0x460
+[ 4010.683152][T15058]  xfrm_state_alloc+0x2c/0x4bc
+[ 4010.683982][T15058]  __find_acq_core+0x94e/0x27ac
+[ 4010.684753][T15058]  xfrm_find_acq+0x7e/0x9c
+[ 4010.685491][T15058]  xfrm_alloc_userspi+0x4d2/0xc10
+[ 4010.686224][T15058]  xfrm_user_rcv_msg+0x3d6/0x998
+[ 4010.686942][T15058]  netlink_rcv_skb+0x206/0x3bc
+[ 4010.687802][T15058] page last free pid 8624 tgid 8624 stack trace:
+[ 4010.688568][T15058]  __reset_page_owner+0x74/0x1dc
+[ 4010.689280][T15058]  __free_frozen_pages+0x96c/0x1e64
+[ 4010.690107][T15058]  free_frozen_pages+0xe/0x18
+[ 4010.690863][T15058]  __free_slab+0xb6/0x1bc
+[ 4010.691645][T15058]  free_slab+0x24/0x184
+[ 4010.692411][T15058]  discard_slab+0x3e/0x5c
+[ 4010.693142][T15058]  __slab_free+0x3c8/0x408
+[ 4010.693910][T15058]  ___cache_free+0x19c/0x224
+[ 4010.694666][T15058]  qlist_free_all+0x68/0x160
+[ 4010.695502][T15058]  kasan_quarantine_reduce+0x160/0x1e8
+[ 4010.696346][T15058]  __kasan_slab_alloc+0x5e/0x80
+[ 4010.697100][T15058]  kmem_cache_alloc_noprof+0x10c/0x460
+[ 4010.697926][T15058]  __pte_alloc_one_noprof.constprop.0+0x9c/0x36c
+[ 4010.698796][T15058]  __do_fault+0x2cc/0x414
+[ 4010.699516][T15058]  __handle_mm_fault+0x1ed8/0x5a6c
+[ 4010.700334][T15058]  handle_mm_fault+0x268/0x8b8
+[ 4010.701272][T15058] 
+[ 4010.701757][T15058] Memory state around the buggy address:
+[ 4010.702767][T15058]  ffffaf80911c4800: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+[ 4010.703697][T15058]  ffffaf80911c4880: fa fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+[ 4010.704584][T15058] >ffffaf80911c4900: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+[ 4010.705395][T15058]                                            ^
+[ 4010.706122][T15058]  ffffaf80911c4980: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+[ 4010.706948][T15058]  ffffaf80911c4a00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+[ 4010.708370][T15058] ==================================================================
+[ 4010.711194][T15058] Kernel panic - not syncing: KASAN: panic_on_warn set ...
+[ 4010.712927][T15058] CPU: 1 UID: 0 PID: 15058 Comm: syz.5.3075 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+[ 4010.714028][T15058] Hardware name: riscv-virtio,qemu (DT)
+[ 4010.714690][T15058] Call Trace:
+[ 4010.715213][T15058] [<ffffffff80079826>] dump_backtrace+0x32/0x3c
+[ 4010.716170][T15058] [<ffffffff80003294>] show_stack+0x30/0x3c
+[ 4010.716993][T15058] [<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0
+[ 4010.717976][T15058] [<ffffffff80060808>] dump_stack+0x1c/0x28
+[ 4010.718881][T15058] [<ffffffff80003bce>] vpanic+0x35e/0x720
+[ 4010.719688][T15058] [<ffffffff80004030>] panic+0xa0/0xa4
+[ 4010.720665][T15058] [<ffffffff80148888>] check_panic_on_warn+0xc0/0xe4
+[ 4010.721598][T15058] [<ffffffff8000efb4>] end_report.part.0+0x4c/0xb0
+[ 4010.722593][T15058] [<ffffffff80b37d52>] kasan_report+0x166/0x210
+[ 4010.723557][T15058] [<ffffffff80b39cca>] __asan_report_load4_noabort+0x12/0x1c
+[ 4010.724572][T15058] [<ffffffff85a4129e>] xfrm_alloc_spi+0xe16/0x10f8
+[ 4010.725471][T15058] [<ffffffff85a9b3ce>] xfrm_alloc_userspi+0x526/0xc10
+[ 4010.726345][T15058] [<ffffffff85a883ea>] xfrm_user_rcv_msg+0x3d6/0x998
+[ 4010.727193][T15058] [<ffffffff85461d1a>] netlink_rcv_skb+0x206/0x3bc
+[ 4010.728103][T15058] [<ffffffff85a851be>] xfrm_netlink_rcv+0x7a/0xa4
+[ 4010.728930][T15058] [<ffffffff854600fe>] netlink_unicast+0x51a/0x7ec
+[ 4010.729815][T15058] [<ffffffff85460bac>] netlink_sendmsg+0x7dc/0xdac
+[ 4010.730703][T15058] [<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160
+[ 4010.731601][T15058] [<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c
+[ 4010.732614][T15058] [<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8
+[ 4010.733656][T15058] [<ffffffff850023de>] __sys_sendmsg+0x192/0x238
+[ 4010.734725][T15058] [<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0
+[ 4010.735702][T15058] [<ffffffff8007745a>] syscall_handler+0x96/0x128
+[ 4010.736628][T15058] [<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0
+[ 4010.737477][T15058] [<ffffffff862a0bc2>] handle_exception+0x146/0x152
+[ 4010.738746][T15058] SMP: stopping secondary CPUs
+[ 4010.741191][T15058] Rebooting in 86400 seconds..
+
+VM DIAGNOSIS:
+09:08:56  Registers:
+info registers vcpu 0
+ pc       ffffffff81f00cf2
+ mhartid  0000000000000000
+ mstatus  0000000a000000a0
+ mip      00000000000000a0
+ mie      000000000000022a
+ mideleg  0000000000000222
+ medeleg  000000000000b109
+ mtvec    0000000080000520
+ stvec    ffffffff862a0a7c
+ mepc     ffffffff80332ae8
+ sepc     ffffffff8051e4d4
+ mcause   8000000000000007
+ scause   8000000000000001
+ mtval    0000000000000000
+ stval    0000000000000000
+ mscratch 000000008001a000
+ sscratch 0000000000000000
+ satp     91052000001390f7
+ x0/zero  0000000000000000 x1/ra    ffffffff81f00cf2 x2/sp    ffff8f8004746680 x3/gp    ffffffff89cdcd80
+ x4/tp    ffffaf80b0efcec0 x5/t0    6666666666663c5b x6/t1    fffffffef220f224 x7/t2    666666666666663c
+ x8/s0    ffff8f80047466c0 x9/s1    0000000000000000 x10/a0   ffffffff91079168 x11/a1   000000000000001f
+ x12/a2   0000000000000000 x13/a3   0000000000000002 x14/a4   1ffffffff220f22d x15/a5   ffff8f800007b000
+ x16/a6   0000000000000003 x17/a7   ffffffff91079123 x18/s2   ffffffff91079120 x19/s3   000000000000006c
+ x20/s4   000000000000006c x21/s5   000000000000006c x22/s6   0000000000000000 x23/s7   ffffffff81f00c94
+ x24/s8   ffffffff90ea3fe7 x25/s9   0000000000000010 x26/s10  fffffffef220f22f x27/s11  000000000000000a
+ x28/t3   ffffffff87c3ba50 x29/t4   fffffffef220f224 x30/t5   fffffffef220f225 x31/t6   ffffffff90ea3fb7
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000
+info registers vcpu 1
+ pc       ffffffff862843c6
+ mhartid  0000000000000001
+ mstatus  0000000a000001a2
+ mip      0000000000000000
+ mie      00000000000002aa
+ mideleg  0000000000000222
+ medeleg  000000000000b109
+ mtvec    0000000080000520
+ stvec    ffffffff862a0a7c
+ mepc     ffffffff8008fe5c
+ sepc     ffffffff85009fa6
+ mcause   0000000000000009
+ scause   8000000000000005
+ mtval    0000000000000000
+ stval    0000000000000000
+ mscratch 0000000080018000
+ sscratch 0000000000000000
+ satp     900980000012ff25
+ x0/zero  0000000000000000 x1/ra    ffffffff8058a1fa x2/sp    ffff8f80043d7950 x3/gp    ffffffff89cdcd80
+ x4/tp    ffffaf8092013480 x5/t0    0000000000000000 x6/t1    ffffffff90f72c48 x7/t2    ffffffff8683fc70
+ x8/s0    ffff8f80043d7950 x9/s1    ffffffff8058a382 x10/a0   0000000000000001 x11/a1   ffffffff8629c170
+ x12/a2   ffff8f80043d7ac0 x13/a3   0000000000000002 x14/a4   0000000000000000 x15/a5   0000000000000000
+ x16/a6   0000000000000003 x17/a7   ffff8f80043d7bc0 x18/s2   ffff8f80043d7a00 x19/s3   0000000000000000
+ x20/s4   ffffffff8006f2ce x21/s5   ffffffff8058a38c x22/s6   ffffffff8006f188 x23/s7   ffff8f80043d7a00
+ x24/s8   ffffffff86875b90 x25/s9   0000000000000000 x26/s10  0000000000000000 x27/s11  00007fffffae3a48
+ x28/t3   ffffffff817f47ac x29/t4   ffffffff87cda0f0 x30/t5   fffff5ef1fba5021 x31/t6   0000000000000000
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000

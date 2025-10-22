@@ -1,0 +1,153 @@
+==================================================================
+BUG: KASAN: slab-use-after-free in xfrm_state_lookup_spi_proto home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:1708 [inline]
+BUG: KASAN: slab-use-after-free in xfrm_alloc_spi+0xe16/0x10f8 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:2589
+Read of size 4 at addr ffffaf80a57fe944 by task syz.1.5829/24669
+
+CPU: 0 UID: 0 PID: 24669 Comm: syz.1.5829 Not tainted 6.17.0-rc1-g0b0ca959d206 #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff80079826>] dump_backtrace+0x32/0x3c home/rv/linux-repo/linux-618-mw1/arch/riscv/kernel/stacktrace.c:132
+[<ffffffff80003294>] show_stack+0x30/0x3c home/rv/linux-repo/linux-618-mw1/arch/riscv/kernel/stacktrace.c:138
+[<ffffffff80060756>] __dump_stack home/rv/linux-repo/linux-618-mw1/lib/dump_stack.c:94 [inline]
+[<ffffffff80060756>] dump_stack_lvl+0x11a/0x1b0 home/rv/linux-repo/linux-618-mw1/lib/dump_stack.c:120
+[<ffffffff8000f2a2>] print_address_description home/rv/linux-repo/linux-618-mw1/mm/kasan/report.c:378 [inline]
+[<ffffffff8000f2a2>] print_report+0x28a/0x5a8 home/rv/linux-repo/linux-618-mw1/mm/kasan/report.c:482
+[<ffffffff80b37ce4>] kasan_report+0xf8/0x210 home/rv/linux-repo/linux-618-mw1/mm/kasan/report.c:595
+[<ffffffff80b39cca>] __asan_report_load4_noabort+0x12/0x1c home/rv/linux-repo/linux-618-mw1/mm/kasan/report_generic.c:380
+[<ffffffff85a4129e>] xfrm_state_lookup_spi_proto home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:1708 [inline]
+[<ffffffff85a4129e>] xfrm_alloc_spi+0xe16/0x10f8 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:2589
+[<ffffffff85a9b3ce>] xfrm_alloc_userspi+0x526/0xc10 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_user.c:1873
+[<ffffffff85a883ea>] xfrm_user_rcv_msg+0x3d6/0x998 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_user.c:3501
+[<ffffffff85461d1a>] netlink_rcv_skb+0x206/0x3bc home/rv/linux-repo/linux-618-mw1/net/netlink/af_netlink.c:2552
+[<ffffffff85a851be>] xfrm_netlink_rcv+0x7a/0xa4 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_user.c:3523
+[<ffffffff854600fe>] netlink_unicast_kernel home/rv/linux-repo/linux-618-mw1/net/netlink/af_netlink.c:1320 [inline]
+[<ffffffff854600fe>] netlink_unicast+0x51a/0x7ec home/rv/linux-repo/linux-618-mw1/net/netlink/af_netlink.c:1346
+[<ffffffff85460bac>] netlink_sendmsg+0x7dc/0xdac home/rv/linux-repo/linux-618-mw1/net/netlink/af_netlink.c:1896
+[<ffffffff84ff6246>] sock_sendmsg_nosec home/rv/linux-repo/linux-618-mw1/net/socket.c:714 [inline]
+[<ffffffff84ff6246>] __sock_sendmsg+0xca/0x160 home/rv/linux-repo/linux-618-mw1/net/socket.c:729
+[<ffffffff84ff6cc2>] ____sys_sendmsg+0x62e/0x78c home/rv/linux-repo/linux-618-mw1/net/socket.c:2614
+[<ffffffff84ffb524>] ___sys_sendmsg+0x1a4/0x1e8 home/rv/linux-repo/linux-618-mw1/net/socket.c:2668
+[<ffffffff850023de>] __sys_sendmsg+0x192/0x238 home/rv/linux-repo/linux-618-mw1/net/socket.c:2700
+[<ffffffff850024f2>] __do_sys_sendmsg home/rv/linux-repo/linux-618-mw1/net/socket.c:2705 [inline]
+[<ffffffff850024f2>] __se_sys_sendmsg home/rv/linux-repo/linux-618-mw1/net/socket.c:2703 [inline]
+[<ffffffff850024f2>] __riscv_sys_sendmsg+0x6e/0xb0 home/rv/linux-repo/linux-618-mw1/net/socket.c:2703
+[<ffffffff8007745a>] syscall_handler+0x96/0x128 home/rv/linux-repo/linux-618-mw1/arch/riscv/include/asm/syscall.h:112
+[<ffffffff86276782>] do_trap_ecall_u+0x396/0x5d0 home/rv/linux-repo/linux-618-mw1/arch/riscv/kernel/traps.c:343
+[<ffffffff862a0bc2>] handle_exception+0x146/0x152 home/rv/linux-repo/linux-618-mw1/arch/riscv/kernel/entry.S:198
+
+Allocated by task 22563:
+ stack_trace_save+0xa0/0xd4 home/rv/linux-repo/linux-618-mw1/kernel/stacktrace.c:122
+ kasan_save_stack+0x3c/0x64 home/rv/linux-repo/linux-618-mw1/mm/kasan/common.c:47
+ kasan_save_track+0x14/0x28 home/rv/linux-repo/linux-618-mw1/mm/kasan/common.c:68
+ kasan_save_alloc_info+0x32/0x40 home/rv/linux-repo/linux-618-mw1/mm/kasan/generic.c:562
+ unpoison_slab_object home/rv/linux-repo/linux-618-mw1/mm/kasan/common.c:330 [inline]
+ __kasan_slab_alloc+0x6e/0x80 home/rv/linux-repo/linux-618-mw1/mm/kasan/common.c:356
+ kasan_slab_alloc home/rv/linux-repo/linux-618-mw1/include/linux/kasan.h:250 [inline]
+ slab_post_alloc_hook home/rv/linux-repo/linux-618-mw1/mm/slub.c:4180 [inline]
+ slab_alloc_node home/rv/linux-repo/linux-618-mw1/mm/slub.c:4229 [inline]
+ kmem_cache_alloc_noprof+0x10c/0x460 home/rv/linux-repo/linux-618-mw1/mm/slub.c:4236
+ xfrm_state_alloc+0x2c/0x4bc home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:733
+ __find_acq_core+0x94e/0x27ac home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:1833
+ xfrm_find_acq+0x7e/0x9c home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:2353
+ xfrm_alloc_userspi+0x4d2/0xc10 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_user.c:1863
+ xfrm_user_rcv_msg+0x3d6/0x998 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_user.c:3501
+ netlink_rcv_skb+0x206/0x3bc home/rv/linux-repo/linux-618-mw1/net/netlink/af_netlink.c:2552
+ xfrm_netlink_rcv+0x7a/0xa4 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_user.c:3523
+ netlink_unicast_kernel home/rv/linux-repo/linux-618-mw1/net/netlink/af_netlink.c:1320 [inline]
+ netlink_unicast+0x51a/0x7ec home/rv/linux-repo/linux-618-mw1/net/netlink/af_netlink.c:1346
+ netlink_sendmsg+0x7dc/0xdac home/rv/linux-repo/linux-618-mw1/net/netlink/af_netlink.c:1896
+ sock_sendmsg_nosec home/rv/linux-repo/linux-618-mw1/net/socket.c:714 [inline]
+ __sock_sendmsg+0xca/0x160 home/rv/linux-repo/linux-618-mw1/net/socket.c:729
+ ____sys_sendmsg+0x62e/0x78c home/rv/linux-repo/linux-618-mw1/net/socket.c:2614
+ ___sys_sendmsg+0x1a4/0x1e8 home/rv/linux-repo/linux-618-mw1/net/socket.c:2668
+ __sys_sendmsg+0x192/0x238 home/rv/linux-repo/linux-618-mw1/net/socket.c:2700
+ __do_sys_sendmsg home/rv/linux-repo/linux-618-mw1/net/socket.c:2705 [inline]
+ __se_sys_sendmsg home/rv/linux-repo/linux-618-mw1/net/socket.c:2703 [inline]
+ __riscv_sys_sendmsg+0x6e/0xb0 home/rv/linux-repo/linux-618-mw1/net/socket.c:2703
+ syscall_handler+0x96/0x128 home/rv/linux-repo/linux-618-mw1/arch/riscv/include/asm/syscall.h:112
+ do_trap_ecall_u+0x396/0x5d0 home/rv/linux-repo/linux-618-mw1/arch/riscv/kernel/traps.c:343
+ handle_exception+0x146/0x152 home/rv/linux-repo/linux-618-mw1/arch/riscv/kernel/entry.S:198
+
+Freed by task 19490:
+ stack_trace_save+0xa0/0xd4 home/rv/linux-repo/linux-618-mw1/kernel/stacktrace.c:122
+ kasan_save_stack+0x3c/0x64 home/rv/linux-repo/linux-618-mw1/mm/kasan/common.c:47
+ kasan_save_track+0x14/0x28 home/rv/linux-repo/linux-618-mw1/mm/kasan/common.c:68
+ kasan_save_free_info+0x40/0x60 home/rv/linux-repo/linux-618-mw1/mm/kasan/generic.c:576
+ poison_slab_object home/rv/linux-repo/linux-618-mw1/mm/kasan/common.c:243 [inline]
+ __kasan_slab_free+0x54/0x6c home/rv/linux-repo/linux-618-mw1/mm/kasan/common.c:275
+ kasan_slab_free home/rv/linux-repo/linux-618-mw1/include/linux/kasan.h:233 [inline]
+ slab_free_hook home/rv/linux-repo/linux-618-mw1/mm/slub.c:2417 [inline]
+ slab_free home/rv/linux-repo/linux-618-mw1/mm/slub.c:4680 [inline]
+ kmem_cache_free+0x23c/0x6fc home/rv/linux-repo/linux-618-mw1/mm/slub.c:4782
+ xfrm_state_free home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:591 [inline]
+ xfrm_state_gc_destroy home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:618 [inline]
+ xfrm_state_gc_task+0x4a6/0x6e8 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:634
+ process_one_work+0x92a/0x1dac home/rv/linux-repo/linux-618-mw1/kernel/workqueue.c:3236
+ process_scheduled_works home/rv/linux-repo/linux-618-mw1/kernel/workqueue.c:3319 [inline]
+ worker_thread+0x53a/0xcac home/rv/linux-repo/linux-618-mw1/kernel/workqueue.c:3400
+ kthread+0x37c/0x7a0 home/rv/linux-repo/linux-618-mw1/kernel/kthread.c:463
+ ret_from_fork_kernel+0x28/0xb30 home/rv/linux-repo/linux-618-mw1/arch/riscv/kernel/process.c:214
+ ret_from_fork_kernel_asm+0x16/0x18 home/rv/linux-repo/linux-618-mw1/arch/riscv/kernel/entry.S:328
+
+The buggy address belongs to the object at ffffaf80a57fe880
+ which belongs to the cache xfrm_state of size 928
+The buggy address is located 196 bytes inside of
+ freed 928-byte region [ffffaf80a57fe880, ffffaf80a57fec20)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffffaf80a57fe440 pfn:0x1257fe
+flags: 0x1ffe000000000000(node=0|zone=1|lastcpupid=0x7ff)
+page_type: f5(slab)
+raw: 1ffe000000000000 ffffaf80872fc3c0 dead000000000122 0000000000000000
+raw: ffffaf80a57fe440 0000000080030001 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+page_owner tracks the page as allocated
+page last allocated via order 0, migratetype Unmovable, gfp_mask 0x40820(GFP_ATOMIC|__GFP_COMP), pid 16468, tgid 16464 (syz.2.3676), ts 4635503555600, free_ts 4633132079300
+ __set_page_owner+0x94/0x4d4 home/rv/linux-repo/linux-618-mw1/mm/page_owner.c:329
+ set_page_owner home/rv/linux-repo/linux-618-mw1/include/linux/page_owner.h:32 [inline]
+ post_alloc_hook+0x106/0x1d8 home/rv/linux-repo/linux-618-mw1/mm/page_alloc.c:1851
+ prep_new_page home/rv/linux-repo/linux-618-mw1/mm/page_alloc.c:1859 [inline]
+ get_page_from_freelist+0x153e/0x3550 home/rv/linux-repo/linux-618-mw1/mm/page_alloc.c:3858
+ __alloc_frozen_pages_noprof+0x204/0x216c home/rv/linux-repo/linux-618-mw1/mm/page_alloc.c:5148
+ alloc_pages_mpol+0x1ee/0x5a0 home/rv/linux-repo/linux-618-mw1/mm/mempolicy.c:2416
+ alloc_frozen_pages_noprof+0x156/0x318 home/rv/linux-repo/linux-618-mw1/mm/mempolicy.c:2487
+ alloc_slab_page home/rv/linux-repo/linux-618-mw1/mm/slub.c:2487 [inline]
+ allocate_slab home/rv/linux-repo/linux-618-mw1/mm/slub.c:2663 [inline]
+ new_slab+0x238/0x34c home/rv/linux-repo/linux-618-mw1/mm/slub.c:2709
+ ___slab_alloc+0xc0c/0x1330 home/rv/linux-repo/linux-618-mw1/mm/slub.c:3891
+ __slab_alloc.isra.0+0x62/0xc0 home/rv/linux-repo/linux-618-mw1/mm/slub.c:3981
+ __slab_alloc_node home/rv/linux-repo/linux-618-mw1/mm/slub.c:4056 [inline]
+ slab_alloc_node home/rv/linux-repo/linux-618-mw1/mm/slub.c:4217 [inline]
+ kmem_cache_alloc_noprof+0xcc/0x460 home/rv/linux-repo/linux-618-mw1/mm/slub.c:4236
+ xfrm_state_alloc+0x2c/0x4bc home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:733
+ __find_acq_core+0x94e/0x27ac home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:1833
+ xfrm_find_acq+0x7e/0x9c home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_state.c:2353
+ xfrm_alloc_userspi+0x4d2/0xc10 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_user.c:1863
+ xfrm_user_rcv_msg+0x3d6/0x998 home/rv/linux-repo/linux-618-mw1/net/xfrm/xfrm_user.c:3501
+ netlink_rcv_skb+0x206/0x3bc home/rv/linux-repo/linux-618-mw1/net/netlink/af_netlink.c:2552
+page last free pid 13255 tgid 13255 stack trace:
+ __reset_page_owner+0x74/0x1dc home/rv/linux-repo/linux-618-mw1/mm/page_owner.c:308
+ reset_page_owner home/rv/linux-repo/linux-618-mw1/include/linux/page_owner.h:25 [inline]
+ free_pages_prepare home/rv/linux-repo/linux-618-mw1/mm/page_alloc.c:1395 [inline]
+ __free_frozen_pages+0x96c/0x1e64 home/rv/linux-repo/linux-618-mw1/mm/page_alloc.c:2895
+ ___free_pages+0x136/0x1bc home/rv/linux-repo/linux-618-mw1/mm/page_alloc.c:5229
+ __free_pages+0xe/0x18 home/rv/linux-repo/linux-618-mw1/mm/page_alloc.c:5260
+ pagetable_free home/rv/linux-repo/linux-618-mw1/include/linux/mm.h:2898 [inline]
+ pagetable_dtor_free home/rv/linux-repo/linux-618-mw1/include/linux/mm.h:2996 [inline]
+ __tlb_remove_table home/rv/linux-repo/linux-618-mw1/include/asm-generic/tlb.h:220 [inline]
+ __tlb_remove_table_free home/rv/linux-repo/linux-618-mw1/mm/mmu_gather.c:227 [inline]
+ tlb_remove_table_rcu+0x23a/0x358 home/rv/linux-repo/linux-618-mw1/mm/mmu_gather.c:290
+ rcu_do_batch home/rv/linux-repo/linux-618-mw1/kernel/rcu/tree.c:2605 [inline]
+ rcu_core+0x966/0x1d64 home/rv/linux-repo/linux-618-mw1/kernel/rcu/tree.c:2861
+ rcu_core_si+0xc/0x14 home/rv/linux-repo/linux-618-mw1/kernel/rcu/tree.c:2878
+ handle_softirqs+0x43a/0x1128 home/rv/linux-repo/linux-618-mw1/kernel/softirq.c:579
+ __do_softirq+0x12/0x1a home/rv/linux-repo/linux-618-mw1/kernel/softirq.c:613
+
+Memory state around the buggy address:
+ ffffaf80a57fe800: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffffaf80a57fe880: fa fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+>ffffaf80a57fe900: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+                                           ^
+ ffffaf80a57fe980: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+ ffffaf80a57fea00: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+==================================================================
