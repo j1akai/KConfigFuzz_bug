@@ -1,0 +1,163 @@
+netlink: 4 bytes leftover after parsing attributes in process `syz.0.8675'.
+netlink: 4144 bytes leftover after parsing attributes in process `syz.0.8683'.
+netlink: 12 bytes leftover after parsing attributes in process `syz.0.8722'.
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 12447 at kernel/events/core.c:2736 task_ctx_sched_out+0xda/0xfc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2736
+Modules linked in:
+CPU: 1 UID: 0 PID: 12447 Comm: syz.8.8750 Not tainted 6.12.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+epc : task_ctx_sched_out+0xda/0xfc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2736
+ ra : task_ctx_sched_out+0xda/0xfc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2736
+epc : ffffffff8054dfbe ra : ffffffff8054dfbe sp : ff20000001516c10
+ gp : ffffffff83cdd720 tp : ff60000096990c40 t0 : 0000000000000000
+ t1 : ffebffff14b81d00 t2 : 0000000000000000 s0 : ff20000001516c50
+ s1 : ff600000a5c0e800 a0 : ff600000da7f0a20 a1 : 0000000000000000
+ a2 : 0000000000000002 a3 : ffffffff8054dfbe a4 : 0000000040000000
+ a5 : ff60000096991c40 a6 : ffebffff14b81d01 a7 : ff600000a5c0e803
+ s2 : 0000000000000000 s3 : 0000000000000003 s4 : ff600000a5c0fe00
+ s5 : ffffffff83d6e4a8 s6 : 0000000000000008 s7 : 1fec000014b81d00
+ s8 : 1fec00001506e692 s9 : ff60000096990c40 s10: ff60000096991478
+ s11: 1fec000012d3228f t3 : 0000000000000000 t4 : ffebffff14b81d00
+ t5 : ffebffff14b81d01 t6 : ff600000c1f39000
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff8054dfbe>] task_ctx_sched_out+0xda/0xfc home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2736
+[<ffffffff8055be04>] perf_event_context_sched_out home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3664 [inline]
+[<ffffffff8055be04>] __perf_event_task_sched_out+0x68e/0x12d2 home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3763
+[<ffffffff826288c2>] perf_event_task_sched_out home/rv/linux-repo/linux612/linux-rich/include/linux/perf_event.h:1519 [inline]
+[<ffffffff826288c2>] prepare_task_switch home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5132 [inline]
+[<ffffffff826288c2>] context_switch home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5275 [inline]
+[<ffffffff826288c2>] __schedule+0x110c/0x29a8 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6693
+[<ffffffff8262a54e>] preempt_schedule_common home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6872 [inline]
+[<ffffffff8262a54e>] __cond_resched+0x7e/0xba home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:7217
+[<ffffffff80594f3e>] _cond_resched home/rv/linux-repo/linux612/linux-rich/include/linux/sched.h:2048 [inline]
+[<ffffffff80594f3e>] generic_perform_write+0x3ce/0x6ac home/rv/linux-repo/linux612/linux-rich/mm/filemap.c:4076
+[<ffffffff805ec462>] shmem_file_write_iter+0xec/0x112 home/rv/linux-repo/linux612/linux-rich/mm/shmem.c:3213
+[<ffffffff807744d4>] __kernel_write_iter+0x2be/0x660 home/rv/linux-repo/linux612/linux-rich/fs/read_write.c:616
+[<ffffffff808e4938>] dump_emit_page home/rv/linux-repo/linux612/linux-rich/fs/coredump.c:884 [inline]
+[<ffffffff808e4938>] dump_user_range+0x1d6/0x4e8 home/rv/linux-repo/linux612/linux-rich/fs/coredump.c:945
+[<ffffffff808c78c0>] elf_core_dump+0x1e0c/0x2a8e home/rv/linux-repo/linux612/linux-rich/fs/binfmt_elf.c:2121
+[<ffffffff808e34b6>] do_coredump+0x271c/0x39c8 home/rv/linux-repo/linux612/linux-rich/fs/coredump.c:758
+[<ffffffff80097cb0>] get_signal+0xa20/0x2470 home/rv/linux-repo/linux612/linux-rich/kernel/signal.c:2903
+[<ffffffff8000a212>] arch_do_signal_or_restart+0xe4/0xd36 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/signal.c:437
+[<ffffffff82621774>] exit_to_user_mode_loop home/rv/linux-repo/linux612/linux-rich/kernel/entry/common.c:111 [inline]
+[<ffffffff82621774>] exit_to_user_mode_prepare home/rv/linux-repo/linux612/linux-rich/include/linux/entry-common.h:328 [inline]
+[<ffffffff82621774>] irqentry_exit_to_user_mode+0xfc/0x140 home/rv/linux-repo/linux612/linux-rich/kernel/entry/common.c:231
+[<ffffffff826217dc>] irqentry_exit+0x24/0x38 home/rv/linux-repo/linux612/linux-rich/kernel/entry/common.c:334
+[<ffffffff82621388>] do_page_fault+0x2e/0x3a home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:366
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+---[ end trace 0000000000000000 ]---
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 12587 at kernel/events/core.c:4004 ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+Modules linked in:
+CPU: 0 UID: 0 PID: 12587 Comm: syz.0.8784 Tainted: G        W          6.12.0-dirty #1
+Tainted: [W]=WARN
+Hardware name: riscv-virtio,qemu (DT)
+epc : ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+ ra : ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+epc : ffffffff805581ec ra : ffffffff805581ec sp : ff20000006d77080
+ gp : ffffffff83cdd720 tp : ff60000087aee200 t0 : 0000000000000000
+ t1 : ffebffff14b81fc0 t2 : ff20000000ea6d60 s0 : ff20000006d771a0
+ s1 : ff600000a5c0fe00 a0 : ff600000da7d1a20 a1 : 0000000000000000
+ a2 : 0000000000000002 a3 : ffffffff805581ec a4 : 0000000040000000
+ a5 : ff60000087aef200 a6 : ffebffff14b81fc1 a7 : ff600000a5c0fe03
+ s2 : 0000000000000000 s3 : 0000000000000002 s4 : ff20000006d77120
+ s5 : 1fe4000000daee18 s6 : ff600000da7d1940 s7 : 0000000000000007
+ s8 : 0000000000000007 s9 : 0000000000000007 s10: ff600000a5c0fe38
+ s11: ff600000da7de554 t3 : fffffffffffffffe t4 : ffebffff14b81fc0
+ t5 : ffebffff14b81fc1 t6 : 0000000000000001
+status: 0000000000000100 badaddr: 0000000000000000 cause: 0000000000000003
+[<ffffffff805581ec>] ctx_sched_in+0x21a/0x89a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4004
+[<ffffffff805588a8>] perf_event_sched_in+0x3c/0x7a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:2748
+[<ffffffff8055a95a>] perf_event_context_sched_in home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4068 [inline]
+[<ffffffff8055a95a>] __perf_event_task_sched_in+0x4fc/0xd4a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4097
+[<ffffffff800fd386>] perf_event_task_sched_in home/rv/linux-repo/linux612/linux-rich/include/linux/perf_event.h:1496 [inline]
+[<ffffffff800fd386>] finish_task_switch.isra.0+0x3d4/0x834 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5197
+[<ffffffff826283d8>] context_switch home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5331 [inline]
+[<ffffffff826283d8>] __schedule+0xc22/0x29a8 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6693
+[<ffffffff8262a54e>] preempt_schedule_common home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6872 [inline]
+[<ffffffff8262a54e>] __cond_resched+0x7e/0xba home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:7217
+[<ffffffff806696c6>] _cond_resched home/rv/linux-repo/linux612/linux-rich/include/linux/sched.h:2048 [inline]
+[<ffffffff806696c6>] copy_pte_range home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1195 [inline]
+[<ffffffff806696c6>] copy_pmd_range home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1255 [inline]
+[<ffffffff806696c6>] copy_pud_range home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1292 [inline]
+[<ffffffff806696c6>] copy_p4d_range home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1316 [inline]
+[<ffffffff806696c6>] copy_page_range+0xf88/0x3aec home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1414
+[<ffffffff80055aca>] dup_mmap home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:746 [inline]
+[<ffffffff80055aca>] dup_mm home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:1675 [inline]
+[<ffffffff80055aca>] copy_mm home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:1724 [inline]
+[<ffffffff80055aca>] copy_process+0x5516/0x8346 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2374
+[<ffffffff80058ae6>] kernel_clone+0xde/0x82a home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2786
+[<ffffffff80059316>] __do_sys_clone+0xe4/0x118 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2929
+[<ffffffff800597fa>] __se_sys_clone home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2897 [inline]
+[<ffffffff800597fa>] __riscv_sys_clone+0xa0/0x10e home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2897
+[<ffffffff8000d880>] syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff82621340>] do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+---[ end trace 0000000000000000 ]---
+Unable to handle kernel paging request at virtual address dfffffff00000005
+Oops [#1]
+Modules linked in:
+CPU: 0 UID: 0 PID: 12587 Comm: syz.0.8784 Tainted: G        W          6.12.0-dirty #1
+Tainted: [W]=WARN
+Hardware name: riscv-virtio,qemu (DT)
+epc : perf_ctx_sched_task_cb+0x36/0x19a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3566
+ ra : perf_ctx_sched_task_cb+0x24/0x19a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3566
+epc : ffffffff80532352 ra : ffffffff80532340 sp : ff20000006d77180
+ gp : ffffffff83cdd720 tp : ff60000087aee200 t0 : 0000000000000000
+ t1 : ffebffff14b81fc0 t2 : ff20000000ea6d60 s0 : ff20000006d771d0
+ s1 : 0000000000000000 a0 : 0000000000000000 a1 : 0000000000000001
+ a2 : 0000000000000002 a3 : ffffffff80532340 a4 : 0000000000000005
+ a5 : dfffffff00000005 a6 : ffebffff14b81fc1 a7 : ff600000a5c0fe03
+ s2 : ff600000da7d1940 s3 : ff600000a5c0fe00 s4 : ff600000a5c0fe18
+ s5 : ff600000a5c0fe28 s6 : 0000000000000028 s7 : 0000000000000001
+ s8 : dfffffff00000000 s9 : 1fe4000000daee44 s10: ff600000a5c0fe38
+ s11: ff600000da7de554 t3 : fffffffffffffffe t4 : ffebffff14b81fc0
+ t5 : ffebffff14b81fc1 t6 : 0000000000000001
+status: 0000000000000100 badaddr: dfffffff00000005 cause: 000000000000000d
+[<ffffffff80532352>] perf_ctx_sched_task_cb+0x36/0x19a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:3566
+[<ffffffff8055a97a>] perf_event_context_sched_in home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4070 [inline]
+[<ffffffff8055a97a>] __perf_event_task_sched_in+0x51c/0xd4a home/rv/linux-repo/linux612/linux-rich/kernel/events/core.c:4097
+[<ffffffff800fd386>] perf_event_task_sched_in home/rv/linux-repo/linux612/linux-rich/include/linux/perf_event.h:1496 [inline]
+[<ffffffff800fd386>] finish_task_switch.isra.0+0x3d4/0x834 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5197
+[<ffffffff826283d8>] context_switch home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5331 [inline]
+[<ffffffff826283d8>] __schedule+0xc22/0x29a8 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6693
+[<ffffffff8262a54e>] preempt_schedule_common home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6872 [inline]
+[<ffffffff8262a54e>] __cond_resched+0x7e/0xba home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:7217
+[<ffffffff806696c6>] _cond_resched home/rv/linux-repo/linux612/linux-rich/include/linux/sched.h:2048 [inline]
+[<ffffffff806696c6>] copy_pte_range home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1195 [inline]
+[<ffffffff806696c6>] copy_pmd_range home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1255 [inline]
+[<ffffffff806696c6>] copy_pud_range home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1292 [inline]
+[<ffffffff806696c6>] copy_p4d_range home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1316 [inline]
+[<ffffffff806696c6>] copy_page_range+0xf88/0x3aec home/rv/linux-repo/linux612/linux-rich/mm/memory.c:1414
+[<ffffffff80055aca>] dup_mmap home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:746 [inline]
+[<ffffffff80055aca>] dup_mm home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:1675 [inline]
+[<ffffffff80055aca>] copy_mm home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:1724 [inline]
+[<ffffffff80055aca>] copy_process+0x5516/0x8346 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2374
+[<ffffffff80058ae6>] kernel_clone+0xde/0x82a home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2786
+[<ffffffff80059316>] __do_sys_clone+0xe4/0x118 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2929
+[<ffffffff800597fa>] __se_sys_clone home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2897 [inline]
+[<ffffffff800597fa>] __riscv_sys_clone+0xa0/0x10e home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2897
+[<ffffffff8000d880>] syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+[<ffffffff82621340>] do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+[<ffffffff8263ff36>] _new_vmalloc_restore_context_a0+0xc2/0xce
+Code: bd00 07b7 e000 8b13 0284 17fd 5713 003b 1782 97ba (c783) 0007 
+---[ end trace 0000000000000000 ]---
+note: syz.0.8784[12587] exited with irqs disabled
+----------------
+Code disassembly (best guess):
+   0:	bd00                	fsd	fs0,56(a0)
+   2:	e00007b7          	lui	a5,0xe0000
+   6:	02848b13          	addi	s6,s1,40
+   a:	17fd                	addi	a5,a5,-1 # 0xffffffffdfffffff
+   c:	003b5713          	srli	a4,s6,0x3
+  10:	1782                	slli	a5,a5,0x20
+  12:	97ba                	add	a5,a5,a4
+* 14:	0007c783          	lbu	a5,0(a5) <-- trapping instruction
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

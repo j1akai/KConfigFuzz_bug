@@ -1,0 +1,120 @@
+netlink: 32 bytes leftover after parsing attributes in process `syz.8.1851'.
+netlink: 20 bytes leftover after parsing attributes in process `syz.9.1857'.
+==================================================================
+BUG: KASAN: slab-out-of-bounds in geneve_destroy_tunnels home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1917 [inline]
+BUG: KASAN: slab-out-of-bounds in geneve_exit_batch_rtnl+0x26c/0x2dc home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1928
+Read of size 8 at addr ff600000868d3fa8 by task kworker/u8:1/55
+
+CPU: 1 UID: 0 PID: 55 Comm: kworker/u8:1 Not tainted 6.12.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: netns cleanup_net
+Call Trace:
+[<ffffffff8000ebe8>] dump_backtrace+0x2e/0x3c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/stacktrace.c:130
+[<ffffffff825fc438>] show_stack+0x34/0x40 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/stacktrace.c:136
+[<ffffffff82620c00>] __dump_stack home/rv/linux-repo/linux612/linux-rich/lib/dump_stack.c:94 [inline]
+[<ffffffff82620c00>] dump_stack_lvl+0x82/0xa2 home/rv/linux-repo/linux612/linux-rich/lib/dump_stack.c:120
+[<ffffffff82605558>] print_address_description home/rv/linux-repo/linux612/linux-rich/mm/kasan/report.c:377 [inline]
+[<ffffffff82605558>] print_report+0x232/0x558 home/rv/linux-repo/linux612/linux-rich/mm/kasan/report.c:488
+[<ffffffff8073b9a0>] kasan_report+0xdc/0x10c home/rv/linux-repo/linux612/linux-rich/mm/kasan/report.c:601
+[<ffffffff8073d69a>] __asan_report_load8_noabort+0x12/0x1a home/rv/linux-repo/linux612/linux-rich/mm/kasan/report_generic.c:381
+[<ffffffff8197b4e2>] geneve_destroy_tunnels home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1917 [inline]
+[<ffffffff8197b4e2>] geneve_exit_batch_rtnl+0x26c/0x2dc home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1928
+[<ffffffff81eb695a>] cleanup_net+0x458/0xa0a home/rv/linux-repo/linux612/linux-rich/net/core/net_namespace.c:619
+[<ffffffff800b9760>] process_one_work+0x65a/0xfd2 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3229
+[<ffffffff800bc9b8>] process_scheduled_works home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3310 [inline]
+[<ffffffff800bc9b8>] worker_thread+0x88c/0x1388 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3391
+[<ffffffff800d60b0>] kthread+0x1f0/0x2a6 home/rv/linux-repo/linux612/linux-rich/kernel/kthread.c:389
+[<ffffffff8264004e>] ret_from_fork+0xe/0x18 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/entry.S:326
+
+Allocated by task 6840:
+ stack_trace_save+0xa0/0xd2 home/rv/linux-repo/linux612/linux-rich/kernel/stacktrace.c:122
+ kasan_save_stack+0x3e/0x6a home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:47
+ kasan_save_track+0x16/0x28 home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:68
+ kasan_save_alloc_info+0x30/0x3e home/rv/linux-repo/linux612/linux-rich/mm/kasan/generic.c:565
+ poison_kmalloc_redzone home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:377 [inline]
+ __kasan_kmalloc+0x8c/0x8e home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:394
+ kasan_kmalloc home/rv/linux-repo/linux612/linux-rich/include/linux/kasan.h:257 [inline]
+ __kmalloc_cache_noprof+0x122/0x224 home/rv/linux-repo/linux612/linux-rich/mm/slub.c:4295
+ kmalloc_noprof home/rv/linux-repo/linux612/linux-rich/include/linux/slab.h:878 [inline]
+ ipv6_inetpeer_init+0x4a/0xac home/rv/linux-repo/linux612/linux-rich/net/ipv6/route.c:6597
+ ops_init+0x190/0x3de home/rv/linux-repo/linux612/linux-rich/net/core/net_namespace.c:139
+ setup_net+0x1ea/0x804 home/rv/linux-repo/linux612/linux-rich/net/core/net_namespace.c:356
+ copy_net_ns+0x228/0x4fa home/rv/linux-repo/linux612/linux-rich/net/core/net_namespace.c:494
+ create_new_namespaces+0x302/0x90c home/rv/linux-repo/linux612/linux-rich/kernel/nsproxy.c:110
+ unshare_nsproxy_namespaces+0x94/0x17e home/rv/linux-repo/linux612/linux-rich/kernel/nsproxy.c:228
+ ksys_unshare+0x34c/0xaf0 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:3313
+ __do_sys_unshare home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:3384 [inline]
+ __se_sys_unshare home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:3382 [inline]
+ __riscv_sys_unshare+0x34/0x48 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:3382
+ syscall_handler+0x80/0x100 home/rv/linux-repo/linux612/linux-rich/arch/riscv/include/asm/syscall.h:90
+ do_trap_ecall_u+0x122/0x13c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:331
+ _new_vmalloc_restore_context_a0+0xc2/0xce
+
+The buggy address belongs to the object at ff600000868d3f80
+ which belongs to the cache kmalloc-32 of size 32
+The buggy address is located 16 bytes to the right of
+ allocated 24-byte region [ff600000868d3f80, ff600000868d3f98)
+
+The buggy address belongs to the physical page:
+page: refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x1068d3
+flags: 0x4000000000000000(zone=1)
+page_type: f5(slab)
+raw: 4000000000000000 ff60000080001780 dead000000000100 dead000000000122
+raw: 0000000000000000 0000000000400040 00000001f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ff600000868d3e80: fa fb fb fb fc fc fc fc fa fb fb fb fc fc fc fc
+ ff600000868d3f00: fa fb fb fb fc fc fc fc 00 00 00 fc fc fc fc fc
+>ff600000868d3f80: 00 00 00 fc fc fc fc fc 00 00 00 00 fc fc fc fc
+                                  ^
+ ff600000868d4000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ ff600000868d4080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+==================================================================
+Unable to handle kernel paging request at virtual address dfffffff00000023
+Oops [#1]
+Modules linked in:
+CPU: 1 UID: 0 PID: 55 Comm: kworker/u8:1 Tainted: G    B              6.12.0-dirty #1
+Tainted: [B]=BAD_PAGE
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: netns cleanup_net
+epc : read_pnet home/rv/linux-repo/linux612/linux-rich/include/net/net_namespace.h:383 [inline]
+epc : dev_net home/rv/linux-repo/linux612/linux-rich/include/linux/netdevice.h:2577 [inline]
+epc : geneve_destroy_tunnels home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1917 [inline]
+epc : geneve_exit_batch_rtnl+0x1b6/0x2dc home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1928
+ ra : geneve_destroy_tunnels home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1917 [inline]
+ ra : geneve_exit_batch_rtnl+0x26c/0x2dc home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1928
+epc : ffffffff8197b42c ra : ffffffff8197b4e2 sp : ff200000008e7a90
+ gp : ffffffff83cdd720 tp : ff60000084d89880 t0 : ff200000008e7594
+ t1 : fffffffef07a0040 t2 : 676e696c62617369 s0 : ff200000008e7b10
+ s1 : ff6000008f32a940 a0 : 0000000000000118 a1 : 0000000000000008
+ a2 : 0000000000000002 a3 : ffffffff8005b8b0 a4 : 0000000000000000
+ a5 : dfffffff00000023 a6 : fffffffef07a0041 a7 : ffffffff83d00207
+ s2 : dfffffff00000000 s3 : ff6000008f32a940 s4 : ff6000008f32a990
+ s5 : ff600000954c8000 s6 : ff60000093be3140 s7 : 0000000000001000
+ s8 : 0000000000000848 s9 : ffffffff83accdc0 s10: ff200000008e7ba0
+ s11: 0000000000000000 t3 : ffffffff83d4038f t4 : fffffffef07a0040
+ t5 : fffffffef07a0041 t6 : ff200000008e7358
+status: 0000000000000120 badaddr: dfffffff00000023 cause: 000000000000000d
+[<ffffffff8197b42c>] read_pnet home/rv/linux-repo/linux612/linux-rich/include/net/net_namespace.h:383 [inline]
+[<ffffffff8197b42c>] dev_net home/rv/linux-repo/linux612/linux-rich/include/linux/netdevice.h:2577 [inline]
+[<ffffffff8197b42c>] geneve_destroy_tunnels home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1917 [inline]
+[<ffffffff8197b42c>] geneve_exit_batch_rtnl+0x1b6/0x2dc home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1928
+[<ffffffff81eb695a>] cleanup_net+0x458/0xa0a home/rv/linux-repo/linux612/linux-rich/net/core/net_namespace.c:619
+[<ffffffff800b9760>] process_one_work+0x65a/0xfd2 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3229
+[<ffffffff800bc9b8>] process_scheduled_works home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3310 [inline]
+[<ffffffff800bc9b8>] worker_thread+0x88c/0x1388 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3391
+[<ffffffff800d60b0>] kthread+0x1f0/0x2a6 home/rv/linux-repo/linux612/linux-rich/kernel/kthread.c:389
+[<ffffffff8264004e>] ret_from_fork+0xe/0x18 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/entry.S:326
+Code: 0504 e3e1 bd83 0389 89a6 8513 118d 5793 0035 97ca (c783) 0007 
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	0504                	addi	s1,sp,640
+   2:	e3e1                	bnez	a5,0xc2
+   4:	0389bd83          	.4byte	0x389bd83
+   8:	89a6                	mv	s3,s1
+   a:	118d8513          	addi	a0,s11,280
+   e:	00355793          	srli	a5,a0,0x3
+  12:	97ca                	add	a5,a5,s2
+* 14:	0007c783          	lbu	a5,0(a5) <-- trapping instruction

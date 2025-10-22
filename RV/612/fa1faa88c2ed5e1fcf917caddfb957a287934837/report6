@@ -1,0 +1,188 @@
+loop7: detected capacity change from 0 to 2048
+netlink: 4 bytes leftover after parsing attributes in process `syz.7.2190'.
+/dev/rnullb0: Can't lookup blockdev
+loop7: detected capacity change from 0 to 128
+Unable to handle kernel paging request at virtual address dfffffff00000023
+Oops [#1]
+Modules linked in:
+CPU: 1 UID: 0 PID: 2963 Comm: kworker/u8:2 Not tainted 6.12.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: netns cleanup_net
+epc : read_pnet home/rv/linux-repo/linux612/linux-rich/include/net/net_namespace.h:383 [inline]
+epc : dev_net home/rv/linux-repo/linux612/linux-rich/include/linux/netdevice.h:2577 [inline]
+epc : geneve_destroy_tunnels home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1917 [inline]
+epc : geneve_exit_batch_rtnl+0x1b6/0x2dc home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1928
+ ra : geneve_destroy_tunnels home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1917 [inline]
+ ra : geneve_exit_batch_rtnl+0x192/0x2dc home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1928
+epc : ffffffff8197b42c ra : ffffffff8197b408 sp : ff20000001087a90
+ gp : ffffffff83cdd720 tp : ff6000009668a4c0 t0 : ff60000083a8a000
+ t1 : fffffffef077c148 t2 : ff20000000a66fa0 s0 : ff20000001087b10
+ s1 : ffffffffffffffb0 a0 : 0000000000000118 a1 : 0000000000000008
+ a2 : 0000000000000002 a3 : ffffffff8197b408 a4 : 0000000000000000
+ a5 : dfffffff00000023 a6 : fffffffef077c149 a7 : ffffffff83be0a47
+ s2 : dfffffff00000000 s3 : ffffffffffffffb0 s4 : 0000000000000000
+ s5 : ff60000085b35d00 s6 : ff60000084f80880 s7 : 0000000000001000
+ s8 : 0000000000000848 s9 : ffffffff83accdc0 s10: ff20000001087ba0
+ s11: 0000000000000000 t3 : ff600000922f4549 t4 : fffffffef077c148
+ t5 : fffffffef077c149 t6 : 0000000000000001
+status: 0000000000000120 badaddr: dfffffff00000023 cause: 000000000000000d
+[<ffffffff8197b42c>] read_pnet home/rv/linux-repo/linux612/linux-rich/include/net/net_namespace.h:383 [inline]
+[<ffffffff8197b42c>] dev_net home/rv/linux-repo/linux612/linux-rich/include/linux/netdevice.h:2577 [inline]
+[<ffffffff8197b42c>] geneve_destroy_tunnels home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1917 [inline]
+[<ffffffff8197b42c>] geneve_exit_batch_rtnl+0x1b6/0x2dc home/rv/linux-repo/linux612/linux-rich/drivers/net/geneve.c:1928
+[<ffffffff81eb695a>] cleanup_net+0x458/0xa0a home/rv/linux-repo/linux612/linux-rich/net/core/net_namespace.c:619
+[<ffffffff800b9760>] process_one_work+0x65a/0xfd2 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3229
+[<ffffffff800bc9b8>] process_scheduled_works home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3310 [inline]
+[<ffffffff800bc9b8>] worker_thread+0x88c/0x1388 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3391
+[<ffffffff800d60b0>] kthread+0x1f0/0x2a6 home/rv/linux-repo/linux612/linux-rich/kernel/kthread.c:389
+[<ffffffff8264004e>] ret_from_fork+0xe/0x18 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/entry.S:326
+Code: 0504 e3e1 bd83 0389 89a6 8513 118d 5793 0035 97ca (c783) 0007 
+---[ end trace 0000000000000000 ]---
+==================================================================
+BUG: KASAN: slab-use-after-free in owner_on_cpu home/rv/linux-repo/linux612/linux-rich/include/linux/sched.h:2176 [inline]
+BUG: KASAN: slab-use-after-free in mutex_can_spin_on_owner home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:409 [inline]
+BUG: KASAN: slab-use-after-free in mutex_optimistic_spin home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:452 [inline]
+BUG: KASAN: slab-use-after-free in __mutex_lock_common home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:612 [inline]
+BUG: KASAN: slab-use-after-free in __mutex_lock.constprop.0+0x16d8/0x1760 home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:752
+Read of size 4 at addr ff6000009668a524 by task kworker/u8:0/12949
+
+CPU: 1 UID: 0 PID: 12949 Comm: kworker/u8:0 Tainted: G      D            6.12.0-dirty #1
+Tainted: [D]=DIE
+Hardware name: riscv-virtio,qemu (DT)
+Workqueue: ipv6_addrconf addrconf_verify_work
+Call Trace:
+[<ffffffff8000ebe8>] dump_backtrace+0x2e/0x3c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/stacktrace.c:130
+[<ffffffff825fc438>] show_stack+0x34/0x40 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/stacktrace.c:136
+[<ffffffff82620c00>] __dump_stack home/rv/linux-repo/linux612/linux-rich/lib/dump_stack.c:94 [inline]
+[<ffffffff82620c00>] dump_stack_lvl+0x82/0xa2 home/rv/linux-repo/linux612/linux-rich/lib/dump_stack.c:120
+[<ffffffff82605558>] print_address_description home/rv/linux-repo/linux612/linux-rich/mm/kasan/report.c:377 [inline]
+[<ffffffff82605558>] print_report+0x232/0x558 home/rv/linux-repo/linux612/linux-rich/mm/kasan/report.c:488
+[<ffffffff8073b9a0>] kasan_report+0xdc/0x10c home/rv/linux-repo/linux612/linux-rich/mm/kasan/report.c:601
+[<ffffffff8073d680>] __asan_report_load4_noabort+0x12/0x1a home/rv/linux-repo/linux612/linux-rich/mm/kasan/report_generic.c:380
+[<ffffffff8262dd12>] owner_on_cpu home/rv/linux-repo/linux612/linux-rich/include/linux/sched.h:2176 [inline]
+[<ffffffff8262dd12>] mutex_can_spin_on_owner home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:409 [inline]
+[<ffffffff8262dd12>] mutex_optimistic_spin home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:452 [inline]
+[<ffffffff8262dd12>] __mutex_lock_common home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:612 [inline]
+[<ffffffff8262dd12>] __mutex_lock.constprop.0+0x16d8/0x1760 home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:752
+[<ffffffff8262df9e>] __mutex_lock_slowpath+0xe/0x16 home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:1040
+[<ffffffff8262e082>] mutex_lock+0xdc/0xe2 home/rv/linux-repo/linux612/linux-rich/kernel/locking/mutex.c:286
+[<ffffffff81f21d2e>] rtnl_lock+0x20/0x28 home/rv/linux-repo/linux612/linux-rich/net/core/rtnetlink.c:79
+[<ffffffff8234d7c0>] addrconf_verify_work+0x1c/0x36 home/rv/linux-repo/linux612/linux-rich/net/ipv6/addrconf.c:4736
+[<ffffffff800b9760>] process_one_work+0x65a/0xfd2 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3229
+[<ffffffff800bc9b8>] process_scheduled_works home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3310 [inline]
+[<ffffffff800bc9b8>] worker_thread+0x88c/0x1388 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3391
+[<ffffffff800d60b0>] kthread+0x1f0/0x2a6 home/rv/linux-repo/linux612/linux-rich/kernel/kthread.c:389
+[<ffffffff8264004e>] ret_from_fork+0xe/0x18 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/entry.S:326
+
+Allocated by task 2:
+ stack_trace_save+0xa0/0xd2 home/rv/linux-repo/linux612/linux-rich/kernel/stacktrace.c:122
+ kasan_save_stack+0x3e/0x6a home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:47
+ kasan_save_track+0x16/0x28 home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:68
+ kasan_save_alloc_info+0x30/0x3e home/rv/linux-repo/linux612/linux-rich/mm/kasan/generic.c:565
+ unpoison_slab_object home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:319 [inline]
+ __kasan_slab_alloc+0x68/0x6a home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:345
+ kasan_slab_alloc home/rv/linux-repo/linux612/linux-rich/include/linux/kasan.h:247 [inline]
+ slab_post_alloc_hook home/rv/linux-repo/linux612/linux-rich/mm/slub.c:4085 [inline]
+ slab_alloc_node home/rv/linux-repo/linux612/linux-rich/mm/slub.c:4134 [inline]
+ kmem_cache_alloc_node_noprof+0xde/0x210 home/rv/linux-repo/linux612/linux-rich/mm/slub.c:4186
+ alloc_task_struct_node home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:181 [inline]
+ dup_task_struct home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:1108 [inline]
+ copy_process+0x4b4/0x8346 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2204
+ kernel_clone+0xde/0x82a home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2786
+ kernel_thread+0xf4/0x126 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:2848
+ create_kthread home/rv/linux-repo/linux612/linux-rich/kernel/kthread.c:412 [inline]
+ kthreadd+0x4ca/0x7aa home/rv/linux-repo/linux612/linux-rich/kernel/kthread.c:767
+ ret_from_fork+0xe/0x18 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/entry.S:326
+
+Freed by task 11967:
+ stack_trace_save+0xa0/0xd2 home/rv/linux-repo/linux612/linux-rich/kernel/stacktrace.c:122
+ kasan_save_stack+0x3e/0x6a home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:47
+ kasan_save_track+0x16/0x28 home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:68
+ kasan_save_free_info+0x40/0x5c home/rv/linux-repo/linux612/linux-rich/mm/kasan/generic.c:579
+ poison_slab_object home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:247 [inline]
+ __kasan_slab_free+0x36/0x4a home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:264
+ kasan_slab_free home/rv/linux-repo/linux612/linux-rich/include/linux/kasan.h:230 [inline]
+ slab_free_hook home/rv/linux-repo/linux612/linux-rich/mm/slub.c:2342 [inline]
+ slab_free home/rv/linux-repo/linux612/linux-rich/mm/slub.c:4579 [inline]
+ kmem_cache_free+0xd0/0x4b4 home/rv/linux-repo/linux612/linux-rich/mm/slub.c:4681
+ free_task_struct home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:186 [inline]
+ free_task+0xf0/0x144 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:615
+ __put_task_struct+0x14a/0x354 home/rv/linux-repo/linux612/linux-rich/kernel/fork.c:983
+ put_task_struct home/rv/linux-repo/linux612/linux-rich/include/linux/sched/task.h:144 [inline]
+ delayed_put_task_struct+0x104/0x138 home/rv/linux-repo/linux612/linux-rich/kernel/exit.c:228
+ rcu_do_batch home/rv/linux-repo/linux612/linux-rich/kernel/rcu/tree.c:2567 [inline]
+ rcu_core+0x482/0x113c home/rv/linux-repo/linux612/linux-rich/kernel/rcu/tree.c:2823
+ rcu_core_si+0xc/0x14 home/rv/linux-repo/linux612/linux-rich/kernel/rcu/tree.c:2840
+ handle_softirqs+0x334/0x924 home/rv/linux-repo/linux612/linux-rich/kernel/softirq.c:554
+ __do_softirq home/rv/linux-repo/linux612/linux-rich/kernel/softirq.c:588 [inline]
+ invoke_softirq home/rv/linux-repo/linux612/linux-rich/kernel/softirq.c:428 [inline]
+ __irq_exit_rcu home/rv/linux-repo/linux612/linux-rich/kernel/softirq.c:637 [inline]
+ irq_exit_rcu+0x180/0x2a2 home/rv/linux-repo/linux612/linux-rich/kernel/softirq.c:649
+ handle_riscv_irq+0x40/0x4c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:378
+ call_on_irq_stack+0x32/0x40 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/entry.S:355
+
+Last potentially related work creation:
+ stack_trace_save+0xa0/0xd2 home/rv/linux-repo/linux612/linux-rich/kernel/stacktrace.c:122
+ kasan_save_stack+0x3e/0x6a home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:47
+ __kasan_record_aux_stack+0xa8/0xdc home/rv/linux-repo/linux612/linux-rich/mm/kasan/generic.c:541
+ kasan_record_aux_stack_noalloc+0xe/0x16 home/rv/linux-repo/linux612/linux-rich/mm/kasan/generic.c:551
+ __call_rcu_common.constprop.0+0x6c/0xa8e home/rv/linux-repo/linux612/linux-rich/kernel/rcu/tree.c:3086
+ call_rcu+0xc/0x14 home/rv/linux-repo/linux612/linux-rich/kernel/rcu/tree.c:3190
+ put_task_struct_rcu_user home/rv/linux-repo/linux612/linux-rich/kernel/exit.c:234 [inline]
+ put_task_struct_rcu_user+0x88/0xa0 home/rv/linux-repo/linux612/linux-rich/kernel/exit.c:231
+ finish_task_switch.isra.0+0x5b0/0x834 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5237
+ context_switch home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5331 [inline]
+ __schedule+0xc22/0x29a8 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6693
+ __schedule_loop home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6770 [inline]
+ schedule+0x58/0x2ac home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:6785
+ schedule_timeout+0x2c6/0x37e home/rv/linux-repo/linux612/linux-rich/kernel/time/timer.c:2591
+ do_wait_for_common home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:95 [inline]
+ __wait_for_common+0x450/0x6e6 home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:116
+ wait_for_common home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:127 [inline]
+ wait_for_completion_state+0x1a/0x32 home/rv/linux-repo/linux612/linux-rich/kernel/sched/completion.c:264
+ __wait_rcu_gp+0x224/0x2f2 home/rv/linux-repo/linux612/linux-rich/kernel/rcu/update.c:443
+ synchronize_rcu_normal+0x1f2/0x29c home/rv/linux-repo/linux612/linux-rich/kernel/rcu/tree.c:4019
+ synchronize_rcu+0x34/0x3c home/rv/linux-repo/linux612/linux-rich/kernel/rcu/tree.c:4097
+ free_ipc+0xb4/0x266 home/rv/linux-repo/linux612/linux-rich/ipc/namespace.c:176
+ process_one_work+0x65a/0xfd2 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3229
+ process_scheduled_works home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3310 [inline]
+ worker_thread+0x88c/0x1388 home/rv/linux-repo/linux612/linux-rich/kernel/workqueue.c:3391
+ kthread+0x1f0/0x2a6 home/rv/linux-repo/linux612/linux-rich/kernel/kthread.c:389
+ ret_from_fork+0xe/0x18 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/entry.S:326
+
+The buggy address belongs to the object at ff6000009668a4c0
+ which belongs to the cache task_struct of size 3008
+The buggy address is located 100 bytes inside of
+ freed 3008-byte region [ff6000009668a4c0, ff6000009668b080)
+
+The buggy address belongs to the physical page:
+page: refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x116688
+head: order:3 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+anon flags: 0x4000000000000040(head|zone=1)
+page_type: f5(slab)
+raw: 4000000000000040 ff60000080074780 ff1c000002612c00 dead000000000003
+raw: 0000000000000000 00000000000a000a 00000001f5000000 0000000000000000
+head: 4000000000000040 ff60000080074780 ff1c000002612c00 dead000000000003
+head: 0000000000000000 00000000000a000a 00000001f5000000 0000000000000000
+head: 4000000000000003 ff1c00000259a201 ffffffffffffffff 0000000000000000
+head: 0000000000000008 0000000000000000 00000000ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ff6000009668a400: fb fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
+ ff6000009668a480: fc fc fc fc fc fc fc fc fa fb fb fb fb fb fb fb
+>ff6000009668a500: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+                               ^
+ ff6000009668a580: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+ ff6000009668a600: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+==================================================================
+----------------
+Code disassembly (best guess):
+   0:	0504                	addi	s1,sp,640
+   2:	e3e1                	bnez	a5,0xc2
+   4:	0389bd83          	.4byte	0x389bd83
+   8:	89a6                	mv	s3,s1
+   a:	118d8513          	addi	a0,s11,280
+   e:	00355793          	srli	a5,a0,0x3
+  12:	97ca                	add	a5,a5,s2
+* 14:	0007c783          	lbu	a5,0(a5) <-- trapping instruction

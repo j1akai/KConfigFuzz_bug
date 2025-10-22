@@ -1,0 +1,73 @@
+==================================================================
+BUG: KASAN: stack-out-of-bounds in walk_stackframe+0x330/0x392 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/stacktrace.c:66
+Read of size 8 at addr ff20000000006fe8 by task scp/138
+
+CPU: 0 UID: 0 PID: 138 Comm: scp Not tainted 6.12.0-dirty #1
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff8000ebe8>] dump_backtrace+0x2e/0x3c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/stacktrace.c:130
+[<ffffffff825fc438>] show_stack+0x34/0x40 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/stacktrace.c:136
+[<ffffffff82620c00>] __dump_stack home/rv/linux-repo/linux612/linux-rich/lib/dump_stack.c:94 [inline]
+[<ffffffff82620c00>] dump_stack_lvl+0x82/0xa2 home/rv/linux-repo/linux612/linux-rich/lib/dump_stack.c:120
+[<ffffffff82605558>] print_address_description home/rv/linux-repo/linux612/linux-rich/mm/kasan/report.c:377 [inline]
+[<ffffffff82605558>] print_report+0x232/0x558 home/rv/linux-repo/linux612/linux-rich/mm/kasan/report.c:488
+[<ffffffff8073b9a0>] kasan_report+0xdc/0x10c home/rv/linux-repo/linux612/linux-rich/mm/kasan/report.c:601
+[<ffffffff8073d69a>] __asan_report_load8_noabort+0x12/0x1a home/rv/linux-repo/linux612/linux-rich/mm/kasan/report_generic.c:381
+[<ffffffff8000e9aa>] walk_stackframe+0x330/0x392 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/stacktrace.c:66
+[<ffffffff826213fa>] arch_stack_walk+0x1c/0x24 home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/stacktrace.c:163
+[<ffffffff8022cfd2>] stack_trace_save+0xa0/0xd2 home/rv/linux-repo/linux612/linux-rich/kernel/stacktrace.c:122
+[<ffffffff8073ab36>] kasan_save_stack+0x3e/0x6a home/rv/linux-repo/linux612/linux-rich/mm/kasan/common.c:47
+[<ffffffff8073d19a>] __kasan_record_aux_stack+0xa8/0xdc home/rv/linux-repo/linux612/linux-rich/mm/kasan/generic.c:541
+[<ffffffff8073d598>] kasan_record_aux_stack_noalloc+0xe/0x16 home/rv/linux-repo/linux612/linux-rich/mm/kasan/generic.c:551
+[<ffffffff800d0eac>] task_work_add+0x184/0x33e home/rv/linux-repo/linux612/linux-rich/kernel/task_work.c:75
+[<ffffffff80112698>] task_tick_mm_cid+0xec/0x140 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:10488
+[<ffffffff801128fc>] sched_tick+0x210/0x6c0 home/rv/linux-repo/linux612/linux-rich/kernel/sched/core.c:5611
+[<ffffffff8023b0f4>] update_process_times+0x192/0x228 home/rv/linux-repo/linux612/linux-rich/kernel/time/timer.c:2524
+[<ffffffff8026a216>] tick_sched_handle home/rv/linux-repo/linux612/linux-rich/kernel/time/tick-sched.c:276 [inline]
+[<ffffffff8026a216>] tick_nohz_handler+0x210/0x4ac home/rv/linux-repo/linux612/linux-rich/kernel/time/tick-sched.c:297
+[<ffffffff8023cd58>] __run_hrtimer home/rv/linux-repo/linux612/linux-rich/kernel/time/hrtimer.c:1691 [inline]
+[<ffffffff8023cd58>] __hrtimer_run_queues+0x312/0x5fa home/rv/linux-repo/linux612/linux-rich/kernel/time/hrtimer.c:1755
+[<ffffffff8023fc74>] hrtimer_interrupt+0x2c0/0x76e home/rv/linux-repo/linux612/linux-rich/kernel/time/hrtimer.c:1817
+[<ffffffff81d17c6e>] riscv_timer_interrupt+0x8a/0xba home/rv/linux-repo/linux612/linux-rich/drivers/clocksource/timer-riscv.c:146
+[<ffffffff801b1938>] handle_percpu_devid_irq+0x27e/0x580 home/rv/linux-repo/linux612/linux-rich/kernel/irq/chip.c:942
+[<ffffffff8019bb08>] generic_handle_irq_desc home/rv/linux-repo/linux612/linux-rich/include/linux/irqdesc.h:173 [inline]
+[<ffffffff8019bb08>] handle_irq_desc home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:692 [inline]
+[<ffffffff8019bb08>] generic_handle_domain_irq+0x84/0xb2 home/rv/linux-repo/linux612/linux-rich/kernel/irq/irqdesc.c:748
+[<ffffffff81246036>] riscv_intc_irq+0x48/0xa4 home/rv/linux-repo/linux612/linux-rich/drivers/irqchip/irq-riscv-intc.c:33
+[<ffffffff82620c8a>] handle_riscv_irq+0x2e/0x4c home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:376
+[<ffffffff826213da>] do_irq+0x46/0x4a home/rv/linux-repo/linux612/linux-rich/arch/riscv/kernel/traps.c:388
+[<ffffffff8263ff14>] _new_vmalloc_restore_context_a0+0xa0/0xce
+[<ffffffff8263fdf0>] handle_exception+0x0/0x2e
+[<ffffffff81d17be4>] riscv_timer_interrupt+0x0/0xba home/rv/linux-repo/linux612/linux-rich/drivers/clocksource/timer-riscv.c:44
+[<ffffffff825fabe2>] ror32.constprop.0+0x14/0x2a home/rv/linux-repo/linux612/linux-rich/include/linux/bitops.h:137
+[<ffffffff825fad00>] do_csum_no_alignment+0xe2/0x116 home/rv/linux-repo/linux612/linux-rich/arch/riscv/lib/csum.c:298
+[<ffffffff825faea8>] do_csum+0x44/0x82 home/rv/linux-repo/linux612/linux-rich/arch/riscv/lib/csum.c:322
+[<ffffffff812356d4>] csum_partial+0x42/0x52 home/rv/linux-repo/linux612/linux-rich/lib/checksum.c:134
+
+The buggy address belongs to the virtual mapping at
+ [ff20000000000000, ff20000000009000) created by:
+ start_kernel+0x2a2/0x78a home/rv/linux-repo/linux612/linux-rich/init/main.c:1008
+
+The buggy address belongs to the physical page:
+page: refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x100139
+flags: 0x4000000000000000(zone=1)
+raw: 4000000000000000 0000000000000000 dead000000000122 0000000000000000
+raw: 0000000000000000 0000000000000000 00000001ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ff20000000006e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ ff20000000006f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>ff20000000006f80: 00 00 00 00 00 00 00 00 f1 f1 f1 f1 04 f3 f3 f3
+                                                          ^
+ ff20000000007000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ ff20000000007080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+==================================================================
+cgroup: Unknown subsys name 'net'
+cgroup: Unknown subsys name 'cpuset'
+cgroup: Unknown subsys name 'rlimit'
+cgroup: Unknown subsys name 'memory'
+Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k 
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
