@@ -1,0 +1,42 @@
+[  653.151867][ T9895] BUG: sleeping function called from invalid context at fs/inode.c:1928
+[  653.154314][ T9895] in_atomic(): 1, irqs_disabled(): 0, non_block: 0, pid: 9895, name: a.out
+[  653.156500][ T9895] preempt_count: 1, expected: 0
+[  653.157725][ T9895] RCU nest depth: 0, expected: 0
+[  653.158993][ T9895] 2 locks held by a.out/9895:
+[  653.160180][ T9895]  #0: ffff88804e6880e0 (&type->s_umount_key#33){++++}-{4:4}, at: deactivate_super+0xa9/0xd0
+[  653.162920][ T9895]  #1: ffff88804e688998 (&s->s_inode_list_lock){+.+.}-{3:3}, at: hook_sb_delete+0x10d/0xb90
+[  653.165640][ T9895] Preemption disabled at:
+[  653.165660][ T9895] [<0000000000000000>] 0x0
+[  653.167909][ T9895] CPU: 1 UID: 0 PID: 9895 Comm: a.out Tainted: G        W           6.18.0-rc5 #1 PREEMPT(full)
+[  653.167978][ T9895] Tainted: [W]=WARN
+[  653.167989][ T9895] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  653.168009][ T9895] Call Trace:
+[  653.168024][ T9895]  <TASK>
+[  653.168039][ T9895]  dump_stack_lvl+0x180/0x1b0
+[  653.168088][ T9895]  __might_resched+0x359/0x580
+[  653.168145][ T9895]  iput+0x1e/0x40
+[  653.168191][ T9895]  hook_sb_delete+0x876/0xb90
+[  653.168237][ T9895]  ? __pfx_hook_sb_delete+0x10/0x10
+[  653.168273][ T9895]  ? __pfx_fsnotify_sb_delete+0x10/0x10
+[  653.168323][ T9895]  ? __pfx_evict_inodes+0x10/0x10
+[  653.168386][ T9895]  security_sb_delete+0x6d/0x110
+[  653.168426][ T9895]  generic_shutdown_super+0xc2/0x390
+[  653.168485][ T9895]  kill_litter_super+0x72/0xa0
+[  653.168542][ T9895]  deactivate_locked_super+0xbf/0x1a0
+[  653.168579][ T9895]  deactivate_super+0xb1/0xd0
+[  653.168614][ T9895]  cleanup_mnt+0x2df/0x430
+[  653.168657][ T9895]  task_work_run+0x16b/0x260
+[  653.168704][ T9895]  ? __pfx_task_work_run+0x10/0x10
+[  653.168742][ T9895]  ? __x64_sys_umount+0x117/0x190
+[  653.168799][ T9895]  exit_to_user_mode_loop+0xf9/0x130
+[  653.168844][ T9895]  do_syscall_64+0x424/0xfa0
+[  653.168894][ T9895]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[  653.168931][ T9895] RIP: 0033:0x7f2e2a49ffc9
+[  653.168993][ T9895] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c28
+[  653.169027][ T9895] RSP: 002b:00007ffd9d7b5b58 EFLAGS: 00000246 ORIG_RAX: 00000000000000a6
+[  653.169060][ T9895] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 00007f2e2a49ffc9
+[  653.169083][ T9895] RDX: 0030656c69662f2e RSI: 0000000000000000 RDI: 00002000000002c0
+[  653.169104][ T9895] RBP: 00007ffd9d7b5b70 R08: 00007ffd9d7b5b70 R09: 00007ffd9d7b5b70
+[  653.169127][ T9895] R10: 00007ffd9d7b5b70 R11: 0000000000000246 R12: 0000557a95c63190
+[  653.169149][ T9895] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  653.169199][ T9895]  </TASK>
