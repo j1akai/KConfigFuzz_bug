@@ -1,0 +1,46 @@
+BUG: sleeping function called from invalid context at fs/inode.c:1928
+in_atomic(): 1, irqs_disabled(): 0, non_block: 0, pid: 6257, name: syz.3.283
+preempt_count: 1, expected: 0
+RCU nest depth: 0, expected: 0
+2 locks held by syz.3.283/6257:
+ #0: ff6000003d6f40e0 (&type->s_umount_key#44){+.+.}-{4:4}, at: __super_lock fs/super.c:57 [inline]
+ #0: ff6000003d6f40e0 (&type->s_umount_key#44){+.+.}-{4:4}, at: __super_lock_excl fs/super.c:72 [inline]
+ #0: ff6000003d6f40e0 (&type->s_umount_key#44){+.+.}-{4:4}, at: deactivate_super fs/super.c:505 [inline]
+ #0: ff6000003d6f40e0 (&type->s_umount_key#44){+.+.}-{4:4}, at: deactivate_super+0x80/0x98 fs/super.c:502
+ #1: ff6000003d6f4998 (&s->s_inode_list_lock){+.+.}-{3:3}, at: spin_lock include/linux/spinlock.h:351 [inline]
+ #1: ff6000003d6f4998 (&s->s_inode_list_lock){+.+.}-{3:3}, at: hook_sb_delete security/landlock/fs.c:1279 [inline]
+ #1: ff6000003d6f4998 (&s->s_inode_list_lock){+.+.}-{3:3}, at: hook_sb_delete+0x110/0xba0 security/landlock/fs.c:1272
+Preemption disabled at:
+[<ffffffff81458b24>] spin_lock include/linux/spinlock.h:351 [inline]
+[<ffffffff81458b24>] hook_sb_delete security/landlock/fs.c:1279 [inline]
+[<ffffffff81458b24>] hook_sb_delete+0x110/0xba0 security/landlock/fs.c:1272
+CPU: 1 UID: 0 PID: 6257 Comm: syz.3.283 Not tainted 6.18.0-rc1-gb7776a802f2f #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+Call Trace:
+[<ffffffff80078af2>] dump_backtrace+0x32/0x3c arch/riscv/kernel/stacktrace.c:132
+[<ffffffff80003298>] show_stack+0x30/0x3c arch/riscv/kernel/stacktrace.c:138
+[<ffffffff8005fd36>] __dump_stack lib/dump_stack.c:94 [inline]
+[<ffffffff8005fd36>] dump_stack_lvl+0x116/0x1ac lib/dump_stack.c:120
+[<ffffffff8005fde8>] dump_stack+0x1c/0x28 lib/dump_stack.c:129
+[<ffffffff80215fc6>] __might_resched+0x3e2/0x604 kernel/sched/core.c:8925
+[<ffffffff8021625a>] __might_sleep+0x72/0xf4 kernel/sched/core.c:8854
+[<ffffffff80cef698>] iput+0x28/0xa84 fs/inode.c:1928
+[<ffffffff814590de>] hook_sb_delete security/landlock/fs.c:1342 [inline]
+[<ffffffff814590de>] hook_sb_delete+0x6ca/0xba0 security/landlock/fs.c:1272
+[<ffffffff813726da>] security_sb_delete+0xaa/0x184 security/security.c:1467
+[<ffffffff80c77700>] generic_shutdown_super+0xb8/0x388 fs/super.c:634
+[<ffffffff80c77dac>] kill_anon_super fs/super.c:1281 [inline]
+[<ffffffff80c77dac>] kill_litter_super+0x74/0xb0 fs/super.c:1291
+[<ffffffff80c79952>] deactivate_locked_super+0xda/0x1ac fs/super.c:473
+[<ffffffff80c79aaa>] deactivate_super fs/super.c:506 [inline]
+[<ffffffff80c79aaa>] deactivate_super+0x86/0x98 fs/super.c:502
+[<ffffffff80d0d462>] cleanup_mnt+0x1d2/0x3a4 fs/namespace.c:1327
+[<ffffffff80d0d6e4>] __cleanup_mnt+0x20/0x28 fs/namespace.c:1334
+[<ffffffff801df50c>] task_work_run+0x174/0x278 kernel/task_work.c:227
+[<ffffffff803df1d0>] resume_user_mode_work include/linux/resume_user_mode.h:50 [inline]
+[<ffffffff803df1d0>] exit_to_user_mode_loop+0x110/0x144 kernel/entry/common.c:43
+[<ffffffff86394a04>] exit_to_user_mode_prepare include/linux/irq-entry-common.h:225 [inline]
+[<ffffffff86394a04>] syscall_exit_to_user_mode_work include/linux/entry-common.h:175 [inline]
+[<ffffffff86394a04>] syscall_exit_to_user_mode include/linux/entry-common.h:210 [inline]
+[<ffffffff86394a04>] do_trap_ecall_u+0x44c/0x5d8 arch/riscv/kernel/traps.c:357
+[<ffffffff863beeaa>] handle_exception+0x146/0x152 arch/riscv/kernel/entry.S:198
